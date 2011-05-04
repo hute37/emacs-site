@@ -296,6 +296,9 @@
 
 ;; sudo apt-get install magit
 
+;; http://help.github.com/linux-set-up-git/
+;; http://help.github.com/fork-a-repo/
+
 
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @GLOBALS
