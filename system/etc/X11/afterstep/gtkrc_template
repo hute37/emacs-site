@@ -1,0 +1,36 @@
+# Edit these colors and fonts however you like.
+style "default"
+{
+	fg[NORMAL]         =    "InactiveText1"   	
+	fg[ACTIVE]         =    "InactiveText2"   	
+	fg[PRELIGHT]       =    "HighInactiveText"	
+	fg[SELECTED]       =    "ActiveText"      	
+	fg[INSENSITIVE]	   =    "DisabledText"    	
+	bg[NORMAL]         =   	"Inactive1"       	
+	bg[ACTIVE]         =   	"Inactive2"   		
+	bg[PRELIGHT]       =  	"HighInactive"		
+	bg[SELECTED]       =  	"Active"	  	
+	bg[INSENSITIVE]    = 	"Inactive1"   		
+	text[NORMAL]       = 	"InactiveText1"   	
+	text[ACTIVE]       = 	"InactiveText2"   	
+	text[PRELIGHT]     = 	"HighInactiveText"	
+	text[SELECTED]     = 	"ActiveText"		
+	text[INSENSITIVE]  = 	"InactiveText1"   	
+
+	base[NORMAL]       = 	"Inactive1"   		
+	base[ACTIVE]       = 	"Inactive2"   		
+	base[PRELIGHT]     = 	"HighInactive"		
+	base[SELECTED]     = 	"Active"	  	
+	base[INSENSITIVE]  = 	"Inactive1"   		
+
+
+	engine "clearlooks"  {
+	       menubarstyle      = 2       # 0 = flat, 1 = sunken, 2 = flat gradient
+               menuitemstyle     = 1       # 0 = flat, 1 = 3d-ish (gradient), 2 = 3d-ish (button)
+               listviewitemstyle = 1       # 0 = flat, 1 = 3d-ish (gradient)
+               progressbarstyle  = 0       # 0 = candy bar, 1 = flat
+	}
+}
+
+class "GtkWidget" style "default"
+

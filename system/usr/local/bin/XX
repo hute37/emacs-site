@@ -1,0 +1,84 @@
+#!/bin/bash
+
+#set -x
+
+xclient="-n Login -fg white -bg black"
+xserver="/usr/bin/X11/Xnest"
+xserverop="-ac -kb"
+xgeom="-geometry 1280x1024+0+0 "
+xdisplay=":1"
+wm="selectwm"
+xcommand=""
+
+while [ ! -z "$1" ]
+do
+	case "$1" in
+		-wm)
+		shift
+		case "$1" in
+			sawfish)
+			echo "wm: $1"
+			xclient='/usr/bin/sawfish'
+			wm=''
+			;;
+			*)
+			echo "wm: $1"
+			wm=$1
+			;;
+		esac	
+		;;
+		-c)
+		shift
+		case "$1" in
+			*)
+			echo "command: $1"
+			xcommand=$1
+			;;
+		esac	
+		;;
+		:*)
+		echo "display: $1"
+		xdisplay=$1
+		;;
+		*)
+		echo "Illegal Argument: $1"
+		err=1
+		;;
+	esac
+	shift
+
+done
+
+if [ ! -z "$err" ]; then
+	exit 1
+fi
+
+#exit 0
+	
+
+
+x=${xdisplay-":1"}
+
+echo startx $xclient -- $xserver $x  $xserverop $xgeom  
+startx $xclient -- $xserver $x  $xserverop $xgeom   &
+
+
+export DISPLAY=$x.0
+
+echo DISPLAY=$DISPLAY
+
+sleep 1
+rsetroot 
+if [ ! -z "$wm" ]; then
+	$wm &
+fi
+
+
+if [ ! -z "$xcommand" ]; then
+	$xcommand &
+fi
+
+
+##exec xterm -name Login -fg white -bg black &
+
+

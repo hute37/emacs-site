@@ -1,0 +1,284 @@
+################################################################################
+#                                                                              #
+# This is the configuration file for the Wharf, our application and applet     #
+# launcher. The Wharf is not bound to any shape or layout, only the users      #
+# fantasy is the limit of this module.                                         #
+#                                                                              #
+# Copy this file to ~/.afterstep/, or the .afterstep/ directory created in     #
+# your home folder by AfterStep when it started. You can edit the file once    #
+# it's placed in that directory.  Edit the new script in ~/.afterstep/ to your #
+# heart's content.                                                             #
+#                                                                              #
+# You can have as many "Wharfs" as you like (subject to display limitations)   #
+# in this script. One Wharf must be named *Wharf. Each Wharf must have its own #
+# name (*MonitorWharf, *ApplicationsWharf, etc) and is comprised of two parts: #
+# a View/Behaviors area and an Applets/Icons area.                             #
+#                                                                              #
+# View/Behaviors - The visual look and behavior of the Wharf as it sits on the #
+#        desktop.                                                              #
+#                                                                              #
+# Applications/Icons - The applications displaying information and/or allowing #
+#        control while sitting in the Wharf; buttons displaying icons that     #
+#        launch applications when pressed with a mouse pointer, or applets     #
+#        instead.                                                              #
+#                                                                              #
+# To have the indiviual Wharfs (*Wharf, *MonitorWharf, etc.) launch when       #
+# starting AfterStep, edit the autoexec file copied to the ~/.afterstep/ and   #
+# ensure that each Wharf is added.                                             #
+#                                                                              #
+# Please consult the documentation for the meaning and behaviour of the        #
+# individual options. documentation should be installed on your system as man  #
+# pages and html or xml pages (started through afterstepdoc). You can also     #
+# consult our online manual at www.afterstep.org/visualdoc.php                 #
+#                                                                              #
+################################################################################
+#
+# Wharf - primary application launcher :
+#
+#-------------------------------------------------------------------------------
+# View/Behaviors :
+#-------------------------------------------------------------------------------
+#
+*WharfAnimate
+*WharfAnimateMain
+*WharfAnimateDelay	100
+*WharfAnimateSteps	10
+*WharfAnimateStepsMain  10
+
+*WharfBalloons
+*WharfBalloonXOffset		10
+*WharfBalloonYOffset		-15
+*WharfBalloonDelay		120
+*WharfBalloonCloseDelay		1200
+*WharfBalloonStyle		"*WharfBalloon"
+*WharfBalloonBorderHilite	Right,Bottom
+
+#-------------------------------------------------------------------------------
+# Buttons
+#
+#*WharfFullPush
+#*WharfNoPush
+#*WharfNoBorder
+
+# This will resize Wharf's buttons to fit the size of swallowed apps/icons
+#*WharfFitContents
+
+
+#-------------------------------------------------------------------------------
+# Geometry
+#
+#*WharfForceSize
+#*WharfRows		1
+*WharfColumns		1
+*WharfGeometry		-0+30
+*WharfBevel		Bottom,Right,NoOutline,Extra
+
+
+#-------------------------------------------------------------------------------
+# Applications/Icons :
+#-------------------------------------------------------------------------------
+#
+# X TErms. Note that only one of this will be displayed on Wharf, as they all
+# have same button name. Change button name ( first column after *Wharf) to make them a separate buttons :
+
+*Wharf term Monitor.xpm Exec "-" x-terminal-emulator &
+*Wharf term aterm Exec "-" aterm &
+
+# aterm 1.0 should pick MyStyle from look, if it does not the following is a nice alternative :
+#*Wharf term aterm Exec "-" aterm -tr -tint blue -fg yellow -bg black &
+
+*Wharf term rxvt  Exec "-" rxvt  -tr -fg yellow -bg black &
+*Wharf term eterm Exec "-" Eterm -O --tint blue -f yellow -b black &
+*Wharf term xterm Exec "-" xterm -fg yellow -bg blue &
+
+#
+# Midnight commander file manager in the term of choice :
+#
+#*Wharf MidnightCommander normal/MCInMonitorShadow Exec "-" x-terminal-emulator -e mc &
+#*Wharf MidnightCommander normal/MCInMonitorShadow Exec "-" aterm -g 130x35 -tr -fg yellow -tint blue -e mc --colors directory=,default:executable=,default:link=,default:device=,default:special=,default:normal=,default:selected=,transparent:marked=yellow,default:markselect=yellow,brown:core=cyan,default &
+#*Wharf MidnightCommander normal/MCInMonitorShadow Exec "-" rxvt  -g 130x35 -tr -fg yellow -bg black -e mc  &
+#*Wharf MidnightCommander normal/MCInMonitorShadow Exec "-" Eterm -g 130x35 -tr -tint blue -f yellow -b black -e mc &
+#*Wharf MidnightCommander normal/MCInMonitorShadow Exec "-" xterm -g 130x35 -fg yellow -bg blue -e mc &
+
+#
+# First available GUI file manager :
+#
+*Wharf GUIFileManager normal/Filecabinet2 Exec "Rox" rox ~/Desktop &
+*Wharf GUIFileManager normal/Filecabinet2 Exec "Krusader" krusader &
+*Wharf GUIFileManager normal/Filecabinet2 Exec "Gentoo File Manager" gentoo &
+*Wharf GUIFileManager normal/Filecabinet2 Exec "Nautilus" nautilus --no-desktop ~/Desktop &
+
+#
+# Konqueror is very nice web browser/filemanager and deserves an icon of its own : :
+#
+*Wharf Konqueror logos/konqueror Exec "Konqueror" konqueror &
+
+
+#
+# First available GUI Web Browser :
+#
+*Wharf WebBrowser logos/Firefox Exec "Firefox" firefox &
+*Wharf WebBrowser logos/Firefox Exec "Firefox2" mozilla-firefox &
+*Wharf WebBrowser normal/WWW    Exec x-www-browser &
+*Wharf WebBrowser logos/mozilla Exec "Mozilla" mozilla &
+*Wharf WebBrowser logos/Opera   Exec "Opera Web Browser" opera &
+*Wharf WebBrowser normal/WWW    Exec sensible-browser &
+
+#
+# First available GUI e-mail client :
+#
+*Wharf Mail	normal/MailBox2 Exec "mozilla-thunderbird"  mozilla-thunderbird &
+*Wharf Mail	normal/MailBox2 Exec "mozilla-mail" mozilla --mail &
+*Wharf Mail	normal/MailBox2 Exec "balsa" balsa &
+*Wharf Mail	normal/MailBox2 Exec "kmail" kmail &
+*Wharf Mail	normal/MailBox2 ExecInTerm "Mutt"  -e mutt &
+*Wharf Mail	normal/MailBox2 ExecInTerm "Pine"  -e pine &
+
+
+#
+# First available GUI image editor :
+#
+#*Wharf ImageEditor logos/gimp Exec "GIMP" gimp &
+#*Wharf ImageEditor normal/XV Exec "XV" xv &
+
+#
+# First available GUI text editor :
+#
+*Wharf TextEditor Text.xpm Exec "emacs" emacs &
+*Wharf TextEditor Text.xpm Exec "NEdit" nedit &
+*Wharf TextEditor Text.xpm Exec "cooledit" cooledit &
+*Wharf TextEditor logos/GNU Exec "XEmacs" xemacs &
+*Wharf TextEditor Text.xpm Exec "VIM" gvim &
+
+#
+# First available Word processor :
+#
+#*Wharf WordProcessor normal/Document Exec "AbiWord" abiword &
+#*Wharf WordProcessor normal/Document Exec "KWord" kword &
+#*Wharf WordProcessor normal/Document Exec "Pathetic Writer" pw &
+#*Wharf WordProcessor normal/Document Exec "KWrite" kwrite &
+
+#
+# First available Spreadsheet processor :
+#
+#*Wharf Spreadsheet normal/Table Exec "KSpread" kspread &
+#*Wharf Spreadsheet normal/Table Exec "GNUMERIC" gnumeric &
+#*Wharf Spreadsheet normal/Table Exec "Siag" siag &
+
+#
+# First available IRC client :
+#
+#*Wharf IRC	normal/IRCTransparent ExecInTerm "BitchX" if(aterm){-tr -sh 50 -fg white -bg black +sb} if(Eterm){-O --shade 50 -f white -b black +sb) if(rxvt){-tr -fg white -bg black +sb} if(xterm){-fg white -bg black +sb} -e BitchX irc.freenode.net &
+#*Wharf IRC  	normal/IRCTransparent Exec "XCHAT" xchat &
+
+#
+# First available Audio player :
+#
+#*Wharf AudioPlayer - Swallow "wmxmms" wmxmms --single &
+#*Wharf AudioPlayer logos/Xmms Exec "X Multi Media System" xmms &
+#*Wharf AudioPlayer - Swallow "ascd" ascd &
+#
+# Mixer
+#
+#*Wharf mixer - Swallow "wmmixer" wmmixer &
+#*Wharf mixer - Swallow "asmixer" asmixer -g -1-1 &
+#*Wharf mixer - Swallow "asMix" asmix -shape &
+
+#
+# First available Video player :
+#
+
+
+
+
+#
+#  End of the Wharf configuration
+################################################################################
+
+################################################################################
+# MonitorWharf - monitorng applications, system configuration, clocks and docs:
+#
+#-------------------------------------------------------------------------------
+
+*MonitorWharfAnimate
+*MonitorWharfAnimateMain
+*MonitorWharfAnimateDelay	2
+*MonitorWharfAnimateSteps	5
+*MonitorWharfAnimateStepsMain	5
+
+*MonitorWharfBalloons
+*MonitorWharfBalloonXOffset		10
+*MonitorWharfBalloonYOffset		-15
+*MonitorWharfBalloonDelay		120
+*MonitorWharfBalloonCloseDelay		1200
+*MonitorWharfBalloonStyle		"*WharfBalloon"
+*MonitorWharfBalloonBorderHilite	Right,Bottom
+
+#-------------------------------------------------------------------------------
+# Buttons
+#
+#*MonitorWharfFullPush
+#*MonitorWharfNoPush
+*MonitorWharfBevel		Right,NoOutline
+
+
+# This will resize Wharf's buttons to fit the size of swallowed apps/icons
+#*MonitorWharfFitContents
+
+
+#-------------------------------------------------------------------------------
+# Geometry
+#
+#*MonitorWharfForceSize
+#*MonitorWharfRows		1
+*MonitorWharfColumns		1
+*MonitorWharfGeometry		-5-5
+
+#-------------------------------------------------------------------------------
+# Monitoring Applications :
+#
+# separate action could be bound to different Buttons "l" - left "m" - middle "r" - right 
+#   "4" and "5" for other buttons. For Example :
+# left click opens docs, while right click opens StartMenu : 
+*MonitorWharf afterstepdoc large/AfterStep3 Exec  "l" afterstepdoc &
+*MonitorWharf afterstepdoc -                PopUp "r" 0
+
+*MonitorWharf ToolsFolder normal/Desktop,normal/HammerBrown,normal/HammerRed,dots/3_dots Folder
+*MonitorWharf 	ASWallpaper normal/Desktop 		Exec "" ASWallpaper &
+*MonitorWharf 	GWCommand   normal/RemoteControl 	Exec "" GWCommand &
+*MonitorWharf ~Folder
+
+
+
+#*MonitorWharf xeyes - Swallow "xeyes" xeyes -geometry -100-100 &
+#*MonitorWharf xeyes - PopUp   "r" Window
+
+
+*MonitorWharf QuitFolder normal/RedLight,dots/3_dots Folder
+*MonitorWharf 	Restart normal/Recycle Restart "" afterstep -r
+*MonitorWharf 	Quit normal/Stopsign Quit "" afterstep
+*MonitorWharf ~Folder
+
+*MonitorWharf asfsm - Swallow "asfsm_lite" asfsm_lite -bg Grey30 -fg Grey70 -bp None -pbg Grey40 -pfg Grey70 -pbp None -i 30 &
+*MonitorWharf loadmonitor - Swallow "wmavgload" wmavgload -shape -led red &
+*MonitorWharf loadmonitor - Swallow "asload" asload -shape -exe "x-terminal-emulator -e top" &
+*MonitorWharf loadmonitor - Swallow "wmcpuload" wmcpuload -bl -w &
+
+*MonitorWharf asmon  - Swallow "asmon" asmon &
+#*MonitorWharf wmtop  - Swallow "wmtop" wmtop &
+#*MonitorWharf wmnd   - Swallow "wmnd"  wmnd -i eth0 &
+*MonitorWharf asmail - Swallow "asmail" asmail -geometry +0+0 &
+
+# one of the clocks - first available :
+*MonitorWharf clock - Swallow "asclock" asclock shape -24 -theme penguin -position +1+1 &
+*MonitorWharf clock - Swallow "wmclockmon" wmclockmon &
+*MonitorWharf clock - Swallow "wmitime" wmitime &
+*MonitorWharf clock - Swallow "xclock" xclock -bg gray10 -fg cyan -digital -brief &
+*MonitorWharf clock - Exec "r" evolution &
+*MonitorWharf clock - Exec "r" korganizer &
+
+#*MonitorWharf wmfire  - Swallow "wmfire" wmfire &
+
+#
+#  End of the MonitorWharf configuration
+################################################################################

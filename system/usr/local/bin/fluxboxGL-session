@@ -1,0 +1,4 @@
+#!/bin/bash
+
+. /usr/local/bin/fluxbox-session --no-xcomposite
+

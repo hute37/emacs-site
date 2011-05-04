@@ -1,0 +1,5 @@
+#!/bin/sh
+export GTK_PATH=/usr/lib32/gtk-2.0
+export PANGO_RC_FILE=/etc/pango32/pangorc
+export GDK_PIXBUF_MODULE_FILE=/etc/gtk-2.0/gdk-pixbuf.loaders.32
+linux32 /opt/firefox/firefox $@

@@ -1,0 +1,39 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("site-lisp"
+  ((filename . "/usr/share/emacs/site-lisp/")
+   (front-context-string . "..\n  drwxr-xr-x ")
+   (rear-context-string . "96 Nov 14 04:28 ")
+   (position . 174)))
+ ("emacsen-common"
+  ((filename . "/usr/lib/emacsen-common/")
+   (front-context-string . "emacs-install\n  ")
+   (rear-context-string . "70 Feb 22  2000 ")
+   (position . 223)))
+ ("doc"
+  ((filename . "/usr/share/doc/")
+   (front-context-string . "  /usr/share/doc")
+   (rear-context-string)
+   (position . 1)))
+ ("site-start.d"
+  ((filename . "/etc/emacs/site-start.d/")
+   (front-context-string . "00debian-vars.el")
+   (rear-context-string . "27 Jan  7  2006 ")
+   (position . 211)))
+ (".emacs"
+  ((filename . "/home/zanna/.emacs")
+   (front-context-string . ";;; $Id: .emacs,")
+   (rear-context-string)
+   (position . 1)))
+ ("emacs-site (addon)"
+  ((filename . "/usr/local/share/emacs/emacs-site/addon/")
+   (front-context-string . "a2ps-print.el\n  ")
+   (rear-context-string . "37 Aug  1 22:57 ")
+   (position . 289)))
+ ("site-init.el"
+  ((filename . "/usr/local/share/emacs/emacs-site/site-init.el")
+   (front-context-string . "     (setq initi")
+   (rear-context-string . "monospace-12\"))\n")
+   (position . 51282))))

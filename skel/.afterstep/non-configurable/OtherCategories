@@ -1,0 +1,4333 @@
+[Desktop Entry]
+Type=Directory
+Name=Editors
+Comment=A text editor
+X-AfterStep-IndexName=TextEditor
+Icon=/usr/share/afterstep/desktop/icons/Folder-Pen1
+
+[Desktop Entry]
+Type=Directory
+Name=Look And Feel
+Comment=Look and feel settings
+Categories=Settings;
+X-AfterStep-IndexName=LookNFeel
+X-AfterStep-Aliases=Appearance & Themes;X-KDE-LookNFeel;X-KDE-settings-looknfeel;
+
+[Desktop Entry]
+Type=Directory
+Name=OCR
+Comment=Optical character recognition application
+Categories=Scanning;
+X-AfterStep-IndexName=OCR
+
+[Desktop Entry]
+Type=Directory
+Name=Settings
+Comment=Settings applications
+X-AfterStep-IndexName=Settings
+X-AfterStep-Aliases=Settings-Modules;
+
+[Desktop Entry]
+Type=Directory
+Name=Desktop Setup
+Comment=Configuration tool for the GUI
+X-AfterStep-IndexName=AfterStepDesktop
+Icon=/usr/share/afterstep/desktop/icons/Folder-Desktop2
+
+[Desktop Entry]
+Type=Directory
+Name=RedHat Base
+Comment=
+Categories=Application;
+X-AfterStep-IndexName=X-Red-Hat-Base
+
+[Desktop Entry]
+Type=Directory
+Name=Raster Graphics
+Comment=Raster based graphical application
+Categories=2DGraphics;
+X-AfterStep-IndexName=RasterGraphics
+Icon=/usr/share/afterstep/desktop/icons/Folder-Brushes
+
+[Desktop Entry]
+Type=Directory
+Name=Astronomy
+Comment=Astronomy software
+Categories=Science;
+X-AfterStep-IndexName=Astronomy
+
+[Desktop Entry]
+Type=Directory
+Name=Motif
+Comment=Application based on Motif libraries
+X-AfterStep-IndexName=Motif
+
+[Desktop Entry]
+Type=Directory
+Name=Multimedia settings
+Comment=
+Categories=HardwareSettings;
+X-AfterStep-IndexName=MultimediaSettings
+X-AfterStep-Aliases=Sound & Multimedia;X-KDE-Sound;X-KDE-settings-sound;Sound;
+
+[Desktop Entry]
+Type=Directory
+Name=Scanning
+Comment=Tool to scan a file/text
+Categories=Graphics;
+X-AfterStep-IndexName=Scanning
+Icon=/usr/share/afterstep/desktop/icons/Folder-Scanner
+
+[Desktop Entry]
+Type=Directory
+Name=Arcade Games
+Comment=Arcade style game
+Categories=Game;
+X-AfterStep-IndexName=ArcadeGame
+X-AfterStep-Aliases=Arcade;
+Icon=/usr/share/afterstep/desktop/icons/Folder-GameController
+
+[Desktop Entry]
+Type=Directory
+Name=Core
+Comment=Important application, core to the desktop such as a file manager or a help browser
+X-AfterStep-IndexName=Core
+
+[Desktop Entry]
+Type=Directory
+Name=Debuggers
+Comment=A tool to debug applications
+Categories=Development;
+X-AfterStep-IndexName=Debugger
+
+[Desktop Entry]
+Type=Directory
+Name=Hardware Settings
+Comment=A tool to manage hardware components, like sound cards, video cards or printers
+Categories=Settings;
+X-AfterStep-IndexName=HardwareSettings
+X-AfterStep-Aliases=Peripherals;Information;X-KDE-Information;X-KDE-Peripherals;X-KDE-information;
+
+[Desktop Entry]
+Type=Directory
+Name=Tuners
+Comment=A tuner
+Categories=Audio;
+X-AfterStep-IndexName=Tuner
+
+[Desktop Entry]
+Type=Directory
+Name=Amusements
+Comment=A simple amusement
+X-AfterStep-IndexName=Amusement
+X-AfterStep-Aliases=Toys;
+
+[Desktop Entry]
+Type=Directory
+Name=File Transfer
+Comment=Tools like FTP or P2P programs
+Categories=Network;
+X-AfterStep-IndexName=FileTransfer
+Icon=/usr/share/afterstep/desktop/icons/Folder-Globe
+
+[Desktop Entry]
+Type=Directory
+Name=Screen Saver
+Comment=Screensaver themes
+Categories=System;
+X-AfterStep-IndexName=Screensaver
+X-AfterStep-Aliases=ScreenSavers;
+Icon=/usr/share/afterstep/desktop/icons/Folder-MoonInMonitor
+
+[Desktop Entry]
+Type=Directory
+Name=More KDE Applications
+Comment=
+Categories=Application;
+X-AfterStep-IndexName=X-KDE-More
+
+[Desktop Entry]
+Type=Directory
+Name=About AfterStep
+Comment=AfterStep Documentation and useful web links.
+X-AfterStep-IndexName=AboutAfterStep
+Icon=/usr/share/afterstep/desktop/icons/Folder-Info
+
+[Desktop Entry]
+Type=Directory
+Name=GNOME
+Comment=Application based on GNOME libraries
+X-AfterStep-IndexName=GNOME
+
+[Desktop Entry]
+Type=Directory
+Name=Revision Control
+Comment=Applications like cvs or subversion
+Categories=Development;
+X-AfterStep-IndexName=RevisionControl
+
+[Desktop Entry]
+Type=Directory
+Name=Strategy Games
+Comment=A strategy game
+Categories=Game;
+X-AfterStep-IndexName=StrategyGame
+X-AfterStep-Aliases=Tactics & Strategy;
+Icon=/usr/share/afterstep/desktop/icons/Folder-ChessBishop
+
+[Desktop Entry]
+Type=Directory
+Name=Accessories
+Comment=Small utility application, "Accessories"
+X-AfterStep-IndexName=Utility
+X-AfterStep-Aliases=Utilities;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Screwdriver
+
+[Desktop Entry]
+Type=Directory
+Name=File Managers
+Comment=A file manager
+X-AfterStep-IndexName=FileManager
+
+[Desktop Entry]
+Type=Directory
+Name=Package Manager
+Comment=A package manager application
+Categories=Settings;
+X-AfterStep-IndexName=PackageManager
+
+[Desktop Entry]
+Type=Directory
+Name=RedHat Extras
+Comment=
+Categories=Application;
+X-AfterStep-IndexName=X-Red-Hat-Extra
+
+[Desktop Entry]
+Type=Directory
+Name=Desktop Settings
+Comment=Personal preferences and administration settings
+Categories=Settings;
+X-AfterStep-IndexName=DesktopSettings
+X-AfterStep-Aliases=Desktop;X-KDE-Desktop;X-KDE-settings-desktop;
+
+[Desktop Entry]
+Type=Directory
+Name=Monitor
+Comment=Monitor application/applet that monitors some resource or activity
+Categories=System;
+X-AfterStep-IndexName=Monitor
+
+[Desktop Entry]
+Type=Directory
+Name=Music
+Comment=Musical software
+Categories=AudioVideo;Education;
+X-AfterStep-IndexName=Music
+
+[Desktop Entry]
+Type=Directory
+Name=Remote Access
+Comment=A tool to remotely manage your PC
+Categories=Network;
+X-AfterStep-IndexName=RemoteAccess
+
+[Desktop Entry]
+Type=Directory
+Name=Telephony
+Comment=Telephony via PC
+Categories=Network;
+X-AfterStep-IndexName=Telephony
+
+[Desktop Entry]
+Type=Directory
+Name=RedHat Base
+Comment=
+Categories=Application;
+X-AfterStep-IndexName=X-Red-Hat-Base
+
+[Desktop Entry]
+Type=Directory
+Name=About AfterStep
+Comment=AfterStep Documentation and useful web links.
+X-AfterStep-IndexName=AboutAfterStep
+Icon=/usr/share/afterstep/desktop/icons/Folder-Info
+
+[Desktop Entry]
+Type=Directory
+Name=Profiling
+Comment=A profiling tool
+Categories=Development;
+X-AfterStep-IndexName=Profiling
+
+[Desktop Entry]
+Type=Directory
+Name=Science
+Comment=Scientific software
+Categories=Education;
+X-AfterStep-IndexName=Science
+Icon=/usr/share/afterstep/desktop/icons/Folder-Calculator2
+
+[Desktop Entry]
+Type=Directory
+Name=System Settings
+Comment=Change systemwide settings (affects all users)
+X-AfterStep-IndexName=X-KDE-settings-system
+Icon=/usr/share/afterstep/desktop/icons/Folder-Gear2
+
+[Desktop Entry]
+Type=Directory
+Name=File Managers
+Comment=A file manager
+X-AfterStep-IndexName=FileManager
+
+[Desktop Entry]
+Type=Directory
+Name=Power Control
+Comment=Presentation software
+Categories=Settings;
+X-AfterStep-IndexName=PowerControl
+X-AfterStep-Aliases=X-KDE-PowerControl;X-KDE-settings-power;
+
+[Desktop Entry]
+Type=Directory
+Name=Disc Burning
+Comment=Application to burn a disc
+Categories=AudioVideo;Utility;
+X-AfterStep-IndexName=DiscBurning
+
+[Desktop Entry]
+Type=Directory
+Name=Engineering
+Comment=Engineering software, e.g. CAD programs
+X-AfterStep-IndexName=Engineering
+
+[Desktop Entry]
+Type=Directory
+Name=Games
+Comment=Games and amusements
+X-AfterStep-IndexName=Game
+X-AfterStep-Aliases=Games;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Dice
+
+[Desktop Entry]
+Type=Directory
+Name=Look And Feel
+Comment=Look and feel settings
+Categories=Settings;
+X-AfterStep-IndexName=LookNFeel
+X-AfterStep-Aliases=Appearance & Themes;X-KDE-LookNFeel;X-KDE-settings-looknfeel;
+
+[Desktop Entry]
+Type=Directory
+Name=Vector Graphics
+Comment=Vector based graphical application
+Categories=2D Graphics;
+X-AfterStep-IndexName=VectorGraphics
+
+[Desktop Entry]
+Type=Directory
+Name=2D Graphics
+Comment=2D based graphical application
+Categories=Graphics;
+X-AfterStep-IndexName=2DGraphics
+Icon=/usr/share/afterstep/desktop/icons/Folder-Brushes
+
+[Desktop Entry]
+Type=Directory
+Name=Action Games
+Comment=An action game
+Categories=Game;
+X-AfterStep-IndexName=ActionGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-Pistol
+
+[Desktop Entry]
+Type=Directory
+Name=Quit
+Comment=Leave or restart an AfterStep session.
+X-AfterStep-IndexName=ASQuit
+Icon=/usr/share/afterstep/desktop/icons/Folder-Stopsign
+
+[Desktop Entry]
+Type=Directory
+Name=Card Games
+Comment=A card game
+Categories=Game;
+X-AfterStep-IndexName=CardGame
+X-AfterStep-Aliases=Cardgames;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Cardgames
+
+[Desktop Entry]
+Type=Directory
+Name=Quit
+Comment=Leave or restart an AfterStep session.
+X-AfterStep-IndexName=ASQuit
+Icon=/usr/share/afterstep/desktop/icons/Folder-Stopsign
+
+[Desktop Entry]
+Type=Directory
+Name=Tray Icons
+Comment=An application that is primarily an icon for the "system tray" or "notification area" (apps that open a normal window and just happen to have a tray icon as well should not list this category)
+X-AfterStep-IndexName=TrayIcon
+
+[Desktop Entry]
+Type=Directory
+Name=3D Graphics
+Comment=3D based graphical application
+Categories=Graphics;
+X-AfterStep-IndexName=3DGraphics
+
+[Desktop Entry]
+Type=Directory
+Name=Console Only
+Comment=Application that only works inside a terminal (text-based or command line application)
+Categories=Application;
+X-AfterStep-IndexName=ConsoleOnly
+
+[Desktop Entry]
+Type=Directory
+Name=Simulation
+Comment=A simulation game
+Categories=Game;
+X-AfterStep-IndexName=Simulation
+Icon=/usr/share/afterstep/desktop/icons/Folder-People
+
+[Desktop Entry]
+Type=Directory
+Name=Dictionary
+Comment=A dictionary
+Categories=Office;
+X-AfterStep-IndexName=Dictionary
+
+[Desktop Entry]
+Type=Directory
+Name=Flow Chart
+Comment=A flowchart application
+Categories=Office;
+X-AfterStep-IndexName=FlowChart
+
+[Desktop Entry]
+Type=Directory
+Name=IRC Clients
+Comment=An IRC client
+Categories=Network;
+X-AfterStep-IndexName=IRCClient
+
+[Desktop Entry]
+Type=Directory
+Name=Video
+Comment=A video application
+Categories=AudioVideo;
+X-AfterStep-IndexName=Video
+Icon=/usr/share/afterstep/desktop/icons/Folder-MovieProjector
+
+[Desktop Entry]
+Type=Directory
+Name=Dialup
+Comment=A dial-up program
+Categories=Network;
+X-AfterStep-IndexName=Dialup
+
+[Desktop Entry]
+Type=Directory
+Name=KDE Components
+Comment=
+Categories=Settings;
+X-AfterStep-IndexName=KDEComponents
+X-AfterStep-Aliases=X-KDE-settings-components;
+
+[Desktop Entry]
+Type=Directory
+Name=Kids Games
+Comment=A game for kids
+Categories=Game;
+X-AfterStep-IndexName=KidsGame
+X-AfterStep-Aliases=Games for Kids;X-KDE-KidsGame;
+Icon=/usr/share/afterstep/desktop/icons/Folder-TeddyBear
+
+[Desktop Entry]
+Type=Directory
+Name=Photography
+Comment=Camera tools, etc.
+Categories=Graphics;Office;
+X-AfterStep-IndexName=Photography
+
+[Desktop Entry]
+Type=Directory
+Name=Shell
+Comment=A shell (an actual specific shell such as bash or tcsh, not a TerminalEmulator)
+X-AfterStep-IndexName=Shell
+
+[Desktop Entry]
+Type=Directory
+Name=Teaching
+Comment=An education program for teachers
+Categories=Education;
+X-AfterStep-IndexName=Teaching
+
+[Desktop Entry]
+Type=Directory
+Name=Word Processors
+Comment=A word processor
+Categories=Office;
+X-AfterStep-IndexName=WordProcessor
+
+[Desktop Entry]
+Type=Directory
+Name=Adventure Games
+Comment=Adventure style game
+Categories=Game;
+X-AfterStep-IndexName=AdventureGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-Knight
+
+[Desktop Entry]
+Type=Directory
+Name=Electronics
+Comment=Electronics software, e.g. a circuit designer
+X-AfterStep-IndexName=Electronics
+
+[Desktop Entry]
+Type=Directory
+Name=Geology
+Comment=Geology software
+Categories=Science;
+X-AfterStep-IndexName=Geology
+
+[Desktop Entry]
+Type=Directory
+Name=Recorder
+Comment=Application to record audio/video files
+Categories=Audio;Video;AudioVideo;
+X-AfterStep-IndexName=Recorder
+
+[Desktop Entry]
+Type=Directory
+Name=System Settings
+Comment=Change systemwide settings (affects all users)
+X-AfterStep-IndexName=X-KDE-settings-system
+Icon=/usr/share/afterstep/desktop/icons/Folder-Gear2
+
+[Desktop Entry]
+Type=Directory
+Name=Java
+Comment=Application based on Java GUI libraries, such as AWT or Swing
+X-AfterStep-IndexName=Java
+
+[Desktop Entry]
+Type=Directory
+Name=Math
+Comment=Math software
+Categories=Science;
+X-AfterStep-IndexName=Math
+X-AfterStep-Aliases=Mathematics;
+
+[Desktop Entry]
+Type=Directory
+Name=Screen Savers
+Comment=Password-lock a desktop and prevent monitor burn-in.
+X-AfterStep-IndexName=ASScreenSaver
+Icon=/usr/share/afterstep/desktop/icons/Folder-MoonInMonitor
+
+[Desktop Entry]
+Type=Directory
+Name=Medical Software
+Comment=Medical software
+Categories=Science;
+X-AfterStep-IndexName=MedicalSoftware
+
+[Desktop Entry]
+Type=Directory
+Name=Puzzle Games
+Comment=Puzzle game
+Categories=Game;
+X-AfterStep-IndexName=PuzzleGame
+X-AfterStep-Aliases=Puzzle;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Puzzle
+
+[Desktop Entry]
+Type=Directory
+Name=Role Playing
+Comment=A role playing game
+Categories=Game;
+X-AfterStep-IndexName=RolePlaying
+X-AfterStep-Aliases=Rogue-like Games;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Knight
+
+[Desktop Entry]
+Type=Directory
+Name=Word Processors
+Comment=A word processor
+Categories=Office;
+X-AfterStep-IndexName=WordProcessor
+
+[Desktop Entry]
+Type=Directory
+Name=Adventure Games
+Comment=Adventure style game
+Categories=Game;
+X-AfterStep-IndexName=AdventureGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-Knight
+
+[Desktop Entry]
+Type=Directory
+Name=Biology
+Comment=Biology software
+Categories=Science;
+X-AfterStep-IndexName=Biology
+
+[Desktop Entry]
+Type=Directory
+Name=Blocks Games
+Comment=Falling blocks game
+Categories=Game;
+X-AfterStep-IndexName=BlocksGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-TetrisBlocks
+
+[Desktop Entry]
+Type=Directory
+Name=Board Games
+Comment=A board game
+Categories=Game;
+X-AfterStep-IndexName=BoardGame
+X-AfterStep-Aliases=Boardgames;
+Icon=/usr/share/afterstep/desktop/icons/Folder-RaceCar
+
+[Desktop Entry]
+Type=Directory
+Name=Flow Chart
+Comment=A flowchart application
+Categories=Office;
+X-AfterStep-IndexName=FlowChart
+
+[Desktop Entry]
+Type=Directory
+Name=Hardware Settings
+Comment=A tool to manage hardware components, like sound cards, video cards or printers
+Categories=Settings;
+X-AfterStep-IndexName=HardwareSettings
+X-AfterStep-Aliases=Peripherals;Information;X-KDE-Information;X-KDE-Peripherals;X-KDE-information;
+
+[Desktop Entry]
+Type=Directory
+Name=More KDE Applications
+Comment=
+Categories=Application;
+X-AfterStep-IndexName=X-KDE-More
+
+[Desktop Entry]
+Type=Directory
+Name=Emulator
+Comment=Emulator of another platform, such as a DOS emulator
+X-AfterStep-IndexName=Emulator
+Icon=/usr/share/afterstep/desktop/icons/Folder-GameController
+
+[Desktop Entry]
+Type=Directory
+Name=GUI Designer
+Comment=A GUI designer application
+Categories=Development;
+X-AfterStep-IndexName=GUIDesigner
+
+[Desktop Entry]
+Type=Directory
+Name=Sports Games
+Comment=A sports game
+Categories=Game;
+X-AfterStep-IndexName=SportsGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-SoccerBall
+
+[Desktop Entry]
+Type=Directory
+Name=Find...
+Comment=Search the computer or Internet for files or info.
+X-AfterStep-IndexName=Find
+Icon=/usr/share/afterstep/desktop/icons/Folder-MagnifyingGlass
+
+[Desktop Entry]
+Type=Directory
+Name=Revision Control
+Comment=Applications like cvs or subversion
+Categories=Development;
+X-AfterStep-IndexName=RevisionControl
+
+[Desktop Entry]
+Type=Directory
+Name=Board Games
+Comment=A board game
+Categories=Game;
+X-AfterStep-IndexName=BoardGame
+X-AfterStep-Aliases=Boardgames;
+Icon=/usr/share/afterstep/desktop/icons/Folder-RaceCar
+
+[Desktop Entry]
+Type=Directory
+Name=Email
+Comment=Email application
+Categories=Office;Network;
+X-AfterStep-IndexName=Email
+
+[Desktop Entry]
+Type=Directory
+Name=Art
+Comment=Software to teach arts
+Categories=Education;
+X-AfterStep-IndexName=Art
+
+[Desktop Entry]
+Type=Directory
+Name=Audio and Video Editing
+Comment=Application to edit audio/video files
+Categories=AudioVideo;
+X-AfterStep-IndexName=AudioVideoEditing
+
+[Desktop Entry]
+Type=Directory
+Name=Games
+Comment=Games and amusements
+X-AfterStep-IndexName=Game
+X-AfterStep-Aliases=Games;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Dice
+
+[Desktop Entry]
+Type=Directory
+Name=GUI Designer
+Comment=A GUI designer application
+Categories=Development;
+X-AfterStep-IndexName=GUIDesigner
+
+[Desktop Entry]
+Type=Directory
+Name=Player
+Comment=Application to play audio/video files
+Categories=Audio;Video;AudioVideo;
+X-AfterStep-IndexName=Player
+Icon=/usr/share/afterstep/desktop/icons/Folder-Headphones
+
+[Desktop Entry]
+Type=Directory
+Name=Raster Graphics
+Comment=Raster based graphical application
+Categories=2DGraphics;
+X-AfterStep-IndexName=RasterGraphics
+Icon=/usr/share/afterstep/desktop/icons/Folder-Brushes
+
+[Desktop Entry]
+Type=Directory
+Name=RedHat Extras
+Comment=
+Categories=Application;
+X-AfterStep-IndexName=X-Red-Hat-Extra
+
+[Desktop Entry]
+Type=Directory
+Name=Strategy Games
+Comment=A strategy game
+Categories=Game;
+X-AfterStep-IndexName=StrategyGame
+X-AfterStep-Aliases=Tactics & Strategy;
+Icon=/usr/share/afterstep/desktop/icons/Folder-ChessBishop
+
+[Desktop Entry]
+Type=Directory
+Name=System
+Comment=System application, "System Tools" such as say a log viewer or network monitor
+X-AfterStep-IndexName=System
+Icon=/usr/share/afterstep/desktop/icons/Folder-Gear2
+
+[Desktop Entry]
+Type=Directory
+Name=Viewers
+Comment=Tool to view e.g. a graphic or pdf file
+Categories=Graphics;Office;
+X-AfterStep-IndexName=Viewer
+Icon=/usr/share/afterstep/desktop/icons/Folder-View
+
+[Desktop Entry]
+Type=Directory
+Name=Modules
+Comment=Applications for use within AfterStep.
+X-AfterStep-IndexName=ASModules
+Icon=/usr/share/afterstep/desktop/icons/Folder-Puzzle
+
+[Desktop Entry]
+Type=Directory
+Name=Desktop Settings
+Comment=Personal preferences and administration settings
+Categories=Settings;
+X-AfterStep-IndexName=DesktopSettings
+X-AfterStep-Aliases=Desktop;X-KDE-Desktop;X-KDE-settings-desktop;
+
+[Desktop Entry]
+Type=Directory
+Name=News
+Comment=A news reader or a news ticker
+X-AfterStep-IndexName=News
+
+[Desktop Entry]
+Type=Directory
+Name=Remote Access
+Comment=A tool to remotely manage your PC
+Categories=Network;
+X-AfterStep-IndexName=RemoteAccess
+
+[Desktop Entry]
+Type=Directory
+Name=Viewers
+Comment=Tool to view e.g. a graphic or pdf file
+Categories=Graphics;Office;
+X-AfterStep-IndexName=Viewer
+Icon=/usr/share/afterstep/desktop/icons/Folder-View
+
+[Desktop Entry]
+Type=Directory
+Name=Clock
+Comment=A clock application/applet
+Categories=Utility;
+X-AfterStep-IndexName=Clock
+
+[Desktop Entry]
+Type=Directory
+Name=File Transfer
+Comment=Tools like FTP or P2P programs
+Categories=Network;
+X-AfterStep-IndexName=FileTransfer
+Icon=/usr/share/afterstep/desktop/icons/Folder-Globe
+
+[Desktop Entry]
+Type=Directory
+Name=IRC Clients
+Comment=An IRC client
+Categories=Network;
+X-AfterStep-IndexName=IRCClient
+
+[Desktop Entry]
+Type=Directory
+Name=Desktop Setup
+Comment=Configuration tool for the GUI
+X-AfterStep-IndexName=AfterStepDesktop
+Icon=/usr/share/afterstep/desktop/icons/Folder-Desktop2
+
+[Desktop Entry]
+Type=Directory
+Name=Instant Messaging
+Comment=An instant messaging client
+Categories=Network;
+X-AfterStep-IndexName=InstantMessaging
+Icon=/usr/share/afterstep/desktop/icons/Folder-Chat
+
+[Desktop Entry]
+Type=Directory
+Name=Applet
+Comment=An applet that will run inside a panel or another such application, likely desktop specific
+X-AfterStep-IndexName=Applet
+
+[Desktop Entry]
+Type=Directory
+Name=Building
+Comment=A tool to build applications
+Categories=Development;
+X-AfterStep-IndexName=Building
+
+[Desktop Entry]
+Type=Directory
+Name=Office
+Comment=Office Applications
+X-AfterStep-IndexName=Office
+Icon=/usr/share/afterstep/desktop/icons/Folder-PencilCup
+
+[Desktop Entry]
+Type=Directory
+Name=Windows
+Comment=Tools for manipulating AfterStep windows.
+X-AfterStep-IndexName=AfterStepWindows
+Icon=/usr/share/afterstep/desktop/icons/Folder-Windows
+
+[Desktop Entry]
+Type=Directory
+Name=Midi
+Comment=An app related to MIDI
+Categories=Audio;
+X-AfterStep-IndexName=Midi
+
+[Desktop Entry]
+Type=Directory
+Name=Power Control
+Comment=Presentation software
+Categories=Settings;
+X-AfterStep-IndexName=PowerControl
+X-AfterStep-Aliases=X-KDE-PowerControl;X-KDE-settings-power;
+
+[Desktop Entry]
+Type=Directory
+Name=Sequencer
+Comment=A sequencer
+Categories=Audio;
+X-AfterStep-IndexName=Sequencer
+
+[Desktop Entry]
+Type=Directory
+Name=Tuners
+Comment=A tuner
+Categories=Audio;
+X-AfterStep-IndexName=Tuner
+
+[Desktop Entry]
+Type=Directory
+Name=Audio and Video Editing
+Comment=Application to edit audio/video files
+Categories=AudioVideo;
+X-AfterStep-IndexName=AudioVideoEditing
+
+[Desktop Entry]
+Type=Directory
+Name=Card Games
+Comment=A card game
+Categories=Game;
+X-AfterStep-IndexName=CardGame
+X-AfterStep-Aliases=Cardgames;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Cardgames
+
+[Desktop Entry]
+Type=Directory
+Name=Console Only
+Comment=Application that only works inside a terminal (text-based or command line application)
+Categories=Application;
+X-AfterStep-IndexName=ConsoleOnly
+
+[Desktop Entry]
+Type=Directory
+Name=Presentation
+Comment=Presentation software
+Categories=Office;
+X-AfterStep-IndexName=Presentation
+
+[Desktop Entry]
+Type=Directory
+Name=Amusements
+Comment=A simple amusement
+X-AfterStep-IndexName=Amusement
+X-AfterStep-Aliases=Toys;
+
+[Desktop Entry]
+Type=Directory
+Name=Terminal Emulators
+Comment=A terminal emulator application
+X-AfterStep-IndexName=TerminalEmulator
+X-AfterStep-Aliases=Terminal Applications;
+
+[Desktop Entry]
+Type=Directory
+Name=Calendar
+Comment=Calendar application
+Categories=Office;
+X-AfterStep-IndexName=Calendar
+
+[Desktop Entry]
+Type=Directory
+Name=Graphics
+Comment=Graphics applications
+X-AfterStep-IndexName=Graphics
+Icon=/usr/share/afterstep/desktop/icons/Folder-Brushes
+
+[Desktop Entry]
+Type=Directory
+Name=Logic Games
+Comment=Logic games like puzzles, etc
+Categories=Game;
+X-AfterStep-IndexName=LogicGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-Puzzle
+
+[Desktop Entry]
+Type=Directory
+Name=Spreadsheet
+Comment=A spreadsheet
+Categories=Office;
+X-AfterStep-IndexName=Spreadsheet
+
+[Desktop Entry]
+Type=Directory
+Name=Windows
+Comment=Tools for manipulating AfterStep windows.
+X-AfterStep-IndexName=AfterStepWindows
+Icon=/usr/share/afterstep/desktop/icons/Folder-Windows
+
+[Desktop Entry]
+Type=Directory
+Name=Action Games
+Comment=An action game
+Categories=Game;
+X-AfterStep-IndexName=ActionGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-Pistol
+
+[Desktop Entry]
+Type=Directory
+Name=Archiving
+Comment=A tool to archive/backup data
+X-AfterStep-IndexName=Archiving
+
+[Desktop Entry]
+Type=Directory
+Name=Instant Messaging
+Comment=An instant messaging client
+Categories=Network;
+X-AfterStep-IndexName=InstantMessaging
+Icon=/usr/share/afterstep/desktop/icons/Folder-Chat
+
+[Desktop Entry]
+Type=Directory
+Name=Vector Graphics
+Comment=Vector based graphical application
+Categories=2D Graphics;
+X-AfterStep-IndexName=VectorGraphics
+
+[Desktop Entry]
+Type=Directory
+Name=2D Graphics
+Comment=2D based graphical application
+Categories=Graphics;
+X-AfterStep-IndexName=2DGraphics
+Icon=/usr/share/afterstep/desktop/icons/Folder-Brushes
+
+[Desktop Entry]
+Type=Directory
+Name=Arcade Games
+Comment=Arcade style game
+Categories=Game;
+X-AfterStep-IndexName=ArcadeGame
+X-AfterStep-Aliases=Arcade;
+Icon=/usr/share/afterstep/desktop/icons/Folder-GameController
+
+[Desktop Entry]
+Type=Directory
+Name=Audio and Video
+Comment=Multimedia menu
+X-AfterStep-IndexName=AudioVideo
+X-AfterStep-Aliases=Multimedia;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Headphones
+
+[Desktop Entry]
+Type=Directory
+Name=Database
+Comment=Application to manage a database
+Categories=Office;Development;AudioVideo;
+X-AfterStep-IndexName=Database
+
+[Desktop Entry]
+Type=Directory
+Name=Screen Saver
+Comment=Screensaver themes
+Categories=System;
+X-AfterStep-IndexName=Screensaver
+X-AfterStep-Aliases=ScreenSavers;
+Icon=/usr/share/afterstep/desktop/icons/Folder-MoonInMonitor
+
+[Desktop Entry]
+Type=Directory
+Name=3D Graphics
+Comment=3D based graphical application
+Categories=Graphics;
+X-AfterStep-IndexName=3DGraphics
+
+[Desktop Entry]
+Type=Directory
+Name=Logic Games
+Comment=Logic games like puzzles, etc
+Categories=Game;
+X-AfterStep-IndexName=LogicGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-Puzzle
+
+[Desktop Entry]
+Type=Directory
+Name=screensavers
+
+[Desktop Entry]
+Type=Directory
+Name=Screen Savers
+Comment=Password-lock a desktop and prevent monitor burn-in.
+X-AfterStep-IndexName=ASScreenSaver
+Icon=/usr/share/afterstep/desktop/icons/Folder-MoonInMonitor
+
+[Desktop Entry]
+Type=Directory
+Name=Calculator
+Comment=A calculator
+Categories=Utility;
+X-AfterStep-IndexName=Calculator
+
+[Desktop Entry]
+Type=Directory
+Name=PDA
+Comment=Tool to manage your PDA
+Categories=Office;
+X-AfterStep-IndexName=PDA
+
+[Desktop Entry]
+Type=Directory
+Name=Find...
+Comment=Search the computer or Internet for files or info.
+X-AfterStep-IndexName=Find
+Icon=/usr/share/afterstep/desktop/icons/Folder-MagnifyingGlass
+
+[Desktop Entry]
+Type=Directory
+Name=Ham Radio
+Comment=HAM radio software
+Categories=Network;Audio;
+X-AfterStep-IndexName=HamRadio
+
+[Desktop Entry]
+Type=Directory
+Name=Mixer
+Comment=Just a mixer
+Categories=Audio;
+X-AfterStep-IndexName=Mixer
+
+[Desktop Entry]
+Type=Directory
+Name=Project Management
+Comment=Project management application
+Categories=Office;Development;
+X-AfterStep-IndexName=ProjectManagement
+
+[Desktop Entry]
+Type=Directory
+Name=Construction
+Comment=
+Categories=Education;
+X-AfterStep-IndexName=Construction
+
+[Desktop Entry]
+Type=Directory
+Name=Development
+Comment=Tools for software development
+X-AfterStep-IndexName=Development
+Icon=/usr/share/afterstep/desktop/icons/Folder-HammerBrown
+
+[Desktop Entry]
+Type=Directory
+Name=Physics
+Comment=Physics software
+Categories=Science;
+X-AfterStep-IndexName=Physics
+
+[Desktop Entry]
+Type=Directory
+Name=Qt
+Comment=Application based on Qt libraries
+X-AfterStep-IndexName=Qt
+
+[Desktop Entry]
+Type=Directory
+Name=Security
+Comment=A security tool
+Categories=Settings;System;
+X-AfterStep-IndexName=Security
+X-AfterStep-Aliases=Security & Privacy;X-KDE-settings-security;
+
+[Desktop Entry]
+Type=Directory
+Name=Web Development
+Comment=A tool for web developers
+Categories=Network;Development;
+X-AfterStep-IndexName=WebDevelopment
+
+[Desktop Entry]
+Type=Directory
+Name=Web Browsers
+Comment=A web browser
+Categories=Network;
+X-AfterStep-IndexName=WebBrowser
+X-AfterStep-Aliases=X-KDE-WebBrowsing;X-KDE-settings-webbrowsing;
+
+[Desktop Entry]
+Type=Directory
+Name=Accessories
+Comment=Small utility application, "Accessories"
+X-AfterStep-IndexName=Utility
+X-AfterStep-Aliases=Utilities;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Screwdriver
+
+[Desktop Entry]
+Type=Directory
+Name=Chart
+Comment=Chart application
+Categories=Office;
+X-AfterStep-IndexName=Chart
+
+[Desktop Entry]
+Type=Directory
+Name=Contact Management
+Comment=E.g. an address book
+Categories=Office;
+X-AfterStep-IndexName=ContactManagement
+
+[Desktop Entry]
+Type=Directory
+Name=Disc Burning
+Comment=Application to burn a disc
+Categories=AudioVideo;Utility;
+X-AfterStep-IndexName=DiscBurning
+
+[Desktop Entry]
+Type=Directory
+Name=Modules
+Comment=Applications for use within AfterStep.
+X-AfterStep-IndexName=ASModules
+Icon=/usr/share/afterstep/desktop/icons/Folder-Puzzle
+
+[Desktop Entry]
+Type=Directory
+Name=Applications
+Comment=Applications
+X-AfterStep-IndexName=Application
+X-AfterStep-Aliases=Applications;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Gear2
+
+[Desktop Entry]
+Type=Directory
+Name=Blocks Games
+Comment=Falling blocks game
+Categories=Game;
+X-AfterStep-IndexName=BlocksGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-TetrisBlocks
+
+[Desktop Entry]
+Type=Directory
+Name=Web Development
+Comment=A tool for web developers
+Categories=Network;Development;
+X-AfterStep-IndexName=WebDevelopment
+
+[Desktop Entry]
+Type=Directory
+Name=Debuggers
+Comment=A tool to debug applications
+Categories=Development;
+X-AfterStep-IndexName=Debugger
+
+[Desktop Entry]
+Type=Directory
+Name=KDE Components
+Comment=
+Categories=Settings;
+X-AfterStep-IndexName=KDEComponents
+X-AfterStep-Aliases=X-KDE-settings-components;
+
+[Desktop Entry]
+Type=Directory
+Name=Sports Games
+Comment=A sports game
+Categories=Game;
+X-AfterStep-IndexName=SportsGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-SoccerBall
+
+[Desktop Entry]
+Type=Directory
+Name=Editors
+Comment=A text editor
+X-AfterStep-IndexName=TextEditor
+Icon=/usr/share/afterstep/desktop/icons/Folder-Pen1
+
+[Desktop Entry]
+Type=Directory
+Name=Applications
+Comment=Applications
+X-AfterStep-IndexName=Application
+X-AfterStep-Aliases=Applications;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Gear2
+
+[Desktop Entry]
+Type=Directory
+Name=Project Management
+Comment=Project management application
+Categories=Office;Development;
+X-AfterStep-IndexName=ProjectManagement
+
+[Desktop Entry]
+Type=Directory
+Name=Accessibility
+Comment=Accessibility Settings
+Categories=Settings;Utility;
+X-AfterStep-IndexName=Accessibility
+X-AfterStep-Aliases=X-KDE-Accessibility;X-KDE-settings-accessibility;
+
+[Desktop Entry]
+Type=Directory
+Name=Audio and Video
+Comment=Multimedia menu
+X-AfterStep-IndexName=AudioVideo
+X-AfterStep-Aliases=Multimedia;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Headphones
+
+[Desktop Entry]
+Type=Directory
+Name=Education
+Comment=Educational software
+X-AfterStep-IndexName=Education
+X-AfterStep-Aliases=Edutainment;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Library
+
+[Desktop Entry]
+Type=Directory
+Name=Terminal Emulators
+Comment=A terminal emulator application
+X-AfterStep-IndexName=TerminalEmulator
+X-AfterStep-Aliases=Terminal Applications;
+
+[Desktop Entry]
+Type=Directory
+Name=Contact Management
+Comment=E.g. an address book
+Categories=Office;
+X-AfterStep-IndexName=ContactManagement
+
+[Desktop Entry]
+Type=Directory
+Name=Role Playing
+Comment=A role playing game
+Categories=Game;
+X-AfterStep-IndexName=RolePlaying
+X-AfterStep-Aliases=Rogue-like Games;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Knight
+
+[Desktop Entry]
+Type=Directory
+Name=Filesystems
+Comment=A file system tool
+Categories=System;
+X-AfterStep-IndexName=Filesystem
+
+[Desktop Entry]
+Type=Directory
+Name=IDE
+Comment=IDE application
+Categories=Development;
+X-AfterStep-IndexName=IDE
+
+[Desktop Entry]
+Type=Directory
+Name=Medical Software
+Comment=Medical software
+Categories=Science;
+X-AfterStep-IndexName=MedicalSoftware
+
+[Desktop Entry]
+Type=Directory
+Name=Multimedia settings
+Comment=
+Categories=HardwareSettings;
+X-AfterStep-IndexName=MultimediaSettings
+X-AfterStep-Aliases=Sound & Multimedia;X-KDE-Sound;X-KDE-settings-sound;Sound;
+
+[Desktop Entry]
+Type=Directory
+Name=TV
+Comment=A TV application
+Categories=Video;
+X-AfterStep-IndexName=TV
+Icon=/usr/share/afterstep/desktop/icons/Folder-TV
+
+[Desktop Entry]
+Type=Directory
+Name=Filesystems
+Comment=A file system tool
+Categories=System;
+X-AfterStep-IndexName=Filesystem
+
+[Desktop Entry]
+Type=Directory
+Name=Finance
+Comment=Application to manage your finance
+Categories=Office;
+X-AfterStep-IndexName=Finance
+
+[Desktop Entry]
+Type=Directory
+Name=Network
+Comment=Network application such as a web browser
+X-AfterStep-IndexName=Network
+X-AfterStep-Aliases=Internet;X-KDE-Network;X-KDE-settings-network;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Globe
+
+[Desktop Entry]
+Type=Directory
+Name=Tray Icons
+Comment=An application that is primarily an icon for the "system tray" or "notification area" (apps that open a normal window and just happen to have a tray icon as well should not list this category)
+X-AfterStep-IndexName=TrayIcon
+
+[Desktop Entry]
+Type=Directory
+Name=Ham Radio
+Comment=HAM radio software
+Categories=Network;Audio;
+X-AfterStep-IndexName=HamRadio
+
+[Desktop Entry]
+Type=Directory
+Name=KDE
+Comment=Application based on KDE libraries
+X-AfterStep-IndexName=KDE
+
+[Desktop Entry]
+Type=Directory
+Name=P2P
+Comment=A P2P program
+Categories=Network;
+X-AfterStep-IndexName=P2P
+
+[Desktop Entry]
+Type=Directory
+Name=Package Manager
+Comment=A package manager application
+Categories=Settings;
+X-AfterStep-IndexName=PackageManager
+
+[Desktop Entry]
+Type=Directory
+Name=Translation
+Comment=A translation tool
+Categories=Development;
+X-AfterStep-IndexName=Translation
+
+[Desktop Entry]
+Type=Directory
+Name=Chemistry
+Comment=Chemistry software
+Categories=Science;
+X-AfterStep-IndexName=Chemistry
+
+[Desktop Entry]
+Type=Directory
+Name=GTK
+Comment=Application based on GTK+ libraries
+X-AfterStep-IndexName=GTK
+
+[Desktop Entry]
+Type=Directory
+Name=Kids Games
+Comment=A game for kids
+Categories=Game;
+X-AfterStep-IndexName=KidsGame
+X-AfterStep-Aliases=Games for Kids;X-KDE-KidsGame;
+Icon=/usr/share/afterstep/desktop/icons/Folder-TeddyBear
+
+[Desktop Entry]
+Type=Directory
+Name=Puzzle Games
+Comment=Puzzle game
+Categories=Game;
+X-AfterStep-IndexName=PuzzleGame
+X-AfterStep-Aliases=Puzzle;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Puzzle
+
+[Desktop Entry]
+Type=Directory
+Name=Web Browsers
+Comment=A web browser
+Categories=Network;
+X-AfterStep-IndexName=WebBrowser
+X-AfterStep-Aliases=X-KDE-WebBrowsing;X-KDE-settings-webbrowsing;
+
+[Desktop Entry]
+Type=Directory
+Name=Audio
+Comment=An audio application
+Categories=AudioVideo;
+X-AfterStep-IndexName=Audio
+Icon=/usr/share/afterstep/desktop/icons/Folder-MusicalNote
+
+[Desktop Entry]
+Type=Directory
+Name=Languages
+Comment=Software to learn foreign languages
+Categories=Education;
+X-AfterStep-IndexName=Languages
+
+[Desktop Entry]
+Type=Application
+Name=DecayScreen
+Comment=This takes an image and makes it melt. You've no doubt seen this effect before, but no screensaver would really be complete without it. It works best if there's something colorful visible. Warning, if the effect continues after the screen saver is off, seek medical attention. Written by David Wald, Vivek Khera, Jamie Zawinski, and Vince Levey.
+TryExec=decayscreen
+Exec=decayscreen -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Flag
+Comment=This draws a waving colored flag, that undulates its way around the screen. The trick is the flag can contain arbitrary text and images. By default, it displays either the current system name and OS type, or a picture of ``Bob,'' but you can replace the text or the image with a command-line option. Written by Charles Vidal and Jamie Zawinski.
+TryExec=flag
+Exec=flag -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=tkcvs
+GenericName=CVS/Subversion Frontend
+Comment=A graphical frontend to CVS and Subversion.
+Exec=tkcvs
+Categories=RevisionControl;Development;ProjectManagement;
+
+[Desktop Entry]
+Type=Application
+Name=Trackballs
+GenericName=Marbles Game
+Comment=Guide a marble through a maze and avoid obstacles
+TryExec=trackballs
+Exec=trackballs
+Categories=Game;BlocksGame;
+Icon=/usr/share/pixmaps/trackballs.xpm
+
+[Desktop Entry]
+Type=Application
+Name=aMule GUI
+Exec=amulegui
+Categories=Application;Network;
+Icon=/usr/share/pixmaps/amulegui.xpm
+
+[Desktop Entry]
+Type=Application
+Name=AntMaze
+Comment=Antmaze draws a few views of a few ants walking around in a simple maze. Written by Blair Tennessy.
+TryExec=antmaze
+Exec=antmaze -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Email-Reminder
+Comment=Set/modify your personal email reminders
+Exec=/usr/bin/email-reminder-editor
+Categories=Application;Utility;TextEditor;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Fiberlamp
+Comment=Draws a groovy rotating fiber optic lamp. Written by Tim Auckland.
+TryExec=fiberlamp
+Exec=fiberlamp -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Lament
+Comment=Animates a simulation of Lemarchand's Box, repeatedly solving itself. Requires OpenGL, and a machine with fast hardware support for texture maps. Warning: occasionally opens doors. Written by Jamie Zawinski.
+TryExec=lament
+Exec=lament -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Laser
+Comment=Moving radiating lines, that look vaguely like scanning laser beams. Written by Pascal Pensa. (Frankie say: relax.)
+TryExec=laser
+Exec=laser -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Pidgin Internet Messenger
+GenericName=Internet Messenger
+Comment=Send instant messages over multiple protocols
+Exec=pidgin
+Categories=Network;InstantMessaging;
+Icon=/usr/share/icons/hicolor/48x48/apps/pidgin.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Plasma
+Comment=Another one of the nice GL screensavers from the ReallySlick ScreenSavers package written by Terry Walsh - <http://reallyslick.demonews.com>. Ported to Linux by Tugrul Galatali - <http://rss-glx.sourceforge.net/>. Config Files by Curtis Haas.
+TryExec=plasma
+Exec=plasma -r
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=SVN Workbench
+Comment=A Workbench for Subversion
+Exec=/usr/bin/svn-workbench
+Categories=Development;
+Icon=/usr/share/svn-workbench/wb.tiff
+
+[Desktop Entry]
+Type=Application
+Name=Thornbird
+Comment=Displays a view of the ``Bird in a Thornbush'' fractal. Written by Tim Auckland.
+TryExec=thornbird
+Exec=thornbird -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Update Manager
+GenericName=System Update Tool
+Comment=Show and install available updates
+Exec=/usr/bin/update-manager
+Categories=Application;System;Settings;
+
+[Desktop Entry]
+Type=Application
+Name=amSynth
+GenericName=Soft Synth
+Comment=Two oscillator software synthesizer
+Exec=amsynth
+Categories=Application;AudioVideo;Audio;Synthesis;
+Icon=/usr/share/pixmaps/amsynth.xpm
+
+[Desktop Entry]
+Type=Application
+Name=Circuit
+Comment=Animates a number of 3D electronic components. Written by Ben Buxton.
+TryExec=circuit
+Exec=circuit -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Contacts
+Comment=Address book
+Exec=contacts
+Categories=GTK;Office;ContactManagement;
+Icon=/usr/share/icons/hicolor/48x48/apps/contacts.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Demon
+Comment=A cellular automaton that starts with a random field, and organizes it into stripes and spirals. Written by David Bagley.
+TryExec=demon
+Exec=demon -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Distort
+Comment=This hack grabs an image of the screen, and then lets a transparent lens wander around the screen, magnifying whatever is underneath. Written by Jonas Munsin.
+TryExec=distort
+Exec=distort -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Sun Java 6 Runtime (32bit)
+Comment=Sun Java 6 Runtime (32bit)
+Exec=/usr/lib/jvm/ia32-java-6-sun-1.6.0.03/bin/java -jar
+Categories=OTHER;
+Icon=/usr/share/icons/ia32-sun-java6.xpm
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=wxMaxima
+Comment=wxWidgets interface for CAS maxima
+Exec=wxmaxima
+Categories=Math;Science;
+Icon=/usr/share/pixmaps/maximaicon.xpm
+
+[Desktop Entry]
+Type=Application
+Name=Beryl Manager
+Comment=Setup Beryl
+Exec=beryl-manager
+Categories=System;Application;X-Fedora;
+
+[Desktop Entry]
+Type=Application
+Name=Deluxe
+Comment=This draws a pulsing sequence of stars, circles, and lines. It would look better if it was faster, but as far as I can tell, there is no way to make this be both: fast, and flicker-free. Yet another reason X sucks. Written by Jamie Zawinski.
+TryExec=deluxe
+Exec=deluxe -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Foo
+Categories=OTHER;
+Hidden=1
+
+[Desktop Entry]
+Type=Application
+Name=Hypercube
+Comment=This displays 2D projections of the sequence of 3D objects which are the projections of the 4D analog to the cube: as a square is composed of four lines, each touching two others; and a cube is composed of six squares, each touching four others; a hypercube is composed of eight cubes, each touching six others. To make it easier to visualize the rotation, it uses a different color for the edges of each face. Don't think about it too long, or your brain will melt. Written by Joe Keane, Fritz Mueller, and Jamie Zawinski. See also the "polytopes" hack for a more general version of this using OpenGL.
+TryExec=hypercube
+Exec=hypercube -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Hyperspace
+Comment=Another one of the nice GL screensavers from the ReallySlick ScreenSavers package written by Terry Walsh - <http://reallyslick.demonews.com>. Ported to Linux by Tugrul Galatali - <http://rss-glx.sourceforge.net/>. Config Files by Curtis Haas.
+TryExec=hyperspace
+Exec=hyperspace -r
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=MatrixView
+Comment=Assimilation of Matrix GL by Alex Zolotov <nightradio@knoppix.ru> (http://knoppix.ru/matrixgl.shtml) Ported to Linux by Tugrul Galatali - <http://rss-glx.sourceforge.net/>.
+TryExec=matrixview
+Exec=matrixview -r
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Mismunch
+Comment=Munching errors! This is a creatively broken misimplementation of the classic munching squares graphics hack. Written by Steven Hazel.
+TryExec=mismunch
+Exec=mismunch -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Sierpinski3D
+Comment=This draws the three-dimensional variant of the recursive Sierpinski triangle fractal, using GL. Written by Tim Robinson and Jamie Zawinski.
+TryExec=sierpinski3d
+Exec=sierpinski3d -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Trigger
+GenericName=Trigger
+Comment=3D rally racing car game
+TryExec=/usr/games/trigger
+Exec=/usr/games/trigger
+Categories=3DGraphics;Game;ActionGame;
+
+[Desktop Entry]
+Type=Application
+Name=Tux Paint
+GenericName=Drawing program
+Comment=A drawing program for children.
+Exec=tuxpaint
+Categories=Education;Art;
+Icon=/usr/share/pixmaps/tuxpaint.png
+
+[Desktop Entry]
+Type=Application
+Name=XAnalogTV
+Comment=XAnalogTV shows a detailed simulation of an old TV set showing various test patterns, with various picture artifacts like snow, bloom, distortion, ghosting, and hash noise. It also simulates the TV warming up. It will cycle through 12 channels, some with images you give it, and some with color bars or nothing but static. By Trevor Blackwell.
+TryExec=xanalogtv
+Exec=xanalogtv -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Bluetooth Analyzer
+Comment=Bluetooth protocol analyzer
+Exec=bluetooth-analyzer
+Categories=Application;Utility;
+OnlyShowIn=GNOME
+
+[Desktop Entry]
+Type=Application
+Name=Flocks
+Comment=Another one of the nice GL screensavers from the ReallySlick ScreenSavers package written by Terry Walsh - <http://reallyslick.demonews.com>. Ported to Linux by Tugrul Galatali - <http://rss-glx.sourceforge.net/>. Config Files by Curtis Haas.
+TryExec=flocks
+Exec=flocks -r
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=IFS
+Comment=This one draws spinning, colliding iterated-function-system images. Note that the "quality" parameter is exponential. Number of points drawn is functions^detail. The number of colours is only used in Blend mode to provide a palette to create the base colours. These are then blended together in a non-colourmap friendly fashion. Written by Chris Le Sueur.
+TryExec=ifs
+Exec=ifs -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Lattice
+Comment=Another one of the nice GL screensavers from the ReallySlick ScreenSavers package written by Terry Walsh - <http://reallyslick.demonews.com>. Ported to Linux by Tugrul Galatali - <http://rss-glx.sourceforge.net/>. Config Files by Curtis Haas. Note: Presets override all other settings. If you wish to customize the other options, make sure the preset option is set to "Preset - Custom".
+TryExec=lattice
+Exec=lattice -r
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Pacman
+Comment=Simulates a game of Pac-Man on a randomly-created level. Written by Edwin de Jong.
+TryExec=pacman
+Exec=pacman -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Rubik
+Comment=Draws a Rubik's Cube that rotates in three dimensions and repeatedly shuffles and solves itself. Another fine GL hack by Marcelo Vianna.
+TryExec=rubik
+Exec=rubik -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Strange
+Comment=This draws strange attractors: it's a colorful, unpredictably-animating field of dots that swoops and twists around. The motion is very nice. Written by Massimino Pascal.
+TryExec=strange
+Exec=strange -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=TkDiff File Comparison
+GenericName=diff frontend
+Comment=TkDiff is a graphical front-end for the standard Unix 'diff' utility.
+Exec=tkdiff
+Categories=Development;ProjectManagement;
+
+[Desktop Entry]
+Type=Application
+Name=xtraceroute
+Comment=A graphical traceroute
+Exec=xtraceroute
+Categories=Utility;Network;
+Icon=/usr/share/pixmaps/xtraceroute.png
+
+[Desktop Entry]
+Type=Application
+Name=C Curve
+Comment=Generates self-similar linear fractals, including the classic ``C Curve.'' Written by Rick Campbell.
+TryExec=ccurve
+Exec=ccurve -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Deco
+Comment=This one subdivides and colors rectangles randomly. It looks kind of like Brady-Bunch-era rec-room wall paneling. (Raven says: ``this screensaver is ugly enough to peel paint.'') Written by Jamie Zawinski, inspired by Java code by Michael Bayne.
+TryExec=deco
+Exec=deco -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Polyominoes
+Comment=Repeatedly attempts to completely fill a rectangle with irregularly-shaped puzzle pieces. Written by Stephen Montgomery-Smith.
+TryExec=polyominoes
+Exec=polyominoes -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Secpolicy
+Comment=KDE PAM security policy configuration tool
+Exec=secpolicy
+Categories=Settings;System;
+
+[Desktop Entry]
+Type=Application
+Name=Substrate
+Comment=Lines like crystals grow on a computational substrate. A simple perpendicular growth rule creates intricate city-like structures. By J. Tarbell and Mike Kershaw.
+TryExec=substrate
+Exec=substrate -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Atlantis
+Comment=This is xfishtank writ large: a GL animation of a number of sharks, dolphins, and whales. The swimming motions are great. Originally written by Mark Kilgard.
+TryExec=atlantis
+Exec=atlantis -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=BlinkBox
+Comment=Shows a ball contained inside of a bounding box. Colored blocks blink in when the ball hits the edges. Written by Jeremy English.
+TryExec=blinkbox
+Exec=blinkbox -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Default Printer
+Comment=Select default printer
+Exec=/usr/bin/my-default-printer
+Categories=GTK;HardwareSettings;Settings;X-Red-Hat-Base;
+
+[Desktop Entry]
+Type=Application
+Name=FreeSpeak
+GenericName=A free frontend to online translator engines
+Comment=A free frontend to online translator engines
+Exec=freespeak.py
+Categories=Application;Utility;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Imview Image Viewer
+GenericName=Image Viewer
+Comment=View and analyze scientific images
+Exec=imview
+Categories=Application;Education;Science;Graphics;
+
+[Desktop Entry]
+Type=Application
+Name=Inkscape Vector Illustrator
+Comment=Create and edit Scalable Vector Graphics images
+TryExec=inkscape
+Exec=inkscape %F
+Categories=Application;Graphics;VectorGraphics;GTK;
+Icon=/usr/share/pixmaps/inkscape.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Mozilla Thunderbird Mail/News
+GenericName=Mail Client
+Comment=Read/Write Mail/News with Mozilla Thunderbird
+Exec=thunderbird %u
+Categories=Application;Network;
+StartupWMClass=Thunderbird-bin
+Icon=/usr/share/pixmaps/thunderbird.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=SlideScreen
+Comment=This takes an image, divides it into a grid, and then randomly shuffles the squares around as if it was one of those annoying ``16-puzzle'' games, where there is a grid of squares, one of which is missing. I hate trying to solve those puzzles, but watching one permute itself is more amusing. Written by Jamie Zawinski.
+TryExec=slidescreen
+Exec=slidescreen -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=SpeedMine
+Comment=Simulates speeding down a rocky mineshaft, or a funky dancing worm. Written by Conrad Parker.
+TryExec=speedmine
+Exec=speedmine -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=T3D
+Comment=This draws a working analog clock composed of floating, throbbing bubbles. Written by Bernd Paysan.
+TryExec=t3d
+Exec=t3d -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=WhirlwindWarp
+Comment=Floating stars are acted upon by a mixture of simple 2D forcefields. The strength of each forcefield changes continuously, and it is also switched on and off at random. By Paul 'Joey' Clark.
+TryExec=whirlwindwarp
+Exec=whirlwindwarp -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=XSpiroGraph
+Comment=Simulates that pen-in-nested-plastic-gears toy from your childhood. By Rohit Singh.
+TryExec=xspirograph
+Exec=xspirograph -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Bulk Rename
+GenericName=Bulk Rename
+Comment=Rename Multiple Files
+Exec=/usr/lib/thunar/ThunarBulkRename %F
+Categories=Application;Utility;Core;GTK;Filesystem;
+Icon=/usr/share/icons/hicolor/48x48/apps/Thunar.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Manage Print Jobs
+Comment=Cancel, pause, resume or reprint jobs
+Exec=/usr/bin/system-config-printer-applet --no-tray-icon
+Categories=GTK;Monitor;Utility;X-Red-Hat-Base;
+Icon=/usr/share/system-config-printer/applet.png
+
+[Desktop Entry]
+Type=Application
+Name=MPlayer Movie Player
+GenericName=Multimedia player
+Comment=Multimedia player
+TryExec=gmplayer
+Exec=gmplayer
+Categories=GTK;Application;AudioVideo;Audio;Video;Player;TV;
+Icon=/usr/share/pixmaps/mplayer.xpm
+
+[Desktop Entry]
+Type=Application
+Name=MySQL Navigator
+Comment=GUI client for MySQL
+Exec=mysql-navigator
+Categories=Database;Utility;
+Icon=/usr/share/pixmaps/mysql-navigator.xpm
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 Autostarted Applications
+GenericName=Autostarted Applications
+Comment=Edit the list of autostarted applications
+Exec=xfce4-autostart-editor
+Categories=X-XFCE;Settings;DesktopSettings;
+OnlyShowIn=XFCE
+Icon=/usr/share/icons/hicolor/48x48/apps/xfce4-autostart-editor.png
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 Window Manager Tweaks
+GenericName=Window Manager Tweaks
+Comment=Advanced Configuration
+Exec=xfce-setting-show wmtweaks
+Categories=X-XFCE;Settings;DesktopSettings;
+OnlyShowIn=XFCE
+Icon=/usr/share/icons/hicolor/48x48/apps/wmtweaks.png
+
+[Desktop Entry]
+Type=Application
+Name=Xflame
+Comment=Draws a simulation of pulsing fire. It can also take an arbitrary image and set it on fire too. Written by Carsten Haitzler, hacked on by many others.
+TryExec=xflame
+Exec=xflame -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Busy Spheres
+Comment=Spheres made of dancing particles. Ported to Linux by Tugrul Galatali - <http://rss-glx.sourceforge.net/>.
+TryExec=busyspheres
+Exec=busyspheres -r
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Fieldlines
+Comment=Another one of the nice GL screensavers from the ReallySlick ScreenSavers package written by Terry Walsh - <http://reallyslick.demonews.com>. Ported to Linux by Tugrul Galatali - <http://rss-glx.sourceforge.net/>. Config Files by Curtis Haas.
+TryExec=fieldlines
+Exec=fieldlines -r
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Hyperball
+Comment=Hyperball is to hypercube as dodecahedron is to cube: this displays a 2D projection of the sequence of 3D objects which are the projections of the 4D analog to the dodecahedron. Technically, it is a "120 cell polytope." Written by Joe Keane. See also the "polytopes" hack for a more general version of this using OpenGL.
+TryExec=hyperball
+Exec=hyperball -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Penetrate
+Comment=This hack simulates the classic arcade game Missile Command. Written by Adam Miller.
+TryExec=penetrate
+Exec=penetrate -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=popsquares
+Comment=This draws a pop-art-ish looking grid of pulsing colors. By Levi Burton.
+TryExec=popsquares
+Exec=popsquares -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Regular 4D Polytopes
+Comment=This program shows one of the six regular 4D polytopes rotating in 4D. Written by Carsten Steger, inspired by H.S.M Coxeter's book "Regular Polytopes", 3rd Edition, Dover Publications, Inc., 1973, and Thomas Banchoff's book "Beyond the Third Dimension: Geometry, Computer Graphics, and Higher Dimensions", Scientific American Library, 1990.
+TryExec=polytopes
+Exec=polytopes -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Solarwinds
+Comment=Another one of the nice GL screensavers from the ReallySlick ScreenSavers package written by Terry Walsh - <http://reallyslick.demonews.com>. Ported to Linux by Tugrul Galatali - <http://rss-glx.sourceforge.net/>. Config Files by Curtis Haas. Note: Presets override all other settings. If you wish to customize the other options, make sure the preset option is set to "Preset - Custom".
+TryExec=solarwinds
+Exec=solarwinds -r
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Swirl
+Comment=More flowing, swirly patterns. This version is by M. Dobie and R. Taylor, but you might have seen a Mac program similar to this called FlowFazer. There is also a cool Java applet of a similar concept.
+TryExec=swirl
+Exec=swirl -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Vines
+Comment=This one generates a continuous sequence of small, curvy geometric patterns. It scatters them around your screen until it fills up, then it clears the screen and starts over. Written by Tracy Camp and David Hansen.
+TryExec=vines
+Exec=vines -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 Splash Screen Settings
+GenericName=Splash Screen Settings
+Comment=Splash Screen Settings
+Exec=xfce-setting-show splash
+Categories=X-XFCE;Settings;DesktopSettings;
+OnlyShowIn=XFCE
+Icon=/usr/share/icons/hicolor/48x48/apps/xfce4-splash.png
+
+[Desktop Entry]
+Type=Application
+Name=BouncingCow
+Comment=A Cow. A Trampoline. Together, they fight crime. By Jamie Zawinski.
+TryExec=bouncingcow
+Exec=bouncingcow -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=MySQL Administrator
+Comment=MySQL Administration Tool
+Exec=/usr/bin/mysql-admin
+Categories=GTK;Database;Development;Application;
+Icon=/usr/share/mysql-gui/MySQLIcon_Admin_48x48.png
+
+[Desktop Entry]
+Type=Application
+Name=Sundancer2
+Comment=Rotating stack of quads. Specify colors using hex color codes (ie, ff0000, 00ff00, 0000ff for red, green and blue.) Ported to Linux by Tugrul Galatali - <http://rss-glx.sourceforge.net/>.
+TryExec=sundancer2
+Exec=sundancer2 -r
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Add/Remove...
+GenericName=Package Manager
+Comment=Install and remove applications
+Exec=/usr/bin/gnome-app-install
+Categories=PackageManager;System;
+NotShowIn=GNOME
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=gcvs
+GenericName=
+Comment=
+Exec=/usr/bin/gcvs
+Categories=Programming;
+Icon=/usr/share/pixmaps/gcvs-32x32.xpm
+
+[Desktop Entry]
+Type=Application
+Name=gxine
+GenericName=Video Player
+Comment=Watch videos or TV and listen to audio in a variety of formats
+Exec=gxine
+Categories=AudioVideo;GTK;Player;TV;
+Icon=/usr/share/pixmaps/gxine.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Petri
+Comment=This simulates colonies of mold growing in a petri dish. Growing colored circles overlap and leave spiral interference in their wake. Written by Dan Bornstein.
+TryExec=petri
+Exec=petri -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Pipes
+Comment=If you've ever been in the same room with a Windows NT machine, you've probably seen this GL hack. This version is by Marcelo Vianna.
+TryExec=pipes
+Exec=pipes -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=RD-Bomb
+Comment=Another variation of the `Bomb' program by Scott Draves. This draws a grid of growing square-like shapes that, once they overtake each other, react in unpredictable ways. ``RD'' stands for reaction-diffusion.
+TryExec=rd-bomb
+Exec=rd-bomb -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Terminal
+GenericName=Terminal Emulator
+Comment=Terminal Emulator
+Exec=xfce4-terminal
+Categories=TerminalEmulator;Utility;
+Icon=/usr/share/icons/hicolor/48x48/apps/Terminal.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Xmatrix
+Comment=Draws dropping characters similar to what is seen on the computer monitors in "The Matrix". See also "glmatrix" for a 3D rendering of the similar effect that appeared in the title sequence of the movie. Written by Jamie Zawinski.
+TryExec=xmatrix
+Exec=xmatrix -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Barcode
+Comment=This draws a random sequence of colorful barcodes scrolling across your screen. CONSUME! By Dan Bornstein.
+TryExec=barcode
+Exec=barcode -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Emacs 22 (client)
+GenericName=Emacs
+Comment=GNU Emacs 22 Client
+TryExec=emacs22
+Exec=/usr/bin/emacsclient.emacs22 -a emacs22
+Categories=Application;Utility;TextEditor;
+Icon=/usr/share/icons/emacs22/emacs.xpm
+
+[Desktop Entry]
+Type=Application
+Name=Hufo's Tunnel
+Comment=From Jeremie Allard (http://hufo.planet-d.net/codefr_us.php): "A rewrited version of my first OpenGL Challenge entry. Something like a rebirth :) After too much month of not participing to this challenge I've done this little entry just to thanks Otry and BlackOrb for this great new website." Ported to Linux by Tugrul Galatali - <http://rss-glx.sourceforge.net/>.
+TryExec=hufo_tunnel
+Exec=hufo_tunnel -r
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Intermomentary
+Comment=The Intersection Momentary is a fun visualization defining the relationships between objects with Casey Reas, William Ngan, and Robert Hodgin. Commissioned for display at the Whitney Museum of American Art. A surface filled with 100 medium to small sized circles. Each circle has a different size and direction, but moves at the same slow rate. Display: A. The instantaneous intersections of the circles. B. The aggregate intersections of the circles. Ported to XScreensaver from the art project "InterMomentary" at http://www.complexification.net
+TryExec=intermomentary
+Exec=intermomentary -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Noof
+Comment=Draws some rotatey patterns, using OpenGL. Written by Mark Kilgard.
+TryExec=noof
+Exec=noof -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=PenguinTV Media Aggregator
+Comment=Aggregates podcasts, video blogs, and rss feeds
+TryExec=PenguinTV
+Exec=PenguinTV %U
+Categories=Application;Network;
+Icon=/usr/share/pixmaps/penguintvicon.png
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 Settings Manager
+GenericName=Settings Manager
+Comment=Graphical Settings Manager for Xfce 4
+Exec=xfce-setting-show
+Categories=X-XFCE;Settings;DesktopSettings;
+OnlyShowIn=XFCE
+Icon=/usr/share/icons/hicolor/48x48/apps/xfce4-settings.png
+
+[Desktop Entry]
+Type=Application
+Name=XMMS
+GenericName=Multimedia Player
+Exec=xmms %U
+Categories=Application;AudioVideo;
+
+[Desktop Entry]
+Type=Application
+Name=XMMS (remote playlists)
+GenericName=Multimedia Player
+Exec=xmms %f
+Categories=OTHER;
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Flux
+Comment=Another one of the nice GL screensavers from the ReallySlick ScreenSavers package written by Terry Walsh - <http://reallyslick.demonews.com>. Ported to Linux by Tugrul Galatali - <http://rss-glx.sourceforge.net/>. Config Files by Curtis Haas. Note: Presets override all other settings. If you wish to customize the other options, make sure the preset option is set to "Preset - Custom".
+TryExec=flux
+Exec=flux -r
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=MDB Viewer
+Comment=View and export Microsoft Access databases
+Exec=gmdb2
+Categories=Application;Office;
+Icon=/usr/share/pixmaps/gmdb2.xpm
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Queens
+Comment=Solves the N-Queens problem (where, in this program, N is between 5 and 10 queens.) The problem is: how may one place N queens on an NxN chessboard such that no queen can attack a sister? Written by Blair Tennessy.
+TryExec=queens
+Exec=queens -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 Sessions and Startup Settings
+GenericName=Sessions and Startup Settings
+Comment=Session and Startup Settings
+Exec=xfce-setting-show session
+Categories=X-XFCE;Settings;DesktopSettings;
+OnlyShowIn=XFCE
+Icon=/usr/share/icons/hicolor/48x48/apps/xfce4-session.png
+
+[Desktop Entry]
+Type=Application
+Name=XSane Image Scanner
+Comment=Scan, copy and fax images
+Exec=xsane
+Categories=GTK;Application;Graphics;RasterGraphics;Scanning;OCR;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=DangerBall
+Comment=Draws a ball that periodically extrudes many random spikes. Ouch! Written by Jamie Zawinski.
+TryExec=dangerball
+Exec=dangerball -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Interference
+Comment=Another color-field hack, this one works by computing decaying sinusoidal waves, and allowing them to interfere with each other as their origins move. Written by Hannu Mallat.
+TryExec=interference
+Exec=interference -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=LMorph
+Comment=This generates random spline-ish line drawings and morphs between them. Written by Sverre H. Huseby and Glenn T. Lines.
+TryExec=lmorph
+Exec=lmorph -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Planetary Gears
+Comment=This draws sets of turning, interlocking gears, rotating in three dimensions. Another GL hack, by Danny Sung, Brian Paul, Ed Mackey, and Jamie Zawinski.
+TryExec=gears
+Exec=gears -planetary -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Space-orbit
+Comment=A 3D space combat simulator
+Exec=orbit
+Categories=Application;Game;ArcadeGame;
+Icon=/usr/share/pixmaps/
+
+[Desktop Entry]
+Type=Application
+Name=Sun Java 6 Runtime
+Comment=Sun Java 6 Runtime
+Exec=/usr/lib/jvm/java-6-sun-1.6.0.03/bin/java -jar
+Categories=OTHER;
+Icon=/usr/share/icons/sun-java6.xpm
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=aMule
+Comment=aMule
+Exec=amule
+Categories=Application;Network;
+Icon=/usr/share/pixmaps/amule.xpm
+
+[Desktop Entry]
+Type=Application
+Name=Attraction
+Comment=Like qix, this uses a simple simple motion model to generate many different display modes. The control points attract each other up to a certain distance, and then begin to repel each other. The attraction/repulsion is proportional to the distance between any two particles, similar to the strong and weak nuclear forces. One of the most interesting ways to watch this hack is simply as bouncing balls, because their motions and interactions with each other are so odd. Sometimes two balls will get into a tight orbit around each other, to be interrupted later by a third, or by the edge of the screen. It looks quite chaotic. Written by Jamie Zawinski, based on Lisp code by John Pezaris.
+TryExec=attraction
+Exec=attraction -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Extrusion
+Comment=Draws various rotating extruded shapes that twist around, lengthen, and turn inside out. Created by David Konerding from the samples that come with the GL Extrusion library by Linas Vepstas.
+TryExec=extrusion
+Exec=extrusion -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Flurry
+Comment=This port of the OSX screensaver of the same name draws a colourful star(fish)like flurry of particles. xscreensaver port by Tobias Sargeant <tobias.sargeant@bigpond.com> Original Mac version by Calum Robinson <calumr@mac.com> http://homepage.mac.com/calumr
+TryExec=flurry
+Exec=flurry -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=OpenOffice.org Presentation
+GenericName=Presentation
+Comment=Create and edit presentations for slideshows, meeting and Web pages.
+Exec=ooffice -impress %U
+Categories=Application;Office;Presentation;
+Icon=/usr/share/icons/hicolor/48x48/apps/ooo-impress.png
+
+[Desktop Entry]
+Type=Application
+Name=Penrose
+Comment=Draws quasiperiodic tilings; think of the implications on modern formica technology. Written by Timo Korvola. In April 1997, Sir Roger Penrose, a British math professor who has worked with Stephen Hawking on such topics as relativity, black holes, and whether time has a beginning, filed a copyright-infringement lawsuit against the Kimberly-Clark Corporation, which Penrose said copied a pattern he created (a pattern demonstrating that ``a nonrepeating pattern could exist in nature'') for its Kleenex quilted toilet paper. Penrose said he doesn't like litigation but, ``When it comes to the population of Great Britain being invited by a multinational to wipe their bottoms on what appears to be the work of a Knight of the Realm, then a last stand must be taken.'' As reported by News of the Weird #491, 4-jul-1997.
+TryExec=penrose
+Exec=penrose -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=RapidSVN
+GenericName=Subversion Client
+Comment=A GUI Client for Subversion
+Exec=rapidsvn
+Categories=Development;
+Icon=/usr/share/pixmaps/rapidsvn.png
+
+[Desktop Entry]
+Type=Application
+Name=Sballs
+Comment=Draws an animation of textured balls spinning like crazy in GL. Requires OpenGL, and a machine with fast hardware support for texture maps. Written by Eric Lassauge <lassauge@users.sourceforge.net>.
+TryExec=sballs
+Exec=sballs -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=wxCas
+Comment=aMule online statistics
+Exec=wxcas
+Categories=Application;Network;
+Icon=/usr/share/pixmaps/wxcas.xpm
+
+[Desktop Entry]
+Type=Application
+Name=XBoard
+GenericName=X Window Chess Board
+Comment=Use an X Windows Chess Board
+Exec=xboard
+Categories=Application;Game;
+Icon=/usr/share/pixmaps/
+
+[Desktop Entry]
+Type=Application
+Name=BoxFit
+Comment=Packs the screen with growing squares or circles, colored according to a horizontal or vertical gradient, or according to the colors of the desktop or a loaded image file. The objects grow until they touch, then stop. When the screen is full, they shrink away and the process restarts. Written by Jamie Zawinski.
+TryExec=boxfit
+Exec=boxfit -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Helix
+Comment=This repeatedly generates spirally string-art-ish patterns. Written by Jamie Zawinski.
+TryExec=helix
+Exec=helix -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Pyro
+Comment=Pyro draws exploding fireworks. Blah blah blah. Written by Jamie Zawinski.
+TryExec=pyro
+Exec=pyro -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Slip
+Comment=This program throws some random bits on the screen, then sucks them through a jet engine and spews them out the other side. To avoid turning the image completely to mush, every now and then it will and then it interjects some splashes of color into the scene, or go into a spin cycle, or stretch the image like taffy, or (this is my addition) grab an image of your current desktop to chew on. Originally written by Scott Draves; whacked on by Jamie Zawinski.
+TryExec=slip
+Exec=slip -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 Appfinder
+GenericName=Appfinder
+Comment=Application Finder for Xfce 4
+Exec=xfce4-appfinder
+Categories=X-XFCE;Utility;GTK;
+Icon=/usr/share/icons/hicolor/48x48/apps/xfce4-appfinder.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 Panel Manager
+GenericName=Panel Manager
+Comment=Customize Panel
+Exec=xfce4-panel -c
+Categories=X-XFCE;Settings;DesktopSettings;
+OnlyShowIn=XFCE
+Icon=/usr/share/icons/hicolor/48x48/apps/xfce4-panel.png
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 User Interface Settings
+GenericName=User Interface Settings
+Comment=User Interface Settings (themes and fonts)
+Exec=xfce-setting-show ui
+Categories=X-XFCE;Settings;DesktopSettings;
+OnlyShowIn=XFCE
+Icon=/usr/share/icons/hicolor/48x48/apps/xfce4-ui.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Ant
+Comment=Ant
+TryExec=ant
+Exec=ant -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Crackberg
+Comment=Flies through height maps, optionally animating the creation and destruction of generated tiles; tiles `grow' into place.
+TryExec=crackberg
+Exec=crackberg -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Interaggregate
+Comment=Interaggregate
+TryExec=interaggregate
+Exec=interaggregate -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Lissie
+Comment=Another Lissajous figure. This one draws the progress of circular shapes along a path. Written by Alexander Jolk.
+TryExec=lissie
+Exec=lissie -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=AllTray
+GenericName=AllTray
+Comment=Dock everything
+Exec=alltray
+Categories=Application;Utility;
+Icon=/usr/share/pixmaps/alltray.png
+
+[Desktop Entry]
+Type=Application
+Name=Bubble3D
+Comment=Draws a stream of rising, undulating 3D bubbles, rising toward the top of the screen, with nice specular reflections. Written by Richard Jones.
+TryExec=bubble3d
+Exec=bubble3d -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Critical
+Comment=Draws a system of self-organizing lines. It starts out as random squiggles, but after a few iterations, order begins to appear. Written by Martin Pool.
+TryExec=critical
+Exec=critical -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Cssed Editor
+Comment=Css and Web Development Editor
+Exec=cssed
+Categories=Development;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=FontGlide
+Comment=Puts text on the screen using large characters that glide in from the edges, assemble, then disperse. Alternately, it can simply scroll whole sentences from right to left. The text can be the output of a program or the contents of a file or URL, as configured on the "Advanced" tab of the main Screensaver Preferences window. Written Jamie Zawinski.
+TryExec=fontglide
+Exec=fontglide -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Menger
+Comment=This draws the three-dimensional variant of the recursive Menger Gasket, a cube-based fractal object analagous to the Sierpinski Tetrahedron. Written by Jamie Zawinski.
+TryExec=menger
+Exec=menger -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=OpenOffice.org Word Processor
+GenericName=Word Processor
+Comment=Create and edit text and graphics in letters, reports, documents and Web pages.
+Exec=ooffice -writer %U
+Categories=Application;Office;WordProcessor;
+Icon=/usr/share/icons/hicolor/48x48/apps/ooo-writer.png
+
+[Desktop Entry]
+Type=Application
+Name=Pedal
+Comment=This is sort of a combination spirograph/string-art. It generates a large, complex polygon, and lets the X server do the bulk of the work by giving it an even/odd winding rule. Written by Dale Moore, based on some ancient PDP-11 code.
+TryExec=pedal
+Exec=pedal -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Pong
+Comment=The pong program simulates an ancient Pong home video game, as well as various artifacts from displaying it on a color TV set. Written by Jeremy English and Trevor Blackwell.
+TryExec=pong
+Exec=pong -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Printing
+Comment=Configure printers
+Exec=/usr/bin/system-config-printer
+Categories=GTK;Printing;HardwareSettings;Settings;System;X-Red-Hat-Base;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Rotor
+Comment=Another ancient xlock demo, this one by Tom Lawrence. It draws a line segment moving along a complex spiraling curve.
+TryExec=rotor
+Exec=rotor -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 Desktop Settings
+GenericName=Desktop Settings
+Comment=Settings for the Xfce 4 Desktop Manager
+Exec=xfce-setting-show backdrop
+Categories=X-XFCE;Settings;DesktopSettings;
+OnlyShowIn=XFCE
+Icon=/usr/share/icons/hicolor/48x48/apps/xfce4-backdrop.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Cynosure
+Comment=A hack similar to `greynetic', but less frenetic. The first implementation was by Stephen Linhart; then Ozymandias G. Desiderata wrote a Java applet clone. That clone was discovered by Jamie Zawinski, and ported to C for inclusion here.
+TryExec=cynosure
+Exec=cynosure -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Maze
+Comment=This is the ancient X maze demo, modified to work with xscreensaver. It generates a random maze, then solves it with visual feedback. Originally by Jim Randell; modified by a cast of thousands.
+TryExec=maze
+Exec=maze -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Open Folder with Thunar
+GenericName=Open Folder
+Comment=Open the specified folders in Thunar
+TryExec=Thunar
+Exec=Thunar %F
+Categories=System;Utility;Core;GTK;FileManager;
+Icon=/usr/share/icons/hicolor/48x48/apps/Thunar.png
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Sysinfo
+Comment=Display detailed computer/system information
+Exec=sysinfo
+Categories=Application;System;
+
+[Desktop Entry]
+Type=Application
+Name=TORCS
+GenericName=TORCS
+Comment=3D racing cars simulator game
+Exec=torcs
+Categories=Application;Game;Simulation;3DGraphics;
+Icon=/usr/share/pixmaps/torcs.xpm
+
+[Desktop Entry]
+Type=Application
+Name=dc-qt
+Comment=GUI for Direct Connect Protocol
+Exec=dc-qt
+Categories=Application;Network;Qt;
+Icon=/usr/share/pixmaps/dc-qt.xpm
+
+[Desktop Entry]
+Type=Application
+Name=Lynx Web Browser
+GenericName=Web Browser
+Comment=Browse the web in the text mode
+TryExec=lynx
+Exec=lynx %u
+Categories=Application;Network;WebBrowser;ConsoleOnly;
+NotShowIn=GNOME
+Terminal=1
+
+[Desktop Entry]
+Type=Application
+Name=MirrorBlob
+Comment=Draws a wobbly blob that distorts the image behind it. Requires OpenGL hardware acceleration for nice animation. Written by Jon Dowdall.
+TryExec=mirrorblob
+Exec=mirrorblob -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Mousepad
+GenericName=Text Editor
+Comment=Simple text editor
+Exec=mousepad %f
+Categories=Application;Utility;TextEditor;GTK;
+Icon=/usr/share/pixmaps/mousepad.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Sierpinski
+Comment=This draws the two-dimensional variant of the recursive Sierpinski triangle fractal. Written by Desmond Daignault.
+TryExec=sierpinski
+Exec=sierpinski -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=AntSpotlight
+Comment=Antspotlight draws an ant (with a headlight) who walks on top of an image of your desktop or other image. Written by Blair Tennessy.
+TryExec=antspotlight
+Exec=antspotlight -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Endgame
+Comment=Black slips out of three mating nets, but the fourth one holds him tight! A brilliant composition! Written by Blair Tennessy.
+TryExec=endgame
+Exec=endgame -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Orage
+GenericName=Calendar
+Comment=Desktop calendar
+Exec=orage
+Categories=X-XFCE;Calendar;GTK;
+Icon=/usr/share/icons/hicolor/48x48/apps/xfcalendar.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=PyMOL Molecular Graphics System
+GenericName=Molecular Modeller
+Comment=Model molecular structures and produce high-quality images of them
+Exec=pymol
+Categories=Education;Science;Chemistry;
+
+[Desktop Entry]
+Type=Application
+Name=QCaD
+Comment=A professional CAD System
+Exec=qcad %U
+Categories=Application;Graphics;
+Icon=/usr/share/pixmaps/qcad.xpm
+
+[Desktop Entry]
+Type=Application
+Name=Rocks
+Comment=This draws an animation of flight through an asteroid field, with changes in rotation and direction. It can also display 3D separations for red/blue glasses! Mostly written by Jamie Zawinski.
+TryExec=rocks
+Exec=rocks -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Skyrocket
+Comment=Another one of the nice GL screensavers from the ReallySlick ScreenSavers package written by Terry Walsh - <http://reallyslick.demonews.com>. Ported to Linux by Tugrul Galatali - <http://rss-glx.sourceforge.net/>. Config Files by Curtis Haas.
+TryExec=skyrocket
+Exec=skyrocket -r -v 0
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 Print Manager
+GenericName=Print Manager
+Comment=Show the printer list and allow you to manage their jobs
+Exec=xfprint4-manager
+Categories=X-XFCE;Utility;
+OnlyShowIn=XFCE
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=CD/DVD Writer GnomeBaker
+GenericName=CD/DVD Writer
+Comment=Write/Copy CD and DVD
+Exec=gnomebaker
+Categories=AudioVideo;DiscBurning;
+Icon=/usr/share/icons/hicolor/48x48/apps/gnomebaker-48.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Halftone
+Comment=Draws the gravity force in each point on the screen seen through a halftone dot pattern. The gravity force is calculated from a set of moving mass points. View it from a distance for best effect. Written by Peter Jaric <peter@jaric.org>.
+TryExec=halftone
+Exec=halftone -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Sproingies
+Comment=Q-Bert meets Marble Madness! Written by Ed Mackey.
+TryExec=sproingies
+Exec=sproingies -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=StarWars
+Comment=Draws a stream of text slowly scrolling into the distance at an angle, over a star field, like at the beginning of the movie of the same name. The text can be the output of a program or the contents of a file or URL, as configured on the "Advanced" tab of the main Screensaver Preferences window. Written by Jamie Zawinski and Claudio Matauoka.
+TryExec=starwars
+Exec=starwars -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=aLinkCreator
+Comment=aMule ed2k link creator
+Exec=alc
+Categories=Application;Network;
+Icon=/usr/share/pixmaps/alc.xpm
+
+[Desktop Entry]
+Type=Application
+Name=Braid
+Comment=Draws random color-cycling inter-braided concentric circles. Written by John Neil.
+TryExec=braid
+Exec=braid -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=FuzzyFlakes
+Comment=Falling colored snowflake/flower shapes. Written by Barry Dmytro.
+TryExec=fuzzyflakes
+Exec=fuzzyflakes -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=JigglyPuff
+Comment=This little gem does bad things with quasi-spherical objects. The gist of it is that you have what is, structurally, a tetrahedron with tesselated faces. the vertices on these faces have forces on them in the form of one proportional to their distance from the surface of a sphere, and one which is proportional to how far they differ from some ideal distance from their neighbors. They also have inertia. The forces and distance are parameters and there are also a couple of visual parameters. The resulting effect can range from a shape that does nothing, to a frenetic polygon storm. Somewhere in between there it usually manifests as a blob that jiggles in a kind of disturbing manner. woo. It doesn't matter, however. You should just pick 'random'. It overrides all the other options, except for fps, delay and complexity. By Keith Macleod
+TryExec=jigglypuff
+Exec=jigglypuff -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Nautilus Actions Configuration
+Comment=Add items to the Nautilus popup menu
+Exec=nautilus-actions-config
+Categories=Application;FileManager;DesktopSettings;Settings;AdvancedSettings;
+Icon=/usr/share/icons/hicolor/48x48/apps/nautilus-actions.png
+
+[Desktop Entry]
+Type=Application
+Name=Wormhole
+Comment=Wormhole simulates flying through a colored wormhole in space. Written by Jon Rafkind.
+TryExec=wormhole
+Exec=wormhole -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 Print Dialog
+GenericName=Print Dialog
+Comment=Print a file and allow you to set up its layout
+Exec=xfprint4
+Categories=X-XFCE;Utility;
+OnlyShowIn=XFCE
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Xfmedia
+Comment=Lightweight Media Player
+TryExec=xfmedia
+Exec=xfmedia %F
+Categories=X-XFCE;Application;AudioVideo;AudioPlayer;VideoPlayer;
+Icon=/usr/share/icons/hicolor/48x48/apps/xfmedia.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Moebius
+Comment=Another M. C. Escher hack by Marcelo Vianna, this one draws ``Moebius Strip II,'' a GL image of ants walking along the surface of a moebius strip.
+TryExec=moebius
+Exec=moebius -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Spotlight
+Comment=Draws a spotlight scanning across a black screen, illuminating the underlying desktop when it passes. Written by Rick Schultz.
+TryExec=spotlight
+Exec=spotlight -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Tangram
+Comment=Lets you watch the computer solve Tangram puzzles Written by Jeremy English.
+TryExec=tangram
+Exec=tangram -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 Screensaver Settings
+GenericName=Screensaver Settings
+Comment=Screensaver Settings
+Exec=xfce-setting-show screensaver
+Categories=X-XFCE;Settings;DesktopSettings;
+OnlyShowIn=XFCE
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Atunnel
+Comment=Draws an animation of a textured tunnel in GL. Requires OpenGL, and a machine with fast hardware support for texture maps. Written by Eric Lassauge and Roman Podobedov.
+TryExec=atunnel
+Exec=atunnel -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=BitTorrent
+Comment=Download files with BitTorrent
+Exec=gnome-btdownload %U
+Categories=Application;Network;
+Icon=/usr/share/gnome-btdownload/pixmaps/download.png
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Lisa
+Comment=This draws Lisajous loops, by Caleb Cullen. Remember that device they had the Phantom Zone prisoners in during their trial in Superman? I think that was one of these.
+TryExec=lisa
+Exec=lisa -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Noseguy
+Comment=A little man with a big nose wanders around your screen saying things. The things which he says are the output of a program or the contents of a file or URL, as configured on the "Advanced" tab of the main Screensaver Preferences window. By Dan Heller and Jamie Zawinski.
+TryExec=noseguy
+Exec=noseguy -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Python (v2.4)
+Comment=Python Interpreter (v2.4)
+Exec=/usr/bin/python2.4
+Categories=Application;Development;
+Icon=/usr/share/pixmaps/python2.4.xpm
+NoDisplay=1
+Terminal=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Rlplot Graph Generator
+Comment=Generate publication quality graphs
+Exec=rlplot
+Categories=Application;Math;Science;
+Icon=/usr/share/pixmaps/RLPlot.xpm
+
+[Desktop Entry]
+Type=Application
+Name=Boxed
+Comment=Draws a box full of 3D bouncing balls that explode. Written by Sander van Grieken.
+TryExec=boxed
+Exec=boxed -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Crystal
+Comment=Moving polygons, similar to a kaleidescope (more like a kaleidescope than the hack called `kaleid,' actually.) This one by Jouk Jansen.
+TryExec=crystal
+Exec=crystal -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Cube 21
+Comment=Animates a Rubik-like puzzle known as Cube 21 or Square-1. The rotations are chosen randomly. Requires OpenGL. Written by Vasek Potocek.
+TryExec=cube21
+Exec=cube21 -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Maxima Algebra System
+GenericName=Computer Algebra System
+Comment=An interface to the Maxima Computer Algebra System
+Exec=xmaxima
+Categories=Application;Math;Science;
+Icon=/usr/share/pixmaps/maxima-icon.png
+
+[Desktop Entry]
+Type=Application
+Name=Mountain
+Comment=Generates random 3d plots that look vaguely mountainous. Written by Pascal Pensa.
+TryExec=mountain
+Exec=mountain -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Screem HTML/XML Editor
+Comment=Website editor and management system
+Exec=screem %U
+Categories=Application;Development;
+Icon=/usr/share/pixmaps/screem.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 Mixer Settings
+GenericName=Mixer Settings
+Comment=Mixer Settings
+Exec=xfce-setting-show sound
+Categories=X-XFCE;Settings;DesktopSettings;
+OnlyShowIn=XFCE
+Icon=/usr/share/icons/hicolor/48x48/apps/xfce-sound.png
+
+[Desktop Entry]
+Type=Application
+Name=Xlyap
+Comment=This generates pretty fractal pictures by doing funky math involving the ``Lyapunov exponent.'' It has a cool interactive mode, too. Written by Ron Record.
+TryExec=xlyap
+Exec=xlyap -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=4D Hypertorus
+Comment=This program shows a rotating Clifford Torus: a torus lying on the "surface" of a 4D hypersphere. Written by Carsten Steger, inspired by Thomas Banchoff's book "Beyond the Third Dimension: Geometry, Computer Graphics, and Higher Dimensions", Scientific American Library, 1990.
+TryExec=hypertorus
+Exec=hypertorus -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Armagetron Advanced
+Comment=3d light cycle game
+Exec=armagetronad
+Path=/usr/games
+Categories=Application;Game;ActionGame;GameAction;ActionGames;GamesAction;
+Icon=/usr/share/pixmaps/armagetronad/icons/large/armagetronad.png
+
+[Desktop Entry]
+Type=Application
+Name=Celtic
+Comment=Celtic
+TryExec=celtic
+Exec=celtic -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Colorfire
+Comment=From Andreas Gustafsson (http://www.lysator.liu.se/~sdw/opengl2000.html): "This didn't take me long to do, and I didn't write more than approximately 100 lines of code, but the result is still not that bad!" Ported to Linux by Tugrul Galatali - <http://rss-glx.sourceforge.net/>.
+TryExec=colorfire
+Exec=colorfire -r
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Julia
+Comment=This one draws spinning, animating (are you detecting a pattern here yet?) explorations of the Julia set. You've probably seen static images of this fractal form before, but it's a lot of fun to watch in motion as well. One interesting thing is that there is a small swinging dot passing in front of the image, which indicates the control point from which the rest of the image was generated. Written by Sean McCullough.
+TryExec=julia
+Exec=julia -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Achilles Life Simulator
+GenericName=Life Simulator
+Comment=Watch a simulation of artificial life and evolution
+Exec=achilles
+Categories=Application;Education;Science;Biology;Simulation;
+
+[Desktop Entry]
+Type=Application
+Name=Emacs 22 (X11)
+GenericName=Emacs
+Comment=GNU Emacs 22 Text Editor
+TryExec=emacs22
+Exec=/usr/bin/emacs22-x
+Categories=Application;Utility;TextEditor;
+Icon=/usr/share/icons/emacs22/emacs.xpm
+
+[Desktop Entry]
+Type=Application
+Name=Install KDE Theme
+Exec=kdeinstallktheme %f
+Categories=OTHER;
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=TuxKart
+GenericName=TuxKart
+Comment=Play a 3D Go-Kart game with famous Open Source mascots
+Exec=tuxkart
+Categories=ActionGame;Game;
+
+[Desktop Entry]
+Type=Application
+Name=Emerald Theme Manager
+Comment=Configure Emerald themes
+Exec=emerald-theme-manager -i
+Categories=Settings;
+Icon=/usr/share/pixmaps/emerald-theme-manager-icon.png
+
+[Desktop Entry]
+Type=Application
+Name=Eruption
+Comment=An exposive version of XFlame. By W.P. van Paassen.
+TryExec=eruption
+Exec=eruption -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=FlipFlop
+Comment=Flipflop draws a grid of 3D colored tiles that change positions with each other. Written by Kevin Ogden.
+TryExec=flipflop
+Exec=flipflop -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Moire2
+Comment=Another example of the fun you can have with moire interference patterns; this hack generates fields of concentric circles or ovals, and combines the planes with various operations. The planes are moving independently of one another, causing the interference lines to ``spray.'' Written by Jamie Zawinski.
+TryExec=moire2
+Exec=moire2 -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=OpenOffice.org Database
+GenericName=Database
+Comment=Manage databases, create queries and reports to track and manage your information.
+Exec=ooffice -base %U
+Categories=Application;Office;Database;
+Icon=/usr/share/icons/hicolor/48x48/apps/ooo-base.png
+
+[Desktop Entry]
+Type=Application
+Name=Truchet
+Comment=This draws line- and arc-based Truchet patterns that tile the screen. Written by Adrian Likins.
+TryExec=truchet
+Exec=truchet -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Wine Windows Emulator
+Exec=wine %f
+Categories=OTHER;
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 Mouse Settings
+GenericName=Mouse Settings
+Comment=Mouse Settings
+Exec=xfce-setting-show mouse
+Categories=X-XFCE;Settings;DesktopSettings;
+OnlyShowIn=XFCE
+Icon=/usr/share/icons/hicolor/48x48/apps/xfce4-mouse.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Zoom
+Comment=Zooms in on a part of the screen and then moves around. With the -lenses option the result is like looking through many overlapping lenses rather than just a simple zoom. Written by James Macnicol.
+TryExec=zoom
+Exec=zoom -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=AntInspect
+Comment=Draws a trio of ants moving their spheres around a circle. Written by Blair Tennessy.
+TryExec=antinspect
+Exec=antinspect -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=BlockTube
+Comment=This hack draws a swirling, falling tunnel of reflective slabs. They fade from hue to hue. Written by Lars R. Damerow.
+TryExec=blocktube
+Exec=blocktube -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Coral
+Comment=Simulates coral growth, albeit somewhat slowly. Written by Frederick Roeber.
+TryExec=coral
+Exec=coral -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=LavaLite
+Comment=Draws a 3D Simulation a Lava Lite(r): odd-shaped blobs of a mysterious substance are heated, slowly rise to the top of the bottle, and then drop back down as they cool. This program requires OpenGL and a fairly fast machine (both CPU and 3D performance.) Written by Jamie Zawinski. "LAVA LITE(r) and the configuration of the LAVA(r) brand motion lamp are registered trademarks of Haggerty Enterprises, Inc. The configuration of the globe and base of the motion lamp are registered trademarks of Haggerty Enterprises, Inc. in the U.S.A. and in other countries around the world."
+TryExec=lavalite
+Exec=lavalite -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=OpenOffice.org Formula
+GenericName=Formula
+Comment=Create and edit scientific formulas and equations.
+Exec=ooffice -math %U
+Categories=OTHER;
+Icon=/usr/share/icons/hicolor/48x48/apps/ooo-math.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=CubeStorm
+Comment=Draws a series of rotating 3D boxes that intersect each other and eventually fill space. Written by Jamie Zawinski.
+TryExec=cubestorm
+Exec=cubestorm -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Hufo's Smoke
+Comment=From Jeremie Allard (http://hufo.planet-d.net/codefr_us.php): "This little smoke effect is coded with a little particle system done for 'The OpenGL Challenge'." Specify colors using hex color codes (ie, ff0000, 00ff00, 0000ff for red, green and blue.) Ported to Linux by Tugrul Galatali - <http://rss-glx.sourceforge.net/>.
+TryExec=hufo_smoke
+Exec=hufo_smoke -r
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Moire
+Comment=This one draws cool circular interference patterns. Most of the circles you see aren't explicitly rendered, but show up as a result of interactions between the other pixels that were drawn. Written by Jamie Zawinski, inspired by Java code by Michael Bayne. As he pointed out, the beauty of this one is that the heart of the display algorithm can be expressed with just a pair of loops and a handful of arithmetic, giving it a high ``display hack metric''.
+TryExec=moire
+Exec=moire -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=OpenOffice.org
+Comment=OpenOffice.org
+TryExec=oofromtemplate
+Exec=oofromtemplate %U
+Categories=Office;
+Icon=/usr/share/icons/hicolor/48x48/apps/ooo-template.png
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=StonerView
+Comment=Chains of colorful squares dance around each other in complex spiral patterns. Written by Andrew Plotkin, based on SGI's `electropaint' screensaver.
+TryExec=stonerview
+Exec=stonerview -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=WebCollage
+Comment=This program makes collages out of random images pulled off of the World Wide Web. It finds these images by doing random web searches, and then extracting images from the returned pages. It can also be set up to filter the images through the `VidWhacker' program. WARNING: THE INTERNET SOMETIMES CONTAINS PORNOGRAPHY. The Internet being what it is, absolutely anything might show up in the collage including -- quite possibly -- pornography, or even nudity. Please act accordingly. Written by Jamie Zawinski.
+TryExec=webcollage
+Exec=webcollage -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Bluetooth Preferences
+Comment=Configure Bluetooth settings
+Exec=bluetooth-properties
+Categories=Settings;
+OnlyShowIn=GNOME
+
+[Desktop Entry]
+Type=Application
+Name=Firefox Web Browser
+GenericName=Web Browser
+Comment=Browse the World Wide Web
+Exec=firefox %u
+Categories=Application;Network;
+StartupWMClass=Firefox-bin
+Icon=/usr/share/pixmaps/firefox.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Flow
+Comment=Strange attractors formed of flows in a 3D differential equation phase space. Written by Tim Auckland.
+TryExec=flow
+Exec=flow -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=FontForge
+Comment=An outline font editor
+Exec=/usr/bin/fontforge
+Categories=Graphics;
+Icon=/usr/share/icons/ffanvil32.xpm
+
+[Desktop Entry]
+Type=Application
+Name=Thunar File Manager
+GenericName=File Manager
+Comment=Browse the filesystem with the file manager
+Exec=Thunar %F
+Categories=Application;Utility;Core;GTK;FileManager;
+Icon=/usr/share/icons/hicolor/48x48/apps/Thunar.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Helios
+Comment=Another one of the nice GL screensavers from the ReallySlick ScreenSavers package written by Terry Walsh - <http://reallyslick.demonews.com>. Ported to Linux by Tugrul Galatali - <http://rss-glx.sourceforge.net/>. Config Files by Curtis Haas.
+TryExec=helios
+Exec=helios -r
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=LyX Document Processor
+GenericName=Document Processor
+Comment=High level LaTeX frontend
+TryExec=lyx
+Exec=lyx %F
+Categories=Office;WordProcessor;Qt;
+StartupWMClass=Lyx
+
+[Desktop Entry]
+Type=Application
+Name=MlView XML Editor
+GenericName=MlView Generic XML Editor
+Comment=A generic simple XML editor for GNOME
+TryExec=mlv
+Exec=/usr/bin/mlview %F
+Categories=Application;Development;
+Icon=/usr/share/pixmaps/mlview-app-icon.xpm
+
+[Desktop Entry]
+Type=Application
+Name=Polyhedra
+Comment=Displays different 3D solids and some information about each. A new solid is chosen every few seconds. There are 75 uniform polyhedra, plus 5 infinite sets of prisms and antiprisms; including their duals brings the total to 160. Written by Dr. Zvi Har'El and Jamie Zawinski.
+TryExec=polyhedra
+Exec=polyhedra -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Python (v2.5)
+Comment=Python Interpreter (v2.5)
+Exec=/usr/bin/python2.5
+Categories=Application;Development;
+Icon=/usr/share/pixmaps/python2.5.xpm
+NoDisplay=1
+Terminal=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Qt3 Assistant
+Comment=Qt3 Helpcenter
+Exec=assistant-qt3
+Categories=Qt;Development;
+
+[Desktop Entry]
+Type=Application
+Name=Stairs
+Comment=by Marcelo Vianna's third Escher GL hack, this one draws an ``infinite'' staircase.
+TryExec=stairs
+Exec=stairs -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Sun Java 6 Console
+Comment=Sun Java 6 Monitoring & Management Console
+Exec=/usr/lib/jvm/java-6-sun-1.6.0.03/bin/jconsole
+Categories=Application;System;
+Icon=/usr/share/icons/sun-java6.xpm
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 Display Settings
+GenericName=Display Settings
+Comment=Display Settings
+Exec=xfce-setting-show display
+Categories=X-XFCE;Settings;DesktopSettings;
+OnlyShowIn=XFCE
+Icon=/usr/share/icons/hicolor/48x48/apps/xfce4-display.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Anemone
+Comment=Wiggling tentacles. By Gabriel Finch.
+TryExec=anemone
+Exec=anemone -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=CloudLife
+Comment=Generates cloud-like formations based on a variant of Conway's Life. The difference is that cells have a maximum age, after which they count as 3 for populating the next generation. This makes long-lived formations explode instead of just sitting there burning a hole in your screen. Written by Don Marti.
+TryExec=cloudlife
+Exec=cloudlife -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Hopalong
+Comment=This draws lacy fractal patterns, based on iteration in the imaginary plane, from a 1986 Scientific American article. Mostly written by Patrick Naughton.
+TryExec=hopalong
+Exec=hopalong -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Molecule
+Comment=Draws several different representations of molecules. Some common molecules are built in, and it can also read PDB (Protein Data Base) files as input. Written by Jamie Zawinski.
+TryExec=molecule
+Exec=molecule -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Octave
+GenericName=Octave
+Comment=GNU Octave language for numerical computations
+Exec=octave
+Categories=Development;
+Icon=/usr/share/pixmaps/octave.xpm
+Terminal=1
+
+[Desktop Entry]
+Type=Application
+Name=X-CD-Roast
+Comment=Create a CD
+Exec=xcdroast
+Categories=Application;AudioVideo;
+Icon=/usr/share/pixmaps/xcdroast.xpm
+
+[Desktop Entry]
+Type=Application
+Name=Bubbles
+Comment=This simulates the kind of bubble formation that happens when water boils:small bubbles appear, and as they get closer to each other, they combine to form larger bubbles, which eventually pop. Written by James Macnicol.
+TryExec=bubbles
+Exec=bubbles -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Cage
+Comment=This draws Escher's ``Impossible Cage,'' a 3d analog of a moebius strip, and rotates it in three dimensions. Written by Marcelo Vianna.
+TryExec=cage
+Exec=cage -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Fireworkx
+Comment=Pyrotechnics simulation eye-candy, MMX optimized. Turn off Light for speed. Clicks on the preview window Explodes..! Written by Rony B Chandran. http://www.ronybc.8k.com
+TryExec=fireworkx
+Exec=fireworkx -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Piecewise
+Comment=This draws a bunch of moving circles which switch from visibility to invisibility at intersection points. Written by Geoffrey Irving.
+TryExec=piecewise
+Exec=piecewise -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Pulsar
+Comment=Draws some intersecting planes, making use of alpha blending, fog, textures, and mipmaps, plus a ``frames per second'' meter so that you can tell how fast your graphics card is... Requires OpenGL. Written by David Konerding.
+TryExec=pulsar
+Exec=pulsar -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 Preferred Applications
+GenericName=Preferred Applications
+Comment=Preferred Applications (Web Browser, Mail Reader and Terminal Emulator)
+Exec=exo-preferred-applications
+Categories=X-XFCE;Settings;DesktopSettings;
+OnlyShowIn=XFCE
+Icon=/usr/share/icons/hicolor/48x48/apps/preferences-desktop-default-applications.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Cubenetic
+Comment=Draws a pulsating set of overlapping boxes with ever-chaning blobby patterns undulating across their surfaces. It's sort of a cubist Lavalite. Written by Jamie Zawinski.
+TryExec=cubenetic
+Exec=cubenetic -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Root Terminal
+Comment=Opens a terminal as the root user, using gksu to ask for the password
+Exec=gksu /usr/bin/x-terminal-emulator
+Categories=Application;System;
+Icon=/usr/share/pixmaps/gksu-root-terminal.png
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=SCIM Input Method Setup
+Comment=Setup utility for Smart Common Input Method platform
+Exec=scim-setup
+Categories=Applications;Settings;
+NotShowIn=KDE
+Icon=/usr/share/pixmaps/scim-setup.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Sonar
+Comment=This program draws a simulation of a sonar screen. By default, it displays a random assortment of ``bogies'' on the screen, but if installed as "setuid root", it can ping (pun intended) your local network, and actually plot the proximity of the other hosts on your network to you. Written by Stephen Martin and Jamie Zawinski.
+TryExec=sonar
+Exec=sonar -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 Printing System Settings
+GenericName=Printing System Settings
+Comment=Allow you to select the printing system backend that xfprint will use
+Exec=xfce-setting-show printing_system
+Categories=X-XFCE;Settings;DesktopSettings;
+OnlyShowIn=XFCE
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Epicycle
+Comment=This program draws the path traced out by a point on the edge of a circle. That circle rotates around a point on the rim of another circle, and so on, several times. These were the basis for the pre-heliocentric model of planetary motion. Written by James Youngman.
+TryExec=epicycle
+Exec=epicycle -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Oolite
+Comment=A space simulation game
+Exec=/usr/games/oolite
+Categories=Game;Simulation;
+Icon=/usr/share/pixmaps/oolite-logo1.png
+
+[Desktop Entry]
+Type=Application
+Name=Triangle
+Comment=Generates random mountain ranges using iterative subdivision of triangles. Written by Tobias Gloth.
+TryExec=triangle
+Exec=triangle -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 Calendar Settings
+GenericName=Calendar Settings
+Comment=Settings for the Xfce 4 Calendar Application
+Exec=xfce-setting-show orage
+Categories=X-XFCE;Settings;DesktopSettings;
+OnlyShowIn=XFCE
+Icon=/usr/share/icons/hicolor/48x48/apps/xfcalendar.png
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 Menu Editor
+GenericName=Menu Editor
+Comment=Graphical tool for editing the Xfce 4 menu
+Exec=xfce4-menueditor
+Categories=X-XFCE;Application;Settings;DesktopSettings;
+OnlyShowIn=XFCE
+Icon=/usr/share/icons/hicolor/48x48/apps/xfce4-menueditor.png
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 Workspaces Settings
+GenericName=Workspaces Settings
+Comment=Workspaces Settings
+Exec=xfce-setting-show workspaces
+Categories=X-XFCE;Settings;DesktopSettings;
+OnlyShowIn=XFCE
+Icon=/usr/share/icons/hicolor/48x48/apps/xfce4-workspaces.png
+
+[Desktop Entry]
+Type=Application
+Name=Apollonian
+Comment=Packs a large circle with smaller circles, demonstrating the Descartes Circle Theorem. Written by Allan R. Wilks and David Bagley.
+TryExec=apollonian
+Exec=apollonian -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=BlitSpin
+Comment=The ``blitspin'' hack repeatedly rotates a bitmap by 90 degrees by using logical operations: the bitmap is divided into quadrants, and the quadrants are shifted clockwise. Then the same thing is done again with progressively smaller quadrants, except that all sub-quadrants of a given size are rotated in parallel. Written by Jamie Zawinski based on some cool SmallTalk code seen in in Byte Magazine in 1981. As you watch it, the image appears to dissolve into static and then reconstitute itself, but rotated. You can provide the image to use, as an XBM or XPM file, or tell it to grab a screen image and rotate that.
+TryExec=blitspin
+Exec=blitspin -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Halo
+Comment=This draws trippy psychedelic circular patterns that hurt to look at. It can also animate the control-points, but that takes a lot of CPU and bandwidth. Written by Jamie Zawinski.
+TryExec=halo
+Exec=halo -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Lightning
+Comment=This one draws crackling fractal lightning bolts. It's simple, direct, and to the point. If only it had sound... Written by Keith Romberg.
+TryExec=lightning
+Exec=lightning -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Nexuiz
+Comment=A networked 3D first person shooter game with high-quality graphic effects
+Exec=/usr/games/nexuiz --quiet
+Categories=Game;ArcadeGame;
+Icon=/usr/share/pixmaps/nexuiz64x64.png
+
+[Desktop Entry]
+Type=Application
+Name=Worm
+Comment=An ancient xlock hack that draws multicolored worms that crawl around the screen. Written by Brad Taylor, Dave Lemke, Boris Putanec, and Henrik Theiling.
+TryExec=worm
+Exec=worm -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=BioF
+Comment=This is an attempt to recreate some of the work of William Latham. Take a look at the program 'organic art' at this site (http://www.artworks.co.uk). Ported to Linux by Tugrul Galatali - <http://rss-glx.sourceforge.net/>.
+TryExec=biof
+Exec=biof -r
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Blender 3D modeller (windowed)
+Comment=Create and edit 3D models and animations
+Exec=blender -w
+Categories=Application;Graphics;
+
+[Desktop Entry]
+Type=Application
+Name=IMSmap
+Comment=This generates random cloud-like patterns. It looks quite different in monochrome and color. The basic idea is to take four points on the edge of the image, and assign each a random ``elevation''. Then find the point between them, and give it a value which is the average of the other four, plus some small random offset. Then coloration is done based on elevation. The color selection is done by binding the elevation to either hue, saturation, or brightness, and assigning random values to the others. The ``brightness'' mode tends to yield cloudlike patterns, and the others tend to generate images that look like heat-maps or CAT-scans. Written by Juergen Nickelsen and Jamie Zawinski.
+TryExec=imsmap
+Exec=imsmap -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Loop
+Comment=This one produces loop-shaped colonies that spawn, age, and eventually die. Written by David Bagley.
+TryExec=loop
+Exec=loop -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Network
+Comment=Browse bookmarked and local network locations
+TryExec=nautilus
+Exec=nautilus --no-desktop network:
+Categories=Core;
+OnlyShowIn=GNOME
+X-AfterStep-IndexName=Network application
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Qix
+Comment=This is the swiss army chainsaw of qix programs. It bounces a series of line segments around the screen, and uses variations on this basic motion pattern to produce all sorts of different presentations: line segments, filled polygons, overlapping translucent areas... Written by Jamie Zawinski.
+TryExec=qix
+Exec=qix -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Starfish
+Comment=This generates a sequence of undulating, throbbing, star-like patterns which pulsate, rotate, and turn inside out. Another display mode uses these shapes to lay down a field of colors, which are then cycled. The motion is very organic. Written by Jamie Zawinski.
+TryExec=starfish
+Exec=starfish -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Timetunnel
+Comment=Draws an animation similar to the opening and closing effects on the Dr. Who television show. Written by Sean P. Brennan.
+TryExec=timetunnel
+Exec=timetunnel -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=TuxTyping
+Comment=Type Training Game
+Exec=tuxtype
+Categories=Application;Game;
+Icon=/usr/share/pixmaps/tuxtype.png
+
+[Desktop Entry]
+Type=Application
+Name=Vermiculate
+Comment=Draws squiggly worm-like paths. Written by Tyler Pierce.
+TryExec=vermiculate
+Exec=vermiculate -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Xjack
+Comment=This program behaves schizophrenically and makes a lot of typos. Written by Jamie Zawinski. If you haven't seen Stanley Kubrick's masterpiece, ``The Shining,'' you won't get it. Those who have describe this hack as ``inspired.''
+TryExec=xjack
+Exec=xjack -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Carousel
+Comment=Loads several random images, and displays them flying in a circular formation. The circle changes speed and direction randomly, tilts on its axis, and the images move in and out. To tell it where to find the images to display, go to the "Advanced" tab on the Screensaver Preferences window. Select "Choose Random Images", and enter your image directory in the text field right below that. (Note: not the the "Advanced" button at the bottom of this window: the tab at the top of the *other* window.) This program requires a good video card capable of supporting large textures. Written by Jamie Zawinski.
+TryExec=carousel
+Exec=carousel -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Discrete
+Comment=More ``discrete map'' systems, including new variants of Hopalong and Julia, and a few others. Written by Tim Auckland.
+TryExec=discrete
+Exec=discrete -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Euphoria
+Comment=Another one of the nice GL screensavers from the ReallySlick ScreenSavers package written by Terry Walsh - <http://reallyslick.demonews.com>. Ported to Linux by Tugrul Galatali - <http://rss-glx.sourceforge.net/>. Config Files by Curtis Haas. Note: Presets override all other settings. If you wish to customize the other options, make sure the preset option is set to "Preset - Custom".
+TryExec=euphoria
+Exec=euphoria -r
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Flying Toasters
+Comment=A fleet of 3d space-age jet-powered flying toasters (and toast!) Inspired by the ancient Berkeley Systems After Dark flying toasters. By Jamie Zawinski and Baconmonkey.
+TryExec=flyingtoasters
+Exec=flyingtoasters -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=MemScroller
+Comment=This draws a dump of its own process memory scrolling across the screen in three windows at three different rates. Written by Jamie Zawinski.
+TryExec=memscroller
+Exec=memscroller -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Rorschach
+Comment=This generates random inkblot patterns. The algorithm is deceptively simple for how well it works; it merely walks a dot around the screen randomly, and then reflects the image horizontally, vertically, or both. Any deep-seated neurotic tendencies which this program reveals are your own problem. Written by Jamie Zawinski.
+TryExec=rorschach
+Exec=rorschach -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Boing
+Comment=This bouncing ball is a clone of the first graphics demo for the Amiga 1000, which was written by Dale Luck and RJ Mical during a break at the 1984 Consumer Electronics Show (or so the legend goes.) This looks like the original Amiga demo if you turn off "smoothing" and "lighting" and turn on "scanlines". Written by Jamie Zawinski.
+TryExec=boing
+Exec=boing -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=dc_gui2
+Comment=Direct Connect for Linux
+Exec=dc_gui2
+Categories=Application;Network;
+Icon=/usr/share/pixmaps/dc_gui2.xpm
+
+[Desktop Entry]
+Type=Application
+Name=ShadeBobs
+Comment=This draws smoothly-shaded oscillating oval patterns, that look something like vapor trails or neon tubes. Written by Shane Smit.
+TryExec=shadebobs
+Exec=shadebobs -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=VidWhacker
+Comment=This is actually just a shell script that grabs a frame of video from the system's video input, and then uses some PBM filters (chosen at random) to manipulate and recombine the video frame in various ways (edge detection, subtracting the image from a rotated version of itself, etc.) Then it displays that image for a few seconds, and does it again. This works really well if you just feed broadcast television into it.
+TryExec=vidwhacker
+Exec=vidwhacker -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=WMakerConf
+Comment=A Window Maker configurator
+Exec=wmakerconf
+Categories=GTK;Application;DesktopSettings;
+Icon=/usr/share/wmakerconf/wmakerconf.xpm
+
+[Desktop Entry]
+Type=Application
+Name=Cyclone
+Comment=Another one of the nice GL screensavers from the ReallySlick ScreenSavers package written by Terry Walsh - <http://reallyslick.demonews.com>. Ported to Linux by Tugrul Galatali - <http://rss-glx.sourceforge.net/Source/>. Config Files by Curtis Haas.
+TryExec=cyclone
+Exec=cyclone -r
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=earth3d
+Comment=eart3d - 3D Model of the earth
+Exec=earth3d
+Categories=Qt;Education;Science;
+
+[Desktop Entry]
+Type=Application
+Name=MetaBalls
+Comment=Draws two dimensional metaballs: overlapping and merging balls with fuzzy edges. By W.P. van Paassen.
+TryExec=metaballs
+Exec=metaballs -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=onBoard
+GenericName=onBoard onscreen keyboard
+Comment=Flexible onscreen keyboard for gnome
+Exec=onboard
+Categories=Application;Accessibility;
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Ripples
+Comment=This draws rippling interference patterns like splashing water. With the -water option, it manipulates your desktop image to look like something is dripping into it. Written by Tom Hammersley.
+TryExec=ripples
+Exec=ripples -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Apple ][
+Comment=Simulates an original Apple ][ Plus computer in all its 1979 glory. It also reproduces the appearance of display on a color television set of the period. In "Text Mode", it displays the output of a program, or the contents of a file or URL, as configured on the "Advanced" tab of the main Screensaver Preferences window. In "Slideshow Mode", it chooses a number of images from the image source you configured into XScreenSaver and displays them within the limitations of the Apple ][ display hardware. (Six available colors in hi-res mode!) In "Basic Programming Mode", a simulated user types in a BASIC program and runs it. By Trevor Blackwell.
+TryExec=apple2
+Exec=apple2 -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=BSOD
+Comment=BSOD stands for ``Blue Screen of Death.'' The finest in personal computer emulation, this hack simulates popular screen savers from a number of less robust operating systems. Written by Jamie Zawinski.
+TryExec=bsod
+Exec=bsod -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=FadePlot
+Comment=Draws what looks like a waving ribbon following a sinusoidal path. Written by Bas van Gaalen and Charles Vidal.
+TryExec=fadeplot
+Exec=fadeplot -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=onBoard Settings
+GenericName=onBoard onscreen keyboard settings
+Comment=Change onBoard settings
+Exec=onboard-settings
+Categories=Applications;Accessibility;
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=OpenOffice.org Drawing
+GenericName=Drawing
+Comment=Create and edit drawings, flow charts, and logos.
+Exec=ooffice -draw %U
+Categories=Graphics;VectorGraphics;
+Icon=/usr/share/icons/hicolor/48x48/apps/ooo-draw.png
+
+[Desktop Entry]
+Type=Application
+Name=SciTE Text Editor
+Comment=Programming editor
+Exec=scite %F
+Categories=Application;Development;
+Icon=/usr/share/pixmaps/Sci48M.png
+
+[Desktop Entry]
+Type=Application
+Name=Scorched 3D
+Comment=3D artillery game similar to Scorched Earth
+Exec=/usr/games/scorched3d
+Categories=Game;ArcadeGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/scorched3d.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=SpirographX
+Comment=Port of SpirographX by Holmes Futrell <holmes@neatosoftware.com> (http://homepage.mac.com/solidmag/spiro/). Ported to Linux by Tugrul Galatali - <http://rss-glx.sourceforge.net/>.
+TryExec=spirographx
+Exec=spirographx -r
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Twang
+Comment=Divides the screen into a grid, and plucks them. Written by Dan Bornstein.
+TryExec=twang
+Exec=twang -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Compass
+Comment=This draws a compass, with all elements spinning about randomly, for that ``lost and nauseous'' feeling. Written by Jamie Zawinski.
+TryExec=compass
+Exec=compass -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Emacs 22 (GTK)
+GenericName=Emacs
+Comment=GNU Emacs 22 Text Editor
+TryExec=emacs22
+Exec=/usr/bin/emacs22-gtk
+Categories=Application;Utility;TextEditor;
+Icon=/usr/share/icons/emacs22/emacs.xpm
+
+[Desktop Entry]
+Type=Application
+Name=Sphere
+Comment=Another of the classic screenhacks of the distant past, this one draws shaded spheres in multiple colors. This hack traces its lineage back to Tom Duff in 1982.
+TryExec=sphere
+Exec=sphere -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Squiral
+Comment=Draws a set of interacting, square-spiral-producing automata. The spirals grow outward until they hit something, then they go around it. Written by Jeff Epler.
+TryExec=squiral
+Exec=squiral -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Winefish Editor
+Comment=LaTeX Editor based on Bluefish
+Exec=winefish -n 1 -p %f
+Categories=OTHER;
+Icon=/usr/share/pixmaps/winefish-icon.png
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=FluidBalls
+Comment=Models the physics of bouncing balls, or of particles in a gas or fluid, depending on the settings. If "Shake Box" is selected, then every now and then, the box will be rotated, changing which direction is down (in order to keep the settled balls in motion.) By Peter Birtles and Jamie Zawinski.
+TryExec=fluidballs
+Exec=fluidballs -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Vega Strike
+Comment=Play a 3D space combat and simulation
+Exec=vegastrike
+Categories=Application;Game;
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 Task Manager
+GenericName=Process manager
+Comment=Process manager
+Exec=xfce4-taskmanager
+Categories=X-XFCE;Application;System;
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 Window Manager Settings
+GenericName=Window Manager Settings
+Comment=Window Manager Settings
+Exec=xfce-setting-show xfwm4
+Categories=X-XFCE;Settings;DesktopSettings;
+OnlyShowIn=XFCE
+Icon=/usr/share/icons/hicolor/48x48/apps/xfwm4.png
+
+[Desktop Entry]
+Type=Application
+Name=Xffm MIME-icon Editor
+GenericName=Theme customization utility
+Comment=Application to generate icon/mimetype associations for themes
+TryExec=xffm-icons
+Exec=xffm-icons
+Categories=Core;Utility;
+Icon=/usr/share/pixmaps/xffm-icons.png
+
+[Desktop Entry]
+Type=Application
+Name=XTeeVee
+Comment=XTeeVee simulates various television problems, including static, loss of vertical hold, and a test pattern. By Greg Knauss.
+TryExec=xteevee
+Exec=xteevee -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Bumps
+Comment=A bit like `Spotlight', except that instead of merely exposing part of your desktop, it creates a bump map from it. Basically, it 3D-izes a roaming section of your desktop, based on color intensity. Written by Shane Smit.
+TryExec=bumps
+Exec=bumps -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=FlipText
+Comment=Draws successive pages of text. The lines flip in and out in a soothing 3D pattern. The text can be the output of a program or the contents of a file or URL, as configured on the "Advanced" tab of the main Screensaver Preferences window. Written by Jamie Zawinski.
+TryExec=fliptext
+Exec=fliptext -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Jigsaw
+Comment=This grabs a screen image, carves it up into a jigsaw puzzle, shuffles it, and then solves the puzzle. This works especially well when you feed it an external video signal instead of letting it grab the screen image (actually, I guess this is generally true...) When it is grabbing a video image, it is sometimes pretty hard to guess what the image is going to look like once the puzzle is solved. Written by Jamie Zawinski.
+TryExec=jigsaw
+Exec=jigsaw -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Juggler3D
+Comment=3D simulation of a juggler performing with balls, clubs and rings. Written by Brian Apps and partially based on his Win32 Juggle Saver program.
+TryExec=juggler3d
+Exec=juggler3d -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Morph3D
+Comment=Another 3d shape-changing GL hack, by Marcelo Vianna. It has the same shiny-plastic feel as Superquadrics, as many computer-generated objects do...
+TryExec=morph3d
+Exec=morph3d -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Phosphor
+Comment=Draws a simulation of an old terminal, with large pixels and long-sustain phosphor. This program is also a fully-functional VT100 emulator! The text can be the output of a program or the contents of a file or URL, as configured on the "Advanced" tab of the main Screensaver Preferences window. Written by Jamie Zawinski.
+TryExec=phosphor
+Exec=phosphor -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Spheremonics
+Comment=These closed objects are commonly called spherical harmonics, although they are only remotely related to the mathematical definition found in the solution to certain wave functions, most notable the eigenfunctions of angular momentum operators. Written by Paul Bourke and Jamie Zawinski.
+TryExec=spheremonics
+Exec=spheremonics -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Bouboule
+Comment=This draws what looks like a spinning, deforming balloon with varying-sized spots painted on its invisible surface. Written by Jeremie Petit.
+TryExec=bouboule
+Exec=bouboule -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Pinion
+Comment=Draws an interconnected set of gears moving across the screen. Written by Jamie Zawinski.
+TryExec=pinion
+Exec=pinion -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Spiral
+Comment=Moving circular patterns, by Peter Schmitzberger. Moving circular patterns means moire; interference patterns, of course.
+TryExec=spiral
+Exec=spiral -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Wander
+Comment=Draws a colorful random-walk, in various forms. Written by Rick Campbell.
+TryExec=wander
+Exec=wander -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Beryl Settings Manager
+Comment=Configure Beryl
+Exec=beryl-settings
+Categories=System;Application;X-Fedora;
+
+[Desktop Entry]
+Type=Application
+Name=Blender 3D modeller (fullscreen)
+Comment=Create and edit 3D models and animations
+Exec=blender -W
+Categories=Application;Graphics;
+
+[Desktop Entry]
+Type=Application
+Name=Euler2d
+Comment=Simulates two dimensional Incompressible Inviscid Fluid Flow. Written by Stephen Montgomery-Smith.
+TryExec=euler2d
+Exec=euler2d -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Flame
+Comment=Another iterative fractal generator. Written by Scott Draves.
+TryExec=flame
+Exec=flame -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Munch
+Comment=DATAI 2 ADDB 1,2 ROTC 2,-22 XOR 1,2 JRST .-4 As reported by HAKMEM, in 1962, Jackson Wright wrote the above PDP-1 code. That code still lives on in this screenhack, some 35 years later. The number of lines of enclosing code has increased substantially, however. This version is by Tim Showalter.
+TryExec=munch
+Exec=munch -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=NerveRot
+Comment=Draws different shapes composed of nervously vibrating squiggles, as if seen through a camera operated by a monkey on crack. By Dan Bornstein.
+TryExec=nerverot
+Exec=nerverot -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Drift
+Comment=How could one possibly describe this except as ``drifting recursive fractal cosmic flames?'' Another fine hack from the Scott Draves collection of fine hacks.
+TryExec=drift
+Exec=drift -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Flipscreen3d
+Comment=Grabs an image of the desktop, turns it into a GL texture map, and spins it around and deforms it in various ways. Written by Ben Buxton.
+TryExec=flipscreen3d
+Exec=flipscreen3d -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Forest
+Comment=This draws fractal trees. Written by Peter Baumung. Everybody loves fractals, right?
+TryExec=forest
+Exec=forest -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=OpenOffice.org Spreadsheet
+GenericName=Spreadsheet
+Comment=Perform calculation, analyze information and manage lists in spreadsheets.
+Exec=ooffice -calc %U
+Categories=Application;Office;Spreadsheet;
+Icon=/usr/share/icons/hicolor/48x48/apps/ooo-calc.png
+
+[Desktop Entry]
+Type=Application
+Name=Providence
+Comment=The providence code displays an eye, shrouded in glory, set upon the base of a pyramid. Written by Blair Tennessy.
+TryExec=providence
+Exec=providence -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Xfburn
+Comment=CD and DVD burning application
+TryExec=xfburn
+Exec=xfburn
+Categories=X-XFCE;GTK;DiscBurning;Archiving;Utility;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Anemotaxis
+Comment=Anemotaxis demonstrates a search algorithm designed for locating a source of odor in turbulent atmosphere. The searcher is able to sense the odor and determine local instantaneous wind direction. The goal is to find the source in the shortest mean time. Written by Eugene Balkovsky.
+TryExec=anemotaxis
+Exec=anemotaxis -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Engine
+Comment=Draws a simple model of an engine that floats around the screen. Written by Ben Buxton and Ed Beroset.
+TryExec=engine
+Exec=engine -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Sun Java 6 Web Start (32bit)
+Comment=Sun Java 6 Web Start (32bit)
+Exec=/usr/lib/jvm/ia32-java-6-sun-1.6.0.03/bin/javaws -viewer
+Categories=Application;Network;
+Icon=/usr/share/icons/ia32-sun-java6.xpm
+
+[Desktop Entry]
+Type=Application
+Name=WhirlyGig
+Comment=Draws zooming chains of sinusoidal spots. Written by Ashton Trey Belew.
+TryExec=whirlygig
+Exec=whirlygig -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=XRaySwarm
+Comment=Draws a few swarms of critters flying around the screen, with nicely faded color trails behind them. Written by Chris Leger.
+TryExec=xrayswarm
+Exec=xrayswarm -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Billard-GL
+GenericName=
+Comment=Play Billard Game
+Exec=billard-gl
+Categories=Game;
+
+[Desktop Entry]
+Type=Application
+Name=Blaster
+Comment=Draws a simulation of flying space-combat robots (cleverly disguised as colored circles) doing battle in front of a moving star field. Written by Jonathan Lin.
+TryExec=blaster
+Exec=blaster -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Juggle
+Comment=Draws a juggling stick-man. Written by Tim Auckland.
+TryExec=juggle
+Exec=juggle -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Planet Penguin Racer
+GenericName=Arcade Game
+Comment=Race a penguin down a mountain
+Exec=ppracer
+Categories=Game;ArcadeGame;
+Icon=/usr/share/pixmaps/ppracer-128x128.png
+
+[Desktop Entry]
+Type=Application
+Name=RotZoomer
+Comment=Creates a collage of rotated and scaled portions of the screen. Written by Claudio Matsuoka.
+TryExec=rotzoomer
+Exec=rotzoomer -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Superquadrics
+Comment=Ed Mackey reports that he wrote the first version of this program in BASIC on a Commodore 64 in 1987, as a 320x200 black and white wireframe. Now it is GL and has specular reflections.
+TryExec=superquadrics
+Exec=superquadrics -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=TuxMath
+Comment=Math Training Game
+Exec=tuxmath
+Categories=Application;Game;
+Icon=/usr/share/tuxmath/images/icon.png
+
+[Desktop Entry]
+Type=Application
+Name=Waterfall
+Comment=View all characters of a font in all sizes.
+TryExec=waterfall
+Exec=waterfall
+Categories=Utility;
+
+[Desktop Entry]
+Type=Application
+Name=Xfce 4 Keyboard Settings
+GenericName=Keyboard Settings
+Comment=Keyboard Settings
+Exec=xfce-setting-show keyboard
+Categories=X-XFCE;Settings;DesktopSettings;
+OnlyShowIn=XFCE
+Icon=/usr/share/icons/hicolor/48x48/apps/xfce4-keyboard.png
+StartupNotify=1
+

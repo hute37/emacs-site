@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [ "$1" == "-x" ]; then
+	shift
+#	xfce4-terminal -t syslog --disable-server --hide-borders --hide-menubar --hide-toolbars --geometry=110x40+5-50 -x $0 $* &
+
+Eterm  --title syslog -O -x --scrollbar=0 --buttonbar=0 $* --font fixed --geometry 185x25+5-80 --exec $0 $* &
+
+else	
+	if [ -f /tmp/.xsession-errors ] ; then
+		rm /tmp/.xsession-errors
+	fi
+	ln -s ~/.xsession-errors /tmp/.xsession-errors
+
+	if [ -f ~/.showlogs.screen ] ; then
+		sudo screen -c ~/.showlogs.screen
+	else
+		sudo screen -c /etc/console-log.screen
+	fi
+fi
+
+
+
+
+

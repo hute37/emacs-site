@@ -1,0 +1,79 @@
+# Defaults could be overriden by anything in look or feel file, 
+# which in turn could get overriden by anything in this file outside Defaults section.
+# This is for beterr themability. Theme should consist of look and feel file, 
+# which, by overriding this defaults will theme the module, But if there is anything 
+# that you might not want to be ever changed by theme - you can pout it outside 
+# the defaults section, and it will override the theme.
+
+
+*WinListDefaults
+	Geometry        +0+0
+	MinSize         10000    #will be truncated to thescreen size
+	MaxRows         1
+	FillRowsFirst
+	UseSkipList
+	
+	# MyStyles to be used - feel free to override :
+	# if none of the above is available then defaults MyStyles are used instead : 
+	# Defaults are :   "unfocused_window_style" "focused_window_style" "sticky_window_style" 
+	#               or "*WinList" 
+	#      last choice "default"
+	#UnfocusedStyle  "WinListUnFocusedBar"
+	#FocusedStyle  	"WinListFocusedBar"
+	#StickyStyle  	"WinListStickyBar"
+
+	# 0 is normal Name, 1 - icon name, 2 - res_class, 3 - res_name, 
+	# 4 - name used for matching in AS database
+	# 5 - no name - text labels will be suppressed - must be used with ShowIcons !
+	UseName 0
+
+	Action Click1 Iconify -1,Focus
+	Action Click2 Shade
+	Action Click3 Iconify
+
+	# Balloons
+	Balloons
+	BalloonDelay 500
+	BalloonCloseDelay 4000
+	BalloonYOffset 10
+	BalloonXOffset 10
+	BalloonStyle		"*WinListBalloon"
+	BalloonBorderHilite	Right,Bottom
+
+	# following determines what info to show in balloons : 
+	ShowHints		Name,ResClass,ResName
+	
+	NoCollidesSpacing 3
+
+~Defaults
+
+# use this to disable icons in winlist :
+#*WinListShowIcon 0
+# icon location could be anything from 0 to 9, representing icon's 
+# location in relation to the label. If label is a key '5' on keypad
+# then keys 1 to 9 will represent icon's position, while 0 is the default.
+#*WinListIconLocation 0
+*WinListIconSize   16x16
+# This is another flag for convinience - it is always overriden by IconSize
+# note that its On by default.
+#*WinListScaleIconToTextHeight 
+
+#*WinListMaxSize         400
+#*WinListMaxColumns      3
+
+# Titlebar parameters from the look will be used, or you can override it :
+#*WinListSpacing	 1
+#*WinListBevel           Right,Bottom
+#*WinListAlign           Left,Right,Bottom,Top
+
+
+# the following are options to get WinList to automatically resize itself, 
+# so that it does not collide with any window that matches 
+# pattern in NoCollides setting. AllowCollides - ovrerwrites the NoCollides, 
+# and NoCollidesSpacing sets the spacing between NoCollides window and WinList.
+# By default WinList will avoid collision with Pager and Wharf
+#*WinListNoCollides "Nedit*"
+#*WinListAllowCollides "Pager*"
+#*WinListNoCollidesSpacing 5
+
+

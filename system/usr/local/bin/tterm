@@ -1,0 +1,17 @@
+#!/bin/bash
+
+	 	eterm \
+		--font "-artwiz-smoothansi-medium-r-*-*-*-*-*-*-*-*-*-*" \
+		--geometry 170x60+5+100 \
+		-e bash --rcfile /usr/local/bin/nopromptrc & 
+
+
+
+#jterm
+
+
+
+
+
+
+

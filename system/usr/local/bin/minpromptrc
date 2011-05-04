@@ -1,0 +1,9 @@
+. ~/.bashrc
+    if [ "`id -u`" -eq 0 ]; then
+      PS1='# '
+    else
+      PS1='$ '
+    fi
+export PS1
+
+

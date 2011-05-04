@@ -1,0 +1,162 @@
+/* 
+   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+   This stylesheet is made for Sage 1.2+ (http://sage.mozdev.org).
+	
+	Aim: functionality and easy to read
+	
+	Author by Ben Branders {ben dot branders at gmail dot com}
+	Date: 2004-09-21
+	
+	Feel free to modify and distribute this stylesheet. 
+   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+*/
+   
+
+html {
+	background-color: #F0F8FF;
+	font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif;
+}
+				
+/* Standard settings: color, font, line-height etc */				
+body {
+	width: 40em;
+	margin: 1em auto;
+	background-color: #fff;
+	border: 2px solid #999;	
+	padding-top: 8em;
+}
+
+html:after {											/* Feel free to change/delete this */
+	content: "Design by Ben Branders";
+	margin-left: 40%;
+	font-size: 0.6em;
+	color: #999;
+	padding: 0.2em;
+}
+
+/* Paragraph tag */
+p {
+	margin: 0px 0px 10px 0px;
+}
+
+/* Links (if already visited, link is displayed darkred) */
+a:link				{ text-decoration: none; color: #00f; }
+a:visited			{ text-decoration: none; color: Red; }
+a:visited:hover 	{ color: #A52A2A; border-bottom: 1px solid darkred; padding-bottom: 1px; }
+a:hover				{ text-decoration: none; border-bottom: 1px solid blue; padding-bottom: 1px; }
+a:active				{ color: #f00; }
+
+
+/* The feed header */
+#rss-header {										
+	position: fixed;   /* change to 'relative' to make it scroll */
+	width: 38em;
+	color: #666;
+	background-color: #eee;
+	padding: 1em;
+	margin: -8.15em 0 1em 0;
+	border-bottom: 2px solid #999;
+	border-top: 2px solid #999;
+	-moz-opacity: 0.9;
+}
+
+#rss-header:hover {
+	background-color: #99CCFF;
+}
+
+#rss-header a {
+	color: #00f;
+	-moz-opacity: 0.8;
+}
+
+#rss-title {
+  font-size: 1.3em;
+  margin: -0.2em 0 0.3em 0;
+  -moz-opacity: 0.8;
+}
+
+#rss-desc {
+  font-size: 11px;
+  margin: 0px 0px 0px 0px;
+  -moz-opacity: 0.8;
+}
+
+/* Item title (+ ordinal number) */
+h2.item-title {
+   font-size: 1.1em;
+	font-weight: bold;
+	margin: -0.2em -0.2em 0.5em -0.2em;
+	padding: 0.2em 0.2em 0.2em 0.2em;
+	border-bottom: 2px solid #99CCFF;
+}
+
+h2.item-title a {
+  font-weight: bold;
+	border: none;
+	text-decoration: none;
+}
+
+h2.item-title a:hover {
+	border: none;
+	text-decoration: none;
+}
+
+h2.item-title:hover {
+	background-color: #99CCFF;
+}
+
+/* Ordinal number for each item */
+span.item-ordinal {
+	display: none;		/* Change to 'none' if you don't need this */
+	float: left;
+	color: #ccc;
+	font-size: 1.3em;
+}
+
+/* The item div (title + description) */
+div.item {
+	margin: 0em 0em 4em 0em;
+	padding: 0em 1em 0em 1em;
+}
+
+/* The item text */
+div.item-desc {
+   font-size: 0.8em;
+	line-height: 1.4em;
+	color: #222;
+	margin: 0;
+	padding: 0 0 0.35em 0;
+	border-bottom: 1px solid #ccc;
+}
+
+/* Display the Technorati link */
+div.item-technorati {
+	display: none;		/* Change to 'none' if you don't need this */
+	margin: 0;
+	float: right;
+	margin-top: 0.5em;
+}
+
+div.item-technorati a:hover {
+	text-decoration: none;
+	border: none;
+}
+
+/* Display the date of the article (+hover) */
+div.item-pubDate {
+   font-size: 0.8em;
+	display: block;		/* Change to 'none' if you don't need this */
+	color: #999;
+	float: right;
+	margin: 0.3em -0.2em 0em -0.2em;
+	padding: 0.2em 0.2em;
+}
+
+/* Inline HTML tags */
+blockquote {
+	margin: 0.2em 1em;
+	border-left: 0.6em solid #99CCFF;
+	background-color: #F0F8FF; 
+	padding: 0 1em;
+	font-size: 0.85em;
+}

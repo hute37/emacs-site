@@ -1,0 +1,154 @@
+/* 
+   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+   This stylesheet is made for Sage 1.2 (http://sage.mozdev.org).
+	
+	Aim: a simple stylesheet with maximum functionality.
+	
+	Original author: unknown
+	Adapted by Ben Branders {ben dot branders at gmail dot com}
+	Date: 2004-08-16
+	
+	Feel free to modify and distribute this stylesheet. 
+   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+*/
+   
+
+html {
+	background-color: #fff;
+}
+				
+/* Standard settings: color, font, line-height etc */				
+body {
+	font-family: verdana;
+	margin: 5em 1em 1em 1em;
+	color: #fff;
+	line-height: 1.1em;
+}
+
+/* Paragraph tag */
+p {
+	margin: 0px 0px 10px 0px;
+}
+
+/* Links (if already visited, link is displayed darkred) */
+a:link				{ text-decoration: none; color: #00f; }
+a:visited			{ text-decoration: none; color: #039; }
+a:visited:hover 	{ color: #039; border-bottom: 1px solid darkred; padding-bottom: 1px; }
+a:hover				{ text-decoration: none; border-bottom: 1px solid blue; padding-bottom: 1px; }
+a:active				{ color: #f00; }
+
+/* The feed header */
+#rss-header {										
+	position: fixed;   /* change to 'relative' to make it scroll */
+	right: 1em;
+	color: #666;
+	background-color: #eee;
+	padding: 10px;
+	margin: -5em -1em -1em -1em;
+	border-left: 1px dashed #999;
+	border-bottom: 1px dashed #999;
+}
+
+#rss-header:hover {
+	background-color: #fafafa;
+}
+
+#rss-header a {
+	color: #00f;
+}
+#rss-header a:after {
+	font-size: 10px;
+	font-weight: normal;
+	color: #03c;
+	content: " <-> " attr(href);
+}
+
+#rss-title {
+  font-size: 15px;
+  margin: 0;
+}
+
+#rss-desc {
+  font-size: 11px;
+  margin: 0px 0px 0px 0px;
+}
+
+/* Item title (+ ordinal number) */
+h2.item-title {
+  font-size: 13px;
+	margin: -5px -5px 0px -5px;
+	padding: 5px;
+}
+
+div.item:hover h2.item-title {
+	background-color: #eee;
+	margin: -5px -5px 0px -5px;
+	padding: 5px;
+}
+
+/* Ordinal number for each item */
+span.item-ordinal {
+	display: block;		/* Change to 'none' if you don't need this */
+	float: right;
+	color: #ccc;
+	font-size: 1.3em;
+}
+
+/* The item div (title + description) */
+div.item {
+	margin: 0px 0px 1.5em 0px;
+	padding: 10px;
+	padding-bottom: 1.5em;
+	border: 1px dashed #ddd;
+}
+
+/* The item text */
+div.item-desc {
+	font-size: 11px;
+	color: #222;
+	margin: 0;
+	padding: 0;
+}
+
+/* Change of colors if you hover over the item */
+div.item:hover {			
+	background-color: #fafafa;
+   margin-bottom: 1.5em;
+	padding-bottom: 1.5em;
+	border-top: 1px dotted #ccc;
+	border-bottom: 1px dotted #aaa;
+	border-left: 1px dotted #ccc;
+	border-right: 1px dotted #aaa;
+}
+
+/* Display the Technorati link */
+div.item-technorati {
+	display: block;		/* Change to 'none' if you don't need this */
+	float: right;
+}
+
+/* Display the date of the article (+hover) */
+div.item-pubDate {
+   font-size: 0.7em;
+	display: block;		/* Change to 'none' if you don't need this */
+	float: left;
+	color: #DCDCDC;
+	margin-top: 0.2em;
+}
+
+/* Display brackets before and after the pubDate */
+div.item-pubDate:before {
+	content: "[ ";
+	color: #bbb;
+}
+
+div.item-pubDate:after {
+	content: " ]";
+	color: #bbb;
+}
+
+/* Highlight the pubDate if :hover over item */
+div.item:hover div.item-pubDate {
+   font-weight: normal;
+	color: #555;
+}

@@ -1,0 +1,76 @@
+#!/bin/bash
+
+export PS=0
+
+GM="--geometry 85x28+20+50 "
+FN=" "
+
+XT_ETERM="Eterm  -O -x --scrollbar=0 --buttonbar=0"
+XT_ATERM="aterm -tr -trsb +sb"
+XT_XFCE="xfce4-terminal --hide-menubar --hide-borders --hide-toolbars "
+
+
+rnd=$(($RANDOM % 3))
+
+case "$rnd" in
+	 -2) XT="$XT_ETERM" ;;
+	 -1) XT="$XT_ATERM" ;;
+	 *) XT="$XT_XFCE" ;;
+esac
+
+unset ARGS
+
+until [ -z "$1" ] ; do
+
+case "$1" in
+	-0|--no-prompt)
+		export PS=0 
+	;;
+	-1|--tiny-prompt)
+		export PS=1 
+	;;
+	-9|--normal-prompt)
+		export PS=9 
+	;;
+	-z|--fullscreen)
+		XT="$XT_XFCE"
+		OP='--fullscreen'
+	;;
+	-s)
+		XT="$XT_ETERM"
+		GM="--geometry 170x30+5+100"
+		FN="--font -artwiz-smoothansi-medium-r-*-*-*-*-*-*-*-*-*-*"
+	;;
+	-c)
+		XT="$XT_ETERM"
+		GM="--geometry 125x6-100-100"
+		FN="--font -artwiz-smoothansi-medium-r-*-*-*-*-*-*-*-*-*-*"
+	;;
+	-l)
+		XT="$XT_ETERM"
+		GM="--geometry 170x60+5+100"
+		FN="--font -artwiz-smoothansi-medium-r-*-*-*-*-*-*-*-*-*-*"
+	;;
+	-f|-fn|--font)
+		XT="$XT_ETERM"
+		FN="--font $2"
+		shift
+	;;
+	*) 
+		ARGS="$ARGS $1"
+	;;	
+esac
+
+shift
+
+done
+
+if [ ! -z "$ARGS" ] ; then
+	CM="-e $ARGS"
+fi
+
+#set -x
+$XT $OP $FN $GM $CM  &
+
+
+

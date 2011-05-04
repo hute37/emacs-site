@@ -1,0 +1,92 @@
+html * {
+
+	/* -moz-box-sizing: border-box; */
+}
+
+html {
+	background-color: #FFCC01;
+}
+				
+body {
+	margin: 0 5%;
+	color: #000000;
+	font: 110%/120% Verdana, Arial, sans-serif;
+}
+
+a:link		{ text-decoration: none;  color: #999; }
+a:visited	{ text-decoration: none;  color: #FFCC01; }
+a:hover		{ text-decoration: none;  color: #FFCC01; }
+a:active	{ text-decoration: none;  color: #FFCC01; }
+
+img { height: auto; }
+
+p.item-desc a:link { color: #ffffff; }
+
+#rss-header {
+	margin: 1%; padding: 2%;
+	background-color: #FFCC01;
+	color: #ffffff;
+	-moz-border-radius: 0.3em;
+}
+#rss-header a {
+	color: #ffffff;
+}
+
+#rss-title {
+	font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
+	font-size: 150%;
+	margin: 0; padding: 2% 0 1%;
+}
+
+#rss-desc {
+	font-size: 76%; color:#FFFFFF; text-decoration: underline;
+	margin: 0; padding: 1%;
+}
+
+div.item {
+	margin: 1%; padding: 1%;
+	background: #fff;
+	float:left; width: 96%;
+	-moz-border-radius: 0.3em;
+}
+
+h2.item-title {
+	font: 120% Halvetica, Arial, sans-serif; font-weight: normal;
+	margin: 0; padding: 1%;
+	clear: both; color: #999;
+	border-bottom: 1px dotted #ccc;
+}
+
+span.item-ordinal {}
+
+div.item-desc {
+	font-size: 70%;
+	margin: 0; padding: 1%;
+}
+
+div.item-desc a { text-decoration: underline; }
+div.item-desc a:hover { text-decoration: none; }
+
+div.item-pubDate {
+	font-size: x-small;
+	color: #999;
+	padding: 1%;
+	float: left; clear:left;
+}
+
+div.item-technorati {
+	float: right; clear: right;
+}
+
+div.item-desc img {
+	height: auto;
+	float: left; margin-right: 0.6em;
+	padding: 1px;
+	border: none;
+}
+div.item-desc a img  {
+	border: none;
+}
+div.item-desc a:hover img {
+	border: none;
+}

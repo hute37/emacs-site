@@ -1,0 +1,36 @@
+#Must set [KDE]:colorScheme=~/.afterstep/non_configurable/kcsrc
+# in ~/.kde/share/config/kdeglobals file ( or $KDEHOME/share/config/kdeglobals for that matter
+
+[Color Scheme]
+Name=AfterStep
+activeBackground="Active"  	
+activeBlend="ActiveDark" 	
+activeForeground="ActiveText"
+activeTitleBtnBg="Active"
+
+alternateBackground="BaseLight"
+background="Inactive1"
+buttonBackground="Inactive1"
+buttonForeground="InactiveText1"
+
+contrast=7
+
+foreground="InactiveText1"
+frame="ActiveDark"
+handle="ActiveLight"
+
+inactiveBackground="Inactive2"
+inactiveBlend="Inactive2Light"
+inactiveForeground="InactiveText2"
+inactiveFrame="Inactive2Dark"
+inactiveHandle="Inactive2Light"
+inactiveTitleBtnBg="Inactive2"
+
+linkColor="HighInactiveText"
+visitedLinkColor="InactiveText2"
+
+selectBackground="HighActiveBack"
+selectForeground="HighActiveText"
+
+windowBackground="HighInactive"
+windowForeground="HighInactiveText"

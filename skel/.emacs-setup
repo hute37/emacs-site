@@ -1,0 +1,17 @@
+##
+# emacs site setup
+#
+
+
+mkdir -p /usr/local/share/emacs/emacs-site
+
+cd /usr/local/share/emacs/emacs-site
+
+git clone git@github.com:hute37/emacs-site.git
+
+git remote add upstream git@github.com:hute37/emacs-site.git
+git fetch upstream
+
+
+
+ln -s /usr/local/share/emacs/emacs-site/site-start.el ~/.emacs-site.el

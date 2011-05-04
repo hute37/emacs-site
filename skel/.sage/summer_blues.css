@@ -1,0 +1,155 @@
+/*
+	Summer blues -- an RRP stylesheet
+	by Ben Branders aka ByteWarrior
+	http://bytewarrior.madoka.be
+*/
+
+a:link {
+	color: #CC3333;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #FF9900;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:active	{
+	text-decoration: none;
+}
+
+acronym, abbr {
+	border-bottom: 1px dotted #CC3333;
+	cursor: help;
+}
+
+body {
+	color: #222222;
+	font: 0.9em Verdana, Geneva, Arial, Helvetica, sans-serif;
+	margin: 20px;
+}
+
+div.item-desc {
+	border: 1px solid #FF9900;
+	font-size: 0.85em;
+	line-height: 1.3;
+	margin: 15px 10px 30px 10px;
+	padding: 10px;
+	padding-top: 30px;
+   float: none;
+}
+
+div.item-desc:hover {
+	border: 1px solid #CC3333;
+	font-size: 0.85em;
+	line-height: 1.3;
+	margin: 15px 10px 30px 10px;
+	padding: 10px;
+	padding-top: 30px;
+   float: none;
+}
+
+div.item-desc b {
+	color: #CC3333;
+}
+
+div.item-desc strong {
+	color: #CC3333;
+}
+
+div.item-desc img {
+    display: inline;
+	 float: none;
+	 clear: both;
+}
+
+h2.item-title {
+	background-color: #FFCC00;
+	border: 1px solid #FF9900;
+	color: #CCCCCC;
+	float: left;
+	clear: both;
+	font-size: 1em;
+	margin: -14px 1em 1em 20px;
+	padding: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	position: static;
+	text-align: left;
+	-moz-border-radius: 20px;
+}
+
+h2.item-title:hover {
+	background-color: #FFCC00;
+	border: 2px solid #CC3333;
+	color: #CCCCCC;
+	float: left;
+	clear: both;
+	font-size: 1em;
+	margin: -14px 1em 1em 20px;
+	padding: 4px;
+	padding-left: 14px;
+	padding-right: 14px;
+	position: static;
+	text-align: left;
+	-moz-border-radius: 20px;
+}
+
+h2.item-title a:hover {
+	text-decoration: none;
+}
+
+html {
+	background-color: #FFFFFF;
+}
+
+span.item-ordinal {
+	display: none;
+}
+
+#rss-desc{
+	color: #CC3333;
+	float: none;
+	font-size: 0.85em;
+	line-height: 1.3;
+	margin: 10px 20px 5px 20px;
+}
+
+#rss-header {
+	background: #FF9900;
+	border: 3px solid #FFCC00;
+	margin-bottom: 30px;
+	padding: 10px;
+}
+
+#rss-header a:link {
+	color: #CC3333;
+	text-decoration: none;
+}
+
+#rss-header a:visited {
+	color: #CC3333;
+	text-decoration: none;
+}
+
+#rss-title {
+	font-size: 1.3em;
+	margin: 0px;
+}
+
+div.item-pubDate {
+	display: none;
+}
+
+div.item-technorati {
+	display: none;
+}
+
+div.item-ordinal {
+	display: none;
+}
+

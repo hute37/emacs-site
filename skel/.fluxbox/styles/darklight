@@ -1,0 +1,87 @@
+! darklight theme by jufo 
+! juhok@nic.fi
+
+toolbar:			raised solid gradient
+toolbar.color:			rgb:20/20/20
+toolbar.colorTo:		rgb:15/15/15
+
+toolbar.button:			parentrelative
+toolbar.button.picColor:	rgb:80/88/90
+toolbar.button.pressed:		sunken gradient diagonal 
+toolbar.button.pressed.color:   rgb:40/40/40
+toolbar.button.pressed.colorTo: rgb:10/10/10
+
+toolbar.clock:			parentrelative
+toolbar.clock.textColor:	rgb:80/88/90
+toolbar.label:			parentrelative
+toolbar.label.textColor:	rgb:80/88/90
+toolbar.windowLabel:		parentrelative
+toolbar.windowLabel.textColor:	rgb:80/88/90
+
+menu.title:			raised solid gradient
+menu.title.color:		rgb:23/23/23
+menu.title.colorTo:		rgb:10/10/10
+menu.title.textColor:		rgb:b0/b8/c0
+menu.*.justify:			center	
+
+menu.frame:			raised Diagonal gradient 
+menu.frame.color:		rgb:21/21/21
+menu.frame.colorTo:		rgb:10/10/10
+menu.frame.textColor:		rgb:80/88/90
+
+menu.hilite:			parentrelative
+menu.hilite.textColor:		rgb:b0/b8/c0
+
+menu.bullet:			triangle
+menu.bullet.position:		right
+
+
+window.title.focus:		Raised solid gradient  
+window.title.focus.color:	rgb:20/20/20
+window.title.focus.colorTo:	rgb:15/15/15
+window.title.unfocus:		raised solid gradient 
+window.title.unfocus.color:	rgb:15/15/15
+window.title.unfocus.colorTo:	rgb:10/10/10
+
+window.label.focus:		parentrelative
+window.label.focus.textColor:	rgb:b0/b8/c0
+window.label.unfocus:		parentrelative
+window.label.unfocus.textColor:	rgb:40/44/48
+
+window.button.focus:		parentrelative 
+window.button.focus.picColor:	rgb:80/88/90
+window.button.unfocus:		parentrelative
+window.button.unfocus.picColor: rgb:38/3c/40
+window.button.pressed:		sunken solid
+window.button.pressed.color:	rgb:10/10/10
+
+window.frame.focus:		sunken solid
+window.frame.focus.color:	rgb:20/24/28
+window.frame.unfocus:		sunken solid
+window.frame.unfocus.color:	rgb:20/24/28
+
+window.handle.focus:		raised gradient solid
+window.handle.focus.color:	rgb:23/23/23
+window.handle.focus.colorTo:	rgb:15/15/15
+window.handle.unfocus:		raised gradient solid
+window.handle.unfocus.color:	rgb:21/21/21
+window.handle.unfocus.colorTo:	rgb:10/10/10
+
+window.grip.focus:		raised gradient solid
+window.grip.focus.color:	rgb:29/29/29
+window.grip.focus.colorTo:	rgb:15/15/15
+window.grip.unfocus:		raised gradient solid
+window.grip.unfocus.color:	rgb:22/22/22
+window.grip.unfocus.colorTo:	rgb:10/10/10
+
+borderColor:			rgb:20/20/20
+
+bevelWidth:			1
+borderWidth:			1
+handleWidth:			2
+frameWidth:     		0
+*justify:	right
+
+*font:	 	snap
+
+rootCommand:	Esetroot -f ~/.fluxbox/backgrounds/darklight.jpg

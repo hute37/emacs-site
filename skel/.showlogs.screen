@@ -1,0 +1,13 @@
+multiuser on
+screen -t xsession.0	1 /usr/share/console-log/logpager less /tmp/.xsession-errors	7000000
+screen -t fluxbox	2 /usr/share/console-log/logpager less /home/zanna/.fluxbox/session.log 7000000
+screen -t Xorg.0	3 /usr/share/console-log/logpager less /var/log/Xorg.0.log	7000000
+screen -t gdm:0	4 /usr/share/console-log/logpager less /var/log/gdm/:0.log	7000000
+screen -t auth	5 /usr/share/console-log/logpager less /var/log/auth.log		7000000
+screen -t user	6 /usr/share/console-log/logpager less /var/log/user.log		7000000
+screen -t daemon	7 /usr/share/console-log/logpager less /var/log/daemon.log	7000000
+screen -t dmesg	8 /usr/share/console-log/logpager less /var/log/dmesg		7000000
+screen -t kern	9 /usr/share/console-log/logpager less /var/log/kern.log		7000000
+screen -t syslog	10 /usr/share/console-log/logpager less /var/log/syslog		7000000
+
+select 1

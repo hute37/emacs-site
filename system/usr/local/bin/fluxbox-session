@@ -1,0 +1,92 @@
+#!/bin/bash
+
+
+XCOMPOSITE="0"
+RUNCLIENTS=""
+ARGS=""
+
+while [ ! -z "$1" ]
+do
+	case "$1" in
+		-x)
+		shift
+		case "$1" in
+			*)
+			RUNCLIENTS="$RUNCLIENTS $1"
+			;;
+		esac	
+		;;
+		-nc|--no-xcomposite)
+		XCOMPOSITE="0"
+		;;
+		*)
+		-c|--with-xcomposite)
+		XCOMPOSITE="1"
+		;;
+		*)
+		ARGS="$ARGS $1"
+		;;
+	esac
+	shift
+
+done
+
+if [ -z "$URL" ] && [ -z "$ARGS" ]; then
+	URL="$HOME/Desktop"
+fi
+
+
+
+set -x
+
+gnome-keyring-daemon &
+
+gnome-settings-daemon &
+
+
+
+
+# turn off screen blanking and turn on energy star features
+xset s off
+xset dpms 600 60 60
+
+# add my optional fonts to the font path
+#xset +fp "$X_FONTPATH"
+#xset fp rehash
+
+# export the current environment, in case it needs to be debugged
+env > ~/.xenv
+
+rsetroot &
+
+if [ "$XCOMPOSITE" = "1" ]; then
+	xshadow &
+fi
+
+kdeinit &
+
+if [ -f ~/.Xmodmap ] ; then
+	xmodmap ~/.Xmodmap
+fi	
+xbindkeys &
+
+# window manager
+fluxbox -log ~/.fluxbox/session.log & wmpid=$!
+
+
+fbpager &
+
+gkrellm &
+showlogs -x &
+hterm -s &
+
+#bbrun &
+#wmCalClock &
+#wmxmms &
+
+
+# HANG POINT - wait for window manager to exit
+wait $wmpid
+
+# restore the x fontpath
+#xset fp default

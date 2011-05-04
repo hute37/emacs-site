@@ -1,0 +1,25 @@
+#!/bin/sh
+#
+# emacsen remove script for the Debian GNU/Linux octave package
+#
+# Written by Dirk Eddelbuettel <edd@debian.org>   
+
+set -e 
+
+# Canadian spelling ;-)
+flavour=$1
+
+package=octave2.9-emacsen
+source=/usr/share/emacs/site-lisp/${package}
+destination=/usr/share/${flavour}/site-lisp/${package}
+
+if test ${flavour} != emacs 
+then
+    echo remove/${package}: Purging byte-compiled files for flavour ${flavour}
+    rm -f ${destination}/*.elc ${destination}/install.log
+    rmdir ${destination} || true
+else
+    echo remove/${package}: Ignoring emacsen flavour ${flavour}
+fi
+
+exit 0;

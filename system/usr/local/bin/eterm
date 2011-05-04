@@ -1,0 +1,5 @@
+#!/bin/bash
+
+Eterm  -O -x --scrollbar=0 --buttonbar=0 $* &
+
+

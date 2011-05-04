@@ -1,0 +1,61 @@
+# 04/24/2003 updated by Sasha Vasko <sasha@aftercode.net>
+# 02/17/1998 (GPLed) by Guylhem Aznar <guylhem@oeil.qc.ca>
+
+              ###########################################
+              # AfterStep 2.0     Default Configuration #
+              ###########################################
+
+##########################################################################
+# Directories
+#
+ModulePath		/usr/bin
+IconPath		/X11/bitmaps/
+FontPath                $HOME/.afterstep/desktop/fonts/:/usr/share/afterstep/desktop/fonts/:/usr/share/fonts/default/TrueType/:/usr/share/fonts/truetype/freefont/:/X11/fonts/TTF
+PixmapPath		$HOME/.afterstep/desktop/icons/:/usr/share/afterstep/desktop/icons/:$HOME/.afterstep/desktop/:/usr/share/afterstep/desktop/:$HOME/.afterstep/desktop/buttons/:/usr/share/afterstep/desktop/buttons/:$HOME/.afterstep/backgrounds/:/usr/share/afterstep/backgrounds/:/X11/pixmaps/
+CursorPath              $HOME/.afterstep/desktop/cursors:/usr/share/afterstep/desktop/cursors
+*ScriptPath		$HOME/.afterstep/scripts/:/usr/share/afterstep/scripts/
+#
+##########################################################################
+
+# This sets the size of the virtual desktop :
+DeskTopSize 2x3
+
+
+# Uncomment this if you run X remotely, or have issues with shared memory :
+#DisableSharedMemory
+
+# Selects terminal emulator to be used by AfterStep with ExecInTerm command:
+TermCommand 0  yterm
+TermCommand 1  gterm
+TermCommand 2  eterm
+#TermCommand 0  aterm
+#TermCommand 1  rxvt
+#TermCommand 2  xterm
+#
+# Selects web browser to be used by AfterStep with ExecBrowser command:
+BrowserCommand 0  firefox
+BrowserCommand 1  firefox32
+BrowserCommand 2  konqueror
+#BrowserCommand 1  mozilla
+#
+# Selects text editor will be used by AfterStep with ExecEditor command:
+EditorCommand 0  emacs
+EditorCommand 1  gedit
+EditorCommand 2  kate
+#EditorCommand 0  nedit
+#EditorCommand 1  xemacs
+
+##########################################################################
+# Pager
+#
+DeskTopScale 32
+#
+##########################################################################
+
+# comment this to enable KDE apps having same color scheme as AfterStep :
+DisableKDEGlobalsTheming
+
+# comment these to enable GTK apps using same color scheme as afterstep : 
+gtkrcPath	~/.gtkrc_afterstep
+gtkrc20Path	~/.gtkrc-2.0_afterstep
+  

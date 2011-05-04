@@ -1,0 +1,50 @@
+#!/bin/bash
+
+#set -x
+
+if [ "$1" == "-ssu" ] ; then
+	_command_="$2"
+	shift; shift
+else
+	if [ "$0" == "/usr/local/bin/sud" ] ; then
+		_command_="call"
+	else	
+		_command_="term"
+	fi
+
+fi
+
+if [ "$1" == "-ssu-display" ] ; then
+	_display_="$2"
+	shift; shift
+fi
+
+case "$_command_" in
+
+	term)
+		gnome-terminal --window-with-profile=sudo -x /usr/local/bin/ssu -ssu call $* &
+		;;
+	sudo)
+		xhost + >/dev/null
+		sudo  su - root $*
+		;;
+	call)
+		if [ -z "$DISPLAY" ]; then
+			sudo su -c "/usr/local/bin/ssu -ssu env" - root $*
+		else
+			xhost + >/dev/null
+			sudo su -c "/usr/local/bin/ssu -ssu env -ssu-display $DISPLAY" - root $*
+		fi
+		;;
+	env)
+		if [ ! -z "$_display_" ]; then
+			export DISPLAY="$_display_"
+		fi
+		bash --login
+		;;
+	*)
+		;;
+esac
+
+	
+

@@ -1,0 +1,5 @@
+#!/bin/bash
+#gnome-terminal --window-with-profile=Command --geometry 125x6+460+845 $* &
+hterm -c
+
+

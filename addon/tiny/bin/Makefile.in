@@ -1,0 +1,47 @@
+# where the url lisp files should go
+prefix  = @prefix@
+
+datadir = @datadir@
+lispdir = @lispdir@
+srcdir  = @srcdir@
+infodir = @infodir@
+
+EMACS	= @EMACS@
+XEMACS	= xemacs
+INSTALL = @INSTALL@
+RM      = rm -f
+
+
+SUBDIRS =lisp/tiny lisp/other
+
+
+.PHONY: $(SUBDIRS)
+
+all:
+	cd ../lisp/tiny && $(MAKE) $@
+	cd ../lisp/other && $(MAKE) $@
+
+
+install: all
+	for x in $(SUBDIRS); do ( cd $$x && $(MAKE) $@ ); done
+
+distclean: clean
+	for x in $(SUBDIRS); do ( cd $$x && $(MAKE) $@ ); done
+	$(RM) config.* Makefile
+
+clean:
+	for x in $(SUBDIRS); do ( cd $$x && $(MAKE) $@ ); done
+
+config.status: $(srcdir)/configure
+	$(SHELL) ./config.status --recheck
+
+$(srcdir)/configure: $(srcdir)/configure.in
+	cd $(srcdir) && autoconf
+
+Makefile: $(srcdir)/Makefile.in config.status
+	CONFIG_FILES=$@ CONFIG_HEADERS= $(SHELL) ./config.status
+
+
+# Tell versions [3.59,3.63) of GNU make to not export all variables.
+# Otherwise a system limit (for SysV at least) may be exceeded.
+.NOEXPORT:

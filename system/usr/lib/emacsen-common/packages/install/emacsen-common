@@ -1,0 +1,46 @@
+#!/bin/sh
+
+set -e
+
+FLAVOR=$1
+byte_compile_options="-batch -f batch-byte-compile"
+
+echo emacsen-common: Handling install of emacsen flavor ${FLAVOR}
+
+if [ ${FLAVOR} != emacs ]
+then
+  echo emacsen-common: byte-compiling for ${FLAVOR}
+
+  # If we had .el files that needed byte compiling in the package dir,
+  # this is how we'd handle it.
+
+  #cp /usr/share/emacs/site-lisp/emacsen-common/*.el \
+  #   /usr/share/${FLAVOR}/site-lisp/emacsen-common
+  #${FLAVOR} ${byte_compile_options} \
+  #  /usr/share/${FLAVOR}/site-lisp/emacsen-common/*.el
+  #rm /usr/share/${FLAVOR}/site-lisp/emacsen-common/*.el
+
+  # Normal add-on packages should usually *not* scatter their files
+  # directly in site-lisp, but should use a package subdir.  This
+  # package/file is an exception.
+
+  # Remove potentially stale versions.
+  rm -f /etc/${FLAVOR}/site-start.d/00debian-vars.elc \
+        /usr/share/${FLAVOR}/site-lisp/debian-startup.elc
+
+  # Make temporary copies of the .el files
+  cp /etc/emacs/site-start.d/00debian-vars.el /etc/${FLAVOR}/site-start.d
+  cp /usr/share/emacs/site-lisp/debian-startup.el \
+     /usr/share/${FLAVOR}/site-lisp/debian-startup.el 
+
+  # byte compile everything.
+  ${FLAVOR} ${byte_compile_options} \
+    /etc/${FLAVOR}/site-start.d/00debian-vars.el \
+    /usr/share/${FLAVOR}/site-lisp/debian-startup.el
+
+  # Remove the redundant .el files.
+  rm /etc/${FLAVOR}/site-start.d/00debian-vars.el \
+     /usr/share/${FLAVOR}/site-lisp/debian-startup.el
+fi
+
+exit 0;

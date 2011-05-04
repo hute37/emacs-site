@@ -1,0 +1,71 @@
+#!/usr/bin/perl -w
+use strict;
+
+# Call emacsen-common/packages/install/* install-flavor other-flavor ...
+# for every installed emacs add-on package.
+
+# Let emacs-package-install/remove know what's going on.
+$ENV{'CURRENTLY_HANDLING_EMACSEN'} = "Yes";
+
+my $lib_dir = "/usr/lib/emacsen-common";
+my $var_dir = "/var/lib/emacsen-common";
+my $flavor = $ARGV[0];
+my $action = 'install';
+$action = 'remove' if $0 =~ /remove$/o;
+
+print "emacs-$action $flavor\n";
+
+my $dry_run = 0;
+
+require $lib_dir . "/generate-install-list";
+
+sub execute {
+  my(@cmd) = @_;
+  if($dry_run) {
+    print join(" ", @cmd) . "\n";
+  } else {
+    if(system(@cmd) != 0) {
+      die "emacs-$action: " . join(" ", @cmd) . " failed";
+    }
+  }
+}
+
+open FLAVORS, "<${var_dir}/installed-flavors" or
+  die "emacs-$action: Couldn't open ${var_dir}/installed-flavors for read.";
+my @installed_flavors = <FLAVORS>;
+close FLAVORS;
+chomp @installed_flavors;
+
+my $all_pkgs = installed_add_on_packages_list();
+my @ordered_pkg_list = generate_add_on_install_list($all_pkgs);
+
+# If it's a removal, dependency order must be reversed.
+if($action eq 'remove') {
+  @ordered_pkg_list = reverse @ordered_pkg_list;
+}
+
+map {
+  my $script = $lib_dir . "/packages/$action/$_";
+  execute($script, $flavor, @installed_flavors) if -e $script;
+} @ordered_pkg_list;
+
+
+if($action eq 'install') {
+  push @installed_flavors, $flavor;
+} else {
+  # remove
+  @installed_flavors = grep { $_ ne $flavor } @installed_flavors;
+}
+  
+# Kill duplicates.
+my %installed_flavors;
+map { $installed_flavors{$_} = 1 } @installed_flavors;
+
+if($dry_run) {
+  print "Installed flavors are now: " . join(" ", @installed_flavors) . "\n";
+} else {
+  open FLAVORS, ">${var_dir}/installed-flavors" or
+    die "emacs-$action: Couldn't open ${var_dir}/installed-flavors for write.";
+  print FLAVORS join("\n", sort(keys(%installed_flavors)));
+  close FLAVORS;
+}

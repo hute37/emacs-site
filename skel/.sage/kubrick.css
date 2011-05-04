@@ -1,0 +1,130 @@
+/*  
+Kubrick Sage
+A Sage style based on the famous Kubrick - http://binarybonsai.com/kubrick.
+Version: 1.0
+Author: Chris Bernardi
+Author URI: http://n.arciss.us/
+Download: 
+
+-- Notes from the Wordpress CSS --
+	Kubrick v1.5
+	 http://binarybonsai.com/kubrick/
+
+	This theme was designed and built by Michael Heilemann,
+	whose blog you will find at http://binarybonsai.com/
+
+	The CSS, XHTML and design is released under GPL:
+	http://www.opensource.org/licenses/gpl-license.php
+	
+
+	*** REGARDING IMAGES ***
+	All CSS that involves the use of images, can be found in the 'index.php' file.
+	This is to ease installation inside subdirectories of a server.
+
+	Have fun, and don't be afraid to contact me if you have questions.
+*/
+html    { background-color: transparent; margin: 0; padding: 0 }
+body      { font-size: 62.5%; font-family: "Lucida Grande", Verdana, Arial, Sans-Serif; background-color: #e6e6e6; margin-right: auto; margin-left: auto; width: 800px }
+#rss-header     { background-color: #fff; background-image: url("kubrickheader.jpg"); background-repeat: no-repeat; background-attachment: scroll; text-align: center; margin-bottom: 0; width: 760px; height: 200px }
+#rss-title   { margin-left: 41px; padding-top: 45px; padding-right: 30px; padding-bottom: 10px; overflow: hidden }
+#rss-link { }
+#rss-desc   { display: none }
+.item    { background-image: url("kubrickbgwide.jpg"); background-repeat: repeat-y; background-attachment: scroll; margin-top: -30px; margin-bottom: 0; width: 760px }
+.item-title    { text-align: left; margin-left: 41px; padding-top: 15px; padding-right: 35px }
+.item-title a:visited { color: #ccc }
+.item-ordinal  { display: none }
+.item-desc  { background-color: transparent; text-align: left; display: block; margin-left: 51px; position: relative; width: 650px }
+.item-desc a:visited { color: #ccc }
+.item-desc img { max-width: 651px; max-height: inherit }
+.item-pubDate   { text-align: right; margin-top: 10px; margin-right: 35px; margin-left: 35px; border-bottom: 1px dotted #9cf }
+.item-technorati  { display: none }
+small {
+	font-family: Arial, Helvetica, Sans-Serif;
+	font-size: 0.9em;
+	line-height: 1.5em;
+	}
+
+h1, h2, h3 {
+	font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+	font-weight: bold;
+	}
+
+h1 {
+	font-size: 4em;
+	text-align: center;
+	}
+h2 {
+	font-size: 1.6em;
+	}
+h3 {
+	font-size: 1.3em;
+	}
+
+h1, h1 a, h1 a:hover, h1 a:visited {
+	text-decoration: none;
+	color: white;
+	}
+
+h2, h2 a, h2 a:visited, h3, h3 a, h3 a:visited {
+	color: #333;
+	}
+
+h2, h2 a, h2 a:hover, h2 a:visited, h3, h3 a, h3 a:hover, h3 a:visited, #sidebar h2, cite {
+	text-decoration: none;
+	}
+small, blockquote, strike {
+	color: #777;
+	}
+	
+code {
+	font: 1.1em 'Courier New', Courier, Fixed;
+	}
+
+acronym, abbr, span.caps
+ { font-size: 0.9em; letter-spacing: 0.07em; cursor: help }
+
+a, h2 a:hover, h3 a:hover {
+	color: #06c;
+	text-decoration: none;
+	}
+
+a:hover {
+	color: #147;
+	text-decoration: underline;
+	}
+h1 {
+	padding-top: 70px;
+	margin: 0;
+	}
+h2 {
+	margin: 30px 0 0;
+	}
+h3 {
+	padding: 0;
+	margin: 30px 0 0;
+	}
+p img {
+	padding: 0;
+	max-width: 100%;
+	}
+acronym, abbr {
+	border-bottom: 1px dashed #999;
+	}
+
+blockquote {
+	margin: 15px 30px 0 10px;
+	padding-left: 20px;
+	border-left: 5px solid #ddd;
+	}
+
+blockquote cite {
+	margin: 5px 0 0;
+	display: block;
+	}
+hr {
+	display: none;
+	}
+
+a img {
+	border: none;
+	}

@@ -1,0 +1,907 @@
+<HTML>
+<!--
+
+    $Id: sf-index.html,v 1.1 2005-12-04 20:58:46 hute37 Exp $
+
+    WWW page Copyrighted (C) 2000-2001 by <jari.aalto@poboxes.com>
+
+    This page is free software; you can redistribute it and/or
+    modify it under terms of Gnu General Public Licence v2 or later
+    according to http://www.gnu.org/copyleft/gpl.html
+
+    This is the sourceforge home page at http://tiny-tools.sourceforge.net/
+
+    Developers: Copy this page to sourceforge with command:
+
+    scp sf-index.html jaalto@shell.sourceforge.net:/home/groups/t/ti/tiny-tools/htdocs/index.html
+
+    scp mywebget-emacs.conf jaalto@shell.sourceforge.net:/home/groups/t/ti/tiny-tools/htdocs/
+
+
+    scp emacs-*.html jaalto@shell.sourceforge.net:/home/groups/t/ti/tiny-tools/htdocs/
+
+
+    perl makefile.pl --html-regexp tinypath html
+    scp ../doc/emacs-tinypath.html jaalto@shell.sourceforge.net:/home/groups/t/ti/tiny-tools/htdocs/
+
+
+    scp mywebget.pl jaalto@shell.sourceforge.net:/home/groups/tiny-tools/htdocs/
+
+    #kernelnewbies on irc.debian.org
+
+-->
+
+
+<HEAD>
+
+
+    <TITLE>
+	Emacs Tiny Tools Project homepage
+    </TITLE>
+
+
+    <!---   ................................................................
+	    META TAGS (FOR SEARCH ENGINES)
+	    ................................................................
+    --->
+
+
+
+  <META HTTP-EQUIV="keywords"
+	CONTENT="Emacs, Lisp, Perl, Keybinding, Distribution, programming">
+
+  <META HTTP-EQUIV="description"
+	CONTENT="Emacs Tiny Tools Project. Emacs is powerful programming environment for which there are many plug-in tools available. This Tools collection includes support for all Emacs platforms: Win32/Unix/Emacs/XEmacs and contains utilities for automatic mail handling, UBE fighting, Emacs startup configuration, URL handling and much more. Over 50+ utilities to select from.">
+
+  <META HTTP-EQUIV="Made"
+	CONTENT="mailto:jari.aalto@poboxes.com">
+
+
+  <META NAME="Version"
+	CONTENT="$Id: sf-index.html,v 1.1 2005-12-04 20:58:46 hute37 Exp $">
+
+
+    <STYLE TYPE="text/css">
+
+	A
+	{
+	    text-decoration: none;
+	}
+
+
+	ADDRESS
+	{
+	    font-size: 0.8em;
+	}
+
+	SAMP.file
+	{
+	    color: blue;
+	}
+
+	SAMP.code
+	{
+	    color: navy;
+	}
+
+        A:hover
+        {
+	    text-decoration: none;
+            color:           purple;
+	    background:      #AFB;
+        }
+
+	A.main:hover
+        {
+	    text-decoration: none;
+            color:           purple;
+	    background:      #AFB;
+	    font-weight:     bolder;
+        }
+
+    </STYLE>
+
+
+
+    <SCRIPT TYPE="text/javascript">
+
+    //  Javascript code copyrightted 2000-2001 <jari.aalto@poboxes.com>
+    //
+    //	This program is free software; you can redistribute it and/or
+    //	modify it under terms of Gnu General Public Licence v2 or later
+    //  according to http://www.gnu.org/copyleft/gpl.html
+
+
+
+    ///////////////////////////////////////////////////////////////////////
+    // DESCRIPTION
+    //
+    //	    Take UTC time, and do the following: [(Hours + 1 {Make sure
+    //	    that the # is not more than 23} *3600*1000) +
+    //	    (Minutes *60*1000) + (Seconds * 1000)] / 86400
+    //
+    // INPUT PARAMETERS
+    //
+    //	    None
+    //
+    // RETURN VALUES
+    //
+    //	    float
+    ///////////////////////////////////////////////////////////////////////
+
+    function SwatchBeats()
+    {
+	// calculate Middle European Time, i.e. UTC + 1
+
+	var bmt = new Date();
+
+
+	bmt.setTime( bmt.getTime()
+		    + (bmt.getTimezoneOffset() + 60) * 60 * 1000 );
+
+	var beat = ( bmt.getHours() * 3600 + bmt.getMinutes() * 60
+		    + bmt.getSeconds() ) /  86.4;
+
+	return beat;
+    }
+
+
+    ///////////////////////////////////////////////////////////////////////
+    // DESCRIPTION
+    //
+    //	    Convert floating point number to N number of decimels.
+    //
+    // INPUT PARAMETERS
+    //
+    //	    float
+    //
+    // RETURN VALUES
+    //
+    //	    string
+    ///////////////////////////////////////////////////////////////////////
+
+    function CutDecimals(n, count)
+    {
+	var str = n.toString();
+	var pos = str.indexOf(".");
+
+	if ( pos > 0 )
+	{
+	    if ( count < 1 )
+	    {
+		str = str.substr(0, pos -1 )
+	    }
+	    else
+	    {
+		str = str.substr(0, pos + count + 1);
+	    }
+	}
+
+	return str;
+    }
+
+
+    ///////////////////////////////////////////////////////////////////////
+    // DESCRIPTION
+    //
+    //	    Return Swatch Biel Mean Time (BMT), World tme, Internet time
+    //	    with two decimal accuracy. "@NNN.NN"
+    //
+    // INPUT PARAMETERS
+    //
+    //	    none
+    //
+    // RETURN VALUES
+    //
+    //	    string
+    ///////////////////////////////////////////////////////////////////////
+
+    function BMTtime()
+    {
+	// "Biel Mean Time" - Swatch headquarter in Switzerland
+	var beat = SwatchBeats();
+	beat = "@" + CutDecimals( beat, 2);
+	return beat;
+    }
+
+
+    ///////////////////////////////////////////////////////////////////////
+    // DESCRIPTION
+    //
+    //		Display the BMT to the target source
+    //
+    // INPUT PARAMETERS
+    //
+    //		0	Show the BMT time in the status bar
+    //		1	Write the BMT to the current position: SCRIPT  /SCRIPT
+    //
+    // RETURN VALUES
+    //
+    //		string
+    ///////////////////////////////////////////////////////////////////////
+
+    function BMTtimeDisplay(out)
+    {
+	var time = BMTtime();
+
+	if ( out < 1 )
+	{
+	    var str = "Swatch Internet time is now "
+		      + time;
+	    defaultStatus = str;		    // Print to the status bar
+	    setTimeout("BMTtimeDisplay(0)", 5000);  // Repeat ourself
+	}
+	else
+	{
+	    document.write( time );
+	}
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    //
+    //	OTHER SETTINGS
+    //
+    ///////////////////////////////////////////////////////////////////////
+
+    // window.onerror = IgnoreErrors;
+
+    </SCRIPT>
+
+</HEAD>
+
+
+
+<BODY onLoad="BMTtimeDisplay(0);">
+
+<!--  .......................................................................
+
+      PROJECT TITLE
+
+      .......................................................................
+-->
+
+<HR NOSHADE SIZE=1>
+
+        <TABLE BORDER=0
+	       bgcolor="#EEEEF8"
+	       WIDTH=100%
+	       CELLPADDING=2
+	       CELLSPACING=0
+	       >
+
+	    <TR>
+	    <TD ALIGN=center>
+
+		<!--
+		<IMG SRC="images/main.jpg" ALT="">
+		-->
+
+	    </TD>
+	    <TD ALIGN=center>
+
+		    <FONT SIZE="+10">
+			Emacs Tiny Tools Project
+		    </FONT>
+	    </TD>
+	    </TR>
+        </TABLE>
+
+<HR NOSHADE SIZE=1>
+
+<!--  .......................................................................
+
+      START OF BODY TEXT
+
+      .......................................................................
+-->
+
+<H1> Links and download </H1>
+
+<P>
+<FONT COLOR="#228B00"> Snapshot of the latest development kit is
+available here. The most up to date version is in CVS.
+</FONT>
+
+	<A HREF="http://tiny-tools.sourceforge.net/tiny-tools-beta.zip"
+	CLASS="main">
+	http://tiny-tools.sourceforge.net/tiny-tools-beta.zip (v2001.0416)
+	</A>
+
+
+<UL>
+
+    <LI>Tiny Tools <B> release downloads </B> at
+
+	<A HREF="ftp://download.sourceforge.net/pub/sourceforge/tiny-tools/"
+	CLASS="main">
+	ftp://download.sourceforge.net/pub/sourceforge/tiny-tools/
+	</A>
+
+   <LI>Tiny Tools Sourceforge project main <B>WWW homepage</B> is at
+
+	<A HREF="http://tiny-tools.sourceforge.net/"
+	CLASS="main">
+	http://tiny-tools.sourceforge.net/
+	</A>
+
+   <LI>Tiny Tools Sourceforge <B>project page</B> is at
+
+	<A HREF="http://sourceforge.net/projects/tiny-tools"
+	CLASS="main">
+	http://sourceforge.net/projects/tiny-tools
+	</A>
+
+    <LI>Tiny Tools package <B> description </B> page
+
+	<A HREF="http://tiny-tools.sourceforge.net/emacs-tiny-tools.html"
+	CLASS="main">
+	http://tiny-tools.sourceforge.net/emacs-tiny-tools.html
+	</A>
+
+    <LI>Tiny Tools package <B> Install </B> page
+
+	<A HREF="http://tiny-tools.sourceforge.net/README.html"
+	CLASS="main">
+	http://tiny-tools.sourceforge.net/README.html
+	</A>
+
+    <LI>Tiny Tools <B> TinyPath (Emacs auto configuration) </B> page
+
+	<A HREF="http://tiny-tools.sourceforge.net/emacs-tinypath.html"
+	CLASS="main">
+	http://tiny-tools.sourceforge.net/emacs-tinypath.html
+	</A>
+
+
+    <LI>Tiny Tools PGP and Remail interface manual (old, package
+    not currently maintained)
+
+	<A HREF="http://tiny-tools.sourceforge.net/emacs-tinypgp.html"
+	CLASS="main">
+	http://tiny-tools.sourceforge.net/emacs-tinypgp.html
+	</A>
+
+    <LI>  <FONT COLOR=#228B00> <EM> Emacs resource page at </EM> </FONT>
+
+	<A HREF="http://tiny-tools.sourceforge.net/emacs-elisp.html"
+	CLASS="main">
+	http://tiny-tools.sourceforge.net/emacs-elisp.html
+	</A>
+
+    <LI>Emacs key binding help page at
+
+	<A HREF="http://tiny-tools.sourceforge.net/emacs-keys.html"
+	CLASS="main">
+	http://tiny-tools.sourceforge.net/emacs-keys.html
+	</A>
+
+    <LI>Emacs faces notes and tips at
+
+	<A HREF="http://tiny-tools.sourceforge.net/emacs-font.html"
+	CLASS="main">
+	http://tiny-tools.sourceforge.net/emacs-font.html
+	</A>
+
+    <LI>Emacs package making memory list at
+
+	<A HREF="http://tiny-tools.sourceforge.net/emacs-package-make.html"
+	CLASS="main">
+	http://tiny-tools.sourceforge.net/emacs-package-make.html
+	</A>
+
+    <LI>Personal thoughts on Emacs Lisp (old, needs update) at
+
+	<A HREF="http://tiny-tools.sourceforge.net/emacs-code.html">
+	http://tiny-tools.sourceforge.net/emacs-code.html
+	</A>
+
+    <LI>Project developer and development instructions at
+	<A HREF="http://tiny-tools.sourceforge.net/emacs-code.html">
+	http://tiny-tools.sourceforge.net/development.html
+	</A>
+
+    <LI>Project announcements at
+	<A HREF="http://tiny-tools.sourceforge.net/announcement.html">
+	http://tiny-tools.sourceforge.net/announcement.html
+	</A>
+
+	<P>
+	<B>To build Emacs site-lisp from Net or to track packages in Net
+	</B>,
+
+	This automated Perl tool to keep in touch with the
+	latest releases in the internet has been improved considerably.
+	The latest version is available at Perl <B> CPAN </B>
+
+	<A HREF="http://cpan.perl.org/modules/by-authors/id/J/JA/JARIAALTO/">
+	http://cpan.perl.org/modules/by-authors/id/J/JA/JARIAALTO/
+	</A>
+
+	and it is also distributed with the Tiny Tools kit.
+	The manual (same as --help and --help-html) is available at
+
+	<A HREF="http://tiny-tools.sourceforge.net/mywebget.html">
+	http://tiny-tools.sourceforge.net/mywebget.html
+	</A>
+
+	<P>
+	<FONT COLOR=#228B00>
+	Configuration file to build Emacs site-lisp directly from
+	developers' home pages is available at
+
+	<A HREF="http://tiny-tools.sourceforge.net/mywebget-emacs.conf">
+	http://tiny-tools.sourceforge.net/mywebget-emacs.conf
+	</A>
+	</FONT>
+
+
+	<P>
+	<B>Are these tools hard to install or use?</B>
+
+	The project may seem huge and difficult to install for those who do
+	not have much previous experience on Emacs configuration and
+	package installation. That's only surface and the impression that you
+	get from the size of the project. Things are much easier than
+	that. At minimum you can install the project within 5-10 minutes with
+	the help of the <B>install</B> document above.
+
+</UL>
+
+
+<!--  .......................................................................
+      HEADING
+      .......................................................................
+-->
+
+<H1>
+News
+</H1>
+
+	2001-07: a "namespace-cleanup" work was started to ensure that all
+	custom functions contain a proper library prefix. This cleanup work
+	is necessary to isolate the tools from other, possibly conflicting,
+	namespaces. It has no user visible chnages, but due to massive work
+	that it needs, expect to see weird bugs in snapshots stamped after
+	this date.
+
+	When Emacs 21.x is officially released, expect to see snapshots
+	that tackle any incompatibilities found.
+
+	A work is in progress to polish package build and release methods
+        so that everything would be automatic. Currently the account is
+        active and the latest releases can be found solely from there.
+
+        <B> The first phase goal: </B> To get the CVS going and document
+	it in the developer documentation.
+
+        <B> The seconds phase: </B> To get build methods automatic and
+        platform independent. Anyone with CVS access can start maintain the
+        code if the unfortunate case happens that author(s) can no longer
+        be contacted.
+
+        <B> The third phase: </B> Make all package to comply XEmacs
+	packaging system and possibly include them into XEmacs. <B> The
+	fourth phase: </B> Supply Debian (.deb) and Redhat (.rpm) packages
+	for easy upgrade in Linux systems. Anyone
+        who is familiar with the RPM or DEB packaging system is welcomed to
+        send email to the address found in <B> Developer list </B> section,
+        to make the conversion process to these packaging managers start.
+
+<!--  .......................................................................
+      HEADING
+      .......................................................................
+-->
+
+<H1>
+Brief History
+</H1>
+
+    All the programs and documentation in Tiny Tools kit are released under
+    GPL
+
+<A HREF="http://www.gnu.org/copyleft/gpl.html">
+http://www.gnu.org/copyleft/gpl.html
+</A>
+
+    Tiny Tools is an on-going "hobby", that started with one Emacs package,
+    then next, and next in 1994 to help use Emacs more conveniently in
+    daily work. Last Unix-only kit was released at the beginning of 1999
+    using Emacs 19.28 and 20.1. It had very little Win32 Emacs support and
+    ever more little XEmacs support (19.14). There has been period of
+    inactivity, due to more busy days in regular daily work, nice long
+    vacations at summer and moving the development environment from Unix to
+    PC, changing version control software and repositories multiple times.
+    The move to a PC platform was more painful than was expected because
+    all the building tools had to be made from scratch. But the sourceforge
+    pays the well the efforts.
+
+<!--  .......................................................................
+      HEADING
+      .......................................................................
+-->
+
+<H1>
+Win32 Platform Support
+</H1>
+
+    Win32 users will be more than delighted to hear, that the current releases
+    support quite well cross platform Emacs / XEmacs / Win32 / Unix.
+
+    XEmacs support is now going strong too, even the Win32 XEmacs support.
+
+    Latest Emacs releases are now supported much better, because of the
+    availability of pre-compiled binaries for Win32.
+
+
+<!--  .......................................................................
+      HEADING
+      .......................................................................
+-->
+
+<H1>
+Emacs Version Compatibility
+</H1>
+
+    The old releases supported Emacs versions way back to 19.27 and
+    XEmacs 19.14, but such a long release backing is no longer possible.
+    The minimum criterias for support are:
+
+<PRE>
+    Emacs   20.1+   ( 20.7+ preferred )
+    XEmacs: 20.4+   ( 21.1+ preferred )
+</PRE>
+
+    The release MAY WORK FINE in older Emacs releases and if you submit bug
+    report, support for older versions can be considered unless there is
+    too much work. The current development is done and tested using these
+    versions of Win32 Emacs:
+
+<PRE>
+    Emacs 20.7.3
+    XEmacs 21.2.20
+</PRE>
+
+<!--  .......................................................................
+      HEADING
+      .......................................................................
+-->
+
+<H1>
+Developer list
+</H1>
+
+<!-- Swatch references
+     http://javaboutique.internet.com/InternetTime/
+     http://www.omicron.cwc.net/swatchit.htm
+     http://www.lss.com.au/lss/windows/sit/sit.htm
+     http://www-white.media.mit.edu/~cwren/InternetTime/info.html
+     http://www.perlarchive.com/guide/rate.cgi?ID=3838
+-->
+
+<!-- Example
+    <applet code="InternetTime.class"
+	    width="79" height="20">
+    <param name="showLogo" value="false">
+    </applet>
+-->
+
+<!-- Example: http://javaboutique.internet.com/InternetTime/
+
+    <APPLET CODEBASE="n:/tmp"
+	    CODE="ticker.class"
+	    WIDTH="52"
+	    HEIGHT="22"
+	    HSPACE="0"
+	    >
+
+	    <param name="BackgroundColor" value="FFFFFF">
+	    <param name="BorderMargin" value="0">
+	    <param name="BorderStyle" value="0">
+	    <param name="BorderThickness" value="0">
+	    <param name="HighlightColor" value="DD0000">
+	    <param name="PageDelay" value="0">
+	    <param name="Rate" value="500">
+	    <param name="Spacing" value="0">
+	    <param name="TextColor" value="330066">
+	    <param name="TextServer" value="itimtxt">
+	    <param name="TextSize" value="10">
+	    <param name="TextStyle" value="1">
+	    <param name="ITIMTXT_1" value="ShowDecimals">
+	    <param name="URL" value="http://www.swatch.ch/
+	    internettime/internettime.phtml">
+    </APPLET>
+
+-->
+
+    <B> <SCRIPT TYPE="text/javascript"> BMTtimeDisplay(1); </SCRIPT> </B>
+
+
+    <FONT COLOR=#228B00>Swatch Internet time (BMT)</FONT>,
+    where 24h is divided into 1000 parts, you visited this page.
+
+    Read more about the Biel Mean Time at <A
+    HREF="http://www.gebsa.com.tr/internet_time.htm">
+    http://www.gebsa.com.tr/internet_time.htm </A>.
+
+    Stop by Swatch resources at
+    <A HREF="http://www.ryanthiessen.com/swatch/resources.htm">
+    http://www.ryanthiessen.com/swatch/resources.htm
+    </A>.
+
+    Follow this link for HTML time converter at
+    <A HREF="http://www.mir.com.my/iTime/itime.htm">
+    http://www.mir.com.my/iTime/itime.htm </A>.
+
+    To get free source code for HTML pages, jump to
+    <A HREF="http://javaboutique.internet.com/InternetTime/">
+    http://javaboutique.internet.com/InternetTime/
+    </A> or view the source code of this page for javascript example.
+
+
+
+<P>
+
+    Jari Aalto
+    <A HREF="mailto:jari.aalto@poboxes.com">
+	jari.aalto@poboxes.com
+    <A>
+    <A HREF="http://poboxes.com/jari.aalto/">
+	http://poboxes.com/jari.aalto/
+    </A>
+    Usually on-line @700 BMT or UTC+2 18:00 local time.
+    ICQ identification <EM>jari-aalto 82313129</EM>
+
+    <!-- Other "nice" IC indicators are 1,3,7,14 -->
+
+    <IMG SRC="http://online.mirabilis.com/scripts/online.dll?icq=82313129&img=14" ALT="[ICQ online status indicator]"><BR>
+
+
+<P>
+
+    Richard Kim
+    <A HREF="mailto:ryk@dspwiz.com>ryk@dspwiz.com">
+	ryk@dspwiz.com
+    </A>
+    Co-Developer.
+
+<!--  .......................................................................
+      HEADING
+      .......................................................................
+-->
+
+
+<H1>
+Mailing list information
+</H1>
+
+
+        <P> There is mailing list for the project, where you can send
+        questions and bug reports. The list is open (you do not have to be
+        a subscribed member to post), so prefer sending bug reports to the
+        list instead of directly to the maintainer, because the the problem
+        will get wider audience. The list opened 2000-01. See WWW interface at
+
+	<A HREF="http://lists.sourceforge.net/lists/listinfo/tiny-tools-users">
+        http://lists.sourceforge.net/lists/listinfo/tiny-tools-users</A>
+
+	or use Mail interface:
+
+	<P>
+	<BLOCKQUOTE>
+            Send a message with the word <B>help</B> as <I>subject</I> or
+            in the <I>body</I> , to:
+            <A HREF="mailto:tiny-tools-users-request@lists.sourceforge.net">
+	    tiny-tools-users-request@lists.sourceforge.net</A>
+
+            <P>
+            subscribe   [address=address]<BR>
+            unsubscribe [address]<BR>
+        </BLOCKQUOTE>
+
+<!--  .......................................................................
+      HEADING
+      .......................................................................
+-->
+
+<!-- commented out, ISDN can't handle the contacts
+
+
+<H1>
+Beta snapshots
+</H1>
+
+    For upcoming releases, there are snapshots that are announced in the
+    mailing list. This is ISDN 64, open 24h at weekends and in
+    other days @700 .. @200 BMT at
+
+	<A HREF="ftp://tiny-tools@tierra.dyndns.org/">
+	ftp://tiny-tools@tierra.dyndns.org/
+	</A>
+
+    In addition see <SAMPLE class="code"> doc/README.txt </SAMPLE> for
+    latest information. Please run the snaphost build with debug on on and
+    report errors.
+
+<PRE>
+
+	$ perl makefile.pl --verbose 2 --binary emacs   all
+
+</PRE>
+
+
+-->
+
+<!--  .......................................................................
+      HEADING
+      .......................................................................
+-->
+
+
+<H1>
+CVS update method
+</H1>
+
+	CVS is an excellent tool to keep up with the latest updates, fixes
+	and new features. CVS for Unix is available at
+
+		<A HREF="http://www.cvshome.com/">http://www.cvshome.com/</A>
+
+	For win32 platform, the CVS comes with the cygwin kit available at
+
+	    <A HREF="http://www.cygwin.org/">
+	    http://www.cygwin.org/
+	    </A>
+
+	(See link at the right hand corner and download setup.exe)
+
+	If you want hassle-free and easy CVS binary for Win32 and not the
+	whole Cygwin bundle, grab cvs binary from
+
+		<A HREF="http://www.cvshome.org/dev/codewindow.html">
+		http://www.cvshome.org/dev/codewindow.html (1.10.5)
+		</A>
+
+
+<PRE>
+        $ cvs -d :pserver:anonymous@cvs.tiny-tools.sourceforge.net:/cvsroot/tiny-tools login
+        <B>password:</B> [RET]
+        $ cvs -z6 -d :pserver:anonymous@cvs.tiny-tools.sourceforge.net:/cvsroot/tiny-tools co tiny-tools
+</PRE>
+
+
+
+	After the above initial checkout procedure, all you have to do is
+	to issue this command from time to time to read the updates:
+
+<PRE>
+	$ cd tiny-tools
+	$ cvs update
+</PRE>
+
+    A mall glitch concerning <B>codewindow cvs binary</B> reported by
+    david x callaway dxc@xprt.net:
+    I have found one funny bug with it, on nt. you can "cvs edit XyZ.c"
+    even though the file is "xyz.c" with no complaint. this is ok, sort
+    of, since the stupid win32 file system doesn't care, but the problem
+    is when you later try to check it in the server complains that "XyZ.c"
+    doesn't exist or some such. you end up having to edit CVS/Entries to
+    fix it. the funny thing is you can "cvs status xyz.c" or "cvs status
+    XyZ.c" and it will work fine either way.
+
+<P>
+<FONT COLOR=#228B00>
+
+    <EM> NOTE 2000-02-26:</EM>
+
+    The CVS method is now functional, try it.
+
+</FONT>
+
+<P>
+<ADDRESS>
+	<FONT SIZE=-1>
+	$Docid: 2001-07-28 Jari Aalto $
+
+
+	Copyright (c) 2001 by Jari Aalto. This material may be distributed
+	only subject to the terms and conditions set forth in the Open
+	Publication License, v1.0 or later (the latest version is presently
+	available at <A HREF="http://www.opencontent.org/openpub/">
+	http://www.opencontent.org/openpub/</A>). Distribution of the work
+	or derivative of the work for commercial purposes in any form is
+	prohibited unless prior permission is obtained from the copyright
+	holder. (VI.B LICENSE OPTIONS) </FONT>
+
+</ADDRESS>
+
+<!--  .......................................................................
+
+      Emacs webring, hosted by Steve Kemp <skx@tardis.ed.ac.uk>
+      at http://www.gnusoftware.com
+
+      Gnu logo, but a bit too bulky ...
+
+      <img src="http://www.gnusoftware.com/images/head.jpg">
+
+      .......................................................................
+-->
+
+
+<!--  .......................................................................
+
+      FOOTER -- The sourceforge button.
+
+      .......................................................................
+-->
+
+
+
+<HR NOSHADE SIZE=1>
+
+    <TABLE BORDER=0
+	   bgcolor="#EEEEF8"
+	   WIDTH=100%
+	   CELLPADDING=2
+	   CELLSPACING=0
+	   >
+
+	<TR>
+	  <TD>
+	      <A HREF="http://sourceforge.net">
+	      <IMG SRC="http://sourceforge.net/sflogo.php?group_id=4467&amp;type=1"
+		  width="88" height="31" border="0" alt="SourceForge Logo"
+		  ALT=""></A>
+	      </A>
+	  </TD>
+	  <TD WIDTH=100%>
+	      <FONT SIZE=-1>
+		  <I>
+		  This site, as well as many other opensource projects
+		  sites, is hosted by
+		  <A HREF="http://sourceforge.net/">sourceforge.net</A>.
+		  </I>
+	      </FONT>
+	  </TD>
+	</TR>
+	<TR>
+	  <TD>
+	  </TD>
+	  <TD>
+	    Emacs Web Ring site (3)
+
+	    <a href="http://www.gnusoftware.com/WebRing/zone.cgi?id=3&amp;dir=prev">
+		[Previous]
+	    </a>
+
+	    <a href="http://www.gnusoftware.com/WebRing/zone.cgi?id=3&amp;dir=next">
+		[Next]
+	    </a>
+
+	    <a href="http://www.gnusoftware.com/WebRing/zone.cgi?id=3&amp;dir=skipprev">
+		[Skip Previous site]
+	    </a>
+
+
+	    <a href="http://www.gnusoftware.com/WebRing/zone.cgi?id=3&amp;dir=skipnext">
+		[Skip next Site]
+	    </a>
+
+
+
+	    <a href="http://www.gnusoftware.com/WebRing/zone.cgi?list">
+		[List Sites]
+	    </a>
+
+	    <a href="http://www.gnusoftware.com/WebRing/">
+		[Home]
+	    </a>
+
+	  </TD>
+	</TR>
+    </TABLE>
+
+
+
+
+</BODY>
+</HTML>

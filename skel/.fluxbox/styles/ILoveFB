@@ -1,0 +1,137 @@
+!
+! I Love FB
+! by paul, paul@wapdomainz.com
+!
+
+
+### toolbar settings ###
+
+toolbar:				flat gradient vertical 
+toolbar.color:				#c8b4bd
+toolbar.colorTo:			#a7929b
+
+toolbar.button:				parentrelative
+toolbar.button.picColor:		#000000
+toolbar.button.pressed:			flat gradient vertical
+toolbar.button.pressed.color:		#5c3731
+toolbar.button.pressed.colorTo:		#a58a81
+
+toolbar.clock:				flat gradient vertical
+toolbar.clock.color:			#c8b4bd
+toolbar.clock.colorTo:			#a7929b
+toolbar.clock.textColor:		#000000
+
+toolbar.label:				flat gradient vertical
+toolbar.label.color:			#c8b4bd
+toolbar.label.colorTo:			#a7929b
+toolbar.label.textColor:		#000000
+
+toolbar.windowLabel:			flat gradient vertical
+toolbar.windowLabel.color:		#c8b4bd
+toolbar.windowLabel.colorTo:		#a7929b
+toolbar.windowLabel.textColor:		#000000
+
+toolbar.borderWidth:			1
+
+
+### menu settings ###
+
+menu.title:				flat gradient vertical
+menu.title.color:			#fbb494
+menu.title.colorTo:			#e99064
+menu.title.textColor:			#000000
+
+menu.frame:				raised gradient diagonal
+menu.frame.color:			#ffffff
+menu.frame.colorTo:			#cccccc
+menu.frame.textColor:			#000000
+
+menu.hilite:				flat gradient elliptical
+menu.hilite.color:			#97a8a1
+menu.hilite.colorTo:			#ffffff
+menu.hilite.textColor:			#000000
+
+menu.bullet:				triangle
+menu.bullet.position:			right
+
+
+### window settings ###
+
+window.title.focus:			flat gradient vertical
+window.title.focus.color:		#6c8278
+window.title.focus.colorTo:		#ced5d2
+window.title.unfocus:			flat gradient vertical
+window.title.unfocus.color:		#93a39c
+window.title.unfocus.colorTo:		#93a7c4
+ 
+window.label.focus:			flat gradient vertical 
+window.label.focus.color:		#6c8278
+window.label.focus.colorTo:		#ced5d2
+window.label.focus.textColor:		#000000
+window.label.unfocus:			parentrelative
+window.label.unfocus.textColor:		#606060
+
+window.button.focus:			parentrelative
+window.button.focus.picColor:		#000000
+window.button.unfocus:			parentrelative
+window.button.unfocus.picColor: 	#606060
+window.button.pressed:			flat gradient vertical
+window.button.pressed.color:		#5c3731
+window.button.pressed.colorTo:		#a58a81
+
+window.handle.focus:			flat gradient vertical
+window.handle.focus.color:		#6c8278
+window.handle.focus.colorTo:		#ced5d2
+window.handle.unfocus:			flat gradient vertical
+window.handle.unfocus.color:		#93a39c
+window.handle.unfocus.colorTo:		#93a7c4
+
+window.grip.focus:			flat gradient vertical
+window.grip.focus.color:		#6c8278
+window.grip.focus.colorTo:		#ced5d2
+window.grip.unfocus:			flat gradient vertical
+window.grip.unfocus.color:		#93a39c
+window.grip.unfocus.colorTo:		#93a7c4
+
+
+### tab settings ###
+
+window.tab.label.unfocus:		flat gradient vertical
+window.tab.label.unfocus.color:		#93a39c
+window.tab.label.unfocus.colorTo:	#93a7c4
+window.tab.label.unfocus.textColor:	#606060
+window.tab.label.focus:			raised gradient vertical
+window.tab.label.focus.color:		#6c8278
+window.tab.label.focus.colorTo:		#ced5d2
+window.tab.label.focus.textColor:	#000000
+
+
+### misc settings ###
+
+#borderColor:				#000000
+
+frameWidth:				0
+bevelWidth:				1
+borderWidth:				1
+handleWidth:				1
+
+*justify:				center
+
+### This below line is rewuired if you use a Mandrake install of Flux ###
+# rootCommand:	bsetbg-fluxbox -f ~/.fluxbox/backgrounds/ILoveFB.png
+rootCommand:	bsetbg -f ~/.fluxbox/backgrounds/ILoveFB.png
+
+
+### fonts settings ###
+! if you don't have 'anorexia' and 'aqui' fonts installed just use the
+! commented-out entries
+
+*.font:					anorexia
+#*.font:				-*-lucida-medium-r-*-*-*-100-*-*-*-*-*
+menu.title.font:			aqui
+#menu.title.font:			-*-lucida-bold-r-*-*-*-120-*-*-*-*-*
+menu.frame.font:			anorexia
+window.font:				aqui
+#window.tab.font:			-*-lucida-bold-r-*-*-*-100-*-*-*-*-*
+window.tab.font:			anorexia
+

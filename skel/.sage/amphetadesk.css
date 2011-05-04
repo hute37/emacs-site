@@ -1,0 +1,134 @@
+/* 
+	AmphetaDesk look-a-like
+	Stylesheet for RSS Reader Panel
+	By ByteWarrior - http://bytewarrior.madoka.be/b2
+*/
+
+a:link {
+	background-color: transparent;
+	color: #0002DF;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+a:visited	{
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+a:hover {
+	background-color: transparent;
+	color: #3333FF;
+}
+
+a:active	{
+	text-decoration: none;
+}
+
+blockquote {
+	border-left: 3px solid #696969;
+	margin-left: 4em;
+	margin-right: 4em;
+	padding-left: 10px;
+}
+
+body {
+	color: #000000;
+	font: 0.9em/1.2em "Times New Roman", Times, serif;
+	margin: 0px;
+}
+
+code {
+	font-family: "Courier New", Courier, monospace;
+}
+
+div.item {
+	background-color: #FFFFFF;
+	border: 1px solid #DCDCDC;
+	margin: 0px 0px 0px 10%;
+	min-width: 30em;
+	padding: 0px;
+	text-align: justify;
+	width: 80%;
+}
+
+div.item-desc {
+	background-color: transparent;
+	font-size: 1.1em;
+	margin: 4px;
+	margin-top: 10px;
+	min-height: 0em;
+	padding: 10px;
+	line-height: 1.2em;
+}
+
+h2.item-title {
+	background-color: #FFCC33;
+	border: 1px solid #DCDCDC;
+	font-size: 1.1em;
+	font-weight: bold;
+	line-height: 1.1;
+	padding: 6px 5px 8px 8px;
+	margin-top: -1px;
+	margin-bottom: 0px;
+}
+
+h2 a:link {
+	color: black;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+h2 a:visited {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+html {
+	background-color: #FFFFFF;
+}
+
+p.item-desc a:link {
+	color: #696969;
+}
+
+span.item-ordinal {
+	color: #C89600;
+	padding-right: 0.2em;
+}
+
+#rss-desc {
+	color: Black;
+	font-size: 0.9em;
+	margin: 0px;
+	padding: 0px;
+	padding-top: 5px;
+	text-align: right;
+}
+
+#rss-header {
+	background-color: #FFCC33;
+	border: 1px solid #DCDCDC;
+	margin: 10px 2% 20px;
+	padding: 10px;
+	padding-bottom: 5px;
+}
+
+#rss-title {
+	color: #DCDCDC;
+	font-size: 1.5em;
+	line-height: 1em;
+	margin: 0px;
+	padding: 0px;
+	text-align: right;
+}
+
+#rss-title a {
+	color: blue;
+	text-decoration: none;
+}
+
+#rss-title a:visited {
+	color: purple;
+	text-decoration: none;
+}

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+rsetroot
+
+xshadow
+
+
+tterm
+
+
+exec evilwm -term /usr/local/bin/yterm
+#exec evilwm -term /usr/local/bin/tterm
+
+
+
+

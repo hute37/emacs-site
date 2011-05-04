@@ -1,0 +1,3162 @@
+[Desktop Entry]
+Type=Directory
+Name=Editors
+Comment=A text editor
+X-AfterStep-IndexName=TextEditor
+Icon=/usr/share/afterstep/desktop/icons/Folder-Pen1
+
+[Desktop Entry]
+Type=Directory
+Name=Look And Feel
+Comment=Look and feel settings
+Categories=Settings;
+X-AfterStep-IndexName=LookNFeel
+X-AfterStep-Aliases=Appearance & Themes;X-KDE-LookNFeel;X-KDE-settings-looknfeel;
+
+[Desktop Entry]
+Type=Directory
+Name=OCR
+Comment=Optical character recognition application
+Categories=Scanning;
+X-AfterStep-IndexName=OCR
+
+[Desktop Entry]
+Type=Directory
+Name=Settings
+Comment=Settings applications
+X-AfterStep-IndexName=Settings
+X-AfterStep-Aliases=Settings-Modules;
+
+[Desktop Entry]
+Type=Directory
+Name=Desktop Setup
+Comment=Configuration tool for the GUI
+X-AfterStep-IndexName=AfterStepDesktop
+Icon=/usr/share/afterstep/desktop/icons/Folder-Desktop2
+
+[Desktop Entry]
+Type=Directory
+Name=RedHat Base
+Comment=
+Categories=Application;
+X-AfterStep-IndexName=X-Red-Hat-Base
+
+[Desktop Entry]
+Type=Directory
+Name=Raster Graphics
+Comment=Raster based graphical application
+Categories=2DGraphics;
+X-AfterStep-IndexName=RasterGraphics
+Icon=/usr/share/afterstep/desktop/icons/Folder-Brushes
+
+[Desktop Entry]
+Type=Directory
+Name=Astronomy
+Comment=Astronomy software
+Categories=Science;
+X-AfterStep-IndexName=Astronomy
+
+[Desktop Entry]
+Type=Directory
+Name=Motif
+Comment=Application based on Motif libraries
+X-AfterStep-IndexName=Motif
+
+[Desktop Entry]
+Type=Directory
+Name=Multimedia settings
+Comment=
+Categories=HardwareSettings;
+X-AfterStep-IndexName=MultimediaSettings
+X-AfterStep-Aliases=Sound & Multimedia;X-KDE-Sound;X-KDE-settings-sound;Sound;
+
+[Desktop Entry]
+Type=Directory
+Name=Scanning
+Comment=Tool to scan a file/text
+Categories=Graphics;
+X-AfterStep-IndexName=Scanning
+Icon=/usr/share/afterstep/desktop/icons/Folder-Scanner
+
+[Desktop Entry]
+Type=Directory
+Name=Arcade Games
+Comment=Arcade style game
+Categories=Game;
+X-AfterStep-IndexName=ArcadeGame
+X-AfterStep-Aliases=Arcade;
+Icon=/usr/share/afterstep/desktop/icons/Folder-GameController
+
+[Desktop Entry]
+Type=Directory
+Name=Core
+Comment=Important application, core to the desktop such as a file manager or a help browser
+X-AfterStep-IndexName=Core
+
+[Desktop Entry]
+Type=Directory
+Name=Debuggers
+Comment=A tool to debug applications
+Categories=Development;
+X-AfterStep-IndexName=Debugger
+
+[Desktop Entry]
+Type=Directory
+Name=Hardware Settings
+Comment=A tool to manage hardware components, like sound cards, video cards or printers
+Categories=Settings;
+X-AfterStep-IndexName=HardwareSettings
+X-AfterStep-Aliases=Peripherals;Information;X-KDE-Information;X-KDE-Peripherals;X-KDE-information;
+
+[Desktop Entry]
+Type=Directory
+Name=Tuners
+Comment=A tuner
+Categories=Audio;
+X-AfterStep-IndexName=Tuner
+
+[Desktop Entry]
+Type=Directory
+Name=Amusements
+Comment=A simple amusement
+X-AfterStep-IndexName=Amusement
+X-AfterStep-Aliases=Toys;
+
+[Desktop Entry]
+Type=Directory
+Name=File Transfer
+Comment=Tools like FTP or P2P programs
+Categories=Network;
+X-AfterStep-IndexName=FileTransfer
+Icon=/usr/share/afterstep/desktop/icons/Folder-Globe
+
+[Desktop Entry]
+Type=Directory
+Name=Screen Saver
+Comment=Screensaver themes
+Categories=System;
+X-AfterStep-IndexName=Screensaver
+X-AfterStep-Aliases=ScreenSavers;
+Icon=/usr/share/afterstep/desktop/icons/Folder-MoonInMonitor
+
+[Desktop Entry]
+Type=Directory
+Name=More KDE Applications
+Comment=
+Categories=Application;
+X-AfterStep-IndexName=X-KDE-More
+
+[Desktop Entry]
+Type=Directory
+Name=About AfterStep
+Comment=AfterStep Documentation and useful web links.
+X-AfterStep-IndexName=AboutAfterStep
+Icon=/usr/share/afterstep/desktop/icons/Folder-Info
+
+[Desktop Entry]
+Type=Directory
+Name=GNOME
+Comment=Application based on GNOME libraries
+X-AfterStep-IndexName=GNOME
+
+[Desktop Entry]
+Type=Directory
+Name=Revision Control
+Comment=Applications like cvs or subversion
+Categories=Development;
+X-AfterStep-IndexName=RevisionControl
+
+[Desktop Entry]
+Type=Directory
+Name=Strategy Games
+Comment=A strategy game
+Categories=Game;
+X-AfterStep-IndexName=StrategyGame
+X-AfterStep-Aliases=Tactics & Strategy;
+Icon=/usr/share/afterstep/desktop/icons/Folder-ChessBishop
+
+[Desktop Entry]
+Type=Directory
+Name=Accessories
+Comment=Small utility application, "Accessories"
+X-AfterStep-IndexName=Utility
+X-AfterStep-Aliases=Utilities;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Screwdriver
+
+[Desktop Entry]
+Type=Directory
+Name=File Managers
+Comment=A file manager
+X-AfterStep-IndexName=FileManager
+
+[Desktop Entry]
+Type=Directory
+Name=Package Manager
+Comment=A package manager application
+Categories=Settings;
+X-AfterStep-IndexName=PackageManager
+
+[Desktop Entry]
+Type=Directory
+Name=RedHat Extras
+Comment=
+Categories=Application;
+X-AfterStep-IndexName=X-Red-Hat-Extra
+
+[Desktop Entry]
+Type=Directory
+Name=Desktop Settings
+Comment=Personal preferences and administration settings
+Categories=Settings;
+X-AfterStep-IndexName=DesktopSettings
+X-AfterStep-Aliases=Desktop;X-KDE-Desktop;X-KDE-settings-desktop;
+
+[Desktop Entry]
+Type=Directory
+Name=Monitor
+Comment=Monitor application/applet that monitors some resource or activity
+Categories=System;
+X-AfterStep-IndexName=Monitor
+
+[Desktop Entry]
+Type=Directory
+Name=Music
+Comment=Musical software
+Categories=AudioVideo;Education;
+X-AfterStep-IndexName=Music
+
+[Desktop Entry]
+Type=Directory
+Name=Remote Access
+Comment=A tool to remotely manage your PC
+Categories=Network;
+X-AfterStep-IndexName=RemoteAccess
+
+[Desktop Entry]
+Type=Directory
+Name=Telephony
+Comment=Telephony via PC
+Categories=Network;
+X-AfterStep-IndexName=Telephony
+
+[Desktop Entry]
+Type=Directory
+Name=RedHat Base
+Comment=
+Categories=Application;
+X-AfterStep-IndexName=X-Red-Hat-Base
+
+[Desktop Entry]
+Type=Directory
+Name=About AfterStep
+Comment=AfterStep Documentation and useful web links.
+X-AfterStep-IndexName=AboutAfterStep
+Icon=/usr/share/afterstep/desktop/icons/Folder-Info
+
+[Desktop Entry]
+Type=Directory
+Name=Profiling
+Comment=A profiling tool
+Categories=Development;
+X-AfterStep-IndexName=Profiling
+
+[Desktop Entry]
+Type=Directory
+Name=Science
+Comment=Scientific software
+Categories=Education;
+X-AfterStep-IndexName=Science
+Icon=/usr/share/afterstep/desktop/icons/Folder-Calculator2
+
+[Desktop Entry]
+Type=Directory
+Name=System Settings
+Comment=Change systemwide settings (affects all users)
+X-AfterStep-IndexName=X-KDE-settings-system
+Icon=/usr/share/afterstep/desktop/icons/Folder-Gear2
+
+[Desktop Entry]
+Type=Directory
+Name=File Managers
+Comment=A file manager
+X-AfterStep-IndexName=FileManager
+
+[Desktop Entry]
+Type=Directory
+Name=Power Control
+Comment=Presentation software
+Categories=Settings;
+X-AfterStep-IndexName=PowerControl
+X-AfterStep-Aliases=X-KDE-PowerControl;X-KDE-settings-power;
+
+[Desktop Entry]
+Type=Directory
+Name=Disc Burning
+Comment=Application to burn a disc
+Categories=AudioVideo;Utility;
+X-AfterStep-IndexName=DiscBurning
+
+[Desktop Entry]
+Type=Directory
+Name=Engineering
+Comment=Engineering software, e.g. CAD programs
+X-AfterStep-IndexName=Engineering
+
+[Desktop Entry]
+Type=Directory
+Name=Games
+Comment=Games and amusements
+X-AfterStep-IndexName=Game
+X-AfterStep-Aliases=Games;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Dice
+
+[Desktop Entry]
+Type=Directory
+Name=Look And Feel
+Comment=Look and feel settings
+Categories=Settings;
+X-AfterStep-IndexName=LookNFeel
+X-AfterStep-Aliases=Appearance & Themes;X-KDE-LookNFeel;X-KDE-settings-looknfeel;
+
+[Desktop Entry]
+Type=Directory
+Name=Vector Graphics
+Comment=Vector based graphical application
+Categories=2D Graphics;
+X-AfterStep-IndexName=VectorGraphics
+
+[Desktop Entry]
+Type=Directory
+Name=2D Graphics
+Comment=2D based graphical application
+Categories=Graphics;
+X-AfterStep-IndexName=2DGraphics
+Icon=/usr/share/afterstep/desktop/icons/Folder-Brushes
+
+[Desktop Entry]
+Type=Directory
+Name=Action Games
+Comment=An action game
+Categories=Game;
+X-AfterStep-IndexName=ActionGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-Pistol
+
+[Desktop Entry]
+Type=Directory
+Name=Quit
+Comment=Leave or restart an AfterStep session.
+X-AfterStep-IndexName=ASQuit
+Icon=/usr/share/afterstep/desktop/icons/Folder-Stopsign
+
+[Desktop Entry]
+Type=Directory
+Name=Card Games
+Comment=A card game
+Categories=Game;
+X-AfterStep-IndexName=CardGame
+X-AfterStep-Aliases=Cardgames;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Cardgames
+
+[Desktop Entry]
+Type=Directory
+Name=Quit
+Comment=Leave or restart an AfterStep session.
+X-AfterStep-IndexName=ASQuit
+Icon=/usr/share/afterstep/desktop/icons/Folder-Stopsign
+
+[Desktop Entry]
+Type=Directory
+Name=Tray Icons
+Comment=An application that is primarily an icon for the "system tray" or "notification area" (apps that open a normal window and just happen to have a tray icon as well should not list this category)
+X-AfterStep-IndexName=TrayIcon
+
+[Desktop Entry]
+Type=Directory
+Name=3D Graphics
+Comment=3D based graphical application
+Categories=Graphics;
+X-AfterStep-IndexName=3DGraphics
+
+[Desktop Entry]
+Type=Directory
+Name=Console Only
+Comment=Application that only works inside a terminal (text-based or command line application)
+Categories=Application;
+X-AfterStep-IndexName=ConsoleOnly
+
+[Desktop Entry]
+Type=Directory
+Name=Simulation
+Comment=A simulation game
+Categories=Game;
+X-AfterStep-IndexName=Simulation
+Icon=/usr/share/afterstep/desktop/icons/Folder-People
+
+[Desktop Entry]
+Type=Directory
+Name=Dictionary
+Comment=A dictionary
+Categories=Office;
+X-AfterStep-IndexName=Dictionary
+
+[Desktop Entry]
+Type=Directory
+Name=Flow Chart
+Comment=A flowchart application
+Categories=Office;
+X-AfterStep-IndexName=FlowChart
+
+[Desktop Entry]
+Type=Directory
+Name=IRC Clients
+Comment=An IRC client
+Categories=Network;
+X-AfterStep-IndexName=IRCClient
+
+[Desktop Entry]
+Type=Directory
+Name=Video
+Comment=A video application
+Categories=AudioVideo;
+X-AfterStep-IndexName=Video
+Icon=/usr/share/afterstep/desktop/icons/Folder-MovieProjector
+
+[Desktop Entry]
+Type=Directory
+Name=Dialup
+Comment=A dial-up program
+Categories=Network;
+X-AfterStep-IndexName=Dialup
+
+[Desktop Entry]
+Type=Directory
+Name=KDE Components
+Comment=
+Categories=Settings;
+X-AfterStep-IndexName=KDEComponents
+X-AfterStep-Aliases=X-KDE-settings-components;
+
+[Desktop Entry]
+Type=Directory
+Name=Kids Games
+Comment=A game for kids
+Categories=Game;
+X-AfterStep-IndexName=KidsGame
+X-AfterStep-Aliases=Games for Kids;X-KDE-KidsGame;
+Icon=/usr/share/afterstep/desktop/icons/Folder-TeddyBear
+
+[Desktop Entry]
+Type=Directory
+Name=Photography
+Comment=Camera tools, etc.
+Categories=Graphics;Office;
+X-AfterStep-IndexName=Photography
+
+[Desktop Entry]
+Type=Directory
+Name=Shell
+Comment=A shell (an actual specific shell such as bash or tcsh, not a TerminalEmulator)
+X-AfterStep-IndexName=Shell
+
+[Desktop Entry]
+Type=Directory
+Name=Teaching
+Comment=An education program for teachers
+Categories=Education;
+X-AfterStep-IndexName=Teaching
+
+[Desktop Entry]
+Type=Directory
+Name=Word Processors
+Comment=A word processor
+Categories=Office;
+X-AfterStep-IndexName=WordProcessor
+
+[Desktop Entry]
+Type=Directory
+Name=Adventure Games
+Comment=Adventure style game
+Categories=Game;
+X-AfterStep-IndexName=AdventureGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-Knight
+
+[Desktop Entry]
+Type=Directory
+Name=Electronics
+Comment=Electronics software, e.g. a circuit designer
+X-AfterStep-IndexName=Electronics
+
+[Desktop Entry]
+Type=Directory
+Name=Geology
+Comment=Geology software
+Categories=Science;
+X-AfterStep-IndexName=Geology
+
+[Desktop Entry]
+Type=Directory
+Name=Recorder
+Comment=Application to record audio/video files
+Categories=Audio;Video;AudioVideo;
+X-AfterStep-IndexName=Recorder
+
+[Desktop Entry]
+Type=Directory
+Name=System Settings
+Comment=Change systemwide settings (affects all users)
+X-AfterStep-IndexName=X-KDE-settings-system
+Icon=/usr/share/afterstep/desktop/icons/Folder-Gear2
+
+[Desktop Entry]
+Type=Directory
+Name=Java
+Comment=Application based on Java GUI libraries, such as AWT or Swing
+X-AfterStep-IndexName=Java
+
+[Desktop Entry]
+Type=Directory
+Name=Math
+Comment=Math software
+Categories=Science;
+X-AfterStep-IndexName=Math
+X-AfterStep-Aliases=Mathematics;
+
+[Desktop Entry]
+Type=Directory
+Name=Screen Savers
+Comment=Password-lock a desktop and prevent monitor burn-in.
+X-AfterStep-IndexName=ASScreenSaver
+Icon=/usr/share/afterstep/desktop/icons/Folder-MoonInMonitor
+
+[Desktop Entry]
+Type=Directory
+Name=Medical Software
+Comment=Medical software
+Categories=Science;
+X-AfterStep-IndexName=MedicalSoftware
+
+[Desktop Entry]
+Type=Directory
+Name=Puzzle Games
+Comment=Puzzle game
+Categories=Game;
+X-AfterStep-IndexName=PuzzleGame
+X-AfterStep-Aliases=Puzzle;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Puzzle
+
+[Desktop Entry]
+Type=Directory
+Name=Role Playing
+Comment=A role playing game
+Categories=Game;
+X-AfterStep-IndexName=RolePlaying
+X-AfterStep-Aliases=Rogue-like Games;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Knight
+
+[Desktop Entry]
+Type=Directory
+Name=Word Processors
+Comment=A word processor
+Categories=Office;
+X-AfterStep-IndexName=WordProcessor
+
+[Desktop Entry]
+Type=Directory
+Name=Adventure Games
+Comment=Adventure style game
+Categories=Game;
+X-AfterStep-IndexName=AdventureGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-Knight
+
+[Desktop Entry]
+Type=Directory
+Name=Biology
+Comment=Biology software
+Categories=Science;
+X-AfterStep-IndexName=Biology
+
+[Desktop Entry]
+Type=Directory
+Name=Blocks Games
+Comment=Falling blocks game
+Categories=Game;
+X-AfterStep-IndexName=BlocksGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-TetrisBlocks
+
+[Desktop Entry]
+Type=Directory
+Name=Board Games
+Comment=A board game
+Categories=Game;
+X-AfterStep-IndexName=BoardGame
+X-AfterStep-Aliases=Boardgames;
+Icon=/usr/share/afterstep/desktop/icons/Folder-RaceCar
+
+[Desktop Entry]
+Type=Directory
+Name=Flow Chart
+Comment=A flowchart application
+Categories=Office;
+X-AfterStep-IndexName=FlowChart
+
+[Desktop Entry]
+Type=Directory
+Name=Hardware Settings
+Comment=A tool to manage hardware components, like sound cards, video cards or printers
+Categories=Settings;
+X-AfterStep-IndexName=HardwareSettings
+X-AfterStep-Aliases=Peripherals;Information;X-KDE-Information;X-KDE-Peripherals;X-KDE-information;
+
+[Desktop Entry]
+Type=Directory
+Name=More KDE Applications
+Comment=
+Categories=Application;
+X-AfterStep-IndexName=X-KDE-More
+
+[Desktop Entry]
+Type=Directory
+Name=Emulator
+Comment=Emulator of another platform, such as a DOS emulator
+X-AfterStep-IndexName=Emulator
+Icon=/usr/share/afterstep/desktop/icons/Folder-GameController
+
+[Desktop Entry]
+Type=Directory
+Name=GUI Designer
+Comment=A GUI designer application
+Categories=Development;
+X-AfterStep-IndexName=GUIDesigner
+
+[Desktop Entry]
+Type=Directory
+Name=Sports Games
+Comment=A sports game
+Categories=Game;
+X-AfterStep-IndexName=SportsGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-SoccerBall
+
+[Desktop Entry]
+Type=Directory
+Name=Find...
+Comment=Search the computer or Internet for files or info.
+X-AfterStep-IndexName=Find
+Icon=/usr/share/afterstep/desktop/icons/Folder-MagnifyingGlass
+
+[Desktop Entry]
+Type=Directory
+Name=Revision Control
+Comment=Applications like cvs or subversion
+Categories=Development;
+X-AfterStep-IndexName=RevisionControl
+
+[Desktop Entry]
+Type=Directory
+Name=Board Games
+Comment=A board game
+Categories=Game;
+X-AfterStep-IndexName=BoardGame
+X-AfterStep-Aliases=Boardgames;
+Icon=/usr/share/afterstep/desktop/icons/Folder-RaceCar
+
+[Desktop Entry]
+Type=Directory
+Name=Email
+Comment=Email application
+Categories=Office;Network;
+X-AfterStep-IndexName=Email
+
+[Desktop Entry]
+Type=Directory
+Name=Art
+Comment=Software to teach arts
+Categories=Education;
+X-AfterStep-IndexName=Art
+
+[Desktop Entry]
+Type=Directory
+Name=Audio and Video Editing
+Comment=Application to edit audio/video files
+Categories=AudioVideo;
+X-AfterStep-IndexName=AudioVideoEditing
+
+[Desktop Entry]
+Type=Directory
+Name=Games
+Comment=Games and amusements
+X-AfterStep-IndexName=Game
+X-AfterStep-Aliases=Games;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Dice
+
+[Desktop Entry]
+Type=Directory
+Name=GUI Designer
+Comment=A GUI designer application
+Categories=Development;
+X-AfterStep-IndexName=GUIDesigner
+
+[Desktop Entry]
+Type=Directory
+Name=Player
+Comment=Application to play audio/video files
+Categories=Audio;Video;AudioVideo;
+X-AfterStep-IndexName=Player
+Icon=/usr/share/afterstep/desktop/icons/Folder-Headphones
+
+[Desktop Entry]
+Type=Directory
+Name=Raster Graphics
+Comment=Raster based graphical application
+Categories=2DGraphics;
+X-AfterStep-IndexName=RasterGraphics
+Icon=/usr/share/afterstep/desktop/icons/Folder-Brushes
+
+[Desktop Entry]
+Type=Directory
+Name=RedHat Extras
+Comment=
+Categories=Application;
+X-AfterStep-IndexName=X-Red-Hat-Extra
+
+[Desktop Entry]
+Type=Directory
+Name=Strategy Games
+Comment=A strategy game
+Categories=Game;
+X-AfterStep-IndexName=StrategyGame
+X-AfterStep-Aliases=Tactics & Strategy;
+Icon=/usr/share/afterstep/desktop/icons/Folder-ChessBishop
+
+[Desktop Entry]
+Type=Directory
+Name=System
+Comment=System application, "System Tools" such as say a log viewer or network monitor
+X-AfterStep-IndexName=System
+Icon=/usr/share/afterstep/desktop/icons/Folder-Gear2
+
+[Desktop Entry]
+Type=Directory
+Name=Viewers
+Comment=Tool to view e.g. a graphic or pdf file
+Categories=Graphics;Office;
+X-AfterStep-IndexName=Viewer
+Icon=/usr/share/afterstep/desktop/icons/Folder-View
+
+[Desktop Entry]
+Type=Directory
+Name=Modules
+Comment=Applications for use within AfterStep.
+X-AfterStep-IndexName=ASModules
+Icon=/usr/share/afterstep/desktop/icons/Folder-Puzzle
+
+[Desktop Entry]
+Type=Directory
+Name=Desktop Settings
+Comment=Personal preferences and administration settings
+Categories=Settings;
+X-AfterStep-IndexName=DesktopSettings
+X-AfterStep-Aliases=Desktop;X-KDE-Desktop;X-KDE-settings-desktop;
+
+[Desktop Entry]
+Type=Directory
+Name=News
+Comment=A news reader or a news ticker
+X-AfterStep-IndexName=News
+
+[Desktop Entry]
+Type=Directory
+Name=Remote Access
+Comment=A tool to remotely manage your PC
+Categories=Network;
+X-AfterStep-IndexName=RemoteAccess
+
+[Desktop Entry]
+Type=Directory
+Name=Viewers
+Comment=Tool to view e.g. a graphic or pdf file
+Categories=Graphics;Office;
+X-AfterStep-IndexName=Viewer
+Icon=/usr/share/afterstep/desktop/icons/Folder-View
+
+[Desktop Entry]
+Type=Directory
+Name=Clock
+Comment=A clock application/applet
+Categories=Utility;
+X-AfterStep-IndexName=Clock
+
+[Desktop Entry]
+Type=Directory
+Name=File Transfer
+Comment=Tools like FTP or P2P programs
+Categories=Network;
+X-AfterStep-IndexName=FileTransfer
+Icon=/usr/share/afterstep/desktop/icons/Folder-Globe
+
+[Desktop Entry]
+Type=Directory
+Name=IRC Clients
+Comment=An IRC client
+Categories=Network;
+X-AfterStep-IndexName=IRCClient
+
+[Desktop Entry]
+Type=Directory
+Name=Desktop Setup
+Comment=Configuration tool for the GUI
+X-AfterStep-IndexName=AfterStepDesktop
+Icon=/usr/share/afterstep/desktop/icons/Folder-Desktop2
+
+[Desktop Entry]
+Type=Directory
+Name=Instant Messaging
+Comment=An instant messaging client
+Categories=Network;
+X-AfterStep-IndexName=InstantMessaging
+Icon=/usr/share/afterstep/desktop/icons/Folder-Chat
+
+[Desktop Entry]
+Type=Directory
+Name=Applet
+Comment=An applet that will run inside a panel or another such application, likely desktop specific
+X-AfterStep-IndexName=Applet
+
+[Desktop Entry]
+Type=Directory
+Name=Building
+Comment=A tool to build applications
+Categories=Development;
+X-AfterStep-IndexName=Building
+
+[Desktop Entry]
+Type=Directory
+Name=Office
+Comment=Office Applications
+X-AfterStep-IndexName=Office
+Icon=/usr/share/afterstep/desktop/icons/Folder-PencilCup
+
+[Desktop Entry]
+Type=Directory
+Name=Windows
+Comment=Tools for manipulating AfterStep windows.
+X-AfterStep-IndexName=AfterStepWindows
+Icon=/usr/share/afterstep/desktop/icons/Folder-Windows
+
+[Desktop Entry]
+Type=Directory
+Name=Midi
+Comment=An app related to MIDI
+Categories=Audio;
+X-AfterStep-IndexName=Midi
+
+[Desktop Entry]
+Type=Directory
+Name=Power Control
+Comment=Presentation software
+Categories=Settings;
+X-AfterStep-IndexName=PowerControl
+X-AfterStep-Aliases=X-KDE-PowerControl;X-KDE-settings-power;
+
+[Desktop Entry]
+Type=Directory
+Name=Sequencer
+Comment=A sequencer
+Categories=Audio;
+X-AfterStep-IndexName=Sequencer
+
+[Desktop Entry]
+Type=Directory
+Name=Tuners
+Comment=A tuner
+Categories=Audio;
+X-AfterStep-IndexName=Tuner
+
+[Desktop Entry]
+Type=Directory
+Name=Audio and Video Editing
+Comment=Application to edit audio/video files
+Categories=AudioVideo;
+X-AfterStep-IndexName=AudioVideoEditing
+
+[Desktop Entry]
+Type=Directory
+Name=Card Games
+Comment=A card game
+Categories=Game;
+X-AfterStep-IndexName=CardGame
+X-AfterStep-Aliases=Cardgames;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Cardgames
+
+[Desktop Entry]
+Type=Directory
+Name=Console Only
+Comment=Application that only works inside a terminal (text-based or command line application)
+Categories=Application;
+X-AfterStep-IndexName=ConsoleOnly
+
+[Desktop Entry]
+Type=Directory
+Name=Presentation
+Comment=Presentation software
+Categories=Office;
+X-AfterStep-IndexName=Presentation
+
+[Desktop Entry]
+Type=Directory
+Name=Amusements
+Comment=A simple amusement
+X-AfterStep-IndexName=Amusement
+X-AfterStep-Aliases=Toys;
+
+[Desktop Entry]
+Type=Directory
+Name=Terminal Emulators
+Comment=A terminal emulator application
+X-AfterStep-IndexName=TerminalEmulator
+X-AfterStep-Aliases=Terminal Applications;
+
+[Desktop Entry]
+Type=Directory
+Name=Calendar
+Comment=Calendar application
+Categories=Office;
+X-AfterStep-IndexName=Calendar
+
+[Desktop Entry]
+Type=Directory
+Name=Graphics
+Comment=Graphics applications
+X-AfterStep-IndexName=Graphics
+Icon=/usr/share/afterstep/desktop/icons/Folder-Brushes
+
+[Desktop Entry]
+Type=Directory
+Name=Logic Games
+Comment=Logic games like puzzles, etc
+Categories=Game;
+X-AfterStep-IndexName=LogicGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-Puzzle
+
+[Desktop Entry]
+Type=Directory
+Name=Spreadsheet
+Comment=A spreadsheet
+Categories=Office;
+X-AfterStep-IndexName=Spreadsheet
+
+[Desktop Entry]
+Type=Directory
+Name=Windows
+Comment=Tools for manipulating AfterStep windows.
+X-AfterStep-IndexName=AfterStepWindows
+Icon=/usr/share/afterstep/desktop/icons/Folder-Windows
+
+[Desktop Entry]
+Type=Directory
+Name=Action Games
+Comment=An action game
+Categories=Game;
+X-AfterStep-IndexName=ActionGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-Pistol
+
+[Desktop Entry]
+Type=Directory
+Name=Archiving
+Comment=A tool to archive/backup data
+X-AfterStep-IndexName=Archiving
+
+[Desktop Entry]
+Type=Directory
+Name=Instant Messaging
+Comment=An instant messaging client
+Categories=Network;
+X-AfterStep-IndexName=InstantMessaging
+Icon=/usr/share/afterstep/desktop/icons/Folder-Chat
+
+[Desktop Entry]
+Type=Directory
+Name=Vector Graphics
+Comment=Vector based graphical application
+Categories=2D Graphics;
+X-AfterStep-IndexName=VectorGraphics
+
+[Desktop Entry]
+Type=Directory
+Name=2D Graphics
+Comment=2D based graphical application
+Categories=Graphics;
+X-AfterStep-IndexName=2DGraphics
+Icon=/usr/share/afterstep/desktop/icons/Folder-Brushes
+
+[Desktop Entry]
+Type=Directory
+Name=Arcade Games
+Comment=Arcade style game
+Categories=Game;
+X-AfterStep-IndexName=ArcadeGame
+X-AfterStep-Aliases=Arcade;
+Icon=/usr/share/afterstep/desktop/icons/Folder-GameController
+
+[Desktop Entry]
+Type=Directory
+Name=Audio and Video
+Comment=Multimedia menu
+X-AfterStep-IndexName=AudioVideo
+X-AfterStep-Aliases=Multimedia;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Headphones
+
+[Desktop Entry]
+Type=Directory
+Name=Database
+Comment=Application to manage a database
+Categories=Office;Development;AudioVideo;
+X-AfterStep-IndexName=Database
+
+[Desktop Entry]
+Type=Directory
+Name=Screen Saver
+Comment=Screensaver themes
+Categories=System;
+X-AfterStep-IndexName=Screensaver
+X-AfterStep-Aliases=ScreenSavers;
+Icon=/usr/share/afterstep/desktop/icons/Folder-MoonInMonitor
+
+[Desktop Entry]
+Type=Directory
+Name=3D Graphics
+Comment=3D based graphical application
+Categories=Graphics;
+X-AfterStep-IndexName=3DGraphics
+
+[Desktop Entry]
+Type=Directory
+Name=Logic Games
+Comment=Logic games like puzzles, etc
+Categories=Game;
+X-AfterStep-IndexName=LogicGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-Puzzle
+
+[Desktop Entry]
+Type=Directory
+Name=Screen Savers
+Comment=Password-lock a desktop and prevent monitor burn-in.
+X-AfterStep-IndexName=ASScreenSaver
+Icon=/usr/share/afterstep/desktop/icons/Folder-MoonInMonitor
+
+[Desktop Entry]
+Type=Directory
+Name=Calculator
+Comment=A calculator
+Categories=Utility;
+X-AfterStep-IndexName=Calculator
+
+[Desktop Entry]
+Type=Directory
+Name=PDA
+Comment=Tool to manage your PDA
+Categories=Office;
+X-AfterStep-IndexName=PDA
+
+[Desktop Entry]
+Type=Directory
+Name=Find...
+Comment=Search the computer or Internet for files or info.
+X-AfterStep-IndexName=Find
+Icon=/usr/share/afterstep/desktop/icons/Folder-MagnifyingGlass
+
+[Desktop Entry]
+Type=Directory
+Name=Ham Radio
+Comment=HAM radio software
+Categories=Network;Audio;
+X-AfterStep-IndexName=HamRadio
+
+[Desktop Entry]
+Type=Directory
+Name=Mixer
+Comment=Just a mixer
+Categories=Audio;
+X-AfterStep-IndexName=Mixer
+
+[Desktop Entry]
+Type=Directory
+Name=Project Management
+Comment=Project management application
+Categories=Office;Development;
+X-AfterStep-IndexName=ProjectManagement
+
+[Desktop Entry]
+Type=Directory
+Name=Construction
+Comment=
+Categories=Education;
+X-AfterStep-IndexName=Construction
+
+[Desktop Entry]
+Type=Directory
+Name=Development
+Comment=Tools for software development
+X-AfterStep-IndexName=Development
+Icon=/usr/share/afterstep/desktop/icons/Folder-HammerBrown
+
+[Desktop Entry]
+Type=Directory
+Name=Physics
+Comment=Physics software
+Categories=Science;
+X-AfterStep-IndexName=Physics
+
+[Desktop Entry]
+Type=Directory
+Name=Qt
+Comment=Application based on Qt libraries
+X-AfterStep-IndexName=Qt
+
+[Desktop Entry]
+Type=Directory
+Name=Security
+Comment=A security tool
+Categories=Settings;System;
+X-AfterStep-IndexName=Security
+X-AfterStep-Aliases=Security & Privacy;X-KDE-settings-security;
+
+[Desktop Entry]
+Type=Directory
+Name=Web Development
+Comment=A tool for web developers
+Categories=Network;Development;
+X-AfterStep-IndexName=WebDevelopment
+
+[Desktop Entry]
+Type=Directory
+Name=Web Browsers
+Comment=A web browser
+Categories=Network;
+X-AfterStep-IndexName=WebBrowser
+X-AfterStep-Aliases=X-KDE-WebBrowsing;X-KDE-settings-webbrowsing;
+
+[Desktop Entry]
+Type=Directory
+Name=Accessories
+Comment=Small utility application, "Accessories"
+X-AfterStep-IndexName=Utility
+X-AfterStep-Aliases=Utilities;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Screwdriver
+
+[Desktop Entry]
+Type=Directory
+Name=Chart
+Comment=Chart application
+Categories=Office;
+X-AfterStep-IndexName=Chart
+
+[Desktop Entry]
+Type=Directory
+Name=Contact Management
+Comment=E.g. an address book
+Categories=Office;
+X-AfterStep-IndexName=ContactManagement
+
+[Desktop Entry]
+Type=Directory
+Name=Disc Burning
+Comment=Application to burn a disc
+Categories=AudioVideo;Utility;
+X-AfterStep-IndexName=DiscBurning
+
+[Desktop Entry]
+Type=Directory
+Name=Modules
+Comment=Applications for use within AfterStep.
+X-AfterStep-IndexName=ASModules
+Icon=/usr/share/afterstep/desktop/icons/Folder-Puzzle
+
+[Desktop Entry]
+Type=Directory
+Name=Applications
+Comment=Applications
+X-AfterStep-IndexName=Application
+X-AfterStep-Aliases=Applications;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Gear2
+
+[Desktop Entry]
+Type=Directory
+Name=Blocks Games
+Comment=Falling blocks game
+Categories=Game;
+X-AfterStep-IndexName=BlocksGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-TetrisBlocks
+
+[Desktop Entry]
+Type=Directory
+Name=Web Development
+Comment=A tool for web developers
+Categories=Network;Development;
+X-AfterStep-IndexName=WebDevelopment
+
+[Desktop Entry]
+Type=Directory
+Name=Debuggers
+Comment=A tool to debug applications
+Categories=Development;
+X-AfterStep-IndexName=Debugger
+
+[Desktop Entry]
+Type=Directory
+Name=KDE Components
+Comment=
+Categories=Settings;
+X-AfterStep-IndexName=KDEComponents
+X-AfterStep-Aliases=X-KDE-settings-components;
+
+[Desktop Entry]
+Type=Directory
+Name=Sports Games
+Comment=A sports game
+Categories=Game;
+X-AfterStep-IndexName=SportsGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-SoccerBall
+
+[Desktop Entry]
+Type=Directory
+Name=Editors
+Comment=A text editor
+X-AfterStep-IndexName=TextEditor
+Icon=/usr/share/afterstep/desktop/icons/Folder-Pen1
+
+[Desktop Entry]
+Type=Directory
+Name=Applications
+Comment=Applications
+X-AfterStep-IndexName=Application
+X-AfterStep-Aliases=Applications;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Gear2
+
+[Desktop Entry]
+Type=Directory
+Name=Project Management
+Comment=Project management application
+Categories=Office;Development;
+X-AfterStep-IndexName=ProjectManagement
+
+[Desktop Entry]
+Type=Directory
+Name=Accessibility
+Comment=Accessibility Settings
+Categories=Settings;Utility;
+X-AfterStep-IndexName=Accessibility
+X-AfterStep-Aliases=X-KDE-Accessibility;X-KDE-settings-accessibility;
+
+[Desktop Entry]
+Type=Directory
+Name=Audio and Video
+Comment=Multimedia menu
+X-AfterStep-IndexName=AudioVideo
+X-AfterStep-Aliases=Multimedia;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Headphones
+
+[Desktop Entry]
+Type=Directory
+Name=Education
+Comment=Educational software
+X-AfterStep-IndexName=Education
+X-AfterStep-Aliases=Edutainment;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Library
+
+[Desktop Entry]
+Type=Directory
+Name=Terminal Emulators
+Comment=A terminal emulator application
+X-AfterStep-IndexName=TerminalEmulator
+X-AfterStep-Aliases=Terminal Applications;
+
+[Desktop Entry]
+Type=Directory
+Name=Contact Management
+Comment=E.g. an address book
+Categories=Office;
+X-AfterStep-IndexName=ContactManagement
+
+[Desktop Entry]
+Type=Directory
+Name=Role Playing
+Comment=A role playing game
+Categories=Game;
+X-AfterStep-IndexName=RolePlaying
+X-AfterStep-Aliases=Rogue-like Games;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Knight
+
+[Desktop Entry]
+Type=Directory
+Name=Filesystems
+Comment=A file system tool
+Categories=System;
+X-AfterStep-IndexName=Filesystem
+
+[Desktop Entry]
+Type=Directory
+Name=IDE
+Comment=IDE application
+Categories=Development;
+X-AfterStep-IndexName=IDE
+
+[Desktop Entry]
+Type=Directory
+Name=Medical Software
+Comment=Medical software
+Categories=Science;
+X-AfterStep-IndexName=MedicalSoftware
+
+[Desktop Entry]
+Type=Directory
+Name=Multimedia settings
+Comment=
+Categories=HardwareSettings;
+X-AfterStep-IndexName=MultimediaSettings
+X-AfterStep-Aliases=Sound & Multimedia;X-KDE-Sound;X-KDE-settings-sound;Sound;
+
+[Desktop Entry]
+Type=Directory
+Name=TV
+Comment=A TV application
+Categories=Video;
+X-AfterStep-IndexName=TV
+Icon=/usr/share/afterstep/desktop/icons/Folder-TV
+
+[Desktop Entry]
+Type=Directory
+Name=Filesystems
+Comment=A file system tool
+Categories=System;
+X-AfterStep-IndexName=Filesystem
+
+[Desktop Entry]
+Type=Directory
+Name=Finance
+Comment=Application to manage your finance
+Categories=Office;
+X-AfterStep-IndexName=Finance
+
+[Desktop Entry]
+Type=Directory
+Name=Network
+Comment=Network application such as a web browser
+X-AfterStep-IndexName=Network
+X-AfterStep-Aliases=Internet;X-KDE-Network;X-KDE-settings-network;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Globe
+
+[Desktop Entry]
+Type=Directory
+Name=Tray Icons
+Comment=An application that is primarily an icon for the "system tray" or "notification area" (apps that open a normal window and just happen to have a tray icon as well should not list this category)
+X-AfterStep-IndexName=TrayIcon
+
+[Desktop Entry]
+Type=Directory
+Name=Ham Radio
+Comment=HAM radio software
+Categories=Network;Audio;
+X-AfterStep-IndexName=HamRadio
+
+[Desktop Entry]
+Type=Directory
+Name=KDE
+Comment=Application based on KDE libraries
+X-AfterStep-IndexName=KDE
+
+[Desktop Entry]
+Type=Directory
+Name=P2P
+Comment=A P2P program
+Categories=Network;
+X-AfterStep-IndexName=P2P
+
+[Desktop Entry]
+Type=Directory
+Name=Package Manager
+Comment=A package manager application
+Categories=Settings;
+X-AfterStep-IndexName=PackageManager
+
+[Desktop Entry]
+Type=Directory
+Name=Translation
+Comment=A translation tool
+Categories=Development;
+X-AfterStep-IndexName=Translation
+
+[Desktop Entry]
+Type=Directory
+Name=Chemistry
+Comment=Chemistry software
+Categories=Science;
+X-AfterStep-IndexName=Chemistry
+
+[Desktop Entry]
+Type=Directory
+Name=GTK
+Comment=Application based on GTK+ libraries
+X-AfterStep-IndexName=GTK
+
+[Desktop Entry]
+Type=Directory
+Name=Kids Games
+Comment=A game for kids
+Categories=Game;
+X-AfterStep-IndexName=KidsGame
+X-AfterStep-Aliases=Games for Kids;X-KDE-KidsGame;
+Icon=/usr/share/afterstep/desktop/icons/Folder-TeddyBear
+
+[Desktop Entry]
+Type=Directory
+Name=Puzzle Games
+Comment=Puzzle game
+Categories=Game;
+X-AfterStep-IndexName=PuzzleGame
+X-AfterStep-Aliases=Puzzle;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Puzzle
+
+[Desktop Entry]
+Type=Directory
+Name=Web Browsers
+Comment=A web browser
+Categories=Network;
+X-AfterStep-IndexName=WebBrowser
+X-AfterStep-Aliases=X-KDE-WebBrowsing;X-KDE-settings-webbrowsing;
+
+[Desktop Entry]
+Type=Directory
+Name=Audio
+Comment=An audio application
+Categories=AudioVideo;
+X-AfterStep-IndexName=Audio
+Icon=/usr/share/afterstep/desktop/icons/Folder-MusicalNote
+
+[Desktop Entry]
+Type=Directory
+Name=Languages
+Comment=Software to learn foreign languages
+Categories=Education;
+X-AfterStep-IndexName=Languages
+
+[Desktop Entry]
+Type=Application
+Name=Floating Feet
+Comment=Bubbles the GNOME foot logo around the screen
+TryExec=floaters
+Exec=floaters /usr/share/pixmaps/gnome-logo-white.svg
+Categories=GNOME;Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Floppy Formatter
+Comment=Format floppy disks
+Exec=gfloppy
+Categories=GTK;GNOME;Application;System;
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Multimedia Systems Selector
+Comment=Configure defaults for GStreamer applications
+Exec=gstreamer-properties
+Categories=GNOME;GTK;Settings;HardwareSettings;
+Icon=/usr/share/icons/hicolor/48x48/apps/gstreamer-properties.png
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Sound
+Comment=Enable sound and associate sounds with events
+Exec=gnome-sound-properties
+Categories=GNOME;GTK;Settings;HardwareSettings;
+OnlyShowIn=GNOME
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Atomix
+Comment=Molecule puzzle game
+Exec=atomix
+Categories=GNOME;GTK;Game;PuzzleGame;
+Icon=/usr/share/pixmaps/atomix-icon.png
+
+[Desktop Entry]
+Type=Application
+Name=Greynetic
+Comment=This draws random colored and stippled rectangles. Written by Jamie Zawinski.
+TryExec=greynetic
+Exec=greynetic -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Windows
+Comment=Set your window properties
+Exec=gnome-window-properties
+Categories=GNOME;GTK;Settings;DesktopSettings;
+OnlyShowIn=GNOME
+X-AfterStep-IndexName=Set your window properties
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Tali
+Comment=Beat the odds in a poker-style dice game
+Exec=/usr/games/gtali
+Categories=GNOME;GTK;Game;CardGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-tali.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=About GNOME
+Comment=Learn more about GNOME
+Exec=gnome-about
+Categories=GNOME;GTK;Core;
+OnlyShowIn=GNOME
+Icon=/usr/share/pixmaps/gnome-logo-icon-transparent.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=AisleRiot Solitaire
+Comment=Play many different solitaire games
+Exec=/usr/games/sol
+Categories=GNOME;GTK;Game;CardGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-aisleriot.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Help
+Comment=Get help with Ubuntu
+Exec=yelp
+Categories=GNOME;GTK;Application;Core;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=PlotDrop
+Comment=Drag and Drop graph plotting
+TryExec=plotdrop
+Exec=plotdrop %F
+Categories=GNOME;Application;Graphics;
+Icon=/usr/share/pixmaps/plotdrop.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Sun Java 6 Runtime (32bit)
+Comment=Sun Java 6 Runtime (32bit)
+Exec=/usr/lib/jvm/ia32-java-6-sun-1.6.0.03/bin/java -jar
+Categories=GNOME;
+Icon=/usr/share/icons/ia32-sun-java6.xpm
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Appearance
+Comment=Customize the look of the desktop
+Exec=gnome-appearance-properties %F
+Categories=GNOME;GTK;Settings;DesktopSettings;
+OnlyShowIn=GNOME
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=CHM Viewer
+Comment=A viewer for HTML Help files
+Exec=gnochm %F
+Categories=Application;Utility;X-Red-Hat-Extra;
+Icon=/usr/share/pixmaps/gnochm.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Computer
+Comment=Browse all local and remote disks and folders accessible from this computer
+TryExec=nautilus
+Exec=nautilus --no-desktop computer:
+Categories=GNOME;GTK;Core;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Foo
+Categories=GNOME;
+Hidden=1
+
+[Desktop Entry]
+Type=Application
+Name=GaussSum
+Comment=Graphical display of computational chemistry output
+TryExec=gausssum
+Exec=gausssum %F
+Categories=Education;Science;
+Icon=/usr/share/pixmaps/gausssum.xpm
+
+[Desktop Entry]
+Type=Application
+Name=GNU TeXmacs Editor
+GenericName=TeXmacs Editor
+Comment=A structured wysiwyg scientific text editor
+Exec=texmacs %f
+Path=
+Categories=Education;Math;Science;
+
+[Desktop Entry]
+Type=Application
+Name=GraphThing
+GenericName=Graph analysis
+Comment=Create, manipulate and study graphs.
+Exec=graphthing
+Categories=Math;Science;Education;
+
+[Desktop Entry]
+Type=Application
+Name=Greenwich Whois Client
+Comment=Get information about domain names and IP addresses
+Exec=greenwich
+Categories=Application;Network;
+Icon=/usr/share/pixmaps/greenwich.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Shared Folders
+Comment=Configure which folders are available for your network neighborhood
+Exec=gksu shares-admin
+Categories=GNOME;GTK;System;Settings;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Cosmos
+Comment=Display a slideshow of pictures of the cosmos
+TryExec=slideshow
+Exec=slideshow --location=/usr/share/pixmaps/backgrounds/cosmos
+Categories=GNOME;Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=GLText
+Comment=Displays a few lines of text spinning around in a solid 3D font. Written by Jamie Zawinski.
+TryExec=gltext
+Exec=gltext -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=MySQL Query Browser
+Comment=MySQL Query Tool
+Exec=mysql-query-browser
+Categories=GNOME;Database;Development;Application;
+Icon=/usr/share/pixmaps/mysql_query_browser.xpm
+
+[Desktop Entry]
+Type=Application
+Name=Default Printer
+Comment=Select default printer
+Exec=gnome-default-printer
+Categories=GNOME;Application;Settings;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Gcolor2
+GenericName=Gcolor2
+Comment=Simple GTK2 color selector and picker
+Exec=gcolor2
+Categories=Application;Graphics;
+Icon=/usr/share/pixmaps/gcolor2/gcolor2.xpm
+
+[Desktop Entry]
+Type=Application
+Name=Dia Diagram Editor
+Comment=Edit your Diagrams
+Exec=dia
+Categories=GNOME;Application;Graphics;
+Icon=/usr/share/pixmaps/dia_gnome_icon.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=GNUbik
+GenericName=GNUbik Game
+Comment=3D Rubik's cube game
+Exec=/usr/games/gnubik
+Categories=Application;Game;Puzzles;
+Icon=/usr/share/pixmaps/gnubik.xpm
+
+[Desktop Entry]
+Type=Application
+Name=Pictures folder
+Comment=Display a slideshow from your Pictures folder
+TryExec=slideshow
+Exec=slideshow
+Categories=GNOME;Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=System Log
+Comment=View or monitor system log files
+Exec=gnome-system-log
+Categories=GTK;GNOME;System;Settings;
+OnlyShowIn=GNOME
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=CD/DVD Creator
+Comment=Open a folder into which you can drag files to burn to a CD or DVD
+TryExec=nautilus-cd-burner
+Exec=nautilus --no-desktop burn:///
+Categories=GNOME;Core;
+OnlyShowIn=GNOME
+Icon=/usr/share/nautilus-cd-burner
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=gLabels Label Designer
+Comment=Create labels, business cards and media covers
+Exec=glabels %F
+Categories=GNOME;Application;Office;
+Icon=/usr/share/pixmaps/glabels.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=KBFX Theme Installer
+Exec=kbfxconfigapp --install %u
+Categories=GNOME;
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=On-Screen Keyboard
+Comment=Type and navigate applications using alternative input devices
+Exec=gok
+Categories=GNOME;GTK;Utility;Accessibility;
+Icon=/usr/share/pixmaps/gok.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Preferred Applications
+Comment=Select your default applications
+Exec=gnome-default-applications-properties
+Categories=GNOME;GTK;Settings;X-GNOME-PersonalSettings;
+OnlyShowIn=GNOME
+Icon=/usr/share/icons/gnome/48x48/apps/gnome-settings-default-applications.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Art Manager
+Comment=Install themes from art.gnome.org website
+Exec=gnome-art
+Categories=GNOME;Application;Settings;
+OnlyShowIn=GNOME
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=GFlux
+Comment=Draws a rippling waves on a rotating wireframe grid, using GL. Written by Josiah Pease.
+TryExec=gflux
+Exec=gflux -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Scanner Utility
+Comment=Simply scan image
+Exec=flegita
+Categories=GNOME;Application;Graphics;
+
+[Desktop Entry]
+Type=Application
+Name=Take Screenshot
+Comment=Save images of your desktop or individual windows
+Exec=gnome-screenshot --interactive
+Categories=GTK;GNOME;Utility;
+OnlyShowIn=GNOME
+Icon=/usr/share/icons/gnome/48x48/apps/applets-screenshooter.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Terminal
+Comment=Use the command line
+TryExec=gnome-terminal
+Exec=gnome-terminal
+Categories=GNOME;GTK;Utility;TerminalEmulator;
+Icon=/usr/share/pixmaps/gnome-terminal.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Ekiga Softphone
+GenericName=IP Telephony, VoIP and Video Conferencing
+Comment=Talk to people over the Internet
+TryExec=ekiga
+Exec=ekiga
+Categories=GNOME;GTK;Network;Telephony;
+Icon=/usr/share/pixmaps/ekiga.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Evolution Mail
+Comment=Read and write emails
+Exec=evolution --component=mail
+Categories=GNOME;Network;
+Icon=/usr/share/evolution
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=FreeCell Solitaire
+Comment=Play the popular FreeCell card game
+Exec=/usr/games/sol --freecell
+Categories=GNOME;GTK;Game;CardGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-freecell.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=GENESIS Neural Simulator
+GenericName=Neural Simulator
+Comment=Simulate different types of neural systems
+Exec=genesis
+Categories=Application;Science;Biology;Education;
+Icon=/usr/share/genesis
+Terminal=1
+
+[Desktop Entry]
+Type=Application
+Name=Project Management
+Comment=Planner Project Management
+Exec=planner %F
+Categories=Application;Office;ProjectManagement;
+X-AfterStep-IndexName=Planner Project Management
+Icon=/usr/share/pixmaps/gnome-planner.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=XMMS (remote playlists)
+GenericName=Multimedia Player
+Exec=xmms %f
+Categories=GNOME;
+Icon=/usr/share/xmms
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Apply theme
+Comment=Sets the default theme
+Exec=themus-theme-applier %u
+Categories=GNOME;
+OnlyShowIn=;
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Chess
+GenericName=3D Chess Game
+Comment=Play the classic two-player boardgame of chess
+Exec=/usr/games/glchess
+Categories=GNOME;Game;BoardGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-glchess.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=GVim Text Editor
+Comment=Edit text files
+Exec=gvim -f %F
+Categories=Application;Utility;TextEditor;
+Icon=/usr/share/pixmaps/vim.svg
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Keyboard Accessibility
+Comment=Set your keyboard accessibility preferences
+Exec=gnome-accessibility-keyboard-properties
+Categories=GNOME;GTK;Settings;X-GNOME-PersonalSettings;Accessibility;
+OnlyShowIn=GNOME
+Icon=/usr/share/icons/gnome/48x48/apps/gnome-settings-accessibility-keyboard.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Remote Desktop
+Comment=Set your remote desktop access preferences
+Exec=vino-preferences
+Categories=GNOME;GTK;Settings;X-GNOME-NetworkSettings;
+OnlyShowIn=GNOME
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-remote-desktop.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Sound Juicer CD Extractor
+GenericName=CD Extractor
+Comment=Extract music from your CDs
+Exec=sound-juicer
+Categories=GNOME;GTK;AudioVideo;
+Icon=/usr/share/sound-juicer
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=GCompris Administration
+Comment=Administration for gcompris
+Exec=gcompris -a --nolockcheck
+Categories=Education;
+Icon=/usr/share/pixmaps/gcompris-edit.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Same GNOME
+Comment=Clear the screen by removing groups of colored balls
+Exec=/usr/games/same-gnome
+Categories=GNOME;GTK;Game;LogicGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-samegnome.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Sun Java 6 Runtime
+Comment=Sun Java 6 Runtime
+Exec=/usr/lib/jvm/java-6-sun-1.6.0.03/bin/java -jar
+Categories=GNOME;
+Icon=/usr/share/icons/sun-java6.xpm
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Epiphany Web Bookmarks
+GenericName=Web Bookmarks
+Comment=Browse and organize your bookmarks
+Exec=epiphany-browser --bookmarks-editor
+Categories=Network;GNOME;GTK;
+Icon=/usr/share/icons/hicolor/48x48/apps/epiphany-bookmarks.png
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=GNU Paint
+Comment=A small-scale painting program for GNOME, the GNU Desktop
+TryExec=gpaint
+Exec=gpaint
+Categories=Application;Graphics;2DGraphics;RasterGraphics;
+Icon=/usr/share/pixmaps/gpaint.xpm
+
+[Desktop Entry]
+Type=Application
+Name=Straw
+GenericName=Feed Aggregator
+Comment=Aggregates news and blog feeds
+TryExec=straw
+Exec=straw %U
+Categories=GNOME;Application;Network;
+Icon=/usr/share/pixmaps/straw.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=F-Spot photos
+Comment=Display a slideshow from F-Spot
+TryExec=f-spot-screensaver
+Exec=f-spot-screensaver
+Categories=GNOME;Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=GLPlanet
+Comment=Draws a planet bouncing around in space. Written by David Konerding. The built-in image is a map of the earth (extracted from `xearth'), but you can wrap any texture around the sphere, e.g., the planetary textures that come with `ssystem'.
+TryExec=glplanet
+Exec=glplanet -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Orca Screen Reader and Magnifier
+Comment=Present on-screen information as speech or braille, or magnify the screen
+Exec=orca
+Categories=GNOME;GTK;Accessibility;
+Icon=/usr/share/icons/hicolor/48x48/apps/orca.png
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=PalmOS Devices
+Comment=Configure PalmOS devices
+Exec=gpilotd-control-applet
+Categories=GNOME;GTK;Application;Settings;
+Icon=/usr/share/pixmaps/gnome-palm.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Text Editor
+Comment=Edit text files
+Exec=gedit %U
+Categories=GNOME;GTK;Utility;TextEditor;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Dictionary
+Comment=Check word definitions and spellings in an online dictionary
+Exec=gnome-dictionary
+Categories=GNOME;GTK;Utility;
+OnlyShowIn=GNOME
+X-AfterStep-IndexName=Dictionary application
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Gnometris
+Comment=Fit falling blocks together
+Exec=/usr/games/gnometris
+Categories=GNOME;GTK;Game;BlocksGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-gnometris.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Terminal Server Client
+Comment=Connect to a remote computer
+TryExec=tsclient
+Exec=tsclient
+Categories=GTK;GNOME;X-GNOME-NetworkSettings;Network;
+Icon=/usr/share/pixmaps/tsclient.png
+
+[Desktop Entry]
+Type=Application
+Name=Tracker Search Tool
+Comment=Locate documents and folders on this computer by name or content using Tracker
+Exec=tracker-search-tool
+Categories=GTK;Utility;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Sessions
+Comment=Configure your sessions
+Exec=gnome-session-properties
+Categories=Settings;X-GNOME-PersonalSettings;
+OnlyShowIn=GNOME
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=About Edubuntu
+Comment=Learn more about Edubuntu
+Exec=yelp ghelp:about-edubuntu
+Categories=GNOME;Application;Core;
+Icon=/usr/share/icons/hicolor/48x48/apps/distributor-logo.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Control Center
+GenericName=The GNOME configuration tool
+Exec=gnome-control-center
+Categories=GNOME;GTK;Settings;
+OnlyShowIn=GNOME
+Icon=/usr/share/gnome-control-center
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=GLHanoi
+Comment=Solves the Towers of Hanoi puzzle. Move N disks from one pole to another, one disk at a time, with no disk ever resting on a disk smaller than itself. Written by Dave Atkinson.
+TryExec=glhanoi
+Exec=glhanoi -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Iagno
+Comment=Dominate the board in a classic version of Reversi
+Exec=/usr/games/iagno
+Categories=GNOME;GTK;Game;BoardGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-iagno.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Configuration Editor
+Comment=Directly edit your entire configuration database
+Exec=gconf-editor
+Categories=GNOME;GTK;System;
+Icon=/usr/share/icons/hicolor/48x48/apps/gconf-editor.png
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Gnash SWF Viewer
+GenericName=
+Comment=
+Exec=/usr/bin/gnash
+Categories=Application;AudioVideo;
+Icon=/usr/share/pixmaps/gnash.xpm
+
+[Desktop Entry]
+Type=Application
+Name=KnowIt
+Comment=
+Exec=knowit -caption "%c" %i %m
+Categories=GNOME;
+
+[Desktop Entry]
+Type=Application
+Name=Lockdown Editor
+Comment=Configure the lockdown policy
+Exec=pessulus
+Categories=GNOME;GTK;System;Settings;
+OnlyShowIn=GNOME
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Screen Resolution
+Comment=Change screen resolution
+Exec=gnome-display-properties
+Categories=GNOME;GTK;Settings;HardwareSettings;
+OnlyShowIn=GNOME
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Gnumeric Spreadsheet
+GenericName=Spreadsheet
+Comment=Calculation, Analysis, and Visualization of Information
+Exec=gnumeric %U
+Categories=Application;Office;Spreadsheet;Science;Math;GNOME;GTK;
+Icon=/usr/share/pixmaps/gnome-gnumeric.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Hex Editor
+Comment=GNOME Hexadecimal Editor
+Exec=ghex2 %F
+Categories=GNOME;Application;Development;
+Icon=/usr/share/icons/hicolor/48x48/apps/ghex.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Sound Recorder
+Comment=Record sound clips
+Exec=gnome-sound-recorder
+Categories=GNOME;GTK;AudioVideo;Recorder;
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-grecord.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=CD Player
+Comment=Play audio CDs
+Exec=gnome-cd
+Categories=GNOME;GTK;AudioVideo;Audio;Player;
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-cd.png
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Five or More
+Comment=Remove colored balls from the board by forming lines
+Exec=/usr/games/glines
+Categories=GNOME;GTK;Game;LogicGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-glines.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Nibbles
+Comment=Guide a worm around a maze
+Exec=/usr/games/gnibbles
+Categories=GNOME;GTK;Game;LogicGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-gnibbles.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=AbiWord Word Processor
+GenericName=Word Processor
+Comment=AbiWord Word Processor
+Exec=abiword
+Categories=GNOME;Application;WordProcessor;Office;
+Icon=/usr/share/pixmaps/abiword.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Four-in-a-Row
+Comment=Make lines of the same color to win
+Exec=/usr/games/gnect
+Categories=GNOME;GTK;Game;LogicGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-gnect.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Mahjongg
+Comment=Disassemble a pile of tiles by removing matching pairs
+Exec=/usr/games/mahjongg
+Categories=GNOME;GTK;Game;BoardGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-mahjongg.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Windows
+Comment=Set your window properties
+Exec=gnome-window-properties
+Categories=GNOME;GTK;Settings;DesktopSettings;
+OnlyShowIn=GNOME
+X-AfterStep-IndexName=Windows application
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Celestia
+Comment=Space Simulator
+Exec=celestia-gnome
+Categories=Application;Education;Astronomy;Science;
+Icon=/usr/share/pixmaps/celestia.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Floating Ubuntu
+Comment=Ubuntu logo floating around the screen
+TryExec=floaters
+Exec=floaters /usr/share/pixmaps/ubuntu.svg
+Categories=GNOME;Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=gLife
+Comment=An Artificial Life implementation in GNOME
+Exec=glife
+Categories=GNOME;Application;Game;
+Icon=/usr/share/pixmaps/gnome-life.png
+
+[Desktop Entry]
+Type=Application
+Name=gThumb Image Viewer
+GenericName=Image Viewer
+Comment=View and organize your images
+Exec=gthumb %U
+Categories=GNOME;GTK;Graphics;Viewer;RasterGraphics;2DGraphics;Photography;
+Icon=/usr/share/icons/hicolor/48x48/apps/gthumb.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=KNetDockApp
+Comment=Network activity monitor applet for KDE
+Exec=knetdockapp
+Categories=GNOME;
+Icon=/usr/share/icons/hicolor/48x48/apps/knetdockapp.png
+
+[Desktop Entry]
+Type=Application
+Name=Meld Diff Viewer
+Comment=Compare and merge your files.
+Exec=meld
+Categories=GNOME;Application;Development;
+Icon=/usr/share/pixmaps/meld.png
+
+[Desktop Entry]
+Type=Application
+Name=Network Tools
+Comment=View information about your network
+Exec=gnome-nettool
+Categories=System;Settings;GNOME;GTK;
+Icon=/usr/share/gnome-nettool
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Robots
+Comment=Avoid the robots and make them crash into each other
+Exec=/usr/games/gnobots2
+Categories=GNOME;GTK;Game;ArcadeGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-robots.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Theme Installer
+Comment=Installs themes packages for various parts of the desktop
+Exec=gnome-appearance-properties -i %u
+Categories=GNOME;GTK;
+OnlyShowIn=;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Bug Report Tool
+Comment=Report a bug in GNOME-based applications
+Exec=gnome-open https://launchpad.net/distros/ubuntu/+filebug
+Categories=GNOME;GTK;Development;
+Icon=/usr/share/icons/hicolor/48x48/apps/bug-buddy.png
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Desktop Effects
+Comment=Select desktop effects
+Exec=desktop-effects
+Categories=GNOME;GTK;Settings;DesktopSettings;
+OnlyShowIn=GNOME
+Icon=/usr/share/icons/hicolor/48x48/apps/desktop-effects.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Screensaver
+Comment=Set your screensaver preferences
+Exec=gnome-screensaver-preferences
+Categories=Settings;DesktopSettings;
+OnlyShowIn=GNOME
+X-AfterStep-IndexName=Screensaver application
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Tetravex
+Comment=Complete the puzzle by matching numbered tiles
+Exec=/usr/games/gnotravex
+Categories=GNOME;GTK;Game;LogicGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-tetravex.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Ubuntu Device Database
+Comment=Ubuntu Device Database submission Tool
+Exec=hwdb-gui
+Categories=GNOME;Application;System;
+OnlyShowIn=GNOME
+Icon=/usr/share/hwdb-client/hwdb.png
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Image Viewer
+Comment=Browse and rotate images
+TryExec=eog
+Exec=eog %U
+Categories=GNOME;GTK;Graphics;RasterGraphics;Viewer;
+Icon=/usr/share/eog
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Network Proxy
+Comment=Set your network proxy preferences
+Exec=gnome-network-preferences
+Categories=GNOME;GTK;Settings;X-GNOME-NetworkSettings;
+OnlyShowIn=GNOME
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Volume Control
+Comment=Adjust the volume level
+Exec=gnome-volume-control
+Categories=GNOME;GTK;AudioVideo;Settings;HardwareSettings;
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Hardware Information
+Comment=View hardware information
+Exec=hal-device-manager
+Categories=GNOME;Settings;HardwareSettings;
+Icon=/usr/share/icons/gnome/48x48/apps/hwbrowser.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Install KDE Theme
+Exec=kdeinstallktheme %f
+Categories=GNOME;
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Keyboard
+Comment=Set your keyboard preferences
+Exec=gnome-keyboard-properties
+Categories=GNOME;GTK;Settings;HardwareSettings;
+OnlyShowIn=GNOME
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Recording Level Monitor
+Comment=Monitor the recording input volume
+Exec=vumeter -r
+Categories=GNOME;GTK;AudioVideo;Monitor;
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-reclevel.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=File Management
+Comment=Change the behaviour and appearance of file manager windows
+Exec=nautilus-file-management-properties
+Categories=GNOME;GTK;Settings;X-GNOME-PersonalSettings;
+OnlyShowIn=GNOME
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=GDebi Package Installer
+GenericName=Package Installer
+Comment=Install and view software packages
+Exec=gdebi-gtk
+Categories=Application;System;
+NotShowIn=KDE
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=GlSnake
+Comment=Draws a simulation of the Rubik's Snake puzzle. Written by Jamie Wilkinson, Andrew Bennetts, and Peter Aylett.
+TryExec=glsnake
+Exec=glsnake -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Menu Editor
+Exec=gmenu-simple-editor
+Categories=GNOME;
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Rhythmbox Music Player
+GenericName=Music Player
+Comment=Play and organize your music collection
+Exec=rhythmbox
+Categories=GNOME;GTK;AudioVideo;
+Icon=/usr/share/rhythmbox
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Splash Screen
+Comment=Select a splash screen image
+Exec=gnome-splashscreen-manager
+Categories=GNOME;Application;Settings;
+OnlyShowIn=GNOME
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Wine Windows Emulator
+Exec=wine %f
+Categories=GNOME;
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=F-Spot Photo Manager
+GenericName=Photo Manager
+Comment=Organize, enjoy, and share your photos
+Exec=f-spot
+Categories=Graphics;Photography;GNOME;GTK;
+Icon=/usr/share/icons/hicolor/48x48/apps/f-spot.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=OpenOffice.org Formula
+GenericName=Formula
+Comment=Create and edit scientific formulas and equations.
+Exec=ooffice -math %U
+Categories=GNOME;
+Icon=/usr/share/icons/hicolor/48x48/apps/ooo-math.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Services
+Comment=Configure which services will be run when the system starts
+Exec=gksu services-admin
+Categories=GNOME;GTK;System;Settings;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Panel
+Comment=Launch other applications and provide various utilities to manage windows, show the time, etc.
+Exec=gnome-panel
+Categories=GNOME;GTK;Utility;Core;
+OnlyShowIn=GNOME
+Icon=/usr/share/gnome-panel
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Galaxy
+Comment=This draws spinning galaxies, which then collide and scatter their stars to the, uh, four winds or something. Originally an Amiga program by Uli Siegmund.
+TryExec=galaxy
+Exec=galaxy -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=gDesklets
+Comment=A desktop applet system for GNOME
+Exec=gdesklets shell
+Categories=Application;Utility;
+Icon=/usr/share/pixmaps/gdesklets.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Gleidescope
+Comment=An OpenGL kaleidescope that operates on your desktop image, or on image files loaded from disk. Written by andrew dean.
+TryExec=gleidescope
+Exec=gleidescope -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Grav
+Comment=This program draws a simple orbital simulation. If you turn on trails, it looks kind of like a cloud-chamber photograph. Written by Greg Bowering.
+TryExec=grav
+Exec=grav -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Keyring Manager
+Comment=Manage your keyrings
+Exec=gnome-keyring-manager
+Categories=GNOME;GTK;System;Utility;Settings;
+
+[Desktop Entry]
+Type=Application
+Name=Partition Editor
+Comment=GNOME Partition Editor
+Exec=gksu gparted
+Categories=GNOME;System;Settings;
+Icon=/usr/share/pixmaps/gparted.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=3D Acceleration
+Comment=Change 3D Acceleration options
+Exec=driconf
+Categories=GNOME;Settings;
+Icon=/usr/share/driconf/driconf-icon.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=F-Spot Photo Viewer
+GenericName=Photo Viewer
+TryExec=f-spot
+Exec=f-spot --view %U
+Categories=Graphics;Viewer;GNOME;GTK;
+Icon=/usr/share/icons/hicolor/48x48/apps/f-spot.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Gobby Collaborative Editor
+Comment=Edit text files collaboratively
+Exec=gobby
+Categories=TextEditor;Network;
+Icon=/usr/share/pixmaps/gobby.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=KTemperature
+Exec=ktemperature
+Categories=GNOME;
+
+[Desktop Entry]
+Type=Application
+Name=Movie Player
+Comment=Play movies and songs
+Exec=totem %U
+Categories=GNOME;GTK;AudioVideo;Video;Player;X-Ximian-Main;X-Red-Hat-Base;
+Icon=/usr/share/totem
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Removable Drives and Media
+Comment=Configure management of removable drives and media
+Exec=gnome-volume-properties
+Categories=Application;Settings;GNOME;
+OnlyShowIn=GNOME
+
+[Desktop Entry]
+Type=Application
+Name=GLBlur
+Comment=This program draws a box and a few line segments, and generates a radial blur outward from it. This creates flowing field effects. This is done by rendering the scene into a small texture, then repeatedly rendering increasingly-enlarged and increasingly-transparent versions of that texture onto the frame buffer. As such, it's quite graphics intensive: don't bother trying to run this if you don't have hardware-accelerated OpenGL texture support. It will hurt your machine bad.
+TryExec=glblur
+Exec=glblur -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=GLKnots
+Comment=Generates some twisting 3d knot patterns. Spins 'em around. Written by Jamie Zawinski.
+TryExec=glknots
+Exec=glknots -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Goop
+Comment=This draws set of animating, transparent, amoeba-like blobs. The blobs change shape as they wander around the screen, and they are translucent, so you can see the lower blobs through the higher ones, and when one passes over another, their colors merge. I got the idea for this from a cool mouse pad I have, which achieves the same kind of effect in real life by having several layers plastic with colored oil between them. Written by Jamie Zawinski.
+TryExec=goop
+Exec=goop -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=System Monitor
+Comment=View current processes and monitor system state
+TryExec=gnome-system-monitor
+Exec=gnome-system-monitor
+Categories=GNOME;GTK;System;Settings;Monitor;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Character Map
+Comment=Insert special characters into documents
+Exec=gucharmap
+Categories=GNOME;GTK;Utility;
+Icon=/usr/share/icons/hicolor/48x48/apps/gucharmap.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Epiphany Web Browser
+GenericName=Web Browser
+Comment=Browse the web
+Exec=epiphany-browser %U
+Categories=Network;GNOME;GTK;WebBrowser;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Mouse
+Comment=Set your mouse preferences
+Exec=gnome-mouse-properties
+Categories=GNOME;GTK;Settings;HardwareSettings;
+OnlyShowIn=GNOME
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=About Me
+Comment=Set your personal information
+Exec=gnome-about-me
+Categories=GNOME;GTK;Settings;X-GNOME-PersonalSettings;
+OnlyShowIn=GNOME
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Cursor Selection
+Comment=Select a different cursor
+Exec=gcursor
+Categories=GNOME;Application;Settings;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Gears
+Comment=This draws sets of turning, interlocking gears, rotating in three dimensions. Another GL hack, by Danny Sung, Brian Paul, Ed Mackey, and Jamie Zawinski.
+TryExec=gears
+Exec=gears -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Disk Usage Analyzer
+GenericName=Disk Usage Analyzer
+Comment=Check folder sizes and available disk space
+TryExec=baobab
+Exec=baobab
+Categories=GTK;GNOME;Utility;
+OnlyShowIn=GNOME
+Icon=/usr/share/baobab
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Network
+Comment=Configure network devices and connections
+Exec=gksu network-admin
+Categories=GNOME;GTK;System;Settings;
+X-AfterStep-IndexName=Network application
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Users and Groups
+Comment=Add or remove users and groups
+Exec=gksu users-admin
+Categories=GNOME;GTK;System;Settings;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Assistive Technology Preferences
+Comment=Enable support for GNOME assistive technologies at login
+Exec=gnome-at-properties
+Categories=GNOME;GTK;Settings;X-GNOME-PersonalSettings;Accessibility;
+OnlyShowIn=GNOME
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Report a problem...
+Comment=Report a malfunction to the developers
+Exec=/usr/share/apport/apport-gtk -c %f
+Categories=GNOME;Application;Core;
+Icon=/usr/share/apport
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Volume Monitor
+Comment=Monitor the sound output volume
+Exec=vumeter
+Categories=GNOME;GTK;AudioVideo;Monitor;
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-vumeter.png
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Archive Manager
+GenericName=Archive Manager
+Comment=Create and modify an archive
+TryExec=file-roller
+Exec=file-roller %U
+Categories=GTK;GNOME;Utility;
+Icon=/usr/share/file-roller
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Blackjack
+Comment=Play the casino card game Blackjack
+Exec=/usr/games/blackjack
+Categories=GNOME;GTK;Game;CardGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-blackjack.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Calculator
+Comment=Perform arithmetic, scientific or financial calculations
+Exec=gcalctool
+Categories=GNOME;GTK;Utility;
+OnlyShowIn=GNOME
+X-AfterStep-IndexName=Calculator application
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Gwget Download Manager
+GenericName=Download Manager
+Comment=Download files from the Internet
+Exec=gwget
+Categories=Application;Network;
+Icon=/usr/share/pixmaps/gwget.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Power Management
+Comment=Configure power management
+Exec=gnome-power-preferences
+Categories=Settings;X-GNOME-SystemSettings;
+OnlyShowIn=GNOME
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-power-manager.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Serpentine Audio CD Creator
+Comment=Create audio CDs from music files and playlists
+Exec=serpentine -o %U
+Categories=GNOME;GTK;AudioVideo;DiscBurning;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Sudoku
+Comment=Test your logic skills in this number grid puzzle
+Exec=/usr/games/gnome-sudoku
+Categories=GNOME;GTK;Game;LogicGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-sudoku.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=BEAST
+GenericName=Music Composer
+Comment=MIDI Tracker, Music Composition and Modular Synthesis Application
+TryExec=beast
+Exec=beast
+Categories=GTK;GNOME;Application;AudioVideo;AudioVideoEditing;Music;Player;
+Icon=/usr/share/pixmaps/beast.png
+
+[Desktop Entry]
+Type=Application
+Name=Grisbi
+GenericName=Money Management
+Comment=Manage your finances, accounts, and investments
+TryExec=grisbi
+Exec=grisbi
+Categories=Applications;Office;
+Icon=/usr/share/pixmaps/grisbi/grisbi.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Main Menu
+Comment=Change which applications are shown on the main menu
+Exec=alacarte
+Categories=GNOME;Settings;DesktopSettings;
+NotShowIn=KDE
+Icon=/usr/share/alacarte
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=GLMatrix
+Comment=Draws 3D dropping characters similar to what is seen in the title sequence of "The Matrix". See also "xmatrix" for a 2D rendering of the similar effect that appeared on the computer monitors actually *in* the movie. Written by Jamie Zawinski.
+TryExec=glmatrix
+Exec=glmatrix -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=GQview
+GenericName=Image Viewer
+Comment=View and manage images
+Exec=gqview -r %F
+Categories=Application;Graphics;Viewer;
+Icon=/usr/share/pixmaps/gqview.png
+
+[Desktop Entry]
+Type=Application
+Name=Winefish Editor
+Comment=LaTeX Editor based on Bluefish
+Exec=winefish -n 1 -p %f
+Categories=GNOME;
+Icon=/usr/share/pixmaps/winefish-icon.png
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Anjuta IDE
+GenericName=Integrated Development Environment
+Comment=Develop software in an integrated development environment
+Exec=anjuta %F
+Categories=GNOME;GTK;Development;
+Icon=/usr/share/icons/hicolor/48x48/apps/anjuta.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Ghextris
+Comment=Fit falling blocks together on a hexagonal grid
+Exec=ghextris
+Categories=GNOME;Application;Game;BlocksGame;
+Icon=/usr/share/games/ghextris/ghextris.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Indexing Preferences
+Comment=Configure file indexing with Tracker
+Exec=tracker-preferences
+Categories=Settings;
+Icon=/usr/share/icons/hicolor/48x48/apps/tracker.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Time and Date
+Comment=Change system time, date, and timezone
+Exec=gksu time-admin
+Categories=GNOME;GTK;System;Settings;
+Icon=/usr/share/icons/gnome/48x48/apps/config-date.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Camorama Webcam Viewer
+Comment=View, alter and save images from a webcam
+Exec=camorama
+Categories=Application;Graphics;
+Icon=/usr/share/pixmaps/camorama.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=GLSlideshow
+Comment=Loads a random sequence of images and smoothly scans and zooms around in each, fading from pan to pan. To tell it where to find the images to display, go to the "Advanced" tab on the Screensaver Preferences window. Select "Choose Random Images", and enter your image directory in the text field right below that. (Note: not the the "Advanced" button at the bottom of this window: the tab at the top of the *other* window.) This program requires a good video card capable of supporting large textures. Written by Jamie Zawinski and Mike Oliphant.
+TryExec=glslideshow
+Exec=glslideshow -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Open Folder
+TryExec=nautilus
+Exec=nautilus --no-desktop %U
+Categories=GNOME;
+OnlyShowIn=GNOME
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=User Profile Editor
+Comment=Establish and Edit Profiles for Users
+Exec=gksu sabayon
+Categories=GNOME;GTK;System;Settings;
+Icon=/usr/share/icons/hicolor/48x48/apps/sabayon.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Evolution
+GenericName=Groupware Suite
+Comment=The Evolution PIM and Email Client
+Exec=evolution
+Categories=GNOME;GTK;Office;Email;Calendar;ContactManagement;X-Red-Hat-Base;
+Icon=/usr/share/evolution
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=File Browser
+Comment=Browse the file system with the file manager
+TryExec=nautilus
+Exec=nautilus --no-desktop --browser %U
+Categories=GNOME;GTK;Utility;Core;
+OnlyShowIn=GNOME
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Project Management
+Comment=Planner Project Management
+Exec=planner %F
+Categories=Application;Office;ProjectManagement;
+X-AfterStep-IndexName=Project Management application
+Icon=/usr/share/pixmaps/gnome-planner.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Winefish LaTeX Editor
+Comment=LaTeX Editor based on Bluefish
+Exec=winefish -n 0
+Categories=GTK;GNOME;Application;Editors;Office;Development;
+Icon=/usr/share/pixmaps/winefish-icon.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=XaoS
+Comment=Fractal Generator
+Exec=/usr/bin/xaos -driver x11
+Categories=GNOME;Application;Graphics;
+Icon=/usr/share/pixmaps/xaos.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Document Viewer
+GenericName=Document Viewer
+Comment=View multipage documents
+TryExec=evince
+Exec=evince %U
+Categories=GNOME;GTK;Graphics;VectorGraphics;Viewer;
+Icon=/usr/share/icons/hicolor/48x48/apps/evince.png
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=GIMP Image Editor
+GenericName=Image Editor
+Comment=Create images and edit photographs
+TryExec=gimp-2.4
+Exec=gimp %U
+Categories=Graphics;2DGraphics;RasterGraphics;GTK;
+Icon=/usr/share/icons/hicolor/48x48/apps/gimp.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Home Folder
+Comment=Open your personal folder
+TryExec=nautilus
+Exec=nautilus --no-desktop
+Categories=GNOME;GTK;Core;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=HomeBank
+Comment=Free easy personal accounting for all !
+Exec=homebank %F
+Categories=GNOME;Applications;Office;Financial;
+Icon=/usr/share/icons/hicolor/48x48/apps/homebank.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Keyboard Shortcuts
+Comment=Assign shortcut keys to commands
+Exec=gnome-keybinding-properties
+Categories=GNOME;GTK;Settings;X-GNOME-PersonalSettings;
+OnlyShowIn=GNOME
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Klotski
+Comment=Slide blocks to solve the puzzle
+Exec=/usr/games/gnotski
+Categories=GNOME;GTK;Game;LogicGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-klotski.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Tomboy Notes
+GenericName=Note-taker
+Comment=Simple and easy to use note-taking
+Exec=tomboy --search
+Categories=GNOME;GTK;Utility;
+Icon=/usr/share/pixmaps/tomboy.png
+
+[Desktop Entry]
+Type=Application
+Name=About Ubuntu
+Comment=Learn more about Ubuntu
+Exec=yelp ghelp:about-ubuntu
+Categories=GNOME;Application;Core;
+Icon=/usr/share/icons/hicolor/48x48/apps/distributor-logo.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=GNOME Font Viewer
+Comment=The GNOME configuration tool
+Exec=gnome-font-viewer %u
+Categories=GNOME;
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=CD Database Server
+Comment=Modify your CD database server preferences
+Exec=cddb-slave2-properties
+Categories=GNOME;GTK;Settings;
+OnlyShowIn=GNOME
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-cd.png
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Educational suite GCompris
+GenericName=Multi-activity educational game
+Comment=Educational game for ages 2 to 10
+Exec=gcompris
+Categories=Game;KidsGame;
+Icon=/usr/share/pixmaps/gcompris.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=MacSlow's Cairo-Clock
+Comment=a super fine analog clock
+Exec=cairo-clock
+Categories=GNOME;Application;Utility;
+Icon=/usr/share/pixmaps/cairo-clock.png
+
+[Desktop Entry]
+Type=Application
+Name=Search for Files...
+Comment=Locate documents and folders on this computer by name or content
+Exec=gnome-search-tool
+Categories=GNOME;GTK;Core;
+OnlyShowIn=GNOME
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=GLForestFire
+Comment=Draws an animation of sprinkling fire-like 3D triangles in a landscape filled with trees. Requires OpenGL, and a machine with fast hardware support for texture maps. Written by Eric Lassauge <lassauge@users.sourceforge.net>.
+TryExec=glforestfire
+Exec=glforestfire -root
+Categories=Screensaver;
+
+[Desktop Entry]
+Type=Application
+Name=Mines
+Comment=Clear hidden mines from a minefield
+Exec=/usr/games/gnomine
+Categories=GNOME;GTK;Game;LogicGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/gnome-mines.png
+StartupNotify=1
+

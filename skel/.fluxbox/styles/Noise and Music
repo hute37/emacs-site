@@ -1,0 +1,132 @@
+#** Information **#
+style.name:     Noise and Music
+style.author:   vann at core dot com
+style.date:     August 23rd, 2002                    
+style.credits:  Wallpaper and style name credit goes to Phootek
+
+
+#** Toolbar **#
+toolbar:					flat vertical gradient
+toolbar.color:					#5C85B1
+toolbar.colorTo:				#344C64
+
+toolbar.button:					raised crossdiagonal gradient
+toolbar.button.color:			#95AFC8
+toolbar.button.colorTo:			#415F7B
+toolbar.button.picColor:		#FFFFFF
+
+toolbar.button.pressed:			sunken crossdiagonal gradient
+toolbar.button.pressed.color:	#344C64
+toolbar.button.pressed.colorTo:	#95AFC8
+
+toolbar.label:					sunken diagonal gradient
+toolbar.label.color:			#FFFFFF
+toolbar.label.colorTo:			#999999
+toolbar.label.textColor:		#333333
+
+toolbar.windowLabel:			sunken diagonal gradient
+toolbar.windowLabel.color:		#FFFFFF
+toolbar.windowLabel.colorTo:	#CCCCCC
+toolbar.windowLabel.textColor:	#333333
+
+toolbar.clock:					sunken diagonal gradient
+toolbar.clock.color:			#FFFFFF
+toolbar.clock.colorTo:			#999999
+toolbar.clock.textColor:		#333333
+
+toolbar.justify:				center
+
+
+#** Menu **#
+menu.title:					flat diagonal gradient
+menu.title.color:				#95AFC8
+menu.title.colorTo:				#415F7B
+menu.title.textColor:			#FFFFFF
+menu.title.justify:				left
+
+menu.frame:					flat diagonal gradient
+menu.frame.color:				#FFFFFF
+menu.frame.colorTo:				#D3DCE2
+menu.frame.textColor:			#000000
+menu.frame.disableColor:		#333333
+menu.frame.justify:				right
+
+menu.bullet.position:			right
+menu.bullet:					triangle
+
+menu.hilite:					flat diagonal gradient interlaced
+menu.hilite.color:				#95AFC8
+menu.hilite.colorTo:			#42607C
+menu.hilite.textColor:			#FFFFFF
+
+
+#** Window **#
+window.title.focus:				flat vertical gradient
+window.title.focus.color:		#5C85B1
+window.title.focus.colorTo:		#344C64
+window.title.unfocus:			flat
+window.title.unfocus.color:		#344C64
+
+window.label.focus:				sunken diagonal gradient
+window.label.focus.color:		#FFFFFF
+window.label.focus.colorTo:		#CCCCCC
+window.label.focus.textColor:	#333333
+window.label.unfocus:			parentrelative
+window.label.unfocus.textColor:	#CCCCCC
+
+window.button.focus:			raised crossdiagonal gradient
+window.button.focus.color:		#95AFC8
+window.button.focus.colorTo:	#415F7B
+window.button.focus.picColor:	#FFFFFF
+window.button.unfocus:			parentrelative
+window.button.unfocus.picColor:	#999999
+
+window.button.pressed:			sunken crossdiagonal gradient
+window.button.pressed.color:	#344C64
+window.button.pressed.colorTo:	#95AFC8
+
+window.handle.focus:			flat vertical gradient
+window.handle.focus.color:		#FFFFFF
+window.handle.focus.colorTo:	#D3DCE2
+window.handle.unfocus:			flat
+window.handle.unfocus.color:	#999999
+
+window.grip.focus:				flat vertical gradient interlaced
+window.grip.focus.color:		#95AFC8
+window.grip.focus.colorTo:		#42607C
+
+window.grip.unfocus:			flat
+window.grip.unfocus.color:		#42607C
+
+window.frame.focusColor:		#5A6672
+window.frame.unfocusColor:		#5A6672
+
+
+window.justify:					center
+
+#Fluxbox stuff
+window.tab.label.focus:				flat diagonal gradient interlaced
+window.tab.label.focus.color:		#95AFC8
+window.tab.label.focus.colorTo:		#42607C
+window.tab.label.focus.textColor: 	#FFFFFF
+
+window.tab.label.unfocus:			flat
+window.tab.label.unfocus.color:		#344C64
+window.tab.label.unfocus.textColor: #CCCCCC
+
+
+#** Other **#
+borderColor:			#202020
+
+bevelWidth:			3
+borderWidth:			1
+frameWidth:			1
+handleWidth:			5
+
+*textColor:			#333333
+*font:				-b&h-lucida-medium-r-normal-*-*-100-*-*-p-*-iso8859-1
+
+rootCommand:			bsetbg -full ~/.blackbox/backgrounds/Noise_and_Music.jpg
+
+
+

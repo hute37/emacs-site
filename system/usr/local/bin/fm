@@ -1,0 +1,52 @@
+#!/bin/bash
+
+DEFWINDOW=""
+DESKTOP="--no-desktop"
+BROWSER=""
+URL=""
+
+ARGS=""
+
+while [ ! -z "$1" ]
+do
+	case "$1" in
+		-d)
+		shift
+		case "$1" in
+			*)
+			URL="$1"
+			;;
+		esac	
+		;;
+		-go)
+		URL="start-here:"
+		;;
+		-b)
+		BROWSER="--browser"
+		;;
+		-nb)
+		BROWSER=""
+		;;
+		-desk)
+		DESKTOP=""
+		;;
+		-nodesk)
+		DESKTOP="--no-desktop"
+		;;
+		*)
+		ARGS="$ARGS $1"
+		;;
+	esac
+	shift
+
+done
+
+if [ -z "$URL" ] && [ -z "$ARGS" ]; then
+	URL="$HOME/Desktop"
+fi
+
+echo nautilus  $DESKTOP $DEFWINDOW $BROWSER $URL $ARGS 
+nautilus  $DESKTOP $DEFWINDOW $BROWSER $URL $ARGS &
+
+
+

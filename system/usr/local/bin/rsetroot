@@ -1,0 +1,32 @@
+#!/bin/bash
+
+#set -x
+
+hi_max=90
+lo_max=10
+
+rnd_color=$(($RANDOM % 3))
+
+case "$rnd_color" in
+	0) 
+		ra_max=$hi_max
+		rb_max=$lo_max
+	;;
+	*) 
+		ra_max=$lo_max
+		rb_max=$hi_max
+	;;
+esac
+
+
+
+ra_red=$(echo "scale=0; a=$RANDOM % $ra_max; scale=3; a/256.0" | bc -l)
+ra_green=$(echo "scale=0; a=$RANDOM % $ra_max; scale=3; a/256.0" | bc -l)
+ra_blue=$(echo "scale=0; a=$RANDOM % $ra_max; scale=3; a/256.0" | bc -l)
+
+
+rb_red=$(echo "scale=0; a=$RANDOM % $rb_max; scale=3; a/256.0" | bc -l)
+rb_green=$(echo "scale=0; a=$RANDOM % $rb_max; scale=3; a/256.0" | bc -l)
+rb_blue=$(echo "scale=0; a=$RANDOM % $rb_max; scale=3; a/256.0" | bc -l)
+
+fbsetroot -from rgbi:$ra_red/$ra_green/$ra_blue -to rgbi:$rb_red/$rb_green/$rb_blue -gradient V

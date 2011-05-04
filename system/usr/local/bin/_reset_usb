@@ -1,0 +1,5 @@
+#!/bin/sh
+rmmod ehci_hcd
+modprobe  ehci_hcd
+
+

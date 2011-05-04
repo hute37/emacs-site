@@ -1,0 +1,44 @@
+!**********************************************************************
+!** bbdate.nobb: Style file for bbdate when not using Blackbox	     **
+!**********************************************************************
+
+! ** auto reconfigure when config-file has changed **
+bbdate.autoConfig:				false
+
+!** position of bbdate window **
+bbdate.position: 		+0-0
+bbdate.bevelWidth:		4
+
+!** place bbdate in the slit **
+!bbdate.withdrawn:		True
+!** don't show frame **
+!bbdate.shape:			True
+
+!** bbdate on top of other windows **
+bbdate.raised:					True
+
+!** use european style dd/mm/yy **
+bbdate.show.euStyle:            True
+
+!** use international stule yyyy-dd-mm instead of default mm/dd/yy **
+!bbdate.show.intStyle:          True
+
+! font which determines the height (compatible with blackbox)
+bbdate.heightBy.font: -*-helvetica-medium-r-*-*-*-120-*-*-*-*-*-*
+!** label font **
+bbdate.labelFont:     -*-helvetica-medium-r-*-*-*-120-*-*-*-*-*-*
+
+
+!** define frame style **
+bbdate.frame:			Raised Gradient Vertical Bevel1
+bbdate.frame.color: 		gray45
+bbdate.frame.colorTo:		gray21
+
+!** define label style **
+!bbdate.transparent:		True
+bbdate.label:			Sunken Gradient Vertical Bevel1
+bbdate.label.color:	 	gray45
+bbdate.label.colorTo:		gray21
+
+!** text color date **
+bbdate.textColor:		lightgrey

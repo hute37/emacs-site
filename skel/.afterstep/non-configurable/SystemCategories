@@ -1,0 +1,866 @@
+[Desktop Entry]
+Type=Directory
+Name=OCR
+Comment=Optical character recognition application
+Categories=Scanning;
+X-AfterStep-IndexName=OCR
+
+[Desktop Entry]
+Type=Directory
+Name=Settings
+Comment=Settings applications
+X-AfterStep-IndexName=Settings
+X-AfterStep-Aliases=Settings-Modules;
+
+[Desktop Entry]
+Type=Directory
+Name=RedHat Base
+Comment=
+Categories=Application;
+X-AfterStep-IndexName=X-Red-Hat-Base
+
+[Desktop Entry]
+Type=Directory
+Name=Astronomy
+Comment=Astronomy software
+Categories=Science;
+X-AfterStep-IndexName=Astronomy
+
+[Desktop Entry]
+Type=Directory
+Name=Motif
+Comment=Application based on Motif libraries
+X-AfterStep-IndexName=Motif
+
+[Desktop Entry]
+Type=Directory
+Name=Multimedia settings
+Comment=
+Categories=HardwareSettings;
+X-AfterStep-IndexName=MultimediaSettings
+X-AfterStep-Aliases=Sound & Multimedia;X-KDE-Sound;X-KDE-settings-sound;Sound;
+
+[Desktop Entry]
+Type=Directory
+Name=Scanning
+Comment=Tool to scan a file/text
+Categories=Graphics;
+X-AfterStep-IndexName=Scanning
+
+[Desktop Entry]
+Type=Directory
+Name=Arcade Games
+Comment=Arcade style game
+Categories=Game;
+X-AfterStep-IndexName=ArcadeGame
+X-AfterStep-Aliases=Arcade;
+
+[Desktop Entry]
+Type=Directory
+Name=Core
+Comment=Important application, core to the desktop such as a file manager or a help browser
+X-AfterStep-IndexName=Core
+
+[Desktop Entry]
+Type=Directory
+Name=Debuggers
+Comment=A tool to debug applications
+Categories=Development;
+X-AfterStep-IndexName=Debugger
+
+[Desktop Entry]
+Type=Directory
+Name=Hardware Settings
+Comment=A tool to manage hardware components, like sound cards, video cards or printers
+Categories=Settings;
+X-AfterStep-IndexName=HardwareSettings
+X-AfterStep-Aliases=Peripherals;Information;X-KDE-Information;X-KDE-Peripherals;X-KDE-information;
+
+[Desktop Entry]
+Type=Directory
+Name=Tuners
+Comment=A tuner
+Categories=Audio;
+X-AfterStep-IndexName=Tuner
+
+[Desktop Entry]
+Type=Directory
+Name=Screen Saver
+Comment=A screen saver (launching this desktop entry should activate the screen saver)
+Categories=System;
+X-AfterStep-IndexName=Screensaver
+X-AfterStep-Aliases=ScreenSavers;
+
+[Desktop Entry]
+Type=Directory
+Name=GNOME
+Comment=Application based on GNOME libraries
+X-AfterStep-IndexName=GNOME
+
+[Desktop Entry]
+Type=Directory
+Name=Revision Control
+Comment=Applications like cvs or subversion
+Categories=Development;
+X-AfterStep-IndexName=RevisionControl
+
+[Desktop Entry]
+Type=Directory
+Name=Strategy Games
+Comment=A strategy game
+Categories=Game;
+X-AfterStep-IndexName=StrategyGame
+X-AfterStep-Aliases=Tactics & Strategy;
+
+[Desktop Entry]
+Type=Directory
+Name=Package Manager
+Comment=A package manager application
+Categories=Settings;
+X-AfterStep-IndexName=PackageManager
+
+[Desktop Entry]
+Type=Directory
+Name=Desktop Settings
+Comment=Configuration tool for the GUI
+Categories=Settings;
+X-AfterStep-IndexName=DesktopSettings
+X-AfterStep-Aliases=Desktop;X-KDE-Desktop;X-KDE-settings-desktop;
+
+[Desktop Entry]
+Type=Directory
+Name=Monitor
+Comment=Monitor application/applet that monitors some resource or activity
+Categories=System;
+X-AfterStep-IndexName=Monitor
+
+[Desktop Entry]
+Type=Directory
+Name=Music
+Comment=Musical software
+Categories=AudioVideo;Education;
+X-AfterStep-IndexName=Music
+
+[Desktop Entry]
+Type=Directory
+Name=Remote Access
+Comment=A tool to remotely manage your PC
+Categories=Network;
+X-AfterStep-IndexName=RemoteAccess
+
+[Desktop Entry]
+Type=Directory
+Name=Telephony
+Comment=Telephony via PC
+Categories=Network;
+X-AfterStep-IndexName=Telephony
+
+[Desktop Entry]
+Type=Directory
+Name=Profiling
+Comment=A profiling tool
+Categories=Development;
+X-AfterStep-IndexName=Profiling
+
+[Desktop Entry]
+Type=Directory
+Name=Science
+Comment=Scientific software
+Categories=Education;
+X-AfterStep-IndexName=Science
+
+[Desktop Entry]
+Type=Directory
+Name=File Managers
+Comment=A file manager
+X-AfterStep-IndexName=FileManager
+
+[Desktop Entry]
+Type=Directory
+Name=Disc Burning
+Comment=Application to burn a disc
+Categories=AudioVideo;Utility;
+X-AfterStep-IndexName=DiscBurning
+
+[Desktop Entry]
+Type=Directory
+Name=Engineering
+Comment=Engineering software, e.g. CAD programs
+X-AfterStep-IndexName=Engineering
+
+[Desktop Entry]
+Type=Directory
+Name=Look And Feel
+Comment=Look and feel settings
+Categories=Settings;
+X-AfterStep-IndexName=LookNFeel
+X-AfterStep-Aliases=Appearance & Themes;X-KDE-LookNFeel;X-KDE-settings-looknfeel;
+
+[Desktop Entry]
+Type=Directory
+Name=Card Games
+Comment=A card game
+Categories=Game;
+X-AfterStep-IndexName=CardGame
+X-AfterStep-Aliases=Cardgames;
+
+[Desktop Entry]
+Type=Directory
+Name=Console Only
+Comment=Application that only works inside a terminal (text-based or command line application)
+Categories=Application;
+X-AfterStep-IndexName=ConsoleOnly
+
+[Desktop Entry]
+Type=Directory
+Name=Simulation
+Comment=A simulation game
+Categories=Game;
+X-AfterStep-IndexName=Simulation
+
+[Desktop Entry]
+Type=Directory
+Name=Dictionary
+Comment=A dictionary
+Categories=Office;
+X-AfterStep-IndexName=Dictionary
+
+[Desktop Entry]
+Type=Directory
+Name=Flow Chart
+Comment=A flowchart application
+Categories=Office;
+X-AfterStep-IndexName=FlowChart
+
+[Desktop Entry]
+Type=Directory
+Name=IRC Clients
+Comment=An IRC client
+Categories=Network;
+X-AfterStep-IndexName=IRCClient
+
+[Desktop Entry]
+Type=Directory
+Name=Video
+Comment=A video application
+Categories=AudioVideo;
+X-AfterStep-IndexName=Video
+
+[Desktop Entry]
+Type=Directory
+Name=Dialup
+Comment=A dial-up program
+Categories=Network;
+X-AfterStep-IndexName=Dialup
+
+[Desktop Entry]
+Type=Directory
+Name=Photography
+Comment=Camera tools, etc.
+Categories=Graphics;Office;
+X-AfterStep-IndexName=Photography
+
+[Desktop Entry]
+Type=Directory
+Name=Shell
+Comment=A shell (an actual specific shell such as bash or tcsh, not a TerminalEmulator)
+X-AfterStep-IndexName=Shell
+
+[Desktop Entry]
+Type=Directory
+Name=Teaching
+Comment=An education program for teachers
+Categories=Education;
+X-AfterStep-IndexName=Teaching
+
+[Desktop Entry]
+Type=Directory
+Name=Word Processors
+Comment=A word processor
+Categories=Office;
+X-AfterStep-IndexName=WordProcessor
+
+[Desktop Entry]
+Type=Directory
+Name=Adventure Games
+Comment=Adventure style game
+Categories=Game;
+X-AfterStep-IndexName=AdventureGame
+
+[Desktop Entry]
+Type=Directory
+Name=Electronics
+Comment=Electronics software, e.g. a circuit designer
+X-AfterStep-IndexName=Electronics
+
+[Desktop Entry]
+Type=Directory
+Name=Geology
+Comment=Geology software
+Categories=Science;
+X-AfterStep-IndexName=Geology
+
+[Desktop Entry]
+Type=Directory
+Name=Recorder
+Comment=Application to record audio/video files
+Categories=Audio;Video;AudioVideo;
+X-AfterStep-IndexName=Recorder
+
+[Desktop Entry]
+Type=Directory
+Name=System Settings
+Comment=
+X-AfterStep-IndexName=X-KDE-settings-system
+
+[Desktop Entry]
+Type=Directory
+Name=Java
+Comment=Application based on Java GUI libraries, such as AWT or Swing
+X-AfterStep-IndexName=Java
+
+[Desktop Entry]
+Type=Directory
+Name=Math
+Comment=Math software
+Categories=Science;
+X-AfterStep-IndexName=Math
+X-AfterStep-Aliases=Mathematics;
+
+[Desktop Entry]
+Type=Directory
+Name=Text Editors
+Comment=A text editor
+Categories=Utility;
+X-AfterStep-IndexName=TextEditor
+X-AfterStep-Aliases=Editors;
+
+[Desktop Entry]
+Type=Directory
+Name=Medical Software
+Comment=Medical software
+Categories=Science;
+X-AfterStep-IndexName=MedicalSoftware
+
+[Desktop Entry]
+Type=Directory
+Name=Puzzle Games
+Comment=Puzzle game
+Categories=Game;
+X-AfterStep-IndexName=PuzzleGame
+X-AfterStep-Aliases=Puzzle;
+
+[Desktop Entry]
+Type=Directory
+Name=Biology
+Comment=Biology software
+Categories=Science;
+X-AfterStep-IndexName=Biology
+
+[Desktop Entry]
+Type=Directory
+Name=Board Games
+Comment=A board game
+Categories=Game;
+X-AfterStep-IndexName=BoardGame
+X-AfterStep-Aliases=Boardgames;
+
+[Desktop Entry]
+Type=Directory
+Name=More KDE Applications
+Comment=
+Categories=Application;
+X-AfterStep-IndexName=X-KDE-More
+
+[Desktop Entry]
+Type=Directory
+Name=Emulator
+Comment=Emulator of another platform, such as a DOS emulator
+X-AfterStep-IndexName=Emulator
+
+[Desktop Entry]
+Type=Directory
+Name=GUI Designer
+Comment=A GUI designer application
+Categories=Development;
+X-AfterStep-IndexName=GUIDesigner
+
+[Desktop Entry]
+Type=Directory
+Name=Email
+Comment=Email application
+Categories=Office;Network;
+X-AfterStep-IndexName=Email
+
+[Desktop Entry]
+Type=Directory
+Name=Art
+Comment=Software to teach arts
+Categories=Education;
+X-AfterStep-IndexName=Art
+
+[Desktop Entry]
+Type=Directory
+Name=Audio and Video Editing
+Comment=Application to edit audio/video files
+Categories=AudioVideo;
+X-AfterStep-IndexName=AudioVideoEditing
+
+[Desktop Entry]
+Type=Directory
+Name=Games
+Comment=A game
+X-AfterStep-IndexName=Game
+X-AfterStep-Aliases=Games;
+
+[Desktop Entry]
+Type=Directory
+Name=Player
+Comment=Application to play audio/video files
+Categories=Audio;Video;AudioVideo;
+X-AfterStep-IndexName=Player
+
+[Desktop Entry]
+Type=Directory
+Name=Raster Graphics
+Comment=Raster based graphical application
+Categories=2DGraphics;
+X-AfterStep-IndexName=RasterGraphics
+
+[Desktop Entry]
+Type=Directory
+Name=RedHat Extras
+Comment=
+Categories=Application;
+X-AfterStep-IndexName=X-Red-Hat-Extra
+
+[Desktop Entry]
+Type=Directory
+Name=System
+Comment=System application, "System Tools" such as say a log viewer or network monitor
+X-AfterStep-IndexName=System
+
+[Desktop Entry]
+Type=Directory
+Name=News
+Comment=A news reader or a news ticker
+X-AfterStep-IndexName=News
+
+[Desktop Entry]
+Type=Directory
+Name=Viewers
+Comment=Tool to view e.g. a graphic or pdf file
+Categories=Graphics;Office;
+X-AfterStep-IndexName=Viewer
+
+[Desktop Entry]
+Type=Directory
+Name=Clock
+Comment=A clock application/applet
+Categories=Utility;
+X-AfterStep-IndexName=Clock
+
+[Desktop Entry]
+Type=Directory
+Name=File Transfer
+Comment=Tools like FTP or P2P programs
+Categories=Network;
+X-AfterStep-IndexName=FileTransfer
+
+[Desktop Entry]
+Type=Directory
+Name=Instant Messaging
+Comment=An instant messaging client
+Categories=Network;
+X-AfterStep-IndexName=InstantMessaging
+
+[Desktop Entry]
+Type=Directory
+Name=Applet
+Comment=An applet that will run inside a panel or another such application, likely desktop specific
+X-AfterStep-IndexName=Applet
+
+[Desktop Entry]
+Type=Directory
+Name=Building
+Comment=A tool to build applications
+Categories=Development;
+X-AfterStep-IndexName=Building
+
+[Desktop Entry]
+Type=Directory
+Name=Office
+Comment=An office type application
+X-AfterStep-IndexName=Office
+
+[Desktop Entry]
+Type=Directory
+Name=Midi
+Comment=An app related to MIDI
+Categories=Audio;
+X-AfterStep-IndexName=Midi
+
+[Desktop Entry]
+Type=Directory
+Name=Power Control
+Comment=Presentation software
+Categories=Settings;
+X-AfterStep-IndexName=PowerControl
+X-AfterStep-Aliases=X-KDE-PowerControl;X-KDE-settings-power;
+
+[Desktop Entry]
+Type=Directory
+Name=Sequencer
+Comment=A sequencer
+Categories=Audio;
+X-AfterStep-IndexName=Sequencer
+
+[Desktop Entry]
+Type=Directory
+Name=Presentation
+Comment=Presentation software
+Categories=Office;
+X-AfterStep-IndexName=Presentation
+
+[Desktop Entry]
+Type=Directory
+Name=Amusements
+Comment=A simple amusement
+X-AfterStep-IndexName=Amusement
+X-AfterStep-Aliases=Toys;
+
+[Desktop Entry]
+Type=Directory
+Name=Calendar
+Comment=Calendar application
+Categories=Office;
+X-AfterStep-IndexName=Calendar
+
+[Desktop Entry]
+Type=Directory
+Name=Graphics
+Comment=Graphical application
+X-AfterStep-IndexName=Graphics
+
+[Desktop Entry]
+Type=Directory
+Name=Logic Games
+Comment=Logic games like puzzles, etc
+Categories=Game;
+X-AfterStep-IndexName=LogicGame
+
+[Desktop Entry]
+Type=Directory
+Name=Spreadsheet
+Comment=A spreadsheet
+Categories=Office;
+X-AfterStep-IndexName=Spreadsheet
+
+[Desktop Entry]
+Type=Directory
+Name=Action Games
+Comment=An action game
+Categories=Game;
+X-AfterStep-IndexName=ActionGame
+
+[Desktop Entry]
+Type=Directory
+Name=Archiving
+Comment=A tool to archive/backup data
+X-AfterStep-IndexName=Archiving
+
+[Desktop Entry]
+Type=Directory
+Name=Vector Graphics
+Comment=Vector based graphical application
+Categories=2D Graphics;
+X-AfterStep-IndexName=VectorGraphics
+
+[Desktop Entry]
+Type=Directory
+Name=2D Graphics
+Comment=2D based graphical application
+Categories=Graphics;
+X-AfterStep-IndexName=2DGraphics
+
+[Desktop Entry]
+Type=Directory
+Name=Audio and Video
+Comment=A multimedia (audio/video) application
+X-AfterStep-IndexName=AudioVideo
+X-AfterStep-Aliases=Multimedia;
+
+[Desktop Entry]
+Type=Directory
+Name=Database
+Comment=Application to manage a database
+Categories=Office;Development;AudioVideo;
+X-AfterStep-IndexName=Database
+
+[Desktop Entry]
+Type=Directory
+Name=3D Graphics
+Comment=3D based graphical application
+Categories=Graphics;
+X-AfterStep-IndexName=3DGraphics
+
+[Desktop Entry]
+Type=Directory
+Name=Calculator
+Comment=A calculator
+Categories=Utility;
+X-AfterStep-IndexName=Calculator
+
+[Desktop Entry]
+Type=Directory
+Name=PDA
+Comment=Tool to manage your PDA
+Categories=Office;
+X-AfterStep-IndexName=PDA
+
+[Desktop Entry]
+Type=Directory
+Name=Mixer
+Comment=Just a mixer
+Categories=Audio;
+X-AfterStep-IndexName=Mixer
+
+[Desktop Entry]
+Type=Directory
+Name=Construction
+Comment=
+Categories=Education;
+X-AfterStep-IndexName=Construction
+
+[Desktop Entry]
+Type=Directory
+Name=Development
+Comment=An application for development
+X-AfterStep-IndexName=Development
+
+[Desktop Entry]
+Type=Directory
+Name=Physics
+Comment=Physics software
+Categories=Science;
+X-AfterStep-IndexName=Physics
+
+[Desktop Entry]
+Type=Directory
+Name=Qt
+Comment=Application based on Qt libraries
+X-AfterStep-IndexName=Qt
+
+[Desktop Entry]
+Type=Directory
+Name=Security
+Comment=A security tool
+Categories=Settings;System;
+X-AfterStep-IndexName=Security
+X-AfterStep-Aliases=Security & Privacy;X-KDE-settings-security;
+
+[Desktop Entry]
+Type=Directory
+Name=Web Development
+Comment=A tool for web developers
+Categories=Network;Development;
+X-AfterStep-IndexName=WebDevelopment
+
+[Desktop Entry]
+Type=Directory
+Name=Chart
+Comment=Chart application
+Categories=Office;
+X-AfterStep-IndexName=Chart
+
+[Desktop Entry]
+Type=Directory
+Name=Blocks Games
+Comment=Falling blocks game
+Categories=Game;
+X-AfterStep-IndexName=BlocksGame
+
+[Desktop Entry]
+Type=Directory
+Name=KDE Components
+Comment=
+Categories=Settings;
+X-AfterStep-IndexName=KDEComponents
+X-AfterStep-Aliases=X-KDE-settings-components;
+
+[Desktop Entry]
+Type=Directory
+Name=Sports Games
+Comment=A sports game
+Categories=Game;
+X-AfterStep-IndexName=SportsGame
+
+[Desktop Entry]
+Type=Directory
+Name=Applications
+Comment=Accessibility
+X-AfterStep-IndexName=Application
+X-AfterStep-Aliases=Applications;
+
+[Desktop Entry]
+Type=Directory
+Name=Project Management
+Comment=Project management application
+Categories=Office;Development;
+X-AfterStep-IndexName=ProjectManagement
+
+[Desktop Entry]
+Type=Directory
+Name=Accessibility
+Comment=Accessibility
+Categories=Settings;Utility;
+X-AfterStep-IndexName=Accessibility
+X-AfterStep-Aliases=X-KDE-Accessibility;X-KDE-settings-accessibility;
+
+[Desktop Entry]
+Type=Directory
+Name=Education
+Comment=Educational software
+X-AfterStep-IndexName=Education
+X-AfterStep-Aliases=Edutainment;
+
+[Desktop Entry]
+Type=Directory
+Name=Terminal Emulators
+Comment=A terminal emulator application
+X-AfterStep-IndexName=TerminalEmulator
+X-AfterStep-Aliases=Terminal Applications;
+
+[Desktop Entry]
+Type=Directory
+Name=Contact Management
+Comment=E.g. an address book
+Categories=Office;
+X-AfterStep-IndexName=ContactManagement
+
+[Desktop Entry]
+Type=Directory
+Name=Role Playing
+Comment=A role playing game
+Categories=Game;
+X-AfterStep-IndexName=RolePlaying
+X-AfterStep-Aliases=Rogue-like Games;
+
+[Desktop Entry]
+Type=Directory
+Name=IDE
+Comment=IDE application
+Categories=Development;
+X-AfterStep-IndexName=IDE
+
+[Desktop Entry]
+Type=Directory
+Name=TV
+Comment=A TV application
+Categories=Video;
+X-AfterStep-IndexName=TV
+
+[Desktop Entry]
+Type=Directory
+Name=Filesystems
+Comment=A file system tool
+Categories=System;
+X-AfterStep-IndexName=Filesystem
+
+[Desktop Entry]
+Type=Directory
+Name=Finance
+Comment=Application to manage your finance
+Categories=Office;
+X-AfterStep-IndexName=Finance
+
+[Desktop Entry]
+Type=Directory
+Name=Network
+Comment=Network application such as a web browser
+X-AfterStep-IndexName=Network
+X-AfterStep-Aliases=Internet;X-KDE-Network;X-KDE-settings-network;
+
+[Desktop Entry]
+Type=Directory
+Name=Tray Icons
+Comment=An application that is primarily an icon for the "system tray" or "notification area" (apps that open a normal window and just happen to have a tray icon as well should not list this category)
+X-AfterStep-IndexName=TrayIcon
+
+[Desktop Entry]
+Type=Directory
+Name=Ham Radio
+Comment=HAM radio software
+Categories=Network;Audio;
+X-AfterStep-IndexName=HamRadio
+
+[Desktop Entry]
+Type=Directory
+Name=KDE
+Comment=Application based on KDE libraries
+X-AfterStep-IndexName=KDE
+
+[Desktop Entry]
+Type=Directory
+Name=P2P
+Comment=A P2P program
+Categories=Network;
+X-AfterStep-IndexName=P2P
+
+[Desktop Entry]
+Type=Directory
+Name=Translation
+Comment=A translation tool
+Categories=Development;
+X-AfterStep-IndexName=Translation
+
+[Desktop Entry]
+Type=Directory
+Name=Chemistry
+Comment=Chemistry software
+Categories=Science;
+X-AfterStep-IndexName=Chemistry
+
+[Desktop Entry]
+Type=Directory
+Name=GTK
+Comment=Application based on GTK+ libraries
+X-AfterStep-IndexName=GTK
+
+[Desktop Entry]
+Type=Directory
+Name=Kids Games
+Comment=A game for kids
+Categories=Game;
+X-AfterStep-IndexName=KidsGame
+X-AfterStep-Aliases=Games for Kids;X-KDE-KidsGame;
+
+[Desktop Entry]
+Type=Directory
+Name=Utilities
+Comment=Small utility application, "Accessories"
+X-AfterStep-IndexName=Utility
+X-AfterStep-Aliases=Utilities;
+
+[Desktop Entry]
+Type=Directory
+Name=Web Browsers
+Comment=A web browser
+Categories=Network;
+X-AfterStep-IndexName=WebBrowser
+X-AfterStep-Aliases=X-KDE-WebBrowsing;X-KDE-settings-webbrowsing;
+
+[Desktop Entry]
+Type=Directory
+Name=Audio
+Comment=An audio application
+Categories=AudioVideo;
+X-AfterStep-IndexName=Audio
+
+[Desktop Entry]
+Type=Directory
+Name=Languages
+Comment=Software to learn foreign languages
+Categories=Education;
+X-AfterStep-IndexName=Languages
+

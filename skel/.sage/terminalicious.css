@@ -1,0 +1,209 @@
+html *
+
+/* --------------------------------------------------------- 
+   terminalicious.css, by Cameron Mac Millan 06/01/05.
+   ---------------------------------------------------------
+   Intended for use with the Sage RSS feed aggregator in 
+   conjunction with the Mozilla Firefox browser.
+   Firefox is available from http://www.mozilla.org.
+   Sage can be found at http://sage.mozdev.org.
+   --------------------------------------------------------- 
+   The idea behind the colour scheme used in this stylesheet 
+   is that it's subdued (good for long-term viewing) while   
+   providing high contrast between the elements being shown. 
+   --------------------------------------------------------- 
+   Based heavily on Sage.css, developed by Scott Kingery.    
+   --------------------------------------------------------- */
+
+{
+	-moz-box-sizing: border-box;
+}
+
+/* General Html formatting */
+html
+{
+	line-height: 1;
+	background-color: #202020;
+}
+
+/* Body formatting */
+body
+{
+	background:#202020;
+		margin: 5em 1em 1em 1em;
+			color: #8000FF; /* Default text colour */
+		font-family: verdana;
+	font: "Trebuchet MS",Verdana,Arial,Sans-serif;
+}
+
+/* Paragraph tag */
+p
+{
+	margin: 0px 0px 10px 0px;
+}
+
+/* Link properties */
+a:link
+{
+	text-decoration: none;
+	color: #00c0c0;
+}
+
+/* Visited link properties */
+a:visited
+{
+	text-decoration: none;
+	color: #002020;
+}
+
+/* Hovering over link properties */
+a:hover
+{
+	text-decoration: underline;
+}
+
+/* Link as it is being clicked properties */
+a:active
+{
+	text-decoration: none;
+}
+
+/* Paragraph and paragraph link properties */
+p.item-desc a:link
+{
+	color: #8000FF;
+}
+
+/* Properties for main header showing feed title.  
+   rss-title and rss-desc are children to this one. */
+#rss-header
+{
+	position: fixed; 
+		background-color: #000080;
+			border: 1px solid #D0D0D0;
+				padding: 6px 8px;
+					margin: 10px 2%;
+					margin: -4em -1em 1em 1em;
+				height: 2em;
+			overflow:hidden;
+		width: 92%;
+	-moz-opacity: 0.75;
+}
+
+#rss-header:hover
+{
+	height: auto;
+		overflow:invisible;
+	visibility:visible;
+}
+
+/* Header title properties. */
+#rss-title
+{
+	color: #D0D0D0;
+		font-size: large;
+			line-height: 1;
+		margin: 0px;
+	padding: 0px;
+}
+
+/* Colour of the feed title text. */
+#rss-title a
+{
+	color: #D8D8D8
+}
+
+/* Properties for feed description.
+   Not all sites provide this, but a lot do. */
+#rss-desc
+{
+	color:#B8B8B8;
+		font-size: 0.75em;
+		margin: 0px;
+	padding: 5px 0px 0px 20px;
+}
+
+/* Global news table properties */
+div.item
+{
+	background-color: #000040; 
+		border: 1px solid #404040;
+			width: 96%; 
+				min-width: 14em;
+			margin: 0px 0px 6px 2%;
+		padding: 0px;
+	float: left;
+}
+
+/* The news' entry number properties */
+span.item-ordinal
+{
+	padding-right: 0.2em;
+}
+
+/* The news' body properties */
+div.item-desc
+{
+	font-size: small;
+		margin: 0;
+			height:auto;
+			overflow:visible;
+		padding: 8px 10px;
+	visibility:visible;
+
+}
+
+div.item:hover div.item-desc,
+div.item:hover div.item-pubDate,
+div.item:hover div.item-technocrati {
+height:auto;
+overflow:visible;
+padding: 8px 10px;
+visibility:visible;
+}
+
+/* Properties for each news item's title */
+h2.item-title
+{
+	background-color: #000040;
+		border: 1px solid #606060;
+			font-size: x-small;
+				font-weight: bold;
+					color: #00D000;
+					line-height: 1;
+				margin: 0px;
+			padding: 5px 5px 8px 8px;
+		height:auto;
+	overflow:visible;
+}
+
+/* Colour of news item title highlight bar */
+div.item:hover h2.item-title
+{
+	background-color: #502880;
+}
+
+/* Properties for release date table */
+div.item-pubDate
+{
+	font:small "Trebuchet MS",Verdana,Arial,Sans-serif;
+		margin: 0px;
+			width: 80%;
+				float: left;
+				height:auto;
+			overflow:visible;
+		padding: 8px 10px;
+	visibility:visible;
+}
+
+/* Bottom cell where respond bubble is */
+div.item-technorati
+{
+margin: 0px;
+float: right;
+text-align: right;
+height:auto;
+overflow:visible;
+padding: 8px 10px;
+visibility:visible;
+}

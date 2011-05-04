@@ -1,0 +1,110 @@
+# @(#) Makefile -- Makefile for the Emacs lisp. Tiny tools distribution
+# @(#) $Id: Makefile,v 1.1 2005-12-04 20:58:09 hute37 Exp $
+#
+#   File id
+#
+#       .Copyright (C)  2001-2002 Jari Aalto
+#       .Author:        Jari Aalto <jari.aalto@poboxes.com>
+#       .Maintainer:    Jari Aalto <jari.aalto@poboxes.com>
+#       .Created:       2001-10
+#
+#       This code is free software in terms of GNU Gen. pub. Lic. v2 or later
+#
+#	*********************************************************************
+#
+#	This simplistic makefile is for Unix users. Win32 users should
+#	Use makefile.pl directly. See --help for more.
+#
+#	    dos> perl makefile.pl --load e:/myhome/elisp/load-path.el \
+#		 --binary "c:/program files/absolute-path-to/emacs.exe"
+#
+#	Without reading any of the instructions from doc/txt/README.txt,
+#	copy lisp/tiny/load-path.el to your private place, modify and compile:
+#
+#	    % make rules
+#	    % make help | less
+#	    % make EMACS=xemacs LIB="--load ~/elisp/load-path.el"
+#
+#	This Makefile is designed to work only with GNU bash(1)
+#
+#	*********************************************************************
+
+
+# Change Log:
+
+# Code:
+
+
+############################################################# &code ###
+
+AUTHOR	    = "Jari Aalto"
+EMAIL_TO    = jari.aalto@poboxes.com
+
+MAKEFILE    = Makefile
+
+
+# ########################################################### &basic ###
+
+SHELL	    =	sh
+EMACS	    =	emacs
+# EMACSVER    =	`${EMACS} -batch -version`
+PERL	    =   perl
+LIB	    =   --load ../lisp/tiny/load-path.el
+
+FILE_DOC_MAKE =	perl ripdoc.pl
+README      = ../doc/txt/README.txt
+
+# ############################################################ &rules ###
+
+.SUFFIXES: .el .txt .pl .mak   .elc .html .doc .prn .std .htmlx
+
+# Rule: suffix .txt => .prn - Print file to stdout
+.txt.prn:
+	@echo "--  #FILE: $< --------------------------"
+	@cat $<
+
+# Rule: all - Make and Compile all. Cleans everything first
+all:    clean
+	perl makefile.pl --binary "$(EMACS)" $(LIB) all
+
+# Rule: autoload - Make autoload files
+autoload:
+	cd ../lisp/tiny/
+	$(EMACS) -batch -nw -q $(LIB) -l tiny-setup.el \
+	-f tiny-setup-autoload-batch-update ..
+
+# Rule: readme - Print readme file
+readme: $(README:.txt=.prn)
+
+# Rule: help - Print distribution help
+help:	readme
+
+rules:
+	@echo "-- #FILE: $(MAKEFILE) rules --------------------------"
+	@grep 'Rule\: ' $(MAKEFILE) | grep -v maint | sed -e 's/^./ /'
+	@echo ""
+
+# Rule: clean - Delete compiled files, backups and CVS cruft
+clean:
+	-rm ../lisp/other/*.elc  		\
+	    ../lisp/other/*~			\
+	    ../lisp/other/*#			\
+	    ../lisp/other/.#*			\
+	    ../lisp/tiny/*.elc			\
+	    ../lisp/tiny/*~			\
+	    ../lisp/tiny/*#			\
+	    ../lisp/tiny/.#*			\
+	    ../doc/txt/*.html
+
+
+install:
+	@echo "  There is no automatic install."
+	@echo "  Please copy whole tiny-tools/ tree to suitable hierarchy"
+	@echo "  e.g. to /usr/share/emacs/site-lisp/packages"
+	@echo "  Refer to doc/README.txt for site wide and personal setup."
+
+link-check:
+	files=`ls ../doc/txt/*.txt`; \
+	perl -S t2html.pl --Link-check-single --quiet $$files
+
+# End of file

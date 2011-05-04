@@ -1,0 +1,13 @@
+[General]
+StandardFont=Trebuchet MS,9,-1,5,50,0,0,0,0,0
+activeFont=Trebuchet MS,12,-1,5,75,0,0,0,0,0
+background=236,237,238
+fixed=DejaVu Sans Mono,10,-1,5,50,0,0,0,0,0
+font=Trebuchet MS,12,-1,5,50,0,0,0,0,0
+menuFont=Trebuchet MS,12,-1,5,50,0,0,0,0,0
+selectBackground=68,123,205
+selectForeground=255,255,255
+taskbarFont=Trebuchet MS,11,-1,5,50,0,0,0,0,0
+toolBarFont=Trebuchet MS,12,-1,5,50,0,0,0,0,0
+windowBackground=255,255,255
+windowForeground=0,0,0

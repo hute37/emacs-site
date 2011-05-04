@@ -1,0 +1,5 @@
+#!/bin/bash
+
+Eterm  -O -x --no-input --scrollbar=0 --buttonbar=0 --foreground-color=SlateBlue --geometry 120x15 --exec tail -f /var/log/syslog &
+
+

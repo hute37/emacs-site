@@ -1,0 +1,352 @@
+2002-08-05 Mon  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* admin.bashrc (function sftt_linkcheck ()): Did not work.
+	Now cd into doc/txt. The do-loop also had errors: file => $file.
+	Added missing ID variable.
+	(function sftt_linkcheck ()): Added --Link-cache to speed up
+	checking.
+
+2002-08-02 Fri  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl (TargetClean): Did not clean .elc files
+	(Emacs byte compile files). Regexp fixed.
+
+2002-05-02 Thu  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* emacs-compile.pl (sub Main): 1.5 Modified regexp
+	to exclude all files that include character #
+
+2002-01-28 Mon  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* emacs-compile.pl (sub AbsolutePaths): 1.4 Conver Cygwin
+	paths to DOs if compiling with cygwin Perl + Emacs.
+	Emacs is not an Cygwin application.
+
+2002-01-14 Mon  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* Makefile: 1.5
+	Documentatation improved.
+	(help): Rule fixed.
+
+2002-01-04 Fri  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.mak (TT_EL_TINY): 1.65 incorrect name tinycb.el
+	=> tinybuffer.el
+
+2002-01-02 Wed  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* Makefile (clean): 1.3 Corrected bash-styles extension file
+	globs. `sh' does not knwo *{~,#,.elc}.
+	(link-check): 1.3 New target.
+
+	* makefile.pl (HandleCommandLineArgs): 1.54 Debug option is now
+	activated only with `-d'. It used to require `-d 1'.
+	(TargetClean): 1.54 Now cleans backup files and # files
+	(TargetHtml): 1.54. Removed. This is now moved to bin/admin.bashrc
+	(SfHtmlUpdate): 1.54 Removed. scp is on bin/admin.bashrc
+	(TargetDist): 1.54 Removed. This is now moved to bin/admin.bashrc
+
+	* mywebget-emacs.conf: (reichor-stefan): site updated.
+
+2001-12-31 Mon  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* mywebget-emacs.conf: 1.65 (ellison-gary): New.
+	(rcpp-mode): By Matt Curtin <cmcurtin@interhack.com> added
+
+2001-12-30 Sun  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* mywebget-emacs.conf: 1.63 Added regexp-no:folding. The folding
+	primarysite is elswhere. Removed
+	include <mywebget-emacs-vars.conf> because it overwrote user
+	settings.
+	(shinn-alex): New.
+	(keane-joe): New.
+	(walters-colin): cis.ohio-state.edu removed, current homepage
+	is in a format that can't be used for download by mywebget.pl.
+	Added direct CVS links.
+	(socha-robin): New.
+
+2001-12-28 Fri  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* mywebget-emacs.conf: 1.62 Chnage all <no-regexp> tags to
+	<regexp-no> tag.
+
+2001-12-24 Mon  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* mywebget-emacs.conf: 1.59
+	(niksic-hrvoje): URLs changed. Site corrected. Was
+	`jagor.srce.hr', now `fly.srk.fer.hr'
+	(kapur-nevin): URL corrected.
+	(milliken-peter): URL corrected.
+	(moody-ray): URL corrected.
+	(nickelsen-jorgen): URL corrected.
+	(owen-gareth): URL corrected.
+	(rodgers-kevin): URL corrected. Now used ftp, instead of HTTP
+	(schwenke-martin): URL corrected.
+	(ludlam-eric): Removed. Tools are now at sourceforge.
+	(minar-nelson): Removed netscape extensions. Broken link.
+	(wiborg-espen): Commented out. URLs invalid.
+	(serrano-manuel): New.
+	(chen-jerry): New.
+	(elisp-other): URL ftp://ftp.hackvan.com/pub/stig/src/elisp/ does
+	not answer no more. Removed.
+	(crypt): Removed. Moved to section `heideman-john'
+	(idl): URL changed. Corrected.
+	(jde): 1.61 removed new: because the filename cannot be determined.
+	(tramp): Removed. This is now sourceforge project.
+	(tiny-tools): Removed. This is now sourceforge project.
+
+2001-12-23 Sun  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* mywebget-emacs.conf (id3): 1.58 emoved new: option. Now finds file.
+	(vera-mode): No more available.
+	(broubaker-heddy): URL address corrected.
+	(garshol-lars): URL updated.
+	(glickstein-bob): URL no more there. Section commented out.
+	(goel-deepak): URL updated. Now load lisp-mine.tar
+
+2001-12-09  Jari Aalto   <jari.aalto@poboxes.com>
+
+	* makefile.pl (TargetClean): Do not clean loaddefs.
+
+2001-12-08  Jari Aalto   <jari.aalto@poboxes.com>
+
+	* java-function-list.pl: corrected errors in the code.
+
+	* makefile.pl (TargetAutoload): Fixed autoload generation
+	for Emacs, XEmacs trouble.
+
+2001-12-08  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* copyright-update.pl New Program. Updates copyright information.
+	(other features can be added here.)
+
+2001-11-27  Jari Aalto  <jaalto@poboxes.com>
+
+	* mywebget-emacs.conf (jde): corrected regular expression
+	to find new package name jde -> jdee
+
+2001-10-08 Mon  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl (HandleCommandLineArgs): 1.48
+	Renamed option --link-check to --Link-check to avoid
+	conflict with --load.
+	(HandleCommandLineArgs();): 1.48 Updated changed tree structure
+	lisp/ => lisp/tiny, doc/ => doc/txt
+
+2001-09-27 Thu  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl (sub Initialize): 1.47 Added test for
+	Native $CYGWIN_PERL in Win32 environment.
+
+2001-09-26  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* mywebget-emacs.conf: (predescu-ovidiu): the lisp
+	files were available with extension .txt. This is Geocities
+	limitation. Replace the section with more smarter and adaptive
+	url fetch code. Previously used direct urls to load, nut
+	if user put more .txt files, they should have been manually
+	inserted. Current code tracks all new lisp files on the page.
+
+2001-09-25 Tue  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* mywebget-emacs.conf (bugtrack): 1.50 New package. From
+	JDE site http://jde.sunsite.dk/developerscorner.html
+
+2001-09-01 Sat  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* mywebget-emacs.conf (jde): Corrected http address,
+	has changed to jde.sunsite.dk
+
+2001-08-25 Sat  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* mywebget-emacs.conf: Moved the variables to separate
+	file `mywebget-emacs-vars.conf', so that users can define
+	their own settings and this file records only the target
+	URLs. User only needs to update this file and start downloading
+	new files.
+	(bakel-tijs): Wrong directory, /pub => /pub/elisp
+	(id3): Wrong pregexp => Changed to id3el-0.*.tar.gz
+	(cperl) Added missing pregexp:
+	(brodie-bill): New. Added, but the user has no home page,
+	files copied from Kai's ftp site.
+
+2001-08-24 Fri  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl (sub PathConvert): 1.47
+	Accept bare labels -dos, -unix as conversion options too.
+	(sub TargetAutoload): 1.47 Convert the BIN name to Windows
+	or unix depending on the operating system. If user passed
+	the path name in UNIX format under cygwin (completion), it
+	must be converted into DOS format, because SYSTEM() is run
+	in DOS context.
+
+2001-08-13 Mon  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* mywebget-emacs.conf: 1.34 `storm-kim' site changed. updated
+	download template.
+
+2001-08-05 Sun  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* mywebget-emacs.conf: 1.33 Added pinard-francois
+	(goel-deepak) Added miniedit.el for BBDB multiline
+	field editing.
+
+2001-07-29 Sun  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* mywebget-emacs.conf: 1.32 Added kapur-nevin
+
+2001-07-02  Jari Aalto  <jaalto@PICASSO>
+
+	* makefile.pl (SfUploadIncoming): New function to help
+	upload release packages to Sourceforge.
+
+2001-05-17 Thu  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl (Html): 1.44 readdir() regular expression picked
+	up .pl files for html generation. Added NOT .pl regexp to exclude
+	perl files.
+
+2001-04-11 Wed  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl (sub PathFix): 1.42 Made fucntion more clear
+	by rewriting the if-statement.
+	(sub CygwinToDos): 1.42 New. W2K cygwin support.
+	(sub TargetLisp): 1.42 Added CygwinToDos conversion to tacle
+	W2K/Cygwin paths that must be converted for Emacs compilation.
+
+2001-03-31 Sat  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl (CommandLine): 1.41 Chnaged option --tempdir
+	to --Tempdir, so that --test option can be abbreviated as
+	-t
+	(sub TargetClean): 1.41 Added Celaning autoload files.
+
+2001-03-20 Tue  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl (sub Autoload): Default value `emacs' and `xemacs'
+	didn't work well. The FindBinary function didn't receive the
+	argument. Fixed.
+
+2001-03-13 Tue  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl: Removed `autouse' statements, because they seem
+	to confuse some perl versions with messages:
+	import errors at /usr/local/lib/perl5/autouse.pm. The startup
+	time is slightly higher with all modules loaded with `use', but
+	that is insignificant.
+	(Autoload): Removed `die' command, because it is not strictly
+	necessary to give target emacs with --binary, since the autoload
+	file generation is same in Emacs and XEmacs. (I hope).
+
+2001-03-09 Fri  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl (sub HandleCommandLineArgs): Added BUTTON_PREVIOUS
+	and BUTTON_NEXT --button_previous etc.
+
+2001-03-05 Mon  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl (sub FindBinary): Check BIN argument.
+
+2001-01-25 Thu  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl (Getopt::Long): Corrected --html-base option
+	to take argument.
+
+2001-01-21 Sun  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl 1.27 Added PATH printing and count.
+	(HandleCommandLineArgs): 1.27 Added more debug.
+	Added :i argument for debug.
+
+2001-01-13 Sat  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl (TargetClean;): 1.23 Changed ERROR to
+	`Warning'
+
+2001-01-11 Thu  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl (HandleCommandLineArgs();): 1.22 Better
+	Path print.
+
+2001-01-07 Sun  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl:
+	1.20 $SHELL was not introduced
+	as top level global. Now it is.
+	Bug reported by <Tom_Roche@ncsu.edu>
+	(Getopt::Long): 1.21 Change --build to --Build because
+	it conflicts with --binary
+	(sub Initialize): 1.21 Better diagnostics for missing HOME
+	variable. Bug reported by <Tom_Roche@ncsu.edu>
+	(sub Html): 1.21 Improved Perl -S detection.
+	Bug reported by <Tom_Roche@ncsu.edu>
+	(Getopt::Long): 1.21 --verbose now takes LEVEL.
+	(sub MessagePerlCall): 1.21 New.
+	(EOF): 1.21 Stop at fatal error if possible.
+	(sub Html): 1.21 Added code to use bin/t2html.pl
+	from absolute location if user started the program ar bin/
+	This will also take of using possibly olf t2html.pl in PATH.
+	(sub ShellPerlEnd()): 1.21 New.
+	(sub ShellPerlStart($): 1.21 New.
+
+2000-11-25 Sat  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl (Main): 1.18 Removed the default `all' target.
+	(TargetBuild): 1.18 New.
+	(TargetBuildRpm): 1.18 New.
+	(TargetPerlfix): 1.18 New.
+	(FixFileShebang): 1.18 New.
+
+2000-05-25 Thu  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl (sub AbsolutePaths): 1.14 New, must use absolute paths
+	for --load, becaseuse we change directories and relative ones
+	supplied on command line won't work.
+
+2000-02-19 Sat  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl (Main): 1.13 CYGWIN FIXES.
+	Update PATH to include bin/ becasue we
+	use perl -S to call the perl scripts. Check $SHELL varaible if
+	we're running under cygwin bash etc.
+	(sub PathConvert): 1.13 New.
+
+2000-02-13 Sun  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl (sub Clean): 1.10 Moved chdir and opendir to
+	seratate IF test cases.
+	(Main): 1.11 removed 'o' compile option from regexps and this
+	seems to correct why "all" target didn't work. Hm?
+
+2000-01-10 Mon  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl (sub Convert): 1.9 Spelling mistake corrected
+	fialed --> failed.
+
+2000-01-09 Sun  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl (Getopt::Long): XEmacs 21.2 fix.
+	1.5 Added option --binary to specify target emacs to compile.
+	(sub Lisp): 1.5 Select Emacs or XEmacs according to --binary
+	option.
+	(sub Main): 1.6 The BINARY must not be tested insice
+	HandleCommandLineArgs, but when the targer is "lisp". Onl then
+	we need that information.
+	(sub Main): 1.7 The target for-loop now uses SWITCH and warns
+	about non existing targets.
+	Added missing target "dist" from the documentation.
+
+2000-01-08 Sat  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl (sub Lisp): 1.4 Now handles many directories
+	compilation. Accepts multiple @load options.
+	(sub HandleCommandLineArgs): 1.4 Added "--load"
+	(sub Help): 1.4 added Troubleshooting and explained load-path.el
+	(sub Main): 1.4 ROOT path redefined. Calculates it as the
+	program is accessed. Added missing lisp/rc directory.
+
+2000-01-07 Fri  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* makefile.pl (sub Clean): 1.1 Fixed target "clean"
+	(sub Dist): 1.3 New. Changed main

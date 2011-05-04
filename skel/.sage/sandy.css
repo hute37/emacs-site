@@ -1,0 +1,158 @@
+/* 
+   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+   This stylesheet is made for Sage 1.2 (http://sage.mozdev.org).
+	
+	Aim: a simple stylesheet with maximum functionality.
+	
+	Original author: unknown
+	Adapted by Ben Branders {ben dot branders at gmail dot com}
+	Date: 2004-08-16
+	
+	Feel free to modify and distribute this stylesheet. 
+   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+*/
+   
+/* 
+COLOR SCHEME 
+------------
+Dark brown: 				#522900
+Yellow:						#FADE95
+Light yellow: 				#FDF0C6
+Very light yellow: 		#FEF8E2
+*/
+
+html {
+}
+				
+/* Standard settings: color, font, line-height etc */				
+body {
+	font-family: verdana;
+	margin: 7em 1em 1em 1em;
+	background-color: #FEF8E2;
+	line-height: 1.3em;
+}
+
+/* Paragraph tag */
+p {
+	margin: 0px 0px 10px 0px;
+}
+
+/* Links (if already visited, link is displayed darkred) */
+a:link				{ text-decoration: none; color: #522900; }
+a:visited			{ text-decoration: line-through; color: #522900; }
+a:visited:hover 	{ text-decoration: none; padding-bottom: 1px; }
+a:hover				{ text-decoration: none; border-bottom: 1px dotted #522900;; padding-bottom: 1px; }
+
+h2.item-title a:link { text-decoration: none; color: #FADE95; }
+h2.item-title a:visited { text-decoration: none; color: #FEF8E2; -moz-opacity: 0.5; }
+
+h2.item-title a:before {	content: "> "; color: #FEF8E2; }
+h2.item-title a:visited:before { content: "! "; color: #FEF8E2; }
+
+/* The feed header */
+#rss-header {										
+	position: fixed;   /* change to 'relative' to make it scroll */
+   margin: -7em 0em 0em -1em;
+	min-width: 100%;
+	color: #522900;
+	background-color: #FADE95;
+	padding: 0.5em;
+	border-bottom: 1px dashed #522900;
+	-moz-opacity: 0.8;
+}
+
+#rss-header:hover {
+	-moz-opacity: 0.95;
+	text-decoration: none;
+}
+
+#rss-header a {
+	color: #522900;
+	font-weight: bold;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 2em;
+	-moz-opacity: 0.8;
+	text-decoration: none;
+}
+
+#rss-hearder a:hover {
+	 text-decoration: none;
+}
+
+#rss-title {
+  font-size: 15px;
+  margin: 0;
+}
+
+#rss-desc {
+  font-size: 11px;
+  margin: 8px 0px 0px 0px;
+}
+
+/* Item title (+ ordinal number) */
+h2.item-title {
+   font-size: 1.2em;
+	font-family: "Times New Roman", Times, serif;
+	background-color: #522900;
+	margin: -1.3em 0px 10px -0px;
+	padding: 5px;
+	-moz-border-radius: 10%;
+}
+
+/* Ordinal number for each item */
+span.item-ordinal {
+	display: block;		/* Change to 'none' if you don't need this */
+	float: left;
+	color: #FADE95;
+   font-family: "Times New Roman", Times, serif;
+	font-style: italic;
+	font-size: 2em;
+	margin-left: -1.8em;
+}
+
+/* The item div (title + description) */
+div.item {
+	margin: 1em 0em 1.5em 3.5em;
+	padding: 10px;
+	padding-bottom: 1.5em;
+	border: 1px dashed #522900;
+	background-color: #FDF0C6;
+}
+
+/* The item text */
+div.item-desc {
+	font-size: 0.75em;
+	color: #000;
+	margin: 1em 0em 0em 0em;
+	padding: 0;
+}
+
+/* Display the Technorati link */
+div.item-technorati {
+	display: block;		/* Change to 'none' if you don't need this */
+	float: right;
+}
+
+/* Display the date of the article (+hover) */
+div.item-pubDate {
+   font-size: 0.7em;
+	display: block;		/* Change to 'none' if you don't need this */
+	float: left;
+	color: #522900;
+	margin-top: 0.2em;
+	border-top: 1px solid #522900;
+}
+
+/* Special tags */
+blockquote {
+	margin: 0.5em 1em;
+	background-color: #FEF8E2;
+	font-size: 0.9em;
+	padding: 0.5em;
+}
+
+code {
+	background-color: #FADE95;
+	font-size: 1.1em;
+	padding: 1px;
+}

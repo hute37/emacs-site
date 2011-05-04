@@ -1,0 +1,60 @@
+!**********************************************************************
+!** bbtime.nobb: Style file for bbtime when not using Blackbox	     **
+!**********************************************************************
+
+! ** auto reconfigure when config-file has changed **
+bbtime.autoConfig:				false
+
+!** position of bbtime window **
+bbtime.position: 		+0-0
+bbtime.bevelWidth:		4
+
+!** place bbtime in the slit **
+!bbtime.withdrawn:		True
+!** don't show frame **
+!bbtime.shape:			True
+
+!** bbtime on top of other windows **
+bbtime.raised:					True
+
+!bbtime.strftimeFormat:		%I:%M %p
+
+!** if you have no strftime: **
+!** use european style dd/mm/yy **
+!bbtime.show.euStyle:            True
+
+!** use 24 hour clock **
+!bbtime.show.clock24Hour:	True
+
+!** name (put in front of the time in the menu)  of own time
+!bbtime.my.name:                \me
+
+!** the number of different times
+!** name (put in front of the time in the menu) and time difference
+!** to your own time **
+!bbtime.numberOf.friends:        0
+!bbtime.friend.1.name:           name1
+!bbtime.friend.1.offset:         -6:00
+!bbtime.friend.2.name:           name2
+!bbtime.friend.2.offset:         +1:00
+
+
+! font which determines the height (compatible with blackbox)
+bbtime.heightBy.font: -*-helvetica-medium-r-*-*-*-120-*-*-*-*-*-*
+!** label font **
+bbtime.labelFont:     -*-helvetica-medium-r-*-*-*-120-*-*-*-*-*-*
+
+
+!** define frame style **
+bbtime.frame:			Raised Gradient Vertical Bevel1
+bbtime.frame.color: 		gray45
+bbtime.frame.colorTo:		gray21
+
+!** define label style **
+!bbtime.transparent:		True
+bbtime.label:			Sunken Gradient Vertical Bevel1
+bbtime.label.color:	 	gray45
+bbtime.label.colorTo:		gray21
+
+!** text color date **
+bbtime.textColor:		lightgrey

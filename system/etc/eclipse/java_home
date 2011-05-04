@@ -1,0 +1,15 @@
+# This file determines the search order the Eclipse Platform uses to find a
+# compatible JAVA_HOME. This setting may be overridden on a per-user basis by
+# altering the JAVA_HOME setting in ~/.eclipse/eclipserc.
+
+/usr/lib/jvm/java-gcj
+/usr/lib/kaffe/pthreads
+/usr/lib/jvm/java-6-sun
+/usr/lib/jvm/java-1.5.0-sun
+/usr/lib/j2se/1.5
+/usr/lib/j2se/1.4
+/usr/lib/j2sdk1.5-ibm
+/usr/lib/j2sdk1.4-ibm
+/usr/lib/j2sdk1.6-sun
+/usr/lib/j2sdk1.5-sun
+/usr/lib/j2sdk1.4-sun

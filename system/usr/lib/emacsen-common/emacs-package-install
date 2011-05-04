@@ -1,0 +1,77 @@
+#!/usr/bin/perl -w
+use strict;
+
+# Was this called because we're installing/removing a new emacs
+# flavor?  This should probably be handled with getopt and a command
+# line opt, but it's freeze time, and I'm tired...
+
+my $currently_handling_emacsen = $ENV{'CURRENTLY_HANDLING_EMACSEN'};
+
+my $lib_dir = "/usr/lib/emacsen-common";
+my $var_dir = "/var/lib/emacsen-common";
+my $pkg = $ARGV[0];
+my $action = 'install';
+$action = 'remove' if $0 =~ /remove$/o;
+
+my $dry_run = 0;
+
+require $lib_dir . "/generate-install-list";
+
+sub execute {
+  my(@cmd) = @_;
+  if($dry_run) {
+    print join(" ", @cmd) . "\n";
+  } else {
+    if(system(@cmd) != 0) {
+      if($currently_handling_emacsen) {
+        print STDERR
+            "emacs-package-$action: " . join(" ", @cmd) . " failed";
+      } else {
+        die "emacs-package-$action: " . join(" ", @cmd) . " failed";
+      }
+    }
+  }
+}
+
+# Make sure if we create any files, we do it safely.
+umask 0022 or die "emacs-package-$action: can't set umask, aborting.";
+
+if (! -e '/var/lib/emacsen-common/installed-flavors')
+{
+  die <<EOS;
+ERROR: emacsen-common being used before being configured.
+ERROR: This is likely a bug in the ${pkg} package, which needs to
+ERROR: add one of the appropriate dependencies.
+ERROR: See /usr/share/doc/emacsen-common/debian-emacs-policy.gz
+ERROR: for details.
+EOS
+}
+
+open FLAVORS, "<${var_dir}/installed-flavors" or
+  die "emacs-package-$action: Couldn't open ${var_dir}/installed-flavors";
+my @installed_flavors = <FLAVORS>;
+close FLAVORS;
+chomp @installed_flavors;
+
+my @pkgs_to_handle = ();
+
+if($action eq 'remove') {
+  # If it's a removal, only do this package.
+  @pkgs_to_handle = ($pkg);
+} else {
+  # Get all the packages it depends on, dependency sorted.
+  @pkgs_to_handle = generate_add_on_install_list([$pkg]);
+}
+
+map {
+  my $script = $lib_dir . "/packages/$action/$_";
+  execute($script, 'emacs', @installed_flavors) if -e $script;
+} @pkgs_to_handle;
+
+map {
+  my $script = $lib_dir . "/packages/$action/$_";
+  my $flavor;
+  foreach $flavor (@installed_flavors) {
+    execute($script, $flavor, @installed_flavors) if -e $script;
+  }
+} @pkgs_to_handle;

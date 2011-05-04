@@ -1,0 +1,7 @@
+<composite op="tint">
+  <gradient width="$xroot.width" height="$xroot.height"
+  colors="BaseLight White" angle="45"/>
+
+  <img tile="1" src="tiles/Gray"/>
+</composite>
+

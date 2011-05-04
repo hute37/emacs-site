@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -e
+
+FLAVOR=$1
+
+echo emacsen-common: Handling removal of emacsen flavor ${FLAVOR}
+
+if [ ${FLAVOR} != emacs ]
+then
+  echo emacsen-common: purging byte-compiled files for ${FLAVOR}
+  rm -f /etc/${FLAVOR}/site-start.d/00debian-vars.elc \
+        /usr/share/${FLAVOR}/site-lisp/debian-startup.elc
+fi
+
+exit 0;

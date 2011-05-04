@@ -1,0 +1,32 @@
+# Automatically generated file.
+# Do not edit (or make a backup copy before doing so)
+Gnome=/usr/bin/gnome-session
+KDE=/usr/bin/startkde
+XFCE=/usr/bin/xfce4-session
+IceWM=/usr/bin/icewm-session
+Sawfish=/usr/bin/sawfish
+AfterStep=/usr/bin/afterstep
+Fluxbox=/usr/bin/fluxbox
+evilwm=/usr/local/bin/evilwm-session
+ion3=/usr/bin/ion3
+Blackbox=/usr/bin/blackbox
+Openbox=/usr/bin/openbox
+Enlightenment=/usr/bin/enlightenment
+afterstep=/usr/bin/X11/asclassic
+Window Maker=/usr/bin/wmaker
+9wm=/usr/bin/9wm
+w9wm=/usr/bin/X11/w9wm
+qvwm=/usr/bin/qvwm
+fvwm=/usr/bin/fvwm
+mwm=/usr/bin/mwm
+flwm=/usr/bin/flwm
+pwm=/usr/bin/pwm
+lwm=/usr/bin/lwm
+olvwm=/usr/bin/X11/twm
+twm=/usr/bin/X11/twm
+xterm=/usr/bin/X11/xterm
+rxvt=/usr/bin/rxvt
+delay:15.000000
+restart_selectwm:0
+default_wm:0
+goback_btn:3

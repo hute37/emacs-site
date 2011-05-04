@@ -1,0 +1,102 @@
+a:link		{
+	color: #556688;
+	text-decoration: none;
+}
+
+a:visited	{
+	color: #AF8B8B;
+	text-decoration: none;
+}
+
+a:hover		{
+	text-decoration: none;
+}
+
+a:active	{
+	text-decoration: none;
+}
+
+blockquote {
+	margin: 0px;
+	margin-left: 4em;
+	margin-right: 4em;
+	border: 1px dotted Gray;
+	padding: 0px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+body {
+	color: #222222;
+	margin: 20px;
+}
+
+div.item-pubDate {
+	text-align: right;
+	font-size: 0.85em;
+	margin: 1px 1px 1px 80%;
+}
+
+div.item-desc {
+	border: 1px solid #DCDCDC;
+	font-size: 0.85em;
+	line-height: 1.3;
+	margin: 10px 10px 20px 12%;
+	padding: 10px;
+	-moz-border-radius-topright: 20px;
+	-moz-border-radius-bottomright: 20px;
+	width: 86%
+}
+
+.item div:hover {
+	border: 1px solid gray;
+	border-left: 4px solid gray;
+	padding-left: 7px;
+	background-color: #F5F5F5;
+	-moz-border-radius-topright: 20px;
+	-moz-border-radius-bottomright: 20px;
+}
+
+h2.item-title {
+	font-size: 1em;
+	margin: 0px;
+	margin-left: 4em;
+	margin-bottom: 9px;
+	margin-top: 0px;
+}
+
+html {
+	background-color: #FFFFFF;
+}
+
+html * {
+	-moz-box-sizing: border-box;
+}
+
+span.item-ordinal {
+	display: none;
+}
+
+#rss-desc{
+	font-size: 0.85em;
+	line-height: 1.3;
+	margin: 5px 20px 10px 20px;
+}
+
+#rss-header {
+	border: 1px solid gray;
+	margin-bottom: 20px;
+	background-color: #DFE8EA;
+	padding: 10px;
+	-moz-border-radius: 10px 45px 10px 45px;
+}
+
+#rss-title {
+	font-size: 1.3em;
+	margin: 0px;
+}
+
+div.item-technorati {
+	display: none !important;
+}
+

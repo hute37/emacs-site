@@ -1,0 +1,8 @@
+#!/bin/bash
+
+x=${1:-"1"}
+
+
+exec gdmflexiserver --xnest --no-lock -geometry 1280x1024+0+0 :$x &
+
+

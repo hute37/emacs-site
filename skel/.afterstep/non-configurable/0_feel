@@ -1,0 +1,1098 @@
+##########################################################################
+# Root window feeling
+#
+#------------------------------------------------------------------------
+# Windows behaviour
+#
+# Alt-tab between windows, similar to Windows9x.  For instance:
+#  AutoReverse 0: default switching among the windows in one direction
+#  AutoReverse 1: #1->#2->#3->#4 and then #4->#3->#2->#1
+#  AutoReverse 2: #1->#2->#3->#4 and then #4->#1->#3->#2 etc.
+AutoReverse 0
+#
+# window switching through desks?
+#AutoTabThroughDesks
+#
+# Automatically raise a window if mouse stays > 500 msec on it
+# AutoRaise 500
+#
+# Support Motif window manager function hints
+#---MWMFunctionHints
+#
+# Support Motif window manager decoration hints
+#---MWMDecorHints
+#
+# Allow overriding of Motif function hints
+#---MWMHintOverride
+#
+# While zapping, warp mouse pointer to
+#---Xzap 12
+#---Yzap 12
+Xzap 12
+Yzap 12
+#
+# Avoid problems with xpaint like applications which define their own icon
+# as a window and tell the window manager it's its icon
+KeepIconWindows
+
+# when application changes its name - hints will be updated and applied
+FollowTitleChanges
+
+
+#
+# Don't push titlebar when clicked
+#Titlebarnopush
+#
+# Click on titlebar to focus window (ie put it in the foreground)
+# ClickToFocus
+#
+# Click on titlebar to raise window (ie put it in the foreground)
+ClickToRaise
+#
+# Focus on window until pointer gets in another one
+SloppyFocus
+#
+# Iconify to original place
+#StubbornIcons
+#
+# Uniconify to original place
+StubbornPlacement
+#
+# Optimize icon placement
+StubbornIconPlacement
+#
+# Give a name to each icon
+IconTitle
+#
+# Icons follow you on the desktop
+StickyIcons
+#
+# Don't jump to an icon while zapping windows
+#--- CirculateSkipIcons
+CirculateSkipIcons
+#
+# Center the screen on the current window while circulating
+#---CenterOnCirculate
+#CenterOnCirculate
+#
+# Double click period in ms
+# ClickTime 150
+#
+# Keep showing window while being moved if size<N%
+#OpaqueMove 50
+OpaqueMove 0
+#
+# Keep showing window while being resized if size<N%
+#OpaqueResize 50
+OpaqueResize 0
+#
+# Mouse pushing on screen edge : N% move
+EdgeScroll 100 100
+#
+# To avoid unwanted moving, edges resist during N ms
+#---EdgeResistance 200 80
+EdgeResistance 800 4
+
+
+###########################################################################
+# Initial Placement of the windows
+###########################################################################
+# Old style (simplified) settings :
+
+#
+# Place window in empty zones
+SmartPlacement
+#
+# Random window placement
+#RandomPlacement
+#
+# Windows can't chose where to place
+NoPPosition
+
+#############
+# New style (simplified) settings :
+# WindowBox configuration may look something like this :
+# WindowBox   "some_name"
+# 	Area   WxH+X+Y
+# 	Virtual
+#	MinWidth	width
+#	MinHeight	height
+#	MaxWidth	width
+#	MaxHeight	height
+#	FirstTry	SmartPlacement|RandomPlacement|Tile
+#	ThenTry 	RandomPlacement|Cascade|Manual
+#	VerticalPriority
+#	ReverseOrder
+#     	Desk        desk
+#     	MinLayer    min_layer
+#     	MaxLayer    max_layer
+#~WindowBox
+#
+#DefaultWindowBox  "some_name"
+#
+# this window box prevents windows from being random-placed under WinList :
+WindowBox   "nowinlist"
+ 	Area   		1185x980+5+31
+	FirstTry	SmartPlacement
+	ThenTry 	RandomPlacement
+     	MaxLayer    	2
+~WindowBox
+
+DefaultWindowBox  "nowinlist"
+
+
+##########################################################################
+# X server performance tweaks :
+#AppsBackingStore
+#BackingStore
+#SaveUnders
+
+#
+# Tell me what it means :-)
+#AppsBackingStore
+#BackingStore
+#SaveUnders
+#DontMoveOff
+#XorValue
+#MenusHigh
+#PagingDefault
+#
+
+##########################################################################
+# Misc stuff :
+#
+#RecentSubmenuItems   <number>   # changes number of recently used submenu items displayed in poarent menu
+#
+# Put a titlebar + various stuff on dialog boxes
+DecorateTransients
+#
+
+# this will cause blue screen to come up on desktop changes even if desktop background 
+# in the same  on both desks :
+AnimateDeskChange
+
+# these defines how desktop cover (blue screen) is animated when withdrawn :
+#   Available Types :
+#     sliding 	1 - 8
+#     shrinking 9 - 11
+#     melting	12
+CoverAnimationSteps	6
+CoverAnimationType	10
+
+
+
+ShadeAnimationSteps 1
+
+ScreenEdgeAttraction 5 5 
+WindowEdgeAttraction 0 0
+
+
+
+
+##########################################################################
+# Cursor
+##########################################################################
+#
+# Cursor THISTYPE THISCURSOR where type is :
+#
+#  0 POSITION      - used when initially placing windows
+#  1 TITLE         - used in a window title-bar
+#  2 DEFAULT       - used in windows that don't bother to set their cursor
+#  3 SYS           - used in one of the title-bar buttons
+#  4 MOVE          - used when moving or resizing windows.
+#  5 WAIT          - used during an EXEC builtin command.
+#  6 MENU          - used in a menus.
+#  7 SELECT        - used for various builtin commands such as iconify.
+#  8 DESTROY       - used for DESTROY and DELETE built-ins.
+#  9 TOP           - used in the top side-bar of a window
+# 10 RIGHT        - used in the right side-bar of a window
+# 11 BOTTOM
+# 12 LEFT
+# 13 TOP_LEFT
+# 14 TOP_RIGHT
+# 15 BOTTOM_LEFT
+# 16 BOTTOM_RIGHT
+#
+# while /usr/include/X11/cursorfont.h contains available cursors
+#
+#Cursor 0
+Cursor 1 58
+Cursor 2 68
+Cursor 3 22
+Cursor 4 120
+Cursor 5 150
+Cursor 6 60
+Cursor 7 68
+Cursor 8 88
+Cursor 9 138
+Cursor 10 96
+Cursor 11 16
+Cursor 12 70
+Cursor 13 134
+Cursor 14 136
+Cursor 15 12
+Cursor 16 14
+
+
+##########################################################################
+# Functions
+##########################################################################
+# Used to move icons on desktop
+
+# Now define some handy complex functions
+# Each function can be bound to a specific Mouse Button and
+# a specific window location (Title, TitleButton, Root Window, 
+# etc.) later on
+
+# This one will Raise the window on a Single Click, Shade 
+# (display only the TitleBar) on a DoubleClick, and make 
+# the window uncoverable by all other non-OnTop windows 
+# with a TripleClick.  A Click+Motion will move the
+# window around
+Function "Shade-or-Raise"
+	Move		"Motion"
+	Raise		"Click"
+	Shade		"DoubleClick"
+	PutOnTop	"TripleClick"
+EndFunction
+
+Function "Move-or-Top"
+        Move            "Motion"
+        RaiseLower      "Click"
+        Shade     "DoubleClick" 0 1
+EndFunction
+
+# This will move the window on mouse motion, maximize the
+# window (while leaving space for Wharf on the right) with a 
+# single MouseClick, roll up the window for a Shade with a 
+# DoubleClick, and put the window on top of all other windows
+# with a TripleClick (no regular window can be placed on top
+# of this window until the ontop window has been taken 
+# another PutOnTop TripleClick
+Function "Maximize_Function"
+	Move		"Motion"
+	Maximize	"Click" 94 100
+	Shade		"DoubleClick"
+ 	PutOnTop	"TripleClick"
+EndFunction
+
+# This one moves or (de)iconifies:
+# Icons will restore to full size with a single mouse click
+# Change "Click" to "DoubleClick" or "TripleClick" as desired
+Function "Move-or-Iconify"
+	Move 		"Motion"
+	Iconify		"Click"
+EndFunction
+
+# Pretty Simple...Mouse Motion Raises and Resizes the given
+# window.   A mouse click will also Raise it.  DoubleClick
+# will perform a Shade while TripleClick grants unobscurable
+# status
+Function "Resize-or-Raise"
+	Resize 		"Motion"
+	Raise		"Motion"
+	Raise		"Click"
+	Shade		"DoubleClick"
+	PutOnTop	"TripleClick"
+EndFunction
+
+Function "Resize-or-Top"
+        Resize            "Motion"
+        Move      "Click"
+        Stick     "DoubleClick" 0 1
+EndFunction
+
+Function "Move-or-Normal"
+        Move            "Motion"
+        RaiseLower      "Click"
+        ToggleLayer     "DoubleClick" 1 0
+EndFunction
+
+
+
+# This is provided as a hint only.
+# Move to a known page on the desktop, then start an application in a
+# known location. Could also switch to a known desktop, I guess
+#Function "abs_coord"
+#       GoToPage "Immediate"    1,1
+#       Exec    "Immediate"     exec xcalc -geometry +100+100&
+#EndFunction
+
+
+# Window operations
+
+Popup "Window"
+        Title           "Window :"
+        Move            "Move"
+        Resize          "Resize"
+		  PopUp          "Maximize" "Window Max" 
+		  PopUp          "Desks" "Window Desk" 
+		  PopUp          "Layers" "Window Layer" 
+		  PopUp          "Capture" "Window Capture" 
+		  PopUp          "Commands" "Window Command" 
+# 		  PopUp          "More ..." "Window More" 
+#         Maximize "Maximize 100%" 100 100
+#         Maximize "Maximize Vert." 70 100
+#         Maximize "Maximize 80%" 80 80
+#         WindowsDesk     " - to desk #0" 0
+#         WindowsDesk     " - to desk #1" 1
+#         WindowsDesk     " - to desk #2" 2
+#         ToggleLayer     "Toggle Top" 2 4 
+#         ToggleLayer     "Toggle Back" 1 2 
+# 	TakeWindowShot  "Capture window image"
+#	TakeFrameShot   "Capture window + frame image"
+#	TakeScreenShot  "Capture screen image"
+        Destroy         "Kill"
+        Delete          "Quit"
+EndPopup
+#
+
+
+
+# This defines the most common window operations
+Popup "Window More"
+        Title           "Window More"
+		  PopUp          "Maximize" "Window Max" 
+		  PopUp          "Desks" "Window Desk" 
+		  PopUp          "Layers" "Window Layer" 
+		  PopUp          "Capture" "Window Capture" 
+		  PopUp          "Commands" "Window Command" 
+EndPopup
+
+
+# This defines the most common window operations
+Popup "Window Max"
+        Title           "Maximize"
+        Maximize "Maximize 100%" 100 100
+        Maximize "Maximize Vert." 70 100
+        Maximize "Maximize 80%" 80 80
+EndPopup
+
+# This defines the most common window operations
+Popup "Window Desk"
+        Title           "Desks"
+        WindowsDesk     " - to desk #0" 0
+        WindowsDesk     " - to desk #1" 1
+        WindowsDesk     " - to desk #2" 2
+EndPopup
+
+# This defines the most common window operations
+Popup "Window Layer"
+        Title           "Layers"
+        ToggleLayer     "Toggle Top" 2 4 
+        ToggleLayer     "Toggle Back" 1 2 
+		  PutOnTop	      "Put OnTop"
+		  PutOnBack	      "Put OnBack"
+        Nop
+        SetLayer         " - to layer #0" 0
+        SetLayer         " - to layer #1" 1
+        SetLayer         " - to layer #2" 2
+        SetLayer         " - to layer #3" 3
+        SetLayer         " - to layer #4" 4
+        SetLayer         " - to layer #5" 5
+EndPopup
+
+# This defines the most common window operations
+Popup "Window Capture"
+        Title           "Capture"
+	TakeWindowShot  "Capture window image"
+	TakeFrameShot   "Capture window + frame image"
+	TakeScreenShot  "Capture screen image"
+EndPopup
+
+# This defines the most common window operations
+Popup "Window Command"
+        Title           "Command"
+        Function        "Move"          Shade-or-Raise
+        Function        "Resize"        Resize-or-Raise
+        Raise           "Raise"
+        Lower           "Lower"
+        Stick           "Stick"
+        Shade           "Shade"
+        Iconify         "Iconify"
+        Function        "Maximize"  Maximize_Function
+        Destroy         "Destroy"
+        Close           "Close"
+        Refresh         "Refresh Screen"
+EndPopup
+
+
+
+
+# This defines the most common window operations
+Popup "Window Ops"
+        Title           "Window Ops"
+        Function        "Move"          Shade-or-Raise
+        Function        "Resize"        Resize-or-Raise
+        Raise           "Raise"
+        Lower           "Lower"
+	PutOnTop	"(Un)PutOnTop"
+        Iconify         "(De)Iconify"
+        Stick           "(Un)Stick"
+        Function        "(Un)Maximize"  Maximize_Function
+        Destroy         "Destroy"
+        Close           "Close"
+        Refresh         "Refresh Screen"
+EndPopup
+
+
+
+# This defines the most common window operations
+Popup "Desktop"
+        Title           "Desks"
+        Desk           " - go to desk #0" 0 0
+        Desk           " - go to desk #1" 0 1
+        Desk           " - go to desk #2" 0 2
+        WindowList     " - desk #0" 4 0
+        WindowList     " - desk #1" 4 1
+        WindowList     " - desk #2" 4 2
+        WindowList     "Tasks" 0
+		  PopUp          "Window" "Window" 
+		  PopUp          "Animations" "Animations" 
+EndPopup
+
+
+
+
+# Animations ... screen savers run as the default background
+Popup "Animations"
+	Title	"Animations"
+	# Stop the animation in the background
+	Exec	"... Stop It"	exec kill -TERM $(ps aux | grep xlock | grep -v grep | awk '{print $2}')
+	Exec	"Galaxy"	exec xlock -inroot -nice 10 -mode galaxy &
+	Exec	"Maze"		exec xlock -inroot -nice 10 -mode maze &
+	Exec	"Braid"		exec xlock -inroot -nice 10 -mode braid &
+	Exec	"Flame"		exec xlock -inroot -nice 10 -mode flame &
+	Exec	"Grav"		exec xlock -inroot -nice 10 -mode grav &
+	Exec	"Pyro"		exec xlock -inroot -nice 10 -mode pyro &
+	Exec	"Qix"		exec xlock -inroot -nice 10 -mode qix &
+	Exec	"Rock"		exec xlock -inroot -nice 10 -mode rock &
+	Exec	"Slip"		exec xlock -inroot -nice 10 -mode spiral &
+	Exec	"Spline"	exec xlock -inroot -nice 10 -mode spline &
+	Exec	"Swarm"		exec xlock -inroot -nice 10 -mode swarm &
+	Exec	"Worm"		exec xlock -inroot -nice 10 -mode worm &
+	Exec	"Bat"     exec xlock -inroot -nice 10 -mode bat &
+	Exec	"Blank"   exec xlock -inroot -nice 10 -mode blank &
+	Exec	"Blot"    exec xlock -inroot -nice 10 -mode blot &
+	Exec	"Bob"     exec xlock -inroot -nice 10 -mode bob &
+	Exec	"Bounce"  exec xlock -inroot -nice 10 -mode bounce &
+	Exec	"Helix"   exec xlock -inroot -nice 10 -mode helix &
+	Exec	"Hop"     exec xlock -inroot -nice 10 -mode hop   &
+	Exec	"Hyper"   exec xlock -inroot -nice 10 -mode hyper &
+	Exec	"Kaleid"  exec xlock -inroot -nice 10 -mode kaleid &
+	Exec	"Life"    exec xlock -inroot -nice 10 -mode life   &
+	Exec	"Rect"    exec xlock -inroot -nice 10 -mode rect &
+	Exec	"Rotor"   exec xlock -inroot -nice 10 -mode rotor &
+	Exec	"Sphere"  exec xlock -inroot -nice 10 -mode sphere &
+	Exec	"Spline"  exec xlock -inroot -nice 10 -mode spline &
+	Exec	"World"   exec xlock -inroot -nice 10 -mode world &
+	# Some background animations which is not screensaver
+        Exec    "Xsnow"         exec xsnow -nonopopup &
+	Exec	"Stop Xsnow"	exec kill -TERM $(ps aux | grep xsnow | grep -v grep | awk '{print $2}')
+        Exec    "Xfishtank"         exec xfishtank &
+	Exec	"Stop Xfishtank"	exec kill -TERM $(ps aux | grep xfishtank | grep -v grep | awk '{print $2}')
+	Exec	"Xplanet"	exec xplanetbg --wait 10 &
+	Exec	"Stop Xplanet"	exec kill -TERM $(ps aux | grep xplanetbg | grep -v grep | awk '{print $2}')
+EndPopup
+
+
+
+##########################################################################
+
+##########################################################################
+# Key binding :
+#
+# [Zap button] [Window ops]   Title   [Iconify] [Shade] [Quit]
+#
+# Zap switches to next window, if middle clicked switches to previous one while
+#  right click open man file of the current window.
+#
+# Window ops lets you act on window geometry, size (...) if right clicked
+#  asks which window you want to switch to.
+#
+# Iconify button iconifies current window, if right clicked it maximises it.
+#
+# Shade swallows window under titlebar and makes it sticky, if right clicked
+#  it only makes it sticky, without swallowing it
+#
+# Quit closes current window, if right clicked it kills it
+##########################################################################
+
+##########################################################################
+# Calls
+#
+# There are 4 colums to the table
+# First column is the event (Mouse Click or Key Press)
+#   Mouse 0 specify any click in a TitleBar box
+#     Where can be 1 or 2 for first or second box
+#   Mouse 1 is left button, 2 is middle, 3 is right
+# Second Column is where the click takes place
+#   R = Root window (main background)
+#   F = Window Frame (the corners)
+#   S = Bottom bar
+#   I = Icon Window
+#   T = TitleBar
+#   W = Application Window
+# Third Column is the Context (ie, modifier keys)
+#   N = No modifiers
+#   A = Any context except for inside the TitleBar Boxes
+#   C = Control
+#   S = Shift
+#   M = Meta
+#   Combos are allowed (eg, CS = Control+Shift)
+# Fourth Column is the action to take upon click : function, popup, or action
+
+
+
+
+#
+# Mouse actions
+#
+Mouse 3         R       N       PopUp "0"
+Mouse 2         R       N       PopUp "Desktop"
+Mouse 1         R       N       WindowList
+Mouse 1         R       4       PopUp "Window"
+Mouse 2         R       4       PopUp "Animations"
+Mouse 3         R       4       PopUp "Window Ops"
+
+Mouse 4         R       N       Scroll +0   -50
+Mouse 5         R       N       Scroll +0   +50
+Mouse 4         R       S       Scroll -100 0
+Mouse 5         R       S       Scroll +100 +0
+# Mouse 4         R       C       Desk +1
+# Mouse 5         R       C       Desk -1
+Mouse 4         R       C       Desk 0 0
+Mouse 5         R       C       Desk 0 1
+
+Mouse 4         W       4       Scroll +0   -50
+Mouse 5         W       4       Scroll +0   +50
+Mouse 4         W       S4      Scroll -100 0
+Mouse 5         W       S4      Scroll +100 +0
+Mouse 4         W       C4      Desk -1
+Mouse 5         W       C4      Desk +1
+
+
+Mouse 1         1       A       ChangeWindowUp
+Mouse 2         1       A       GetHelp
+Mouse 3         1       A       ChangeWindowDown
+
+Mouse 1         2       A       Delete
+Mouse 2         2       A       ToggleLayer -1 0
+Mouse 3         2       A       Close
+
+Mouse 1         3       A       PopUp "Window"
+Mouse 2         3       A       WindowList 2
+Mouse 3         3       A       WindowList
+
+Mouse 1         4       A       Iconify
+Mouse 2         4       A       Stick
+Mouse 3         4       A       Shade
+
+Mouse 1         6       A       Maximize
+Mouse 2         6       A       ToggleLayer 5 2
+Mouse 3         6       A       Maximize 70 100
+
+Mouse 1         FS      A       Resize
+Mouse 2         FS      A       Move
+Mouse 3         FS      A       PopUp "Window"
+
+Mouse 3         T       C       PopUp "Window"
+Mouse 1         T       N       Function "Move-or-Top"
+Mouse 2         T       N       Function "Resize-or-Top"
+Mouse 3         T       N       RaiseLower
+
+Mouse 0         I       N       Function "Move-or-Iconify"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#
+# Keys actions
+#
+# control + arrow = 1 page
+# Key Up        A       CM       RaiseLower
+# Key Down      A       CM       RaiseLower
+Key Up        A       4       RaiseLower
+Key Down      A       4       RaiseLower
+
+# Key Left      A       CM       Scroll +0   -100
+# Key Right     A       CM       Scroll +0   +100
+# Key Left      A       SCM       Scroll -100 0
+# Key Right     A       SCM       Scroll +100 +0
+Key Left      A       4       Scroll +0   -100
+Key Right     A       4       Scroll +0   +100
+Key Left      A       S4       Scroll -100 0
+Key Right     A       S4       Scroll +100 +0
+# Key Left      A       C4       Desk -1
+# Key Right     A       C4       Desk +1
+Key Left      A       C4       Desk 0 0
+Key Right     A       C4       Desk 0 1
+
+Key Next      W       4       PutOnBack
+Key Prior     W       4       PutOnTop
+
+
+Key t        A       4       Exec "yterm" exec yterm &
+Key t        A      S4       Exec "xterm" exec x-terminal-emulator &
+Key t        A      C4       Exec "hterm" exec hterm &
+Key e        A       4       Exec "nautilus" exec nautilus --no-desktop --browser &
+Key e        A      S4       Exec "rox" exec rox-filer &
+Key f        A       4       Exec "firefox" exec firefox &
+Key i        A       4       Exec "thunderbird" exec thunderbox &
+Key i        A      S4       Exec "evolution" exec evolution &
+
+
+Key z        W       4       Iconify
+Key x        W       4       Maximize
+Key v        W       4       Maximize 70 100
+Key m        W       4       Move
+Key n        W       4       Resize
+Key s        W       4       Stick
+Key a        W       4       Shade
+Key w        W       4       Shade
+Key 4        W       M       Delete
+Key k        W       4       Destroy
+
+Key a        W       4       PopUp "Window"
+
+# # # alt + arrow = 1/10 page
+# # Key Left        A       M       Scroll -10 +0
+# # Key Right       A       M       Scroll +10 +0
+# # Key Up          A       M       Scroll +0  -10
+# # Key Down        A       M       Scroll +0  +10
+
+# # # shift + arrow = move cursor
+# # Key Left        A       S       CursorMove -1 0
+# # Key Right       A       S       CursorMove +1 +0
+# # Key Up          A       S       CursorMove +0 -1
+# # Key Down        A       S       CursorMove +0 +1
+
+# shift + control + arrow = change desktop
+# Key 1        A       CM      Desk 0 0
+# Key 2        A       CM      Desk 0 1
+# Key 3        A       CM      Desk 0 2
+# Key 4        A       CM      Desk 0 3
+Key 1        A       4      Desk 0 0
+Key 2        A       4      Desk 0 1
+Key 3        A       4      Desk 0 2
+Key 4        A       4      Desk 0 3
+
+# For asforms & menus : Ctrl-Shift-Fx =
+Key F1          A       SC4      Module "Help" Form HELPForm
+Key F1          A       SC4      GetHelp
+Key F2          A       SC4      Iconify
+Key F3          A       SC4      Resize
+Key F4          A       SC4      Delete
+Key F5          A       SC4      Move
+Key F6          A       SC4      Destroy
+Key F7          A       SC4      ChangeWindowUp
+Key F8          A       SC4      Module "Run"  Form RUNForm
+Key F9          A       SC4      WindowList
+Key F10         A       SC4      PutOnBack
+Key F11         A       SC4      Module "Find" Form FINDForm
+Key F12         A       SC4      PopUp "0"
+
+
+################################################################################
+# Menu popups keybindings
+################################################################################
+# The "Menu" key is a key introduced by Microsoft on PC keyboards
+# Popups the window manager menu (default window, ie the "0" window)
+Key Menu        A       A       Popup "0"
+# Lists all the applications of the current desk
+Key Menu        A       C       WindowList 2
+# Lists all the applications on all the desks
+Key Menu        A       S       WindowList
+
+Key Menu        W       A       PopUp "Window"
+
+################################################################################
+# Window wrapping
+################################################################################
+# alt + tab = change window
+Key Tab         A       M       WarpFore
+Key Tab		    A	     SM	     WarpBack
+# alt + q = return to window
+#Key q		A	M	WarpBack
+# shift + alt + tab = focus on current window
+#Key Tab         A       S       Focus
+#Key Meta_L      A       A       WarpFore
+#Key Meta_R      A       A       WarpBack
+
+# # # Windows-alike keys
+# # #
+# # # alt + tab = change window
+# # Key Tab         A       M       WarpFore
+# # # alt + w = change window
+# # Key w           A       M       WarpFore
+# # # alt + q = return to window
+# # Key q		A	M	WarpBack
+# # # shift + alt + tab = focus on current window
+# # Key Tab         A       S       Focus
+# # # ctrl-v = paste
+# # Key v		W	C	PasteSelection
+# # # Window keys
+# # Key Menu        A       A       Popup "0"
+# # Key Meta_L      A       A       WarpFore
+# # Key Meta_R      A       A       WarpBack
+
+
+# ctrl-v = paste
+# If you have problems with pasting data into applications - 
+# try uncommenting this :
+#Key v		W	C	PasteSelection
+
+
+############################################################################
+
+# PC keys aren't always defined in keymaps
+Key Print       A       A       TakeScreenShot
+#Key Print       A       A       Exec "screenshot" exec xwd -root -out ~/screen.xwd && mogrify -format png ~/screen.xwd && rm ~/screen.xwd
+Key Print       A       S       TakeWindowShot
+#Key Print       A       S       Exec "windowshot" exec xwd -nobdrs -out ~/window.xwd && mogrify -format png ~/window.xwd && rm ~/window.xwd
+Key Print       A       M       TakeFrameShot
+#Key Print       A       M       Exec "frameshot" exec xwd -frame -out ~/frame.xwd && mogrify -format png ~/frame.xwd && rm ~/frame.xwd 
+Key Pause       A       A       Exec "xlock" exec xlock -mode random
+#Key Pause       A       A       Exec "xscreensaver" exec xscreensaver-command -lock
+#Key Sys_Req     A       A       GetHelp
+#Key Scroll_Lock A       A       Desk 0
+
+
+
+# # # # PC keys aren't always defined is keymaps
+# # # Key Print       A       A       Exec "Take_ScreenShot" exec xwd -root -out screen.xwd
+# # # Key Scroll_Lock A       A       Exec "xlock" exec xlock -nolock -mode random
+# # # Key Sys_Req     A       A       GetHelp
+# # # Key Scroll_Lock A       A       Desk 0
+# # # Key Pause       A       A       Module "Exit ?" Form QuitForm
+#
+############################################################################
+
+
+################################################################################
+# Term keybindings
+################################################################################
+# One should note that it is the "asterisk key" that is bound, not the "* key".
+# To get the keymap table : $ xmodmap -pke
+# Binding the asterisk key + Ctrl to display a term window
+#---Key asterisk    A       C       Exec "x-terminal-emulator" exec x-terminal-emulator
+#Key asterisk    A       C       Exec "rxvt" exec rxvt
+
+
+
+################################################################################
+# XMMS keybindings
+################################################################################
+# ugrave is for the french key with the "%" sign on it
+#Key ugrave      A       CS      Exec "-" xmms
+# Start playing current playlist or play the current track from the beginning
+#Key p           A       CS      Exec "-" xmms --play
+# Toggle : Pause if playing, play otherwise
+#Key t           A       CS      Exec "-" xmms --play-pause
+#Key b           A       CS      Exec "-" xmms --rew
+#Key f           A       CS      Exec "-" xmms --fwd
+
+
+
+
+
+
+
+
+
+
+#
+# New Default ###########################################################
+# New Default ###########################################################
+# New Default ###########################################################
+# New Default ###########################################################
+# New Default ###########################################################
+#
+
+# #
+# # Mouse actions
+# #
+# Mouse 1         R       A       PopUp "0"
+# Mouse 2         R       A       GetHelp
+# Mouse 2 	R	A	PopUp "Window"
+# Mouse 3         R       A       WindowList
+# Mouse 1         1       A       ChangeWindowUp
+# Mouse 2         1       C       BookmarkWindow "1"	bkmrk1
+# Mouse 2         1       S       GoToBookmark "1"	bkmrk1
+# Mouse 2         1       A       GetHelp
+# Mouse 3         1       A       ChangeWindowDown
+# Mouse 1         2       A       Delete
+# Mouse 2         2       A       Close
+# Mouse 3         2       A       Destroy
+# Mouse 1         3       A       PopUp "Window"
+# Mouse 2         3       A       WindowList 2
+# Mouse 3         3       A       WindowList
+# Mouse 1         4       A       Shade
+# Mouse 2         4       A       Stick
+# Mouse 3         4       A       Stick
+# Mouse 1         5       A       PinMenu
+# Mouse 2         5       A       PinMenu
+# Mouse 3         5       A       PinMenu
+# Mouse 1         6       A       Iconify
+# Mouse 2         6       A       Maximize
+# Mouse 3         6       A       Maximize
+# Mouse 1         FS      A       Resize
+# Mouse 2         FS      A       Move
+# Mouse 3         FS      A       Move
+# Mouse 1         T       A       Function "Move-or-Top"
+# Mouse 2         T       A       Function "Move-or-Normal"
+# #Mouse 2         T       A       RaiseLower
+# Mouse 3         T       A       RaiseLower
+# Mouse 0         I       A       Function "Move-or-Iconify"
+
+# #
+# # Keys actions
+# #
+# # control + arrow = 1 page
+# Key Left        A       C       Scroll -100 0
+# Key Right       A       C       Scroll +100 +0
+# Key Up          A       C       Scroll +0   -100
+# Key Down        A       C       Scroll +0   +100
+
+# # Those keybindings trap Mozilla history navigation keybindings, but you can
+# # uncomment them if you do not use those Mozilla keybindings.
+# # alt + arrow = 1/10 page
+# #Key Left        A       M       Scroll -10 +0
+# #Key Right       A       M       Scroll +10 +0
+# #Key Up          A       M       Scroll +0  -10
+# #Key Down        A       M       Scroll +0  +10
+
+# ## alt + shift + arrow = move cursor
+# #Key Left        A       MS       CursorMove -1 0
+# #Key Right       A       MS       CursorMove +1 +0
+# #Key Up          A       MS       CursorMove +0 -1
+# #Key Down        A       MS       CursorMove +0 +1
+
+# # shift + control + arrow = change desktop
+# #Key Left        A       SC      Desk 0 0
+# #Key Right       A       SC      Desk 0 1
+# #Key Up          A       SC      Desk 0 2
+# #Key Down        A       SC      Desk 0 3
+
+# # here is the better approach to desktop switching : Ctrl-Fx =
+# Key F1          A       C        Desk 0 0
+# Key F2          A       C        Desk 0 1
+# Key F3          A       C        Desk 0 2
+# Key F4          A       C        Desk 0 3
+# # For asforms & menus : Ctrl-Shift-Fx =
+# Key F1          A       M      Module "Help" Form HELPForm
+# Key F1          A       M      GetHelp
+# Key F2          A       M      Move
+# Key F3          A       M      Resize
+# Key F4          A       M      Destroy
+# Key F5          A       M      Iconify
+# Key F6          A       M      Delete
+# Key F7          A       SC      ChangeWindowUp
+# Key F8          A       SC      Module "Run"  Form RUNForm
+# Key F9          A       SC      Maximize
+# Key F10         A       SC      PutOnBack
+# #Key F11         A       SC      Module "Find" Form FINDForm
+# Key F11         A       SC      WindowList
+# Key F12         A       SC      PopUp "0"
+
+# ################################################################################
+# # Menu popups keybindings
+# ################################################################################
+# # The "Menu" key is a key introduced by Microsoft on PC keyboards
+# # Popups the window manager menu (default window, ie the "0" window)
+# Key Menu        A       A       Popup "0"
+# # Lists all the applications of the current desk
+# Key Menu        A       C       WindowList 2
+# # Lists all the applications on all the desks
+# Key Menu        A       S       WindowList
+
+# ################################################################################
+# # Window wrapping
+# ################################################################################
+# # alt + tab = change window
+# Key Tab         A       M       WarpFore
+# # alt + q = return to window
+# Key Tab		A	SC	WarpBack
+# #Key q		A	M	WarpBack
+# # shift + alt + tab = focus on current window
+# #Key Tab         A       S       Focus
+# #Key Meta_L      A       A       WarpFore
+# #Key Meta_R      A       A       WarpBack
+
+# # ctrl-v = paste
+# # If you have problems with pasting data into applications - 
+# # try uncommenting this :
+# #Key v		W	C	PasteSelection
+
+# # PC keys aren't always defined in keymaps
+# Key Print       A       A       TakeScreenShot
+# #Key Print       A       A       Exec "screenshot" exec xwd -root -out ~/screen.xwd && mogrify -format png ~/screen.xwd && rm ~/screen.xwd
+# Key Print       A       S       TakeWindowShot
+# #Key Print       A       S       Exec "windowshot" exec xwd -nobdrs -out ~/window.xwd && mogrify -format png ~/window.xwd && rm ~/window.xwd
+# Key Print       A       M       TakeFrameShot
+# #Key Print       A       M       Exec "frameshot" exec xwd -frame -out ~/frame.xwd && mogrify -format png ~/frame.xwd && rm ~/frame.xwd 
+# Key Pause       A       A       Exec "xlock" exec xlock -mode random
+# #Key Pause       A       A       Exec "xscreensaver" exec xscreensaver-command -lock
+# #Key Sys_Req     A       A       GetHelp
+# #Key Scroll_Lock A       A       Desk 0
+
+# ################################################################################
+# # Term keybindings
+# ################################################################################
+# # One should note that it is the "asterisk key" that is bound, not the "* key".
+# # To get the keymap table : $ xmodmap -pke
+# # Binding the asterisk key + Ctrl to display a term window
+# Key asterisk    A       C       Exec "x-terminal-emulator" exec x-terminal-emulator
+# #Key asterisk    A       C       Exec "rxvt" exec rxvt
+
+# ################################################################################
+# # XMMS keybindings
+# ################################################################################
+# # ugrave is for the french key with the "%" sign on it
+# #Key ugrave      A       CS      Exec "-" xmms
+# # Start playing current playlist or play the current track from the beginning
+# #Key p           A       CS      Exec "-" xmms --play
+# # Toggle : Pause if playing, play otherwise
+# #Key t           A       CS      Exec "-" xmms --play-pause
+# #Key b           A       CS      Exec "-" xmms --rew
+# #Key f           A       CS      Exec "-" xmms --fwd
+
+
+
+
+
+
+#
+# Old Custom ###########################################################
+# Old Custom ###########################################################
+# Old Custom ###########################################################
+# Old Custom ###########################################################
+# Old Custom ###########################################################
+#
+
+
+
+# #
+# # Mouse actions
+# #
+# Mouse 1         R       A       PopUp "0"
+# Mouse 2         R       A       WindowList 2
+# Mouse 3         R       A       WindowList
+# Mouse 1         1       A       ChangeWindowUp
+# Mouse 2         1       A       GetHelp
+# Mouse 3         1       A       ChangeWindowDown
+# Mouse 1         2       A       Delete
+# Mouse 2         2       A       Destroy
+# Mouse 3         2       A       Destroy
+# Mouse 1         3       A       PopUp "Window"
+# Mouse 2         3       A       WindowList 2
+# Mouse 3         3       A       WindowList
+# Mouse 1         4       A       Shade
+# Mouse 2         4       A       Stick
+# Mouse 3         4       A       Stick
+# Mouse 1         6       A       Iconify
+# Mouse 2         6       A       Maximize
+# Mouse 3         6       A       Maximize
+# Mouse 1         FS      A       Resize
+# Mouse 2         FS      A       Move
+# Mouse 3         FS      A       Move
+# Mouse 1         T       A       Function "Move-or-Top"
+# Mouse 2         T       A       Shade
+# Mouse 3         T       A       RaiseLower
+# Mouse 0         I       A       Function "Move-or-Iconify"
+
+# #
+# # Keys actions
+# #
+# # control + arrow = 1 page
+# Key Left        A       C       Scroll -100 0
+# Key Right       A       C       Scroll +100 +0
+# Key Up          A       C       Scroll +0   -100
+# Key Down        A       C       Scroll +0   +100
+
+# # alt + arrow = 1/10 page
+# Key Left        A       M       Scroll -10 +0
+# Key Right       A       M       Scroll +10 +0
+# Key Up          A       M       Scroll +0  -10
+# Key Down        A       M       Scroll +0  +10
+
+# # shift + arrow = move cursor
+# Key Left        A       S       CursorMove -1 0
+# Key Right       A       S       CursorMove +1 +0
+# Key Up          A       S       CursorMove +0 -1
+# Key Down        A       S       CursorMove +0 +1
+
+# # shift + control + arrow = change desktop
+# Key Left        A       SC      Desk 0 0
+# Key Right       A       SC      Desk 0 1
+# Key Up          A       SC      Desk 0 2
+# Key Down        A       SC      Desk 0 3
+
+# # For asforms & menus : Ctrl-Shift-Fx =
+# Key F1          A       SC      Module "Help" Form HELPForm
+# Key F1          A       SC      GetHelp
+# Key F2          A       SC      Iconify
+# Key F3          A       SC      Resize
+# Key F4          A       SC      Delete
+# Key F5          A       SC      Move
+# Key F6          A       SC      Destroy
+# Key F7          A       SC      ChangeWindowUp
+# Key F8          A       SC      Module "Run"  Form RUNForm
+# Key F9          A       SC      WindowList
+# Key F10         A       SC      PutOnBack
+# Key F11         A       SC      Module "Find" Form FINDForm
+# Key F12         A       SC      PopUp "0"
+
+# # Windows-alike keys
+# #
+# # alt + tab = change window
+# Key Tab         A       M       WarpFore
+# # alt + w = change window
+# Key w           A       M       WarpFore
+# # alt + q = return to window
+# Key q		A	M	WarpBack
+# # shift + alt + tab = focus on current window
+# Key Tab         A       S       Focus
+# # ctrl-v = paste
+# Key v		W	C	PasteSelection
+# # Window keys
+# Key Menu        A       A       Popup "0"
+# Key Meta_L      A       A       WarpFore
+# Key Meta_R      A       A       WarpBack
+# # PC keys aren't always defined is keymaps
+# Key Print       A       A       Exec "Take_ScreenShot" exec xwd -root -out screen.xwd
+# Key Scroll_Lock A       A       Exec "xlock" exec xlock -nolock -mode random
+# Key Sys_Req     A       A       GetHelp
+# Key Scroll_Lock A       A       Desk 0
+# Key Pause       A       A       Module "Exit ?" Form QuitForm
+# #
+# ############################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

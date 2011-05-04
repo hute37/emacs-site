@@ -1,0 +1,4 @@
+#!/bin/bash
+wine 'c:\Program Files\Wincmd32\TOTALCMD.exe' $*
+
+

@@ -1,0 +1,132 @@
+html
+{
+	background: url(back.gif) repeat-x;
+}
+
+body
+{
+	width: 90%;
+	margin: 30px auto;
+}
+
+*
+{
+	font-family: verdana, sans-serif;
+}
+
+p
+{
+	color: #000;
+	width: 100%
+}
+
+.item-desc img
+{
+	border: 1px solid #ddd;
+	padding: 5px;
+	height: auto;
+	max-width: 90%;
+}
+
+#rss-header
+{
+	background: #455372 !important;
+	margin: 0 0 32px 0;
+	-moz-border-radius: 8px;
+	border-right: 1px solid #333;
+	border-bottom: 1px solid #333;
+	padding: 10px;
+}
+
+#rss-header a, #rss-header p
+{
+	color: #fff;
+	text-decoration: none;
+	margin: 0;
+}
+
+#rss-header p
+{
+	font-size: 12px;
+	padding-left: 1em;
+}
+
+h1
+{
+	font-weight: normal;
+	margin: 0;
+}
+
+h1:before
+{
+	content: "Newsfeed: ";
+	color: #ccc;
+}
+
+h2.item-title
+{
+	border-bottom: 1px solid #ddd;
+	color: #000; 
+	display: block;
+	font-family: arial, verdana, sans-serif; 
+	font-size: 20px;
+	font-weight: normal; 
+	min-height: 1.3em;
+	padding: 10px 0 0 0;
+}
+
+h2.item-title a
+{
+	color: #000;
+	text-decoration: none;
+}
+
+h2.item-title a:visited:after
+{
+	color: #777;
+	content: " - visited";
+	font-size: 12px;
+}
+
+div.item
+{
+	background: #E4ECEC;
+	border: 0; 
+	border-bottom: 1px solid #D2D6D6;
+	border-right: 1px solid #D2D6D6;
+	-moz-border-radius: 8px;  
+	color: #333;
+	font-size: 12px;
+	margin-bottom: 25px;
+	padding: 0 10px 10px 20px;
+	position: relative;
+}
+
+.item-pubDate
+{
+	background: #FAF4C8;
+	border-right: 1px solid #E3DE9F;
+	border-bottom: 1px solid #E3DE9F;
+	color : #777;
+	float: right;
+	font-size: 10px;
+	font-weight: bold;
+	line-height: 1.1em;
+	padding: 2px 3px 5px 3px;
+	position: absolute;
+	right: 1em;
+	text-align: center;
+	top: -0.5em;
+}
+
+.item-technorati
+{
+	font-size: x-small;
+	margin: 0px;
+	text-align: right;
+}
+
+.item-ordinal
+{
+	color: #777;
+}

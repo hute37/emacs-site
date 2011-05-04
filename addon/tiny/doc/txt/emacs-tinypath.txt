@@ -1,0 +1,1006 @@
+1.0 Tinypath.el --- Manage your Emacs startup dynamically
+
+    1.1 Preface
+
+        This is HTML documentation of tinypath.el v1.68 as of 2001-01-29
+        which has been generated from plain text file with the help of two
+        perl tools available at nearest perl CPAN at
+        http://cpan.perl.org/modules/by-authors/id/J/JA/JARIAALTO/
+
+            % ripdoc.pl tinypath.el | t2html.pl > tinypath.html
+
+    1.2 The very fast start
+
+        If you really insist doing the reading later, here is what to do.
+        No guarrantees that this will work. Then you better read docs.
+
+        o   Include perl script *emacs-util.el* in your `PATH'. If you
+            do not have perl, get it at http://www.perl.com/ or
+            win32 http://www.activestate.com/
+        o   If you use XEmacs, see `tinypath-:core-emacs-load-path-list'
+        o   If you use private Gnus (not gnus from Emacs dist) YOU MUST
+            SET `tinypath-:ignore-file-regexp-extra'.
+        o   Move all your private lisp under $HOME/elisp
+        o   Create directory `$HOME/elisp/config' for cache location.
+        o   Load *tinypath.el* like this, please copy verbatim:
+
+            ;; $HOME/.emacs
+            (require 'cl)
+            ;; location of tinypath.el
+            (pushnew "~/elisp/tiny/lisp" load-path :test 'stringp=)
+            (load "tinypath.el")
+
+        o   After Emacs is up, call `M-x' `tinypath-cache-problem-report'
+
+    1.3 First user note
+
+        You may see message "Tinypath: EXT Process running ...
+        [may take a while]" and Emacs hangs for a while when you use this
+        package for the first time. Please wait and read the documentation
+        about "Faster Emacs configuration" later in this file.
+        At any time you can read the manual with `M-x' `tinypath-version'
+        Gnus users, read section from manual below (highly important).
+
+        It is important that you use the EXT method, because the old lisp
+        method is present only for backward compatibility. Old lisp method
+        also has drawback, that it does not support rearranging paths to
+        order: 1) $HOME 2) site-lisp-files 3) core-emacs-lisp-files
+
+        This new method guarantees, that anything you put into your
+        private ~/elisp will override and precede any other package
+        found elsewhere in `load-path' hierarchy.
+
+    1.4 Emacs Lisp install
+
+        Put this file on your Emacs-Lisp load path, add following into your
+        $HOME/.emacs startup file.
+
+            ;; NO SYMLINK DIRS HERE, THEY ARE IGNORED!
+            (setq tinypath-:load-path-root '("~/elisp" .. ))
+            ;;
+            ;; If you use XEmacs
+            ;;
+            (setq  tinypath-:core-emacs-load-path-list
+                     '("/usr/local/share/xemacs/xemacs-packages"
+                       "/usr/local/share/xemacs/site-packages"
+                       "/usr/local/share/xemacs/mule-packages"
+                       ..))
+            ;; BELOW, PLEASE USE ABSOLUTE PATH, THERE ARE OPTIMIZATIONS
+            ;; THAT ACTIVATE If YOU ADD THE PATH
+            (require 'cl)
+            (pushnew "~/elisp/tiny/lisp" load-path :test 'stringp=)
+            (load "tinypath.el")
+
+    1.5 Cache file location
+
+        Create directory where to cache information is saved by default or
+        change `tinypath-:cache-file-prefix' which should be pathname +
+        file-prefix. The cache size depends on your installed files, with
+        600 directories and 8000 lisp files, the cache size is around 500k
+        and if you use compression, it takes somewhere 200k.
+
+            % mkdir -p ~/elisp/config
+
+    1.6 Transparent compression
+
+        This package supports transparent compression, where you can keep
+        your files in compressed format without touching the code in your
+        emacs startup files. These calls are interpreted as if there were
+        `.el.gz' extension attached to files. IMPORTANT: If you compress or
+        decompress a lisp file, always update the cache immediately with
+        `M-x' `tinypath-cache-regenerate'.
+
+            (load "some-file")
+            (require 'somefile)
+
+    1.7 Contact and support
+
+        You should pump up the `tinypath-:verbose' level to 10 if you think
+        there is something odd going on. All the messages will appear in
+        Emacs *Message* buffer. If you have any questions, use this
+        function to contact maintainer `M-x' `tinypath-submit-bug-report'.
+        and send the *Message* buffer content.
+
+        ********************************************************************
+
+        IT IS HIGHLY RECOMMENDED THAT YOU VALIDATE YOUR SETUP AFTER YOU
+        HAVE LOADED THIS PACKAGE
+
+        Start Emacs and call report function to investigate any problems,
+        like duplicate packages that shadow each other. See documentation
+        below for more. The general rule is that you should delete any
+        offending packages (use `C-d' to delete file on line)
+
+            C-u M-x tinypath-cache-problem-report (or without C-u argument)
+
+        *******************************************************************
+
+2.0 Feature description
+
+    2.1 How it all begun
+
+        When you have set up your Emacs installation to your liking, a day
+        comes when you decide that it's time to seriously reconsider the
+        directory structure of your installed lisp packages. It is customary
+        to use simple file hierarchy where all private packages are installed
+        under:
+
+            ~/elisp   ;; some people also prefer ~/lisp
+
+        Complete kits are usually installed directly under the root:
+
+            ~/elisp/bbdb-2.00.06/
+            ~/elisp/psgml-1.0.3/
+            ~/elisp/pcl-cvs-2.9.2/
+
+        A more sophisticated way is to use symlinks to the latest
+        versions, so that you don't have to change `load-path' every
+        time you install a new version. It is only matter of updating
+        the symlink:
+
+            ~/elisp/pcl-cvs/  --> ~/elisp/pcl-cvs-2.9.2/
+            |
+            This path is in the `load-path'
+
+        In windows world you may have your _H:_ disk mounted to Unix _$HOME_:
+
+            H:  --> Unix $HOME  \\SERVER\DIRECTORY\YOUR-LOGIN-DIR
+
+        Now, there is a catch when you use Unix symlinks in `$HOME/elisp'
+        and try to access the directories from Windows. Having set PC's
+        HOME environment variable to point to H:, NTEmacs start reading
+        Unix `$HOME/.emacs' startup file. After some win32 configuration
+        Emacs was up for win32. Well, almost. It started with simple error
+        messages "Can't load library xxx", soon followed by bigger
+        concerns: "autoloading xxx failed". The problem was the mounted H:
+        disk. You see, PC's network mount can't distinguish symlinked
+        directories from real directories, so all symlinked Unix
+        directories in `load-path' were dead. And that's why most of the
+        files were not found any more. (symlinks were used to avoid
+        changing `load-path' every time a new package was installed).
+
+       2.1.1 And the conclusions
+
+        For cross platform solution it is best not to rely on symlinks,
+        because they don't work over a Windows mount. Secondly,
+        updating `load-path' should not be needed by hand after a new
+        package installation, after a directory name change, after
+        directory structure change, etc. A dream package would solve this
+        all and do the hard work: "There, that is the root(s) of all Emacs
+        lisp, go and sniff all the directories and update `load-path'"
+        That was what this package originally was all about. Nowadays it
+        does a little more than that. Your `load-path' is updated
+        automatically without any manual work. You only have to give the
+        start ROOT path(s) of your installed lisp hierarchies in the file
+        system. This package is highly effective: scanning thousands of
+        files in a matter of seconds and once the cache has been created,
+        it takes only a snap to load it in next sessions. All `require' and
+        `load' commands execute also faster than previously, because the
+        information about existing files is immediately available. The
+        speedup is helped through advised functions.
+
+    2.2 Overview of features
+
+       2.2.1 Automatic load-path configuration
+
+        o   Define list of `root' directories of your Emacs lisp and this
+            package will recursively add directories which contain .el or
+            .elc files to `load-path'
+        o   A cache is utilized to remember previous scan and
+            expired periodically. Using cache speeds up loading files
+            considerably if you have many directories. The number of lisp
+            directories doesn't affect the load performance any more.
+            This is accomplished by using extra advice code in functions:
+            `load', `load-library', `require', `locate-library' and
+            `autoload'.
+        o   When Emacs becomes idle (some 15 minutes of idle time) the
+            cache and `load-path' is validated for errourneous entries and
+            rebuilt as needed. This feature should auto-detect changes in
+            directory structure automatically and help semi auto-installing
+            new directories (packages) for you.
+
+       2.2.2 Automatic Info-default-directory-list configuration
+
+        o   If you download packages that include Emacs info files,
+            the `Info-default-directory-list' is updated at the same time
+            as the `load-path', when root directories are examined.
+        o   No more manual updating of info files. The missing
+            `dir' entry is created or updated as needed.
+        o   You can update all _new_ info files in your system by calling
+            M-x `tinypath-info-scan-Info-default-directory-list'
+
+       2.2.3 Automatic manpath configuration
+
+        o   In Unix systems the MANPATH contains directories where to
+            find manual pages, but in Win32, there is no default
+            MANPATH and `M-x' `man' does not work.
+        o   If package *woman.el* http://centaur.maths.qmw.ac.uk/Emacs/
+            is along `load-path', it is automatically configured to
+            support to read manual pages. It replaces the `M-x' `man'
+            command.
+
+       2.2.4 Win32 Cygwin environment support
+
+        o   If *cygwin1.dll* (See <http://www.cygwin.com/>) is in your path,
+            automatic detection tries to find the Cygwin root and scan
+            manual and info pages for use with *woman.el*
+            available from Wright Francis <F.J.Wright@qmw.ac.uk>
+        o   The other file hierarchies, like reed-kotler etc., are
+            also dealt with variable `tinypath-:extra-path-root'.
+
+       2.2.5 Compressed lisp file support
+
+        o   Overloads commands LOAD, LOAD-LIBRARY, LOAD-FILE, REQUIRE
+            and AUTOLOAD to accept `jka-compr' compressed lisp .el files.
+            This may include .Z .gz .z .bz2 files.
+        o   Primarily meant to be used in low quota accounts.
+        o   You don't have to change a thing in your Emacs startup file, all
+            will work as usual.
+        o   Correctly handles aliased commands that turn out to be
+            in `autoload' state.
+
+3.0 How to set up your load path
+
+        The `tinypath-:load-hook' contains function `tinypath-setup' which
+        starts examining all directories under `load-path' and
+        `tinypath-:load-path-root' which is set to reasonable defalts of
+        site wide and personal installations. If you keep all your lisp
+        files under *$HOME/elisp*, then you do not need to configure anything
+        for this package to work. Your `load-path' has been updated after
+        this statement at the beginning of your $HOME/.emacs:
+
+            (load "~/elisp/tiny/tinypath")   ;; Or where you have it installed
+
+        If you have _many_ separate Emacs lisp root directories, like one
+        for *site-lisp* and one for *site-packages* and one for your
+        *personal* *lisp* files, then you have add those to variable
+        `tinypath-:load-path-root'. Below there is an example for PC users,
+        where the E: partition replicates identical Unix tree structure.
+        The following actually works for Unix too, because non-existing
+        directories will be ignored:
+
+            (setq tinypath-:load-path-root
+              '("~/elisp"  "E:/usr/share/emacs/site-lisp/common"))
+            (load (expand-file-name "~/elisp/tiny/tinypath"))
+
+    3.1 XEmacs and Emacs specific directories
+
+        In spite of great effort from developers to make packages
+        compatible for both Emacs platforms, there is always some packages
+        that only works with Emacs or XEmacs. It is assumed that admin has
+        created directories like this to keep the site-lisp installation
+        clean:
+
+            ;;   This might be also under /opt/share/site-lisp
+            ;;   Refer to file hierarchy standard at
+            ;;   http://www.pathname.com/fhs/
+
+            /usr/share/site-lisp/common/   .. For Xemacs and Emacs
+            /usr/share/site-lisp/emacs/    .. Packages only for Emacs
+            /usr/share/site-lisp/xemacs/   .. Packages only for XEmacs
+
+        To take care of the Emacs specific `load-path' setting, use
+        code similar to this code snippet. If you load this setup
+        multiple times, the `pushnew' ensures that the directories are not
+        added multiple times.
+
+            (require 'cl)
+            (dolist (path ("~/elisp"
+                           "/usr/share/emacs/site-lisp/common"
+                           ;;  Select Emacs or XEmacs specific installations
+                           (if (boundp 'xemacs-logo)
+                               "/usr/share/site-lisp/xemacs"
+                             "/usr/share/site-lisp/emacs")))
+              (when (stringp path)
+                (pushnew path tinypath-:load-path-root :test 'string=)))
+            (pushnew "~/elisp/tiny/lisp" load-path :test 'stringp=)
+            (load "tinypath.el")
+
+        In fact this package will check current emacs version and make sure
+        that only correct directories are included to the `load-path'. If
+        you simply instructed to search the whole site-lisp root
+        `/usr/share/site-lisp', and current emacs binary is "emacs", then
+        all directories that contain path portion `/xemacs' are
+        automatically ìgnored.
+
+    3.2 Building part of site-lisp using Net
+
+        If we continue talking a bit more about site-lisp, you will find in
+        the Tiny Tools kit an utility *bin/mywebget.pl* and configuration
+        file *mywebget-emacs.conf* which contains current knowledge where
+        the various lisp developers' home pages are and how to download all
+        known lisp tools that does not come with Emacs. If you have lot of
+        disk space and you're interested in getting more lisp tools to go
+        with your Emacs, follow the instruction laid out in the
+        configuration file. This usually means changing the configuration
+        file's _ROOT_ directory where the download will happen. On disk,
+        you are inclined to add few new file hierarchy levels:
+
+            /usr/share/site-lisp/net/users
+            /usr/share/site-lisp/net/packages
+
+        If you further are interested in Emacs packages, you should
+        consider adding yet another hierarchy and investigate some of your
+        time to download CVS version control software from
+        http://www.cvshome.com/ and would be ready to keep track of Gnus,
+        BBDB and other package developments very effectively (minimizing
+        network traffic) and timely fashion. It is suggested that you put
+        all the CVS downloads under:
+
+            /usr/share/site-lisp/net/cvs-packages
+
+        The overall structure of whole site list may look something like
+        this. The CVS packages are mostly available at
+        http://www.sourceforge.net/
+
+            /usr/share/
+                     +--site-lisp/
+                        +--emacs/
+                        |  +--packages/
+                        |  |  +--pcl-cvs-2.9.9/
+                        |  +--win32/
+                        |     +--gnuserv/
+                        +--net/
+                        |  +--users/
+                        |  +--cvs-packages/
+                        |     +--liece/
+                        |     +--lookup/
+                        |     +--ILISP/
+                        |     +--jess-mode/
+                        |     +--devel/
+                        |     +--emacro/
+                        |     +--tnt/
+                        |     +--cc-mode/
+                        |     +--gnu/           FSF CVS server
+                        |        +--w3/
+                        |        +--url/
+                        |     +--mailcrypt/
+                        |     +--bbdb/
+                        |     +--gnus/
+                        +--common/
+                        +--xemacs/
+                           +--cvs-packages/
+                              +--xemacs-packages/
+
+    3.3 XEmacs 21.2+ core packages
+
+        The recent XEmacs versions ship with only the very basic
+        installation. Lisp packages are distributed in separate archive
+        *xemacs-packages* (nick named SUMO due to its huge size). There is
+        also *mule-packages* and *site-packages* archives. A built-in
+        heuristics tries to guess the location of these by looking under and
+        near your XEmacs installation:
+
+            .../XEmacs/XEmacs-NN.N/xemacs-packages
+            .../XEmacs/xemacs-packages
+
+        If the archives have been installed elsewhere, you have to tell the
+        location by defining following variable prior loading TinyPath. You
+        can't put these to `tinypath-:load-path-root' because this is
+        special information that needs to present during the very initial
+        bootup to find crucial packages like *jka-compr.el*.
+
+            (setq tinypath-:core-emacs-load-path-list
+                  '("/usr/share/site-lisp/xemacs/semacs-packages"
+                     "/usr/share/site-lisp/xemacs/mule-packages"
+                     "/usr/share/site-lisp/xemacs/site-packages"))
+
+    3.4 Finding load-path directories
+
+        If you only used default $HOME/elisp directory for your files, the
+        `tinypath-:load-path-function' starts recursively searching all
+        the directories under the root(s) `tinypath-:load-path-root'. Not all
+        directories are counted in when the search descends below the root(s).
+        Variable `tinypath-:load-path-ignore-regexp' decides if the directory
+        should be ignored. By default:
+
+        o   Package's additional subdirectories like texinfo, tex, doc, etc,
+            misc, RCS, CVS, zip are ignored.
+        o   Any temporary directories named .../t/ .../T/ .../tmp* .../temp*
+            are ignored.
+        o   Directories that do not contain any files ending to .el or .elc are
+            ignored.
+
+    3.5 Gnus and other 3rd party packages
+
+          _NOTE:_ in the latest version *Gnus* is treated specially. All
+          Gnus versions are detected along load-path and the very latest
+          Gnus version is installed to your `load-path'. This is based on
+          the knowledge in the `gnus-version' variable and the heuristics
+          will pick the newest for you. You actually do not have to do
+          anything else, but to drop latest Gnus somewhere, to be able to
+          use it immediately.
+
+        It is important to understand how this package works: It caches
+        every possible lisp directory it can find. Now, if you have
+        installed private copy of Gnus, say in `~/elisp/cvs-packages/gnus',
+        there is a problem, because Emacs distribution also includes Gnus.
+        There is NO WAY TO TELL OR CHANGE path order when the cache is in
+        use. This is a design decision and cannot be changed. The old trick,
+        where a new directory was added in front of `load-path', will not
+        work because everything goes through cache. What you need to do
+        instead, is to tell that the "other" Gnus should be ignored during
+        cache creation, so that it is completely unknown.
+
+       3.5.1 Solution: ignoring directories
+
+        There is very simple way. Put your regular expression to
+        `tinypath-:ignore-file-regexp-extra' and it will tell which
+        directories to ignore. Naturally you must put the lisp code
+        _before_ you load package.
+
+            (setq tinypath-:load-path-ignore-regexp-extra
+                  "\\|[/\\]x?emacs[/\\0-9.]+[/\\]lisp[/\\]gnus")
+            (require 'cl)
+            ;; location of tinypath.el
+            (pushnew "~/elisp/tiny/lisp" load-path :test 'stringp=)
+            (load "tinypath.el")
+
+        [For advanced Lisp programmers] You can add ignored gnus directory
+        to `tinypath-:load-path-ignore-regexp' via
+        `tinypath-:load-path-ignore-regexp-hook'. When the hook is run, the
+        default value for `tinypath-:load-path-ignore-regexp' is already
+        available. In hook, append regular expression that excludes the
+        Gnus directory. Here is an example; make sure that you don't add
+        the regexp multiple times. The multiple invocations is protected by
+        setting a plist property and checking it. The ugly [\\/] makes the
+        regexp compatible with both Unix and win32 paths. System
+        directories in Unix are typically /emacs/NN.NN/ and in win32
+        /emacs-NN.NN/, that's why added "-".
+
+            (add-hook 'tinypath-:load-path-ignore-regexp-hook
+                      'my-tinypath-:load-path-ignore-regexp-hook)
+
+            (defun my-tinypath-:load-path-ignore-regexp-hook ()
+              ;;  Do this only once
+              (unless (get 'my-tinypath-:ignore-file-regexp 'set)
+                (put 'my-tinypath-:ignore-file-regexp 'set t) ;; mark as done.
+                (setq tinypath-:load-path-ignore-regexp
+                      (concat
+                       tinypath-:load-path-ignore-regexp
+                       "[/\\]x?emacs[/\\0-9.]+[/\\]lisp[/\\]gnus"))))
+
+
+        #todo: What about XEmacs public/private Gnus installations ?
+
+    3.6 Updating new lisp package
+
+        Suppose you have installed a new version of a package:
+
+            ~/elisp/gnus/pgnus-0.74/
+            ~/elisp/gnus/pgnus-0.95/    ;; NEW
+
+        Both these directories end up being added to the `load-path', but
+        that is not preferable. It is the latest version that should be in
+        the `load-path'. The solution is to move the old versions under
+        some directory name that will be ignored by default. It is
+        recommended that a backup of previous packages are renamed to start
+        with a word "tmp-":
+
+            % mv ~/elisp/gnus/pgnus-0.74/ ~/elisp/gnus/tmp-pgnus-0.74/
+
+        Since all directories that start with prefix *tmp* are ignored, the
+        problem has been solved. However if you update package in a
+        site-lisp directory, there may be a distant problem that somebody
+        needs older version of the package. If you made the backup like
+        above, that user cannot load the old package any more, because it
+        doesn't show up in `load-path'
+
+          There is no easy answer how to solve this. Admin could announce
+          that: "new version has been installed in DIR, the old one is in
+          TMP-OLD-DIR" and have users manually arrange their `load-path' if
+          needed. Following simple lisp command would solve their setup.
+          The statement below adds the old directory to the *beginning* of
+          `load-path' and load commands would find the old version of the
+          package first.
+
+            (load (expand-file-name "~/elisp/tiny/tinypath"))
+            (pushnew TMP-OLD-OLD-DIR load-path :test 'string=)
+            (tinypath-cache-regenerate)
+
+        Remember to mention to users that they need to update cache with
+        `tinypath-cache-regenerate' (called with prefix argument) to see
+        the changes.
+
+    3.7 Duplicate files in path
+
+        If you have accustomed to putting your path to specific order, you
+        have to rethink your strategy if you are going to use this package.
+        The philosophy behind creating this utility was: YOU SHOULD NOT
+        NEED TO DO MANUAL WORK TO UPDATE PATHS. This means that the order of
+        the paths *must* not be significant. Now, You may face a situation
+        where you install a library or package that contains a file, which
+        has already been installed to your hierarchy. Take for example,
+        *smtpmail.el*:
+
+            /usr/local/bin/emacs-20.4/lisp/mail/smtpmail.el
+            /usr/share/site-lisp/common/packages/semi/flim-1.12.1/smtpmail.el
+
+        We have a problem here if FLIM's *smtpmail.el* is not compatible with
+        the Emacs's. If it is, then there is no problem. Either one can be
+        loaded, and the `load-path' order does not matter. But you don't
+        know that before you get error "function smtpmail-xxxx not defined"
+        and you start investigating with (locate-library "smtpmail") which
+        package is actually active.
+
+        After installing this package, please investigate your path with
+        [C-u] `M-x' `tinypath-cache-problem-report' and if you find many
+        duplicate entries, investigate each one and possibly move the file
+        to another name or remove old one. E.g. in the above situation, the
+        cure might be moving FLIM's *smtpmail.el* under name
+        *tmp-smtpmail.el* so that it doesn't get loaded with (require
+        'smtpmail). The best is to contact the maintainer(s) and tell about
+        conflicts. Here is a sample of the generated problem report:
+
+            imenu.el
+              323 34073 1998-05-07 16:28:08 e:/usr/share/site-lisp/common/other/
+              910 37169 1999-12-04 02:47:58 e:/usr/share/site-lisp/common/programming/java/jde/jde-2.1.6beta13/lisp/
+              1350 38663 1999-11-28 01:14:38 e:/usr/local/bin/emacs/gnu-emacs/emacs-20.4.1/lisp/
+            base64.el
+              515  9943 1999-12-11 19:15:20 e:/usr/share/site-lisp/common/packages/gnus-5.8.2/lisp/
+              807  9892 1999-11-15 00:00:12 e:/usr/share/site-lisp/common/packages/w3-4.0pre.46/lisp/
+
+        _Explanation:_ User had used *imenu* as a separate package since
+        19.28 in "other" directory. The latest Emacs already ships with
+        one, so it is best to delete the offending `other/imenu.el.' Keep on
+        eye on the numbers here: The lower, the more close it is to the
+        beginning of cache when the directories were searched. The Package
+        with lowest score will get loaded. For base64 there seems to be no
+        problem. Gnus path has lowest score, it is the current latest
+        development version, so it will get loaded before w3's base64. A
+        simple major mode `tinypath-report-mode' is turned on for this
+        buffer. Unnecessary files can be deleted with
+        `Control-shift-mouse-1' or `C-c' `C-d'.
+
+    3.8 Symlinked directories are ignored
+
+        It is traditional to use symlinks a lot in Unix to arrange easy
+        access to versioned packages. Here is the traditional way how you
+        can always refer to ~/elisp/gnus/ no matter what version is
+        currenly installed.
+
+            ln -s ~/elisp/packages/gnus-N.NN  ~/elisp/packages/gnus
+
+        This package however *skips* those symlinks and records the
+        absolute path name to the `load-path'. There are couple of points:
+        a) it is more instructive to peek the `load-path' to actually see
+        what versions have been installed to the Emacs b) The symlinks are
+        error prone since there may be several symlinks that lead to same
+        directory. In general, it is not a problem that the symlink
+        directory is not included in the `load-path'. There is one
+        situation where symlink causes trouble for this package:
+
+          If you draw a symlink to the the current directory from
+          *SEPARATE* directory, then that directory will never be seen:
+
+            ln -s ~/some-disk/elisp/artist-1.1/ ~/elisp/packages/artist-1.1
+
+        You shouldn't do this, instead either _a)_ move the package
+        physically under the ~/elisp/ from the ~/some-disk/elisp/ so
+        that the recursive search will record it or _b)_ add the
+        separate directory ~/some-disk/elisp to the
+        `tinypath-:load-path-root'.
+
+4.0 Using cache
+
+        Now when you're freed from update burden of the directories in your
+        disk, you can concentrate organizing the files under sensible
+        directories. Here is an example how the organizing could go:
+
+            ~/elisp/users/kevinr/       Kevin Rodger's files
+            ~/elisp/users/ilya/         Ilya Zakharevich's files
+            ..
+            ~/elisp/packages/bbdb-2.00.06/  Versioned packages
+            ~/elisp/packages/psgml-1.0.3/
+            ~/elisp/packages/pcl-cvs-2.9.2/
+            ~/elisp/packages/tiny-19990215/
+            ...
+            ~/elisp/mime/               All MIME relates packages under this
+            ~/elisp/mime/semi/          SEMI packages
+            ~/elisp/mime/tm/            TM packages
+
+            ~/elisp/lcd/                LCD (lisp code) hierarchy
+            ~/elisp/lcd/misc/           http://www.cs.indiana.edu/LCD/
+            ~/elisp/lcd/functions/
+            ...
+            ~/elisp/other/              All single add-on packages
+
+        All these paths in `load-path' and you can imagine how slow a
+        standard Emacs would become: it takes even more time to find some
+        package xxx, when Emacs sees a call (require 'xxx), because Emacs
+        must start looking into every single directory under `load-path'
+        until it can determine if it can or cannot load the asked package.
+        This utility will store all lisp files in cache, and it is
+        activated by default. The variable `tinypath-:cache-expiry-days'
+        controls the interval when it is concluded that a new tree
+        recursion is needed. If you install new packages during those
+        non-expiry days, it is best to call `C-u' `M-x'
+        `tinypath-cache-regenerate' to build up to date image of your files
+        and `load-path' directories.
+
+          If you want one short advice: always call
+          `tinypath-cache-regenerate' after any lisp file or directory
+          update.
+
+    4.1 Cache file and different Emacs versions
+
+        It is important that each Emacs loads correct cache file. The
+        cache file's name is derived from the emacs version. The emacs
+        type is "xemacs" "win32-xemacs" "emacs" or "win32-emacs".
+
+            tinypath-:cache-file-prefix
+            + EMACS-TYPE
+            + HOST
+            + EMACS-VERSION
+            + tinypath-:cache-file-postfix
+
+            ~/elisp/config/emacs-config-tinypath-cache-win32-HOST-emacs-20.4.1.el.gz
+            ==========================================                        ======
+            prefix                                                           postfix
+
+       4.1.1 Unix hosts and NFS mounts
+
+        In Unix environment, it is also common that several hosts are NFS
+        mounted so that your home disk is available from every server. The
+        available programs are not usually NFS mounted, but programs are
+        stored locally on each server's own disk. Now, there would be a
+        problem if you logged to host *A* and started tinypath.el which had
+        made cache in on host *B*, because *A* does not have the same
+        directories as *B* did (site-lisp) are visible. This has been taken
+        care of by including _hostname_ part in the cache file name. For
+        each host, a separate cache file is created. Now, suppose all the
+        Unix hosts are same brand, say Sun OS, Linux, or HP-UX and a good
+        administrator has separated the programs and the data in their own
+        directory structures. Furthermore, these structures are NFS mounted
+        and thus visible to the remote machines. In this scenario, it would
+        not really matter to which host you log into, because you would
+        always see the same programs and site-lisp directories and there
+        would not be need for host specific cache files. In that case,
+        disable the *HOST* word by writing a simple function which will
+        return an empty string "":
+
+            (setq tinypath-:cache-file-hostname-function '(lambda () ""))
+
+    4.2 Info file support
+
+        In addition to updating the `load-path', the recursive function
+        has a chance to search for installed info files as well. When you
+        keep all your site lisp under one directory, it is not uncommon
+        that the bigger packages include documentation files in info format
+        as well. Like:
+
+            /usr/share/site-lisp/emacs/pcl-cvs-2.9.9
+            /usr/share/site-lisp/common/packages/psgml-1.2.1
+
+        One possibility is that after you download and uncompressed
+        package, you would copy the info file to some central directory
+        where you keep all you info files. This is lot of manual work.
+        (Never mind that in Unix you might use Makefile to install
+        everything, in Win32 it's all manual work). This package
+        do the same job by looking for directories that either have info files
+        or a central info repository called `dir'. If the repository has all the
+        info files up to date, nothing is done. In other cases:
+
+        o   If the central `dir' in the directory does not exits,
+            it is created.
+        o   If `dir' does not contain entry for info file, it is added.
+            The entry name is derived from the filename.
+
+        The `Info-default-directory-list' is updated to include any new
+        directory locations and they are saved to same cache file. When you
+        call `C-h' `i' you will see the new info entries. Easy and
+        maintenance friendly. No need to worry about supplied info files any
+        more, they are automatically integrated to your Emacs. If you have
+        installed any new packages to your system, Emacs packages or Unix
+        packages that installed something with "install -c", it is best to
+        update your info files with `M-x'
+        `tinypath-info-scan-Info-default-directory-list'. This is also
+        called if you call: `C-u' `M-x' `tinypath-cache-regenerate'
+
+    4.3 Cygwin suport (Win32 and woman.el)
+
+        It is common that Emacs in win32 environment is coupled with
+        Cygwin toolkit which contains all the manual pages for the unix
+        commands and possibly new info pages. This package will locate
+        `cygwin1.dll' file along PATH and recurse whole cygwin installation
+        root to find new entries that can be used inside Emacs. In theory
+        this all should happen automatically and the only thing you have to
+        do is to ensure that you have proper PATH settings at your OS level
+        before this package is started. If Cygwin /bin directory in in
+        PATH, `tinypath-:extra-path-root' will get set to a correct value at
+        boot time.
+
+        If you have more places where you keep Unix tools which contain
+        more manual or info pages, like Reed Kotler
+        http://www.reedkotler.com/ you _must_ manually set variable
+        `tinypath-:extra-path-root' to the list of search root directories.
+        If you set this yourself, you _must_ also include the cygwin
+        installation root directory
+
+            (setq tinypath-:extra-path-root
+                  '("e:/unix-root/cygwin"
+                    "e:/unix-root/reed-kotler"
+                    ...))
+
+        Package *woman.el* will be configured automatically if it is along
+        `load-path' to handle your manual page viewing with command `M-x'
+        `man'. Please make sure that you do not destroy the pre-defined
+        `woman-manpath' in your Emacs startup files with lisp commands or
+        the efforts to find out new manual pages are thrown off the window.
+        Search you startup files for anything that looks like `setq',
+        `defvar', `defconst': (setq woman-manpath ... and change the code
+        to _add_ to the variable instead:
+
+            (require 'cl)
+            (dolist (path '("one" "two" "three"))
+              (pushnew (expand-file-name path) woman-manpath :test 'string))
+
+5.0 Faster Emacs configuration (Perl emacs-util.pl)
+
+        Indication of this feature at startup is following message, where
+        EXT refers to externally launched process which must be waited
+        until further processing is done.
+
+            Tinypath: EXT Process running ... [may takea while]
+
+        As this package evolved and more support was added to various
+        environments, like Cygwin, which requires traversing hundred of
+        directories to find out if they contains info or manual pages,
+        it came evident that Emacs Lisp method is too slow. An alternative
+        method was developed using Perl language to write *emacs-util.pl*
+        which can traverse directory hierarchies to find relevant
+        directories for the setup. This interface is automatically used
+        if two conditions are met in current environment:
+
+        o   Binary *perl* must be along PATH. (according  `executable-find')
+        o   perl script *emacs-util.pl* must be along PATH. Either copy
+            the file to suitable place or include tiny-tool kit's /bin
+            directory to your PATH (This is not the whole story, see
+            "Internal optimizations").
+
+        If all goes well, a `call-process' to the utility script will
+        return the file hierarchies much faster than the Emacs Lisp ever
+        could. The difference is that you don't see the traversing progress
+        as you would if Emacs Lisp did the same thing. The command line
+        arguments passed to the utility scripts can be found from the
+        *Message* buffer and you can run the program yourself if you think
+        that it returns incorrect listing. Print the script help with
+        options (In win32 you have have to put perl interpreter in front,
+        Unix only needs +x and you can run the program)
+
+            % perl emacs-util.pl --help
+
+        Here are some performance statistics of the perl script in action.
+        (Use --verbose argument to see the statistics)
+
+        o   Intel 400Mhz, IBM GXP 80G IDE disk, whole Cygwin installation
+            scan: 3 min 46 sec, dirs: 2373, files: 35 271
+        o   Same PC, but this time site-lisp directory, subset of Cygwin
+            hierarchy at /usr/share/site-lisp took:
+            0 min 13 sec, dirs: 648, files: 8750
+
+        Let's consider one scenario that you may encounter if you intend
+        to use Cygwin like the big brother Linux. Let's suppose that you
+        have a dedicated disk portion where you intend to duplicate whole
+        Linux-like directory hierarchy. You have ROOT under which you keep
+        all the files, including anything that is Cygwin-related.
+
+            E:/usr/share/site-lisp      Emacs lisp as outlined earlier
+            E:/usr/share/site-perl      Perl packages and scripts
+            E:/usr/share/site-php       PHP code
+            E:/usr/share/site-cvs       Various other external CVS C-packages
+
+        The default heuristics `win32-cygwin-p' should find *cygwin1.dll*
+        installed and report that Cygwin root is *E:/* This means that
+        `tinypath-:extra-path-root' will get set for you when package
+        loads. Suppose further that you have set variable
+        `tinypath-:load-path-root' to point ot suitable locations in
+        *E:/usr/share/site-lisp*. It would seem that this combination means
+        that the hierarchies would be traversed multiple times, since the
+        Cygwin root already includes all the rest:
+
+            E:/                             Cygwin root
+            E:/usr/share/site-lisp/emacs    For this emacs...
+            E:/usr/share/site-lisp/common   Emacs and XEmacs copatible tree
+
+        Don't worry. The Perl utility is smart enough to reduce this to
+        search only *E:/* and discard other roots as redundant. Hm, what if
+        other lisp files are found _outside_ of the
+        *E:/usr/share/site-lisp/*, because it searches every dir starting
+        from *E:/* Say:
+
+            E:/tmp/try/some-file.el
+
+        Will the directory *E:/tmp/try/* reported as lisp `load-path'
+        candidate and added to search list? Yes and no. Yes, it will be
+        reported, but No, it will not be added to the `load-path' because it
+        doesn't match the initial user's idea where to look for lisp files. If
+        you pump up the `tinypath-:verbose' to level 5, you can see PATH-NOK
+        messages labeled "candidate" that are those rejections. Only files
+        that reside under `tinypath-:load-path-root' directories are counted
+        in.
+
+    5.1 Updating running Emacs
+
+        Suppose you have downloaded the latest versions of packages X, Y and Z
+        and you want your current emacs's paths updated. You can do this:
+
+            M-x tinypath-cache-regenerate
+
+        A bit of sceptism: It is a fortunate event if it all worked that
+        easily. You see, you already have several packages loaded in your
+        Emacs and they are using the "old" code. Now you wiped the old
+        directories away and told Emacs to look for only "new" directories.
+        After a while you may run into bizarre dependency problems. I
+        recommend that after a major package update that has lot of files
+        (like Gnus), you:
+
+        o    Install package and regenerate cache in current Emacs with
+             `M-x' `tinypach-cache-regenerate'.
+        o    Save your  current session (see *desktop.el*, *tinydesk.el*)
+        o    Quit, and restart Emacs
+
+6.0 Compressed lisp file support
+
+        IN ORDER TO USE THE FULL COMPRESSION SUPPORT FOR AUTOLOAD FUNCTIONS
+        AS WELL, SET VARIABLE `tinypath-:compression-support' to symbol
+        `all'. THE DEFAULT SUPPORT ONLY HANDLES `require' and `load' commands.
+        You must set this variable before package loads.
+
+    6.1 Jka-compr and this package
+
+        jka-compr has native support to un/compress any file that has
+        specific extension. The handling is done via
+        `file-name-handler-alist' and commands like these will load
+        properly, including any autoloads.
+
+            (load "my-el.gz")
+
+        The obvious problem is that you have to manually go and change all
+        you load commands so that they end in .gz so that jka-compr takes
+        care of loading. What if you later uncompress the file? You have to
+        go and update all the load commands in you Emacs startup files.
+        This isn't very nice, since you should be able to un/compress elisp
+        files whenever you wish and still have permanent statement like one
+        below. Basicly this is what the compression support here is all
+        about; you don't have to worry if the file is compressed or not
+        when these advised functions are in effect. The following statement
+        will always work:
+
+            (load "my-el")
+
+    6.2 How the compressed loading works
+
+        o   When user request `load' FILE, try to find some compressed file
+            that JKA knows about by adding extensions ".gz" and ".Z" and
+            whatever user has configured JKA to handle. _LIMITATION:_
+            only .gz .Z .bz2 and the like that compress one file at a time
+            is currently supported. Don't try using .zip or similar.
+        o   If the FILE is absolute path, then look from that
+            directory only.
+        o   If no directory is given, find the file along the path.
+        o   If there was somewhere a compressed file, just load it (because JKA
+            will transparently uncompress it), eval it, and kill the buffer.
+        o   If NO COMPRESSED file was found, just follow normal
+            emacs rules.
+
+       6.2.1 Note: Why you should not prefer compressed .elc files
+
+        The purpose of compression support is to make it possible to have
+        more useful lisp files in an account that has a limited disk space (quota).
+        Keeping lisp files in compressed format saves quite a much disk space.
+
+        o   Plain text, lisp `.el', files may compress better.
+        o   The documentation in comments is important, e.g all the
+            instruction to use the file are there. Byte compiling
+            strips away documentation.
+        o   In order to debug or send bug reports you have to use .el files,
+            the .elc files are useless.
+        o   The performance ratio that the .elc files offer may not
+            be a crucial factor (many times you couldn't tell).
+
+    6.3 Note: adviced emacs commands
+
+        If any of the standard emacs functions handled here get overloaded,
+        ie. replaced with someone else's definition of that function, it'll
+        break this package. The problem may not become visible, if the
+        redefined function doesn't use `interactive-p' function- The reason
+        why the advised functions here cannot be redefined is that advice's
+        `ad-do-it' cannot pass the interactive flag information to the
+        original functions.
+
+7.0 Implementation Notes
+
+    7.1 Code note: General
+
+        Because this package is among the first that is loaded from
+        Emacs startup file, It contains copies of some functions from
+        TinyLib libraries, to make the package independent until the
+        point where the `load-path' has been set up and other
+        libraries are available. In the code you may find marks
+        "#copy:" which indicate code that has been copied/simplified
+        to be used here. Autoloads statements in this package defer
+        loading functions until the end is reached and `load-path' is
+        determined and the rest of the functions can be loaded from the
+        libraries.
+
+    7.2 Code note: Where is that emacs package
+
+        If you ever need to know the location of a package that Emacs
+        would load or has loaded, while this utility is in effect,
+        use this call:
+
+            (insert (tinypath-cache-p "gnus.el"))
+
+        More easily, if you have tinylisp.el, which takes advantage of
+        tinypath.el cache, you can load any emacs package for editing
+        with command:
+
+            M-x load-library RET tinylisp RET
+            M-x tinylisp-library-find-file
+            (tinypath cache)Lisp Library: gnus.el RET
+
+        Altenatively there is mode hotkeys $ l f  and $ l p :
+
+            M-x load-library RET tinylisp RET
+            M-x tinylisp-mode  (in *scratch* buffer, see "E" in modeline)
+            $ l f
+            (tinypath cache)Lisp Library: gnus.el RET
+
+    7.3 Code note: Internal optimizations
+
+        In the installation section it is instructed that the location of
+        the package is pushed into the `load-path' before the package is
+        loaded:
+
+            (require 'cl)
+            (pushnew "~/elisp/tiny/lisp" load-path :test 'stringp=)
+            (load "tinypath.el")
+
+        Please follow this instruction. The reason is that program tries to
+        use most efficient code to boot everything up and the first thing
+        it can do is to check the location where where it has been saved.
+        Loading package with absolute name leaves trace to `load-history'.
+        This package will use this information to assume that the Perl
+        program emacs-util.pl is available in
+        *~/some/path/bin/emacs-util.pl*. If that fails, the Perl program
+        is searched along `exec-path'. This is usually desirable, because
+        every new installation include newer version of this utility and
+        the one at `exec-path' may not be up to date. The perl code will
+        speed up booting compared to pure Emacs Lisp implementation.
+
+    7.4 Code note: *Messages*
+
+        This package will print loads of messages to Emacs "*Message*" or
+        XEmacs " *Message-Log*" buffer. This is a design decisions so that
+        execution can be easily traced during Emacs load time. It also help
+        reporting errors. The default `tinypath-:verbose' 3 will log the most
+        important messages and even if you set the level to 0 or nil, still
+        some messages are displayed. Have a look at that buffer if you have
+        not much used it before. You may find interesting information to
+        debug some of your own misconfigurations, like stale directories
+        in `exec-path'.
+
+    7.5 Code note: Custom
+
+        If you have Emacs that does not contain *custom.elc* (Yes, it must be
+        in compiled format, be sure to check), you can download Noah
+        Friedman's excellent custom emulation package *cust-stub.el* at
+        http://www.splode.com/~friedman/software/emacs-lisp/ You have to load
+        it from absolute location before loading this packages like this:
+
+            (load "~/elisp/noah/cust-stub")
+            (load (expand-file-name "~/elisp/tiny/lisp/tinypath"))
+
+    7.6 Todo
+
+        o   In theory it is possible to load remote files with ange-ftp/EFS
+            in manner of load-library RET /user@host:/path/to/file but this
+            has never been tested using this package.
+        o   It is possible to add /user@host:/path/to/dir/ to `load-path',
+            but that has never been tested.
+        o   *xemacs-packages* can be downloaded using CVS. Hm, where would
+            this cvs download be? Any chance to make autoboot notice that
+            too?
+
+End

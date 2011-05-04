@@ -1,0 +1,132 @@
+/* 
+	Bloody Mary
+	
+	Author: Ben Branders - http://branders.name
+	Date: 2005-03-31
+	
+*/
+
+
+html {
+	line-height: 1.3em; 
+	background-color: #FFFFFF;
+	margin: 0;
+	padding: 0;
+}
+				
+body {
+	margin: 0;
+	color: #333;
+	font: 0.8em/1.4em Verdana, Arial, sans-serif;
+}
+
+a:link		{ text-decoration: none; color: #000; font-weight: bold; padding: 1px; }
+a:visited	{ text-decoration: none; color: #FF9980; }
+a:hover		{ text-decoration: none; padding: 1px; background-color: #B32400; color: #FFFFFF; }
+a:active	{ text-decoration: none; }
+
+p.item-desc a:link { color: #029; }
+
+#rss-header {
+	background-color: #B32400;
+	padding: 10px 2%;
+	margin: 0 0 10px 0;
+}
+
+#rss-title {
+	margin: 0;
+}
+
+#rss-link {
+	font-size: 0.8em;
+	color: #fff;
+	font-weight: bold;
+	margin: 0;
+}
+
+#rss-header h1 a:hover {
+	text-decoration: none; 
+}
+
+#rss-desc {
+	margin: 2px 0 0 0;
+	color: #fff;
+	font-weight: bold;
+	padding: 0;
+}
+
+#rss-desc a {
+	color: #FFCCBF;
+}
+
+div.item {
+	margin: 0 0 1em 0;
+	padding: 0; 
+	border-bottom: 2px solid transparent;
+	border-top: 2px solid transparent; 
+}
+
+div.item:hover { 
+	background-color: #FFEBE6; 
+	border-bottom: 2px solid #B32400; 
+	border-top: 2px solid #B32400; 
+	color: #000000;
+}
+
+h2.item-title {
+	margin: 0px;
+}
+
+h2.item-title a {
+	display: block;
+	background-color: #FFCCBF;
+	font-size: 0.7em;
+	font-weight: bold;
+	margin: 0 0 4px 0;
+	padding: 3px 2%;
+}
+
+h2.item-title a:hover {
+	background-color: #B32400;
+	color: #fff;
+}
+
+span.item-ordinal {
+	display: none;
+}
+
+div.item-desc {
+	margin: 0 0 1em 0;
+	padding: 0 2% 0 2%;
+	width: 70%;
+}
+
+div.item-desc img {
+	display: block;
+}
+
+div.item-pubDate {
+	display: none;
+}
+
+div.item:hover > div.item-pubDate { 
+	display: inline; 
+	float: right; 
+	margin: -2em 0.5em 0 0;
+	font-weight: bold;
+	color: #B32400;
+	text-align: right;
+}
+
+div.item:hover > h2.item-title a { background-color: #B32400; color: #FFFFFF; }
+div.item:hover > h2.item-title a { color: #FF9980; }
+div.item:hover > h2.item-title a:visited { background-color: #FF9980; color: #FFFFFF; }
+
+div.item-technorati {
+	display: none;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+	<head>
+		<title>Sage OPML Export</title>
+	</head>
+	<body>
+		<outline text="RSS List">
+			<outline text="Mozilla">
+				<outline text="MozNews">
+					<outline type="rss" text="mozillaZine.org" title="mozillaZine.org" xmlUrl="http://www.mozillazine.org/atom.xml"/>
+					<outline type="rss" text="Mozilla Dot Org" title="Mozilla Dot Org" xmlUrl="http://www.mozilla.org/news.rdf"/>
+					<outline type="rss" text="Planet Mozilla" title="Planet Mozilla" xmlUrl="http://planet.mozilla.org/rss10.xml"/>
+				</outline>
+				<outline text="Firefox">
+					<outline type="rss" text="Mozilla Update::Popular Extensions" title="Mozilla Update::Popular Extensions" xmlUrl="https://update.mozilla.org/rss/?application=firefox&amp;type=E&amp;list=popular"/>
+					<outline type="rss" text="Mozilla Update::Rated Extensions" title="Mozilla Update::Rated Extensions" xmlUrl="https://update.mozilla.org/rss/?application=firefox&amp;type=E&amp;list=rated"/>
+					<outline type="rss" text="Mozilla Update::Newest Extensions" title="Mozilla Update::Newest Extensions" xmlUrl="https://update.mozilla.org/rss/?application=firefox&amp;type=E&amp;list=newest"/>
+				</outline>
+				<outline text="Thunderbird">
+					<outline type="rss" text="Mozilla Update::Popular Extensions" title="Mozilla Update::Popular Extensions" xmlUrl="https://addons.mozilla.org/rss/?application=thunderbird&amp;type=E&amp;list=popular"/>
+					<outline type="rss" text="Mozilla Update::Rated Extensions" title="Mozilla Update::Rated Extensions" xmlUrl="https://update.mozilla.org/rss/?application=thunderbird&amp;type=E&amp;list=rated"/>
+					<outline type="rss" text="Mozilla Update::Newest Extensions" title="Mozilla Update::Newest Extensions" xmlUrl="https://update.mozilla.org/rss/?application=thunderbird&amp;type=E&amp;list=newest"/>
+				</outline>
+			</outline>
+			<outline text="Free">
+				<outline type="rss" text="Slashdot" title="Slashdot" xmlUrl="http://slashdot.org/slashdot.rdf"/>
+				<outline type="rss" text="Wired News" title="Wired News" xmlUrl="http://www.wired.com/news_drop/netcenter/netcenter.rdf"/>
+			</outline>
+			<outline text="Sci">
+				<outline type="rss" text="Google News - Sci/Tech" title="Google News - Sci/Tech" xmlUrl="http://news.google.com/news?ned=us&amp;topic=t&amp;output=rss"/>
+				<outline type="rss" text="Repubblica.it &gt; Scienza e Tecnologia" title="Repubblica.it &gt; Scienza e Tecnologia" xmlUrl="http://www.repubblica.it/rss/scienza_e_tecnologia/rss2.0.xml"/>
+				<outline type="rss" text="Scientific American" title="Scientific American" xmlUrl="http://xml.newsisfree.com/feeds/39/1439.xml"/>
+				<outline type="rss" text="New Scientist" title="New Scientist" xmlUrl="http://xml.newsisfree.com/feeds/40/1440.xml"/>
+			</outline>
+			<outline text="Wikipedia"/>
+			<outline text="Google">
+				<outline type="rss" text="Google Press Releases" title="Google Press Releases" xmlUrl="http://googlepress.blogspot.com/atom.xml"/>
+				<outline type="rss" text="Official Google Blog" title="Official Google Blog" xmlUrl="http://googleblog.blogspot.com/atom.xml"/>
+			</outline>
+			<outline text="Java">
+				<outline text="Sun">
+					<outline type="rss" text="java.net News" title="java.net News" xmlUrl="http://today.java.net/pub/q/news_rss?x-ver=1.0"/>
+					<outline type="rss" text="java.net Articles" title="java.net Articles" xmlUrl="http://today.java.net/pub/q/articles_rss?x-ver=1.0"/>
+					<outline type="rss" text="java.net Forum postings" title="java.net Forum postings" xmlUrl="http://www.java.net/forums/rss.csp?x-ver=1.0"/>
+					<outline type="rss" text="JavaDesktop Features" title="JavaDesktop Features" xmlUrl="http://today.java.net/rss/19.rss"/>
+					<outline type="rss" text="java.net's Javapedia web" title="java.net's Javapedia web" xmlUrl="http://wiki.java.net/bin/view/Javapedia/WebRss?skin=rss"/>
+					<outline type="rss" text="Chris Campbell's Blog" title="Chris Campbell's Blog" xmlUrl="http://weblogs.java.net/blog/campbell/index.rdf"/>
+					<outline type="rss" text="Editor's Daily Blog" title="Editor's Daily Blog" xmlUrl="http://weblogs.java.net/blog/editors/index.rdf"/>
+					<outline type="rss" text="java.net Forums" title="java.net Forums" xmlUrl="http://forums.java.net/jive/rss/rssmessages.jsp?categoryID=9&amp;full=true"/>
+				</outline>
+				<outline text="JSP">
+					<outline type="rss" text="JSF Central -- News" title="JSF Central -- News" xmlUrl="http://www.jsfcentral.com/jsfcentral_news.rss"/>
+					<outline type="rss" text="Scripting News" title="Scripting News" xmlUrl="http://www.scripting.com/rss.xml"/>
+				</outline>
+				<outline text="J2EE">
+					<outline type="rss" text="Enterprise Java Community: Your Enterprise Java Community" title="Enterprise Java Community: Your Enterprise Java Community" xmlUrl="http://www.theserverside.com/rss/theserverside-rss2.xml"/>
+					<outline type="rss" text="Enterprise Java Community: J2EE Patterns Forum" title="Enterprise Java Community: J2EE Patterns Forum" xmlUrl="http://www.theserverside.com/rss/theserverside-j2eepatterns-rss2.xml"/>
+					<outline type="rss" text="Enterprise Java Community: XML / Web Services Forum" title="Enterprise Java Community: XML / Web Services Forum" xmlUrl="http://www.theserverside.com/rss/theserverside-xmlwebservices-rss2.xml"/>
+				</outline>
+				<outline text="XML">
+					<outline type="rss" text="New at XMethods" title="New at XMethods" xmlUrl="http://www.xmethods.net/interfaces/rss"/>
+					<outline type="rss" text="TopXML Latest Content" title="TopXML Latest Content" xmlUrl="http://www.topxml.com/rss/rss.asp"/>
+				</outline>
+			</outline>
+			<outline text="Linux">
+				<outline type="rss" text="Linux Today" title="Linux Today" xmlUrl="http://linuxtoday.com/backend/my-netscape.rdf"/>
+				<outline type="rss" text="FootNotes - GNOME Desktop News" title="FootNotes - GNOME Desktop News" xmlUrl="http://gnomedesktop.org/node/feed"/>
+			</outline>
+			<outline text="W3C">
+				<outline type="rss" text="World Wide Web Consortium" title="World Wide Web Consortium" xmlUrl="http://www.w3.org/2000/08/w3c-synd/home.rss"/>
+			</outline>
+			<outline text="Open">
+				<outline type="rss" text="OSDir.com" title="OSDir.com" xmlUrl="http://osdir.com/backend2.php?cat=196"/>
+				<outline type="rss" text="NewsForge:" title="NewsForge:" xmlUrl="http://www.newsforge.com/newsforge.rss"/>
+				<outline type="rss" text="freshmeat.net announcements (Global)" title="freshmeat.net announcements (Global)" xmlUrl="http://freshmeat.net/backend/fm.rdf"/>
+			</outline>
+			<outline text="Comp">
+				<outline type="rss" text="The Register" title="The Register" xmlUrl="http://www.theregister.co.uk/tonys/slashdot.rdf"/>
+				<outline type="rss" text="Moreover Technologies - ZDNet" title="Moreover Technologies - ZDNet" xmlUrl="http://www.moreover.com/cgi-local/page?feed=129&amp;amp;o=rss"/>
+			</outline>
+			<outline text="World">
+				<outline type="rss" text="Repubblica.it &gt; Homepage" title="Repubblica.it &gt; Homepage" xmlUrl="http://www.repubblica.it/rss/homepage/rss2.0.xml"/>
+				<outline type="rss" text="Repubblica Radio" title="Repubblica Radio" xmlUrl="http://rss.kataweb.it/podcasting/repubblicaradio.xml"/>
+				<outline type="rss" text="Google News - Top Stories" title="Google News - Top Stories" xmlUrl="http://news.google.com/news?ned=us&amp;topic=h&amp;output=rss"/>
+				<outline type="rss" text="Google News - World" title="Google News - World" xmlUrl="http://news.google.com/news?ned=us&amp;topic=w&amp;output=rss"/>
+				<outline type="rss" text="Yahoo! News: Top Stories" title="Yahoo! News: Top Stories" xmlUrl="http://rss.news.yahoo.com/rss/topstories"/>
+				<outline type="rss" text="BBC News | News Front Page | UK Edition" title="BBC News | News Front Page | UK Edition" xmlUrl="http://www.bbc.co.uk/syndication/feeds/news/ukfs_news/front_page/rss091.xml"/>
+				<outline type="rss" text="ITN - Headlines" title="ITN - Headlines" xmlUrl="http://www.itn.co.uk/itn.rdf"/>
+			</outline>
+			<outline text="Mine">
+				<outline type="rss" text="hute37's Blog" title="hute37's Blog" xmlUrl="http://hute37.blogspot.com/atom.xml"/>
+			</outline>
+		</outline>
+	</body>
+</opml>

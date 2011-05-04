@@ -1,0 +1,6557 @@
+[Desktop Entry]
+Type=Directory
+Name=Editors
+Comment=A text editor
+X-AfterStep-IndexName=TextEditor
+Icon=/usr/share/afterstep/desktop/icons/Folder-Pen1
+
+[Desktop Entry]
+Type=Directory
+Name=Look And Feel
+Comment=Look and feel settings
+Categories=Settings;
+X-AfterStep-IndexName=LookNFeel
+X-AfterStep-Aliases=Appearance & Themes;X-KDE-LookNFeel;X-KDE-settings-looknfeel;
+
+[Desktop Entry]
+Type=Directory
+Name=OCR
+Comment=Optical character recognition application
+Categories=Scanning;
+X-AfterStep-IndexName=OCR
+
+[Desktop Entry]
+Type=Directory
+Name=Settings
+Comment=Settings applications
+X-AfterStep-IndexName=Settings
+X-AfterStep-Aliases=Settings-Modules;
+
+[Desktop Entry]
+Type=Directory
+Name=Desktop Setup
+Comment=Configuration tool for the GUI
+X-AfterStep-IndexName=AfterStepDesktop
+Icon=/usr/share/afterstep/desktop/icons/Folder-Desktop2
+
+[Desktop Entry]
+Type=Directory
+Name=RedHat Base
+Comment=
+Categories=Application;
+X-AfterStep-IndexName=X-Red-Hat-Base
+
+[Desktop Entry]
+Type=Directory
+Name=Raster Graphics
+Comment=Raster based graphical application
+Categories=2DGraphics;
+X-AfterStep-IndexName=RasterGraphics
+Icon=/usr/share/afterstep/desktop/icons/Folder-Brushes
+
+[Desktop Entry]
+Type=Directory
+Name=Astronomy
+Comment=Astronomy software
+Categories=Science;
+X-AfterStep-IndexName=Astronomy
+
+[Desktop Entry]
+Type=Directory
+Name=Motif
+Comment=Application based on Motif libraries
+X-AfterStep-IndexName=Motif
+
+[Desktop Entry]
+Type=Directory
+Name=Multimedia settings
+Comment=
+Categories=HardwareSettings;
+X-AfterStep-IndexName=MultimediaSettings
+X-AfterStep-Aliases=Sound & Multimedia;X-KDE-Sound;X-KDE-settings-sound;Sound;
+
+[Desktop Entry]
+Type=Directory
+Name=Scanning
+Comment=Tool to scan a file/text
+Categories=Graphics;
+X-AfterStep-IndexName=Scanning
+Icon=/usr/share/afterstep/desktop/icons/Folder-Scanner
+
+[Desktop Entry]
+Type=Directory
+Name=Arcade Games
+Comment=Arcade style game
+Categories=Game;
+X-AfterStep-IndexName=ArcadeGame
+X-AfterStep-Aliases=Arcade;
+Icon=/usr/share/afterstep/desktop/icons/Folder-GameController
+
+[Desktop Entry]
+Type=Directory
+Name=Core
+Comment=Important application, core to the desktop such as a file manager or a help browser
+X-AfterStep-IndexName=Core
+
+[Desktop Entry]
+Type=Directory
+Name=Debuggers
+Comment=A tool to debug applications
+Categories=Development;
+X-AfterStep-IndexName=Debugger
+
+[Desktop Entry]
+Type=Directory
+Name=Hardware Settings
+Comment=A tool to manage hardware components, like sound cards, video cards or printers
+Categories=Settings;
+X-AfterStep-IndexName=HardwareSettings
+X-AfterStep-Aliases=Peripherals;Information;X-KDE-Information;X-KDE-Peripherals;X-KDE-information;
+
+[Desktop Entry]
+Type=Directory
+Name=Tuners
+Comment=A tuner
+Categories=Audio;
+X-AfterStep-IndexName=Tuner
+
+[Desktop Entry]
+Type=Directory
+Name=Amusements
+Comment=A simple amusement
+X-AfterStep-IndexName=Amusement
+X-AfterStep-Aliases=Toys;
+
+[Desktop Entry]
+Type=Directory
+Name=File Transfer
+Comment=Tools like FTP or P2P programs
+Categories=Network;
+X-AfterStep-IndexName=FileTransfer
+Icon=/usr/share/afterstep/desktop/icons/Folder-Globe
+
+[Desktop Entry]
+Type=Directory
+Name=Screen Saver
+Comment=Screensaver themes
+Categories=System;
+X-AfterStep-IndexName=Screensaver
+X-AfterStep-Aliases=ScreenSavers;
+Icon=/usr/share/afterstep/desktop/icons/Folder-MoonInMonitor
+
+[Desktop Entry]
+Type=Directory
+Name=More KDE Applications
+Comment=
+Categories=Application;
+X-AfterStep-IndexName=X-KDE-More
+
+[Desktop Entry]
+Type=Directory
+Name=About AfterStep
+Comment=AfterStep Documentation and useful web links.
+X-AfterStep-IndexName=AboutAfterStep
+Icon=/usr/share/afterstep/desktop/icons/Folder-Info
+
+[Desktop Entry]
+Type=Directory
+Name=apps
+
+[Desktop Entry]
+Type=Directory
+Name=GNOME
+Comment=Application based on GNOME libraries
+X-AfterStep-IndexName=GNOME
+
+[Desktop Entry]
+Type=Directory
+Name=Revision Control
+Comment=Applications like cvs or subversion
+Categories=Development;
+X-AfterStep-IndexName=RevisionControl
+
+[Desktop Entry]
+Type=Directory
+Name=Strategy Games
+Comment=A strategy game
+Categories=Game;
+X-AfterStep-IndexName=StrategyGame
+X-AfterStep-Aliases=Tactics & Strategy;
+Icon=/usr/share/afterstep/desktop/icons/Folder-ChessBishop
+
+[Desktop Entry]
+Type=Directory
+Name=Accessories
+Comment=Small utility application, "Accessories"
+X-AfterStep-IndexName=Utility
+X-AfterStep-Aliases=Utilities;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Screwdriver
+
+[Desktop Entry]
+Type=Directory
+Name=File Managers
+Comment=A file manager
+X-AfterStep-IndexName=FileManager
+
+[Desktop Entry]
+Type=Directory
+Name=Miscellaneous
+
+[Desktop Entry]
+Type=Directory
+Name=Package Manager
+Comment=A package manager application
+Categories=Settings;
+X-AfterStep-IndexName=PackageManager
+
+[Desktop Entry]
+Type=Directory
+Name=RedHat Extras
+Comment=
+Categories=Application;
+X-AfterStep-IndexName=X-Red-Hat-Extra
+
+[Desktop Entry]
+Type=Directory
+Name=Desktop Settings
+Comment=Personal preferences and administration settings
+Categories=Settings;
+X-AfterStep-IndexName=DesktopSettings
+X-AfterStep-Aliases=Desktop;X-KDE-Desktop;X-KDE-settings-desktop;
+
+[Desktop Entry]
+Type=Directory
+Name=Monitor
+Comment=Monitor application/applet that monitors some resource or activity
+Categories=System;
+X-AfterStep-IndexName=Monitor
+
+[Desktop Entry]
+Type=Directory
+Name=Music
+Comment=Musical software
+Categories=AudioVideo;Education;
+X-AfterStep-IndexName=Music
+
+[Desktop Entry]
+Type=Directory
+Name=Remote Access
+Comment=A tool to remotely manage your PC
+Categories=Network;
+X-AfterStep-IndexName=RemoteAccess
+
+[Desktop Entry]
+Type=Directory
+Name=Telephony
+Comment=Telephony via PC
+Categories=Network;
+X-AfterStep-IndexName=Telephony
+
+[Desktop Entry]
+Type=Directory
+Name=Toys
+
+[Desktop Entry]
+Type=Directory
+Name=RedHat Base
+Comment=
+Categories=Application;
+X-AfterStep-IndexName=X-Red-Hat-Base
+
+[Desktop Entry]
+Type=Directory
+Name=About AfterStep
+Comment=AfterStep Documentation and useful web links.
+X-AfterStep-IndexName=AboutAfterStep
+Icon=/usr/share/afterstep/desktop/icons/Folder-Info
+
+[Desktop Entry]
+Type=Directory
+Name=Profiling
+Comment=A profiling tool
+Categories=Development;
+X-AfterStep-IndexName=Profiling
+
+[Desktop Entry]
+Type=Directory
+Name=Science
+Comment=Scientific software
+Categories=Education;
+X-AfterStep-IndexName=Science
+Icon=/usr/share/afterstep/desktop/icons/Folder-Calculator2
+
+[Desktop Entry]
+Type=Directory
+Name=System Settings
+Comment=Change systemwide settings (affects all users)
+X-AfterStep-IndexName=X-KDE-settings-system
+Icon=/usr/share/afterstep/desktop/icons/Folder-Gear2
+
+[Desktop Entry]
+Type=Directory
+Name=File Managers
+Comment=A file manager
+X-AfterStep-IndexName=FileManager
+
+[Desktop Entry]
+Type=Directory
+Name=Multimedia
+
+[Desktop Entry]
+Type=Directory
+Name=Power Control
+Comment=Presentation software
+Categories=Settings;
+X-AfterStep-IndexName=PowerControl
+X-AfterStep-Aliases=X-KDE-PowerControl;X-KDE-settings-power;
+
+[Desktop Entry]
+Type=Directory
+Name=Disc Burning
+Comment=Application to burn a disc
+Categories=AudioVideo;Utility;
+X-AfterStep-IndexName=DiscBurning
+
+[Desktop Entry]
+Type=Directory
+Name=Engineering
+Comment=Engineering software, e.g. CAD programs
+X-AfterStep-IndexName=Engineering
+
+[Desktop Entry]
+Type=Directory
+Name=Games
+Comment=Games and amusements
+X-AfterStep-IndexName=Game
+X-AfterStep-Aliases=Games;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Dice
+
+[Desktop Entry]
+Type=Directory
+Name=Look And Feel
+Comment=Look and feel settings
+Categories=Settings;
+X-AfterStep-IndexName=LookNFeel
+X-AfterStep-Aliases=Appearance & Themes;X-KDE-LookNFeel;X-KDE-settings-looknfeel;
+
+[Desktop Entry]
+Type=Directory
+Name=Vector Graphics
+Comment=Vector based graphical application
+Categories=2D Graphics;
+X-AfterStep-IndexName=VectorGraphics
+
+[Desktop Entry]
+Type=Directory
+Name=2D Graphics
+Comment=2D based graphical application
+Categories=Graphics;
+X-AfterStep-IndexName=2DGraphics
+Icon=/usr/share/afterstep/desktop/icons/Folder-Brushes
+
+[Desktop Entry]
+Type=Directory
+Name=Action Games
+Comment=An action game
+Categories=Game;
+X-AfterStep-IndexName=ActionGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-Pistol
+
+[Desktop Entry]
+Type=Directory
+Name=Quit
+Comment=Leave or restart an AfterStep session.
+X-AfterStep-IndexName=ASQuit
+Icon=/usr/share/afterstep/desktop/icons/Folder-Stopsign
+
+[Desktop Entry]
+Type=Directory
+Name=Card Games
+Comment=A card game
+Categories=Game;
+X-AfterStep-IndexName=CardGame
+X-AfterStep-Aliases=Cardgames;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Cardgames
+
+[Desktop Entry]
+Type=Directory
+Name=Quit
+Comment=Leave or restart an AfterStep session.
+X-AfterStep-IndexName=ASQuit
+Icon=/usr/share/afterstep/desktop/icons/Folder-Stopsign
+
+[Desktop Entry]
+Type=Directory
+Name=Tray Icons
+Comment=An application that is primarily an icon for the "system tray" or "notification area" (apps that open a normal window and just happen to have a tray icon as well should not list this category)
+X-AfterStep-IndexName=TrayIcon
+
+[Desktop Entry]
+Type=Directory
+Name=3D Graphics
+Comment=3D based graphical application
+Categories=Graphics;
+X-AfterStep-IndexName=3DGraphics
+
+[Desktop Entry]
+Type=Directory
+Name=Console Only
+Comment=Application that only works inside a terminal (text-based or command line application)
+Categories=Application;
+X-AfterStep-IndexName=ConsoleOnly
+
+[Desktop Entry]
+Type=Directory
+Name=Simulation
+Comment=A simulation game
+Categories=Game;
+X-AfterStep-IndexName=Simulation
+Icon=/usr/share/afterstep/desktop/icons/Folder-People
+
+[Desktop Entry]
+Type=Directory
+Name=Dictionary
+Comment=A dictionary
+Categories=Office;
+X-AfterStep-IndexName=Dictionary
+
+[Desktop Entry]
+Type=Directory
+Name=Flow Chart
+Comment=A flowchart application
+Categories=Office;
+X-AfterStep-IndexName=FlowChart
+
+[Desktop Entry]
+Type=Directory
+Name=IRC Clients
+Comment=An IRC client
+Categories=Network;
+X-AfterStep-IndexName=IRCClient
+
+[Desktop Entry]
+Type=Directory
+Name=Video
+Comment=A video application
+Categories=AudioVideo;
+X-AfterStep-IndexName=Video
+Icon=/usr/share/afterstep/desktop/icons/Folder-MovieProjector
+
+[Desktop Entry]
+Type=Directory
+Name=Dialup
+Comment=A dial-up program
+Categories=Network;
+X-AfterStep-IndexName=Dialup
+
+[Desktop Entry]
+Type=Directory
+Name=KDE Components
+Comment=
+Categories=Settings;
+X-AfterStep-IndexName=KDEComponents
+X-AfterStep-Aliases=X-KDE-settings-components;
+
+[Desktop Entry]
+Type=Directory
+Name=Kids Games
+Comment=A game for kids
+Categories=Game;
+X-AfterStep-IndexName=KidsGame
+X-AfterStep-Aliases=Games for Kids;X-KDE-KidsGame;
+Icon=/usr/share/afterstep/desktop/icons/Folder-TeddyBear
+
+[Desktop Entry]
+Type=Directory
+Name=Photography
+Comment=Camera tools, etc.
+Categories=Graphics;Office;
+X-AfterStep-IndexName=Photography
+
+[Desktop Entry]
+Type=Directory
+Name=Shell
+Comment=A shell (an actual specific shell such as bash or tcsh, not a TerminalEmulator)
+X-AfterStep-IndexName=Shell
+
+[Desktop Entry]
+Type=Directory
+Name=Teaching
+Comment=An education program for teachers
+Categories=Education;
+X-AfterStep-IndexName=Teaching
+
+[Desktop Entry]
+Type=Directory
+Name=Word Processors
+Comment=A word processor
+Categories=Office;
+X-AfterStep-IndexName=WordProcessor
+
+[Desktop Entry]
+Type=Directory
+Name=Adventure Games
+Comment=Adventure style game
+Categories=Game;
+X-AfterStep-IndexName=AdventureGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-Knight
+
+[Desktop Entry]
+Type=Directory
+Name=Electronics
+Comment=Electronics software, e.g. a circuit designer
+X-AfterStep-IndexName=Electronics
+
+[Desktop Entry]
+Type=Directory
+Name=Geology
+Comment=Geology software
+Categories=Science;
+X-AfterStep-IndexName=Geology
+
+[Desktop Entry]
+Type=Directory
+Name=Recorder
+Comment=Application to record audio/video files
+Categories=Audio;Video;AudioVideo;
+X-AfterStep-IndexName=Recorder
+
+[Desktop Entry]
+Type=Directory
+Name=System Settings
+Comment=Change systemwide settings (affects all users)
+X-AfterStep-IndexName=X-KDE-settings-system
+Icon=/usr/share/afterstep/desktop/icons/Folder-Gear2
+
+[Desktop Entry]
+Type=Directory
+Name=Java
+Comment=Application based on Java GUI libraries, such as AWT or Swing
+X-AfterStep-IndexName=Java
+
+[Desktop Entry]
+Type=Directory
+Name=Math
+Comment=Math software
+Categories=Science;
+X-AfterStep-IndexName=Math
+X-AfterStep-Aliases=Mathematics;
+
+[Desktop Entry]
+Type=Directory
+Name=Screen Savers
+Comment=Password-lock a desktop and prevent monitor burn-in.
+X-AfterStep-IndexName=ASScreenSaver
+Icon=/usr/share/afterstep/desktop/icons/Folder-MoonInMonitor
+
+[Desktop Entry]
+Type=Directory
+Name=Mathematics
+
+[Desktop Entry]
+Type=Directory
+Name=Medical Software
+Comment=Medical software
+Categories=Science;
+X-AfterStep-IndexName=MedicalSoftware
+
+[Desktop Entry]
+Type=Directory
+Name=Puzzle Games
+Comment=Puzzle game
+Categories=Game;
+X-AfterStep-IndexName=PuzzleGame
+X-AfterStep-Aliases=Puzzle;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Puzzle
+
+[Desktop Entry]
+Type=Directory
+Name=Role Playing
+Comment=A role playing game
+Categories=Game;
+X-AfterStep-IndexName=RolePlaying
+X-AfterStep-Aliases=Rogue-like Games;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Knight
+
+[Desktop Entry]
+Type=Directory
+Name=Word Processors
+Comment=A word processor
+Categories=Office;
+X-AfterStep-IndexName=WordProcessor
+
+[Desktop Entry]
+Type=Directory
+Name=Adventure Games
+Comment=Adventure style game
+Categories=Game;
+X-AfterStep-IndexName=AdventureGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-Knight
+
+[Desktop Entry]
+Type=Directory
+Name=Biology
+Comment=Biology software
+Categories=Science;
+X-AfterStep-IndexName=Biology
+
+[Desktop Entry]
+Type=Directory
+Name=Blocks Games
+Comment=Falling blocks game
+Categories=Game;
+X-AfterStep-IndexName=BlocksGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-TetrisBlocks
+
+[Desktop Entry]
+Type=Directory
+Name=Board Games
+Comment=A board game
+Categories=Game;
+X-AfterStep-IndexName=BoardGame
+X-AfterStep-Aliases=Boardgames;
+Icon=/usr/share/afterstep/desktop/icons/Folder-RaceCar
+
+[Desktop Entry]
+Type=Directory
+Name=Flow Chart
+Comment=A flowchart application
+Categories=Office;
+X-AfterStep-IndexName=FlowChart
+
+[Desktop Entry]
+Type=Directory
+Name=Hardware Settings
+Comment=A tool to manage hardware components, like sound cards, video cards or printers
+Categories=Settings;
+X-AfterStep-IndexName=HardwareSettings
+X-AfterStep-Aliases=Peripherals;Information;X-KDE-Information;X-KDE-Peripherals;X-KDE-information;
+
+[Desktop Entry]
+Type=Directory
+Name=More KDE Applications
+Comment=
+Categories=Application;
+X-AfterStep-IndexName=X-KDE-More
+
+[Desktop Entry]
+Type=Directory
+Name=Edutainment
+
+[Desktop Entry]
+Type=Directory
+Name=Emulator
+Comment=Emulator of another platform, such as a DOS emulator
+X-AfterStep-IndexName=Emulator
+Icon=/usr/share/afterstep/desktop/icons/Folder-GameController
+
+[Desktop Entry]
+Type=Directory
+Name=GUI Designer
+Comment=A GUI designer application
+Categories=Development;
+X-AfterStep-IndexName=GUIDesigner
+
+[Desktop Entry]
+Type=Directory
+Name=Sports Games
+Comment=A sports game
+Categories=Game;
+X-AfterStep-IndexName=SportsGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-SoccerBall
+
+[Desktop Entry]
+Type=Directory
+Name=Find...
+Comment=Search the computer or Internet for files or info.
+X-AfterStep-IndexName=Find
+Icon=/usr/share/afterstep/desktop/icons/Folder-MagnifyingGlass
+
+[Desktop Entry]
+Type=Directory
+Name=Revision Control
+Comment=Applications like cvs or subversion
+Categories=Development;
+X-AfterStep-IndexName=RevisionControl
+
+[Desktop Entry]
+Type=Directory
+Name=Board Games
+Comment=A board game
+Categories=Game;
+X-AfterStep-IndexName=BoardGame
+X-AfterStep-Aliases=Boardgames;
+Icon=/usr/share/afterstep/desktop/icons/Folder-RaceCar
+
+[Desktop Entry]
+Type=Directory
+Name=Email
+Comment=Email application
+Categories=Office;Network;
+X-AfterStep-IndexName=Email
+
+[Desktop Entry]
+Type=Directory
+Name=Art
+Comment=Software to teach arts
+Categories=Education;
+X-AfterStep-IndexName=Art
+
+[Desktop Entry]
+Type=Directory
+Name=Audio and Video Editing
+Comment=Application to edit audio/video files
+Categories=AudioVideo;
+X-AfterStep-IndexName=AudioVideoEditing
+
+[Desktop Entry]
+Type=Directory
+Name=Games
+Comment=Games and amusements
+X-AfterStep-IndexName=Game
+X-AfterStep-Aliases=Games;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Dice
+
+[Desktop Entry]
+Type=Directory
+Name=GUI Designer
+Comment=A GUI designer application
+Categories=Development;
+X-AfterStep-IndexName=GUIDesigner
+
+[Desktop Entry]
+Type=Directory
+Name=Player
+Comment=Application to play audio/video files
+Categories=Audio;Video;AudioVideo;
+X-AfterStep-IndexName=Player
+Icon=/usr/share/afterstep/desktop/icons/Folder-Headphones
+
+[Desktop Entry]
+Type=Directory
+Name=Raster Graphics
+Comment=Raster based graphical application
+Categories=2DGraphics;
+X-AfterStep-IndexName=RasterGraphics
+Icon=/usr/share/afterstep/desktop/icons/Folder-Brushes
+
+[Desktop Entry]
+Type=Directory
+Name=RedHat Extras
+Comment=
+Categories=Application;
+X-AfterStep-IndexName=X-Red-Hat-Extra
+
+[Desktop Entry]
+Type=Directory
+Name=Strategy Games
+Comment=A strategy game
+Categories=Game;
+X-AfterStep-IndexName=StrategyGame
+X-AfterStep-Aliases=Tactics & Strategy;
+Icon=/usr/share/afterstep/desktop/icons/Folder-ChessBishop
+
+[Desktop Entry]
+Type=Directory
+Name=System
+Comment=System application, "System Tools" such as say a log viewer or network monitor
+X-AfterStep-IndexName=System
+Icon=/usr/share/afterstep/desktop/icons/Folder-Gear2
+
+[Desktop Entry]
+Type=Directory
+Name=Viewers
+Comment=Tool to view e.g. a graphic or pdf file
+Categories=Graphics;Office;
+X-AfterStep-IndexName=Viewer
+Icon=/usr/share/afterstep/desktop/icons/Folder-View
+
+[Desktop Entry]
+Type=Directory
+Name=Modules
+Comment=Applications for use within AfterStep.
+X-AfterStep-IndexName=ASModules
+Icon=/usr/share/afterstep/desktop/icons/Folder-Puzzle
+
+[Desktop Entry]
+Type=Directory
+Name=Desktop Settings
+Comment=Personal preferences and administration settings
+Categories=Settings;
+X-AfterStep-IndexName=DesktopSettings
+X-AfterStep-Aliases=Desktop;X-KDE-Desktop;X-KDE-settings-desktop;
+
+[Desktop Entry]
+Type=Directory
+Name=News
+Comment=A news reader or a news ticker
+X-AfterStep-IndexName=News
+
+[Desktop Entry]
+Type=Directory
+Name=Remote Access
+Comment=A tool to remotely manage your PC
+Categories=Network;
+X-AfterStep-IndexName=RemoteAccess
+
+[Desktop Entry]
+Type=Directory
+Name=Viewers
+Comment=Tool to view e.g. a graphic or pdf file
+Categories=Graphics;Office;
+X-AfterStep-IndexName=Viewer
+Icon=/usr/share/afterstep/desktop/icons/Folder-View
+
+[Desktop Entry]
+Type=Directory
+Name=Clock
+Comment=A clock application/applet
+Categories=Utility;
+X-AfterStep-IndexName=Clock
+
+[Desktop Entry]
+Type=Directory
+Name=File Transfer
+Comment=Tools like FTP or P2P programs
+Categories=Network;
+X-AfterStep-IndexName=FileTransfer
+Icon=/usr/share/afterstep/desktop/icons/Folder-Globe
+
+[Desktop Entry]
+Type=Directory
+Name=IRC Clients
+Comment=An IRC client
+Categories=Network;
+X-AfterStep-IndexName=IRCClient
+
+[Desktop Entry]
+Type=Directory
+Name=Desktop Setup
+Comment=Configuration tool for the GUI
+X-AfterStep-IndexName=AfterStepDesktop
+Icon=/usr/share/afterstep/desktop/icons/Folder-Desktop2
+
+[Desktop Entry]
+Type=Directory
+Name=Instant Messaging
+Comment=An instant messaging client
+Categories=Network;
+X-AfterStep-IndexName=InstantMessaging
+Icon=/usr/share/afterstep/desktop/icons/Folder-Chat
+
+[Desktop Entry]
+Type=Directory
+Name=Tools
+
+[Desktop Entry]
+Type=Directory
+Name=Applet
+Comment=An applet that will run inside a panel or another such application, likely desktop specific
+X-AfterStep-IndexName=Applet
+
+[Desktop Entry]
+Type=Directory
+Name=Building
+Comment=A tool to build applications
+Categories=Development;
+X-AfterStep-IndexName=Building
+
+[Desktop Entry]
+Type=Directory
+Name=Office
+Comment=Office Applications
+X-AfterStep-IndexName=Office
+Icon=/usr/share/afterstep/desktop/icons/Folder-PencilCup
+
+[Desktop Entry]
+Type=Directory
+Name=Windows
+Comment=Tools for manipulating AfterStep windows.
+X-AfterStep-IndexName=AfterStepWindows
+Icon=/usr/share/afterstep/desktop/icons/Folder-Windows
+
+[Desktop Entry]
+Type=Directory
+Name=Midi
+Comment=An app related to MIDI
+Categories=Audio;
+X-AfterStep-IndexName=Midi
+
+[Desktop Entry]
+Type=Directory
+Name=Power Control
+Comment=Presentation software
+Categories=Settings;
+X-AfterStep-IndexName=PowerControl
+X-AfterStep-Aliases=X-KDE-PowerControl;X-KDE-settings-power;
+
+[Desktop Entry]
+Type=Directory
+Name=Sequencer
+Comment=A sequencer
+Categories=Audio;
+X-AfterStep-IndexName=Sequencer
+
+[Desktop Entry]
+Type=Directory
+Name=Tuners
+Comment=A tuner
+Categories=Audio;
+X-AfterStep-IndexName=Tuner
+
+[Desktop Entry]
+Type=Directory
+Name=Audio and Video Editing
+Comment=Application to edit audio/video files
+Categories=AudioVideo;
+X-AfterStep-IndexName=AudioVideoEditing
+
+[Desktop Entry]
+Type=Directory
+Name=Card Games
+Comment=A card game
+Categories=Game;
+X-AfterStep-IndexName=CardGame
+X-AfterStep-Aliases=Cardgames;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Cardgames
+
+[Desktop Entry]
+Type=Directory
+Name=Console Only
+Comment=Application that only works inside a terminal (text-based or command line application)
+Categories=Application;
+X-AfterStep-IndexName=ConsoleOnly
+
+[Desktop Entry]
+Type=Directory
+Name=Presentation
+Comment=Presentation software
+Categories=Office;
+X-AfterStep-IndexName=Presentation
+
+[Desktop Entry]
+Type=Directory
+Name=Amusements
+Comment=A simple amusement
+X-AfterStep-IndexName=Amusement
+X-AfterStep-Aliases=Toys;
+
+[Desktop Entry]
+Type=Directory
+Name=Terminal Emulators
+Comment=A terminal emulator application
+X-AfterStep-IndexName=TerminalEmulator
+X-AfterStep-Aliases=Terminal Applications;
+
+[Desktop Entry]
+Type=Directory
+Name=Calendar
+Comment=Calendar application
+Categories=Office;
+X-AfterStep-IndexName=Calendar
+
+[Desktop Entry]
+Type=Directory
+Name=Graphics
+Comment=Graphics applications
+X-AfterStep-IndexName=Graphics
+Icon=/usr/share/afterstep/desktop/icons/Folder-Brushes
+
+[Desktop Entry]
+Type=Directory
+Name=Logic Games
+Comment=Logic games like puzzles, etc
+Categories=Game;
+X-AfterStep-IndexName=LogicGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-Puzzle
+
+[Desktop Entry]
+Type=Directory
+Name=Spreadsheet
+Comment=A spreadsheet
+Categories=Office;
+X-AfterStep-IndexName=Spreadsheet
+
+[Desktop Entry]
+Type=Directory
+Name=Windows
+Comment=Tools for manipulating AfterStep windows.
+X-AfterStep-IndexName=AfterStepWindows
+Icon=/usr/share/afterstep/desktop/icons/Folder-Windows
+
+[Desktop Entry]
+Type=Directory
+Name=Action Games
+Comment=An action game
+Categories=Game;
+X-AfterStep-IndexName=ActionGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-Pistol
+
+[Desktop Entry]
+Type=Directory
+Name=Archiving
+Comment=A tool to archive/backup data
+X-AfterStep-IndexName=Archiving
+
+[Desktop Entry]
+Type=Directory
+Name=Instant Messaging
+Comment=An instant messaging client
+Categories=Network;
+X-AfterStep-IndexName=InstantMessaging
+Icon=/usr/share/afterstep/desktop/icons/Folder-Chat
+
+[Desktop Entry]
+Type=Directory
+Name=Vector Graphics
+Comment=Vector based graphical application
+Categories=2D Graphics;
+X-AfterStep-IndexName=VectorGraphics
+
+[Desktop Entry]
+Type=Directory
+Name=2D Graphics
+Comment=2D based graphical application
+Categories=Graphics;
+X-AfterStep-IndexName=2DGraphics
+Icon=/usr/share/afterstep/desktop/icons/Folder-Brushes
+
+[Desktop Entry]
+Type=Directory
+Name=Arcade Games
+Comment=Arcade style game
+Categories=Game;
+X-AfterStep-IndexName=ArcadeGame
+X-AfterStep-Aliases=Arcade;
+Icon=/usr/share/afterstep/desktop/icons/Folder-GameController
+
+[Desktop Entry]
+Type=Directory
+Name=Audio and Video
+Comment=Multimedia menu
+X-AfterStep-IndexName=AudioVideo
+X-AfterStep-Aliases=Multimedia;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Headphones
+
+[Desktop Entry]
+Type=Directory
+Name=Database
+Comment=Application to manage a database
+Categories=Office;Development;AudioVideo;
+X-AfterStep-IndexName=Database
+
+[Desktop Entry]
+Type=Directory
+Name=Screen Saver
+Comment=Screensaver themes
+Categories=System;
+X-AfterStep-IndexName=Screensaver
+X-AfterStep-Aliases=ScreenSavers;
+Icon=/usr/share/afterstep/desktop/icons/Folder-MoonInMonitor
+
+[Desktop Entry]
+Type=Directory
+Name=3D Graphics
+Comment=3D based graphical application
+Categories=Graphics;
+X-AfterStep-IndexName=3DGraphics
+
+[Desktop Entry]
+Type=Directory
+Name=Logic Games
+Comment=Logic games like puzzles, etc
+Categories=Game;
+X-AfterStep-IndexName=LogicGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-Puzzle
+
+[Desktop Entry]
+Type=Directory
+Name=ScreenSavers
+
+[Desktop Entry]
+Type=Directory
+Name=Screen Savers
+Comment=Password-lock a desktop and prevent monitor burn-in.
+X-AfterStep-IndexName=ASScreenSaver
+Icon=/usr/share/afterstep/desktop/icons/Folder-MoonInMonitor
+
+[Desktop Entry]
+Type=Directory
+Name=Board
+
+[Desktop Entry]
+Type=Directory
+Name=Calculator
+Comment=A calculator
+Categories=Utility;
+X-AfterStep-IndexName=Calculator
+
+[Desktop Entry]
+Type=Directory
+Name=PDA
+Comment=Tool to manage your PDA
+Categories=Office;
+X-AfterStep-IndexName=PDA
+
+[Desktop Entry]
+Type=Directory
+Name=Find...
+Comment=Search the computer or Internet for files or info.
+X-AfterStep-IndexName=Find
+Icon=/usr/share/afterstep/desktop/icons/Folder-MagnifyingGlass
+
+[Desktop Entry]
+Type=Directory
+Name=Ham Radio
+Comment=HAM radio software
+Categories=Network;Audio;
+X-AfterStep-IndexName=HamRadio
+
+[Desktop Entry]
+Type=Directory
+Name=Mixer
+Comment=Just a mixer
+Categories=Audio;
+X-AfterStep-IndexName=Mixer
+
+[Desktop Entry]
+Type=Directory
+Name=Project Management
+Comment=Project management application
+Categories=Office;Development;
+X-AfterStep-IndexName=ProjectManagement
+
+[Desktop Entry]
+Type=Directory
+Name=Construction
+Comment=
+Categories=Education;
+X-AfterStep-IndexName=Construction
+
+[Desktop Entry]
+Type=Directory
+Name=Development
+Comment=Tools for software development
+X-AfterStep-IndexName=Development
+Icon=/usr/share/afterstep/desktop/icons/Folder-HammerBrown
+
+[Desktop Entry]
+Type=Directory
+Name=Physics
+Comment=Physics software
+Categories=Science;
+X-AfterStep-IndexName=Physics
+
+[Desktop Entry]
+Type=Directory
+Name=Qt
+Comment=Application based on Qt libraries
+X-AfterStep-IndexName=Qt
+
+[Desktop Entry]
+Type=Directory
+Name=Security
+Comment=A security tool
+Categories=Settings;System;
+X-AfterStep-IndexName=Security
+X-AfterStep-Aliases=Security & Privacy;X-KDE-settings-security;
+
+[Desktop Entry]
+Type=Directory
+Name=Web Development
+Comment=A tool for web developers
+Categories=Network;Development;
+X-AfterStep-IndexName=WebDevelopment
+
+[Desktop Entry]
+Type=Directory
+Name=Web Browsers
+Comment=A web browser
+Categories=Network;
+X-AfterStep-IndexName=WebBrowser
+X-AfterStep-Aliases=X-KDE-WebBrowsing;X-KDE-settings-webbrowsing;
+
+[Desktop Entry]
+Type=Directory
+Name=WebBrowsing
+
+[Desktop Entry]
+Type=Directory
+Name=Accessories
+Comment=Small utility application, "Accessories"
+X-AfterStep-IndexName=Utility
+X-AfterStep-Aliases=Utilities;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Screwdriver
+
+[Desktop Entry]
+Type=Directory
+Name=Chart
+Comment=Chart application
+Categories=Office;
+X-AfterStep-IndexName=Chart
+
+[Desktop Entry]
+Type=Directory
+Name=Contact Management
+Comment=E.g. an address book
+Categories=Office;
+X-AfterStep-IndexName=ContactManagement
+
+[Desktop Entry]
+Type=Directory
+Name=Disc Burning
+Comment=Application to burn a disc
+Categories=AudioVideo;Utility;
+X-AfterStep-IndexName=DiscBurning
+
+[Desktop Entry]
+Type=Directory
+Name=Modules
+Comment=Applications for use within AfterStep.
+X-AfterStep-IndexName=ASModules
+Icon=/usr/share/afterstep/desktop/icons/Folder-Puzzle
+
+[Desktop Entry]
+Type=Directory
+Name=Applications
+Comment=Applications
+X-AfterStep-IndexName=Application
+X-AfterStep-Aliases=Applications;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Gear2
+
+[Desktop Entry]
+Type=Directory
+Name=Blocks Games
+Comment=Falling blocks game
+Categories=Game;
+X-AfterStep-IndexName=BlocksGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-TetrisBlocks
+
+[Desktop Entry]
+Type=Directory
+Name=share
+
+[Desktop Entry]
+Type=Directory
+Name=Web Development
+Comment=A tool for web developers
+Categories=Network;Development;
+X-AfterStep-IndexName=WebDevelopment
+
+[Desktop Entry]
+Type=Directory
+Name=Debuggers
+Comment=A tool to debug applications
+Categories=Development;
+X-AfterStep-IndexName=Debugger
+
+[Desktop Entry]
+Type=Directory
+Name=KDE Components
+Comment=
+Categories=Settings;
+X-AfterStep-IndexName=KDEComponents
+X-AfterStep-Aliases=X-KDE-settings-components;
+
+[Desktop Entry]
+Type=Directory
+Name=Sports Games
+Comment=A sports game
+Categories=Game;
+X-AfterStep-IndexName=SportsGame
+Icon=/usr/share/afterstep/desktop/icons/Folder-SoccerBall
+
+[Desktop Entry]
+Type=Directory
+Name=Editors
+Comment=A text editor
+X-AfterStep-IndexName=TextEditor
+Icon=/usr/share/afterstep/desktop/icons/Folder-Pen1
+
+[Desktop Entry]
+Type=Directory
+Name=Applications
+Comment=Applications
+X-AfterStep-IndexName=Application
+X-AfterStep-Aliases=Applications;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Gear2
+
+[Desktop Entry]
+Type=Directory
+Name=Project Management
+Comment=Project management application
+Categories=Office;Development;
+X-AfterStep-IndexName=ProjectManagement
+
+[Desktop Entry]
+Type=Directory
+Name=Accessibility
+Comment=Accessibility Settings
+Categories=Settings;Utility;
+X-AfterStep-IndexName=Accessibility
+X-AfterStep-Aliases=X-KDE-Accessibility;X-KDE-settings-accessibility;
+
+[Desktop Entry]
+Type=Directory
+Name=Audio and Video
+Comment=Multimedia menu
+X-AfterStep-IndexName=AudioVideo
+X-AfterStep-Aliases=Multimedia;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Headphones
+
+[Desktop Entry]
+Type=Directory
+Name=Education
+Comment=Educational software
+X-AfterStep-IndexName=Education
+X-AfterStep-Aliases=Edutainment;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Library
+
+[Desktop Entry]
+Type=Directory
+Name=koctave3
+
+[Desktop Entry]
+Type=Directory
+Name=Terminal Emulators
+Comment=A terminal emulator application
+X-AfterStep-IndexName=TerminalEmulator
+X-AfterStep-Aliases=Terminal Applications;
+
+[Desktop Entry]
+Type=Directory
+Name=Themes
+
+[Desktop Entry]
+Type=Directory
+Name=Contact Management
+Comment=E.g. an address book
+Categories=Office;
+X-AfterStep-IndexName=ContactManagement
+
+[Desktop Entry]
+Type=Directory
+Name=Role Playing
+Comment=A role playing game
+Categories=Game;
+X-AfterStep-IndexName=RolePlaying
+X-AfterStep-Aliases=Rogue-like Games;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Knight
+
+[Desktop Entry]
+Type=Directory
+Name=Filesystems
+Comment=A file system tool
+Categories=System;
+X-AfterStep-IndexName=Filesystem
+
+[Desktop Entry]
+Type=Directory
+Name=IDE
+Comment=IDE application
+Categories=Development;
+X-AfterStep-IndexName=IDE
+
+[Desktop Entry]
+Type=Directory
+Name=Medical Software
+Comment=Medical software
+Categories=Science;
+X-AfterStep-IndexName=MedicalSoftware
+
+[Desktop Entry]
+Type=Directory
+Name=Multimedia settings
+Comment=
+Categories=HardwareSettings;
+X-AfterStep-IndexName=MultimediaSettings
+X-AfterStep-Aliases=Sound & Multimedia;X-KDE-Sound;X-KDE-settings-sound;Sound;
+
+[Desktop Entry]
+Type=Directory
+Name=TV
+Comment=A TV application
+Categories=Video;
+X-AfterStep-IndexName=TV
+Icon=/usr/share/afterstep/desktop/icons/Folder-TV
+
+[Desktop Entry]
+Type=Directory
+Name=Filesystems
+Comment=A file system tool
+Categories=System;
+X-AfterStep-IndexName=Filesystem
+
+[Desktop Entry]
+Type=Directory
+Name=Finance
+Comment=Application to manage your finance
+Categories=Office;
+X-AfterStep-IndexName=Finance
+
+[Desktop Entry]
+Type=Directory
+Name=Network
+Comment=Network application such as a web browser
+X-AfterStep-IndexName=Network
+X-AfterStep-Aliases=Internet;X-KDE-Network;X-KDE-settings-network;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Globe
+
+[Desktop Entry]
+Type=Directory
+Name=Tray Icons
+Comment=An application that is primarily an icon for the "system tray" or "notification area" (apps that open a normal window and just happen to have a tray icon as well should not list this category)
+X-AfterStep-IndexName=TrayIcon
+
+[Desktop Entry]
+Type=Directory
+Name=Ham Radio
+Comment=HAM radio software
+Categories=Network;Audio;
+X-AfterStep-IndexName=HamRadio
+
+[Desktop Entry]
+Type=Directory
+Name=KDE
+Comment=Application based on KDE libraries
+X-AfterStep-IndexName=KDE
+
+[Desktop Entry]
+Type=Directory
+Name=P2P
+Comment=A P2P program
+Categories=Network;
+X-AfterStep-IndexName=P2P
+
+[Desktop Entry]
+Type=Directory
+Name=Package Manager
+Comment=A package manager application
+Categories=Settings;
+X-AfterStep-IndexName=PackageManager
+
+[Desktop Entry]
+Type=Directory
+Name=Translation
+Comment=A translation tool
+Categories=Development;
+X-AfterStep-IndexName=Translation
+
+[Desktop Entry]
+Type=Directory
+Name=Chemistry
+Comment=Chemistry software
+Categories=Science;
+X-AfterStep-IndexName=Chemistry
+
+[Desktop Entry]
+Type=Directory
+Name=GTK
+Comment=Application based on GTK+ libraries
+X-AfterStep-IndexName=GTK
+
+[Desktop Entry]
+Type=Directory
+Name=Kids Games
+Comment=A game for kids
+Categories=Game;
+X-AfterStep-IndexName=KidsGame
+X-AfterStep-Aliases=Games for Kids;X-KDE-KidsGame;
+Icon=/usr/share/afterstep/desktop/icons/Folder-TeddyBear
+
+[Desktop Entry]
+Type=Directory
+Name=Puzzle Games
+Comment=Puzzle game
+Categories=Game;
+X-AfterStep-IndexName=PuzzleGame
+X-AfterStep-Aliases=Puzzle;
+Icon=/usr/share/afterstep/desktop/icons/Folder-Puzzle
+
+[Desktop Entry]
+Type=Directory
+Name=Utilities
+
+[Desktop Entry]
+Type=Directory
+Name=Web Browsers
+Comment=A web browser
+Categories=Network;
+X-AfterStep-IndexName=WebBrowser
+X-AfterStep-Aliases=X-KDE-WebBrowsing;X-KDE-settings-webbrowsing;
+
+[Desktop Entry]
+Type=Directory
+Name=Audio
+Comment=An audio application
+Categories=AudioVideo;
+X-AfterStep-IndexName=Audio
+Icon=/usr/share/afterstep/desktop/icons/Folder-MusicalNote
+
+[Desktop Entry]
+Type=Directory
+Name=Internet
+
+[Desktop Entry]
+Type=Directory
+Name=Languages
+Comment=Software to learn foreign languages
+Categories=Education;
+X-AfterStep-IndexName=Languages
+
+[Desktop Entry]
+Type=Application
+Name=DecayScreen
+Exec=decayscreen
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Flag
+Exec=flag
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Gears (GL)
+Exec=gears
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KEduca
+GenericName=Tests & Exams
+Comment=KDE Tests & Exams Program
+Exec=keduca
+Path=
+Categories=Qt;KDE;Education;
+Icon=/usr/share/icons/hicolor/48x48/apps/keduca.png
+
+[Desktop Entry]
+Type=Application
+Name=KRotation (GL)
+Exec=krotation.kss
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KSig
+GenericName=Signature Editor
+Exec=ksig -caption "%c" %i %m
+Categories=Qt;KDE;Utility;X-KDE-Utilities-PIM;
+
+[Desktop Entry]
+Type=Application
+Name=KSnapshot
+GenericName=Screen Capture Program
+Exec=ksnapshot -caption "%c" %i %m
+Path=
+Categories=Qt;KDE;Graphics;
+Icon=/usr/share/icons/hicolor/48x48/apps/ksnapshot.png
+
+[Desktop Entry]
+Type=Application
+Name=Kwave Sound Editor
+Comment=A sound editor for KDE
+TryExec=kwave
+Exec=kwave %F
+Categories=KDE;
+Icon=/usr/share/icons/hicolor/48x48/apps/kwave.png
+
+[Desktop Entry]
+Type=Application
+Name=OpenGL
+Comment=OpenGL information
+Exec=kcmshell opengl
+Categories=Qt;KDE;X-KDE-information;
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Science
+Exec=kscience.kss
+Categories=KDE;
+X-AfterStep-IndexName=Science application
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Software Sources
+GenericName=Software Sources
+Comment=Configure the sources for installable software and updates
+Exec=gksu --desktop /usr/share/applications/software-properties.desktop /usr/bin/software-properties-gtk
+Categories=Application;System;Settings;
+Icon=/usr/share/icons/hicolor/48x48/apps/software-properties.png
+
+[Desktop Entry]
+Type=Application
+Name=Sound
+Comment=Sound information
+Exec=kcmshell sound
+Categories=Qt;KDE;X-KDE-information;
+
+[Desktop Entry]
+Type=Application
+Name=AntMaze
+Exec=antmaze
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Fiberlamp
+Exec=fiberlamp
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KDevelop Assistant
+GenericName=Documentation Viewer
+Exec=kdevassistant %u
+Categories=Qt;KDE;Development;Documentation;X-KDE-KDevelopIDE;
+Icon=/usr/share/icons/hicolor/48x48/apps/kdevelop.png
+
+[Desktop Entry]
+Type=Application
+Name=KRec
+GenericName=Recording Tool
+Exec=krec %i %m -caption "%c"
+Path=
+Categories=Qt;KDE;AudioVideo;
+Icon=/usr/share/icons/hicolor/48x48/apps/krec.png
+
+[Desktop Entry]
+Type=Application
+Name=Laser
+Exec=laser
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=PCMCIA
+Comment=PCMCIA status
+Exec=kcmshell pcmcia
+Categories=Qt;KDE;X-KDE-information;
+Icon=/usr/share/icons/default.kde/48x48/apps/laptop_pcmcia.png
+
+[Desktop Entry]
+Type=Application
+Name=Samba Status
+Comment=Samba status monitor
+Exec=kcmshell smbstatus
+Categories=Qt;KDE;X-KDE-information;
+Icon=/usr/share/icons/default.kde/48x48/apps/samba.png
+
+[Desktop Entry]
+Type=Application
+Name=soundKonverter
+GenericName=Audio files converter and CD ripper
+Comment=An audio converter and CD ripper
+Exec=soundkonverter
+Categories=Qt;KDE;AudioVideo;AudioVideoEditing;
+Icon=/usr/share/icons/hicolor/48x48/apps/soundkonverter.png
+
+[Desktop Entry]
+Type=Application
+Name=System Notifications
+Comment=System Notification Configuration
+Exec=kcmshell kcmnotify
+Categories=Qt;KDE;X-KDE-settings-sound;
+Icon=/usr/share/icons/default.kde/48x48/apps/knotify.png
+
+[Desktop Entry]
+Type=Application
+Name=Thornbird
+Exec=thornbird
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Window Behavior
+Comment=Configure the window behavior
+Exec=kcmshell kwinoptions
+Categories=Qt;KDE;X-KDE-settings-desktop;
+Icon=/usr/share/icons/default.kde/48x48/apps/kcmkwm.png
+
+[Desktop Entry]
+Type=Application
+Name=Window Decorations
+Comment=Configure the look and feel of window titles
+Exec=kcmshell kwindecoration
+Categories=Qt;KDE;X-KDE-settings-looknfeel;
+Icon=/usr/share/icons/default.kde/48x48/apps/kcmkwm.png
+
+[Desktop Entry]
+Type=Application
+Name=Amarok
+GenericName=Audio Player
+Comment=Amarok - Rediscover Your Music!
+Exec=amarok %U
+Categories=Qt;KDE;AudioVideo;Audio;Player;
+Icon=/usr/share/icons/hicolor/48x48/apps/amarok.png
+
+[Desktop Entry]
+Type=Application
+Name=Circuit
+Exec=circuit
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Demon
+Exec=demon
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Desktop Settings Wizard
+Exec=kpersonalizer -caption "%c" %i %m
+Categories=Qt;KDE;Settings;
+OnlyShowIn=KDE
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Distort
+Exec=distort
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=File Associations
+Comment=Configure file associations
+Exec=kcmshell filetypes
+Categories=Qt;KDE;X-KDE-settings-components;
+Icon=/usr/share/icons/default.kde/48x48/apps/filetypes.png
+
+[Desktop Entry]
+Type=Application
+Name=Help
+Exec=khelpcenter
+Categories=Qt;KDE;Core;
+OnlyShowIn=KDE
+Icon=/usr/share/icons/hicolor/48x48/apps/khelpcenter.png
+
+[Desktop Entry]
+Type=Application
+Name=KBackgammon
+GenericName=Backgammon Game
+Exec=kbackgammon %i %m -caption "%c"
+Categories=Qt;KDE;Game;BoardGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/kbackgammon.png
+
+[Desktop Entry]
+Type=Application
+Name=KDE Wallet
+Comment=KDE Wallet Configuration
+Exec=kcmshell kwalletconfig
+Categories=Qt;KDE;X-KDE-settings-security;
+Icon=/usr/share/icons/hicolor/48x48/apps/kwalletmanager.png
+
+[Desktop Entry]
+Type=Application
+Name=KreetingKard
+Comment=A Greeting Card Editor for KDE
+Exec=kreetingkard %U
+Categories=KDE;
+
+[Desktop Entry]
+Type=Application
+Name=Memory
+Comment=Memory information
+Exec=kcmshell memory
+Categories=Qt;KDE;X-KDE-information;
+Icon=/usr/share/icons/default.kde/48x48/apps/kcmmemory.png
+
+[Desktop Entry]
+Type=Application
+Name=Polygons
+Exec=kpolygon.kss
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Score Reading Trainer
+Comment=Improve scoring reading skills.
+Exec=score-reading-trainer %i %m -caption "%c"
+Categories=Miscellaneous;
+
+[Desktop Entry]
+Type=Application
+Name=Session Manager
+Comment=Configure the session manager and logout settings
+Exec=kcmshell kcmsmserver
+Categories=Qt;KDE;X-KDE-settings-components;
+
+[Desktop Entry]
+Type=Application
+Name=Space (GL)
+Exec=kspace.kss
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Sun Java 6 Runtime (32bit)
+Comment=Sun Java 6 Runtime (32bit)
+Exec=/usr/lib/jvm/ia32-java-6-sun-1.6.0.03/bin/java -jar
+Categories=KDE;
+Icon=/usr/share/icons/ia32-sun-java6.xpm
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=System Bell
+Comment=System Bell Configuration
+Exec=kcmshell bell
+Categories=Qt;KDE;X-KDE-settings-sound;
+Icon=/usr/share/icons/default.kde/48x48/apps/bell.png
+
+[Desktop Entry]
+Type=Application
+Name=Banner
+Exec=kbanner.kss
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Connection Preferences
+Comment=Configure generic network preferences, like timeout values
+Exec=kcmshell netpref
+Categories=Qt;KDE;X-KDE-settings-network;
+
+[Desktop Entry]
+Type=Application
+Name=Deluxe
+Exec=deluxe
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Foo
+Categories=KDE;
+Hidden=1
+
+[Desktop Entry]
+Type=Application
+Name=Hypercube
+Exec=hypercube
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=JuK
+GenericName=Music Player
+Comment=
+Exec=juk -caption "%c" %i %m
+Categories=Qt;KDE;AudioVideo;
+Icon=/usr/share/icons/hicolor/48x48/apps/juk.png
+
+[Desktop Entry]
+Type=Application
+Name=KFloppy
+GenericName=Floppy Formatter
+Exec=kfloppy -caption "%c" %i %m
+Path=
+Categories=Qt;KDE;Utility;X-KDE-Utilities-Peripherals;
+Icon=/usr/share/icons/hicolor/48x48/apps/kfloppy.png
+
+[Desktop Entry]
+Type=Application
+Name=KFTPGrabber
+GenericName=FTP Client
+Comment=A graphical FTP client
+Exec=kftpgrabber
+Categories=Qt;KDE;Network;FileTransfer;
+Icon=/usr/share/icons/hicolor/48x48/apps/kftpgrabber.png
+
+[Desktop Entry]
+Type=Application
+Name=Kid3
+GenericName=ID3 Tagger
+Exec=kid3 -caption "%c" %i
+Categories=AudioVideo;KDE;
+Icon=/usr/share/icons/hicolor/48x48/apps/kid3.png
+
+[Desktop Entry]
+Type=Application
+Name=KsCD
+GenericName=CD Player
+Exec=kscd -caption "%c" %i %m
+Path=
+Categories=Qt;KDE;AudioVideo;
+Icon=/usr/share/icons/hicolor/48x48/apps/kscd.png
+
+[Desktop Entry]
+Type=Application
+Name=KSirtet
+GenericName=Tetris Game
+Exec=ksirtet -caption "%c" %i %m
+Categories=Qt;KDE;Game;ArcadeGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/ksirtet.png
+
+[Desktop Entry]
+Type=Application
+Name=Kuake
+Comment=A KDE KPart Application
+Exec=kuake %i %m -caption "%c"
+Categories=KDE;
+
+[Desktop Entry]
+Type=Application
+Name=Mismunch
+Exec=mismunch
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Network Connections
+Comment=Configure Network Connections
+Exec=kcmshell kcm_knetworkconfmodule
+Categories=KDE;
+
+[Desktop Entry]
+Type=Application
+Name=Partitions
+Comment=Partition information
+Exec=kcmshell partitions
+Categories=Qt;KDE;X-KDE-information;
+Icon=/usr/share/icons/default.kde/48x48/apps/kcmpartitions.png
+
+[Desktop Entry]
+Type=Application
+Name=Processor
+Comment=Processor information
+Exec=kcmshell processor
+Categories=Qt;KDE;X-KDE-information;
+Icon=/usr/share/icons/default.kde/48x48/apps/kcmprocessor.png
+
+[Desktop Entry]
+Type=Application
+Name=Restricted Drivers Manager
+Comment=Check for new restricted drivers
+Exec=gksu -D /usr/share/applications/restricted-manager.desktop /usr/bin/restricted-manager
+Categories=RestrictedManager;GTK;System;Settings;
+OnlyShowIn=GNOME
+Icon=/usr/share/restricted-manager
+
+[Desktop Entry]
+Type=Application
+Name=Sierpinski3D
+Exec=sierpinski3d
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=XAnalogTV
+Exec=xanalogtv
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=digiKam
+GenericName=Photo Management
+Comment=KDE Photo Management
+Exec=digikam -caption "%c" %i %m
+Categories=Qt;KDE;Graphics;
+Icon=/usr/share/icons/hicolor/48x48/apps/digikam.png
+
+[Desktop Entry]
+Type=Application
+Name=Display
+Comment=Display Settings
+Exec=kcmshell display
+Categories=Qt;KDE;X-KDE-settings-hardware;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Kaleidescope
+Exec=kaleidescope
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KGpg
+GenericName=Encryption Tool
+Comment=A GnuPG frontend
+Exec=kgpg %U
+Categories=Qt;KDE;Utility;X-KDE-Utilities-PIM;
+Icon=/usr/share/icons/hicolor/48x48/apps/kgpg.png
+
+[Desktop Entry]
+Type=Application
+Name=KSystemLog
+GenericName=System Logs Viewer
+Comment=System log viewer tool
+Exec=kdesu ksystemlog %i %m -caption "%c"
+Categories=Qt;KDE;Application;System;
+Icon=/usr/share/icons/hicolor/48x48/apps/ksystemlog.png
+
+[Desktop Entry]
+Type=Application
+Name=Pacman
+Exec=pacman
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Scribus
+GenericName=Page Layout
+Comment=Graphic Page Layout and Publication
+TryExec=scribus
+Exec=scribus %f
+Categories=Graphics;Application;
+StartupWMClass=scribus
+Icon=/usr/share/icons/default.kde/48x48/apps/scribus.png
+
+[Desktop Entry]
+Type=Application
+Name=Shared Folders
+Comment=Configure which folders are available for your network neighborhood
+Exec=gksu shares-admin
+Categories=GNOME;GTK;System;Settings;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Sound System
+Comment=Sound System Configuration
+Exec=kcmshell arts
+Categories=Qt;KDE;X-KDE-settings-sound;
+Icon=/usr/share/icons/default.kde/48x48/apps/arts.png
+
+[Desktop Entry]
+Type=Application
+Name=Strange
+Exec=strange
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=USB Devices
+Comment=View the USB devices attached to this computer
+Exec=kcmshell kcmusb
+Categories=Qt;KDE;X-KDE-information;
+Icon=/usr/share/icons/default.kde/48x48/apps/usb.png
+
+[Desktop Entry]
+Type=Application
+Name=C Curve
+Exec=ccurve
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Crypto
+Comment=Configure SSL, manage certificates, and other cryptography settings
+Exec=kcmshell crypto
+Categories=Qt;KDE;X-KDE-settings-security;
+
+[Desktop Entry]
+Type=Application
+Name=Deco
+Exec=deco
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=GLText
+Exec=gltext
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KAlarm
+GenericName=Personal Alarm Scheduler
+Exec=kalarm -caption "%c" %i
+Categories=Qt;KDE;Utility;X-KDE-Utilities-PIM;Office;Calendar;
+OnlyShowIn=KDE
+Icon=/usr/share/icons/hicolor/48x48/apps/kalarm.png
+
+[Desktop Entry]
+Type=Application
+Name=KFormula
+GenericName=Formula Editor
+Exec=kformula %u
+Categories=Qt;KDE;Office;X-KDE-More;
+Icon=/usr/share/icons/hicolor/48x48/apps/kformula.png
+
+[Desktop Entry]
+Type=Application
+Name=KIconEdit
+GenericName=Icon Editor
+Exec=kiconedit -caption "%c" %i %m %u
+Path=
+SwallowTitle=
+SwallowExec=
+Categories=Qt;KDE;Graphics;X-KDE-More;
+Icon=/usr/share/icons/hicolor/48x48/apps/kiconedit.png
+
+[Desktop Entry]
+Type=Application
+Name=Network Monitor
+Comment=Monitor network interfaces
+Exec=kcmshell kcm_knemo
+Categories=Qt;KDE;X-KDE-settings-network;X-KDE-systemsettings-network;
+
+[Desktop Entry]
+Type=Application
+Name=Panels
+Comment=Configure the arrangement of the panel
+Exec=kcmshell panel
+Categories=Qt;KDE;X-KDE-settings-desktop;
+
+[Desktop Entry]
+Type=Application
+Name=Polyominoes
+Exec=polyominoes
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Substrate
+Exec=substrate
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=BlinkBox
+Exec=blinkbox
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Country/Region & Language
+Comment=Language, numeric, and time settings for your particular region
+Exec=kcmshell language
+Categories=Qt;KDE;X-KDE-settings-accessibility;
+Icon=/usr/share/icons/default.kde/48x48/apps/locale.png
+
+[Desktop Entry]
+Type=Application
+Name=Kivio
+GenericName=Flowchart & Diagram Editing
+Exec=kivio %u
+Categories=Qt;KDE;Office;
+Icon=/usr/share/icons/hicolor/48x48/apps/kivio.png
+
+[Desktop Entry]
+Type=Application
+Name=KTnef
+GenericName=TNEF File Viewer
+Comment=A viewer/extractor for TNEF files
+Exec=ktnef %i %m -caption "%c"
+Categories=Qt;KDE;X-KDE-Utilities-PIM;Office;Network;Email;
+Icon=/usr/share/icons/hicolor/48x48/apps/ktnef.png
+
+[Desktop Entry]
+Type=Application
+Name=Network Interfaces
+Comment=Network interface information
+Exec=kcmshell nic
+Categories=Qt;KDE;X-KDE-information;
+
+[Desktop Entry]
+Type=Application
+Name=SlideScreen
+Exec=slidescreen
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=SpeedMine
+Exec=speedmine
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=System Services
+GenericName=Runlevel Editor
+Comment=System Service Configuration
+Exec=kcmshell System/serviceconfig
+Categories=Qt;KDE;X-KDE-settings-system;
+
+[Desktop Entry]
+Type=Application
+Name=WhirlwindWarp
+Exec=whirlwindwarp
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=XSpiroGraph
+Exec=xspirograph
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Atlantis (GL)
+Exec=atlantis
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KChart
+GenericName=Chart
+Comment=Create graphics and charts
+Exec=kchart %u
+Categories=Qt;KDE;Office;X-KDE-More;
+Icon=/usr/share/icons/hicolor/48x48/apps/kchart.png
+
+[Desktop Entry]
+Type=Application
+Name=KFocus
+Comment=
+Exec=kfocus -caption "%c" %i %m
+Categories=KDE;
+
+[Desktop Entry]
+Type=Application
+Name=KKBSwitch
+Comment=Keyboard Layout Indicator
+Exec=kkbswitch -caption "%c" %i %m
+Categories=Qt;KDE;Utility;TrayIcon;
+Icon=/usr/share/icons/default.kde/48x48/apps/keyboard_layout.png
+
+[Desktop Entry]
+Type=Application
+Name=KMag
+GenericName=Screen Magnifier
+Comment=
+Exec=kmag -caption "%c" %i %m
+Categories=Qt;KDE;Utility;Accessibility;
+
+[Desktop Entry]
+Type=Application
+Name=KRuler
+GenericName=Screen Ruler
+Exec=kruler %i %m
+Path=
+Categories=Qt;KDE;Graphics;X-KDE-More;
+Icon=/usr/share/icons/hicolor/48x48/apps/kruler.png
+
+[Desktop Entry]
+Type=Application
+Name=KTurtle
+GenericName=Logo Programming Environment
+Comment=A KDE Logo programming environment
+Exec=kturtle -caption "%c" %i %m
+Path=
+Categories=Qt;KDE;Education;
+
+[Desktop Entry]
+Type=Application
+Name=Kubuntu Device Database
+Comment=Kubuntu Device Database submission Tool
+Exec=hwdb-kde
+Categories=Qt;Application;System;
+OnlyShowIn=KDE
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=KView
+GenericName=Image Viewer
+Exec=kview -caption "%c" %i %m %U
+Path=
+Categories=Qt;KDE;Graphics;
+Icon=/usr/share/icons/hicolor/48x48/apps/kview.png
+
+[Desktop Entry]
+Type=Application
+Name=XFlame
+Exec=xflame
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Hyperball
+Exec=hyperball
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Icons
+Comment=Customize KDE Icons
+Exec=kcmshell icons
+Categories=Qt;KDE;X-KDE-settings-looknfeel;
+Icon=/usr/share/icons/default.kde/48x48/apps/icons.png
+
+[Desktop Entry]
+Type=Application
+Name=Image Index
+Comment=Configuration for using the GNU Image Finding Tool
+Exec=kcmshell kcmkmrml
+Categories=Qt;KDE;X-KDE-settings-system;
+
+[Desktop Entry]
+Type=Application
+Name=KBattleship
+GenericName=Battleship Game
+Exec=kbattleship %i %m -caption "%c"
+Categories=Qt;KDE;Game;StrategyGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/kbattleship.png
+
+[Desktop Entry]
+Type=Application
+Name=KBFX Theme Installer
+Exec=kbfxconfigapp --install %u
+Categories=KDE;
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=KDiskFree
+GenericName=View Disk Usage
+Exec=kdf -caption "%c"
+Categories=Qt;KDE;System;X-KDE-More;
+Icon=/usr/share/icons/hicolor/48x48/apps/kdf.png
+
+[Desktop Entry]
+Type=Application
+Name=KLettres
+GenericName=Learn Alphabet
+Comment=a KDE program to learn the alphabet
+Exec=klettres -caption "%c" %i %m
+Categories=Qt;KDE;Education;Languages;
+Icon=/usr/share/icons/hicolor/48x48/apps/klettres.png
+
+[Desktop Entry]
+Type=Application
+Name=Kontact
+GenericName=Personal Information Manager
+Exec=kontact
+Categories=Qt;KDE;Office;Network;Email;
+Icon=/usr/share/icons/hicolor/48x48/apps/kontact.png
+
+[Desktop Entry]
+Type=Application
+Name=KTron
+GenericName=Tron-like Game
+Exec=ktron -caption "%c" %i %m
+Categories=Qt;KDE;Game;ArcadeGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/ktron.png
+
+[Desktop Entry]
+Type=Application
+Name=Penetrate
+Exec=penetrate
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Plugins
+Comment=Configure the browser plugins
+Exec=kcmshell khtml_plugins
+Categories=Qt;KDE;X-KDE-settings-webbrowsing;
+Icon=/usr/share/icons/hicolor/48x48/apps/konqueror.png
+
+[Desktop Entry]
+Type=Application
+Name=Popsquares
+Exec=popsquares
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Regular 4D Polytopes
+Exec=polytopes
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Swirl
+Exec=swirl
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=System Settings
+Exec=systemsettings -caption "%c" %i %m
+Categories=Qt;KDE;Core;
+X-AfterStep-IndexName=System Settings application
+Icon=/usr/share/icons/default.kde/48x48/apps/systemsettings.png
+
+[Desktop Entry]
+Type=Application
+Name=Vines
+Exec=vines
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=AdBlocK Filters
+Comment=Configure Konqueror AdBlocK filters
+Exec=kcmshell khtml_filter
+Categories=Qt;KDE;X-KDE-settings-webbrowsing;
+
+[Desktop Entry]
+Type=Application
+Name=Atlantik Designer
+GenericName=Monopoly®-like Board Designer
+Comment=Game board designer for Atlantik
+Exec=atlantikdesigner -caption "%c" %i %m
+Categories=Qt;KDE;Game;BoardGame;
+
+[Desktop Entry]
+Type=Application
+Name=BouncingCow
+Exec=bouncingcow
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Busy Spheres (GL)
+Exec=busyspheres
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Iterated-function-system Images
+Exec=ifs
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Kphone
+Comment=Voice over IP (VoIP) phone application
+Exec=kphone
+Categories=Network;
+Icon=/usr/share/kphone
+
+[Desktop Entry]
+Type=Application
+Name=Add/Remove...
+GenericName=Package Manager
+Comment=Install and remove applications
+Exec=/usr/bin/gnome-app-install
+Categories=PackageManager;GTK;
+OnlyShowIn=GNOME
+Icon=/usr/share/gnome-app-install
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=bsc
+GenericName=File manager with two panels
+Comment=File manager with two panels
+TryExec=/usr/bin/bsc
+Exec=/usr/bin/bsc
+Categories=Application;FileManager;Qt;Utility;X-KDE-Utilities-File;
+Icon=/usr/share/pixmaps/bsc.png
+
+[Desktop Entry]
+Type=Application
+Name=GFlux
+Exec=gflux
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KBibTeX
+Comment=A BibTeX editor for KDE
+Exec=kbibtex %i %m -caption "%c"
+Categories=Qt;KDE;Office;
+Icon=/usr/share/icons/default.kde/48x48/apps/kbibtex.png
+
+[Desktop Entry]
+Type=Application
+Name=KEduca-Editor
+GenericName=Tests & Exams Editor
+Exec=keducabuilder
+Path=
+Categories=Qt;KDE;Education;
+Icon=/usr/share/icons/hicolor/48x48/apps/keduca.png
+
+[Desktop Entry]
+Type=Application
+Name=KHangMan
+GenericName=Hangman Game
+Comment=KDE Hangman Game
+Exec=khangman -caption "%c" %i %m
+Categories=Qt;KDE;Education;Languages;
+Icon=/usr/share/icons/hicolor/48x48/apps/khangman.png
+
+[Desktop Entry]
+Type=Application
+Name=KSysGuard
+GenericName=Performance Monitor
+Exec=ksysguard %U
+Path=
+Categories=Qt;KDE;System;
+Icon=/usr/share/icons/default.kde/48x48/apps/ksysguard.png
+
+[Desktop Entry]
+Type=Application
+Name=Media Screen Saver
+Exec=kpartsaver.kss
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Moebius (GL)
+Exec=moebius
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Monitor & Display
+GenericName=Screen Configuration Editor
+Comment=Display and Monitor Configuration
+Exec=kcmshell Peripherals/displayconfig
+Categories=Qt;KDE;X-KDE-settings-hardware;
+
+[Desktop Entry]
+Type=Application
+Name=Password & User Account
+Comment=User information such as password, name and email
+Exec=kcmshell kcm_useraccount
+Categories=Qt;KDE;X-KDE-settings-security;
+Icon=/usr/share/icons/default.kde/48x48/apps/personal.png
+
+[Desktop Entry]
+Type=Application
+Name=Petri
+Exec=petri
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Potato Guy
+GenericName=Game for Children
+Exec=ktuberling %i %m -caption "%c" %u
+Categories=Qt;KDE;Game;X-KDE-KidsGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/ktuberling.png
+
+[Desktop Entry]
+Type=Application
+Name=RD-Bomb
+Exec=rd-bomb
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=xsublim
+Exec=xsublim
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Audio Encoding
+Comment=Audiocd IO Slave Configuration
+Exec=kcmshell audiocd
+Categories=KDE;
+
+[Desktop Entry]
+Type=Application
+Name=Barcode
+Exec=barcode
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=CDDB Retrieval
+GenericName=CDDB Configuration
+Comment=Configure the CDDB Retrieval
+Exec=kcmshell libkcddb
+Categories=Qt;KDE;X-KDE-settings-sound;
+
+[Desktop Entry]
+Type=Application
+Name=Intermomentary
+Exec=intermomentary
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KAsteroids
+GenericName=Space Game
+Exec=kasteroids %i %m -caption "%c"
+Path=
+Categories=Qt;KDE;Game;ArcadeGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/kasteroids.png
+
+[Desktop Entry]
+Type=Application
+Name=KBlackBox
+GenericName=Blackbox Logic Game
+Exec=kblackbox %i %m -caption "%c"
+Path=
+Categories=Qt;KDE;Game;BoardGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/kblackbox.png
+
+[Desktop Entry]
+Type=Application
+Name=KDE Resources
+Comment=Configure KDE Resources
+Exec=kcmshell kresources
+Categories=Qt;KDE;X-KDE-settings-components;
+OnlyShowIn=KDE
+Icon=/usr/share/icons/default.kde/48x48/apps/date.png
+
+[Desktop Entry]
+Type=Application
+Name=Kugar
+GenericName=Report Generator
+Exec=kugar %u
+Categories=Qt;KDE;Office;X-KDE-More;
+Icon=/usr/share/icons/hicolor/48x48/apps/kugar.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Launch Feedback
+Comment=Choose application-launch feedback style
+Exec=kcmshell kcmlaunch
+Categories=Qt;KDE;X-KDE-settings-looknfeel;
+
+[Desktop Entry]
+Type=Application
+Name=MateEdit
+GenericName=Collaborative Editor
+Comment=Multiuser editor
+Exec=mateedit
+Categories=Qt;KDE;Utility;
+Icon=/usr/share/icons/hicolor/48x48/apps/mateedit.png
+
+[Desktop Entry]
+Type=Application
+Name=Noof
+Exec=noof
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Style
+Comment=Allows the manipulation of widget behavior and changing the Style for KDE
+Exec=kcmshell style
+Categories=Qt;KDE;X-KDE-settings-looknfeel;
+Icon=/usr/share/icons/default.kde/48x48/apps/style.png
+
+[Desktop Entry]
+Type=Application
+Name=XMMS (remote playlists)
+GenericName=Multimedia Player
+Exec=xmms %f
+Categories=KDE;
+Icon=/usr/share/xmms
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Blob
+Exec=kblob.kss
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Disk & Filesystems
+GenericName=Mount Point Editor
+Comment=Disk & Filesystem Configuration
+Exec=kcmshell System/mountconfig
+Categories=Qt;KDE;X-KDE-settings-system;
+
+[Desktop Entry]
+Type=Application
+Name=Klickety
+GenericName=Board Game
+Comment=
+Exec=klickety -caption "%c" %i %m
+Categories=Qt;KDE;Game;StrategyGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/klickety.png
+
+[Desktop Entry]
+Type=Application
+Name=Klipper
+GenericName=Clipboard Tool
+Comment=A cut & paste history utility
+Exec=klipper
+Categories=Qt;KDE;Utility;X-KDE-Utilities-Desktop;
+OnlyShowIn=KDE
+Icon=/usr/share/icons/hicolor/48x48/apps/klipper.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Queens
+Exec=queens
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=DangerBall
+Exec=dangerball
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Find Files/Folders
+Exec=kfind %f
+Path=
+Categories=Qt;KDE;Core;
+OnlyShowIn=KDE
+Icon=/usr/share/icons/hicolor/48x48/apps/kfind.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Flux (GL)
+Exec=flux
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=History Sidebar
+Comment=Configure the history sidebar
+Exec=kcmshell kcmhistory
+Categories=Qt;KDE;X-KDE-settings-webbrowsing;
+
+[Desktop Entry]
+Type=Application
+Name=Interference
+Exec=interference
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KBruch
+GenericName=Exercise Fractions
+Comment=Practice exercises with fractions
+Exec=kbruch -caption "%c" %i %m
+Categories=Qt;KDE;Education;Math;
+Icon=/usr/share/icons/hicolor/48x48/apps/kbruch.png
+
+[Desktop Entry]
+Type=Application
+Name=KDevelop Designer
+GenericName=Interface Designer
+Comment=GUI Designer for Qt/KDE
+Exec=kdevdesigner %i %m -caption "%c"
+Categories=Qt;KDE;Development;GUIDesigner;X-KDE-KDevelopIDE;
+Icon=/usr/share/icons/hicolor/48x48/apps/kdevdesigner.png
+
+[Desktop Entry]
+Type=Application
+Name=KDiff3
+GenericName=Diff/Patch Frontend
+Comment=A File And Directory Comparison And Merge Tool
+Exec=kdiff3 %i %m -caption "%c"
+Categories=Qt;KDE;Development;
+
+[Desktop Entry]
+Type=Application
+Name=KGet
+GenericName=Download Manager
+Exec=kget -caption "%c" %i %m
+Categories=Qt;KDE;Network;FileTransfer;
+Icon=/usr/share/icons/default.kde/48x48/apps/kget.png
+
+[Desktop Entry]
+Type=Application
+Name=KHexEdit
+GenericName=Binary Editor
+Exec=khexedit -caption "%c" %i %m %U
+Path=
+Categories=Qt;KDE;Utility;X-KDE-Utilities-File;
+Icon=/usr/share/icons/hicolor/48x48/apps/khexedit.png
+
+[Desktop Entry]
+Type=Application
+Name=KInfoCenter
+GenericName=Info Center
+Exec=kinfocenter -caption "%c" %i %m
+Categories=Qt;KDE;System;
+OnlyShowIn=KDE
+Icon=/usr/share/icons/default.kde/48x48/apps/hwinfo.png
+
+[Desktop Entry]
+Type=Application
+Name=Kino
+GenericName=Video Editor
+Comment=Edit DV video
+TryExec=kino
+Exec=kino %F
+Categories=Application;AudioVideo;
+Icon=/usr/share/pixmaps/kino.png
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=KonsoleKalendar
+Exec=kdialog --sorry "konsolekalendar is a command-line only program.  Please read the handbook at help:/konsolekalendar for more info."
+Categories=Qt;KDE;Utility;X-KDE-More;
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=KPPPLogview
+GenericName=Internet Dial-Up Tool Log Viewer
+Exec=kppplogview
+Path=
+Categories=Qt;KDE;Network;X-KDE-More;Dialup;
+Icon=/usr/share/icons/hicolor/48x48/apps/kppp.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=KSmileTris
+GenericName=Tetris-like Game
+Exec=ksmiletris -caption "%c" %i %m
+Path=
+Categories=Qt;KDE;Game;ArcadeGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/ksmiletris.png
+
+[Desktop Entry]
+Type=Application
+Name=OpenOffice.org Quickstarter 2
+Comment=OpenOffice.org's Quickstarter 2 for KDE systems
+Exec=oooqs2
+Categories=Qt;KDE;Utility;
+Icon=/usr/share/icons/hicolor/48x48/apps/oooqs2.png
+
+[Desktop Entry]
+Type=Application
+Name=Service Manager
+Comment=System Services Configuration
+Exec=kcmshell kcmkded
+Categories=Qt;KDE;X-KDE-settings-components;
+Icon=/usr/share/services
+
+[Desktop Entry]
+Type=Application
+Name=Sun Java 6 Runtime
+Comment=Sun Java 6 Runtime
+Exec=/usr/lib/jvm/java-6-sun-1.6.0.03/bin/java -jar
+Categories=KDE;
+Icon=/usr/share/icons/sun-java6.xpm
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Superquadrics (GL)
+Exec=superquadrics
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Time 3D
+Exec=t3d
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Attraction
+Exec=attraction
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Behavior
+Comment=You can configure how the desktop behaves here
+Exec=kcmshell desktopbehavior
+Categories=Qt;KDE;X-KDE-settings-desktop;
+
+[Desktop Entry]
+Type=Application
+Name=Codeine
+GenericName=Media Player
+Comment=Video player for KDE designed to be as simple as possible
+Exec=codeine %u
+Categories=Qt;KDE;AudioVideo;Player;
+Icon=/usr/share/icons/default.kde/48x48/apps/codeine.png
+
+[Desktop Entry]
+Type=Application
+Name=Extrusion
+Exec=extrusion
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Flurry
+Exec=flurry
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=GL Planet (GL)
+Exec=glplanet
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Java & JavaScript
+Comment=Configure the behavior of Java and JavaScript
+Exec=kcmshell khtml_java_js
+Categories=Qt;KDE;X-KDE-settings-webbrowsing;
+Icon=/usr/share/icons/hicolor/48x48/apps/konqueror.png
+
+[Desktop Entry]
+Type=Application
+Name=Konquest
+GenericName=Galactic Strategy Game
+Exec=konquest %i %m -caption %c
+Categories=Qt;KDE;Game;StrategyGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/konquest.png
+
+[Desktop Entry]
+Type=Application
+Name=KWin4
+GenericName=Strategy Game
+Exec=kwin4
+SwallowTitle=
+SwallowExec=
+Categories=Qt;KDE;Game;BoardGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/kwin4.png
+
+[Desktop Entry]
+Type=Application
+Name=Lament (GL)
+Exec=lament
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Local Network Browsing
+Comment=Setup lisa, reslisa and the ioslaves
+Exec=kcmshell lanbrowser
+Categories=Qt;KDE;X-KDE-settings-network;
+Icon=/usr/share/icons/default.kde/48x48/apps/samba.png
+
+[Desktop Entry]
+Type=Application
+Name=Penrose
+Exec=penrose
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Plasma (GL)
+Exec=plasma
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Sballs
+Exec=sballs
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Stylesheets
+Comment=Configure the stylesheets used to render web pages
+Exec=kcmshell kcmcss
+Categories=Qt;KDE;X-KDE-settings-webbrowsing;
+Icon=/usr/share/icons/default.kde/48x48/apps/stylesheet.png
+
+[Desktop Entry]
+Type=Application
+Name=Web Behavior
+Comment=Configure the browser behavior
+Exec=kcmshell khtml_behavior
+Categories=Qt;KDE;X-KDE-settings-webbrowsing;
+Icon=/usr/share/icons/hicolor/48x48/apps/konqueror.png
+
+[Desktop Entry]
+Type=Application
+Name=Blank Screen
+Exec=kblankscrn.kss
+Categories=KDE;
+OnlyShowIn=KDE
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=BoxFit
+Exec=boxfit
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Helix
+Exec=helix
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=IO-Ports
+Comment=IO-port information
+Exec=kcmshell ioports
+Categories=Qt;KDE;X-KDE-information;
+Icon=/usr/share/icons/default.kde/48x48/apps/kcmmemory.png
+
+[Desktop Entry]
+Type=Application
+Name=KDevelop: Ruby
+GenericName=IDE for Ruby
+Exec=kdevelop --profile RubyIDE %u
+Categories=Qt;KDE;Development;IDE;X-KDE-KDevelopIDE;
+Icon=/usr/share/icons/hicolor/48x48/apps/kdevelop.png
+
+[Desktop Entry]
+Type=Application
+Name=Kig
+GenericName=Interactive Geometry
+Comment=Explore Geometric Constructions
+Exec=kig %i %m -caption "%c"
+Categories=Qt;KDE;Education;Math;
+Icon=/usr/share/icons/hicolor/48x48/apps/kig.png
+
+[Desktop Entry]
+Type=Application
+Name=KMid
+GenericName=Midi/Karaoke Player
+Exec=kmid %u
+Path=
+Categories=Qt;KDE;AudioVideo;X-KDE-More;
+Icon=/usr/share/icons/hicolor/48x48/apps/kmid.png
+
+[Desktop Entry]
+Type=Application
+Name=Kommander Editor
+GenericName=Dynamic Dialog Editor
+Comment=Dynamic Dialog Editor
+Exec=kmdr-editor %F
+Categories=Qt;KDE;Development;
+
+[Desktop Entry]
+Type=Application
+Name=KPhotoAlbum
+GenericName=Photo Album
+Exec=kphotoalbum --import %u
+Categories=Qt;KDE;Graphics;
+Icon=/usr/share/icons/hicolor/48x48/apps/kphotoalbum.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Language Support
+Comment=Configure multiple and native language support on your system
+Exec=gksu /usr/bin/gnome-language-selector
+Categories=Application;System;Settings;
+NotShowIn=KDE
+
+[Desktop Entry]
+Type=Application
+Name=Particle Fountain (GL)
+Exec=kfountain.kss
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Pyro
+Exec=pyro
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Slip
+Exec=slip
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Spell Checker
+Comment=Configure the spell checker
+Exec=kcmshell spellchecking
+Categories=Qt;KDE;X-KDE-settings-components;
+
+[Desktop Entry]
+Type=Application
+Name=Tellico
+GenericName=Collection Manager
+Comment=A collection manager
+Exec=tellico -caption "%c" %i %m
+Categories=KDE;Office;Database;
+Icon=/usr/share/icons/hicolor/48x48/apps/tellico.png
+
+[Desktop Entry]
+Type=Application
+Name=Component Chooser
+Comment=Choose the default components for various services
+Exec=kcmshell componentchooser
+Categories=Qt;KDE;X-KDE-settings-components;
+Icon=/usr/share/misc
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Crackberg
+Exec=crackberg
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Hyperspace (GL)
+Exec=hyperspace
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Interaggregate
+Exec=interaggregate
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Kiten
+GenericName=Japanese Reference/Study Tool
+Comment=Japanese Reference and Study Tool
+Exec=kiten -caption "%c" %i %m
+Categories=Qt;KDE;Education;X-KDE-Edu-Language;
+Icon=/usr/share/icons/hicolor/48x48/apps/kiten.png
+
+[Desktop Entry]
+Type=Application
+Name=KNetAttach
+GenericName=Network Folder Wizard
+Exec=knetattach
+Categories=Qt;KDE;Network;
+OnlyShowIn=Old
+Icon=/usr/share/icons/hicolor/48x48/apps/knetattach.png
+
+[Desktop Entry]
+Type=Application
+Name=KOffice
+Categories=Qt;KDE;Office;
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Kopete
+GenericName=Instant Messenger
+Comment=Instant Messenger
+Exec=kopete -caption "%c" %i %m %u
+Categories=Qt;KDE;Network;InstantMessaging;
+Icon=/usr/share/icons/hicolor/48x48/apps/kopete.png
+
+[Desktop Entry]
+Type=Application
+Name=Kugar Designer
+GenericName=Report Template
+Comment=Report Designer
+Exec=kudesigner %u
+Categories=Qt;KDE;Office;X-KDE-More;
+
+[Desktop Entry]
+Type=Application
+Name=KWord
+GenericName=Word Processing
+Exec=kword %u
+Categories=Qt;KDE;Office;
+Icon=/usr/share/icons/hicolor/48x48/apps/kword.png
+
+[Desktop Entry]
+Type=Application
+Name=Lissie
+Exec=lissie
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Login Manager
+Comment=Configure the login manager (KDM)
+Exec=kcmshell kdm
+Categories=Qt;KDE;X-KDE-settings-system;
+Icon=/usr/share/icons/default.kde/48x48/apps/kdmconfig.png
+
+[Desktop Entry]
+Type=Application
+Name=MatrixView (GL)
+Exec=matrixview
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=PCI
+Comment=PCI information
+Exec=kcmshell pci
+Categories=Qt;KDE;X-KDE-information;
+Icon=/usr/share/icons/default.kde/48x48/apps/kcmpci.png
+
+[Desktop Entry]
+Type=Application
+Name=blinKen
+GenericName=Simon Says Game
+Comment=A retro memory enhancement game
+Exec=blinken
+Categories=Qt;KDE;Education;
+Icon=/usr/share/icons/hicolor/48x48/apps/blinken.png
+
+[Desktop Entry]
+Type=Application
+Name=Critical
+Exec=critical
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Dictionary
+GenericName=Online Dictionary
+Exec=kdict -caption "%c" %i %m
+Categories=Qt;KDE;Network;X-KDE-More;Office;Dictionary;
+X-AfterStep-IndexName=Dictionary application
+Icon=/usr/share/icons/hicolor/48x48/apps/kdict.png
+
+[Desktop Entry]
+Type=Application
+Name=Filelight
+GenericName=Disk Usage Statistics
+Comment=View disk usage information
+Exec=filelight %f
+Categories=Qt;KDE;Utility;
+Icon=/usr/share/icons/hicolor/48x48/apps/filelight.png
+
+[Desktop Entry]
+Type=Application
+Name=Flocks (GL)
+Exec=flocks
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=FontGlide
+Exec=fontglide
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KPalmDOC
+GenericName=PalmDOC Converter
+Exec=kpalmdoc
+Categories=Qt;KDE;Utility;X-KDE-Utilities-File;Office;PDA;
+Icon=/usr/share/icons/default.kde/48x48/apps/kpalmdoc.png
+
+[Desktop Entry]
+Type=Application
+Name=KPDF
+GenericName=PDF Viewer
+Exec=kpdf %U %i %m -caption "%c"
+Categories=Qt;KDE;Graphics;PDFViewer;
+Icon=/usr/share/icons/hicolor/48x48/apps/kpdf.png
+
+[Desktop Entry]
+Type=Application
+Name=Menger
+Exec=menger
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Pedal
+Exec=pedal
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Pong
+Exec=pong
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Remote Controls
+Comment=Configure your remote controls for use with applications
+Exec=kcmshell kcmlirc
+Categories=Qt;KDE;X-KDE-settings-peripherals;
+
+[Desktop Entry]
+Type=Application
+Name=Rotor
+Exec=rotor
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Cynosure
+Exec=cynosure
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KAudioCreator
+GenericName=CD Ripper
+Comment=Frontend for audio file creation
+Exec=kaudiocreator
+Path=
+Categories=Qt;KDE;AudioVideo;Audio;
+
+[Desktop Entry]
+Type=Application
+Name=KMines
+GenericName=Minesweeper-like Game
+Exec=kmines -caption "%c" %i %m
+Categories=Qt;KDE;Game;StrategyGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/kmines.png
+
+[Desktop Entry]
+Type=Application
+Name=KMyMoney
+GenericName=Personal Finance Manager
+Comment=Personal Finance Manager
+Exec=kmymoney2
+Categories=Office;Finance;
+Icon=/usr/share/icons/hicolor/48x48/apps/kmymoney2.png
+
+[Desktop Entry]
+Type=Application
+Name=KTechlab
+Comment=An IDE for microcontrollers and electronics
+Exec=ktechlab %i %m -caption "%c"
+Categories=Qt;KDE;Education;Science;Electronics;
+Icon=/usr/share/icons/hicolor/48x48/apps/ktechlab.png
+
+[Desktop Entry]
+Type=Application
+Name=Maze
+Exec=maze
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Cervisia
+GenericName=CVS Frontend
+Exec=cervisia -caption "%c" %i %m %u
+Path=
+Categories=Qt;KDE;Development;
+Icon=/usr/share/icons/hicolor/48x48/apps/cervisia.png
+
+[Desktop Entry]
+Type=Application
+Name=Control Center
+Exec=kcontrol -caption "%c" %i %m
+Categories=Qt;KDE;Core;
+OnlyShowIn=KDE
+Icon=/usr/share/icons/default.kde/48x48/apps/kcontrol.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Digital Camera
+Comment=Configure Kamera
+Exec=kcmshell kamera
+SwallowTitle=
+SwallowExec=
+Categories=Qt;KDE;X-KDE-settings-hardware;
+
+[Desktop Entry]
+Type=Application
+Name=Gamma
+Comment=A monitor calibration tool
+Exec=kcmshell kgamma
+Categories=Qt;KDE;Settings;X-KDE-settings-peripherals;
+Icon=/usr/share/icons/hicolor/48x48/apps/kgamma.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=GLHanoi
+Exec=glhanoi
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KFontView
+GenericName=Font Viewer
+Exec=kfontview %i %u
+Categories=Qt;KDE;Utility;X-KDE-More;
+Icon=/usr/share/icons/default.kde/48x48/apps/fonts.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=ksensors
+Comment=A simple KDE Application
+Exec=ksensors
+Categories=KDE;
+
+[Desktop Entry]
+Type=Application
+Name=MirrorBlob
+Exec=mirrorblob
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Printers
+Comment=Printing system configuration (printers, jobs, classes, ...)
+Exec=kcmshell printers
+Categories=Qt;KDE;X-KDE-settings-hardware;
+Icon=/usr/share/icons/hicolor/48x48/apps/printmgr.png
+
+[Desktop Entry]
+Type=Application
+Name=Sierpinski
+Exec=sierpinski
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=AntSpotlight
+Exec=antspotlight
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Bubble 3D (GL)
+Exec=bubble3d
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Clock
+Exec=kclock.kss
+Categories=KDE;
+X-AfterStep-IndexName=Clock application
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Endgame
+Exec=endgame
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KNetStats
+GenericName=Network monitor
+Exec=knetstats
+Categories=Qt;KDE;Network;
+Icon=/usr/share/icons/hicolor/48x48/apps/knetstats.png
+
+[Desktop Entry]
+Type=Application
+Name=KnowIt
+Comment=
+Exec=knowit -caption "%c" %i %m
+Categories=KDE;
+
+[Desktop Entry]
+Type=Application
+Name=Komparator
+Comment=A KDE Folder Synchronization Application
+Exec=komparator %u %u
+Categories=Qt;KDE;Utility;Archiving;
+
+[Desktop Entry]
+Type=Application
+Name=KoverArtist
+Comment=A KDE KPart Application
+Exec=koverartist %i %m -caption "%c"
+Categories=KDE;
+
+[Desktop Entry]
+Type=Application
+Name=KPilot
+GenericName=PalmPilot Tool
+Exec=kpilot
+Categories=Qt;KDE;Utility;X-KDE-Utilities-Peripherals;Office;PDA;
+Icon=/usr/share/icons/hicolor/48x48/apps/kpilot.png
+
+[Desktop Entry]
+Type=Application
+Name=QCad
+Comment=An application to modify DXF-Images.
+Exec=qcad
+Categories=KDE;
+Icon=/usr/share/pixmaps/qcad.xpm
+
+[Desktop Entry]
+Type=Application
+Name=Rocks
+Exec=rocks
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=DMA-Channels
+Comment=DMA information
+Exec=kcmshell dma
+Categories=Qt;KDE;X-KDE-information;
+Icon=/usr/share/icons/default.kde/48x48/apps/kcmmemory.png
+
+[Desktop Entry]
+Type=Application
+Name=Fieldlines (GL)
+Exec=fieldlines
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Halftone
+Exec=halftone
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Kaboodle
+GenericName=Media Player
+Exec=kaboodle %i %m -caption "%c" %U
+Categories=Qt;KDE;AudioVideo;X-KDE-More;
+Icon=/usr/share/icons/hicolor/48x48/apps/kaboodle.png
+
+[Desktop Entry]
+Type=Application
+Name=KJots
+GenericName=Note Taker
+Exec=kjots  -caption "%c" %i %m
+Path=
+Categories=Qt;KDE;Utility;X-KDE-Utilities-PIM;
+Icon=/usr/share/icons/hicolor/48x48/apps/kjots.png
+
+[Desktop Entry]
+Type=Application
+Name=Klavier
+GenericName=Virtual keyboard
+Comment=A virtual keyboard for KDE
+Exec=klavier
+Categories=KDE;
+
+[Desktop Entry]
+Type=Application
+Name=Knights
+Comment=A graphical chess interface
+Exec=knights
+Categories=KDE;
+Icon=/usr/share/icons/hicolor/48x48/apps/knights.png
+
+[Desktop Entry]
+Type=Application
+Name=KWrite
+GenericName=Text Editor
+Exec=kwrite %U
+Path=
+Categories=Qt;KDE;TextEditor;
+Icon=/usr/share/icons/hicolor/48x48/apps/kwrite.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Solarwinds (GL)
+Exec=solarwinds
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=StarWars
+Exec=starwars
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Braid
+Exec=braid
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Desktop Sharing
+Comment=Configure Desktop Sharing
+Exec=kcmshell kcmkrfb
+Categories=Qt;KDE;X-KDE-settings-network;
+Icon=/usr/share/icons/default.kde/48x48/apps/krfb.png
+
+[Desktop Entry]
+Type=Application
+Name=Fonts
+Comment=Font settings
+Exec=kcmshell fonts
+Categories=Qt;KDE;X-KDE-settings-looknfeel;
+Icon=/usr/share/icons/default.kde/48x48/apps/fonts.png
+
+[Desktop Entry]
+Type=Application
+Name=FuzzyFlakes
+Exec=fuzzyflakes
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=JigglyPuff
+Exec=jigglypuff
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Kalcul
+GenericName=Mental Calculation Tutor
+Comment=A KDE KPart Application
+Exec=kalcul %i %m -caption "%c"
+Categories=Qt;KDE;Education;Math;
+Icon=/usr/share/icons/hicolor/48x48/apps/kalcul.png
+
+[Desktop Entry]
+Type=Application
+Name=KAtomic
+GenericName=Sokoban-like Logic Game
+Exec=katomic %i %m -caption "%c"
+Categories=Qt;KDE;Game;StrategyGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/katomic.png
+
+[Desktop Entry]
+Type=Application
+Name=KDE Performance
+Comment=Configure settings that can improve KDE performance
+Exec=kcmshell kcmperformance
+Categories=Qt;KDE;X-KDE-settings-components;
+
+[Desktop Entry]
+Type=Application
+Name=KMix
+GenericName=Sound Mixer
+Exec=kmix -caption "%c" %i %m
+Path=
+Categories=Qt;KDE;AudioVideo;Audio;Mixer;
+OnlyShowIn=KDE
+Icon=/usr/share/icons/hicolor/48x48/apps/kmix.png
+
+[Desktop Entry]
+Type=Application
+Name=KPoker
+GenericName=Poker Card Game
+Exec=kpoker %i %m -caption "%c"
+Categories=Qt;KDE;Game;CardGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/kpoker.png
+
+[Desktop Entry]
+Type=Application
+Name=Krecipes
+GenericName=Cooking Book
+Comment=The KDE Cooking Book
+Exec=krecipes %i %m -caption "%c"
+Categories=KDE;
+Icon=/usr/share/icons/hicolor/48x48/apps/krecipes.png
+
+[Desktop Entry]
+Type=Application
+Name=KTimer
+GenericName=Countdown Launcher
+Exec=ktimer
+Categories=Qt;KDE;Utility;X-KDE-More;
+Icon=/usr/share/icons/hicolor/48x48/apps/ktimer.png
+
+[Desktop Entry]
+Type=Application
+Name=Solar Winds (GL)
+Exec=ksolarwinds.kss
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Sundancer2 (GL)
+Exec=sundancer2
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Wormhole
+Exec=wormhole
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Akregator
+GenericName=RSS Feed Reader
+Comment=An RSS Aggregator for KDE
+Exec=akregator %i %m -caption "%c"
+Categories=Qt;KDE;Network;News;
+Icon=/usr/share/icons/hicolor/48x48/apps/akregator.png
+
+[Desktop Entry]
+Type=Application
+Name=CD-ROM Information
+Comment=CD/DVD Drive Capabilites
+Exec=kcmshell cdinfo
+Categories=Qt;KDE;X-KDE-information;
+Icon=/usr/share/icons/default.kde/48x48/apps/kcmdevices.png
+
+[Desktop Entry]
+Type=Application
+Name=Gravity (GL)
+Exec=kgravity.kss
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=k9copy
+GenericName=Video DVD Backup
+Comment=DVD9 to DVD5 backup tool
+Exec=k9copy -caption "%c" %i %m  %u
+Categories=Qt;KDE;AudioVideo;DiscBurning;
+Icon=/usr/share/icons/hicolor/48x48/apps/k9copy.png
+
+[Desktop Entry]
+Type=Application
+Name=KAddressBook
+GenericName=Address Manager
+Exec=kaddressbook %u
+Categories=Qt;KDE;Office;ContactManagement;
+Icon=/usr/share/icons/hicolor/48x48/apps/kaddressbook.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=kdetv
+GenericName=TV Viewer
+Exec=kdetv -caption "%c" %i %m
+Categories=QT;KDE;Multimedia;AudioVideo;Video;TV;
+
+[Desktop Entry]
+Type=Application
+Name=Konsole
+GenericName=Terminal Program
+Exec=konsole
+Categories=Qt;KDE;System;TerminalEmulator;
+Icon=/usr/share/icons/hicolor/48x48/apps/konsole.png
+
+[Desktop Entry]
+Type=Application
+Name=KPackage
+GenericName=Package Manager
+Exec=kpackage -caption "%c" %i %m %u
+Path=
+Categories=Qt;KDE;System;
+Icon=/usr/share/icons/hicolor/48x48/apps/kpackage.png
+
+[Desktop Entry]
+Type=Application
+Name=KPendulum (GL)
+Exec=kpendulum.kss
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KSysV
+GenericName=SysV-Init Editor
+Exec=ksysv -caption "%c" %i %m
+Path=
+Categories=Qt;KDE;System;
+Icon=/usr/share/icons/hicolor/48x48/apps/ksysv.png
+
+[Desktop Entry]
+Type=Application
+Name=KTip
+GenericName=Useful Tips
+Exec=ktip
+Categories=Qt;KDE;Utility;X-KDE-Utilities-Desktop;
+OnlyShowIn=KDE
+Icon=/usr/share/icons/hicolor/48x48/apps/ktip.png
+
+[Desktop Entry]
+Type=Application
+Name=Screen Saver
+Comment=Screen Saver Settings
+Exec=kcmshell screensaver
+Categories=Qt;KDE;X-KDE-settings-looknfeel;
+X-AfterStep-IndexName=Screen Saver application
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Spotlight
+Exec=spotlight
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Tangram
+Exec=tangram
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=aRts Builder
+GenericName=Audio Filter Designer
+Exec=artsbuilder -caption "%c"
+Path=
+Categories=Qt;KDE;AudioVideo;X-KDE-More;
+OnlyShowIn=KDE
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Atunnel
+Exec=atunnel
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Celestia
+Comment=Celestia
+Exec=celestia %f
+Categories=Application;Education;Astronomy;Science;
+Icon=/usr/share/icons/hicolor/48x48/apps/celestia.png
+
+[Desktop Entry]
+Type=Application
+Name=Eqonomize!
+GenericName=Personal Accounting
+Comment=Manage your peronal finances
+Exec=eqonomize %i %m -caption "%c"
+Categories=Qt;KDE;Office;Finance;
+Icon=/usr/share/icons/hicolor/48x48/apps/eqonomize.png
+
+[Desktop Entry]
+Type=Application
+Name=Kaffeine
+GenericName=Media Player
+Comment=Version 0.8.4
+Exec=kaffeine %U
+Categories=Qt;KDE;Application;AudioVideo;Player;
+Icon=/usr/share/icons/hicolor/48x48/apps/kaffeine.png
+
+[Desktop Entry]
+Type=Application
+Name=KCalc
+GenericName=Scientific Calculator
+Exec=kcalc  -caption "%c" %i %m
+Categories=Qt;KDE;Utility;X-KDE-Utilities-Desktop;
+Icon=/usr/share/icons/hicolor/48x48/apps/kcalc.png
+
+[Desktop Entry]
+Type=Application
+Name=KDevelop: C/C++
+GenericName=IDE for C/C++
+Exec=kdevelop --profile CandCppIDE %u
+Categories=Qt;KDE;Development;IDE;X-KDE-KDevelopIDE;
+Icon=/usr/share/icons/hicolor/48x48/apps/kdevelop.png
+
+[Desktop Entry]
+Type=Application
+Name=KNetDockApp
+Comment=Network activity monitor applet for KDE
+Exec=knetdockapp
+Categories=KDE;
+Icon=/usr/share/icons/hicolor/48x48/apps/knetdockapp.png
+
+[Desktop Entry]
+Type=Application
+Name=Lisa
+Exec=lisa
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Noseguy
+Exec=noseguy
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Patience
+GenericName=Patience Card Game
+Exec=kpat %i %m -caption "%c"
+Categories=Qt;KDE;Game;CardGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/kpat.png
+
+[Desktop Entry]
+Type=Application
+Name=Smb4K
+GenericName=The SMB/CIFS Share Browser
+Comment=The SMB/CIFS Share Browser
+Exec=smb4k
+Categories=Qt;KDE;Utility;
+Icon=/usr/share/icons/default.kde/48x48/apps/smb4k.png
+
+[Desktop Entry]
+Type=Application
+Name=SuperKaramba
+GenericName=Desktop Widgets
+Comment=An engine for cool desktop eyecandy.
+Exec=superkaramba %U
+Categories=Qt;KDE;Utility;X-KDE-Utilities-Desktop;
+OnlyShowIn=KDE
+Icon=/usr/share/icons/default.kde/48x48/apps/superkaramba.png
+
+[Desktop Entry]
+Type=Application
+Name=Text-to-Speech
+Comment=Text-to-Speech Control Module
+Exec=kcmshell kcmkttsd
+Categories=Qt;KDE;X-KDE-settings-accessibility;
+StartupWMClass=
+Icon=/usr/share/icons/default.kde/48x48/apps/kttsd.png
+
+[Desktop Entry]
+Type=Application
+Name=Virtual Machine
+Exec=kvm.kss
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Window-Specific Settings
+Comment=Configure settings specifically for a window
+Exec=kcmshell kwinrules
+Categories=Qt;KDE;X-KDE-settings-desktop;
+Icon=/usr/share/icons/default.kde/48x48/apps/kcmkwm.png
+
+[Desktop Entry]
+Type=Application
+Name=Boxed
+Exec=boxed
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Crystal
+Exec=crystal
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Cube 21
+Exec=cube21
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Hufo's Tunnel (GL)
+Exec=hufo_tunnel
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KColorEdit
+GenericName=Color Palette Editor
+Exec=kcoloredit %i %m %U
+Path=
+Categories=Qt;KDE;Graphics;X-KDE-More;
+
+[Desktop Entry]
+Type=Application
+Name=KCron
+GenericName=Task Scheduler
+Exec=kcron %i %m -caption "%c"
+Categories=Qt;KDE;System;
+
+[Desktop Entry]
+Type=Application
+Name=KRandRTray
+GenericName=Screen Resize & Rotate
+Comment=Resize and rotate X screens.
+Exec=krandrtray
+Categories=Qt;KDE;System;
+OnlyShowIn=KDE
+Icon=/usr/share/icons/default.kde/48x48/apps/randr.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Mountain
+Exec=mountain
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Theme Manager
+Comment=Manage global KDE visual themes
+Exec=kcmshell kthememanager
+Categories=Qt;KDE;X-KDE-settings-looknfeel;
+Icon=/usr/share/icons/default.kde/48x48/apps/kthememgr.png
+
+[Desktop Entry]
+Type=Application
+Name=Windows Applications
+GenericName=Wine Configuration Editor
+Comment=Wine Configuration
+Exec=kcmshell System/wineconfig
+Path=
+Categories=Qt;KDE;X-KDE-settings-system;X-KDE-systemsettings-advancedadministration;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Xlyap
+Exec=xlyap
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=4D Hypertorus
+Exec=hypertorus
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Celtic
+Exec=celtic
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Julia
+Exec=julia
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KAlgebra
+Comment=Graph calculator.
+Exec=kalgebra
+Categories=KDE;
+
+[Desktop Entry]
+Type=Application
+Name=KLatin
+GenericName=Latin Reviser
+Comment=A program to help revise Latin
+Exec=klatin -caption "%c" %i %m
+Categories=Qt;KDE;Education;Languages;
+Icon=/usr/share/icons/hicolor/48x48/apps/klatin.png
+
+[Desktop Entry]
+Type=Application
+Name=KOffice Workspace
+GenericName=Office Suite
+Exec=koshell
+Categories=Qt;KDE;Office;
+Icon=/usr/share/icons/hicolor/48x48/apps/koshell.png
+
+[Desktop Entry]
+Type=Application
+Name=Change Password
+Exec=kdepasswd
+Categories=Qt;KDE;Settings;
+Icon=/usr/share/icons/default.kde/48x48/apps/password.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Fireworks 3D (GL)
+Exec=kfiresaver.kss
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Font Installer
+Comment=Install & preview fonts
+Exec=kcmshell kcmfontinst
+Categories=Qt;KDE;X-KDE-settings-system;
+Icon=/usr/share/icons/default.kde/48x48/apps/fonts.png
+
+[Desktop Entry]
+Type=Application
+Name=IEEE 1394 Devices
+Comment=View the IEEE 1394 devices attached to this computer
+Exec=kcmshell kcmview1394
+Categories=Qt;KDE;X-KDE-information;
+Icon=/usr/share/icons/default.kde/48x48/apps/ieee1394.png
+
+[Desktop Entry]
+Type=Application
+Name=Install KDE Theme
+Exec=kdeinstallktheme %f
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kthememgr.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=IRKick
+GenericName=KDE LIRC Server
+Comment=KDE Linux infrared remote control server.
+Exec=irkick
+Categories=Qt;KDE;Utility;X-KDE-Utilities-Peripherals;
+
+[Desktop Entry]
+Type=Application
+Name=Keyboard
+Comment=Keyboard settings
+Exec=kcmshell keyboard
+Categories=Qt;KDE;X-KDE-settings-hardware;
+Icon=/usr/share/icons/default.kde/48x48/apps/keyboard.png
+
+[Desktop Entry]
+Type=Application
+Name=KFax
+GenericName=Fax Viewer
+Exec=kfax %f   -caption "%c" %i %m
+Path=
+Categories=Qt;KDE;Graphics;X-KDE-More;
+Icon=/usr/share/icons/hicolor/48x48/apps/kfax.png
+
+[Desktop Entry]
+Type=Application
+Name=Kile
+GenericName=LaTeX Frontend
+Comment=(La)TeX development environment
+Exec=kile
+Categories=Qt;KDE;Office;
+Icon=/usr/share/icons/hicolor/48x48/apps/kile.png
+
+[Desktop Entry]
+Type=Application
+Name=KMahjongg
+GenericName=Mahjongg-like Tile Game
+Exec=kmahjongg %i %m -caption "%c"
+Categories=Qt;KDE;Game;BoardGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/kmahjongg.png
+
+[Desktop Entry]
+Type=Application
+Name=Protocols
+Comment=Information about the available protocols
+Exec=kcmshell ioslaveinfo
+SwallowTitle=
+SwallowExec=
+Categories=Qt;KDE;X-KDE-information;
+
+[Desktop Entry]
+Type=Application
+Name=CGI Scripts
+Comment=Configure the CGI KIO slave
+Exec=kcmshell kcmcgi
+Categories=Qt;KDE;X-KDE-settings-webbrowsing;
+
+[Desktop Entry]
+Type=Application
+Name=Configure the Panel
+Exec=kcmshell %i kicker_config kcmtaskbar
+Categories=Qt;KDE;Settings;
+OnlyShowIn=KDE
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Cyclone (GL)
+Exec=cyclone
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Eruption
+Exec=eruption
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=FlipFlop
+Exec=flipflop
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=GLSnake
+Exec=glsnake
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Interrupts
+Comment=Interrupt information
+Exec=kcmshell interrupts
+Categories=Qt;KDE;X-KDE-information;
+Icon=/usr/share/icons/default.kde/48x48/apps/kcmmemory.png
+
+[Desktop Entry]
+Type=Application
+Name=K-3D
+Comment=3D modeling and animation
+Exec=/usr/bin/k3d
+Categories=Graphics;3DGraphics;
+Icon=/usr/share/k3d/icons/k3d2.png
+
+[Desktop Entry]
+Type=Application
+Name=KFaxView
+GenericName=Fax Viewer
+Exec=kfaxview %f
+Path=
+Categories=Qt;KDE;Graphics;
+Icon=/usr/share/icons/hicolor/48x48/apps/kfaxview.png
+
+[Desktop Entry]
+Type=Application
+Name=Kleopatra
+Exec=kleopatra --import-certificate %u
+Categories=KDE;
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=KMPlayer
+GenericName=Media Player
+Comment=KDE interface for MPlayer
+Exec=kmplayer -caption "%c" %i %m %U
+Categories=Qt;KDE;AudioVideo;
+Icon=/usr/share/icons/hicolor/48x48/apps/kmplayer.png
+
+[Desktop Entry]
+Type=Application
+Name=KWorldClock
+GenericName=World Clock
+Exec=kworldclock
+Categories=Qt;KDE;Amusement;
+Icon=/usr/share/icons/hicolor/48x48/apps/kworldclock.png
+
+[Desktop Entry]
+Type=Application
+Name=Menu Editor
+Exec=kmenuedit
+Categories=Qt;KDE;Settings;
+OnlyShowIn=Old
+Icon=/usr/share/icons/hicolor/48x48/apps/kmenuedit.png
+
+[Desktop Entry]
+Type=Application
+Name=Moire2
+Exec=moire2
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Quanta Plus
+GenericName=Web Development Environment
+Comment=Web Development Environment
+Exec=quanta %U
+Categories=Qt;KDE;Development;WebDevelopment;
+Icon=/usr/share/icons/hicolor/48x48/apps/quanta.png
+
+[Desktop Entry]
+Type=Application
+Name=Splash Screen
+Comment=Manager for Splash Screen Themes
+Exec=kcmshell ksplashthememgr
+Categories=Qt;KDE;X-KDE-settings-looknfeel;
+Icon=/usr/share/icons/hicolor/48x48/apps/ksplash.png
+
+[Desktop Entry]
+Type=Application
+Name=Swarm
+Exec=kswarm.kss
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Taskbar
+Comment=Configure the panel taskbar
+Exec=kcmshell kcmtaskbar
+Categories=Qt;KDE;X-KDE-settings-desktop;
+Icon=/usr/share/icons/default.kde/48x48/apps/kmenu.png
+
+[Desktop Entry]
+Type=Application
+Name=Truchet
+Exec=truchet
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Wallet Management Tool
+Exec=kwalletmanager --kwalletd
+Categories=KDE;
+Icon=/usr/share/icons/hicolor/48x48/apps/kwalletmanager.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Wine Windows Emulator
+Exec=wine %f
+Categories=KDE;
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Zoom
+Exec=zoom
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=AntInspect
+Exec=antinspect
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=BlockTube
+Exec=blocktube
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Coral
+Exec=coral
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Devices
+Comment=Attached devices information
+Exec=kcmshell devices
+Categories=Qt;KDE;X-KDE-information;
+Icon=/usr/share/icons/default.kde/48x48/apps/kcmdevices.png
+
+[Desktop Entry]
+Type=Application
+Name=KBFX Configurator
+Comment=KBFX Configuration Utility
+Exec=kbfxconfigapp
+Categories=Qt;KDE;Settings;
+
+[Desktop Entry]
+Type=Application
+Name=KlamAV
+GenericName=Anti-Virus Manager
+Comment=An Anti-Virus Manager
+Exec=klamav %i %m -caption "%c"
+Categories=Qt;KDE;Application;System;
+Icon=/usr/share/icons/hicolor/48x48/apps/klamav.png
+
+[Desktop Entry]
+Type=Application
+Name=KMail
+GenericName=Mail Client
+Exec=kmail -caption "%c" %i %m
+Categories=Qt;KDE;Network;Office;Email;
+Icon=/usr/share/icons/hicolor/48x48/apps/kmail.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=KMouseTool
+GenericName=Automatic Mouse Click
+Comment=Clicks the mouse for you, reducing the effects of RSI
+Exec=kmousetool -caption "%c" %i %m
+Categories=Qt;KDE;Utility;Accessibility;
+
+[Desktop Entry]
+Type=Application
+Name=KNewsTicker
+GenericName=News Ticker
+Exec=appletproxy knewsticker.desktop
+Categories=Qt;KDE;Network;X-KDE-More;News;
+Icon=/usr/share/icons/hicolor/48x48/apps/knewsticker.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=KolourPaint
+GenericName=Paint Program
+Exec=kolourpaint %u
+Categories=Qt;KDE;Graphics;
+Icon=/usr/share/icons/hicolor/48x48/apps/kolourpaint.png
+
+[Desktop Entry]
+Type=Application
+Name=KSnakeRace
+GenericName=Snake Race Game
+Exec=ksnake %i %m -caption "%c"
+Categories=Qt;KDE;Game;ArcadeGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/ksnake.png
+
+[Desktop Entry]
+Type=Application
+Name=KTeaTime
+GenericName=Tea Cooker
+Exec=kteatime
+Categories=Qt;KDE;Amusement;
+Icon=/usr/share/icons/hicolor/48x48/apps/kteatime.png
+
+[Desktop Entry]
+Type=Application
+Name=KThesaurus
+GenericName=Related Words
+Exec=kthesaurus
+Categories=Qt;KDE;Office;X-KDE-More;
+
+[Desktop Entry]
+Type=Application
+Name=LavaLite
+Exec=lavalite
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=OpenOffice.org Formula
+GenericName=Formula
+Comment=Create and edit scientific formulas and equations.
+Exec=ooffice -math %U
+Categories=KDE;
+Icon=/usr/share/icons/hicolor/48x48/apps/ooo-math.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Proxy
+Comment=Configure the proxy servers used
+Exec=kcmshell proxy
+Categories=Qt;KDE;X-KDE-settings-network;
+Icon=/usr/share/icons/default.kde/48x48/apps/proxy.png
+
+[Desktop Entry]
+Type=Application
+Name=Services
+Comment=Configure which services will be run when the system starts
+Exec=gksu services-admin
+Categories=GNOME;GTK;System;Settings;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=SpirographX (GL)
+Exec=spirographx
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Storage Media Notifications
+Comment=Configure Storage Media Notifications
+Exec=kcmshell media
+Categories=KDE;
+
+[Desktop Entry]
+Type=Application
+Name=CubeStorm
+Exec=cubestorm
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Device Manager
+GenericName=Hardware Viewing
+Exec=kde-hal-device-manager
+Categories=Qt;KDE;System;
+
+[Desktop Entry]
+Type=Application
+Name=Kandy
+GenericName=Mobile Phone Tool
+Comment=Tool for syncing address book data with mobile phones
+Exec=kandy %i %m -caption "%c"
+Categories=Qt;KDE;Utility;X-KDE-Utilities-Peripherals;Network;Telephony;
+
+[Desktop Entry]
+Type=Application
+Name=KDevelop: KDE/C++
+GenericName=IDE for KDE Development
+Exec=kdevelop --profile KDECppIDE %u
+Categories=Qt;KDE;Development;IDE;X-KDE-KDevelopIDE;
+Icon=/usr/share/icons/hicolor/48x48/apps/kdevelop.png
+
+[Desktop Entry]
+Type=Application
+Name=KDevelop: Multilanguage
+GenericName=IDE
+Exec=kdevelop %u
+Categories=Qt;KDE;Development;IDE;X-KDE-KDevelopIDE;
+Icon=/usr/share/icons/hicolor/48x48/apps/kdevelop.png
+
+[Desktop Entry]
+Type=Application
+Name=KMyFirewall
+GenericName=Configure Firewall
+Comment=KMyFirewall Ruleset
+Exec=kmyfirewall
+Categories=Qt;KDE;System;
+Icon=/usr/share/icons/hicolor/48x48/apps/kmyfirewall.png
+
+[Desktop Entry]
+Type=Application
+Name=KOrganizer
+GenericName=Personal Organizer
+Comment=Calendar and Scheduling Program
+Exec=korganizer %U
+Path=
+Categories=Qt;KDE;Office;ProjectManagement;
+Icon=/usr/share/icons/hicolor/48x48/apps/korganizer.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Moire
+Exec=moire
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Rubik Cube (GL)
+Exec=rubik
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=StonerView
+Exec=stonerview
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Storage Media
+Comment=Configure Storage Media
+Exec=kcmshell media
+Categories=Qt;KDE;X-KDE-settings-peripherals;
+
+[Desktop Entry]
+Type=Application
+Name=Flow
+Exec=flow
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Galaxy
+Exec=galaxy
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Gleidescope
+Exec=gleidescope
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Hufo's Smoke (GL)
+Exec=hufo_smoke
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=kX Generator
+Comment=X Server Configuration Utilitty
+Exec=kxgenerator
+Categories=System;Application;SystemSetup;
+
+[Desktop Entry]
+Type=Application
+Name=Dictionary
+GenericName=Online Dictionary
+Exec=kdict -caption "%c" %i %m
+Categories=Qt;KDE;Network;X-KDE-More;Office;Dictionary;
+X-AfterStep-IndexName=Online Dictionary
+Icon=/usr/share/icons/hicolor/48x48/apps/kdict.png
+
+[Desktop Entry]
+Type=Application
+Name=Default Applications
+Comment=Choose the default application for various services
+Exec=kcmshell componentchooser
+Categories=Qt;KDE;X-KDE-settings-components;
+
+[Desktop Entry]
+Type=Application
+Name=KLinkStatus
+GenericName=Link Checker
+Exec=klinkstatus %i %m -caption "%c"
+Categories=Qt;KDE;Development;WebDevelopment;
+Icon=/usr/share/icons/hicolor/48x48/apps/klinkstatus.png
+
+[Desktop Entry]
+Type=Application
+Name=Konversation
+GenericName=IRC Client
+Exec=konversation -caption "%c" %i %m
+Categories=Qt;KDE;Network;
+Icon=/usr/share/icons/hicolor/48x48/apps/konversation.png
+
+[Desktop Entry]
+Type=Application
+Name=KTemperature
+Exec=ktemperature
+Categories=KDE;
+
+[Desktop Entry]
+Type=Application
+Name=Polyhedra
+Exec=polyhedra
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=SCSI
+Comment=SCSI information
+Exec=kcmshell scsi
+Categories=Qt;KDE;X-KDE-information;
+Icon=/usr/share/icons/default.kde/48x48/apps/kcmscsi.png
+
+[Desktop Entry]
+Type=Application
+Name=Anemone
+Exec=anemone
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=CloudLife
+Exec=cloudlife
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=GLBlur
+Exec=glblur
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=GLKnots
+Exec=glknots
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Goop
+Exec=goop
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=GTK Styles and Fonts
+Comment=Control the style and fonts used by GTK applications
+Exec=kcmshell kcmgtk
+Categories=X-KDE-systemsettings-lookandfeel-appearance;X-KDE-settings-looknfeel;
+OnlyShowIn=KDE
+Icon=/usr/share/icons/default.kde/48x48/apps/gnome_apps.png
+
+[Desktop Entry]
+Type=Application
+Name=Hopalong
+Exec=hopalong
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=kdissert
+GenericName=Mindmap Tool
+Exec=kdissert -caption "%c" %i %m
+Categories=QT;KDE;Utility;X-KDE-More;
+
+[Desktop Entry]
+Type=Application
+Name=KEdit
+GenericName=Simple Text Editor
+Exec=kedit  -caption "%c" %i %m %u
+Path=
+Categories=Qt;KDE;TextEditor;
+Icon=/usr/share/icons/hicolor/48x48/apps/kedit.png
+
+[Desktop Entry]
+Type=Application
+Name=Kiso
+Comment=An application to modify ISO-Images.
+Exec=kiso
+Categories=Qt;KDE;Utility;
+
+[Desktop Entry]
+Type=Application
+Name=KNetworkManager
+GenericName=Network Manager
+Comment=A KDE frontend for NetworkManager
+Exec=knetworkmanager
+Categories=Qt;KDE;Network;Applet;
+
+[Desktop Entry]
+Type=Application
+Name=Konqueror
+Comment=KDE File Manager & Web Browser
+Exec=konqueror %U
+Categories=KDE;
+Icon=/usr/share/icons/hicolor/48x48/apps/konqueror.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Korn
+GenericName=Mail Alert
+Exec=korn  -caption "%c" %i %m %f
+Path=
+Categories=Qt;KDE;Network;X-KDE-More;Office;Email;
+Icon=/usr/share/icons/hicolor/48x48/apps/korn.png
+
+[Desktop Entry]
+Type=Application
+Name=KTux
+Exec=ktux %i %m -caption "%c"
+Categories=KDE;
+
+[Desktop Entry]
+Type=Application
+Name=KXSLDbg
+GenericName=XSLT Debugger
+Exec=kxsldbg %i %m -caption "%c"
+Categories=Qt;KDE;Development;WebDevelopment;
+
+[Desktop Entry]
+Type=Application
+Name=Molecule
+Exec=molecule
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=X-Server
+Comment=X-Server information
+Exec=kcmshell xserver
+Categories=Qt;KDE;X-KDE-information;
+Icon=/usr/share/icons/default.kde/48x48/apps/kcmx.png
+
+[Desktop Entry]
+Type=Application
+Name=Bubbles
+Exec=bubbles
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Fade Plot
+Exec=fadeplot
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Fireworkx
+Exec=fireworkx
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KDevelop: Scripting
+GenericName=IDE for Scripting Language
+Exec=kdevelop --profile ScriptingLanguageIDE %u
+Categories=Qt;KDE;Development;IDE;X-KDE-KDevelopIDE;
+Icon=/usr/share/icons/hicolor/48x48/apps/kdevelop.png
+
+[Desktop Entry]
+Type=Application
+Name=KEuroCalc
+Comment=A currency converter and calculator
+Exec=keurocalc -caption "%c" %i %m
+Categories=Qt;KDE;Utility;
+Icon=/usr/share/icons/hicolor/48x48/apps/keurocalc.png
+
+[Desktop Entry]
+Type=Application
+Name=Konserve
+GenericName=Backup application
+Comment=Small backup application for the system tray
+Exec=konserve
+Categories=Archiving;Utility;TrayIcon;KDE;
+
+[Desktop Entry]
+Type=Application
+Name=KPilotDaemon
+Exec=kpilotDaemon
+Categories=Qt;KDE;Utility;Office;PDA;
+Icon=/usr/share/pixmaps/kpilot.xpm
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=KSirc
+GenericName=IRC Client
+Exec=ksirc %i %m
+Path=
+SwallowExec=
+Categories=Qt;KDE;Network;IRCClient;
+Icon=/usr/share/icons/hicolor/48x48/apps/ksirc.png
+
+[Desktop Entry]
+Type=Application
+Name=KStars
+GenericName=Desktop Planetarium
+Comment=Desktop Planetarium
+Exec=kstars -caption "%c" %i %m
+Categories=Qt;KDE;Education;Science;Astronomy;
+Icon=/usr/share/icons/hicolor/48x48/apps/kstars.png
+
+[Desktop Entry]
+Type=Application
+Name=KwikDisk
+GenericName=Removable Media Utility
+Exec=kwikdisk -caption "%c"
+Categories=Qt;KDE;System;X-KDE-More;
+OnlyShowIn=KDE
+Icon=/usr/share/icons/hicolor/48x48/apps/kwikdisk.png
+
+[Desktop Entry]
+Type=Application
+Name=Paths
+Comment=Change the location important files are stored
+Exec=kcmshell desktoppath
+Categories=Qt;KDE;X-KDE-settings-system;
+Icon=/usr/share/icons/hicolor/48x48/apps/kfm.png
+
+[Desktop Entry]
+Type=Application
+Name=Piecewise
+Exec=piecewise
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=SameGame
+GenericName=Board Game
+Exec=ksame %i %m -caption "%c"
+Categories=Qt;KDE;Game;StrategyGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/ksame.png
+
+[Desktop Entry]
+Type=Application
+Name=Skyrocket (GL)
+Exec=skyrocket
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Sproingies (GL)
+Exec=sproingies
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Cage (GL)
+Exec=cage
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Cubenetic
+Exec=cubenetic
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KJumpingCube
+GenericName=Tactical Game
+Exec=kjumpingcube -caption "%c" %i %m
+Categories=Qt;KDE;Game;StrategyGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/kjumpingcube.png
+
+[Desktop Entry]
+Type=Application
+Name=KleanSweep
+GenericName=File cleaner
+Comment=Utility which finds unneeded files
+Exec=kdesu kleansweep
+Categories=Qt;KDE;System;
+
+[Desktop Entry]
+Type=Application
+Name=Mouse
+Comment=Mouse settings
+Exec=kcmshell mouse
+Categories=Qt;KDE;X-KDE-settings-hardware;
+
+[Desktop Entry]
+Type=Application
+Name=Privacy
+Comment=Privacy - a kcontrol module to clean unwanted traces the user leaves on the system
+Exec=kcmshell privacy
+Categories=Qt;KDE;X-KDE-settings-security;
+
+[Desktop Entry]
+Type=Application
+Name=Sonar
+Exec=sonar
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Epicycle
+Exec=epicycle
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Gravity
+Exec=grav
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=graynetic
+Exec=greynetic
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Kalzium
+GenericName=Periodic Table of Elements
+Comment=KDE Periodic Table of Elements
+Exec=kalzium -caption "%c" %i %m
+Categories=Qt;KDE;Education;Science;
+Icon=/usr/share/icons/hicolor/48x48/apps/kalzium.png
+
+[Desktop Entry]
+Type=Application
+Name=Karbon14
+GenericName=Scalable Graphics
+Exec=karbon %u
+Categories=Qt;KDE;Office;X-KDE-More;
+Icon=/usr/share/icons/hicolor/48x48/apps/karbon.png
+
+[Desktop Entry]
+Type=Application
+Name=KchmViewer
+Comment=A viewer of CHM (MS-Help) files
+Exec=kchmviewer %U
+Categories=Qt;KDE;Utility;
+Icon=/usr/share/icons/default.kde/48x48/apps/kchmviewer.png
+
+[Desktop Entry]
+Type=Application
+Name=KGoldrunner
+GenericName=Action & Puzzle Solving Game
+Comment=A game of action and puzzle-solving
+Exec=kgoldrunner
+Categories=Qt;KDE;Game;ArcadeGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/kgoldrunner.png
+
+[Desktop Entry]
+Type=Application
+Name=Klear
+GenericName=DVB-TV/Harddiskrecorder
+Exec=klear
+Categories=KDE;Application;AudioVideo;HarddiskRecording;
+Icon=/usr/share/icons/hicolor/48x48/apps/klear.png
+
+[Desktop Entry]
+Type=Application
+Name=knoda
+Comment=A database frontend
+Exec=knoda
+Categories=Qt;KDE;Office;Database;X-Ubuntu-Gettext-Domain=desktop_knoda;
+
+[Desktop Entry]
+Type=Application
+Name=Kodo
+GenericName=Mouse Odometer
+Exec=kodo
+Categories=Qt;KDE;Amusement;
+Icon=/usr/share/icons/hicolor/48x48/apps/kodo.png
+
+[Desktop Entry]
+Type=Application
+Name=KPager
+GenericName=Desktop Pager
+Exec=kpager
+Categories=Qt;KDE;Utility;X-KDE-Utilities-Desktop;
+Icon=/usr/share/icons/hicolor/48x48/apps/kpager.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Triangle
+Exec=triangle
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Web Shortcuts
+Comment=Configure enhanced browsing
+Exec=kcmshell ebrowsing
+Categories=Qt;KDE;X-KDE-settings-webbrowsing;
+Icon=/usr/share/icons/default.kde/48x48/apps/enhanced_browsing.png
+
+[Desktop Entry]
+Type=Application
+Name=Apollonian
+Exec=apollonian
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=BlitSpin
+Exec=blitspin
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Halo
+Exec=halo
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KDE Groupware Wizard
+Exec=groupwarewizard
+Categories=Qt;KDE;X-KDE-Utilities-PIM;Office;Network;Email;
+Icon=/usr/share/icons/hicolor/48x48/apps/kontact.png
+
+[Desktop Entry]
+Type=Application
+Name=KFoulEggs
+GenericName=Japanese PuyoPuyo-like Game
+Exec=kfouleggs -caption "%c" %i %m
+Categories=Qt;KDE;Game;ArcadeGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/kfouleggs.png
+
+[Desktop Entry]
+Type=Application
+Name=KTouch
+GenericName=Touch Typing Tutor
+Exec=ktouch -caption "%c" %i %m
+Categories=Qt;KDE;Education;Miscellaneous;
+Icon=/usr/share/icons/hicolor/48x48/apps/ktouch.png
+
+[Desktop Entry]
+Type=Application
+Name=ktranslator
+GenericName=Translation Application
+Comment=A KDE Translation Application
+Exec=ktranslator
+Categories=Qt;KDE;Utility;
+Icon=/usr/share/icons/hicolor/48x48/apps/ktranslator.png
+
+[Desktop Entry]
+Type=Application
+Name=Laptop Battery
+Comment=Laptop Battery
+Exec=kcmshell laptop
+Categories=Qt;KDE;X-KDE-settings-power;
+Icon=/usr/share/icons/default.kde/48x48/apps/laptop_battery.png
+
+[Desktop Entry]
+Type=Application
+Name=Lightning
+Exec=lightning
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Terminal Program - Super User Mode
+Exec=konsole --type su
+Categories=Qt;KDE;System;TerminalEmulator;X-KDE-More;
+Icon=/usr/share/icons/hicolor/48x48/apps/konsole.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=User Management
+GenericName=User Account Editor
+Comment=Users & Groups Administration
+Exec=kcmshell System/userconfig
+Categories=Qt;KDE;X-KDE-settings-system;
+
+[Desktop Entry]
+Type=Application
+Name=Worm
+Exec=worm
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Accessibility
+Comment=Improve accessibility for disabled persons
+Exec=kcmshell kcmaccess
+Categories=Qt;KDE;X-KDE-settings-accessibility;
+X-AfterStep-IndexName=Accessibility application
+Icon=/usr/share/icons/default.kde/48x48/apps/access.png
+
+[Desktop Entry]
+Type=Application
+Name=KDVI
+GenericName=DVI Viewer
+Exec=kdvi %f -caption "%c" %i %m
+Path=
+Categories=Qt;KDE;Graphics;
+Icon=/usr/share/icons/hicolor/48x48/apps/kdvi.png
+
+[Desktop Entry]
+Type=Application
+Name=KFileReplace
+GenericName=Search & Replace Tool
+Exec=kfilereplace %i %m -caption "%c"
+Categories=Qt;KDE;Utility;X-KDE-Utilities-File;
+Icon=/usr/share/icons/hicolor/48x48/apps/kfilereplace.png
+
+[Desktop Entry]
+Type=Application
+Name=LabPlot
+Comment=An application for plotting of data sets and functions
+Exec=LabPlot -caption "%c" %i %m
+Categories=Qt;KDE;Education;Science;Physics;Math;
+Icon=/usr/share/icons/hicolor/48x48/apps/LabPlot.png
+
+[Desktop Entry]
+Type=Application
+Name=Loop
+Exec=loop
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Network
+Comment=Configure network devices and connections
+Exec=gksu network-admin
+Categories=GNOME;GTK;System;Settings;
+X-AfterStep-IndexName=Network application
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Qix
+Exec=qix
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Starfish
+Exec=starfish
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Timetunnel
+Exec=timetunnel
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Users and Groups
+Comment=Add or remove users and groups
+Exec=gksu users-admin
+Categories=GNOME;GTK;System;Settings;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Vermiculate
+Exec=vermiculate
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=XJack
+Exec=xjack
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=AMOR
+GenericName=On-Screen Creature
+Exec=amor
+Categories=Qt;KDE;Amusement;
+Icon=/usr/share/icons/hicolor/48x48/apps/amor.png
+
+[Desktop Entry]
+Type=Application
+Name=Ark
+GenericName=Archiving Tool
+Exec=ark -caption "%c" %i %m %U
+Path=
+SwallowTitle=
+SwallowExec=
+Categories=Qt;KDE;Utility;X-KDE-Utilities-File;
+Icon=/usr/share/icons/hicolor/48x48/apps/ark.png
+
+[Desktop Entry]
+Type=Application
+Name=Biof (GL)
+Exec=biof
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Browser Identification
+Comment=Configure the way Konqueror reports itself
+Exec=kcmshell useragent
+Categories=Qt;KDE;X-KDE-settings-webbrowsing;
+Icon=/usr/share/icons/default.kde/48x48/apps/agent.png
+
+[Desktop Entry]
+Type=Application
+Name=Carousel
+Exec=carousel
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Discrete
+Exec=discrete
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Flying Toasters
+Exec=flyingtoasters
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KImageMapEditor
+GenericName=HTML Image Map Editor
+Exec=kimagemapeditor -caption "%c" %i %m
+Categories=Qt;KDE;Development;WebDevelopment;
+Icon=/usr/share/icons/hicolor/48x48/apps/kimagemapeditor.png
+
+[Desktop Entry]
+Type=Application
+Name=KPresenter
+GenericName=Slide Presentations
+Exec=kpresenter %u
+Categories=Qt;KDE;Office;
+Icon=/usr/share/icons/hicolor/48x48/apps/kpresenter.png
+
+[Desktop Entry]
+Type=Application
+Name=MemScroller
+Exec=memscroller
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Rorschach
+Exec=rorschach
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=aRts Control Tool
+GenericName=Sound Server Control
+Exec=artscontrol -caption "%c"
+Categories=Qt;KDE;AudioVideo;X-KDE-More;
+OnlyShowIn=KDE
+Icon=/usr/share/icons/hicolor/48x48/apps/artscontrol.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Bitmap Flag (GL)
+Exec=kwave.kss
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Boing
+Exec=boing
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Colorfire (GL)
+Exec=colorfire
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Date & Time
+Comment=Date and time settings
+Exec=kcmshell kde-clock.desktop
+Categories=Qt;KDE;X-KDE-settings-system;
+Icon=/usr/share/icons/default.kde/48x48/apps/date.png
+
+[Desktop Entry]
+Type=Application
+Name=Euphoria (GL)
+Exec=euphoria
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Home
+GenericName=Personal Files
+Exec=kfmclient openProfile filemanagement
+Categories=Qt;KDE;Core;
+OnlyShowIn=KDE
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Input Actions
+Comment=Configure Hotkey settings
+Exec=kcmshell khotkeys
+Categories=Qt;KDE;X-KDE-settings-accessibility;
+
+[Desktop Entry]
+Type=Application
+Name=KCheckGMail
+GenericName=New email notifier
+Comment=A Kicker applet to display how many email messages you have in your Gmail account.
+Exec=kcheckgmail
+Categories=Qt;KDE;Network;
+Icon=/usr/share/icons/default.kde/48x48/apps/kcheckgmail.png
+
+[Desktop Entry]
+Type=Application
+Name=Kiosk Admin Tool
+Exec=kiosktool
+Categories=Qt;KDE;System;
+Icon=/usr/share/icons/default.kde/48x48/apps/kiosktool.png
+
+[Desktop Entry]
+Type=Application
+Name=KMouth
+GenericName=Speech Synthesizer Frontend
+Comment=
+Exec=kmouth -caption "%c" %i %m
+Categories=Qt;KDE;Utility;Accessibility;
+Icon=/usr/share/icons/hicolor/48x48/apps/kmouth.png
+
+[Desktop Entry]
+Type=Application
+Name=KNode
+GenericName=News Reader
+Exec=knode -caption "%c" %i %m
+Categories=Qt;KDE;Network;News;
+Icon=/usr/share/icons/hicolor/48x48/apps/knode.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=KRegExpEditor
+GenericName=Regular Expression Editor
+Exec=kregexpeditor
+Categories=Qt;KDE;Utility;
+Icon=/usr/share/icons/hicolor/48x48/apps/kregexpeditor.png
+
+[Desktop Entry]
+Type=Application
+Name=KUser
+GenericName=User Manager
+Exec=kuser %i %m -caption "%c"
+Categories=Qt;KDE;System;
+Icon=/usr/share/icons/hicolor/48x48/apps/kuser.png
+
+[Desktop Entry]
+Type=Application
+Name=KWordQuiz
+GenericName=Vocabulary Trainer
+Comment=A flashcard and vocabulary learning program
+Exec=kwordquiz -caption "%c" %i %m
+Categories=Qt;KDE;Education;Languages;
+Icon=/usr/share/icons/hicolor/48x48/apps/kwordquiz.png
+
+[Desktop Entry]
+Type=Application
+Name=Morphing Lines
+Exec=lmorph
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Screen Saver
+Comment=Screen Saver Settings
+Exec=kcmshell screensaver
+Categories=Qt;KDE;X-KDE-settings-looknfeel;
+X-AfterStep-IndexName=Screen Saver Settings
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=ShadeBobs
+Exec=shadebobs
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=TOra
+Comment=A graphical toolkit for database administration and development
+Exec=tora
+Categories=Database;Office;Development;KDE;Qt;
+Icon=/usr/share/tora
+
+[Desktop Entry]
+Type=Application
+Name=vidwhacker
+Exec=vidwhacker
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Cache
+Comment=Configure web cache settings
+Exec=kcmshell cache
+Categories=Qt;KDE;X-KDE-settings-webbrowsing;
+Icon=/usr/share/icons/default.kde/48x48/apps/cache.png
+
+[Desktop Entry]
+Type=Application
+Name=KJobViewer
+GenericName=Print Jobs
+Exec=kjobviewer --all --show %i %m
+Categories=Qt;KDE;Utility;X-KDE-Utilities-Peripherals;
+Icon=/usr/share/icons/hicolor/48x48/apps/kjobviewer.png
+
+[Desktop Entry]
+Type=Application
+Name=KNotes
+GenericName=Popup Notes
+Exec=knotes
+Categories=Qt;KDE;Utility;X-KDE-Utilities-Desktop;Office;
+Icon=/usr/share/icons/hicolor/48x48/apps/knotes.png
+
+[Desktop Entry]
+Type=Application
+Name=KPlato
+GenericName=Project Management
+Exec=kplato %u
+Categories=Qt;KDE;Office;
+Icon=/usr/share/icons/default.kde/48x48/apps/kplato.png
+
+[Desktop Entry]
+Type=Application
+Name=KSayIt
+GenericName=Text-to-Speech Frontend
+Exec=ksayit -caption "%c" %i %m
+Categories=Qt;KDE;Accessibility;Utility;
+
+[Desktop Entry]
+Type=Application
+Name=Kumppa
+Exec=kumppa
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=MetaBalls
+Exec=metaballs
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Pipes - another (GL)
+Exec=pipes
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Random
+Exec=krandom.kss
+Categories=KDE;
+OnlyShowIn=KDE
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Ripples
+Exec=ripples
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=TaskJuggler
+GenericName=Project Management Software
+Comment=Project Management Software
+Exec=TaskJugglerUI
+Categories=Qt;KDE;ProjectManagement;Office;
+
+[Desktop Entry]
+Type=Application
+Name=Zeroconf Service Discovery
+GenericName=
+Comment=Configure service discovery
+Exec=kcmshell kcm_kdnssd
+Path=
+Categories=Qt;KDE;X-KDE-settings-network;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Apple ][
+Exec=apple2
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=BSOD
+Exec=bsod
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Cookies
+Comment=Configure the way cookies work
+Exec=kcmshell cookies
+Categories=Qt;KDE;X-KDE-settings-webbrowsing;
+Icon=/usr/share/icons/default.kde/48x48/apps/cookie.png
+
+[Desktop Entry]
+Type=Application
+Name=File Manager - Super User Mode
+Exec=konqueror --profile filemanagement
+Categories=Qt;KDE;System;X-KDE-More;
+NotShowIn=GNOME
+Icon=/usr/share/icons/hicolor/48x48/apps/kfm.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=GLMatrix
+Exec=glmatrix
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KDat
+GenericName=Tape Backup Tool
+Exec=kdat %i %m -caption "%c"
+Categories=Qt;KDE;System;X-KDE-More;
+Icon=/usr/share/icons/hicolor/48x48/apps/kdat.png
+
+[Desktop Entry]
+Type=Application
+Name=KmPlot
+GenericName=Mathematical Function Plotter
+Comment=Function Plotter
+Exec=kmplot
+Categories=Qt;KDE;Education;Math;
+Icon=/usr/share/icons/hicolor/48x48/apps/kmplot.png
+
+[Desktop Entry]
+Type=Application
+Name=KNetLoad Network Monitor
+GenericName=Network Monitor
+Comment=A small network usage meter for Kicker
+Exec=knetload
+Categories=Application;Applet;Network;Monitor;KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/knetload.png
+
+[Desktop Entry]
+Type=Application
+Name=Komposé
+GenericName=Window Switcher
+Comment=An Apple Exposé like Taskmanager
+Exec=kompose
+Path=
+Categories=KDE;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=kpowersave
+GenericName=Battery Monitor
+Comment=Battery monitor and general power management
+Exec=kpowersave --force-acpi-check
+Categories=System;Applet;
+Icon=/usr/share/icons/hicolor/48x48/apps/kpowersave.png
+
+[Desktop Entry]
+Type=Application
+Name=Kverbos
+GenericName=Study Spanish Verbforms
+Comment=
+Exec=kverbos -caption "%c" %i %m
+Categories=Qt;KDE;Education;Languages;
+Icon=/usr/share/icons/hicolor/48x48/apps/kverbos.png
+
+[Desktop Entry]
+Type=Application
+Name=Lattice (GL)
+Exec=lattice
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Slide Show
+Exec=kslideshow.kss
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Twang
+Exec=twang
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Compass
+Exec=compass
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Kate
+GenericName=Advanced Text Editor
+Exec=kate --use %U
+Path=
+Categories=Qt;KDE;TextEditor;
+Icon=/usr/share/icons/hicolor/48x48/apps/kate.png
+
+[Desktop Entry]
+Type=Application
+Name=Kayali
+Comment=A Computer Algebra System
+Exec=kayali
+Categories=Qt;Education;Math;
+Icon=/usr/share/pixmaps/kayali.svg
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Keyboard Layout
+Comment=Keyboard Layout
+Exec=kcmshell keyboard_layout
+Categories=Qt;KDE;X-KDE-settings-accessibility;
+Icon=/usr/share/icons/default.kde/48x48/apps/keyboard.png
+
+[Desktop Entry]
+Type=Application
+Name=Kooka
+GenericName=Scan & OCR Program
+Exec=kooka %i %m %U
+Path=
+Categories=Qt;KDE;Graphics;
+
+[Desktop Entry]
+Type=Application
+Name=KPPP
+GenericName=Internet Dial-Up Tool
+Exec=kppp %i %m
+Path=
+Categories=Qt;KDE;Network;Dialup;
+Icon=/usr/share/icons/hicolor/48x48/apps/kppp.png
+
+[Desktop Entry]
+Type=Application
+Name=Lieutenant Skat
+GenericName=Card Game
+Exec=lskat
+Categories=Qt;KDE;Game;CardGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/lskat.png
+
+[Desktop Entry]
+Type=Application
+Name=Multiple Desktops
+Comment=You can configure how many virtual desktops there are.
+Exec=kcmshell desktop
+Categories=Qt;KDE;X-KDE-settings-desktop;
+
+[Desktop Entry]
+Type=Application
+Name=Sphere
+Exec=sphere
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Squiral
+Exec=squiral
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Storage Devices
+Comment=Shows the disk usage of the mounted devices
+Exec=kcmshell kcmdf
+Categories=Qt;KDE;X-KDE-information;
+Icon=/usr/share/icons/default.kde/48x48/apps/kcmdf.png
+
+[Desktop Entry]
+Type=Application
+Name=Synaptic Package Manager
+GenericName=Package Manager
+Comment=Install, remove and upgrade software packages
+Exec=gksu /usr/sbin/synaptic
+Categories=PackageManager;Applications;GTK;System;Settings;
+NotShowIn=KDE
+Icon=/usr/share/pixmaps/synaptic.png
+
+[Desktop Entry]
+Type=Application
+Name=Winefish Editor
+Comment=LaTeX Editor based on Bluefish
+Exec=winefish -n 1 -p %f
+Categories=KDE;
+Icon=/usr/share/pixmaps/winefish-icon.png
+NoDisplay=1
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=Wireless Network
+Comment=Set up your wireless LAN
+Exec=kcmshell kcmwifi
+Categories=Qt;KDE;X-KDE-settings-network;Settings;
+Icon=/usr/share/icons/hicolor/48x48/apps/kwifimanager.png
+
+[Desktop Entry]
+Type=Application
+Name=Atlantik
+GenericName=Monopoly®-like Board Games
+Exec=atlantik -caption "%c" %i %m
+Categories=Qt;KDE;Game;BoardGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/atlantik.png
+
+[Desktop Entry]
+Type=Application
+Name=FluidBalls
+Exec=fluidballs
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KArchiver
+GenericName=Archiving Tool
+Exec=karchiver %U
+SwallowTitle=
+SwallowExec=
+Categories=Qt;KDE;Utility;X-KDE-Utilities-File;
+Icon=/usr/share/icons/hicolor/48x48/apps/karchiver.png
+
+[Desktop Entry]
+Type=Application
+Name=Koctave
+Comment=graphical Octave frontend
+Exec=koctave -caption "%c" %i %m
+Categories=Application;Education;Science;
+
+[Desktop Entry]
+Type=Application
+Name=KSubtile
+GenericName=KDE Subtitle Editor
+Comment=A video subtitle editor for KDE
+Exec=ksubtile %i %m -caption "%c"
+Categories=Qt;KDE;AudioVideo;
+
+[Desktop Entry]
+Type=Application
+Name=Shisen-Sho
+GenericName=Shisen-Sho Mahjongg-like Tile Game
+Exec=kshisen %i %m -caption "%c"
+Categories=Qt;KDE;Game;BoardGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/kshisen.png
+
+[Desktop Entry]
+Type=Application
+Name=Time and Date
+Comment=Change system time, date, and timezone
+Exec=gksu time-admin
+Categories=GNOME;GTK;System;Settings;
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=XTeeVee
+Exec=xteevee
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Bumps
+Exec=bumps
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=FlipText
+Exec=fliptext
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=GLSlideshow
+Exec=glslideshow
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Gwenview
+GenericName=Image Viewer
+Comment=A simple image viewer
+Exec=gwenview %u -caption "%c" %i %m
+Categories=Qt;KDE;Application;Graphics;
+Icon=/usr/share/icons/hicolor/48x48/apps/gwenview.png
+
+[Desktop Entry]
+Type=Application
+Name=Helios (GL)
+Exec=helios
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Jigsaw
+Exec=jigsaw
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Juggler3D
+Exec=juggler3d
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=kamefu
+Comment=Kamefu - KDE All-Machine Emulator Frontend for UNIX
+Exec=kamefu
+Categories=Qt;KDE;Game;ArcadeGame;
+Icon=/usr/share/icons/default.kde/48x48/apps/package_games.png
+
+[Desktop Entry]
+Type=Application
+Name=KCPULoad
+GenericName=CPU Monitor
+Comment=A small CPU usage meter for Kicker
+Exec=kcpuload
+Categories=Qt;KDE;System;
+Icon=/usr/share/icons/default.kde/48x48/apps/kcpuload.png
+
+[Desktop Entry]
+Type=Application
+Name=KGhostView
+GenericName=PS/PDF Viewer
+Exec=kghostview %u -caption "%c" %i %m
+Categories=Qt;KDE;Graphics;
+Icon=/usr/share/icons/hicolor/48x48/apps/kghostview.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Klein
+Exec=klein
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KPercentage
+GenericName=Exercise Percentages
+Comment=
+Exec=kpercentage
+Categories=Qt;KDE;Education;Math;
+Icon=/usr/share/icons/hicolor/48x48/apps/kpercentage.png
+
+[Desktop Entry]
+Type=Application
+Name=Morph3D
+Exec=morph3d
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Phosphor
+Exec=phosphor
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Spheremonics
+Exec=spheremonics
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Stairs (GL)
+Exec=stairs
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Background
+Comment=Change the background settings
+Exec=kcmshell background
+Categories=Qt;KDE;X-KDE-settings-looknfeel;
+Icon=/usr/share/icons/default.kde/48x48/apps/background.png
+
+[Desktop Entry]
+Type=Application
+Name=Bouboule
+Exec=bouboule
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Joystick
+Comment=joystick - a kcontrol module to test joysticks
+Exec=kcmshell joystick
+Categories=Qt;KDE;X-KDE-settings-hardware;
+
+[Desktop Entry]
+Type=Application
+Name=kasablanca
+GenericName=FTP Client
+Comment=FTP Client
+Exec=kasablanca
+Categories=Qt;KDE;Network;
+Icon=/usr/share/icons/hicolor/48x48/apps/kasablanca.png
+
+[Desktop Entry]
+Type=Application
+Name=KdeprintFax
+GenericName=Fax Utility
+Exec=kdeprintfax -caption "%c" %i %m %u
+Categories=Qt;KDE;Utility;X-KDE-Utilities-Peripherals;
+Icon=/usr/share/icons/hicolor/48x48/apps/kdeprintfax.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=KMobileTools
+GenericName=Mobile phone tool
+Comment=Mobile Phone Tool
+Exec=kmobiletools
+Categories=Qt;KDE;Utility;
+Icon=/usr/share/icons/hicolor/48x48/apps/kmobiletools.png
+
+[Desktop Entry]
+Type=Application
+Name=Kolor Lines
+GenericName=Tactical Game
+Exec=klines -caption "%c" %i %m
+Categories=Qt;KDE;Game;StrategyGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/klines.png
+
+[Desktop Entry]
+Type=Application
+Name=KPovModeler
+GenericName=Povray Modeler
+Exec=kpovmodeler -caption "%c" %i %m %f
+Path=
+SwallowTitle=
+SwallowExec=
+Categories=Qt;KDE;Graphics;
+Icon=/usr/share/icons/hicolor/48x48/apps/kpovmodeler.png
+
+[Desktop Entry]
+Type=Application
+Name=Krita
+GenericName=Painting and Image Editing
+Comment=Edit and paint images
+Exec=krita %U
+Categories=Qt;KDE;Graphics;
+Icon=/usr/share/icons/hicolor/48x48/apps/krita.png
+
+[Desktop Entry]
+Type=Application
+Name=KSpread
+GenericName=Spreadsheets
+Exec=kspread %u
+Categories=Qt;KDE;Office;
+Icon=/usr/share/icons/hicolor/48x48/apps/kspread.png
+
+[Desktop Entry]
+Type=Application
+Name=kttsmgr
+GenericName=Text-to-Speech Manager
+Comment=KDE Text-to-speech Manager
+Exec=kttsmgr -caption "%c" %i %m %u
+Categories=Qt;KDE;Utility;Accessibility;
+Icon=/usr/share/icons/default.kde/48x48/apps/kttsd.png
+
+[Desktop Entry]
+Type=Application
+Name=Menu Updating Tool
+Exec=kappfinder
+Categories=Qt;KDE;Settings;
+OnlyShowIn=KDE
+Icon=/usr/share/icons/hicolor/48x48/apps/kappfinder.png
+NoDisplay=1
+
+[Desktop Entry]
+Type=Application
+Name=Pinion
+Exec=pinion
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Spiral
+Exec=spiral
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Wander
+Exec=wander
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Beryl
+Exec=kcmshell beryl
+Categories=Qt;KDE;X-KDE-settings-looknfeel;
+Icon=/usr/share/beryl
+
+[Desktop Entry]
+Type=Application
+Name=Colors
+Comment=Color settings
+Exec=kcmshell colors
+Categories=Qt;KDE;X-KDE-settings-looknfeel;
+
+[Desktop Entry]
+Type=Application
+Name=Euler2d
+Exec=euler2d
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Flame
+Exec=flame
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KCharSelect
+GenericName=Character Selector
+Exec=kcharselect -caption "%c" %i %m
+Path=
+Categories=Qt;KDE;Utility;
+Icon=/usr/share/icons/hicolor/48x48/apps/kcharselect.png
+
+[Desktop Entry]
+Type=Application
+Name=Kenolaba
+GenericName=Abalone-like Board Game
+Exec=kenolaba %i %m -caption "%c"
+Categories=Qt;KDE;Game;BoardGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/kenolaba.png
+
+[Desktop Entry]
+Type=Application
+Name=Keyboard Shortcuts
+Comment=Configuration of keybindings
+Exec=kcmshell keys
+Categories=Qt;KDE;X-KDE-settings-accessibility;
+Icon=/usr/share/icons/default.kde/48x48/apps/key_bindings.png
+
+[Desktop Entry]
+Type=Application
+Name=KGeography
+GenericName=Geography Trainer
+Comment=A Geography Learning Program
+Exec=kgeography
+Categories=Qt;KDE;Education;
+Icon=/usr/share/icons/default.kde/48x48/apps/kgeography.png
+
+[Desktop Entry]
+Type=Application
+Name=knetwalk
+Exec=knetwalk -caption "%c" %i %m
+Categories=Qt;KDE;Game;StrategyGame;
+
+[Desktop Entry]
+Type=Application
+Name=Kolf
+GenericName=Miniature Golf
+Exec=kolf %U
+Categories=Qt;KDE;Game;ArcadeGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/kolf.png
+
+[Desktop Entry]
+Type=Application
+Name=KSpaceDuel
+GenericName=Space Arcade Game
+Exec=kspaceduel %i %m -caption "%c"
+Path=
+SwallowTitle=
+SwallowExec=
+Categories=Qt;KDE;Game;ArcadeGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/kspaceduel.png
+
+[Desktop Entry]
+Type=Application
+Name=kX Generator - ServerLayout Changer
+Comment=X Server Configuration Utilitty
+Exec=kdesu -i kxgenerator -d --noignorebutton -c "kxgenerator --layout-only"
+Categories=System;Application;SystemSetup;
+
+[Desktop Entry]
+Type=Application
+Name=Munch
+Exec=munch
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=NerveRot
+Exec=nerverot
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Noatun
+GenericName=Media Player
+Exec=noatun %i %m -caption "%c" %U
+Categories=Qt;KDE;AudioVideo;
+Icon=/usr/share/icons/hicolor/48x48/apps/noatun.png
+
+[Desktop Entry]
+Type=Application
+Name=Pulsar (GL)
+Exec=pulsar
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=VYM - View Your Mind
+GenericName=Planning Tool
+Comment=Create mind maps
+Exec=vym
+Categories=KDE;X-KDE-More;Education;
+Icon=/usr/share/pixmaps/vym.png
+
+[Desktop Entry]
+Type=Application
+Name=Abakus
+GenericName=Calculator
+Comment=
+Exec=abakus -caption "%c" %i %m
+Categories=Qt;KDE;Utility;
+
+[Desktop Entry]
+Type=Application
+Name=Audio CDs
+Comment=Audiocd IO Slave Configuration
+Exec=kcmshell audiocd
+Categories=Qt;KDE;X-KDE-settings-sound;
+
+[Desktop Entry]
+Type=Application
+Name=Drift
+Exec=drift
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=File Manager
+Comment=You can configure Konqueror's file manager mode here
+Exec=kcmshell filebrowser
+Categories=Qt;KDE;X-KDE-settings-components;
+Icon=/usr/share/icons/hicolor/48x48/apps/kfm.png
+
+[Desktop Entry]
+Type=Application
+Name=Flipscreen3d
+Exec=flipscreen3d
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Forest
+Exec=forest
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Fractal Maps
+Exec=imsmap
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Kanagram
+GenericName=Letter Order Game
+Comment=KDE Letter Order Game
+Exec=kanagram
+Categories=Qt;KDE;Education;Languages;
+Icon=/usr/share/icons/hicolor/48x48/apps/kanagram.png
+
+[Desktop Entry]
+Type=Application
+Name=KArm
+GenericName=Personal Time Tracker
+Exec=karm  -caption "%c" %i %m
+Path=
+Categories=Qt;KDE;X-KDE-Utilities-PIM;Office;Calendar;
+Icon=/usr/share/icons/hicolor/48x48/apps/karm.png
+
+[Desktop Entry]
+Type=Application
+Name=Kexi
+GenericName=Database Creator
+Comment=Develop desktop database applications
+Exec=kexi
+Categories=Qt;KDE;Office;
+Icon=/usr/share/icons/hicolor/48x48/apps/kexi.png
+
+[Desktop Entry]
+Type=Application
+Name=Krdc
+GenericName=Remote Desktop Connection
+Exec=krdc -caption "%c" %i %m %u
+Categories=Qt;KDE;Network;RemoteAccess;
+Icon=/usr/share/icons/default.kde/48x48/apps/krdc.png
+
+[Desktop Entry]
+Type=Application
+Name=KReversi
+GenericName=Reversi Board Game
+Exec=kreversi %i %m -caption "%c"
+Categories=Qt;KDE;Game;BoardGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/kreversi.png
+
+[Desktop Entry]
+Type=Application
+Name=Krfb
+GenericName=Desktop Sharing
+Exec=krfb -caption "%c" %i %m
+Categories=Qt;KDE;RemoteAccess;Network;
+Icon=/usr/share/icons/default.kde/48x48/apps/krfb.png
+
+[Desktop Entry]
+Type=Application
+Name=KVocTrain
+GenericName=Vocabulary Trainer
+Exec=kvoctrain
+Categories=Qt;KDE;Education;Languages;
+Icon=/usr/share/icons/hicolor/48x48/apps/kvoctrain.png
+
+[Desktop Entry]
+Type=Application
+Name=KWiFiManager
+GenericName=Wireless LAN Manager
+Comment=A wireless LAN connection monitor
+Exec=kwifimanager -caption "%c" %i %m
+Categories=Qt;KDE;Network;System;Monitor;
+Icon=/usr/share/icons/hicolor/48x48/apps/kwifimanager.png
+
+[Desktop Entry]
+Type=Application
+Name=Network Settings
+Comment=Configure Network Settings
+Exec=kcmshell kcm_knetworkconfmodule
+Categories=Qt;KDE;X-KDE-settings-network;Configuration-KDE-Network-mdk;
+
+[Desktop Entry]
+Type=Application
+Name=Providence
+Exec=providence
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Yakuake
+Comment=A Quake-style terminal emulator based on KDE Konsole technology.
+Exec=yakuake
+Categories=Qt;KDE;System;TerminalEmulator;
+
+[Desktop Entry]
+Type=Application
+Name=Anemotaxis
+Exec=anemotaxis
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Engine
+Exec=engine
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KBounce
+GenericName=Bounce Ball Game
+Exec=kbounce %i %m -caption "%c"
+Categories=Qt;KDE;Game;ArcadeGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/kbounce.png
+
+[Desktop Entry]
+Type=Application
+Name=KitchenSync
+GenericName=Synchronization
+Exec=kitchensync
+Categories=Qt;KDE;Utility;X-KDE-Utilities-PIM;
+Icon=/usr/share/icons/hicolor/48x48/apps/kitchensync.png
+
+[Desktop Entry]
+Type=Application
+Name=Lines
+Exec=klines.kss
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Screens and Graphics
+Comment=Configure multiple screens and graphics cards
+Exec=gksu displayconfig-gtk
+Categories=GNOME;GTK;Settings;HardwareSettings;System;
+NotShowIn=KDE
+StartupNotify=1
+
+[Desktop Entry]
+Type=Application
+Name=WhirlyGig
+Exec=whirlygig
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=XRaySwarm
+Exec=xrayswarm
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Blaster
+Exec=blaster
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=GLForestFire
+Exec=glforestfire
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=Juggle
+Exec=juggle
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=KColorChooser
+GenericName=Color Chooser
+Exec=kcolorchooser %i %m
+Path=
+Categories=Qt;KDE;Graphics;X-KDE-More;
+
+[Desktop Entry]
+Type=Application
+Name=KSokoban
+GenericName=Sokoban Game
+Exec=ksokoban %i %m -caption "%c"
+Categories=Qt;KDE;Game;StrategyGame;
+Icon=/usr/share/icons/hicolor/48x48/apps/ksokoban.png
+
+[Desktop Entry]
+Type=Application
+Name=Lorenz Attractor
+Exec=klorenz.kss
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=RotZoomer
+Exec=rotzoomer
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+
+[Desktop Entry]
+Type=Application
+Name=The Matrix
+Exec=xmatrix
+Categories=KDE;
+Icon=/usr/share/icons/default.kde/48x48/apps/kscreensaver.png
+

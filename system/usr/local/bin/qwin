@@ -1,0 +1,6 @@
+#!/bin/bash
+export WINEPREFIX="$HOME/.wine-wm"
+#wine 'c:\Program Files\SharpE\SharpCore.exe' $*
+wine 'c:\Program Files\Wincmd32\TOTALCMD.exe' $*
+
+

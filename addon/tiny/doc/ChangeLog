@@ -1,0 +1,347 @@
+2002-08-05 Mon  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* txt/emacs-tiny-tools.txt (    Brief overview): Corrected
+	procmail link.
+	(    Overview of features): Removed python link.
+	Removed elint.el URL link. No longer valid.
+	Removed Find-func.el URL link. No longer valid.
+	(    Feature: Sendmail Plus Addressing (introduction)):
+	Updated link to http://www.faqs.org/faqs/mail/addressing/
+
+	* txt/emacs-elisp.txt: Removed Tse Stephen's URL. Now valid.
+	http://www.sfu.ca/~stephent/eicq/
+	(    2.10 Emacs resources): Removed Jayakrishnan's page
+	http://www.csr.uvic.ca/~jk/emacs.html. URl no longer valid.
+	(    9.9 Footnote.el (*)): Removed Hannu's URL. No
+	longer valid.
+	(    2.3 Other documents): Removed local links.
+	(    3.3 Emacs-like Win32 ports): Removed WinEmacs.
+	(    3.3 Emacs-like Win32 ports): Removed Freya.
+	(    3.3 Emacs-like Win32 ports): Removed 2nd unneeded
+	MicroEmacs link.
+	(    3.4 NTEmacs and clisp): Removed. Don't think anybodt
+	missis this. Test was: '... also do not forget the (excellent) free implentation of CL
+        named clisp by Bruno Haible. It has native win32 support and also
+        support for every major environment. --Fabrice Popineau
+        ftp://ma2s2.mathematik.uni-karlsruhe.de/pub/lisp/clisp'
+	(    3.5 NTEmacs and printing): Updated URL.
+	(39.0 Directory listings of site-lisp): Removed old listings.
+
+2002-08-04 Sun  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* txt/emacs-elisp.txt (    2.7 XEmacs - Emacs the next
+	generation): Removed robin Socha's page. No longer available.
+	Removed Urban Reini's address to web page. No longer reachabled
+	http://xarch.tu-graz.ac.at/autocad/lsp_tools/ntemacs/
+	(    12.12 Perforce P4 revision control software): P4
+	moved to sourceforge. Updated.
+
+2002-08-03 Sat  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* txt/emacs-elisp.txt
+	(1.3 Developer contact addresses and site list):
+	Drieu Benjamin / contacted via email - corrected info.
+	Abrahamsson Tomas / artist.el homepage no longer exists.
+	URL removed. http://www.lysator.liu.se/~tab/artist/
+	Lauri Gian / invalid URL
+	removed. http://www.gest.unipd.it/~saint
+	(11.7 Html-helper-mode.el - Visual basic, ASP, JSP):
+	Point people to Nelson's page. Gian's site is dead.
+	(    26.25 Templates: tempo, skeleton, expand, dmacro):
+	Pointed URL to sourceforge project `emacs-template'
+	(    28.26 X-symbol (*), XEmacs):
+	Pointed URL to sourceforge project `x-symbol'
+
+2002-07-12  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* txt/emacs-elisp.txt:
+	Lindgren Anders  / invalid link removed http://www.andersl.com/
+	Marsden Eric / old homepage link removed.
+	Simmons Matt / old homepage link removed. New page unknown
+        http://www.netcom.com/~simmonmt
+	Shulman Michael / old homepage link removed. New page unknown
+	Socha Robin / Removed invalid http://xemacs.socha.net/XEmacs/
+	Theberge Jean-Philippe / emacslisp removed, does not resolve
+	Vladimir Alexiev / Removed invalid http://www.cs.ualberta.ca/~vladimir
+        Yavner Jonathan / Removed http://members.home.net/jonathan.yavner/
+	www.emacs.org removed. does not resolve.
+	(3.3 Emacs-like Win32 ports): old VisEmacs link removed
+	(3.12 Win32 miscellaneous): Removed http://virtunix.itribe.net/
+	(1.3 Developer contact addresses and site list):
+	Burton Kevin / contacted via email - corrected info.
+	Dirson Yann / contacted via email - corrected info.
+	Edmonds Brian / contacted via email - corrected info.
+
+2002-07-11  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* txt/emacs-elisp.txt (1.2 Emacs first aid): Removed
+	- invalid link http://www.emacslisp.org/
+	- Host not found http://mail.gnu.org/
+	(1.3 Developer contact addresses and site list):
+	Breton Peter / Homepage link removed - invalid
+	Breton Tom / Homepage link removed - invalid http://world.std.com/
+	Burton Kevin / link to CVS access broken. Removed.
+	Casadonte Joe / old homepage link removed.
+	Dirson Yann  / old homepage link removed. Debian Email added
+	Drieu Benjamin / old homepage link removed. Debian Email added
+	Edmonds Brian <bedmonds@cs.ubc.ca> / old homepage link removed.
+	Hirose Yuuji / old homepage link removed. Email updated
+	Kleinpaste Karl / old homepage link removed.
+
+2002-03-03 Sun  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* txt/emacs-keys.txt (2.1 Foreword to different emacs platforms): 1.2
+	<Adrian.Aichner@t-online.de> Sent patch to correct few spelling
+	mistaked. Thank you.
+
+2002-02-13 Wed  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* txt/emacs-elisp.txt:
+	(1.3 Developer contact addresses and site list): 1.30
+	Updated Zundel Detlev URL address.
+
+2002-02-02 Sat  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* txt/emacs-elisp.txt
+	(1.3 Developer contact addresses and site list): 1.29
+	Updated Drieu Benjamin.
+
+2002-01-29 Tue  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* txt/emacs-elisp.txt: Removed ARCHIE and FTPSEARCH which
+	are obsoleted by google.
+	Drieu Benjamin's homepage URL does not respond. Removed and
+	sent inquiry mail.
+	Alex Shinn's homepage URL does not respond.
+	Removed http://eyeofdog.org/foof/emacs
+	Common Lisp Hyper Spec (tm): Link updated.
+
+2002-01-28 Mon  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* txt/emacs-font.txt (Highlighting regardless of mode in any buffer): 1.2
+	Removed.
+
+	* txt/emacs-keys.txt: 1.1 Removed related packages, because
+	Emacs and XEmacs can nor use same key binding syntax.
+	Flyspelled whole buffer.
+
+2002-01-14  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* txt/emacs-elisp.txt: (9.2 bbdb.el) Added sourceforge
+	WWW homepage link and removed ~simmons URL link.
+
+2002-01-14 Mon  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* html/index.html: Removed www.sourceforge from links.
+
+2002-01-12 Sat  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* txt/emacs-elisp.txt (Developer List): 1.24 Added
+	new members Link Thomas, Volker Franz, Yamaoka Katsumi
+
+2002-01-04 Fri  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* txt/emacs-elisp.txt (29.5 Rolling buffers in same window): 1.22
+	Incorrect name : tinycb.el => should be tinybuffer.el
+
+2002-01-02 Wed  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* txt/emacs-package-make.txt (2.3 Use valid LCD format,
+	which doesn't tolerate changes in format): 1.1 Removed link
+	to CIS.OHIO, because it's no longer there.
+
+	* txt/emacs-font.txt (12.0 Xt/Motif programming and font-lock): 1.1
+        Removed URL http://www.polito.it/~s64912/things.html
+
+2002-01-01 Tue  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* txt/emacs-elisp.txt (2.10 Emacs resourcesions): 1.18
+	Url invalid. Removed.
+	Alan Wehmann's Emacs tips.
+	(2.10 Emacs resourcesions): 1.18 Url invalid. Removed.
+	Open Directory Project - Emacs
+	http://www.dmoz.org/Computers/Software/Editors/Emacs/
+	(2.12 Emacs books, commercial): 1.18 (2001-06) GNU Emacs and XEmacs
+	Url removed http://www.prima-tech.com/books/book/4142/
+	(1999-04) Sams Teach Yourself Emacs in 24 Hours.
+	Url removed http://www.mcp.com/info/0-672/0-672-31594-7/
+	(2.14 Emacs and misc links): 1.18 Ange-ftp and SSH
+	Removed url link
+	http://www.coe.uga.edu/~ecashin/emacs/sshfwd/fwdintro.html
+	(Microemacs): Removed http://members.xoom.com/uemacs/
+	(3.8 Win32 Unix software ports): 1.18 'Ispell for Emacs' -
+	Removed Dicrionaries http://fmg-www.cs.ucla.edu/geoff/ispell.html
+	(7.4 Dot files): 1.18 Removed
+	[Kevin Falcone] at http://jibsheet.com/dotgnus
+        [Kaarthik Sivakumar]
+        http://www.eecis.udel.edu/~sivakuma/interest/index.html
+	[Colin Walters] has customisations for Emacs 21 at
+	http://www.cis.ohio-state.edu/~walters/emacs-standard
+	(Laola): URL updated.
+	(11.9 Htmlize.el, font-lock to html converter (*), XEmacs): 1.18
+	Url removed. http://fly.srk.fer.hr/~hniksic/emacs/htmlize.el
+	is invalid.
+	(Win32 CVS binaries): and 'NT CVS Server' Removed.
+	cygwin can now do that
+	(VC++ IDE and CVS): Removed.
+	(13.3 C-mode-addons.el, some addon functions for c-mode): 1.18
+	Url removed http://www.casema.net/~smoke
+	(13.13 Else-mode.el, language sensitive editing package): 1.18
+	Url removed http://members.xoom.com/pmilliken/
+	(13.23.1 JPDA Notes): Removed. This is too old.
+
+2001-12-10 Mon  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* txt/emacs-elisp.txt (    27.9 SES, Emacs spreadsheet): New.
+
+2001-11-25  Jari Aalto  <jaalto@W2KPICASSO>
+
+	* txt/emacs-elisp.txt: Added Sqlplus-html.el
+	by Hrvoje Niksic
+
+2001-08-05 Sun  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* emacs-elisp.txt (Rebox.el) New.
+	(8.16 Nnir-grepmail.el --- A grepmail plugin for nnir.el): 1.180 New.
+
+2001-07-22 Sun  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* emacs-elisp.txt (Tail.el, tail -f): 1.175 New.
+	(Etail.el, tail -f): 1.175 New.
+
+2001-03-08 Thu  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* README.txt
+	-- Changed the heading order so that the most important information
+	(how to install) is presented first. People want to get the tools
+	working first.
+	(2.2 Quick install -- personal): Rewritten.
+	(2.3 Quick install -- site wide): New section
+
+2000-11-06 Mon  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* emacs-elisp.txt (Java Expert System Shell (jess-mode)): New.
+	(Lookup): New.
+
+2000-11-05 Sun  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* emacs-elisp.txt (DocBook IDE): New.
+
+2000-10-19 Thu  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* emacs-elisp.txt (Rfc-page.el): New.
+	(Table.el,): New.
+	(Ldbdb.el, Little Brother's Database interface): New.
+
+2000-10-18 Wed  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* emacs-elisp.txt (Screenlines.el): New.
+
+2000-08-06 Sun  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* emacs-elisp.txt
+	(Nnmaildir.el, one group per maildir): 1.67 New.
+
+2000-07-31 Mon  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* emacs-elisp.txt (Java-open.el): 1.67 New.
+
+2000-07-30 Sun  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* emacs-tiny-tools.txt (A Quick guide install for newcomers): 1.28
+	New, for completely newcomers.
+
+2000-07-29 Sat  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* emacs-elisp.txt (Blank-mode.el, see spaces and tabs): 1.67 New.
+	(Screen-lines.el): 1.67 New.
+
+2000-07-26 Wed  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* emacs-elisp.txt (Require statement tracing): 1.67 New.
+	(Follow-mouse.el): 1.67 New.
+	(AIM - AOL Instant messanger): 1.67 New.
+	(ICQ - I Seek You): 1.67 New.
+	(Mp3player.el --- Interface to mpg123 MP3 player): 1.67 New.
+	(Mss.el, Make smart Win32 shortcuts): 1.67 New
+	(Coping with XEmacs and Emacs differencies): 1.67 New.
+	(Ilisp.el, Inferior Lisp replacement): 1.67 New.
+	(Maniac.el, fill like maniac): 1.67 New.
+	(Longlines.el, automatically wrap long lines Some text): 1.67 New.
+	(Pc-keys.el, Smart home and end keys): 1.67 New.
+	(Hier-imenu.el, Hierarchical index menu for emacs): 1.67 New.
+	(Jsp-html-helper-mode.el, JSP add-on): 1.67 New.
+	(Ell.el, Browse the Emacs Lisp List): 1.67 New.
+	(Desire.el, Emacs startup file organir): 1.67 New.
+	(13.1 Ascii.el): 1.67 New.
+	(Rpm-spec-mode.el): 1.67 New.
+
+2000-03-13 Mon  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* emacs-elisp.txt (14.14 Hyperspec.el, browse Common Lisp specs): 1.66 New.
+
+2000-03-09 Thu  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* emacs-elisp.txt (3.5 NTEmacs and lisp package): 1.66 Added ls.el
+
+2000-03-08 Wed  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* README.txt (3.5 Submitting bug reports): 1.5 `debug-or-error'
+	--> `debug-on-error'
+
+2000-02-18 Fri  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* emacs-elisp.txt
+	(Translation.el, translation minor mode): 1.66 New.
+	(Highline.el, Minor mode to highlight current line in buffer): 1.66 New.
+	(Records.el): 1.66 New.
+	(Protbuf.el, protect buffers from accidental killing): 1.66 New.
+	(Ansi-color.el, translate ANSI into text-properties): 1.66 New.
+	(Color-themes.el, preview and install color themes): 1.66 New.
+	(Initsplit, code to split customizations into different files): 1.66 New.
+
+2000-02-13 Sun  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* README.txt 1.4: instruct to modify lisp/load-path.el in order
+	to compile tinygnus.el and tinymail.el
+
+2000-01-30 Sun  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* emacs-elisp.txt (3.1 Win32 XEmacs ports): 1.65 New.
+	(25.17 X-symbol (*)): 1.65 New.
+
+2000-01-18 Tue  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* README.txt (3.2 Quick install): 1.4 New. Instruct to use
+	`tinypath' for easy setup.
+
+2000-01-13 Thu  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* README.txt (3.2 Make procedure): 1.4 Mention that Perl
+	5.004 is required for build process.
+	(4.1 Platform support): 1.4 XEmacs version supported should
+	read "20.1" not "20.2". fixed.
+	(3.1 Unpacking): 1.4 Suggest drop directorty $HOME/elisp/packages/
+	instead of $HOME/elisp/
+
+2000-01-10 Mon  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* emacs-elisp.txt (32.6 Backup-dir.el, place backups to
+	separate dir (*)): 1.65 --> Moved to backup section
+	(Himark.el): 1.65 todo added.
+
+2000-01-09 Sun  Jari Aalto  <jari.aalto@poboxes.com>
+
+	* announcement.txt (Project page and download): New file.
+	Used to announce package in newsgroups.
+
+	* emacs-tiny-tools.txt (Brief overview): 1.26 Corrected
+	TinySword --> TinySearch.
+
+	* emacs-elisp.txt (2.3 XEmacs, Emacs the next generation): 1.64
+	Added xemacs-patches address and Upload information.
+	(11.2 Browse-help.el, WWW context-sensitive help): 1.64 New
+	(13.1 Ascii.el): 1.64 New.
+	(14.4 Crm.el, completing read multiple): 1.64 New.
+	(17.3 Which.el, where is command): 1.64 New.
+	(23.3 Blank-mode.el, Minor mode to visualize whitesapce): 1.64 New.
