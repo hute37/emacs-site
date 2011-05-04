@@ -294,6 +294,7 @@
 ;; http://www.michael-hammer.at/blog/emacs_git/
 ;; http://alexott.net/en/writings/emacs-vcs/EmacsGit.html
 
+;; sudo apt-get install magit
 
 
 ;;;////////////////////////////////////////////////////////////////
@@ -1149,11 +1150,24 @@ $" nil t))
 
 ;; ---( F11: VCS )----------------------------------------------------
 
-(global-set-key [f11] 'vc-next-action )
-(global-set-key [(shift f11)] 'vc-annotate )
-(global-set-key [(control f11)] 'vc-directory )
-(global-set-key [(meta f11)] 'vc-version-diff )
-(global-set-key [(shift meta f11)] 'function-key-error)
+(cond
+ ((fboundp 'magit-status);; Git magit
+  (progn
+    (global-set-key [f11] 'magit-status )
+    (global-set-key [(shift meta f11)] 'vc-next-action)
+    ))
+ (t ;; fallback to VC bindings
+  (progn
+    (global-set-key [f11] 'vc-next-action )
+    (global-set-key [(shift f11)] 'vc-annotate )
+    (global-set-key [(control f11)] 'vc-directory )
+    (global-set-key [(meta f11)] 'vc-version-diff )
+    (global-set-key [(shift meta f11)] 'function-key-error)
+    ))
+ )
+
+
+
 
 
 ;;(define-key speedbar-key-map [button1] 'dframe-click)
