@@ -1,5 +1,15 @@
 # -*- mode: shell-script;-*-
 
+##
+#  include in ~/.bash_aliases
+#
+
+#if [ -r /usr/local/share/emacs/emacs-site/skel/.bash_aliases ]; then
+# . /usr/local/share/emacs/emacs-site/skel/.bash_aliases
+#fi
+
+
+
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
     eval "`dircolors -b`"
