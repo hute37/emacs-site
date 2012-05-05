@@ -19,9 +19,13 @@ if [ "$TERM" != "dumb" ]; then
 fi
 
 # some more ls aliases
-alias ll='ls -l'
-alias la='ls -A'
+alias ll='ls -lhF --group-directories-first'
+alias la='ls -A -lhF --group-directories-first'
 alias l='ls -CF'
+
+alias lls='ls -lArthS'
+alias llt='ls -lArtht --full-time'
+alias lla='ls -lArthtu --full-time'
 
 
 #
