@@ -11,7 +11,6 @@ set bell-style visible
 export LESS='-q'
 
 
-
 # don't put duplicate lines in the history. See bash(1) for more options
 export HISTCONTROL=ignoredups
 # ... and ignore same sucessive entries.
@@ -67,30 +66,10 @@ esac
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-#if [ -f ~/.bash_aliases ]; then
-#    . ~/.bash_aliases
-#fi
-
-# enable color support of ls and also add handy aliases
-if [ "$TERM" != "dumb" ]; then
-    eval "`dircolors -b`"
-    alias ls='ls --color=auto'
-    alias dir='ls --color=auto --format=vertical'
-    alias vdir='ls --color=auto --format=long'
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
 fi
 
-# some more ls aliases
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CF'
-
-
-alias s='less -S'
-alias e='emacsclient --no-wait'
-
-alias p0='PS=0 exec bash'
-alias p1='PS=1 exec bash'
-alias p9='unset PS; exec bash'
 
 
 # enable programmable completion features (you don't need to enable
