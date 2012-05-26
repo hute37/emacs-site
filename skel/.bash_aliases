@@ -20,7 +20,7 @@ fi
 
 # some more ls aliases
 alias ll='ls -lhF --group-directories-first'
-alias la='ls -A -lhF --group-directories-first'
+alias la='ls -lhFA --group-directories-first'
 alias l='ls -CF'
 
 alias lls='ls -lArthS'
@@ -29,6 +29,8 @@ alias lla='ls -lArthtu --full-time'
 
 
 #
+alias t='tail -F'
+alias v='less -S --follow-name -#24 +F'
 alias s='less -S'
 alias e='emacsclient --no-wait'
 
