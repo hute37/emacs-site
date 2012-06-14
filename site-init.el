@@ -279,6 +279,7 @@
 
 (require 'color-theme)
 (require 'color-theme-zcoll)
+(require 'color-theme-solarized)
 (setq color-theme-is-global nil)
 
 
