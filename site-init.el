@@ -295,10 +295,17 @@
 ;; http://www.michael-hammer.at/blog/emacs_git/
 ;; http://alexott.net/en/writings/emacs-vcs/EmacsGit.html
 
-;; sudo apt-get install magit
-
 ;; http://help.github.com/linux-set-up-git/
 ;; http://help.github.com/fork-a-repo/
+
+
+;; sudo apt-get install magit
+
+;;@TODO: move to site-start.d local directory ...
+
+;;; Autoloads for magit
+
+(autoload 'magit-status "magit" nil t)
 
 
 ;;;////////////////////////////////////////////////////////////////
