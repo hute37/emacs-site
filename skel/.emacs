@@ -27,10 +27,18 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
+
+;; *unsupported*
+;;
+;; '(lcomp-enable t nil (lcomp))
+;; '(session-initialize (quote (de-saveplace session places keys menus)) nil (session))
+;; '(perldoc-define-F1 t nil (perldoc))
+
+
  '(auto-compression-mode t nil (jka-compr))
  '(blink-matching-paren-on-screen t)
  '(browse-url-browser-function (quote browse-url-generic))
- '(browse-url-generic-program "firefox" t)
+ '(browse-url-generic-program "firefox")
  '(calendar-week-start-day 1)
  '(case-fold-search t)
  '(column-number-mode t)
@@ -42,6 +50,7 @@
  '(cperl-font-lock t)
  '(cperl-hairy t)
  '(cperl-lazy-help-time 3)
+ '(cua-mode t nil (cua-base))
  '(current-language-environment "English")
  '(cvs-allow-dir-commit t)
  '(default-input-method "latin-1-prefix")
@@ -59,20 +68,17 @@
  '(hc-ctrl-x-c-is-completion t)
  '(home-end-enable t)
  '(inhibit-startup-screen 1)
- '(lcomp-enable t nil (lcomp))
  '(ls-lisp-dirs-first t)
  '(ls-lisp-ignore-case t)
  '(ls-lisp-use-insert-directory-program nil)
  '(mode-compile-expert-p t)
  '(mouse-wheel-follow-mouse t)
  '(perl-dbg-flags "-c -w -MB::Lint")
- '(perldoc-define-F1 t nil (perldoc))
  '(ps-line-number t)
  '(ps-paper-type (quote a4))
  '(ps-printer-name nil)
  '(recentf-mode t nil (recentf))
  '(save-place t nil (saveplace))
- '(session-initialize (quote (de-saveplace session places keys menus)) nil (session))
  '(show-paren-mode t nil (paren))
  '(standard-indent 4)
  '(tab-stop-list (quote (4 16 24 32 40 48 56 64 72 80 88 96 104 112 120)))

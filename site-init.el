@@ -143,9 +143,11 @@
 (cond
  ((eq system-type 'windows-nt) ;; WinNT
   (progn
-    (require 'gnuserv)
-    (gnuserv-start)
-    (setq gnuserv-frame (selected-frame))))
+;; *unsupported*
+;;    (require 'gnuserv)
+;;    (gnuserv-start)
+;;    (setq gnuserv-frame (selected-frame))
+    ))
  ((eq system-type 'cygwin);; GNU-Cygwin
   (progn
    ;; (server-start)
@@ -426,8 +428,8 @@
 ;; ---( Session )--------------------------------------------------------
 
 ;;@TODO: verify session setup ...
-(require 'session)
-(session-initialize)
+;;(require 'session)
+;;(session-initialize)
 
 
 ;; ---( Backup )--------------------------------------------------------
