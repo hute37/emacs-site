@@ -2,16 +2,39 @@
 # emacs site setup
 #
 
+cd; cat .ssh/id_rsa.pub # add to github ...
 
-mkdir -p /usr/local/share/emacs/emacs-site
 
-cd /usr/local/share/emacs/emacs-site
+sudo mkdir -p /usr/local/share/emacs/emacs-share
+
+sudo chgrp -R staff /usr/local/share/emacs/emacs-share
+
+sudo chmod -R g+w /usr/local/share/emacs/emacs-share
+
+
+cd /usr/local/share/emacs/emacs-share
 
 git clone git@github.com:hute37/emacs-site.git
 
-git remote add upstream git@github.com:hute37/emacs-site.git
-git fetch upstream
+#git remote add upstream git@github.com:hute37/emacs-site.git
+#git fetch upstream
+
+cd ./emacs-site
+
+git config --global color.ui "auto"
+git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit"
+#git config --global alias.meld \!/usr/local/bin/git-meld.pl
 
 
+git config  user.name "Giovanni Pelosi"
+git config  user.email hute37@gmail.com
 
-ln -s /usr/local/share/emacs/emacs-site/site-start.el ~/.emacs-site.el
+git config -l
+
+
+cd /usr/local/share/emacs/emacs-share/emacs-site/skel
+
+cp -R backups elisp .emacs* ~/.
+
+
+ln -s /usr/local/share/emacs/emacs-share/emacs-site/site-start.el ~/.emacs-site.el
