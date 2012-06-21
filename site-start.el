@@ -74,7 +74,8 @@ determine this.")
 ;;(setq emacs-drive (getenv "EMACS_DRIVE"))
 ;;(setq emacs-site-base (concat emacs-drive "/usr/local"))
 (setq emacs-site-base (concat emacs-drive "/usr/local/share/emacs/"))
-(setq emacs-site-path (concat emacs-site-base "emacs-site/"))
+(setq emacs-site-home (concat emacs-site-base "emacs-share/"))
+(setq emacs-site-path (concat emacs-site-home "emacs-site/"))
 
 
 (setq load-path 
