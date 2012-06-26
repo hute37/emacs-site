@@ -5,4 +5,9 @@
 
 	
 
+        * ChangeLog: started ntcygwin24.
+        targets: cygwin, NTEmacs, emacs 24.x
+
+
+	
 
