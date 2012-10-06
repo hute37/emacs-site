@@ -1,5 +1,10 @@
 2012-10-06  Giovanni Pelosi  <hute37@gmail.com>
 
+        * skel/.config/awesome/rc.lua: awesome config
+        * system/bin/xawe: Xephyr awesome shell
+
+2012-10-06  Giovanni Pelosi  <hute37@gmail.com>
+
         * skel/.emacs-setup: moved link emacs-site to home and added ~/bin/site
 
         * skel/.bash_profile-site: add $PATH to ~/bin/site
