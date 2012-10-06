@@ -34,7 +34,29 @@ git config -l
 
 cd /usr/local/share/emacs/emacs-share/emacs-site/skel
 
-cp -R backups elisp .emacs* ~/.
+cp -R .backups elisp .emacs* ~/.
+
+ln -s /usr/local/share/emacs/emacs-share/emacs-site ~/.emacs-site
+
+ln -s ~/.emacs-site/site-start.el ~/.emacs-site.el
 
 
-ln -s /usr/local/share/emacs/emacs-share/emacs-site/site-start.el ~/.emacs-site.el
+mkdir ~/bin
+
+ln -s ~/.emacs-site/system/bin ~/bin/site
+
+
+
+#cat >> ~/.bash_profile 
+if [ -r ~/.emacs-site/skel/.bash_profile-site ]; then
+ . ~/.emacs-site/skel/.bash_profile-site
+fi
+
+
+
+#cat >> ~/.bash_aliases 
+if [ -r ~/.emacs-site/skel/.bash_aliases-site ]; then
+ . ~/.emacs-site/skel/.bash_aliases-site
+fi
+
+

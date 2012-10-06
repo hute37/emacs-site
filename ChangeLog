@@ -1,8 +1,14 @@
+2012-10-06  Giovanni Pelosi  <hute37@gmail.com>
+
+        * skel/.emacs-setup: moved link emacs-site to home and added ~/bin/site
+
+        * skel/.bash_profile-site: add $PATH to ~/bin/site
+        * skel/.bash_aliases-site: renamed .bash_aliases to avoid clashes
+
 2012-06-26  Giovanni Pelosi  <hute37@gmail.com>
 
         * ChangeLog: added standard GNU ChangeLog
         Added in branch "ntcygwin24" and merged to master
 
-	
 
 
