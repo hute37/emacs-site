@@ -21,6 +21,7 @@ git clone git@github.com:hute37/emacs-site.git
 
 cd ./emacs-site
 
+git config --global core.autocrlf "false"
 git config --global color.ui "auto"
 git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit"
 #git config --global alias.meld \!/usr/local/bin/git-meld.pl
