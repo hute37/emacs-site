@@ -19,9 +19,14 @@ long_line_column=72
 
 [files]
 current_page=0
-FILE_NAME_0=20697;Lisp;0;0;1;1;0;/home/gio/.emacs-site/site-init.el;0;4
+FILE_NAME_0=20853;Lisp;0;0;1;1;0;/home/gio/.emacs-site/site-init.el;0;4
 FILE_NAME_1=136;None;0;16;1;1;0;/home/gio/.emacs-site/skel/.Xdefaults;0;4
 FILE_NAME_2=270;None;0;16;1;1;0;/home/gio/.emacs-site/skel/.emacs-setup;0;4
+FILE_NAME_3=629;Lua;0;16;1;1;0;/home/gio/.emacs-site/skel/.config/awesome/rc.lua;0;4
+FILE_NAME_4=382;Conf;0;16;1;1;0;/home/gio/.config/geany/filedefs/filetypes.common;0;4
+FILE_NAME_5=850;Conf;0;16;1;1;0;/home/gio/.config/geany/colorschemes/vibrant-ink.conf;0;4
+FILE_NAME_6=1551;Conf;0;16;1;1;0;/home/gio/.config/geany/filedefs/filetypes.Genie.conf;0;4
+FILE_NAME_7=14401;Conf;0;16;1;1;0;/home/gio/.config/geany/filedefs/filetypes.lisp;0;4
 
 [VTE]
 last_dir=/usr/local/share/emacs/emacs-share/emacs-site

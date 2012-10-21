@@ -61,3 +61,9 @@ if [ -r ~/.emacs-site/skel/.bash_aliases-site ]; then
 fi
 
 
+cd ~/.emacs-site/
+UBUNTU_MENUPROXY=0 geany &
+
+
+
+
