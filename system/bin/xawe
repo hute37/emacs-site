@@ -30,7 +30,7 @@
 function usage() 
 {
   cat <<USAGE
-awesome_test start|stop|restart|run
+xawe start|stop|restart|run
 
   start    Start nested Awesome in Xephyr
   stop     Stop Xephyr

@@ -19,7 +19,7 @@ long_line_column=72
 
 [files]
 current_page=0
-FILE_NAME_0=376;Lua;0;16;1;1;0;/home/gio/.emacs-site/skel/.config/awesome/rc.lua;0;4
+FILE_NAME_0=2400;Lua;0;16;1;1;0;/home/gio/.emacs-site/skel/.config/awesome/rc.lua;0;4
 
 [VTE]
 last_dir=/usr/local/share/emacs/emacs-share/emacs-site/skel/.config/awesome
