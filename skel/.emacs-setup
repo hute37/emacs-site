@@ -21,6 +21,7 @@ git clone git@github.com:hute37/emacs-site.git
 
 cd ./emacs-site
 
+git config --global core.autocrlf "false"
 git config --global color.ui "auto"
 git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit"
 #git config --global alias.meld \!/usr/local/bin/git-meld.pl
@@ -34,7 +35,35 @@ git config -l
 
 cd /usr/local/share/emacs/emacs-share/emacs-site/skel
 
-cp -R backups elisp .emacs* ~/.
+cp -R .backups elisp .emacs* ~/.
+
+ln -s /usr/local/share/emacs/emacs-share/emacs-site ~/.emacs-site
+
+ln -s ~/.emacs-site/site-start.el ~/.emacs-site.el
 
 
-ln -s /usr/local/share/emacs/emacs-share/emacs-site/site-start.el ~/.emacs-site.el
+mkdir ~/bin
+
+ln -s ~/.emacs-site/system/bin ~/bin/site
+
+
+
+#cat >> ~/.bash_profile 
+if [ -r ~/.emacs-site/skel/.bash_profile-site ]; then
+ . ~/.emacs-site/skel/.bash_profile-site
+fi
+
+
+
+#cat >> ~/.bash_aliases 
+if [ -r ~/.emacs-site/skel/.bash_aliases-site ]; then
+ . ~/.emacs-site/skel/.bash_aliases-site
+fi
+
+
+cd ~/.emacs-site/
+UBUNTU_MENUPROXY=0 geany &
+
+
+
+

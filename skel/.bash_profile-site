@@ -1,0 +1,13 @@
+#!/bin/bash
+
+##
+#  include in ~/.bash_profile
+#
+
+#if [ -r /usr/local/share/emacs/emacs-site/skel/.bash_profile-site ]; then
+# . /usr/local/share/emacs/emacs-site/skel/.bash_profile-site
+#fi
+
+
+[ -d ~/bin/site ] && export PATH=$PATH:~/bin/site
+
