@@ -1168,6 +1168,7 @@ $" nil t))
   (progn
     (global-set-key [f11] 'magit-status )
     (global-set-key [(shift meta f11)] 'vc-next-action)
+    (global-set-key [(meta f11)] 'vc-diff )
     ))
  (t ;; fallback to VC bindings
   (progn

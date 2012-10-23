@@ -65,5 +65,19 @@ cd ~/.emacs-site/
 UBUNTU_MENUPROXY=0 geany &
 
 
+##
+# mutt
+#
+
+# @see: http://lifehacker.com/5574557/how-to-use-the-fast-and-powerful-mutt-email-client-with-gmail
+
+sudo apt-get install mutt 
+
+mkdir -p ~/.mutt/cache/headers mkdir ~/.mutt/cache/bodies touch ~/.mutt/certificates 
+
+
+
+
+
 
 
