@@ -9,7 +9,7 @@ indent_mode=2
 
 [project]
 name=emacs-site
-base_path=/home/gio/.emacs-site/
+base_path=~/.emacs-site/
 description=
 file_patterns=*;
 
@@ -19,15 +19,9 @@ long_line_column=72
 
 [files]
 current_page=2
-FILE_NAME_0=26003;Lisp;0;0;1;1;0;/home/gio/.emacs-site/site-init.el;0;4
-FILE_NAME_1=136;None;0;16;1;1;0;/home/gio/.emacs-site/skel/.Xdefaults;0;4
-FILE_NAME_2=1262;None;0;16;1;1;0;/home/gio/.emacs-site/skel/.emacs-setup;0;4
-FILE_NAME_3=629;Lua;0;16;1;1;0;/home/gio/.emacs-site/skel/.config/awesome/rc.lua;0;4
-FILE_NAME_4=850;Conf;0;16;1;1;0;/home/gio/.config/geany/colorschemes/vibrant-ink.conf;0;4
-FILE_NAME_5=1551;Conf;0;16;1;1;0;/home/gio/.config/geany/filedefs/filetypes.Genie.conf;0;4
-FILE_NAME_6=334;Conf;0;16;1;1;0;/home/gio/.config/geany/filedefs/filetypes.lisp;0;4
-FILE_NAME_7=300;None;0;16;1;1;0;/home/gio/.emacs-site/ChangeLog;0;4
-FILE_NAME_8=489;Conf;0;16;1;1;0;/home/gio/.config/geany/filedefs/filetypes.common;0;4
+FILE_NAME_0=506;Lisp;0;0;1;1;0;/home/mari/.emacs-site/site-init.el;0;4
+FILE_NAME_1=0;None;0;16;1;1;0;/home/mari/.emacs-site/skel/.emacs-setup;0;4
+FILE_NAME_2=200;None;0;16;1;1;0;/home/mari/.emacs-site/emacs-site.geany;0;4
 
 [VTE]
-last_dir=/usr/local/share/emacs/emacs-share/emacs-site/skel
+last_dir=/usr/local/share/emacs/emacs-share/emacs-site
