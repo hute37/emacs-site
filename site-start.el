@@ -88,6 +88,17 @@ determine this.")
 	       )
 	      ))
 
+(setq Info-default-directory-list
+      (append Info-default-directory-list 
+	      (list 
+	       emacs-site-path 
+	       (concat emacs-site-path "addon" )
+	       ;;(concat emacs-site-path "addon/magit/magit-1.1.1" )
+	       (concat emacs-site-path "addon/magit/magit-1.2.0" )
+	       "~/.info"
+	       )
+	      ))
+
 
 ;; ---( Autoload )---------------------------------------------------------
 
