@@ -88,6 +88,7 @@ determine this.")
 	       )
 	      ))
 
+
 (setq Info-default-directory-list
       (append Info-default-directory-list 
 	      (list 
@@ -97,6 +98,11 @@ determine this.")
 	       (concat emacs-site-path "addon/magit/magit-1.2.0" )
 	       "~/.info"
 	       )
+	      ))
+
+(add-hook 'Info-mode-hook; After Info-mode has started
+        (lambda ()
+	      (setq Info-additional-directory-list Info-default-directory-list)
 	      ))
 
 
