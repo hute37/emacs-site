@@ -770,6 +770,29 @@ $" nil t))
  )
 
 
+;; ---( Scrollbar )--------------------------------------------------------
+
+
+(cond
+ ((eq z-emacs-type 'fsf_emacs);; GNU-Emacs
+  (progn
+
+    (scroll-bar-mode 0)
+
+    (defun toggle-scroolbar ()
+      (interactive)
+      (scrool-bar-mode))
+
+    ))
+ (t
+  (progn
+    (defun toggle-toolbar ()
+      (interactive)
+      (error "toggle-toolbar unsupported ..."))
+    ))
+ )
+
+
 ;; ---( Modeline )-------------------------------------------------------
 
 (cond
