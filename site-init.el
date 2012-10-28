@@ -339,11 +339,19 @@
   (progn
 
 ;; pc-select
-(require 'pc-select)
+;;(require 'pc-select)
 ;;(pc-select-selection-keys-only t)
 ;;(pc-selection-mode t nil '(pc-select))
 ;;(setq pc-select-selection-keys-only t)
-(pc-selection-mode)
+;;(pc-selection-mode)
+
+ (if (fboundp 'pc-selection-mode)                                              
+      (pc-selection-mode)                                                   
+      (require 'pc-select))   
+
+ (custom-set-variables
+  '(pc-selection-mode t nil (pc-select)))
+
 
     ))
  (t
@@ -951,6 +959,29 @@ $" nil t))
 ;; (global-set-key [(meta control next)] 'outline-next-visible-heading )
 
 ;; ---( Home/End )---------------------------------------------
+
+;;(global-set-key [home] 'beginning-of-line)
+;;(global-set-key [end] 'end-of-line)
+
+;;  (define-key global-map [(shift end)]           'end-of-line-mark)
+;;  (define-key global-map [end]                   'end-of-line-nomark)
+;;  (global-set-key [(shift end)]           'end-of-line-mark)
+;;  (global-set-key [end]                   'end-of-line-nomark)
+;;  (global-set-key [(shift control end)]          'end-of-buffer-mark)
+;;  (global-set-key [(control end)]                'end-of-buffer-nomark)
+;;  (global-set-key [(shift meta end)]             'end-of-buffer-mark)
+;;  (global-set-key [(meta end)]                   'end-of-buffer-nomark)
+
+
+;;  (define-key global-map [(shift home)]          'beginning-of-line-mark)
+;;  (define-key global-map [home]                  'beginning-of-line-nomark)
+;;  (global-set-key [(shift home)]          'beginning-of-line-mark)
+;;  (global-set-key [home]                  'beginning-of-line-nomark)
+;;  (global-set-key [(shift control home)]         'beginning-of-buffer-mark)
+;;  (global-set-key [(control home)]               'beginning-of-buffer-nomark)
+;;  (global-set-key [(shift meta home)]            'beginning-of-buffer-mark)
+;;  (global-set-key [(meta home)]                  'beginning-of-buffer-nomark)
+
 
 (global-set-key [(meta home)] 'delete-other-windows )
 (global-set-key [(meta end)] 'kill-this-buffer )

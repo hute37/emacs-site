@@ -41,7 +41,7 @@ cp -R .backups elisp .emacs* ~/.
 
 ln -s /usr/local/share/emacs/emacs-share/emacs-site ~/.emacs-site
 
-ln -s ~/.emacs-site/site-start.el ~/.emacs-site.el
+ln -s ~/.emacs-site/site-start.el ~/.emacs-start.el
 
 
 mkdir ~/bin
