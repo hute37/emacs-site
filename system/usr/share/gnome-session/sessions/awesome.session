@@ -1,0 +1,10 @@
+[GNOME Session]
+Name=Awesome/GNOME
+RequiredComponents=gnome-settings-daemon;
+RequiredProviders=windowmanager;
+DefaultProvider-windowmanager=awesome
+
+
+DesktopName=Awesome
+
+
