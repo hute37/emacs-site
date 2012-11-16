@@ -1992,6 +1992,108 @@ $" nil t))
 
 
 ;;;////////////////////////////////////////////////////////////////
+;;;  @SHELL
+;;;////////////////////////////////////////////////////////////////
+
+;; ---( shell )---------------------------------------------------------------
+
+;; requires eterm-color, eterm terminfo 
+;; @see: http://www.emacswiki.org/emacs/AnsiTermHints#toc4
+
+;; ---( shell )---------------------------------------------------------------
+
+(cond
+ ((eq z-emacs-type 'xemacs) ;; XEmacs
+  (progn
+
+    ))
+ ((eq z-emacs-type 'fsf_emacs);; GNU-Emacs
+  (progn
+
+
+
+    ))
+ (t
+  (progn
+    ))
+ )
+
+
+;; ---( eshell )---------------------------------------------------------------
+
+(cond
+ ((eq z-emacs-type 'xemacs) ;; XEmacs
+  (progn
+
+    ))
+ ((eq z-emacs-type 'fsf_emacs);; GNU-Emacs
+  (progn
+
+
+
+    ))
+ (t
+  (progn
+    ))
+ )
+
+
+;; ---( ansi-term )---------------------------------------------------------------
+
+(cond
+ ((eq z-emacs-type 'xemacs) ;; XEmacs
+  (progn
+
+    ))
+ ((eq z-emacs-type 'fsf_emacs);; GNU-Emacs
+  (progn
+
+
+
+    ))
+ (t
+  (progn
+    ))
+ )
+
+
+;; ---( multi-term )---------------------------------------------------------------
+;; @see: http://www.emacswiki.org/emacs/MultiTerm
+
+(cond
+ ((eq z-emacs-type 'xemacs) ;; XEmacs
+  (progn
+
+    ))
+ ((eq z-emacs-type 'fsf_emacs);; GNU-Emacs
+  (progn
+
+    (require 'multi-term)
+    (setq multi-term-program "/bin/bash")
+
+ (custom-set-variables
+     '(term-default-bg-color "#001000")        ;; background color (black)
+     '(term-default-fg-color "#80f080"))       ;; foreground color (yellow)
+
+(add-hook 'term-mode-hook 
+	  (lambda()
+	    (global-unset-key (kbd "C-r"))
+	    (color-theme-z-term)
+;	    (local-unset-key (kbd "C-r"))
+	    (message "%s" "This is in term mode and hook enabled.")
+))
+
+
+    ))
+ (t
+  (progn
+    ))
+ )
+
+
+
+
+;;;////////////////////////////////////////////////////////////////
 ;;;  @INFO
 ;;;////////////////////////////////////////////////////////////////
 
