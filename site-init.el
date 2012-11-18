@@ -2091,12 +2091,30 @@ $" nil t))
     (term-send-raw-string output)))
 
 
-;; tic -o ../ emacs-color.ti
+;; tic -o ../ emacs-color.tix1
 ;; tput clear
 ;; infocmp
 ;; sudo cp eterm eterm-color /usr/share/emacs/23.3/etc//e/eterm-color
 
 ;; @see: ~/.emacs-site/skel/.terminfo/e/eterm-colot.ti
+
+;; ~/.config/mc/ini
+
+;; [terminal:eterm-color]
+;; f1=\\eOP
+;; f2=\\eOQ
+;; f3=\\eOR
+;; f4=\\eOS
+;; f5=\\e[15~
+;; f6=\\e[17~
+;; f7=\\e[18~
+;; f8=\\e[19~
+;; f9=\\e[20~
+;; f10=\\e[21~
+;; f11=\\e[23~
+;; f12=\\e[24~
+
+
 
 (defconst term-function-key-alist '(
 				    (f1 . "\eOP")
