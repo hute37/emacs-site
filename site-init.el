@@ -2148,6 +2148,30 @@ $" nil t))
  )
 
 
+;; ---( Sunrise )---------------------------------------------------------------
+
+(cond
+ ((eq z-emacs-type 'xemacs) ;; XEmacs
+  (progn
+
+    ))
+ ((eq z-emacs-type 'fsf_emacs);; GNU-Emacs
+  (progn
+
+    (require 'sunrise-commander)
+    ;;(add-to-list 'auto-mode-alist '("\\.srvm\\'" . sr-virtual-mode))
+
+    ))
+ (t
+  (progn
+    ))
+ )
+
+
+
+
+
+
 
 
 ;;;////////////////////////////////////////////////////////////////
