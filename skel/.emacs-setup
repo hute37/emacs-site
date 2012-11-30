@@ -11,6 +11,8 @@ sudo chgrp -R staff /usr/local/share/emacs/emacs-share
 
 sudo chmod -R g+w /usr/local/share/emacs/emacs-share
 
+sudo chmod -R g+s /usr/local/share/emacs/emacs-share
+
 
 cd /usr/local/share/emacs/emacs-share
 
@@ -39,7 +41,7 @@ cp -R .backups elisp .emacs* ~/.
 
 ln -s /usr/local/share/emacs/emacs-share/emacs-site ~/.emacs-site
 
-ln -s ~/.emacs-site/site-start.el ~/.emacs-site.el
+ln -s ~/.emacs-site/site-start.el ~/.emacs-start.el
 
 
 mkdir ~/bin
@@ -63,6 +65,20 @@ fi
 
 cd ~/.emacs-site/
 UBUNTU_MENUPROXY=0 geany &
+
+
+##
+# mutt
+#
+
+# @see: http://lifehacker.com/5574557/how-to-use-the-fast-and-powerful-mutt-email-client-with-gmail
+
+sudo apt-get install mutt 
+
+mkdir -p ~/.mutt/cache/headers mkdir ~/.mutt/cache/bodies touch ~/.mutt/certificates 
+
+
+
 
 
 

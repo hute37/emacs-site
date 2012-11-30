@@ -20,7 +20,7 @@
 ;;;
 
 ;; '(Info-additional-directory-list (quote ("D:\\usr\\share\\info")))
-(load "~/.emacs-site")
+(load "~/.emacs-start")
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
@@ -66,7 +66,7 @@
  '(grep-command "egrep -n -e ")
  '(hc-ctrl-backslash-completes-a-la-mode t)
  '(hc-ctrl-x-c-is-completion t)
- '(home-end-enable t)
+ '(home-end-enable nil)
  '(inhibit-startup-screen 1)
  '(ls-lisp-dirs-first t)
  '(ls-lisp-ignore-case t)

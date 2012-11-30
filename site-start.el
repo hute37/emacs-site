@@ -84,8 +84,23 @@ determine this.")
 	       emacs-site-path 
 	       (concat emacs-site-path "addon" )
 	       (concat emacs-site-path "addon/doremi" )
-	       (concat emacs-site-path "addon/magit/magit-1.1.1" )
+	       (concat emacs-site-path "addon/magit/magit-1.2.0" )
 	       )
+	      ))
+
+
+(setq Info-default-directory-list
+      (append Info-default-directory-list 
+	      (list 
+	       emacs-site-path 
+	       (concat emacs-site-path "info" )
+	       "~/.info"
+	       )
+	      ))
+
+(add-hook 'Info-mode-hook; After Info-mode has started
+        (lambda ()
+	      (setq Info-additional-directory-list Info-default-directory-list)
 	      ))
 
 
