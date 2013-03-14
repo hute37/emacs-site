@@ -90,11 +90,12 @@ determine this.")
 
 
 (setq Info-default-directory-list
-      (append (list 
-	       "~/.info"
+      (append Info-default-directory-list 
+	      (list 
+	       emacs-site-path 
 	       (concat emacs-site-path "info" )
+	       "~/.info"
 	       )
-	      Info-default-directory-list
 	      ))
 
 (add-hook 'Info-mode-hook; After Info-mode has started

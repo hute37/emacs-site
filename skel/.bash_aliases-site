@@ -40,3 +40,11 @@ alias p0='PS=0 exec bash'
 alias p1='PS=1 exec bash'
 alias p9='unset PS; exec bash'
 
+
+#
+
+alias ssh-x='ssh -c arcfour,blowfish-cbc -XC'
+
+alias XX='/usr/bin/Xephyr :5 -query localhost -once -fullscreen -ac -keybd "ephyr,,,xkbmodel=pc105,xkblayout=it,xkbrules=evdev,xkboption="'
+
+
