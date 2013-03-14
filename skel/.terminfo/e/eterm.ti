@@ -1,4 +1,4 @@
-eterm-color|Emacs term.el terminal emulator term-protocol-version 0.96,
+eterm|Emacs term.el terminal emulator term-protocol-version 0.96,
 #
 # The code here is forced by the interface, and is not subject to
 # copyright, constituting the only possible expression of the algorithm
