@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# set -x
+
+: ${d:=${1:-5}} 
+: ${s:=${2:-'-fullscreen'}} 
+
+#echo $d
+#echo $s
+#read z
+
+
+xinit \
+ $(which gnome-awesome-session) \
+ -- \
+ /usr/bin/Xephyr \
+:$d \
+-br \
+$s  \
+-ac \
+-keybd "ephyr,,,xkbmodel=pc105,xkblayout=it,xkbrules=evdev,xkboption=" \
+-zap &
+
+
+#export DISPLAY=$d
+#export PS1="$PS1 [$d] "
+#bash 
+
+
+
+
