@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=GNOME with Awesome
-Comment=A GNOME fallback mode session using awesome as the window manager.
-Exec=gnome-session-awesome
-TryExec=gnome-session
-Icon=
-Type=Application
