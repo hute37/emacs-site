@@ -1924,7 +1924,8 @@ $" nil t))
       (setq font-initial (if (string-lessp emacs-version "23.0")
 ;;			"-xos4-terminus-medium-r-*-*-17-*-*-*-*-*-*-1"
 			"10x20"
-			"Inconsolata-12"))
+			"Inconsolata-12"
+	))
      (setq initial-frame-alist
 ;;	      ( background-color . "#103045" )
 ;;	      ( background-color . "#1f3f3f" )
