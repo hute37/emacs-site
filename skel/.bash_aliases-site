@@ -4,8 +4,12 @@
 #  include in ~/.bash_aliases
 #
 
-#if [ -r /usr/local/share/emacs/emacs-site/skel/.bash_aliases-site ]; then
-# . /usr/local/share/emacs/emacs-site/skel/.bash_aliases-site
+### if [ -r  ~/.emacs-site/skel/.bash_aliases-site ]; then
+###   cd; ln -s  ~/.emacs-site/skel/.bash_aliases-site 
+### fi
+#
+#if [ -r  ~/.bash_aliases-site ]; then
+# . ~/.bash_aliases-site 
 #fi
 
 
