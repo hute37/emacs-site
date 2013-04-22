@@ -1,0 +1,3 @@
+[submodule "addon/magit/magit-base"]
+	path = addon/magit/magit-base
+	url = https://github.com/magit/magit.git
