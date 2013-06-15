@@ -2,6 +2,13 @@
 
 
 ##
+# Magit Cheatsheet
+# 
+# http://daemianmack.com/magit-cheatsheet.html
+# 
+
+
+##
 # git: check if pull needed
 #
 # http://stackoverflow.com/questions/3258243/git-check-if-pull-needed
