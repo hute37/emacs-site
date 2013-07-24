@@ -1,0 +1,33 @@
+#!/bin/bash
+
+#valid (screen/ebook/printer/prepress)
+lv=ebook
+
+
+
+case "$1" in 
+ -x) 
+	shift
+	lv=$2
+	shift
+;;
+esac
+
+infile=$1
+outfile=$2
+
+set -x
+gs \
+    -sDEVICE=pdfwrite \
+    -dCompatibilityLevel=1.4 \
+    -dPDFSETTINGS=/ebook \
+    -dNOPAUSE \
+    -dQUIET \
+    -dBATCH \
+    -sOutputFile=$outfile \
+    $infile
+
+set +x
+
+ls -lh $infile $outfile
+
