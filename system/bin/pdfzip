@@ -8,7 +8,7 @@ lv=ebook
 case "$1" in 
  -x) 
 	shift
-	lv=$2
+	lv=$1
 	shift
 ;;
 esac
@@ -20,7 +20,7 @@ set -x
 gs \
     -sDEVICE=pdfwrite \
     -dCompatibilityLevel=1.4 \
-    -dPDFSETTINGS=/ebook \
+    -dPDFSETTINGS=/$lv \
     -dNOPAUSE \
     -dQUIET \
     -dBATCH \
