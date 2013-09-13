@@ -116,6 +116,11 @@
 ;;;
 
 ;;;////////////////////////////////////////////////////////////////
+;;;  #ENTRY
+;;;////////////////////////////////////////////////////////////////
+(message "SITE:#ENTRY#")
+
+;;;////////////////////////////////////////////////////////////////
 ;;;  @FORK
 ;;;////////////////////////////////////////////////////////////////
 
@@ -134,9 +139,11 @@
     ))
  )
 
+
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @AUTOLOAD
 ;;;////////////////////////////////////////////////////////////////
+(message "SITE:AUTOLOAD")
 
 ;; ---( server )-----------------------------------------------------
 
@@ -212,6 +219,7 @@
 
 
 ;; ---( required )---------------------------------------------------------
+(message "SITE:AUTOLOAD.core")
 
 (require 'bs)
 
@@ -219,10 +227,12 @@
 (require 'imenu)
 (require 'gud)
 
+
 ;;(require 'lcomp) ;;to prevent M-c remap
 
 
 ;; ---( EmacsWiki )---------------------------------------------------------
+(message "SITE:AUTOLOAD.emacswiki")
 
 ;;(require 'ring+)
 (eval-after-load "ring" '(progn (require 'ring+)))
@@ -234,6 +244,7 @@
 (require 'zoom-frm)
 
 
+(message "SITE:AUTOLOAD.misc")
 ;; ---( all )---------------------------------------------------------
 
 (load "all")                            ;; xedit all
@@ -271,6 +282,7 @@
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @THEMES
 ;;;////////////////////////////////////////////////////////////////
+(message "SITE:THEMES")
 
 ;; ---( Custom Fonts )----------------------------------------------------
 
@@ -290,6 +302,7 @@
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @VC
 ;;;////////////////////////////////////////////////////////////////
+(message "SITE:VC")
 
 ;; ---( Git )----------------------------------------------------
 
@@ -311,18 +324,9 @@
 
 
 ;;;////////////////////////////////////////////////////////////////
-;;;  @GLOBALS
+;;;  @CUA
 ;;;////////////////////////////////////////////////////////////////
-
-;; ---( Customize Settings )----------------------------------------------------
-
-;; visible bell
-(setq visible-bell t)
-
-;; init message
-(setq initial-scratch-message nil)
-
-
+(message "SITE:CUA")
 
 ;; ---( PC Select )----------------------------------------------------
 
@@ -358,6 +362,45 @@
   (progn
     ))
  )
+
+
+;; ---( CUA )---------------------------------------------------------
+
+(cond
+ ((string-lessp emacs-version "22.0") ;; 
+  (progn
+
+    (require 'cua)
+    (CUA-mode t)
+    (setq CUA-mode-normal-cursor-color "red")
+    (setq CUA-mode-overwrite-cursor-color "yellow")
+    (setq CUA-mode-read-only-cursor-color "green")
+
+    ;; disable in .emacs
+    ;; '(cua-mode t nil (cua-base))
+
+    ))
+ (t
+  (progn
+    ))
+)
+
+
+
+
+
+;;;////////////////////////////////////////////////////////////////
+;;;  @GLOBALS
+;;;////////////////////////////////////////////////////////////////
+(message "SITE:GLOBALS")
+
+;; ---( Customize Settings )----------------------------------------------------
+
+;; visible bell
+(setq visible-bell t)
+
+;; init message
+(setq initial-scratch-message nil)
 
 
 ;; ---( Global Settings )----------------------------------------------------
@@ -431,6 +474,7 @@
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @FEATURES
 ;;;////////////////////////////////////////////////////////////////
+(message "SITE:FEATURES")
 
 
 ;; ---( Session )--------------------------------------------------------
@@ -458,7 +502,6 @@
 ;      (t ,(concat backup-directory "/"))
 		  ))
 
-
 ;; ---( HideShow )--------------------------------------------------------
 
 (require 'hideshow)
@@ -470,6 +513,7 @@
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @FUNCTIONS
 ;;;////////////////////////////////////////////////////////////////
+(message "SITE:FUNCIONS")
 
 ;; ---( util )---------------------------------------------------------
 
@@ -482,6 +526,8 @@
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @MACRO
 ;;;////////////////////////////////////////////////////////////////
+(message "SITE:MACRO")
+
 
 ;; ---( input macros )---------------------------------------------------------
 
@@ -668,6 +714,7 @@ $" nil t))
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @UI
 ;;;////////////////////////////////////////////////////////////////
+(message "SITE:UI")
 
 ;; ---( Menu )-----------------------------------------------------------
 
@@ -785,7 +832,7 @@ $" nil t))
  ((eq z-emacs-type 'fsf_emacs);; GNU-Emacs
   (progn
 
-    (scroll-bar-mode 0)
+    (scroll-bar-mode nil)
 
     (defun toggle-scroolbar ()
       (interactive)
@@ -827,6 +874,7 @@ $" nil t))
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @FRAME L&F
 ;;;////////////////////////////////////////////////////////////////
+(message "SITE:FRAME")
 
 ;; ---( Look )---------------------------------------------------------------
 
@@ -855,6 +903,7 @@ $" nil t))
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @MOUSE INPUT MAPPINGS
 ;;;////////////////////////////////////////////////////////////////
+(message "SITE:MOUSE")
 
 ;; ---( Wheel )---------------------------------------------------------------
 
@@ -915,6 +964,7 @@ $" nil t))
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @KEYBOARD INPUT MAPPINGS
 ;;;////////////////////////////////////////////////////////////////
+(message "SITE:KEYBOARD")
 
 ;; ============================================
 ;; ---( Edit Keys )-----
@@ -1023,6 +1073,7 @@ $" nil t))
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @COMPLETION
 ;;;////////////////////////////////////////////////////////////////
+(message "SITE:COMPLETION")
 
 ;; ---( hippie-expand )------------------------------------------
 ;; hippie-expand  (auto skriv resten af ord jeg har skrevet før)
@@ -1067,9 +1118,10 @@ $" nil t))
 
 
 
-;; ============================================
-;; ---( WM Keys )-----
-;; ============================================
+;;;////////////////////////////////////////////////////////////////
+;;;  @WMKEYS
+;;;////////////////////////////////////////////////////////////////
+(message "SITE:K-WMKEYS")
 
 ;; ---( Arrows )--------------------------------------------------
 
@@ -1113,6 +1165,7 @@ $" nil t))
 ;; ============================================
 ;; ---( Function Keys )-----
 ;; ============================================
+(message "SITE:K-FUNKEYS")
 
 
 ;; ---( F1: Help )---------------------------------------------------------
@@ -1257,6 +1310,7 @@ $" nil t))
 ;; ============================================
 ;; ---( Numeric Keypad )-----
 ;; ============================================
+(message "SITE:K-NUMPAD")
 
 ;; ---( center )--------------------------------------------------
 
@@ -1364,6 +1418,7 @@ $" nil t))
 ;; ============================================
 ;; ---( ASCII Keys )-----
 ;; ============================================
+(message "SITE:K-ASCII")
 
 ;; ---( US-Keyboard )-----------------------------------------------------
 
@@ -1376,6 +1431,7 @@ $" nil t))
 ;; ============================================
 ;; ---( Control Keys )-----
 ;; ============================================
+(message "SITE:K-CTRL")
 
 ;; ---( Undo )------------------------------------------------------------
 
@@ -1400,6 +1456,7 @@ $" nil t))
 ;; ============================================
 ;; ---( ESC-Maps Keys )-----
 ;; ============================================
+(message "SITE:K-ESCMAP")
 
 ;; ---( Numeric )--------------------------------------------------------
 
@@ -1467,245 +1524,9 @@ $" nil t))
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @LAYOUT
 ;;;////////////////////////////////////////////////////////////////
-
+(message "SITE:LAYOUT")
 
 (cond
- ((eq z-emacs-type 'xemacs) ;; XEmacs
-  (progn
-
-(cond  ;;--- XEmacs ---------------------------------------------------
- ((eq system-type 'windows-nt) ;; WinNT
-  (cond
-   (t
-    (progn
-      (setq default-frame-alist
-	    '(
-	      (top . 50)
-	      ;; (left . 40)
-	      (width . 85)
-	      (height . 40)
-	      (background-color . "#303010")
-	      (background-mode . dark)
-	      (foreground-color . "cornsilk")
-	      (border-color . "black")
-	      (cursor-color . "white")
-	      (mouse-color . "black")
-	      ;; (font . "-*-Andale Mono-normal-r-*-*-11-*-*-*-c-*-iso8859-1")
-	      ;; (font . "-*-Lucida Sans Typewriter-normal-r-*-*-11-*-*-*-c-*-iso8859-1")
-	      (font . "-*-Lucida Sans Unicode-normal-r-*-*-16-*-*-*-c-*-iso8859-1")
-
-	      )
-	    )
-
-      (setq color-theme-is-global t)
-      (color-theme-z-gnome3)
-      (setq color-theme-is-global nil)
-      (color-theme-z-gnome3-d)            ;; default
-      (setq initial-frame-alist
-	    (append
-	     '(
-	       (top . 30)
-	       (left . 355)
-	       (width . 88)
-	       (height . 45)
-	       ;; (height . 49)
-	       ;; (background-color . "#1A4F15" )
-	       ;; (foreground-color . "#CDE7CD" )
-	       ;; (cursor-color . "red")
-	       ;; (border-color . "blue")
-	       (background-color . "#203030")
-	       ;; (foreground-color . "#00D0D0")
-	       (foreground-color . "#CDE7CD" )
-	       (cursor-color . "red")
-	       (border-color . "white")
-	       ;; (border-color . "#00007F")
-
-
-	       ;; (font . "-*-Raize-normal-r-normal-normal-16-120-96-96-c-90-iso8859-15")
-	       ;; (font . "-*-SimSun-normal-r-*-*-16-*-*-*-c-*-iso8859-1")
-	       ;; (font . "-*-r_ansi-normal-r-*-*-16-*-*-*-c-*-iso8859-1")
-	       ;; (font . "-*-Need Glasses ?-normal-r-*-*-18-*-*-*-c-*-iso8859-1")
-	       ;; (font . "-outline-VAG Rounded Light-normal-r-normal-normal-19-142-96-96-p-90-iso10646-1")
-	       ;; (font . "-*-r_ansi-normal-r-*-*-14-*-*-*-c-*-iso8859-1")
-	       ;; (font . "-*-Andale Mono-normal-r-*-*-14-*-*-*-c-*-iso8859-1")
-	       ;; (font . "-*-Letter Gothic 12 Pitch BT-normal-r-*-*-15-*-*-*-c-*-iso8859-1")
-	       (font . "-bitstream-bitstream vera sans mono-normal-r-*-*-18-*-*-*-c-*-iso8859-1")
-
-	       )
-	     initial-frame-alist ))
-      )
-    )))
- ((eq system-type 'cygwin);; GNU-Cygwin
-  (cond
-   ((string= (getenv "DISPLAY") ":9.9")
-    (progn
-
-      )
-    )
-   (t
-    (progn
-      (setq default-frame-alist
-	    '(
-	      (top . 60)
-	      (left . 40)
-	      (width . 90)
-	      (height . 50)
-	      (background-color . "#002035")
-	      (background-mode . dark)
-	      (foreground-color . "cornsilk")
-	      (border-color . "black")
-	      (cursor-color . "white")
-	      (mouse-color . "black")
-	      (font . "-b&h-lucidatypewriter-medium-r-normal-*-*-120-*-*-m-*-iso8859-9")
-	      )
-	    )
-
-
-      (setq color-theme-is-global t)
-      (color-theme-z-gnome3)            ;; default
-
-      ;; #ifdef COLOR
-      ;; *customization: -color
-      ;; #endif
-      ;;
-      ;; !!emacs*Foreground: Wheat
-      ;; !!emacs*Background: Gray10
-      ;; !!emacs*Foreground: Wheat
-      ;; !!emacs*Background: DarkSlateGray
-      ;; !!emacs*Foreground: Ivory3
-      ;; !!emacs*Background: MidnightBlue
-      ;; !!emacs*Foreground: DarkSeaGreen3
-      ;; !!emacs*Background: Gray13
-      ;; !!emacs*Foreground: PowderBlue
-      ;; !!emacs*Background: Gray10
-      ;; !!emacs*reverseVideo: on
-      ;; emacs*pointerColor: Orchid
-      ;; emacs*cursorColor: Orchid
-      ;; emacs*bitmapIcon: on
-      ;; !!emacs*font: -misc-screen-medium-R-normal--14-120-78-78-C-90-ISO8859-7
-      ;; !!emacs*font: -greek-smserif-medium-r-semicondensed-*-*-160-*-*-m-*-iso8859-7
-      ;; !!emacs*font: 10x20
-      ;; !!emacs*font: -Sun-Serif-Medium-R-Normal-Serif-16-160-72-72-M-90-ISO8859-1
-      ;; !!emacs*font: -adobe-courier-bold-r-normal--*-140-*-*-m-*-iso8859-1
-      ;; emacs*font: -B&H-LucidaTypewriter-Medium-R-Normal-Sans-12-120-75-75-M-70-ISO8859-1
-      ;; emacs*menubar.font:-adobe-helvetica-bold-r-normal-*-*-120-*-*-*-*-*-*
-      ;; emacs.geometry: 80x25
-
-      (setq initial-frame-alist
-	    '(
-	      (top . 25)
-	      (left . 310)
-	      (width . 85)
-	      (height . 52)
-	      ( background-color . "#103045" )
-	      ( foreground-color . "LightCyan1" )
-	      ( cursor-color . "Yellow")
-	      ( background-mode . dark)
-	      (font . "-b&h-lucidatypewriter-medium-r-normal-*-*-140-*-*-m-*-iso8859-9")
-	      ))
-
-      (setq color-theme-is-global nil)
-      (color-theme-z-gnome3-d)            ;; default
-
-      )
-    )))
- ((eq system-type 'linux);; GNU-Linux
-  (cond
-   ((string= (getenv "DISPLAY") ":9.9")
-    (progn
-
-      )
-    )
-   (t
-    (progn
-      (setq default-frame-alist
-	    '(
-	      (top . 73)
-	      (left . 30)
-	      (width . 90)
-	      (height . 58)
-	      ;;(background-color . "#002035")
-	      (background-mode . dark)
-	      ;;(foreground-color . "cornsilk")
-	      (border-color . "RoyalBlue")
-	      (cursor-color . "yellow")
-	      (mouse-color . "red")
-	      ;;(font . "-b&h-lucida-medium-r-*-*-12-*-*-*-*-*-*-*")
-	      (font . "-misc-fixed-medium-r-normal--15-*-*-*-*-*-*-*")
-	      (top-toolbar-shadow-color "#fffffbeeffff")
-	      (bottom-toolbar-shadow-color "green" )
-	      (background-toolbar-color "coral")
-	      ;;(bottom-toolbar-shadow-color "#79e77df779e7" )
-	      ;;(background-toolbar-color "#cf3ccf3ccf3c")
-
-	      )
-	    )
-
-
-      (setq color-theme-is-global t)
-      (color-theme-z-gnome)            ;; default
-
-      ;; #ifdef COLOR
-      ;; *customization: -color
-      ;; #endif
-      ;;
-      ;; !!emacs*Foreground: Wheat
-      ;; !!emacs*Background: Gray10
-      ;; !!emacs*Foreground: Wheat
-      ;; !!emacs*Background: DarkSlateGray
-      ;; !!emacs*Foreground: Ivory3
-      ;; !!emacs*Background: MidnightBlue
-      ;; !!emacs*Foreground: DarkSeaGreen3
-      ;; !!emacs*Background: Gray13
-      ;; !!emacs*Foreground: PowderBlue
-      ;; !!emacs*Background: Gray10
-      ;; !!emacs*reverseVideo: on
-      ;; emacs*pointerColor: Orchid
-      ;; emacs*cursorColor: Orchid
-      ;; emacs*bitmapIcon: on
-      ;; !!emacs*font: -misc-screen-medium-R-normal--14-120-78-78-C-90-ISO8859-7
-      ;; !!emacs*font: -greek-smserif-medium-r-semicondensed-*-*-160-*-*-m-*-iso8859-7
-      ;; !!emacs*font: 10x20
-      ;; !!emacs*font: -Sun-Serif-Medium-R-Normal-Serif-16-160-72-72-M-90-ISO8859-1
-      ;; !!emacs*font: -adobe-courier-bold-r-normal--*-140-*-*-m-*-iso8859-1
-      ;; emacs*font: -B&H-LucidaTypewriter-Medium-R-Normal-Sans-12-120-75-75-M-70-ISO8859-1
-      ;; emacs*menubar.font:-adobe-helvetica-bold-r-normal-*-*-120-*-*-*-*-*-*
-      ;; emacs.geometry: 80x25
-
-      (setq initial-frame-alist
-	    '(
-	      (top . 40)
-	      (left . 320)
-	      (width . 90)
-	      (height . 55)
-	      ;;( background-color . "#103045" )
-	      ;;( foreground-color . "LightCyan1" )
-	      ( cursor-color . "Yellow")
-	      ( background-mode . dark)
-	      ;; (font . "-xos4-terminus-medium-r-*-*-17-*-*-*-*-*-*-1")
-	      ;; (font . "-artwiz-fkp-*-*-*-*-17-*-*-*-*-*-*-*")
-	      (font . "-misc-fixed-medium-r-normal--15-*-*-*-*-*-*-*")
-	      ))
-
-      (setq color-theme-is-global nil)
-      (color-theme-z-gnome2)            ;; default
-      )
-    )))
- ((eq system-type 'usg-unix-v);; Sun Solaris
-  (cond
-   ((string= (getenv "DISPLAY") ":0.0")
-    (progn
-      )
-    )
-   (t
-    (progn
-      )
-    )))
- )
-
-
-
-    ))
  ((eq z-emacs-type 'fsf_emacs);; GNU-Emacs
   (progn
 
@@ -1841,7 +1662,7 @@ $" nil t))
 	      ( foreground-color . "LightCyan1" )
 	      ( cursor-color . "Yellow")
 	      ( background-mode . dark)
-	      (font . "-b&h-lucidatypewriter-medium-r-normal-*-*-140-*-*-m-*-iso8859-9")
+	      (font . "-b&h-lucidatypewriter-medium-r-normal-*-*-120-*-*-m-*-iso8859-9")
 	      ))
 
       (setq color-theme-is-global nil)
@@ -1923,6 +1744,7 @@ $" nil t))
 
       (setq font-initial (if (string-lessp emacs-version "23.0")
 ;;			"-xos4-terminus-medium-r-*-*-17-*-*-*-*-*-*-1"
+			"9x15"
 			"10x20"
 			"Inconsolata-12"
 	))
@@ -1942,7 +1764,7 @@ $" nil t))
 	      (top . 55)
 	      (left . 350)
 	      (width . 85)
-	      (height . 45)
+	      (height . 60)
 	      ( cursor-color . "Yellow")
 	      (font . ,font-initial)
 	      )
@@ -1950,7 +1772,7 @@ $" nil t))
 	      (top . 55)
 	      (left . 400)
 	      (width . 90)
-	      (height . 45)
+	      (height . 60)
 	      ( cursor-color . "Yellow")
 	      (font . ,font-initial)
 	      )
@@ -1995,6 +1817,7 @@ $" nil t))
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @SHELL
 ;;;////////////////////////////////////////////////////////////////
+(message "SITE:SHELL")
 
 ;; ---( shell )---------------------------------------------------------------
 
@@ -2059,14 +1882,36 @@ $" nil t))
 
 
 ;; ---( multi-term )---------------------------------------------------------------
+
+(cond
+ ((string-lessp emacs-version "22.0") ;; 
+  (progn
+
+    (require 'cua)
+    (CUA-mode t)
+    (setq CUA-mode-normal-cursor-color "red")
+    (setq CUA-mode-overwrite-cursor-color "yellow")
+    (setq CUA-mode-read-only-cursor-color "green")
+
+    ;; disable in .emacs
+    ;; '(cua-mode t nil (cua-base))
+
+    ))
+ (t
+  (progn
+    ))
+)
+
+
+
 ;; @see: http://www.emacswiki.org/emacs/MultiTerm
 
 (cond
- ((eq z-emacs-type 'xemacs) ;; XEmacs
+ ((string-lessp emacs-version "22.0") 
   (progn
 
     ))
- ((eq z-emacs-type 'fsf_emacs);; GNU-Emacs
+ (t
   (progn
 
     (require 'multi-term)
@@ -2143,30 +1988,27 @@ $" nil t))
 
 
     ))
- (t
-  (progn
-    ))
  )
 
 
-;; ---( Sunrise )---------------------------------------------------------------
+;; ;; ---( Sunrise )---------------------------------------------------------------
 
-(cond
- ((eq z-emacs-type 'xemacs) ;; XEmacs
-  (progn
+;; (cond
+;;  ((eq z-emacs-type 'xemacs) ;; XEmacs
+;;   (progn
 
-    ))
- ((eq z-emacs-type 'fsf_emacs);; GNU-Emacs
-  (progn
+;;     ))
+;;  ((eq z-emacs-type 'fsf_emacs);; GNU-Emacs
+;;   (progn
 
-    (require 'sunrise-commander)
-    ;;(add-to-list 'auto-mode-alist '("\\.srvm\\'" . sr-virtual-mode))
+;;     (require 'sunrise-commander)
+;;     ;;(add-to-list 'auto-mode-alist '("\\.srvm\\'" . sr-virtual-mode))
 
-    ))
- (t
-  (progn
-    ))
- )
+;;     ))
+;;  (t
+;;   (progn
+;;     ))
+;;  )
 
 
 
@@ -2178,6 +2020,7 @@ $" nil t))
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @INFO
 ;;;////////////////////////////////////////////////////////////////
+(message "SITE:INFO")
 
 ;; ---( Infopath )---------------------------------------------------------------
 
@@ -2206,6 +2049,7 @@ $" nil t))
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @INTERNET
 ;;;////////////////////////////////////////////////////////////////
+(message "SITE:INTERNET")
 
 ;; ---( FTP )---------------------------------------------------------------
 
@@ -2227,6 +2071,11 @@ $" nil t))
 
 
 
+
+;;;////////////////////////////////////////////////////////////////
+;;;  @EXTRA
+;;;////////////////////////////////////////////////////////////////
+(message "SITE:EXTRA")
 
 
 ;;;////////////////////////////////////////////////////////////////
@@ -2296,6 +2145,8 @@ $" nil t))
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @PERL
 ;;;////////////////////////////////////////////////////////////////
+(message "SITE:PERL")
+
 
 ;; ;; both prolog and perl files are often called .pl;
 ;; ;; this tries to do the right thing.
@@ -2403,6 +2254,7 @@ $" nil t))
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @XML
 ;;;////////////////////////////////////////////////////////////////
+(message "SITE:XML")
 
 
 ;; ---( nXML )---------------------------------------------------------
@@ -2494,6 +2346,7 @@ $" nil t))
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @END
 ;;;////////////////////////////////////////////////////////////////
+(message "SITE:END")
 
 ;; ---( completed )---------------------------------------------------------
 
@@ -3658,3 +3511,7 @@ $" nil t))
 ;;  )
 
 
+;;;////////////////////////////////////////////////////////////////
+;;;  #EXIT
+;;;////////////////////////////////////////////////////////////////
+(message "SITE:#EXIT#")
