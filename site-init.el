@@ -2260,11 +2260,72 @@ $" nil t))
 ;; ---( nXML )---------------------------------------------------------
 
 (cond
- ((eq z-emacs-type 'xemacs) ;; XEmacs
+ ((string-lessp emacs-version "22.0") ;; 
   (progn
 
+
+
+    (autoload 'xml-mode "psgml" "Major mode to edit XML files." t)
+    (setq auto-mode-alist
+       (nconc
+         '(("\\.html$" . sgml-mode))
+         '(("\\.xml$" . sgml-mode))
+;;          '(("\\.html$" . xml-mode))
+;;          '(("\\.xml$" . xml-mode))
+         auto-mode-alist))
+
+
+
+
+;;    (add-hook 'xml-mode-hook   ; XML-specific settings
+    (add-hook 'sgml-mode-hook   ; XML-specific settings
+	      (function (lambda()
+
+;; 					; faces creation
+;; 			  (make-face 'sgml-comment-face)
+;; 			  (make-face 'sgml-start-tag-face)
+;; 			  (make-face 'sgml-end-tag-face)
+;; 			  (make-face 'sgml-doctype-face)
+
+;; 					; faces definitions
+;; 			  (set-face-foreground 'sgml-comment-face "SeaGreen")
+;; 			  (set-face-foreground 'sgml-start-tag-face "OrangeRed")
+;; 			  (set-face-foreground 'sgml-end-tag-face "OrangeRed")
+;; 			  (set-face-foreground 'sgml-doctype-face "MintCream")
+
+					; markup to face mappings
+					; (see http://www.lysator.liu.se/~lenst/about_psgml/psgml.html#Highlight for details)
+;; 			  (setq sgml-markup-faces
+;; 				'((comment . sgml-comment-face)
+;; 				  (start-tag . sgml-start-tag-face)
+;; 				  (end-tag . sgml-end-tag-face)
+;; 				  (doctype . sgml-doctype-face)
+;; 				  )
+;; 				)
+
+(setq sgml-markup-faces '(
+    (start-tag . font-lock-keyword-face)
+    (end-tag . font-lock-keyword-face)
+    (comment . font-lock-comment-face)
+    (pi . font-lock-constant-face) ;; <?xml?>
+    (sgml . font-lock-type-face)
+    (doctype . bold)
+    (entity . italic)
+    (shortref . font-lock-reference-face)))
+
+
+
+			  (setq sgml-auto-activate-dtd t)
+			  (setq sgml-indent-data t)
+					; turn faces on
+			  (setq sgml-set-face t)
+
+			  )))
+
+
+
     ))
- ((eq z-emacs-type 'fsf_emacs);; GNU-Emacs
+ (t ;; @todo: test avail nxml
   (progn
 
 
@@ -2299,9 +2360,6 @@ $" nil t))
 
 
 
-    ))
- (t
-  (progn
     ))
  )
 
