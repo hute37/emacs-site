@@ -238,7 +238,7 @@
 (eval-after-load "ring" '(progn (require 'ring+)))
 
 (require 'doremi)
-(require 'doremi-frm)
+;;:(require 'doremi-frm)
 (require 'doremi-cmd)
 (require 'frame-cmds)
 (require 'zoom-frm)
