@@ -1746,7 +1746,9 @@ $" nil t))
 ;;			"-xos4-terminus-medium-r-*-*-17-*-*-*-*-*-*-1"
 			"9x15"
 			"10x20"
-			"Inconsolata-12"
+			"Droid Sans mono-12"
+			"monospace"
+;;			"Inconsolata-12"
 	))
      (setq initial-frame-alist
 ;;	      ( background-color . "#103045" )
