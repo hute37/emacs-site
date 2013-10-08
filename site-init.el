@@ -1746,8 +1746,8 @@ $" nil t))
 ;;			"-xos4-terminus-medium-r-*-*-17-*-*-*-*-*-*-1"
 			"9x15"
 			"10x20"
-			"Droid Sans mono-12"
-			"monospace"
+			"monospace-11"
+			"Droid Sans Mono-11"
 ;;			"Inconsolata-12"
 	))
      (setq initial-frame-alist
