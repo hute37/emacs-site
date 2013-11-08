@@ -1424,7 +1424,7 @@ $" nil t))
 
 (keyboard-translate 176 ?{ ) ;; -es
 (keyboard-translate 167 ?} ) ;; par
-(keyboard-translate 163 ?` ) ;; £
+(keyboard-translate 163 ?` ) ;; backquote
 (keyboard-translate 231 ?~ ) ;; ced
 
 
@@ -2750,7 +2750,7 @@ $" nil t))
 ;; 		)))
 
 
-;;(keyboard-translate 214 ?~ ) ;; C-ì
+;;(keyboard-translate 214 ?~ ) ;; C-
 
 ;; (defun accent-keys-tex-bind ( )
 ;;   "enable accent keys binding."
