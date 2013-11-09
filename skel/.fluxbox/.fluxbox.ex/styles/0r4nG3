@@ -1,0 +1,58 @@
+!0r4nG3 a theme for blackbox/fluxbox by zipopotam. copyleft 2004. GPL.
+
+*button:			raised crossdiagonal gradient
+*button*color:			orange
+*button.colorTo:		yellow
+*button.pressed:		sunken crossdiagonal gradient
+*button.pressed.color:		yellow
+*button.pressed.colorTo:	orange
+
+toolbar:			raised solid
+toolbar.clock:			flat horizontal gradient
+toolbar.clock.colorTo:		orange
+toolbar.label:			flat horizontal gradient
+toolbar.label.colorTo:		orange
+toolbar.windowLabel:		sunken horizontal gradient
+toolbar.windowLabel.colorTo:    orange      
+
+menu.title:			raised horizontal gradient
+menu.title.color:               #ff7826
+menu.title.colorTo:             gold
+menu.frame:			raised
+menu.frame.color:		#31190f
+menu.frame.disableColor:	black
+menu.frame.justify:		left
+menu.hilite:			raised horizontal gradient bevel 1
+menu.hilite.color:              #a33f1d
+menu.hilite.colorTo:		#ff7826
+menu.bullet:			triangle
+menu.bullet.position:		Right
+
+window*focus:			raised crossdiagonal gradient
+window*unfocus:			raised
+window.button.unfocus.color:	#31190f
+window.title.focus:		raised horizontal gradient
+window.label.unfocus.color:		#31190f
+window.handle.focus:		raised horizontal gradient
+window.grip.focus.color:	orange
+window.tab.label.unfocus.color:		#31190f
+window.tab.label.focus:	       		flat solid
+window.tab.borderWidth:	1
+window.tab.borderColor:	#31190f
+window.tab.font:		lucidasans-12
+
+borderColor:		#31190f
+
+bevelWidth:		1
+borderWidth:		1
+handleWidth:		6
+frameWidth:		0
+
+*font:                  lucidasans-12
+*color:                 #a33f1d
+*colorTo:               #ff7826
+*textColor:             #6d1d0e
+*picColor:              #5d190c
+*justify:               center
+
+rootCommand:  bsetbg ~/.fluxbox/backgrounds/0r4nG3.jpg

@@ -1,0 +1,57 @@
+------------------------------------------
+Log File: /home/zanna/.fluxbox/session.log
+Fluxbox version: 1.0rc2
+Compiled: Sep 28 2006 16:53:31
+Compiler: GCC
+Compiler version: 4.1.2 20060920 (prerelease) (Ubuntu 4.1.1-13ubuntu3)
+
+Defaults:
+    menu: /etc/X11/fluxbox/fluxbox.menu-user
+   style: /usr/share/fluxbox/styles/Clean
+    keys: /etc/X11/fluxbox/keys
+    init: /etc/X11/fluxbox/init
+     nls: /usr/share/fluxbox/nls
+
+Compiled options (- => disabled): 
+-DEBUG
+EWMH
+GNOME
+-IMLIB2
+KDE
+NLS
+REMEMBER
+RENDER
+SHAPE
+SLIT
+TOOLBAR
+XFT
+XINERAMA
+XMB
+XPM
+
+------------------------------------------
+apps file failure
+Keys: Invalid key/modifier on line 38): XF86Home :ExecCommand  firefox
+Keys: Invalid key/modifier on line 39): Mod1 XF86Home :ExecCommand fm 
+Keys: Failed to merge keytree!
+apps file failure
+apps file failure
+apps file failure
+apps file failure
+apps file failure
+apps file failure
+apps file failure
+apps file failure
+apps file failure
+apps file failure
+apps file failure
+apps file failure
+apps file failure
+apps file failure
+apps file failure
+apps file failure
+apps file failure
+apps file failure
+apps file failure
+apps file failure
+apps file failure

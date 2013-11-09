@@ -1,0 +1,45 @@
+Mod1 Tab :NextWindow
+Mod1 Shift Tab :PrevWindow
+Mod4 1 :SendToWorkspace 1
+Mod4 2 :SendToWorkspace 2
+Mod4 3 :SendToWorkspace 3
+Mod4 4 :SendToWorkspace 4
+Mod4 5 :SendToWorkspace 5
+Mod4 6 :SendToWorkspace 6
+Mod4 7 :SendToWorkspace 7
+Mod4 8 :SendToWorkspace 8
+Mod4 9 :SendToWorkspace 9
+Mod4 Right :NextWorkspace
+Mod4 Left :PrevWorkspace
+Mod4 Up :Raise
+Mod4 Down :Lower
+Mod4 KP_Right :MoveRight
+Mod4 KP_Left :MoveLeft
+Mod4 KP_Up :MoveUp
+Mod4 KP_Down :MoveDown
+Mod4 H :ResizeHorizontal
+Mod4 V :ResizeVertical
+Mod4 D :ShowDesktop
+Mod4 Z :MinimizeWindow
+Mod4 X :MaximizeWindow
+Mod4 Q :Close
+Mod4 K :KillWindow
+Mod4 A :ShadeWindow 
+Mod4 S :StickWindow 
+Mod4 W :ToggleDecor 
+Mod4 R :ExecCommand jterm 
+Mod4 T :ExecCommand gterm 
+Mod4 Y :ExecCommand yterm 
+Mod4 E :ExecCommand fm 
+Mod4 G :ExecCommand start-here 
+Mod4 F :ExecCommand firefox 
+XF86Mail :ExecCommand  thunderbird
+Mod1 XF86Mail :ExecCommand  evolution
+XF86Home :ExecCommand  firefox
+Mod1 XF86Home :ExecCommand fm 
+XF86Search :ExecCommand  start-here
+Mod1 XF86Search :ExecCommand fm 
+XF86Favorites :ExecCommand  gterm 
+Mod1 XF86Search :ExecCommand yterm
+XF86AudioMedia :ExecCommand  amarok
+Mod1 XF86AudioMedia :ExecCommand xmms

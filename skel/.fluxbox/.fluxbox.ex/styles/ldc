@@ -1,0 +1,85 @@
+toolbar:			flat solid
+toolbar.color:			rgb:6/6/6
+toolbar.button:			flat solid
+toolbar.button.color:		rgb:6/6/6
+toolbar.button.picColor:	rgb:9/9/8
+toolbar.label:			flat solid
+toolbar.label.color:		rgb:0/2/3
+toolbar.label.textColor:	rgb:2/a/b
+toolbar.windowLabel:		flat solid
+toolbar.windowLabel.color:	rgb:0/2/3
+toolbar.windowLabel.textColor:	rgb:2/a/b
+toolbar.clock:			flat solid
+toolbar.clock.color:		rgb:0/2/3
+toolbar.clock.textColor:	rgb:2/a/b
+toolbar.justify:		center
+toolbar.font:			snap
+
+menu.title:			flat solid 
+menu.title.color:		rgb:8/8/7
+menu.title.textColor:		rgb:2/2/1c
+menu.title.font:		snap
+menu.title.justify:		center
+
+menu.frame:			flat solid
+menu.frame.color:		rgb:6/6/6
+menu.frame.textColor:		grey85
+menu.frame.disableColor:	rgb:4/4/4
+menu.frame.font:		snap
+menu.frame.justify:		left
+
+menu.bullet.position:		right
+menu.bullet:			triangle
+
+menu.hilite:			flat solid
+menu.hilite.color:		rgb:4/4/4
+menu.hilite.textColor:		grey85
+
+window.title.focus:		flat solid
+window.title.focus.color:	rgb:8/8/8
+window.title.unfocus:		flat solid
+window.title.unfocus.color:	rgb:4/4/4
+
+window.label.focus:		flat solid
+window.label.focus.color:	rgb:6/6/6
+window.label.focus.textColor:	rgb:d/d/b
+window.label.unfocus:		flat solid
+window.label.unfocus.color:	rgb:4/4/4
+window.label.unfocus.textColor:	rgb:6/6/6
+
+window.button.focus:		flat solid
+window.button.focus.color:	rgb:8/8/8
+window.button.focus.picColor:	rgb:d/d/b
+window.button.unfocus:		flat solid
+window.button.unfocus.color:	rgb:4/4/4
+window.button.unfocus.picColor:	rgb:6/6/6
+
+window.handle.focus:		flat solid 
+window.handle.focus.color:	rgb:6/6/6
+window.handle.unfocus:		flat solid
+window.handle.unfocus.color:	rgb:4/4/4
+
+window.grip.focus:		flat solid
+window.grip.focus.color:	rgb:9/9/8
+window.grip.unfocus:		flat solid
+window.grip.unfocus.color:	rgb:4/4/4
+
+window.frame.focusColor:	rgb:6/6/6
+window.frame.unfocusColor:	rgb:4/4/4
+
+window.font:			snap
+window.justify:			center
+
+*button.pressed:		flat solid
+*button.pressed.color:		rgb:a/a/8c
+
+borderColor:			rgb:2/2/2
+
+bevelWidth:			1
+borderWidth:			1
+handleWidth:			2
+
+*textColor:			grey20
+*Font:				snap
+
+rootCommand:			bsetroot -solid rgb:4/4/4

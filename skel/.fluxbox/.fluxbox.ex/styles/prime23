@@ -1,0 +1,133 @@
+! -----------------------------------------------------------------------------
+
+! Title:	prime 23
+! By:		Jens Mittag (http://www.m00re.de/
+! Email:	jens.mittag@m00re.de
+! Date:		21.09.2002
+! Notes:        I use the font snap in this theme, which was created by 
+!               artwiz. There's a package with some of his fonts available
+!               at http://fluxbox.sourceforge.net/docs/artwiz-fonts.php.
+
+
+! available colors:
+!	#435a6e - very dark blue
+!	#587692	- dark blue
+!	#8199b1 - middle blue
+!	#e0e6ec - light blue
+!	#ffffff - white
+
+! - Toolbar -------------------------------------------------------------------
+
+toolbar:						flat solid
+     toolbar.color:					#435a6e
+toolbar.label:						parentrelative
+     toolbar.label.textColor:		#e0e6ec
+toolbar.windowLabel:            	flat solid
+     toolbar.windowLabel.color:		#e0e6ec
+     toolbar.windowLabel.textColor:	#000000
+toolbar.clock:						parentrelative
+     toolbar.clock.textColor:		#e0e6ec
+toolbar.button:						parentrelative
+     toolbar.button.picColor:		#e0e6ec
+toolbar.button.pressed:				flat solid
+     toolbar.button.pressed.color:	#8199b1
+toolbar.font:						snap
+
+
+! - Menu ----------------------------------------------------------------------
+
+menu.title:				flat solid
+     menu.title.color:		#435a6e
+     menu.title.textColor:	#e0e6ec
+menu.frame:				sunken solid
+     menu.frame.color:		#e0e6ec
+     menu.frame.textColor:	#000000
+menu.hilite:				sunken solid crossdiagonal
+     menu.hilite.color:		#151a22
+     menu.hilite.colorTo:	#7a8290
+     menu.hilite.textColor:	#ffffff
+menu.bullet:				empty
+menu.title.font:			snap
+menu.frame.font:			snap
+
+! - Window Focused ------------------------------------------------------------
+
+window.title.focus:					flat solid
+     window.title.focus.color:		#435a6e
+window.label.focus:					flat solid
+     window.label.focus.color:		#e0e6ec
+     window.label.focus.textColor:	#000000
+window.button.focus:				parentrelative
+     window.button.focus.picColor:	#e0e6ec
+window.button.pressed:				flat solid
+     window.button.pressed.color:	#8199b1
+window.handle.focus:				flat solid
+     window.handle.focus.color:		#435a6e
+window.grip.focus:					flat solid
+     window.grip.focus.color:		#8199b1
+
+window.frame.focusColor:			#435a6e
+window.frame.unfocusColor:			#435a6e
+
+
+! - Window Unfocused ----------------------------------------------------------
+
+window.title.unfocus:					flat solid
+     window.title.unfocus.color:		#435a6e
+window.label.unfocus:					flat solid
+     window.label.unfocus.color:		#435a6e
+     window.label.unfocus.textColor:	#e0e6ec
+window.button.unfocus:					parentrelative
+     window.button.unfocus.picColor:	#e0e6ec
+window.handle.unfocus:					flat solid
+     window.handle.unfocus.color:		#435a6e
+window.grip.unfocus:					flat solid
+     window.grip.unfocus.color:			#8199b1
+
+window.frame.unfocusColor:				#435a6e
+window.frame.unfocus.color:				#435a6e
+
+
+! - Fonts ---------------------------------------------------------------------
+
+*.font:					snap
+*.xft.font:				snap
+*.xft.size:				10
+menu.*.xft.size:			10
+    toolbar.justify:		center
+    window.justify:			center
+    menu.title.justify:		center
+    menu.frame.justify:		right
+
+! - The Rest ------------------------------------------------------------------
+
+borderColor:				#000000
+borderWidth:				1
+bevelWidth:				1
+handleWidth:				3
+frameWidth:				1
+
+
+! ***** bbpager *****
+bbpager.frame:						sunken gradient crossdiagonal
+    bbpager.frame.color:			#151a22
+    bbpager.frame.colorTo:			#7a8290
+
+bbpager.desktop:					parentrelative
+
+bbpager.desktop.focus:		 		flat gradient vertical
+    bbpager.desktop.focus.color: 	#0f1319
+    bbpager.desktop.focus.colorTo: 	gray40
+
+bbpager.window:						raised gradient vertical
+    bbpager.window.color:			gray40
+    bbpager.window.colorTo:			#0f1319
+
+bbpager.window.focus:				raised gradient crossdiagonal
+    bbpager.window.focus.color:		#151a22
+    bbpager.window.focus.colorTo:	#7a8290
+
+bbpager.desktop.focusStyle:			border
+bbpager.active.window.borderColor:	#202020
+bbpager.inactive.window.borderColor:#202020
+bbpager.active.desktop.borderColor:	#0f1319

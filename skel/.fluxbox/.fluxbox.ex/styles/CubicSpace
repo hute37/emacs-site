@@ -1,0 +1,115 @@
+! CubicSpace made in February 2003 by xlife@zuavra.net
+! Visit my site at http://xlife.zuavra.net/blackbox/styles/
+! If you make other themes inspired or derived from this one
+! please send them to me so I can enjoy them as well.
+
+toolbar:			flat solid
+toolbar.color:			#d6d6cc
+
+toolbar.button:			parentrelative
+toolbar.button.picColor:	#000000
+toolbar.button.pressed:   	sunken flat
+toolbar.button.pressed.color:  	#d6d6cc
+
+toolbar.label:			flat interlaced
+toolbar.label.color:		#7c7976
+toolbar.label.colorTo:		#8a8683
+toolbar.label.textColor:	#fefded
+
+toolbar.windowLabel:		flat interlaced
+toolbar.windowLabel.color:	#7c7976
+toolbar.windowLabel.colorTo:	#8a8683
+toolbar.windowLabel.textColor:	#fefded
+
+toolbar.clock:			flat interlaced
+toolbar.clock.color:		#7c7976
+toolbar.clock.colorTo:		#8a8683
+toolbar.clock.textColor:	#fefded
+
+toolbar.justify:		Center
+
+menu.title:			flat interlaced
+menu.title.color:		#7c7976
+menu.title.colorTo:		#8a8683
+menu.title.textColor:           #fefded
+menu.title.justify:		center
+
+menu.frame:			flat solid
+menu.frame.color:		#d6d6cc
+menu.frame.textColor:		#565648
+menu.frame.justify:		left
+
+menu.hilite:			flat solid bevel1
+menu.hilite.color:		#969688
+menu.hilite.textColor:		#fefded
+
+menu.bullet:			triangle
+menu.bullet.position:		right
+
+window.title.focus:		flat solid
+window.title.focus.color:	#d6d6cc
+window.title.unfocus:		flat solid
+window.title.unfocus.color:	#d6d6cc
+
+window.label.focus:		flat interlaced
+window.label.focus.color:	#7c7976
+window.label.focus.colorTo:	#8a8683
+window.label.focus.textColor:	#fefded
+window.label.unfocus:		flat interlaced
+window.label.unfocus.color:	#9c9996
+window.label.unfocus.colorTo:	#aaa6a3
+window.label.unfocus.textColor:	#deddcd
+
+window.button.focus:		parentrelative
+window.button.focus.picColor:	#000000
+window.button.unfocus:		parentrelative
+window.button.unfocus.picColor:	#808080
+window.button.pressed:		sunken solid
+window.button.pressed.color:	#d6d6cc
+
+window.handle.focus:		flat solid
+window.handle.focus.color:	#9b9b8a
+window.handle.focus.colorTo:	#1861b6
+window.handle.unfocus:		parentrelative
+window.handle.unfocus.color:	rgb:15/5A/B6
+window.handle.unfocus.colorTo:	rgb:15/5A/B6
+
+window.grip.focus:		flat solid
+window.grip.focus.color:	#d6d6cc
+window.grip.focus.colorTo:	#6195b6
+window.grip.unfocus:		flat solid bevel1
+window.grip.unfocus.color:	rgb:15/5A/B6
+window.grip.unfocus.colorTo:	rgb:15/5A/B6
+
+window.frame.focusColor:	#505050
+window.frame.unfocusColor:	rgb:6/6/6
+
+window.justify:			center
+
+borderColor:			#9b9b8a
+borderWidth:			1
+
+bevelWidth:			1
+handleWidth:			1
+
+*font:			glisp-bold
+menu*font:		glisp
+
+*textColor:		rgb:c/c/f
+
+rootCommand: bsetroot -solid rgb:c4/c4/b2
+rootCommand: bsetbg ~/.blackbox/backgrounds/cubism_tan_1024x768.jpg
+
+; bbpager style
+
+bbpager.frame:				flat solid
+bbpager.frame.color:			#565648
+bbpager.desktop:			flat solid
+bbpager.desktop.color:			#d6d6cc
+bbpager.window:				flat solid
+bbpager.window.color:			#c6c6b8
+bbpager.window.focus:			flat solid
+bbpager.window.focus.color:		#969688
+bbpager.active.window.borderColor:      #505050
+bbpager.inactive.window.borderColor:	#505050
+bbpager.active.desktop.borderColor:	#000000
