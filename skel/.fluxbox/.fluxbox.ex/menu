@@ -1,0 +1,1430 @@
+# This is an automatically generated file.
+# Please see <file:/usr/share/doc/menu/README> for information.
+
+# to use your own menu, copy this to ~/.fluxbox/menu, then edit
+# ~/.fluxbox/init and change the session.menuFile path to ~/.fluxbox/menu
+
+[begin] (Fluxbox)
+
+# Automatically generated file. Do not edit (see /usr/share/doc/menu/html/index.html)
+
+   [submenu] (Apl) {}
+      [exec] (Acrobat Reader) {/usr/local/Adobe/Acrobat7.0/bin/acroread} </usr/share/icons/IcOsX/64x64/apps/Acroread.png>
+      [exec] (Borland JBuilder) {/opt/Borland/JBuilder2005/bin/jbuilder} </opt/Borland/JBuilder2005/bin/jbuilder_icon.xpm>
+      [exec] (Borland Together) {/opt/Borland/TogetherDesigner/bin/together} </opt/Borland/TogetherDesigner/modules/com.togethersoft.modules.impl.caliberrm/images/together_EC.png>
+      [exec] (Eclipse 3.1) {/usr/local/bin/eclipse} </opt/Eclipse/eclipse/icon.xpm>
+      [exec] (emacs) {emacs} </usr/share/icons/IcOsX/64x64/apps/Textapplications.png>
+      [exec] (emacs-X) {/usr/local/bin/xs -c emacs} </usr/share/icons/IcOsX/64x64/apps/Textapplications.png>
+      [exec] (NetBeans) {/opt/java/netbeans/netbeans-4.1/bin/netbeans} </opt/java/netbeans/netbeans-4.1/nb4.1/netbeans.png>
+      [exec] (SawFish) {/usr/local/bin/xs} </usr/share/icons/IcOsX/64x64/apps/fish.png>
+   [end]
+   [submenu] (Apps) {}
+      [submenu] (Databases) {}
+         [exec] (dbishell) { x-terminal-emulator -T "dbishell" -e /usr/bin/dbishell} <>
+         [exec] (Gaby) {/usr/bin/gaby} <>
+         [exec] (Gaby (gbc\)) {/usr/bin/gbc} <>
+         [exec] (Gaby (gcd\)) {/usr/bin/gcd-gaby} <>
+         [exec] (Gaby (gnomecard\)) {/usr/bin/gnomecard-gaby} <>
+         [exec] (Gaby Database Builder) {/usr/bin/gabybuilder} <>
+         [exec] (gasql) {/usr/bin/gasql} <>
+         [exec] (GNOME Comics Organizer) {/usr/bin/gco} <>
+         [exec] (GNOME-DB frontend) {/usr/bin/gnomedb-fe} </usr/share/pixmaps/gnome-db.xpm>
+         [exec] (MDB Viewer) {/usr/bin/gmdb2} <>
+         [exec] (Mergeant database admin tool GUI) {/usr/bin/mergeant} </usr/share/pixmaps/mergeant/mergeant.xpm>
+         [exec] (MySQL Administrator) {/usr/bin/mysql-admin} </usr/share/pixmaps/mysql_admin.xpm>
+         [exec] (PgAccess) {/usr/bin/X11/pgaccess} </usr/share/pixmaps/pgaccess.xpm>
+         [exec] (PostgreSQL interactive terminal (psql\)) { x-terminal-emulator -T "PostgreSQL interactive terminal (psql)" -e /usr/lib/postgresql/bin/psql-wm} </usr/share/pixmaps/postgresql.xpm>
+         [exec] (TOra) {/usr/bin/tora} <>
+      [end]
+      [submenu] (Editors) {}
+         [exec] (AbiWord Word Processor) {/usr/bin/abiword} </usr/share/AbiSuite-2.2/icons/menu.xpm>
+         [exec] (Bluefish) {/usr/bin/bluefish} </usr/share/pixmaps/bluefish_icon.xpm>
+         [exec] (dedit) {/usr/bin/dedit} <>
+         [exec] (e16keyedit) {/usr/bin/e16keyedit} <>
+         [exec] (e16menuedit) {/usr/bin/e16menuedit} <>
+         [exec] (Emacs 21 (text\)) { x-terminal-emulator -T "Emacs 21 (text)" -e /usr/bin/emacs21 -nw} </usr/share/emacs/21.4/etc/gnu-32x32.xpm>
+         [exec] (Emacs 21 (X11\)) {/usr/bin/emacs21} </usr/share/emacs/21.4/etc/gnu-32x32.xpm>
+         [exec] (fontforge) {/usr/bin/fontforge} <>
+         [exec] (Gedit) {/usr/bin/gedit} </usr/share/pixmaps/gedit-icon.xpm>
+         [exec] (GHex) {/usr/bin/ghex2} <>
+         [exec] (Glimmer) {/usr/bin/glimmer} <>
+         [exec] (gmanedit) {/usr/bin/gmanedit} </usr/share/pixmaps/gmanedit/gmanedit.xpm>
+         [exec] (Gnobog) {/usr/bin/gnobog} </usr/share/pixmaps/gnobog.png>
+         [exec] (GNU TeXmacs) {/usr/bin/texmacs} </usr/share/pixmaps/TeXmacs.xpm>
+         [exec] (gvim) {/usr/bin/gvim -f} </usr/share/pixmaps/vim-32.xpm>
+         [exec] (Kate) {/usr/bin/kate} <>
+         [exec] (KEdit) {/usr/bin/kedit} <>
+         [exec] (KImageMapEditor) {/usr/bin/kimagemapeditor} </usr/share/pixmaps/kimagemapeditor.xpm>
+         [exec] (KWord) {/usr/bin/kword} </usr/share/pixmaps/kword.xpm>
+         [exec] (KWrite) {/usr/bin/kwrite} <>
+         [exec] (LeafPad) {/usr/bin/leafpad} </usr/share/pixmaps/leafpad.xpm>
+         [exec] (LyX (Qt\)) {/usr/bin/lyx-qt} </usr/share/pixmaps/lyx-qt.xpm>
+         [exec] (Nano) { x-terminal-emulator -T "Nano" -e /bin/nano} </usr/share/nano/nano-menu.xpm>
+         [exec] (Openoffice.org From Template) {/usr/bin/oofromtemplate} </usr/share/icons/hicolor/32x32/apps/ooo_template.xpm>
+         [exec] (Openoffice.org HTML Document) {/usr/bin/ooweb} </usr/share/icons/hicolor/32x32/apps/ooo_web.xpm>
+         [exec] (Openoffice.org Writer) {/usr/bin/oowriter} </usr/share/icons/hicolor/32x32/apps/ooo_writer.xpm>
+         [exec] (Passepartout) {/usr/bin/passepartout} <>
+         [exec] (peacock) {/usr/bin/peacock-2} <>
+         [exec] (Quanta Plus) {/usr/bin/quanta} </usr/share/pixmaps/quanta.xpm>
+         [exec] (Screem) {/usr/bin/screem} <>
+         [exec] (TextEdit) {/usr/bin/TextEdit} <>
+         [exec] (Textedit) {/usr/X11R6/bin/textedit} <>
+         [exec] (Xedit) {xedit} <>
+         [exec] (XEmacs21-gnome-mule) {/usr/bin/xemacs21-gnome-mule} <>
+      [end]
+      [submenu] (Education) {}
+         [exec] (FlashKard) {/usr/bin/flashkard} </usr/share/pixmaps/flashkard.xpm>
+         [exec] (gcompris) {/usr/games/gcompris} <>
+         [exec] (gcompris editor) {/usr/games/gcompris_edit} <>
+         [exec] (KEduca) {/usr/bin/keduca} </usr/share/pixmaps/keduca.xpm>
+         [exec] (KEduca-Editor) {/usr/bin/keducabuilder} </usr/share/pixmaps/keduca.xpm>
+         [exec] (Kiten) {/usr/bin/kiten} </usr/share/pixmaps/kiten.xpm>
+         [exec] (KLatin) {/usr/bin/klatin} </usr/share/pixmaps/klatin.xpm>
+         [exec] (KLettres) {/usr/bin/klettres} </usr/share/pixmaps/klettres.xpm>
+         [exec] (KTouch) {/usr/bin/ktouch} </usr/share/pixmaps/ktouch.xpm>
+         [exec] (KTurtle) {/usr/bin/kturtle} </usr/share/pixmaps/kturtle.xpm>
+         [exec] (Kverbos) {/usr/bin/kverbos} </usr/share/pixmaps/kverbos.xpm>
+         [exec] (KVocTrain) {/usr/bin/kvoctrain} </usr/share/pixmaps/kvoctrain.xpm>
+         [exec] (KWordQuiz) {/usr/bin/kwordquiz} </usr/share/pixmaps/kwordquiz.xpm>
+      [end]
+      [submenu] (Emulators) {}
+         [exec] (BasiliskII) {/usr/bin/BasiliskII} <>
+         [exec] (Dos Emulator (tty\)) { x-terminal-emulator -T "Dos Emulator (tty)" -e /usr/bin/dosemu} <>
+         [exec] (Dos Emulator (X11\)) {/usr/bin/xdosemu} <>
+         [exec] (SIMH Altair) { x-terminal-emulator -T "SIMH Altair" -e /usr/bin/altair} <>
+         [exec] (SIMH Altair Z80) { x-terminal-emulator -T "SIMH Altair Z80" -e /usr/bin/altairz80} <>
+         [exec] (SIMH DEC PDP1) { x-terminal-emulator -T "SIMH DEC PDP1" -e /usr/bin/pdp1} <>
+         [exec] (SIMH DEC PDP10) { x-terminal-emulator -T "SIMH DEC PDP10" -e /usr/bin/pdp10} <>
+         [exec] (SIMH DEC PDP11) { x-terminal-emulator -T "SIMH DEC PDP11" -e /usr/bin/pdp11} <>
+         [exec] (SIMH DEC PDP15) { x-terminal-emulator -T "SIMH DEC PDP15" -e /usr/bin/pdp15} <>
+         [exec] (SIMH DEC PDP4) { x-terminal-emulator -T "SIMH DEC PDP4" -e /usr/bin/pdp4} <>
+         [exec] (SIMH DEC PDP7) { x-terminal-emulator -T "SIMH DEC PDP7" -e /usr/bin/pdp7} <>
+         [exec] (SIMH DEC PDP8) { x-terminal-emulator -T "SIMH DEC PDP8" -e /usr/bin/pdp8} <>
+         [exec] (SIMH DEC PDP9) { x-terminal-emulator -T "SIMH DEC PDP9" -e /usr/bin/pdp9} <>
+         [exec] (SIMH DG Nova) { x-terminal-emulator -T "SIMH DG Nova" -e /usr/bin/nova} <>
+         [exec] (SIMH GRI-909) { x-terminal-emulator -T "SIMH GRI-909" -e /usr/bin/gri909} <>
+         [exec] (SIMH Honeywell 316/516) { x-terminal-emulator -T "SIMH Honeywell 316/516" -e /usr/bin/h316} <>
+         [exec] (SIMH HP 2100) { x-terminal-emulator -T "SIMH HP 2100" -e /usr/bin/hp2100} <>
+         [exec] (SIMH IBM 1401) { x-terminal-emulator -T "SIMH IBM 1401" -e /usr/bin/i1401} <>
+         [exec] (SIMH IBM 1620) { x-terminal-emulator -T "SIMH IBM 1620" -e /usr/bin/i1620} <>
+         [exec] (SIMH IBM System3) { x-terminal-emulator -T "SIMH IBM System3" -e /usr/bin/s3} <>
+         [exec] (SIMH Interdata 16 bit) { x-terminal-emulator -T "SIMH Interdata 16 bit" -e /usr/bin/id16} <>
+         [exec] (SIMH Interdata 32 bit) { x-terminal-emulator -T "SIMH Interdata 32 bit" -e /usr/bin/id32} <>
+         [exec] (SIMH LGP) { x-terminal-emulator -T "SIMH LGP" -e /usr/bin/lgp} <>
+         [exec] (SIMH SDS 940) { x-terminal-emulator -T "SIMH SDS 940" -e /usr/bin/sds} <>
+         [exec] (SIMH VAX) { x-terminal-emulator -T "SIMH VAX" -e /usr/bin/vax} <>
+         [exec] (SIMH VAX780) { x-terminal-emulator -T "SIMH VAX780" -e /usr/bin/vax780} <>
+         [exec] (xapple2) {/usr/bin/xapple2} <>
+         [exec] (xapple2 (80 column\)) {/usr/bin/xapple2-80col} <>
+      [end]
+      [submenu] (Graphics) {}
+         [exec] (Bitmap) {bitmap} <>
+         [exec] (Blender (full screen\)) {/usr/bin/blender} </usr/share/pixmaps/blender.xpm>
+         [exec] (Blender (windowed\)) {/usr/bin/blender -w} </usr/share/pixmaps/blender.xpm>
+         [exec] (Camera) {/usr/bin/Camera} <>
+         [exec] (coriander) {/usr/bin/coriander} <>
+         [exec] (Dia (GNOME\)) {/usr/bin/dia-gnome} </usr/share/pixmaps/dia_menu.xpm>
+         [exec] (dotty) {/usr/bin/dotty} <>
+         [exec] (Electric Sheep) {/usr/bin/electricsheep} <>
+         [exec] (gLabels) {/usr/bin/glabels} </usr/share/pixmaps/glabels.xpm>
+         [exec] (GNOME Photo Collector) {/usr/bin/gphotocoll} </usr/share/pixmaps/gphotocoll.xpm>
+         [exec] (gnome-iconedit) {/usr/bin/gnome-iconedit} <>
+         [exec] (Gnome-Photo-Printer) {/usr/bin/gnome-photo-printer} <>
+         [exec] (GNU Paint) {/usr/bin/gpaint} </usr/share/pixmaps/gpaint.xpm>
+         [exec] (GTK Gocr) {/usr/bin/gtk-ocr} <>
+         [exec] (Inkscape) {/usr/bin/inkscape} </usr/share/pixmaps/inkscape.xpm>
+         [exec] (Karbon) {/usr/bin/karbon} </usr/share/pixmaps/karbon.xpm>
+         [exec] (kcolorchooser) {/usr/bin/kcolorchooser} <>
+         [exec] (kcoloredit) {/usr/bin/kcoloredit} <>
+         [exec] (kfax) {/usr/bin/kfax} <>
+         [exec] (kiconedit) {/usr/bin/kiconedit} <>
+         [exec] (Kino) {/usr/bin/kino} </usr/share/pixmaps/kino.xpm>
+         [exec] (kolourpaint) {/usr/bin/kolourpaint} <>
+         [exec] (kooka) {/usr/bin/kooka} <>
+         [exec] (kpaint) {/usr/bin/kpaint} <>
+         [exec] (kpdf) {/usr/bin/kpdf} <>
+         [exec] (KPovModeler) {/usr/bin/kpovmodeler} <>
+         [exec] (kruler) {/usr/bin/kruler} <>
+         [exec] (ksnapshot) {/usr/bin/ksnapshot} <>
+         [exec] (kuickshow) {/usr/bin/kuickshow} <>
+         [exec] (lefty) {/usr/bin/lefty} <>
+         [exec] (Openoffice.org Draw) {/usr/bin/oodraw} </usr/share/icons/hicolor/32x32/apps/ooo_draw.xpm>
+         [exec] (Openoffice.org Impress) {/usr/bin/ooimpress} </usr/share/icons/hicolor/32x32/apps/ooo_impress.xpm>
+         [exec] (QuiteInsane) {/usr/bin/quiteinsane} </usr/share/pixmaps/quiteinsane.xpm>
+         [exec] (ScEd) {/usr/bin/sced} <>
+         [exec] (Scribus) {/usr/bin/scribus} </usr/share/pixmaps/scribus.xpm>
+         [exec] (Sodipodi) {sodipodi} </usr/share/pixmaps/sodipodi.xpm>
+         [exec] (Terraform) {/usr/bin/terraform} </usr/share/pixmaps/terraform.xpm>
+         [exec] (The GIMP) {/usr/bin/gimp-2.2} </usr/share/gimp/2.0/images/wilber-icon.png>
+         [exec] (varkon) {/usr/bin/varkon} </usr/share/pixmaps/varkon.xpm>
+         [exec] (vertex) {/usr/bin/vertex} <>
+         [exec] (xcam) {/usr/bin/xcam} </usr/share/sane/xscanimage-icon-32x32-2.xpm>
+         [exec] (xfig) {/usr/bin/xfig} </usr/share/pixmaps/xfig32x32cmap.xpm>
+         [exec] (XmBDFEditor) {/usr/bin/xmbdfed} <>
+         [exec] (Xpaint) {/usr/bin/xpaint} <>
+         [exec] (xsane) {/usr/bin/xsane} </usr/share/pixmaps/xsane.xpm>
+         [exec] (xscanimage) {/usr/bin/xscanimage} </usr/share/sane/xscanimage-icon-32x32-2.xpm>
+         [exec] (xtartan) { x-terminal-emulator -T "xtartan" -e /usr/bin/xtartan} <>
+      [end]
+      [submenu] (Math) {}
+         [exec] (bc) { x-terminal-emulator -T "bc" -e /usr/bin/bc} <>
+         [exec] (GAP) { x-terminal-emulator -T "GAP" -e /usr/bin/gap} <>
+         [exec] (geomview) {/usr/bin/geomview} <>
+         [exec] (GNU R) { x-terminal-emulator -T "GNU R" -e /usr/bin/R} <>
+         [exec] (gnumeric) {/usr/bin/gnumeric} </usr/share/pixmaps/gnome-gnumeric.xpm>
+         [exec] (Grace) {/usr/X11R6/bin/xmgrace} <>
+         [exec] (KBruch) {/usr/bin/kbruch} </usr/share/pixmaps/kbruch.xpm>
+         [exec] (KCalc) {/usr/bin/kcalc} <>
+         [exec] (KChart) {/usr/bin/kchart} </usr/share/pixmaps/kchart.xpm>
+         [exec] (KFormula) {/usr/bin/kformula} </usr/share/pixmaps/kformula.xpm>
+         [exec] (KGeo) {/usr/bin/kgeo} </usr/share/pixmaps/kgeo.xpm>
+         [exec] (Kig) {/usr/bin/kig} </usr/share/pixmaps/kig.xpm>
+         [exec] (KmPlot) {/usr/bin/kmplot} </usr/share/pixmaps/kmplot.xpm>
+         [exec] (KPercentage) {/usr/bin/kpercentage} </usr/share/pixmaps/kpercentage.xpm>
+         [exec] (KSpread) {/usr/bin/kspread} </usr/share/pixmaps/kspread.xpm>
+         [exec] (Kurush Personal Finance Manager) {/usr/bin/kurush} <>
+         [exec] (MathWar) {/usr/bin/mathwar} </usr/share/pixmaps/mathwar.xpm>
+         [exec] (Octave (2.1\)) { x-terminal-emulator -T "Octave (2.1)" -e /usr/bin/octave2.1} <>
+         [exec] (Openoffice.org Calc) {/usr/bin/oocalc} </usr/share/icons/hicolor/32x32/apps/ooo_calc.xpm>
+         [exec] (Openoffice.org Math) {/usr/bin/oomath} </usr/share/icons/hicolor/32x32/apps/ooo_math.xpm>
+         [exec] (openuniverse) {/usr/bin/openuniverse} <>
+         [exec] (PerlDl) { x-terminal-emulator -T "PerlDl" -e /usr/bin/perldl} <>
+         [exec] (ProofGeneral) {/usr/bin/proofgeneral} </usr/share/pixmaps/proofgeneral.xpm>
+         [exec] (Qalculate) {/usr/bin/qalculate} <>
+         [exec] (rCalc) {/usr/bin/rcalc} <>
+         [exec] (rCalc (text\)) { x-terminal-emulator -T "rCalc (text)" -e /usr/bin/rcalc -t} <>
+         [exec] (snac) {/usr/bin/snac} <>
+         [exec] (Xcalc) {xcalc} <>
+         [exec] (xmaxima) {/usr/bin/xmaxima} <>
+         [exec] (xppaut) {/usr/bin/xppaut} <>
+      [end]
+      [submenu] (Net) {}
+         [exec] (Balsa) {/usr/bin/balsa} </usr/share/pixmaps/balsa.xpm>
+         [exec] (Bittornado Client) {/usr/bin/btdownloadgui.bittornado} </usr/share/pixmaps/bittornado.xpm>
+         [exec] (Blam) {/usr/bin/blam} <>
+         [exec] (Bowser-pimppa) {/usr/bin/bowser} <>
+         [exec] (DC-GUI) {/usr/bin/dcgui} </usr/share/pixmaps/dcgui-low.xpm>
+         [exec] (Dialer (GK Dial\)) {/usr/bin/gkdial} </usr/share/pixmaps/gkdial-debian.xpm>
+         [exec] (Directory Administrator) {/usr/bin/directory_administrator} <>
+         [exec] (Downloader for X) {/usr/bin/nt} </usr/share/pixmaps/nt.xpm>
+         [exec] (EGroupware Setup Wizard) {/usr/bin/egroupwarewizard} <>
+         [exec] (Epiphany web browser) {/usr/bin/epiphany} <>
+         [exec] (EtherApe) {/usr/bin/etherape} </usr/share/pixmaps/etherape.png>
+         [exec] (Ethereal) {/usr/bin/ethereal} </usr/share/pixmaps/eicon3d32.xpm>
+         [exec] (Fidelio) {/usr/bin/fidelio} <>
+         [exec] (FreeWRL VRML browser) {/usr/bin/freewrl} <>
+         [exec] (Gabber) {/usr/bin/gabber} </usr/share/pixmaps/gabber.xpm>
+         [exec] (Gaim) {/usr/bin/gaim} </usr/share/pixmaps/gaim-menu.xpm>
+         [exec] (Galeon) {/usr/bin/galeon} </usr/share/pixmaps/galeon.xpm>
+         [exec] (gFTP) {/usr/bin/gftp-gtk} </usr/share/pixmaps/gftp.xpm>
+         [exec] (Gip) {/usr/bin/gip} <>
+         [exec] (Gipsc) {/usr/X11R6/bin/gipsc} <>
+         [exec] (GnomeICU) {/usr/bin/gnomeicu} </usr/share/pixmaps/gnome-gnomeicu.png>
+         [exec] (GnomeMeeting) {/usr/bin/gnomemeeting} </usr/share/pixmaps/gnomemeeting-logo-icon.png>
+         [exec] (GNUMail) {GNUMail} </usr/share/pixmaps/GNUMail.xpm>
+         [exec] (Googlizer) {/usr/bin/googlizer} </usr/share/pixmaps/googlizer.xpm>
+         [exec] (Gossip) {/usr/bin/gossip} <>
+         [exec] (gpppon) {/usr/bin/gpppon} <>
+         [exec] (greenwich) {/usr/bin/greenwich} </usr/share/pixmaps/greenwich.xpm>
+         [exec] (gtm) {/usr/bin/gtm} </usr/share/pixmaps/gtm.xpm>
+         [exec] (IPTraf) { x-terminal-emulator -T "IPTraf" -e /usr/sbin/su-to-root -c /usr/sbin/iptraf} <>
+         [exec] (kcheckgmail) {/usr/bin/kcheckgmail} <>
+         [exec] (KDE Groupware Wizard) {/usr/bin/groupwarewizard} <>
+         [exec] (KDict) {/usr/bin/kdict} <>
+         [exec] (KGet) {/usr/bin/kget} <>
+         [exec] (Kleopatra) {/usr/bin/kleopatra} <>
+         [exec] (KLinkStatus) {/usr/bin/klinkstatus} </usr/share/pixmaps/klinkstatus.xpm>
+         [exec] (KMail) {/usr/bin/kmail} <>
+         [exec] (KMail/KAB Import Tool) {/usr/bin/kmailcvt} <>
+         [exec] (KNewsTicker) {/usr/bin/appletproxy knewsticker.desktop} <>
+         [exec] (KNode) {/usr/bin/knode} <>
+         [exec] (KOLab Setup Wizard) {/usr/bin/kolabwizard} <>
+         [exec] (Konqueror) {/usr/bin/konqueror --profile webbrowsing} <>
+         [exec] (Konversation) {/usr/bin/konversation} </usr/share/pixmaps/konversation32x32.xpm>
+         [exec] (Kopete) {/usr/bin/kopete} <>
+         [exec] (KOrn) {/usr/bin/korn} <>
+         [exec] (KPPP) {/usr/bin/kppp} <>
+         [exec] (KPPP - Logview) {/usr/bin/kppplogview} <>
+         [exec] (Krdc) {/usr/bin/krdc} <>
+         [exec] (Krfb) {/usr/bin/krfb} <>
+         [exec] (KSig) {/usr/bin/ksig} </usr/share/pixmaps/ksig.xpm>
+         [exec] (KSirc) {/usr/bin/ksirc} <>
+         [exec] (KWifiManager) {/usr/bin/kwifimanager} <>
+         [exec] (Licq) {/usr/bin/licq} </usr/share/pixmaps/licq.xpm>
+         [exec] (Liferea: Linux Feed Reader) {/usr/bin/liferea} </usr/share/liferea/pixmaps/liferea.xpm>
+         [exec] (LuserNET) {/usr/bin/LuserNET} <>
+         [exec] (Lynx) { x-terminal-emulator -T "Lynx" -e /usr/bin/lynx} <>
+         [exec] (Mail Notification) {/usr/bin/mail-notification} </usr/share/pixmaps/mail-notification.xpm>
+         [exec] (Mlchat) {/usr/bin/mlchat} <>
+         [submenu] (Mozilla Components) {}
+            [exec] (Mozilla Browser) {mozilla-suite} </usr/share/pixmaps/mozilla-navigator.xpm>
+            [exec] (Mozilla Composer) {mozilla-suite -edit} </usr/share/pixmaps/mozilla-composer.xpm>
+            [exec] (Mozilla IRC Client) {mozilla-suite -chat} </usr/share/pixmaps/chatzilla.xpm>
+         [end]
+         [exec] (Mozilla Firefox) {/usr/local/bin/firefox} </usr/lib/mozilla-firefox/icons/mozicon50.xpm>
+         [exec] (Mozilla Navigator) {mozilla-suite} </usr/share/pixmaps/mozilla.xpm>
+         [exec] (Mozilla Thunderbird) {/usr/local/bin/thunderbird} </usr/lib/thunderbird/icons/mozicon50.xpm>
+         [exec] (mtr) {mtr} <>
+         [exec] (Mutt) { x-terminal-emulator -T "Mutt" -e /usr/bin/mutt} </usr/share/pixmaps/mutt.xpm>
+         [exec] (ncftp) { x-terminal-emulator -T "ncftp" -e /usr/bin/ncftp3} <>
+         [exec] (Openexchange Setup Wizard) {/usr/bin/sloxwizard} <>
+         [exec] (Pan) {/usr/bin/pan} </usr/X11R6/include/X11/pixmaps/pan.xpm>
+         [exec] (PuTTY) {/usr/bin/putty} <>
+         [exec] (SAMBA for KDE) {/usr/bin/smb4k} <>
+         [exec] (SnowNews) { x-terminal-emulator -T "SnowNews" -e /usr/bin/snownews} <>
+         [exec] (Straw) {/usr/bin/straw} </usr/share/straw/straw.xpm>
+         [exec] (TalkSoup) {/usr/bin/TalkSoup} <>
+         [exec] (telegnome) {/usr/bin/telegnome} <>
+         [exec] (Telnet) { x-terminal-emulator -T "Telnet" -e /usr/bin/telnet} <>
+         [exec] (Terminal Server Client) {/usr/bin/tsclient -f} </usr/share/pixmaps/tsclient.xpm>
+         [exec] (TkVNC) {xterm -e tkvnc} <>
+         [exec] (Unison (GTK\)) {/usr/bin/unison-gtk} <>
+         [exec] (VREng) {/usr/bin/vreng} <>
+         [exec] (VRweb VRML browser) {/usr/bin/vrweb} <>
+         [exec] (w3m) { x-terminal-emulator -T "w3m" -e /usr/bin/w3m /usr/share/doc/w3m/MANUAL.html} <>
+         [exec] (Waiho) {/usr/bin/Waiho} <>
+         [exec] (WMbiff) {/usr/bin/wmbiff} <>
+         [exec] (WMcoincoin) {/usr/bin/wmcoincoin} </usr/share/pixmaps/wmcoincoin.xpm>
+         [exec] (wmifinfo) {/usr/bin/wmifinfo} <>
+         [exec] (WMifs) {/usr/bin/wmifs} <>
+         [exec] (wmnet) {/usr/X11R6/bin/wmnet -l} <>
+         [exec] (wmnetselect) {/usr/bin/X11/wmnetselect} <>
+         [exec] (Xbiff) {xbiff} <>
+         [exec] (xgdipc) {/usr/bin/xgdipc} <>
+         [exec] (xipmsg) {/usr/X11R6/bin/xipmsg} <>
+         [exec] (xlassie) {/usr/bin/xlassie} <>
+         [exec] (xrn) {/usr/X11R6/bin/xrn} <>
+         [exec] (XSitecopy) {/usr/bin/xsitecopy} <>
+         [exec] (xtightvncviewer) {/usr/bin/xtightvncviewer} <>
+         [exec] (xvncviewer) {/usr/bin/xrealvncviewer} <>
+      [end]
+      [submenu] (Programming) {}
+         [exec] (anjuta) {/usr/bin/anjuta} </usr/share/pixmaps/anjuta.xpm>
+         [exec] (autoproject) { x-terminal-emulator -T "autoproject" -e /usr/bin/autoproject} <>
+         [exec] (Borland JBuilder) {/opt/Borland/JBuilder2005/bin/jbuilder} </opt/Borland/JBuilder2005/bin/jbuilder_icon.xpm>
+         [exec] (Borland Together) {/opt/Borland/TogetherDesigner/bin/together} </opt/Borland/TogetherDesigner/modules/com.togethersoft.modules.impl.caliberrm/images/together_EC.png>
+         [exec] (Cameleon) {/usr/bin/cameleon} <>
+         [exec] (Cervisia) {/usr/bin/cervisia} </usr/share/pixmaps/cervisia.xpm>
+         [exec] (CMUCL Normal Image) { x-terminal-emulator -T "CMUCL Normal Image" -e /usr/bin/lisp -core /usr/lib/cmucl/lisp.core} <>
+         [exec] (Data Display Debugger) {/usr/bin/ddd} <>
+         [exec] (DiaSCE2) {/usr/bin/diasce2} <>
+         [exec] (Doxywizard) {/usr/bin/doxywizard} <>
+         [exec] (Eclipse 3.1) {/usr/local/bin/eclipse} </opt/Eclipse/eclipse/icon.xpm>
+         [exec] (elk) { x-terminal-emulator -T "elk" -e /usr/bin/elk} <>
+         [exec] (esvn) {/usr/bin/esvn} </usr/share/pixmaps/esvn.xpm>
+         [exec] (gaphor) {/usr/bin/gaphor} <>
+         [exec] (gcvs) {/usr/bin/gcvs} </usr/share/pixmaps/gcvs-32x32.xpm>
+         [exec] (GDB) { x-terminal-emulator -T "GDB" -e /usr/bin/gdb} <>
+         [exec] (Glade 2) {/usr/bin/glade-2} </usr/share/pixmaps/glade-2.xpm>
+         [exec] (GNU Smalltalk) { x-terminal-emulator -T "GNU Smalltalk" -e /usr/bin/gst} <>
+         [exec] (GNU Smalltalk (X11\)) {/usr/bin/gst-blox} <>
+         [exec] (Gorm) {/usr/bin/Gorm} <>
+         [exec] (gphpedit) {/usr/bin/gphpedit} </usr/share/pixmaps/gphpedit.xpm>
+         [exec] (Guikachu) {/usr/bin/guikachu} <>
+         [exec] (Guile 1.6) { x-terminal-emulator -T "Guile 1.6" -e /usr/bin/guile-1.6} <>
+         [exec] (Hugs) { x-terminal-emulator -T "Hugs" -e /usr/bin/hugs} <>
+         [exec] (KBabel) {/usr/bin/kbabel} </usr/share/pixmaps/kbabel.xpm>
+         [exec] (KBabel Catalog Manager) {/usr/bin/catalogmanager} </usr/share/pixmaps/catalogmanager.xpm>
+         [exec] (KBabel Dictionary) {/usr/bin/kbabeldict} </usr/share/pixmaps/kbabeldict.xpm>
+         [exec] (KBugBuster) {/usr/bin/kbugbuster} </usr/share/pixmaps/kbugbuster.xpm>
+         [exec] (KCachegrind) {/usr/bin/kcachegrind} </usr/share/pixmaps/kcachegrind.xpm>
+         [exec] (KDbg) {/usr/bin/kdbg} </usr/share/pixmaps/kdbg.xpm>
+         [exec] (Kompare) {/usr/bin/kompare} </usr/share/pixmaps/kompare.xpm>
+         [exec] (KProf) {/usr/bin/kprof} </usr/share/pixmaps/kprof.xpm>
+         [exec] (KUIViewer) {/usr/bin/kuiviewer} </usr/share/pixmaps/kuiviewer.xpm>
+         [exec] (Meld) {/usr/bin/meld} <>
+         [exec] (MIT/GNU Scheme) {mit-scheme --compiler --edwin --edit} <>
+         [exec] (MonoDevelop) {/usr/bin/monodevelop} </usr/share/pixmaps/monodevelop.png>
+         [exec] (Monodoc) {/usr/bin/monodoc} </usr/share/pixmaps/monodoc.png>
+         [exec] (Monodoc (http\)) { x-terminal-emulator -T "Monodoc (http)" -e /usr/bin/monodoc-http} </usr/share/pixmaps/monodoc.png>
+         [exec] (NetBeans) {/opt/java/netbeans/netbeans-4.1/bin/netbeans} </opt/java/netbeans/netbeans-4.1/nb4.1/netbeans.png>
+         [exec] (OCamlCVS) {/usr/bin/ocamlcvs} <>
+         [exec] (pycrust) {/usr/bin/pycrust} <>
+         [exec] (pyshell) {/usr/bin/pyshell} <>
+         [exec] (Python (v2.3\)) { x-terminal-emulator -T "Python (v2.3)" -e /usr/bin/python2.3} </usr/share/pixmaps/python2.3-32.xpm>
+         [exec] (Qt Designer) {/usr/bin/designer-qt3} <>
+         [exec] (RapidSVN) {/usr/bin/rapidsvn} </usr/share/pixmaps/rapidsvn.xpm>
+         [exec] (regexxer) {/usr/bin/regexxer} <>
+         [exec] (SmartEiffel) { x-terminal-emulator -T "SmartEiffel" -e /usr/bin/smarteiffel.sh} <>
+         [exec] (SWI-Prolog) { x-terminal-emulator -T "SWI-Prolog" -e /usr/bin/swipl} <>
+         [exec] (SWI-Prolog (with XPCE\)) { x-terminal-emulator -T "SWI-Prolog (with XPCE)" -e /usr/bin/xpce} <>
+         [exec] (Tcl8.3) { x-terminal-emulator -T "Tcl8.3" -e /usr/bin/tcl8.3} <>
+         [exec] (Tclsh8.3) { x-terminal-emulator -T "Tclsh8.3" -e /usr/bin/tclsh8.3} <>
+         [exec] (Tclsh8.4) { x-terminal-emulator -T "Tclsh8.4" -e /usr/bin/tclsh8.4} <>
+         [exec] (TkCVS) {/usr/bin/tkcvs} <>
+         [exec] (Tkdiff) {/usr/bin/tkdiff} <>
+         [exec] (TkWish8.3) {x-terminal-emulator -e /usr/bin/wish8.3} <>
+         [exec] (TkWish8.4) {x-terminal-emulator -e /usr/bin/wish8.4} <>
+         [exec] (Umbrello) {/usr/bin/umbrello} </usr/share/pixmaps/umbrello.xpm>
+         [exec] (visual-regexp) {/usr/bin/visual-regexp} <>
+         [exec] (wxrcedit) {/usr/bin/wxrcedit} <>
+         [exec] (xrced) {/usr/bin/xrced} <>
+      [end]
+      [submenu] (Science) {}
+         [exec] (Celestia (Gnome\)) {/usr/bin/celestia-gnome} <>
+         [exec] (Celestia (KDE\)) {/usr/bin/celestia} <>
+         [exec] (gdis) {/usr/bin/gdis} <>
+         [exec] (ghemical) {/usr/bin/ghemical} <>
+         [exec] (Kalzium) {/usr/bin/kalzium} </usr/share/pixmaps/kalzium.xpm>
+         [exec] (KStars) {/usr/bin/kstars} </usr/share/pixmaps/kstars.xpm>
+         [exec] (Pybliographic) {/usr/bin/pybliographic} </usr/share/pixmaps/pybliographic.xpm>
+         [exec] (Spacechart) {/usr/bin/spacechart} <>
+      [end]
+      [submenu] (Shells) {}
+         [exec] (Bash) { x-terminal-emulator -T "Bash" -e /bin/bash --login} <>
+         [exec] (Dash) { x-terminal-emulator -T "Dash" -e /bin/dash -i} <>
+         [exec] (Sh) { x-terminal-emulator -T "Sh" -e /bin/sh --login} <>
+      [end]
+      [submenu] (Sound) {}
+         [exec] (alsamixergui) {/usr/bin/alsamixergui} <>
+         [exec] (AlsaPlayer) { x-terminal-emulator -T "AlsaPlayer" -e /usr/bin/alsaplayer -i daemon} <>
+         [exec] (AlsaPlayer (daemon\)) {/usr/bin/x-terminal-emulator -e /usr/bin/alsaplayer -i daemon} <>
+         [exec] (aRts Builder) {/usr/bin/artsbuilder} <>
+         [exec] (aRts Control) {/usr/bin/artscontrol} <>
+         [exec] (BEAST) {/usr/bin/beast} <>
+         [exec] (Brahms) {/usr/bin/brahms} </usr/share/apps/brahms/pics/BrahmsIconDebianMenu.xpm>
+         [exec] (DBfsd) { x-terminal-emulator -T "DBfsd" -e /usr/bin/dbfsd} <>
+         [exec] (DBmixer) {/usr/bin/dbmixer} <>
+         [exec] (ecawave) {/usr/bin/ecawave} <>
+         [exec] (gmix (Gnome 2.0 Mixer\)) {/usr/bin/gnome-volume-control} </usr/share/pixmaps/gnome-mixer.xpm>
+         [exec] (gnoise) {/usr/bin/gnoise} </usr/share/pixmaps/gnoise-debian.xpm>
+         [exec] (GNOME Alsamixer) {/usr/bin/gnome-alsamixer} <>
+         [exec] (gnome-cd (Gnome 2.0 CD Player\)) {/usr/bin/gnome-cd} </usr/share/pixmaps/gnome-cd.xpm>
+         [exec] (gnomp3) {/usr/bin/gnomp3} <>
+         [exec] (GNU Solfege) {/usr/bin/solfege} </usr/share/pixmaps/solfege.xpm>
+         [exec] (Goobox CD Player) {/usr/bin/goobox} </usr/share/pixmaps/goobox.xpm>
+         [exec] (grecord (GNOME 2.0 Recorder\)) {/usr/bin/gnome-sound-recorder} </usr/share/pixmaps/gnome-grecord.xpm>
+         [exec] (grip) {/usr/bin/grip} <>
+         [exec] (JuK Music Player) {/usr/bin/juk} <>
+         [exec] (Kaboodle) {/usr/bin/kaboodle} <>
+         [exec] (Kaffeine) {/usr/bin/kaffeine} </usr/share/icons/hicolor/48x48/apps/kaffeine.png>
+         [exec] (KAudioCreator) {/usr/bin/kaudiocreator} <>
+         [exec] (KMid) {/usr/bin/kmid} <>
+         [exec] (KMix) {/usr/bin/kmix} <>
+         [exec] (KRec) {/usr/bin/krec} <>
+         [exec] (Kscd) {/usr/bin/kscd} <>
+         [exec] (Kwave) {/usr/bin/kwave} </usr/share/pixmaps/kwave.xpm>
+         [exec] (Muine Music player) {/usr/bin/muine} <>
+         [exec] (Noatun) {/usr/bin/noatun} <>
+         [exec] (noteedit) {/usr/bin/noteedit} <>
+         [exec] (Rhythmbox) {/usr/bin/rhythmbox} </usr/share/pixmaps/rhythmbox.xpm>
+         [exec] (Sound Juicer) {/usr/bin/sound-juicer} <>
+         [exec] (SoundTracker) {/usr/bin/soundtracker} <>
+         [exec] (Volume.app) {/usr/bin/volume.app} <>
+         [exec] (vumeter (Gnome 2.0 Volume Meter\)) {/usr/bin/vumeter} </usr/share/pixmaps/gnome-vumeter.xpm>
+         [exec] (wmix) {/usr/bin/X11/wmix} <>
+         [exec] (WMMixer) {/usr/bin/wmmixer} <>
+         [exec] (WMMixer (Docked\)) {/usr/bin/wmmixer -w} <>
+         [exec] (WMrack) {/usr/bin/wmrack -w} <>
+         [exec] (wmXMMS) {wmxmms} </usr/share/pixmaps/wmxmms_32.xpm>
+         [exec] (xfmedia) {/usr/bin/xfmedia} <>
+         [exec] (XMMS) {xmms} </usr/share/pixmaps/xmms.xpm>
+      [end]
+      [submenu] (System) {}
+         [submenu] (Admin) {}
+            [exec] (alsaconf) { x-terminal-emulator -T "alsaconf" -e /usr/sbin/su-to-root -p root -c /usr/sbin/alsaconf} <>
+            [exec] (fetchmailconf) {/usr/bin/fetchmailconf} </usr/share/pixmaps/fetchmailconf.xpm>
+            [exec] (gpm-config) { x-terminal-emulator -T "gpm-config" -e /usr/sbin/su-to-root -p root -c /usr/sbin/gpmconfig} <>
+            [exec] (Lilo-config) { x-terminal-emulator -T "Lilo-config" -e /usr/sbin/su-to-root -p root -c /usr/sbin/liloconfig} </usr/share/pixmaps/lilo-term.xpm>
+            [exec] (Orphaner (all\)) { x-terminal-emulator -T "Orphaner (all)" -e /usr/sbin/su-to-root -c '/usr/sbin/orphaner -a'} <>
+            [exec] (Orphaner (libs\)) { x-terminal-emulator -T "Orphaner (libs)" -e /usr/sbin/su-to-root -c /usr/sbin/orphaner} <>
+            [exec] (Orphaner - editkeep) { x-terminal-emulator -T "Orphaner - editkeep" -e /usr/sbin/su-to-root -c '/usr/sbin/editkeep '} <>
+            [exec] (pppconfig) { x-terminal-emulator -T "pppconfig" -e /usr/sbin/su-to-root -p root -c /usr/sbin/pppconfig} <>
+         [end]
+         [exec] (Alternatives Configurator) {/usr/sbin/galternatives} </usr/share/pixmaps/galternatives.xpm>
+         [exec] (apt-spy) { x-terminal-emulator -T "apt-spy" -e /usr/bin/apt-spy} <>
+         [exec] (aptitude) { x-terminal-emulator -T "aptitude" -e /usr/bin/aptitude} <>
+         [exec] (Asmon) {/usr/bin/asmon} <>
+         [exec] (Baghira's BAB) {/usr/bin/bab} <>
+         [exec] (bbconf) {/usr/bin/bbconf} <>
+         [exec] (bbkeys) {/usr/bin/bbkeys} <>
+         [exec] (BBppp) {/usr/bin/bbppp} <>
+         [exec] (Boot Admin) {/usr/bin/boot-admin} </usr/share/gnome-system-tools/pixmaps/boot.png>
+         [exec] (Configure network card) {xnetcardconfig} </usr/share/apps/xnetcardconfig/card.png>
+         [exec] (Dfontmgr) {/usr/bin/dfontmgr} <>
+         [exec] (DSL/PPPoE configuration tool) { x-terminal-emulator -T "DSL/PPPoE configuration tool" -e /usr/sbin/pppoeconf} </usr/share/pixmaps/pppoeconf.xpm>
+         [exec] (Filelight) {/usr/bin/filelight} <>
+         [exec] (FSView) {/usr/bin/fsview} </usr/share/pixmaps/fsview.xpm>
+         [exec] (gato) {/usr/bin/gato} <>
+         [exec] (GDM flexiserver) {gdmflexiserver} </usr/share/pixmaps/gdm.xpm>
+         [exec] (GDM flexiserver in Xnest) {gdmflexiserver -n} </usr/share/pixmaps/gdm.xpm>
+         [exec] (GDM Photo Setup) {gdmphotosetup} </usr/share/pixmaps/gdm.xpm>
+         [exec] (GDM Setup) {gksu gdmsetup} </usr/share/pixmaps/gdm.xpm>
+         [exec] (GkDebconf) {/usr/bin/gkdebconf} </usr/share/pixmaps/gkdebconf-icon.xpm>
+         [exec] (GKrellM) {/usr/bin/gkrellm} </usr/share/pixmaps//gkrellm.xpm>
+         [submenu] (Gnome) {}
+            [exec] (Gnome Control Center) {/usr/bin/gnome-control-center} </usr/share/pixmaps/control-center2.xpm>
+         [end]
+         [exec] (GNOME Bug Report Tool) {/usr/bin/bug-buddy} </usr/share/pixmaps/bug-buddy.xpm>
+         [exec] (GNOME CUPS Manager) {/usr/bin/gnome-cups-manager} <>
+         [exec] (GNOME Floppy Formatter) {/usr/bin/gfloppy} </usr/share/pixmaps/gfloppy.xpm>
+         [exec] (GNOME Log Viewer) {/usr/bin/gnome-system-log} </usr/share/pixmaps/gnome-system-log.xpm>
+         [exec] (GNOME Network Tool) {/usr/bin/gnome-nettool} </usr/share/pixmaps/gnome-nettool.xpm>
+         [exec] (GNOME system monitor) {/usr/bin/gnome-system-monitor} <>
+         [exec] (Gnome-Apt) {/usr/bin/gksu -m 'GNOME Apt needs superuser priviledges to manage software.' -t 'Enter root password' /usr/bin/gnome-apt} </usr/share/pixmaps/gnome-apt.xpm>
+         [submenu] (GNUstep) {}
+            [exec] (Preferences) {/usr/bin/Preferences} <>
+            [submenu] (WildMenus) {}
+               [exec] (Off) {/usr/bin/WildMenus Off} <>
+               [exec] (On) {/usr/bin/WildMenus On} <>
+            [end]
+         [end]
+         [exec] (Graveman) {graveman} <>
+         [exec] (grubconf) {/usr/sbin/grubconf} </usr/share/pixmaps/grubconf-menu.xpm>
+         [exec] (GTKdiskfree) {/usr/bin/gtkdiskfree} <>
+         [exec] (gtkrecover) {/usr/sbin/gtkrecover} <>
+         [exec] (gupsc) {/usr/bin/gupsc} <>
+         [exec] (GWorkspace) {GWorkspace} </usr/share/pixmaps/GWorkspace.xpm>
+         [exec] (htop) { x-terminal-emulator -T "htop" -e /usr/bin/htop} <>
+         [exec] (icemc) {/usr/bin/icemc} <>
+         [exec] (iceme) {/usr/bin/iceme} <>
+         [exec] (icepref) {/usr/bin/icepref} <>
+         [submenu] (Java2) {}
+            [exec] (Plug-In Control Panel) {/usr/bin/JavaPluginControlPanel} </usr/share/pixmaps/java-preferences.xpm>
+            [exec] (Policy Tool) {/usr/bin/policytool} </usr/share/pixmaps/java-properties.xpm>
+         [end]
+         [exec] (kAppfinder) {/usr/bin/kappfinder} <>
+         [exec] (kcmlinuz) {/usr/bin/kcmshell linuz} <>
+         [exec] (KControl) {/usr/bin/kcontrol} <>
+         [exec] (KCPULoad) {/usr/bin/kcpuload} </usr/share/pixmaps/kcpuload.xpm>
+         [exec] (KDat) {/usr/bin/kdat} <>
+         [exec] (KDCOP) {/usr/bin/kdcop} <>
+         [exec] (KDE Package Manager) {/usr/bin/kpackage} <>
+         [exec] (KDE PAM Security Policy Editor) {/usr/bin/secpolicy} <>
+         [exec] (KDE System Guard) {/usr/bin/ksysguard} <>
+         [exec] (KDE System Guard - Process Table) {/usr/bin/kpm} <>
+         [exec] (KDE SysV-Init Editor) {/usr/bin/ksysv} <>
+         [exec] (KDE Task Scheduler) {/usr/bin/kcron} <>
+         [exec] (KDE User Manager) {/usr/bin/kuser} <>
+         [exec] (KDebugDialog) {/usr/bin/kdebugdialog} <>
+         [exec] (kdepasswd) {/usr/bin/kdepasswd} <>
+         [exec] (KDEPrintFax) {/usr/bin/kdeprintfax} <>
+         [exec] (KDiskFree) {/usr/bin/kdf} <>
+         [exec] (KEditBookmarks) {/usr/bin/keditbookmarks} <>
+         [exec] (KFind) {/usr/bin/kfind} <>
+         [exec] (KFloppy) {/usr/bin/kfloppy} <>
+         [exec] (Kicker) {/usr/bin/kicker} <>
+         [exec] (KJobViewer) {/usr/bin/kjobviewer --show --all} <>
+         [exec] (KMenuEdit) {/usr/bin/kmenuedit} <>
+         [exec] (Konqueror) {/usr/bin/konqueror --profile filemanagement} <>
+         [exec] (KPersonalizer) {/usr/bin/kpersonalizer} <>
+         [exec] (KPrinter) {/usr/bin/kprinter} <>
+         [exec] (KSensors) {/usr/bin/ksensors} </usr/share/pixmaps/ksensors.xpm>
+         [exec] (KTimeTrace) {/usr/bin/ktimetrace} <>
+         [exec] (kwikdisk) {/usr/bin/kwikdisk} <>
+         [exec] (lilo-config) {/usr/bin/kdesu kcmshell lilo} <>
+         [exec] (lokkit) { x-terminal-emulator -T "lokkit" -e /usr/sbin/lokkit} <>
+         [exec] (Mail Notification Preferences) {/usr/bin/mail-notification -p} </usr/share/pixmaps/mail-notification.xpm>
+         [exec] (Nautilus) {/usr/bin/nautilus} </usr/share/pixmaps/nautilus.xpm>
+         [exec] (Network Admin) {/usr/bin/network-admin} </usr/share/gnome-system-tools/pixmaps/network.png>
+         [exec] (Openoffice.org Printer Administration) {/usr/bin/oopadmin} </usr/share/icons/hicolor/32x32/apps/ooo_setup.xpm>
+         [exec] (Openoffice.org Setup) {/usr/lib/openoffice/program/setup} </usr/share/icons/hicolor/32x32/apps/ooo_setup.xpm>
+         [exec] (Print Notification Icon) {/usr/bin/gnome-cups-icon} <>
+         [exec] (pstree) { x-terminal-emulator -T "pstree" -e /usr/bin/pstree.x11} </usr/share/pixmaps/pstree16.xpm>
+         [exec] (recover) { x-terminal-emulator -T "recover" -e /usr/sbin/su-to-root -p root -c /usr/sbin/recover} <>
+         [exec] (reportbug) { x-terminal-emulator -T "reportbug" -e /usr/bin/reportbug --exit-prompt} <>
+         [exec] (ROX Filer) {/usr/bin/rox} <>
+         [exec] (Run as different user (GKsu\)) {/usr/bin/gksuexec} </usr/share/pixmaps/gksuexec-debian.xpm>
+         [exec] (Services Admin) {/usr/bin/services-admin} </usr/share/gnome-system-tools/pixmaps/runlevel.png>
+         [exec] (Synaptic Package Manager) {/usr/sbin/su-to-root -X -c /usr/sbin/synaptic} </usr/share/synaptic/pixmaps/synaptic_32x32.xpm>
+         [exec] (System Information) {/usr/bin/hardinfo} </usr/share/hardinfo/pixmaps/logo.png>
+         [exec] (Task selector) { x-terminal-emulator -T "Task selector" -e /usr/sbin/su-to-root -c /usr/bin/tasksel} <>
+         [exec] (TeXconfig) { x-terminal-emulator -T "TeXconfig" -e /usr/bin/texconfig} <>
+         [exec] (Time Admin) {/usr/bin/time-admin} </usr/share/gnome-system-tools/pixmaps/time.png>
+         [exec] (Top) { x-terminal-emulator -T "Top" -e /usr/bin/top} <>
+         [exec] (User accounts Admin) {/usr/bin/users-admin} </usr/share/gnome-system-tools/pixmaps/users.png>
+         [exec] (WMakerConf) {/usr/bin/wmakerconf} <>
+         [exec] (wmavgload) {/usr/bin/X11/wmavgload -shape -withdrawn} <>
+         [exec] (wmbattery) {wmbattery} <>
+         [exec] (wmbubble) {wmbubble 'x-terminal-emulator -e top' '/usr/share/wmbubble/wakwak.sh'} <>
+         [exec] (wmcube) {/usr/bin/wmcube} <>
+         [exec] (wmhdplop) {/usr/bin/wmhdplop} <>
+         [exec] (wmload) {/usr/bin/wmload -shape -withdrawn} <>
+         [exec] (wmmisc) {/usr/bin/wmmisc} <>
+         [exec] (WMmon) {/usr/bin/wmmon} <>
+         [exec] (wmsensors) {/usr/X11R6/bin/wmsensors} <>
+         [exec] (wmsmpmon) {/usr/bin/wmsmpmon} <>
+         [exec] (wmsysmon) {/usr/bin/wmsysmon} <>
+         [exec] (wmtop) {/usr/bin/wmtop} <>
+         [exec] (wmwave) {/usr/bin/wmwave} <>
+         [exec] (X Sensors) {/usr/bin/xsensors} <>
+         [exec] (X-Terminal as root (GKsu\)) {/usr/bin/gksu -u root /usr/bin/x-terminal-emulator} </usr/share/pixmaps/gksu-debian.xpm>
+         [exec] (Xbatt) {/usr/X11R6/bin/xbatt} <>
+         [exec] (Xbattbar) {/usr/X11R6/bin/xbattbar} <>
+         [exec] (Xconsole) {xconsole} <>
+         [exec] (xdiskusage) {xdiskusage} <>
+         [exec] (Xfq RPM Manager) {/usr/bin/xfilequery} <>
+         [exec] (Xload) {xload} <>
+         [exec] (xmem) {/usr/bin/X11/xmem} <>
+         [exec] (xrestop) {/usr/bin/xrestop} <>
+         [exec] (XSysInfo) {/usr/X11R6/bin/xsysinfo} <>
+         [exec] (xt) {/usr/bin/xtraceroute} <>
+         [exec] (Xvidtune) {xvidtune} <>
+      [end]
+      [submenu] (Technical) {}
+         [exec] (Oregano) {/usr/bin/oregano} <>
+         [exec] (QCad) {/usr/bin/qcad} </usr/share/pixmaps/qcad.xpm>
+         [exec] (VisualOS) {/usr/bin/VisualOS} <>
+      [end]
+      [submenu] (Text) {}
+         [exec] (Character map) {/usr/bin/gucharmap} <>
+         [exec] (Fortune) {sh -c 'while /usr/games/fortune | col -x | xmessage -center -buttons OK:1,Another:0 -default OK -file - ; do :; done'} <>
+         [exec] (GNOME Dictionary) {/usr/bin/gnome-dictionary} </usr/share/pixmaps/gdict.xpm>
+         [exec] (GnomeSword) {/usr/bin/gnomesword2} </usr/share/pixmaps/gnomesword/gs2-48x48.png>
+         [exec] (HTMLDoc) {/usr/bin/htmldoc} <>
+         [exec] (KXSLDbg) {/usr/bin/kxsldbg} <>
+         [exec] (xdialog) {/usr/bin/Xdialog} <>
+      [end]
+      [submenu] (Tools) {}
+         [exec] (AClock) {/usr/bin/AClock} <>
+         [exec] (Alexandria Book Collection Manager) {/usr/bin/alexandria} <>
+         [exec] (appbar) {/usr/bin/aewm++_appbar} <>
+         [exec] (Ark) {/usr/bin/ark} <>
+         [exec] (ASclock) {/usr/bin/asclock} <>
+         [exec] (Battfink Preferences) {/usr/bin/battfink --new-window} <>
+         [exec] (bbdate) {/usr/bin/bbdate} <>
+         [exec] (bbpager) {/usr/bin/bbpager} <>
+         [exec] (bclock) {/usr/bin/bclock} <>
+         [exec] (buici clock) {/usr/bin/X11/buici-clock} <>
+         [exec] (Charmap) {/usr/bin/Charmap} <>
+         [exec] (ClipBook) {ClipBook} </usr/share/pixmaps/ClipBook.xpm>
+         [exec] (DataManager) {DataManager} <>
+         [exec] (dclock) {/usr/bin/dclock} <>
+         [exec] (Desktop File Manager) {/usr/bin/dfm} <>
+         [exec] (ding) {/usr/bin/ding} </usr/share/pixmaps/dbook.xpm>
+         [exec] (docker) {/usr/bin/docker} <>
+         [exec] (Editres) {editres} <>
+         [exec] (fbpager) {/usr/bin/fbpager} <>
+         [exec] (fbpanel) {/usr/bin/fbpanel} <>
+         [exec] (File-Roller) {/usr/bin/file-roller} </usr/share/pixmaps/file-roller.png>
+         [exec] (fluxconf) {/usr/bin/fluxbare} <>
+         [exec] (Foomatic printer configuration tool) {gksu -u root /usr/bin/foomatic-gui} <>
+         [exec] (fspanel) {/usr/bin/fspanel} <>
+         [exec] (fspanel (aewm++-goodies version\)) {/usr/bin/aewm++_fspanel} <>
+         [exec] (Fsviewer) {/usr/bin/fsviewer} <>
+         [exec] (gBib) {/usr/bin/gbib} </usr/share/gbib/gbib32.xpm>
+         [exec] (gdeskcal) {/usr/bin/gdeskcal} <>
+         [exec] (gdesklets) {/usr/bin/gdesklets} </usr/share/pixmaps/gdesklets.png>
+         [exec] (Gentoo) {gentoo} <>
+         [exec] (gfslicer) {/usr/bin/gfslicer} <>
+         [exec] (gjots2) {/usr/bin/gjots2} <>
+         [exec] (gMGAclock) {/usr/bin/gmgaclock} </usr/share/pixmaps/gmgaclock/logo.xpm>
+         [exec] (Gnofin) {gnofin} <>
+         [exec] (GNOME Address Book) {/usr/bin/gnomecard} <>
+         [exec] (GNOME Calendar) {/usr/bin/gnomecal} <>
+         [exec] (GNOME Commander) {/usr/bin/gnome-commander} <>
+         [exec] (GNOME Search Tool) {/usr/bin/gnome-search-tool} </usr/share/pixmaps/gsearchtool.xpm>
+         [exec] (Gnome Smartcard) {/usr/bin/gsmartcard} <>
+         [exec] (GNOME Toaster) {/usr/bin/gtoaster} <>
+         [exec] (gnome-think) {/usr/bin/gnome-think} <>
+         [exec] (GnomePGP) {/usr/bin/gpgp} <>
+         [exec] (gnometab) {/usr/bin/gnometab} <>
+         [exec] (GnoTime) {/usr/bin/gnotime} </usr/share/pixmaps/gnotime.xpm>
+         [exec] (GnuCash) {gnucash} </usr/share/pixmaps/gnucash/gnucash-icon.png>
+         [exec] (GNUWash) {/usr/bin/GNUWash} <>
+         [exec] (gODBCConfig) {gODBCConfig} <>
+         [exec] (Gpr) {gpr} <>
+         [exec] (gramps) {/usr/bin/gramps} </usr/share/pixmaps/gramps.xpm>
+         [exec] (GTK+ 1.2 Theme Switch) {/usr/bin/switch} <>
+         [exec] (GTK+ 2.0 Theme Switch) {/usr/bin/switch2} <>
+         [exec] (gtkfontsel) {/usr/bin/gtkfontsel} <>
+         [exec] (gtkgrepmail) {/usr/bin/gtkgrepmail} </usr/share/pixmaps/gtkgrepmail.xpm>
+         [exec] (gtklp) {/usr/bin/gtklp} <>
+         [exec] (gtklpq) {/usr/bin/gtklpq} <>
+         [exec] (gtktalog) {/usr/bin/gtktalog} </usr/share/pixmaps/gtktalog.xpm>
+         [exec] (Gtodo) {/usr/bin/gtodo} </usr/share/pixmaps/gtodo.xpm>
+         [exec] (gTweakUI Galeon) {/usr/bin/gtweakui-galeon} <>
+         [exec] (gTweakUI Menus) {/usr/bin/gtweakui-menus} <>
+         [exec] (gTweakUI Nautilus) {/usr/bin/gtweakui-nautilus} <>
+         [exec] (gTweakUI Session) {/usr/bin/gtweakui-session} <>
+         [exec] (guitar) {/usr/bin/guitar} <>
+         [exec] (Hotkeys daemon) {/usr/bin/hotkeys -b} <>
+         [exec] (iceconf) {/usr/bin/iceconf} <>
+         [exec] (k3b) {/usr/bin/k3b} </usr/share/pixmaps/k3b.xpm>
+         [exec] (KAddressbook) {/usr/bin/kaddressbook} <>
+         [exec] (KAlarm) {/usr/bin/kalarm} <>
+         [exec] (Kandy) {/usr/bin/kandy} <>
+         [exec] (KArm) {/usr/bin/karm} <>
+         [exec] (kcdlabel) {/usr/bin/kcdlabel} </usr/share/icons/hicolor/48x48/apps/kcdlabel.xpm>
+         [exec] (KCharSelect) {/usr/bin/kcharselect} <>
+         [exec] (Kgpg) {/usr/bin/kgpg} <>
+         [exec] (KHexEdit) {/usr/bin/khexedit} <>
+         [exec] (KitchenSync) {/usr/bin/kitchensync} <>
+         [exec] (Kivio) {/usr/bin/kivio} </usr/share/pixmaps/kivio.xpm>
+         [exec] (KJots) {/usr/bin/kjots} <>
+         [exec] (Klipper) {/usr/bin/klipper} <>
+         [exec] (KMag) {/usr/bin/kmag} <>
+         [exec] (KMousetool) {/usr/bin/kmousetool} <>
+         [exec] (KMouth) {/usr/bin/kmouth} <>
+         [exec] (KNotes) {/usr/bin/knotes} <>
+         [exec] (KOffice Workspace) {/usr/bin/koshell} <>
+         [exec] (Kommander Editor) {/usr/bin/kmdr-editor} <>
+         [exec] (konserve) {/usr/bin/konserve} <>
+         [exec] (Kontact) {/usr/bin/kontact} <>
+         [exec] (KOrganizer) {/usr/bin/korganizer} <>
+         [exec] (KPager) {/usr/bin/kpager} <>
+         [exec] (KPalmDOC) {/usr/bin/kpalmdoc} <>
+         [exec] (KPilot) {/usr/bin/kpilot} <>
+         [exec] (KPresenter) {/usr/bin/kpresenter} </usr/share/pixmaps/kpresenter.xpm>
+         [exec] (Kregexpeditor) {/usr/bin/kregexpeditor} <>
+         [exec] (KSync) {/usr/bin/ksync} <>
+         [exec] (KThesaurus) {/usr/bin/kthesaurus} <>
+         [exec] (KTimer) {/usr/bin/ktimer} <>
+         [exec] (KTip) {/usr/bin/ktip} <>
+         [exec] (KTnef) {/usr/bin/ktnef} <>
+         [exec] (Kugar) {/usr/bin/kugar} </usr/share/pixmaps/kugar.xpm>
+         [exec] (Kugar Designer) {/usr/bin/kudesigner} <>
+         [exec] (KWatchGnuPG) {/usr/bin/kwatchgnupg} <>
+         [exec] (mc) { x-terminal-emulator -T "mc" -e /usr/bin/mc} </usr/share/pixmaps/mc.xpm>
+         [exec] (Multisync) {/usr/bin/multisync} <>
+         [exec] (Oclock) {oclock} <>
+         [exec] (ODBCConfig) {ODBCConfig} <>
+         [exec] (odbctest) {odbctest} <>
+         [exec] (osdsh) {/usr/bin/osdsh} <>
+         [exec] (osdshconfig) {/usr/bin/osdshconfig} <>
+         [exec] (Planner) {/usr/bin/planner} <>
+         [exec] (Rclock) {rclock} <>
+         [exec] (RegExplorer) {/usr/X11R6/bin/regexplorer} <>
+         [exec] (revelation) {/usr/bin/revelation} </usr/share/pixmaps/revelation.xpm>
+         [exec] (RouteEdit) {/usr/bin/gredit} <>
+         [exec] (RoutePlanner (Gnome\)) {/usr/bin/grplan} <>
+         [exec] (RoutePlanner (newt\)) { x-terminal-emulator -T "RoutePlanner (newt)" -e /usr/bin/rplan} <>
+         [exec] (RoutePlanner (tty\)) { x-terminal-emulator -T "RoutePlanner (tty)" -e /usr/bin/rpcli} <>
+         [exec] (sanduhr) {/usr/bin/sanduhr} <sanduhr.xpm>
+         [exec] (Seahorse) {/usr/bin/seahorse} </usr/share/pixmaps/seahorse.png>
+         [exec] (skippy) {/usr/bin/skippy} <>
+         [exec] (SunClock) {/usr/bin/sunclock} </usr/share/pixmaps/sunclock.xpm>
+         [exec] (Teleport) {/usr/bin/teleport} <>
+         [exec] (Tellico) {/usr/bin/tellico} </usr/share/pixmaps/tellico.xpm>
+         [exec] (TeXfind) {/usr/bin/texfind} <>
+         [exec] (The GNOME Onscreen Keyboard) {/usr/bin/gok} <>
+         [exec] (The GNU HaliFAX Sender) {/usr/bin/gfax} <>
+         [exec] (txt2regex) { x-terminal-emulator -T "txt2regex" -e /usr/bin/txt2regex} <>
+         [exec] (Units) { x-terminal-emulator -T "Units" -e units} <>
+         [exec] (USB View) {/usr/bin/usbview} <>
+         [exec] (viewglob) {x-terminal-emulator -e /usr/bin/viewglob} </usr/share/pixmaps/viewglob.xpm>
+         [exec] (wayV Handwriting Recognition) {/usr/bin/wayv} <>
+         [exec] (wininfo) {/usr/bin/wininfo} <>
+         [exec] (wmbinclock) {/usr/bin/wmbinclock} <>
+         [exec] (wmbutton) {/usr/bin/wmbutton} <>
+         [exec] (wmcalc) {/usr/bin/wmcalc} <>
+         [exec] (wmcalclock) {/usr/bin/wmCalClock} <>
+         [exec] (wmcb) {/usr/bin/wmcb} <>
+         [exec] (wmcliphist) {/usr/bin/wmcliphist} <>
+         [exec] (Wmclock) {/usr/bin/wmclock} <>
+         [exec] (wmclockmon) {/usr/bin/wmclockmon} <>
+         [exec] (wmCPU) {/usr/X11R6/bin/wmcpu} <>
+         [exec] (wmcpuload) {/usr/bin/wmcpuload} <>
+         [exec] (wmDate) {/usr/X11R6/bin/wmdate} <>
+         [exec] (wmfire) {/usr/bin/wmfire} <>
+         [exec] (wmget) {/usr/bin/wmget dock} <>
+         [exec] (wmGrabImage) {wmGrabImage} <>
+         [exec] (wmITime) {/usr/bin/wmitime} <>
+         [exec] (wmmemload) {/usr/bin/wmmemload} <>
+         [exec] (wmmemmon) {/usr/bin/wmmemmon} <>
+         [exec] (wmMoonClock) {/usr/bin/wmMoonClock } <>
+         [exec] (wmPinboard) {/usr/bin/wmpinboard} <>
+         [exec] (wmshutdown) {/usr/bin/wmShutdown} <>
+         [exec] (wmSpaceWeather) {/usr/bin/wmSpaceWeather} <>
+         [exec] (wmSun) {/usr/bin/wmSun } <>
+         [exec] (WMTime) {/usr/bin/wmtime} <>
+         [exec] (wmtimer) {/usr/bin/wmtimer} <>
+         [exec] (wmweather) {/usr/bin/wmweather} <>
+         [exec] (wmwork) {/usr/bin/wmwork} <>
+         [exec] (wmxres) {/usr/bin/wmxres} <>
+         [exec] (Worker) {/usr/bin/worker} <>
+         [exec] (Workrave) {/usr/bin/workrave} <>
+         [exec] (X Printing Panel) {/usr/bin/xpp} </usr/share/pixmaps/xpp.xpm>
+         [exec] (X Window Snapshot) {xwd | xwud} <>
+         [exec] (xarclock) {/usr/bin/xarclock} <>
+         [exec] (xbindkeys) {/usr/bin/xbindkeys} <>
+         [exec] (XBindKeys-config) {/usr/bin/xbindkeys-config} <>
+         [exec] (xcalendar-i18n) {/usr/X11R6/bin/xcalendar} <>
+         [exec] (xcb) {/usr/X11R6/bin/xcb} <>
+         [exec] (Xclipboard) {xclipboard} <>
+         [exec] (Xclock (analog\)) {xclock -analog} <>
+         [exec] (Xclock (digital\)) {xclock -digital -update 1} <>
+         [exec] (xcolors) {/usr/X11R6/bin/xcolors} <>
+         [exec] (Xcolorsel) {/usr/bin/X11/xcolorsel} <>
+         [exec] (Xcutsel) {xcutsel} <>
+         [exec] (xdaliclock) {xdaliclock -cycle} <>
+         [exec] (xdkcal) {/usr/X11R6/bin/xdkcal} <>
+         [exec] (Xev) {x-terminal-emulator -e xev} <>
+         [exec] (Xfce-setting-show) {xfce-setting-show} </usr/share/icons/hicolor/48x48/apps/xfce4-settings.png>
+         [exec] (Xfdesktop) {xfdesktop} <>
+         [exec] (Xfe File Manager) {/usr/bin/xfe} <>
+         [exec] (Xffm4) {xffm} </usr/share/icons/Rodent/48x48/apps/file-manager.png>
+         [exec] (Xfontsel) {xfontsel} <>
+         [exec] (xfprint4) {xfprint4} <>
+         [exec] (XFrun4) {xfrun4} <>
+         [exec] (XFTaskbar4) {xftaskbar4} <>
+         [exec] (xgsmlib) {/usr/bin/xgsm} <>
+         [exec] (xitalk) {xitalk} <>
+         [exec] (xkbsel) {/usr/bin/xkbsel-aw} <>
+         [exec] (xkeycaps) {/usr/bin/xkeycaps} <>
+         [exec] (Xkill) {xkill} <>
+         [exec] (XmAddressBook) {/usr/bin/xmaddressbook} <>
+         [exec] (Xmag) {xmag} <>
+         [exec] (xodometer) {xodo} <>
+         [exec] (xpad) {/usr/bin/xpad} </usr/share/pixmaps/xpad/xpad.xpm>
+         [exec] (XpostIt!) {/usr/X11R6/bin/xpostit} <>
+         [exec] (Xrefresh) {xrefresh} <>
+         [exec] (xrus) {/usr/bin/X11/xrus} <>
+         [exec] (xstroke) {xstroke} <>
+         [exec] (xtranslate) {/usr/bin/xtranslate} <>
+         [exec] (Xtrlock) {xtrlock} <>
+         [exec] (xvkbd) {/usr/bin/X11/xvkbd} <>
+         [exec] (xxkb) {/usr/bin/xxkb} <>
+         [exec] (xzoom) {xzoom} <>
+         [exec] (yank) {/usr/bin/yank} <>
+         [exec] (Zipper) {/usr/bin/Zipper} <>
+      [end]
+      [submenu] (Viewers) {}
+         [exec] (Camorama) {/usr/bin/camorama} </usr/share/pixmaps/camorama.xpm>
+         [exec] (Evince) {/usr/bin/evince} </usr/share/evince/pdf-icon.png>
+         [exec] (Eye of GNOME) {/usr/bin/eog} </usr/share/pixmaps/gnome-eog.xpm>
+         [exec] (F-Spot) {/usr/bin/f-spot} <>
+         [exec] (gfontview) {gfontview} <>
+         [exec] (gliv) {/usr/bin/gliv} <>
+         [exec] (GNOME Ghostscript Viewer) {/usr/bin/gnome-gv} </usr/share/pixmaps/gnome-ghostview.xpm>
+         [exec] (gthumb) {/usr/bin/gthumb} </usr/share/pixmaps/gthumb.xpm>
+         [exec] (GV) {/usr/bin/gv} </usr/share/pixmaps/mini-gv.xpm>
+         [exec] (ImageMagick) {/usr/bin/display} <>
+         [exec] (ImageViewer) {/usr/bin/ImageViewer} <>
+         [exec] (kdvi) {/usr/bin/kdvi} <>
+         [exec] (kghostview) {/usr/bin/kghostview} <>
+         [exec] (kview) {/usr/bin/kview} <>
+         [exec] (Ogle) {/usr/bin/ogle} </usr/share/ogle/ogle.xpm>
+         [exec] (oKle) {/usr/bin/okle} </usr/share/pixmaps/okle.xpm>
+         [exec] (PDF viewer) {/usr/bin/gpdf} </usr/share/pixmaps/gnome-pdf.xpm>
+         [exec] (The GNU HaliFAX - Viewer) {/usr/bin/ghfaxviewer} </usr/share/pixmaps/ghfaxviewer/ghfaxviewer-icon.xpm>
+         [exec] (Tkfont) {tkfont} <>
+         [exec] (totem) {/usr/bin/totem} </usr/share/totem/media-player-48.png>
+         [exec] (vdr) { x-terminal-emulator -T "vdr" -e /usr/bin/vdr} <>
+         [exec] (ViewPDF) {/usr/bin/ViewPDF} <>
+         [exec] (VLC media player) {/usr/bin/vlc} </usr/share/vlc/vlc.xpm>
+         [exec] (Wordview) {/usr/bin/wordview} <>
+         [exec] (xawtv) {/usr/bin/xawtv} <xawtv>
+         [exec] (xCHM) {/usr/bin/xchm} </usr/share/pixmaps/xchm-32.xpm>
+         [exec] (Xditview) {xditview} <>
+         [exec] (XDvi) {/usr/bin/xdvi} <>
+         [exec] (Xfv File Viewer) {/usr/bin/xfileview} <>
+         [exec] (xine media player) {/usr/bin/xine} </usr/share/xine/desktop/xine.xpm>
+         [exec] (Xmotd) {xmotd /etc/motd} <>
+         [exec] (Xpdf) {/usr/bin/xpdf} </usr/share/pixmaps/xpdf.xpm>
+         [exec] (zapping) {/usr/bin/zapping} </usr/share/pixmaps/zapping/gnome-television.xpm>
+      [end]
+   [end]
+   [submenu] (Games) {}
+      [submenu] (Adventure) {}
+         [exec] (GNOME NetHack) {/usr/games/nethack-gnome} </usr/share/pixmaps/nethack.xpm>
+         [exec] (GNOME-Mud) {/usr/games/gnome-mud} <>
+         [exec] (NetHack) { x-terminal-emulator -T "NetHack" -e /usr/games/nethack} </usr/share/pixmaps/nethack.xpm>
+      [end]
+      [submenu] (Arcade) {}
+         [exec] (ACM) {/usr/games/acm} <>
+         [exec] (Airstrike) {/usr/games/airstrike} <>
+         [exec] (Armagetron) {/usr/games/armagetron} </usr/share/pixmaps/armagetron.xpm>
+         [exec] (Gnibbles) {/usr/games/gnibbles} </usr/share/pixmaps/gnibbles.xpm>
+         [exec] (KAsteroids) {/usr/games/kasteroids} <>
+         [exec] (KDE Bounce Ball Game) {/usr/games/kbounce} <>
+         [exec] (KDE Miniature Golf) {/usr/games/kolf} <>
+         [exec] (KDE Snake Race) {/usr/games/ksnake} <>
+         [exec] (KDE SpaceDuel) {/usr/games/kspaceduel} <>
+         [exec] (KDE Tron) {/usr/games/ktron} <>
+         [exec] (KGoldrunner) {/usr/games/kgoldrunner} <>
+         [exec] (Orbit) {/usr/games/orbit} <>
+         [exec] (ppracer) {/usr/games/ppracer} </usr/share/pixmaps/ppracer.xpm>
+         [exec] (Race) {/usr/games/race} <>
+         [exec] (StepBill) {/usr/games/StepBill} <>
+         [exec] (TORCS) {/usr/games/torcs} </usr/share/pixmaps/torcs.xpm>
+      [end]
+      [submenu] (Board) {}
+         [exec] (3D Chess) {/usr/games/3Dc} <>
+         [exec] (Atlantik) {/usr/games/atlantik} <>
+         [exec] (Atlantik Designer) {/usr/bin/atlantikdesigner} </usr/share/pixmaps/atlantikdesigner.xpm>
+         [exec] (Four-in-a-row) {/usr/games/gnect} </usr/share/pixmaps/gnect.xpm>
+         [exec] (Gataxx) {/usr/games/gataxx} </usr/share/pixmaps/gataxx.xpm>
+         [exec] (Gnome GYahtzee) {/usr/games/gtali} </usr/share/pixmaps/gtali.xpm>
+         [exec] (Gnome Iagno) {/usr/games/iagno} </usr/share/pixmaps/iagno.xpm>
+         [exec] (Gnome Lines) {/usr/games/glines} </usr/share/pixmaps/glines.xpm>
+         [exec] (Gnome Mahjongg) {/usr/games/mahjongg} </usr/share/pixmaps/gnome-mahjongg.xpm>
+         [exec] (gnome-chess) {/usr/bin/gnome-chess} <>
+         [exec] (GnuChess) { x-terminal-emulator -T "GnuChess" -e /usr/games/gnuchess} <>
+         [exec] (Gomoku) {/usr/games/Gomoku} <>
+         [exec] (Gridlock) {/usr/games/Gridlock} </usr/share/pixmaps/gridlock.xpm>
+         [exec] (gtkgo) {/usr/games/gtkgo} <>
+         [exec] (KBattleship) {/usr/games/kbattleship} <>
+         [exec] (KDE Backgammon) {/usr/games/kbackgammon} <>
+         [exec] (KDE Reversi) {/usr/games/kreversi} <>
+         [exec] (KDE Shisen-Sho) {/usr/games/kshisen} <>
+         [exec] (KEnolaba) {/usr/games/kenolaba} <>
+         [exec] (KLines) {/usr/games/klines} <>
+         [exec] (KMahjongg) {/usr/games/kmahjongg} <>
+         [exec] (KWin4) {/usr/games/kwin4} <>
+         [exec] (Shisen) {/usr/games/Shisen} <>
+         [exec] (XBoard) {/usr/games/xboard -ncp} <>
+         [submenu] (XBoard-ICS) {}
+            [exec] (Chess Net) { x-terminal-emulator -T "Chess Net" -e /usr/games/xboard -ics -icshost chess.net} <>
+            [exec] (Default) { x-terminal-emulator -T "Default" -e /usr/games/xboard -ics} <>
+            [exec] (Free I.C.S.) { x-terminal-emulator -T "Free I.C.S." -e /usr/games/xboard -ics -icshost freechess.org} <>
+            [exec] (Internet Chess Club) { x-terminal-emulator -T "Internet Chess Club" -e /usr/games/xboard -ics -icshost chessclub.com} <>
+         [end]
+      [end]
+      [submenu] (Card) {}
+         [exec] (Gnome Blackjack) {/usr/games/blackjack} </usr/share/pixmaps/blackjack.xpm>
+         [exec] (Gnome FreeCell) {/usr/games/sol --variation freecell} </usr/share/pixmaps/freecell.xpm>
+         [exec] (Gnome Solitaire Games) {/usr/games/sol} </usr/share/pixmaps/aisleriot.xpm>
+         [exec] (KDE Lieutnant Skat) {/usr/games/lskat} <>
+         [exec] (KDE Patience) {/usr/games/kpat} <>
+         [exec] (KDE Poker) {/usr/games/kpoker} <>
+      [end]
+      [submenu] (Puzzles) {}
+         [exec] (Bloksi) {/usr/games/bloksi} </usr/X11R6/include/X11/pixmaps/bloksi.xpm>
+         [exec] (Glotski) {/usr/games/glotski} </usr/share/pixmaps/glotski.xpm>
+         [exec] (Gnome Klotski) {/usr/games/gnotski} </usr/share/pixmaps/gnotski.xpm>
+         [exec] (Gnome Robots) {/usr/games/gnobots2} </usr/share/pixmaps/gnobots2.xpm>
+         [exec] (Gnome Stones) {/usr/games/gnome-stones} </usr/share/pixmaps/gnome-stones.xpm>
+         [exec] (Gnome Tetravex) {/usr/games/gnotravex} </usr/share/pixmaps/gnotravex.xpm>
+         [exec] (Gnomine) {/usr/games/gnomine} </usr/share/pixmaps/gnomine.xpm>
+         [exec] (KBlackBox) {/usr/games/kblackbox} <>
+         [exec] (KDE Atomic Entertainment) {/usr/games/katomic} <>
+         [exec] (KDE SameGame) {/usr/games/ksame} <>
+         [exec] (KDE Sokoban) {/usr/games/ksokoban} <>
+         [exec] (KHangMan) {/usr/bin/khangman} </usr/share/pixmaps/khangman.xpm>
+         [exec] (Klickety) {/usr/games/klickety} <>
+         [exec] (KMessedWords) {/usr/bin/kmessedwords} </usr/share/pixmaps/kmessedwords.xpm>
+         [exec] (Kmines) {/usr/games/kmines} <>
+         [exec] (Language drills) {/usr/bin/langdrill} <>
+         [exec] (Mines) {/usr/games/Mines} <>
+         [exec] (Same Gnome) {/usr/games/same-gnome} </usr/share/pixmaps/gsame.xpm>
+      [end]
+      [submenu] (Simulation) {}
+         [exec] (Achilles) {achilles} <>
+      [end]
+      [submenu] (Sports) {}
+         [exec] (BillardGL) {/usr/games/billard-gl} <>
+         [exec] (Foobillard) {/usr/games/foobillard} <>
+      [end]
+      [submenu] (Strategy) {}
+         [exec] (Batalla Naval client) {/usr/bin/gbnclient} <>
+         [exec] (Batalla Naval robot) {/usr/bin/gbnrobot} <>
+         [exec] (Batalla Naval server) {/usr/bin/gbnserver} <>
+         [exec] (Boson) {/usr/games/boson} <>
+         [exec] (KJumpingCube) {/usr/games/kjumpingcube} <>
+         [exec] (Konquest) {/usr/games/konquest} <>
+         [exec] (T.E.G. Client) {/usr/games/tegclient} </usr/share/pixmaps/teg_pix/teg_icono.xpm>
+      [end]
+      [submenu] (Tetris-like) {}
+         [exec] (Ghextris) {/usr/games/ghextris} </usr/share/games/ghextris/ghextris-icon.xpm>
+         [exec] (Gnometris) {/usr/games/gnometris} </usr/share/pixmaps/gnometris.xpm>
+         [exec] (GTetrinet) {/usr/games/gtetrinet} <>
+         [exec] (KDE Foul Eggs) {/usr/games/kfouleggs} <>
+         [exec] (KDE Sirtet) {/usr/games/ksirtet} <>
+         [exec] (KDE Smiletris) {/usr/games/ksmiletris} <>
+         [exec] (XWelltris) {/usr/games/xwelltris} <>
+      [end]
+      [submenu] (Toys) {}
+         [exec] (AMOR) {/usr/bin/amor} </usr/share/pixmaps/amor.xpm>
+         [exec] (bbpal) {/usr/bin/bbpal -w} <>
+         [exec] (Floatbg - start) {floatbg} <>
+         [exec] (Floatbg - stop) {killall -KILL floatbg} <>
+         [exec] (gNiall) {/usr/games/gniall} <>
+         [exec] (GnomeKiss) {/usr/bin/gnomekiss} </usr/share/pixmaps/gnomekiss/gnomekiss.xpm>
+         [exec] (KDE Potato Guy) {/usr/games/ktuberling} <>
+         [exec] (KOdometer) {/usr/bin/kodo} </usr/share/pixmaps/kodo.xpm>
+         [exec] (KTeaTime) {/usr/bin/kteatime} </usr/share/pixmaps/kteatime.xpm>
+         [exec] (KWorldClock) {/usr/bin/kworldclock} </usr/share/pixmaps/kworldclock.xpm>
+         [exec] (tdfsb) {/usr/games/tdfsb} <>
+         [submenu] (tuXeyes) {}
+            [exec] (tuXeyes with Chuck) {/usr/games/tuxeyes --chuck} <>
+            [exec] (tuXeyes with Dust Puppy) {/usr/games/tuxeyes --puppy} <>
+            [exec] (tuXeyes with Luxus) {/usr/games/tuxeyes --luxus} <>
+            [exec] (tuXeyes with Tux) {/usr/games/tuxeyes --tux} <>
+         [end]
+         [exec] (wmblob) {/usr/bin/wmblob} <>
+         [exec] (wmMatrix) {/usr/bin/nice -n +19 /usr/bin/wmmatrix} </usr/share/icons/mini/wmMatrix.xpm>
+         [exec] (XEji) {/usr/bin/xeji} <>
+         [exec] (XEji - stop) {killall -TERM xeji} <>
+         [exec] (Xeyes) {xeyes} <>
+         [exec] (Xlogo) {xlogo} <>
+         [exec] (xpenguins - start) {xpenguins} <>
+         [exec] (xpenguins - stop) {kill -TERM `pidof xpenguins`} <>
+      [end]
+   [end]
+   [submenu] (Help) {}
+      [exec] (APT HOWTO) {/usr/bin/apt-howto} <>
+      [exec] (Debian Online Help) {/usr/bin/dhelp} <>
+      [exec] (Debian Package Browser) { x-terminal-emulator -T "Debian Package Browser" -e /usr/bin/dpkg-www ' '} </usr/share/pixmaps/dpkg-www.xpm>
+      [exec] (Debian Reference) {/usr/bin/debian-reference} <>
+      [exec] (Doc-Central) { x-terminal-emulator -T "Doc-Central" -e /usr/bin/doccentral} <>
+      [exec] (Dwww) {/usr/bin/dwww} <>
+      [exec] (Info) { x-terminal-emulator -T "Info" -e info} <>
+      [exec] (KDE Help Center) {/usr/bin/khelpcenter} <>
+      [exec] (Man2html) {/usr/bin/hman -P sensible-browser} <>
+      [exec] (pinfo) { x-terminal-emulator -T "pinfo" -e /usr/bin/pinfo} <>
+      [exec] (Texdoctk) {/usr/bin/texdoctk} <>
+      [exec] (TeXshow) {/usr/bin/texshow} <>
+      [exec] (Xman) {xman} <>
+      [exec] (yelp) {/usr/bin/yelp} <>
+   [end]
+   [submenu] (Screen) {}
+      [submenu] (Lock) {}
+         [submenu] (Assorted) {}
+            [exec] (Ball) {/usr/X11R6/bin/xlock -remote -nice 19 -mode ball} <>
+            [exec] (Blot) {/usr/X11R6/bin/xlock -remote -nice 19 -mode blot} <>
+            [exec] (Bounce) {/usr/X11R6/bin/xlock -remote -nice 19 -mode bounce} <>
+            [exec] (Bubble) {/usr/X11R6/bin/xlock -remote -nice 19 -mode bubble} <>
+            [exec] (Clock) {/usr/X11R6/bin/xlock -remote -nice 19 -mode clock} <>
+            [exec] (Crystal) {/usr/X11R6/bin/xlock -remote -nice 19 -mode crystal} <>
+            [exec] (Daisy) {/usr/X11R6/bin/xlock -remote -nice 19 -mode daisy} <>
+            [exec] (Dclock) {/usr/X11R6/bin/xlock -remote -nice 19 -mode dclock} <>
+            [exec] (Decay) {/usr/X11R6/bin/xlock -remote -nice 19 -mode decay} <>
+            [exec] (Deco) {/usr/X11R6/bin/xlock -remote -nice 19 -mode deco} <>
+            [exec] (Eyes) {/usr/X11R6/bin/xlock -remote -nice 19 -mode eyes +trackmouse} <>
+            [exec] (Eyesptr) {/usr/X11R6/bin/xlock -remote -nice 19 -mode eyes -trackmouse} <>
+            [exec] (Goop) {/usr/X11R6/bin/xlock -remote -nice 19 -mode goop} <>
+            [exec] (Juggle) {/usr/X11R6/bin/xlock -remote -nice 19 -mode juggle} <>
+            [exec] (Marquee) {/usr/X11R6/bin/xlock -remote -nice 19 -mode marquee} <>
+            [exec] (Matrix) {/usr/X11R6/bin/xlock -remote -nice 19 -mode matrix} <>
+            [exec] (Munch) {/usr/X11R6/bin/xlock -remote -nice 19 -mode munch} <>
+            [exec] (Nose) {/usr/X11R6/bin/xlock -remote -nice 19 -mode nose} <>
+            [exec] (Pacman) {/usr/X11R6/bin/xlock -remote -nice 19 -mode pacman} <>
+            [exec] (Pyro) {/usr/X11R6/bin/xlock -remote -nice 19 -mode pyro +use3d} <>
+            [exec] (Pyro3d) {/usr/X11R6/bin/xlock -remote -nice 19 -mode pyro -use3d} <>
+            [exec] (Roll) {/usr/X11R6/bin/xlock -remote -nice 19 -mode roll} <>
+            [exec] (Slip) {/usr/X11R6/bin/xlock -remote -nice 19 -mode slip} <>
+            [exec] (Solitare) {/usr/X11R6/bin/xlock -remote -nice 19 -mode solitare +trackmouse} <>
+            [exec] (Solitareptr) {/usr/X11R6/bin/xlock -remote -nice 19 -mode solitare -trackmouse} <>
+            [exec] (Starfish) {/usr/X11R6/bin/xlock -remote -nice 19 -mode starfish -install} <>
+            [exec] (Swarm) {/usr/X11R6/bin/xlock -remote -nice 19 -mode swarm +trackmouse} <>
+            [exec] (Swarmptr) {/usr/X11R6/bin/xlock -remote -nice 19 -mode swarm -trackmouse} <>
+            [exec] (Swirl) {/usr/X11R6/bin/xlock -remote -nice 19 -mode swirl -install} <>
+            [exec] (T3d) {/usr/X11R6/bin/xlock -remote -nice 19 -mode t3d} <>
+            [exec] (Tetris) {/usr/X11R6/bin/xlock -remote -nice 19 -mode tetris} <>
+            [exec] (Tube) {/usr/X11R6/bin/xlock -remote -nice 19 -mode tube -install} <>
+            [exec] (Worm) {/usr/X11R6/bin/xlock -remote -nice 19 -mode worm +use3d} <>
+            [exec] (Worm3d) {/usr/X11R6/bin/xlock -remote -nice 19 -mode worm -use3d} <>
+            [exec] (Xcl) {/usr/X11R6/bin/xlock -remote -nice 19 -mode xcl} <>
+            [exec] (Xjack) {/usr/X11R6/bin/xlock -remote -nice 19 -mode xjack} <>
+         [end]
+         [submenu] (Automata) {}
+            [exec] (Ant) {/usr/X11R6/bin/xlock -remote -nice 19 -mode ant -neighbors 4 +truchet} <>
+            [exec] (Ant Truchet) {/usr/X11R6/bin/xlock -remote -nice 19 -mode ant -neighbors 4 -truchet} <>
+            [exec] (Ant3d) {/usr/X11R6/bin/xlock -remote -nice 19 -mode ant3d} <>
+            [exec] (Bee) {/usr/X11R6/bin/xlock -remote -nice 19 -mode ant -neighbors 6 +truchet} <>
+            [exec] (Bee Truchet) {/usr/X11R6/bin/xlock -remote -nice 19 -mode ant -neighbors 6 -truchet} <>
+            [exec] (Bug) {/usr/X11R6/bin/xlock -remote -nice 19 -mode bug} <>
+            [exec] (Demon) {/usr/X11R6/bin/xlock -remote -nice 19 -mode demon} <>
+            [exec] (Dilemma) {/usr/X11R6/bin/xlock -remote -nice 19 -mode dilemma} <>
+            [exec] (Life) {/usr/X11R6/bin/xlock -remote -nice 19 -mode life} <>
+            [exec] (Life Callahan) {/usr/X11R6/bin/xlock -remote -nice 19 -mode life -callahan -size 7} <>
+            [exec] (Life1d) {/usr/X11R6/bin/xlock -remote -nice 19 -mode life1d} <>
+            [exec] (Life3d) {/usr/X11R6/bin/xlock -remote -nice 19 -mode life3d} <>
+            [exec] (Loop) {/usr/X11R6/bin/xlock -remote -nice 19 -mode loop} <>
+            [exec] (Petri) {/usr/X11R6/bin/xlock -remote -nice 19 -mode petri} <>
+            [exec] (Random) {/usr/X11R6/bin/xlock -remote -nice 19 -mode random -modelist allautomata -fullrandom -neighbors 0} <>
+            [exec] (Voters) {/usr/X11R6/bin/xlock -remote -nice 19 -mode voters} <>
+            [exec] (Wator) {/usr/X11R6/bin/xlock -remote -nice 19 -mode wator} <>
+            [exec] (Wire) {/usr/X11R6/bin/xlock -remote -nice 19 -mode wire} <>
+         [end]
+         [submenu] (Fractal) {}
+            [exec] (Coral) {/usr/X11R6/bin/xlock -remote -nice 19 -mode coral} <>
+            [exec] (Discrete) {/usr/X11R6/bin/xlock -remote -nice 19 -mode discrete} <>
+            [exec] (Dragon) {/usr/X11R6/bin/xlock -remote -nice 19 -mode dragon} <>
+            [exec] (Drift) {/usr/X11R6/bin/xlock -remote -nice 19 -mode drift -fullrandom} <>
+            [exec] (Euler2d) {/usr/X11R6/bin/xlock -remote -nice 19 -mode euler2d} <>
+            [exec] (Flame) {/usr/X11R6/bin/xlock -remote -nice 19 -mode flame} <>
+            [exec] (Flow) {/usr/X11R6/bin/xlock -remote -nice 19 -mode flow} <>
+            [exec] (Forest) {/usr/X11R6/bin/xlock -remote -nice 19 -mode forest} <>
+            [exec] (Hop) {/usr/X11R6/bin/xlock -remote -nice 19 -mode hop -fullrandom} <>
+            [exec] (IFS) {/usr/X11R6/bin/xlock -remote -nice 19 -mode ifs} <>
+            [exec] (Julia) {/usr/X11R6/bin/xlock -remote -nice 19 -mode julia +trackmouse} <>
+            [exec] (Juliaptr) {/usr/X11R6/bin/xlock -remote -nice 19 -mode julia -trackmouse} <>
+            [exec] (Kumppa) {/usr/X11R6/bin/xlock -remote -nice 19 -mode kumppa} <>
+            [exec] (Lightning) {/usr/X11R6/bin/xlock -remote -nice 19 -mode lightning} <>
+            [exec] (Lyapunov) {/usr/X11R6/bin/xlock -remote -nice 19 -mode lyapunov -install} <>
+            [exec] (Mandelbrot) {/usr/X11R6/bin/xlock -remote -nice 19 -mode mandelbrot -install} <>
+            [exec] (Mountain) {/usr/X11R6/bin/xlock -remote -nice 19 -mode mountain} <>
+            [exec] (Random) {/usr/X11R6/bin/xlock -remote -nice 19 -mode random -modelist allfractal -fullrandom} <>
+            [exec] (Sierpinski) {/usr/X11R6/bin/xlock -remote -nice 19 -mode sierpinski} <>
+            [exec] (Strange) {/usr/X11R6/bin/xlock -remote -nice 19 -mode strange} <>
+            [exec] (Thornbird) {/usr/X11R6/bin/xlock -remote -nice 19 -mode thornbird} <>
+            [exec] (Triangle) {/usr/X11R6/bin/xlock -remote -nice 19 -mode triangle} <>
+            [exec] (Turtle) {/usr/X11R6/bin/xlock -remote -nice 19 -mode turtle} <>
+            [exec] (Vines) {/usr/X11R6/bin/xlock -remote -nice 19 -mode vines} <>
+         [end]
+         [submenu] (Geometry) {}
+            [exec] (Apollonian) {/usr/X11R6/bin/xlock -remote -nice 19 -mode apollonian} <>
+            [exec] (Braid) {/usr/X11R6/bin/xlock -remote -nice 19 -mode braid} <>
+            [exec] (Fadeplot) {/usr/X11R6/bin/xlock -remote -nice 19 -mode fadeplot} <>
+            [exec] (Helix) {/usr/X11R6/bin/xlock -remote -nice 19 -mode helix -fullrandom} <>
+            [exec] (Hyper) {/usr/X11R6/bin/xlock -remote -nice 19 -mode hyper} <>
+            [exec] (Ico) {/usr/X11R6/bin/xlock -remote -nice 19 -mode ico} <>
+            [exec] (Kaleid) {/usr/X11R6/bin/xlock -remote -nice 19 -mode kaleid} <>
+            [exec] (Laser) {/usr/X11R6/bin/xlock -remote -nice 19 -mode laser} <>
+            [exec] (Lisa) {/usr/X11R6/bin/xlock -remote -nice 19 -mode lisa} <>
+            [exec] (Lissie) {/usr/X11R6/bin/xlock -remote -nice 19 -mode lissie} <>
+            [exec] (Penrose) {/usr/X11R6/bin/xlock -remote -nice 19 -mode penrose +ammann} <>
+            [exec] (Penrose Ammann) {/usr/X11R6/bin/xlock -remote -nice 19 -mode penrose -ammann} <>
+            [exec] (Petal) {/usr/X11R6/bin/xlock -remote -nice 19 -mode petal} <>
+            [exec] (Polyominoes) {/usr/X11R6/bin/xlock -remote -nice 19 -mode polyominoes} <>
+            [exec] (Qix) {/usr/X11R6/bin/xlock -remote -nice 19 -mode qix +complete} <>
+            [exec] (Qix complete) {/usr/X11R6/bin/xlock -remote -nice 19 -mode qix -complete} <>
+            [exec] (Random) {/usr/X11R6/bin/xlock -remote -nice 19 -mode random -modelist allgeometry -fullrandom} <>
+            [exec] (Rotor) {/usr/X11R6/bin/xlock -remote -nice 19 -mode rotor} <>
+            [exec] (Shape) {/usr/X11R6/bin/xlock -remote -nice 19 -mode shape} <>
+            [exec] (Sphere) {/usr/X11R6/bin/xlock -remote -nice 19 -mode sphere} <>
+            [exec] (Spiral) {/usr/X11R6/bin/xlock -remote -nice 19 -mode spiral} <>
+            [exec] (Spline) {/usr/X11R6/bin/xlock -remote -nice 19 -mode spline} <>
+            [exec] (Tik_Tak) {/usr/X11R6/bin/xlock -remote -nice 19 -mode tik_tak} <>
+         [end]
+         [submenu] (GLmodes) {}
+            [exec] (Atlantis) {/usr/X11R6/bin/xlock -remote -nice 19 -mode atlantis} <>
+            [exec] (Atunnels) {/usr/X11R6/bin/xlock -remote -nice 19 -mode atunnels} <>
+            [exec] (Bubble3d) {/usr/X11R6/bin/xlock -remote -nice 19 -mode bubble3d} <>
+            [exec] (Cage) {/usr/X11R6/bin/xlock -remote -nice 19 -mode cage} <>
+            [exec] (Fire) {/usr/X11R6/bin/xlock -remote -nice 19 -mode fire} <>
+            [exec] (Gears) {/usr/X11R6/bin/xlock -remote -nice 19 -mode gears} <>
+            [exec] (GL-Planet) {/usr/X11R6/bin/xlock -remote -nice 19 -mode glplanet} <>
+            [exec] (Invert) {/usr/X11R6/bin/xlock -remote -nice 19 -mode invert} <>
+            [exec] (Lament) {/usr/X11R6/bin/xlock -remote -nice 19 -mode lament} <>
+            [exec] (Moebius) {/usr/X11R6/bin/xlock -remote -nice 19 -mode moebius} <>
+            [exec] (Molecule) {/usr/X11R6/bin/xlock -remote -nice 19 -mode molecule} <>
+            [exec] (Morph3d) {/usr/X11R6/bin/xlock -remote -nice 19 -mode morph3d} <>
+            [exec] (Noof) {/usr/X11R6/bin/xlock -remote -nice 19 -mode noof} <>
+            [exec] (Pipes) {/usr/X11R6/bin/xlock -remote -nice 19 -mode pipes} <>
+            [exec] (Random) {/usr/X11R6/bin/xlock -remote -nice 19 -mode random -modelist allgl -fullrandom} <>
+            [exec] (Rubik) {/usr/X11R6/bin/xlock -remote -nice 19 -mode rubik} <>
+            [exec] (Sballs) {/usr/X11R6/bin/xlock -remote -nice 19 -mode sballs} <>
+            [exec] (Sierpinski3d) {/usr/X11R6/bin/xlock -remote -nice 19 -mode sierpinski3d} <>
+            [exec] (Sproingies) {/usr/X11R6/bin/xlock -remote -nice 19 -mode sproingies} <>
+            [exec] (Stairs) {/usr/X11R6/bin/xlock -remote -nice 19 -mode stairs} <>
+            [exec] (Superquadrics) {/usr/X11R6/bin/xlock -remote -nice 19 -mode superquadrics} <>
+            [exec] (Text3d) {/usr/X11R6/bin/xlock -remote -nice 19 -mode text3d -message "$LOGNAME"} <>
+         [end]
+         [exec] (KTux) {/usr/bin/ktux -root} <>
+         [exec] (Lock Screen (XScreenSaver\)) {/usr/bin/xscreensaver-command -lock} <>
+         [submenu] (MarqueeMessage) {}
+            [exec] (Back Soon) {/usr/X11R6/bin/xlock -remote -nice 19 -mode marquee -message "$LOGNAME will be back soon."} <>
+            [exec] (Overnight) {/usr/X11R6/bin/xlock -remote -nice 19 -mode marquee -message "$LOGNAME will be back in the morning."} <>
+            [exec] (Rude) {/usr/X11R6/bin/xlock -remote -nice 19 -mode marquee -message "$LOGNAME not here, please go away!"} <>
+         [end]
+         [submenu] (NoseMessage) {}
+            [exec] (Back Soon) {/usr/X11R6/bin/xlock -remote -nice 19 -mode nose -message "$LOGNAME will be back soon."} <>
+            [exec] (Overnight) {/usr/X11R6/bin/xlock -remote -nice 19 -mode nose -message "$LOGNAME will be back in the morning."} <>
+            [exec] (Rude) {/usr/X11R6/bin/xlock -remote -nice 19 -mode nose -message "$LOGNAME not here, please go away!"} <>
+         [end]
+         [submenu] (Space) {}
+            [exec] (Bouboule) {/usr/X11R6/bin/xlock -remote -nice 19 -mode bouboule +use3d} <>
+            [exec] (Bouboule3d) {/usr/X11R6/bin/xlock -remote -nice 19 -mode bouboule -use3d} <>
+            [exec] (Galaxy) {/usr/X11R6/bin/xlock -remote -nice 19 -mode galaxy} <>
+            [exec] (Grav) {/usr/X11R6/bin/xlock -remote -nice 19 -mode grav +trail +decay} <>
+            [exec] (Grav Decay) {/usr/X11R6/bin/xlock -remote -nice 19 -mode grav -decay} <>
+            [exec] (Grav Trail) {/usr/X11R6/bin/xlock -remote -nice 19 -mode grav -trail} <>
+            [exec] (Random Space) {/usr/X11R6/bin/xlock -remote -nice 19 -mode random -modelist allspace} <>
+            [exec] (Rock) {/usr/X11R6/bin/xlock -remote -nice 19 -mode star -rock} <>
+            [exec] (Space) {/usr/X11R6/bin/xlock -remote -nice 19 -mode space} <>
+            [exec] (Star) {/usr/X11R6/bin/xlock -remote -nice 19 -mode star +rock +use3d +trek 0} <>
+            [exec] (Star Trek) {/usr/X11R6/bin/xlock -remote -nice 19 -mode star -trek 100} <>
+            [exec] (Star3d) {/usr/X11R6/bin/xlock -remote -nice 19 -mode star -use3d} <>
+            [exec] (World) {/usr/X11R6/bin/xlock -remote -nice 19 -mode world} <>
+         [end]
+         [submenu] (Special) {}
+            [exec] (Blank) {/usr/X11R6/bin/xlock -remote -nice 19 -mode blank} <>
+            [exec] (Bomb) {/usr/X11R6/bin/xlock -remote -nice 19 -mode bomb} <>
+            [exec] (Random 3d) {/usr/X11R6/bin/xlock -remote -nice 19 -mode random -modelist all3d -use3d -fullrandom} <>
+            [exec] (Random all) {/usr/X11R6/bin/xlock -remote -nice 19 -mode random -modelist all -fullrandom -neighbors 0} <>
+            [exec] (Random nice) {/usr/X11R6/bin/xlock -remote -nice 19 -mode random -modelist allnice -fullrandom -neighbors 0} <>
+            [exec] (Random ptr) {/usr/X11R6/bin/xlock -remote -nice 19 -mode random -modelist allmouse -trackmouse -fullrandom} <>
+            [exec] (Random standard) {/usr/X11R6/bin/xlock -remote -nice 19 -mode random -modelist all-allgl -fullrandom -neighbors 0} <>
+            [exec] (Random write) {/usr/X11R6/bin/xlock -remote -nice 19 -mode random -modelist allwrite -install -fullrandom} <>
+            [exec] (Transparent) {/usr/X11R6/bin/xlock -remote -nice 19 -mode blank -geometry 1x1 -enablesaver} <>
+         [end]
+         [submenu] (XjackMessage) {}
+            [exec] (Crazy Boy) {/usr/X11R6/bin/xlock -remote -nice 19 -mode xjack -message "All work and no play makes $LOGNAME a dull boy."} <>
+            [exec] (Crazy Girl) {/usr/X11R6/bin/xlock -remote -nice 19 -mode xjack -message "All work and no play makes $LOGNAME a dull girl."} <>
+         [end]
+         [submenu] (XPM) {}
+            [exec] (Bat) {/usr/X11R6/bin/xlock -remote -nice 19 -mode bat} <>
+            [exec] (Flag) {/usr/X11R6/bin/xlock -remote -nice 19 -mode flag} <>
+            [exec] (Image) {/usr/X11R6/bin/xlock -remote -nice 19 -mode image} <>
+            [exec] (Life) {/usr/X11R6/bin/xlock -remote -nice 19 -mode life} <>
+            [exec] (Life1d) {/usr/X11R6/bin/xlock -remote -nice 19 -mode life1d} <>
+            [exec] (Maze) {/usr/X11R6/bin/xlock -remote -nice 19 -mode maze} <>
+            [exec] (Puzzle) {/usr/X11R6/bin/xlock -remote -nice 19 -mode puzzle} <>
+            [exec] (Random) {/usr/X11R6/bin/xlock -remote -nice 19 -mode random -modelist allxpm -fullrandom} <>
+         [end]
+      [end]
+      [exec] (Property Editor) {/usr/X11R6/bin/props} <>
+      [submenu] (Root-window) {}
+         [exec] (Configure Root-Portal) {/usr/bin/root-portal -c} <>
+         [exec] (Root-Portal) {/usr/bin/root-portal -n} <>
+         [exec] (xplanet) {/usr/bin/xplanet} <>
+         [exec] (Xsetroot) {xsetroot} <>
+      [end]
+      [submenu] (Save) {}
+         [exec] (Activate ScreenSaver (Next\)) {/usr/bin/xscreensaver-command -next} <>
+         [exec] (Activate ScreenSaver (Previous\)) {/usr/bin/xscreensaver-command -prev} <>
+         [exec] (Activate ScreenSaver (Random\)) {/usr/bin/xscreensaver-command -activate} <>
+         [submenu] (Assorted) {}
+            [exec] (Ball) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode ball} <>
+            [exec] (Blot) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode blot} <>
+            [exec] (Bounce) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode bounce} <>
+            [exec] (Bubble) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode bubble} <>
+            [exec] (Clock) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode clock} <>
+            [exec] (Crystal) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode crystal} <>
+            [exec] (Daisy) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode daisy} <>
+            [exec] (Dclock) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode dclock} <>
+            [exec] (Decay) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode decay} <>
+            [exec] (Deco) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode deco} <>
+            [exec] (Eyes) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode eyes +trackmouse} <>
+            [exec] (Eyesptr) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode eyes -trackmouse} <>
+            [exec] (Goop) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode goop} <>
+            [exec] (Juggle) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode juggle} <>
+            [exec] (Marquee) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode marquee} <>
+            [exec] (Matrix) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode matrix} <>
+            [exec] (Munch) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode munch} <>
+            [exec] (Nose) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode nose} <>
+            [exec] (Pacman) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode pacman} <>
+            [exec] (Pyro) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode pyro +use3d} <>
+            [exec] (Pyro3d) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode pyro -use3d} <>
+            [exec] (Roll) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode roll} <>
+            [exec] (Slip) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode slip} <>
+            [exec] (Solitare) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode solitare +trackmouse} <>
+            [exec] (Solitareptr) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode solitare -trackmouse} <>
+            [exec] (Starfish) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode starfish -install} <>
+            [exec] (Swarm) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode swarm +trackmouse} <>
+            [exec] (Swarmptr) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode swarm -trackmouse} <>
+            [exec] (Swirl) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode swirl -install} <>
+            [exec] (T3d) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode t3d} <>
+            [exec] (Tetris) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode tetris} <>
+            [exec] (Tube) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode tube -install} <>
+            [exec] (Worm) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode worm +use3d} <>
+            [exec] (Worm3d) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode worm -use3d} <>
+            [exec] (Xcl) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode xcl} <>
+            [exec] (Xjack) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode xjack} <>
+         [end]
+         [submenu] (Automata) {}
+            [exec] (Ant) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode ant -neighbors 4 +truchet} <>
+            [exec] (Ant Truchet) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode ant -neighbors 4 -truchet} <>
+            [exec] (Ant3d) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode ant3d} <>
+            [exec] (Bee) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode ant -neighbors 6 +truchet} <>
+            [exec] (Bee Truchet) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode ant -neighbors 6 -truchet} <>
+            [exec] (Bug) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode bug} <>
+            [exec] (Demon) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode demon} <>
+            [exec] (Dilemma) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode dilemma} <>
+            [exec] (Life) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode life} <>
+            [exec] (Life Callahan) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode life -callahan -size 7} <>
+            [exec] (Life1d) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode life1d} <>
+            [exec] (Life3d) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode life3d} <>
+            [exec] (Loop) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode loop} <>
+            [exec] (Petri) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode petri} <>
+            [exec] (Random) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode random -modelist allautomata -fullrandom -neighbors 0} <>
+            [exec] (Voters) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode voters} <>
+            [exec] (Wator) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode wator} <>
+            [exec] (Wire) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode wire} <>
+         [end]
+         [exec] (Beforelight) {beforelight} <>
+         [exec] (Demo Screen Hacks) {/usr/bin/xscreensaver-command -demo} <>
+         [exec] (Disable XScreenSaver) {/usr/bin/xscreensaver-command -exit} <>
+         [exec] (Enable XScreenSaver) {/usr/bin/xscreensaver} <>
+         [submenu] (Fractal) {}
+            [exec] (Coral) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode coral} <>
+            [exec] (Discrete) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode discrete} <>
+            [exec] (Dragon) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode dragon} <>
+            [exec] (Drift) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode drift -fullrandom} <>
+            [exec] (Euler2d) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode euler2d} <>
+            [exec] (Flame) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode flame} <>
+            [exec] (Flow) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode flow} <>
+            [exec] (Forest) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode forest} <>
+            [exec] (Hop) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode hop -fullrandom} <>
+            [exec] (IFS) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode ifs} <>
+            [exec] (Julia) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode julia +trackmouse} <>
+            [exec] (Juliaptr) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode julia -trackmouse} <>
+            [exec] (Kumppa) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode kumppa} <>
+            [exec] (Lightning) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode lightning} <>
+            [exec] (Lyapunov) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode lyapunov -install} <>
+            [exec] (Mandelbrot) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode mandelbrot -install} <>
+            [exec] (Mountain) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode mountain} <>
+            [exec] (Random) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode random -modelist allfractal -fullrandom} <>
+            [exec] (Sierpinski) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode sierpinski} <>
+            [exec] (Strange) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode strange} <>
+            [exec] (Thornbird) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode thornbird} <>
+            [exec] (Triangle) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode triangle} <>
+            [exec] (Turtle) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode turtle} <>
+            [exec] (Vines) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode vines} <>
+         [end]
+         [submenu] (Geometry) {}
+            [exec] (Apollonian) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode apollonian} <>
+            [exec] (Braid) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode braid} <>
+            [exec] (Fadeplot) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode fadeplot} <>
+            [exec] (Helix) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode helix -fullrandom} <>
+            [exec] (Hyper) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode hyper} <>
+            [exec] (Ico) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode ico} <>
+            [exec] (Kaleid) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode kaleid} <>
+            [exec] (Laser) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode laser} <>
+            [exec] (Lisa) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode lisa} <>
+            [exec] (Lissie) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode lissie} <>
+            [exec] (Penrose) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode penrose +ammann} <>
+            [exec] (Penrose Ammann) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode penrose -ammann} <>
+            [exec] (Petal) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode petal} <>
+            [exec] (Polyominoes) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode polyominoes} <>
+            [exec] (Qix) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode qix +complete} <>
+            [exec] (Qix complete) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode qix -complete} <>
+            [exec] (Random) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode random -modelist allgeometry} <>
+            [exec] (Rotor) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode rotor} <>
+            [exec] (Shape) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode shape} <>
+            [exec] (Sphere) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode sphere} <>
+            [exec] (Spiral) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode spiral} <>
+            [exec] (Spline) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode spline} <>
+            [exec] (Tik_Tak) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode tik_tak} <>
+         [end]
+         [submenu] (GLmodes) {}
+            [exec] (Atlantis) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode atlantis} <>
+            [exec] (Atunnels) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode atunnels} <>
+            [exec] (Bubble3d) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode bubble3d} <>
+            [exec] (Cage) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode cage} <>
+            [exec] (Fire) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode fire} <>
+            [exec] (Gears) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode gears} <>
+            [exec] (GL-Planet) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode glplanet} <>
+            [exec] (Lament) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode lament} <>
+            [exec] (Moebius) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode moebius} <>
+            [exec] (Molecule) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode molecule} <>
+            [exec] (Morph3d) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode morph3d} <>
+            [exec] (Noof) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode noof} <>
+            [exec] (Pipes) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode pipes} <>
+            [exec] (Random) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode random -modelist allgl -fullrandom} <>
+            [exec] (Rubik) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode rubik} <>
+            [exec] (Sballs) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode sballs} <>
+            [exec] (Sierpinski3d) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode sierpinski3d} <>
+            [exec] (Sproingies) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode sproingies} <>
+            [exec] (Stairs) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode stairs} <>
+            [exec] (Superquadrics) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode superquadrics} <>
+            [exec] (Text3d) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode text3d -message "$LOGNAME"} <>
+         [end]
+         [submenu] (MarqueeMessage) {}
+            [exec] (Available) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode marquee -message "Hey, I'm available now!"} <>
+            [exec] (Brilliant!) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode marquee -message "WOW! $LOGNAME, You're Brilliant!"} <>
+            [exec] (Love You) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode marquee -message "You know, I Love You $LOGNAME."} <>
+         [end]
+         [submenu] (NoseMessage) {}
+            [exec] (Available) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode nose -message "Hey, I'm available now!"} <>
+            [exec] (Brilliant!) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode nose -message "WOW! $LOGNAME, You're Brilliant!"} <>
+            [exec] (Love You) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode nose -message "You know, I Love You $LOGNAME."} <>
+         [end]
+         [exec] (Reinitialize XScreenSaver) {/usr/bin/xscreensaver-command -restart} <>
+         [exec] (ScreenSaver Preferences) {/usr/bin/xscreensaver-command -prefs} <>
+         [submenu] (Space) {}
+            [exec] (Bouboule) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode bouboule +use3d} <>
+            [exec] (Bouboule3d) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode bouboule -use3d} <>
+            [exec] (Galaxy) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode galaxy} <>
+            [exec] (Grav) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode grav +trail +decay} <>
+            [exec] (Grav Decay) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode grav -decay} <>
+            [exec] (Grav Trail) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode grav -trail} <>
+            [exec] (Random Space) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode random -modelist allspace} <>
+            [exec] (Rock) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode star -rock} <>
+            [exec] (Scooter) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode scooter} <>
+            [exec] (Space) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode space} <>
+            [exec] (Star) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode star +rock +use3d +trek 0} <>
+            [exec] (Star Trek) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode star -trek 100} <>
+            [exec] (Star3d) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode star -use3d} <>
+            [exec] (World) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode world} <>
+         [end]
+         [submenu] (Special) {}
+            [exec] (Blank) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode blank} <>
+            [exec] (Bomb) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode bomb} <>
+            [exec] (Random 3d) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode random -modelist all3d -use3d -fullrandom} <>
+            [exec] (Random all) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode random -modelist all -fullrandom -neighbors 0} <>
+            [exec] (Random nice) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode random -modelist allnice -fullrandom -neighbors 0} <>
+            [exec] (Random ptr) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode random -modelist allmouse -trackmouse -fullrandom} <>
+            [exec] (Random standard) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode random -modelist all-allgl -fullrandom -neighbors 0} <>
+            [exec] (Random write) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode random -modelist allwrite -fullrandom} <>
+         [end]
+         [submenu] (XPM) {}
+            [exec] (Bat) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode bat} <>
+            [exec] (Flag) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode flag} <>
+            [exec] (Image) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode image} <>
+            [exec] (Life) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode life} <>
+            [exec] (Life1d) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode life1d} <>
+            [exec] (Maze) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode maze} <>
+            [exec] (Puzzle) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode puzzle} <>
+            [exec] (Random) {/usr/X11R6/bin/xlock -remote -nice 19 -nolock -mode random -modelist allxpm -fullrandom} <>
+         [end]
+      [end]
+   [end]
+   [submenu] (WindowManagers) {}
+      [restart] (9wm)  {/usr/bin/9wm}
+      [restart] (aewm++)  {/usr/bin/aewm++}
+      [restart] (AfterStep)  {/usr/bin/afterstep}
+      [restart] (Afterstep Classic)  {/usr/bin/asclassic}
+      [restart] (Blackbox)  {/usr/bin/blackbox}
+      [restart] (Enlightenment)  {/usr/bin/enlightenment}
+      [restart] (evilwm)  {/usr/bin/evilwm}
+      [restart] (FluxBox)  {/usr/bin/fluxbox}
+      [restart] (Flwm)  {/usr/bin/flwm}
+      [restart] (FVWM)  {/usr/bin/fvwm2}
+      [restart] (golem)  {/usr/bin/golem}
+      [restart] (IceWM)  {/usr/bin/icewm}
+      [restart] (IceWM-Experimental)  {/usr/bin/icewm-experimental}
+      [restart] (IceWM-GNOME)  {/usr/bin/icewm-gnome}
+      [restart] (Ion3)  {/usr/bin/ion3}
+      [restart] (Larswm)  {/usr/bin/larswm}
+      [restart] (lwm)  {/usr/bin/X11/lwm}
+      [restart] (Metacity)  {/usr/bin/metacity}
+      [restart] (Mwm)  {/usr/bin/mwm}
+      [restart] (Olvwm)  {/usr/X11R6/bin/olvwm}
+      [restart] (Olwm)  {/usr/X11R6/bin/olwm}
+      [restart] (Openbox)  {/usr/bin/openbox}
+      [restart] (Oroborus)  {/usr/bin/oroborus}
+      [restart] (PWM)  {/usr/bin/pwm}
+      [restart] (PWM3)  {/usr/bin/pwm3}
+      [restart] (qvwm)  {/usr/bin/qvwm}
+      [restart] (ratpoison)  {ratpoison}
+      [restart] (Sapphire)  {/usr/bin/sapphire}
+      [restart] (Sawfish)  {/usr/bin/sawfish}
+      [restart] (Twm)  {twm}
+      [restart] (uwm)  {/usr/bin/uwm}
+      [restart] (VTWM)  {vtwm}
+      [restart] (w9wm)  {/usr/bin/X11/w9wm}
+      [restart] (waimea)  {waimea}
+      [restart] (Window Maker)  {/usr/bin/wmaker}
+      [restart] (wm2)  {/usr/bin/wm2}
+      [restart] (XFwm)  {xfwm4}
+   [end]
+   [submenu] (XShells) {}
+      [exec] (Aterm) {/usr/bin/aterm} <>
+      [exec] (CAterm (Big5\)) {/usr/bin/caterm} <>
+      [exec] (Command Tool) {/usr/X11R6/bin/cmdtool} <>
+      [exec] (Eterm) {/usr/bin/Eterm} <>
+      [exec] (GAterm) {/usr/bin/gaterm} <>
+      [exec] (Gnome Terminal) {/usr/bin/gnome-terminal} </usr/share/pixmaps/gnome-terminal.xpm>
+      [exec] (KAterm) {/usr/bin/katerm} <>
+      [exec] (Konsole) {/usr/bin/konsole} <>
+      [exec] (Multi GNOME Terminal) {/usr/bin/multi-gnome-terminal} </usr/share/pixmaps/mgt/multignometerm.xpm>
+      [exec] (PowerShell) {/usr/bin/powershell} </usr/share/pixmaps/gnome-powershell.xpm>
+      [exec] (pterm) {/usr/bin/pterm} <>
+      [exec] (Rxvt) {rxvt} <>
+      [exec] (Rxvt-Unicode) {urxvt} </usr/share/pixmaps/urxvt.xpm>
+      [exec] (Rxvt-Unicode (Black,Xft\)) {urxvt -fn "xft:Courier New" -rv} </usr/share/pixmaps/urxvt.xpm>
+      [exec] (Shell Tool) {/usr/X11R6/bin/shelltool} <>
+      [exec] (TAterm) {/usr/bin/taterm} <>
+      [exec] (Terminal) {/usr/bin/Terminal} <>
+      [exec] (wterm) {wterm} <>
+      [exec] (wterm-ml) {wterm-ml} <>
+      [exec] (XTerm) {xterm} <>
+      [exec] (XTerm (Unicode\)) {uxterm} <>
+      [exec] (Xvt) {/usr/bin/xvt -ls} <>
+   [end]
+
+   [config] (Configuration)
+   [submenu] (Styles) {}
+      [stylesdir] (/usr/share/fluxbox/styles)
+      [stylesdir] (~/.fluxbox/styles)
+   [end]
+   [workspaces] (Workspaces)
+   [reconfig] (Reconfigure)
+   [restart] (Restart)
+   [exit] (Exit)
+
+[end]

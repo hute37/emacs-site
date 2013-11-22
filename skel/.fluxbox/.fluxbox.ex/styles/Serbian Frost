@@ -1,0 +1,127 @@
+#** Information **#
+style.name:     Serbian Frost
+style.author:   vann at core dot com
+style.date:     August 20th, 2002                    
+style.credits:  Syragon for the wallpaper and style title.
+
+
+#** Toolbar **#
+toolbar:					flat crossdiagonal gradient
+toolbar.color:					#828E9A
+toolbar.colorTo:				#2B3743
+
+toolbar.button:					parentrelative
+toolbar.button.picColor:		#CCCCCC
+toolbar.button.pressed:			sunken crossdiagonal gradient
+toolbar.button.pressed.color:	#515D69
+toolbar.button.pressed.colorTo:	#919E84
+
+toolbar.label:					flat crossdiagonal gradient
+toolbar.label.color:			#C0C5CB
+toolbar.label.colorTo:			#87919B
+toolbar.label.textColor:		#333333
+
+toolbar.windowLabel:			parentrelative
+toolbar.windowLabel.textColor:	#FFFFFF
+
+toolbar.clock:					flat crossdiagonal gradient
+toolbar.clock.color:			#C0C5CB
+toolbar.clock.colorTo:			#87919B
+toolbar.clock.textColor:		#333333
+
+toolbar.justify:				center
+
+
+#** Menu **#
+menu.title:					flat crossdiagonal gradient
+menu.title.color:				#A2A7AD
+menu.title.colorTo:				#5A6672
+menu.title.textColor:			#FFFFFF
+menu.title.justify:				right
+
+menu.frame:					flat crossdiagonal gradient
+menu.frame.color:				#7C8894
+menu.frame.colorTo:				#697581
+menu.frame.textColor:			#000000
+menu.frame.disableColor:		#333333
+menu.frame.justify:				left
+
+menu.bullet.position:			right
+menu.bullet:					triangle
+
+menu.hilite:					flat
+menu.hilite.color:				#556677
+!menu.hilite.colorTo:			#697581
+menu.hilite.textColor:			#FFFFFF
+
+
+#** Window **#
+window.title.focus:				flat crossdiagonal gradient
+window.title.focus.color:		#828E9A
+window.title.focus.colorTo:		#2B3743
+window.title.unfocus:			flat crossdiagonal gradient
+window.title.unfocus.color:		#7C8894
+window.title.unfocus.colorTo:	#697581
+
+window.label.focus:				flat crossdiagonal gradient
+window.label.focus.color:		#C0C5CB
+window.label.focus.colorTo:		#87919B
+window.label.focus.textColor:	#FFFFFF
+window.label.unfocus:			parentrelative
+window.label.unfocus.textColor:	#CCCCCC
+
+window.button.focus:			flat crossdiagonal gradient
+window.button.focus.color:		#A2A7AD
+window.button.focus.colorTo:	#5A6672
+window.button.focus.picColor:	#333333
+window.button.unfocus:			parentrelative
+window.button.unfocus.picColor:	#999999
+window.button.pressed:			flat crossdiagonal gradient
+window.button.pressed.color:	#697581
+window.button.pressed.colorTo:	#CCCCCC
+
+window.handle.focus:			flat diagonal gradient
+window.handle.focus.color:		#C0C5CB
+window.handle.focus.colorTo:	#87919B
+window.handle.unfocus:			flat
+window.handle.unfocus.color:	#7C8894
+
+window.grip.focus:				flat crossdiagonal gradient
+window.grip.focus.color:		#A2A7AD
+window.grip.focus.colorTo:		#5A6672
+
+window.grip.unfocus:			flat
+window.grip.unfocus.color:		#697581
+
+window.frame.focusColor:		#5A6672
+window.frame.unfocusColor:		#5A6672
+
+
+window.justify:					left
+
+
+#Fluxbox stuff
+window.tab.label.focus:				flat crossdiagonal gradient
+window.tab.label.focus.color:		#A2A7AD
+window.tab.label.focus.colorTo:		#5A6672
+window.tab.label.focus.textColor: 	#FFFFFF
+
+window.tab.label.unfocus:			flat
+window.tab.label.unfocus.color:		#7C8894
+window.tab.label.unfocus.textColor: #CCCCCC
+
+#** Other **#
+borderColor:			#202020
+
+bevelWidth:			3
+borderWidth:			1
+frameWidth:			1
+handleWidth:			7
+
+*textColor:			#CCCCCC
+*font:				snap
+
+rootCommand:			bsetbg -full ~/.blackbox/backgrounds/Serbian_Frost.jpg
+
+
+

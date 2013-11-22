@@ -1,0 +1,145 @@
+! bombskew
+! by regret <trueregret@yahoo.se>
+! wallpaper "Bombskew" by eric- at www.deviantart.com
+
+!---Toolbar---
+
+toolbar:			flat gradient vertical
+toolbar.color:			#f1f1f3
+toolbar.colorTo:		#717a86
+
+toolbar.button:			parentrelative
+toolbar.button.color:		#000000
+toolbar.button.colorTo:		#000000
+toolbar.button.picColor:	#000000
+
+toolbar.button.pressed:		sunken gradient vertical
+toolbar.button.pressed.color:	#f1f1f3
+toolbar.button.pressed.colorTo:	#717a86
+
+toolbar.clock:			flat gradient vertical
+toolbar.clock.color:		#f1f1f3
+toolbar.clock.colorTo:		#c6c6c6
+toolbar.clock.textColor:	#474b4f
+
+toolbar.label:			flat gradient vertical
+toolbar.label.color:		#f1f1f3
+toolbar.label.colorTo:		#c6c6c6
+toolbar.label.textColor:	#474b4f
+
+toolbar.windowLabel:		flat gradient vertical
+toolbar.windowLabel.color:	#f1f1f3
+toolbar.windowLabel.colorTo:	#c6c6c6
+toolbar.windowLabel.textColor:	#474b4f
+
+toolbar.justify:		center
+
+!---Menu---
+
+menu.title:			flat gradient crossdiagonal
+menu.title.color:		#717a86
+menu.title.colorTo:		#f1f1f3
+menu.title.textColor:		#474b4f
+menu.title.justify:		center
+
+menu.frame:			flat solid
+menu.frame.color:		#f1f1f3
+menu.frame.textColor:		#474b4f
+menu.frame.justify:		right
+
+menu.hilite:			flat gradient horizontal
+menu.hilite.color:		#f1f1f3
+menu.hilite.colorTo:		#717a86
+menu.hilite.textColor:		#474b4f
+
+menu.bullet:			empty
+menu.bullet.position:		right
+
+!---Window---
+
+window.title.focus:		flat gradient vertical
+window.title.focus.color:	#f1f1f3
+window.title.focus.colorTo:	#c6c6c6
+
+window.title.unfocus:		flat gradient horizontal
+window.title.unfocus.color:	#f1f1f3
+window.title.unfocus.colorTo:	#c6c6c6
+
+window.label.focus:		parentrelative
+window.label.focus.color:	#000000
+window.label.focus.colorTo:	#000000
+window.label.focus.textColor:	#474b4f
+
+window.label.unfocus:		flat gradient horizontal
+window.label.unfocus.color:	#f1f1f3
+window.label.unfocus.colorTo:	#c6c6c6
+window.label.unfocus.textColor:	#474b4f
+
+window.button.focus:		parentrelative
+window.button.focus.color:	#000000
+window.button.focus.colorTo:	#000000
+window.button.focus.picColor:	#000000
+
+window.button.unfocus:		parentrelative
+window.button.unfocus.color:	#000000
+window.button.unfocus.colorTo:	#000000
+window.button.unfocus.picColor:	#000000
+
+window.frame.focus:		flat solid
+window.frame.focus.color:	#000000
+window.frame.unfocus:		flat solid
+window.frame.unfocus.color:	#000000
+
+window.handle.focus:		flat gradient vertical
+window.handle.focus.color:	#f1f1f3
+window.handle.focus.colorTo:	#c6c6c6
+window.handle.unfocus:		flat gradient horizontal
+window.handle.unfocus.color:	#f1f1f3
+window.handle.unfocus.colorTo:	#c6c6c6
+
+window.grip.focus:		flat solid
+window.grip.focus.color:	#717a86
+window.grip.unfocus:		flat solid
+window.grip.unfocus.color:	#717a86
+
+window.tab.justify:		left
+window.tab.label.unfocus:	flat gradient horizontal
+window.tab.label.unfocus.color:	#f1f1f3
+window.tab.label.unfocus.colorTo: #c6c6c6
+window.tab.label.unfocus.textColor: #474b4f
+
+window.tab.label.focus:		flat gradient vertical
+window.tab.label.focus.color:	#f1f1f3
+window.tab.label.focus.colorTo:	#c6c6c6
+window.tab.label.focus.textColor: #474b4f
+window.tab.borderWidth:		1
+
+window.justify:			left
+window.tab.borderColor:		#000000
+
+*button.pressed:		flat gradient pyramid
+*button.pressed.color:		#f1f1f3
+*button.pressed.colorTo:	#717a86
+
+
+!---Fonts---
+
+toolbar.font:			snap
+menu.title.font:		snap
+menu.frame.font:		mints-mild
+window.font:			snap
+window.tab.font:		snap
+
+
+!---Other---
+
+borderColor:			#000000
+
+bevelWidth:			1
+borderWidth:			1
+handleWidth:			3
+frameWidth:			0
+
+rootCommand: Esetroot -scale ~/.blackbox/Bombskew.png
+
+!rootCommand:	bsetroot -gradient flatcrossdiagonalgradient -from  darkgray -to white

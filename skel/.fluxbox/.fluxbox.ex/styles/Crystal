@@ -1,0 +1,141 @@
+style.name:	Crystal	
+style.author:	suadeo
+style.date:	Sun Aug 23 2002
+style.credits:	To the person of The_Orange... thanks
+style.comments:	Blue.
+		
+
+rootCommand:	bsetbg /path/to/the/image/TechMeHoff_v2.jpg
+
+! Toolbar settings...
+toolbar.button:	parentrelative
+toolbar.button.color:	#002537
+toolbar.button.colorTo:	#002537
+toolbar.button.picColor: #002537
+
+toolbar.button.pressed:	Flat Vetical Gradient
+toolbar.button.pressed.color:	#74929c
+toolbar.button.pressed.colorTo:	#74929c
+
+toolbar.label:	parentrelative
+toolbar.label.color:	#74929c
+toolbar.label.colorTo:	#74929c
+toolbar.label.textColor: #002537
+
+toolbar.windowLabel:	parentrelative
+toolbar.windowLabel.color:	#74929c
+toolbar.windowLabel.colorTo:	#74929c
+toolbar.windowLabel.textColor:	#002537
+
+toolbar.clock:	parentrelative
+toolbar.clock.color:	#002537
+toolbar.clock.colorTo:	#002537
+toolbar.clock.textColor:	#002537
+
+toolbar:	Flat Gradient Vertical
+toolbar.color:	#74929c
+toolbar.colorTo:	#74929c
+toolbar.textColor:	#002537
+toolbar.justify:	Center
+
+
+! Menu settings...
+menu.frame:	Flat Gradient Diagonal
+menu.frame.color:	#74929c
+menu.frame.colorTo:	#74929c
+menu.frame.textColor:	#002537
+menu.frame.justify:	Center
+
+menu.title:	Flat Gradient Diagonal
+menu.title.color:	#74929c
+menu.title.colorTo:	#74929c
+menu.title.textColor:	#002537
+menu.title.justify:	Center
+
+menu.hilite:	Flat Gradient CrossDiagonal
+menu.hilite.color:	#74929c
+menu.hilite.colorTo:	#74929c
+menu.hilite.textColor:	#002537
+
+menu.bullet:	Square
+menu.bullet.position:	Right
+menu.frame.disableColor:	#000000
+
+! Window settings...
+window.button.focus:	parentrelative
+window.button.focus.color:	#74929c
+window.button.focus.colorTo:	#74929c
+window.button.focus.picColor:	#002537
+
+window.button.unfocus:	parentrelative
+window.button.unfocus.color:	#74929c
+window.button.unfocus.colorTo:	#74929c
+window.button.unfocus.picColor:	#002537
+
+window.grip.focus:	Sunken Bevel2 Gradient Vertical
+window.grip.focus.color:	#74929c
+window.grip.focus.colorTo:	#74929c
+
+window.grip.unfocus:	Sunken Bevel2 Gradient Vertical
+window.grip.unfocus.color:	#74929c
+window.grip.unfocus.colorTo:	#74929c
+
+window.handle.focus:	Flat Gradient Vertical
+window.handle.focus.color:	#74929c
+window.handle.focus.colorTo:	#74929c
+
+window.handle.unfocus:	Flat Gradient Vertical
+window.handle.unfocus.color:	#74929c
+window.handle.unfocus.colorTo:	#74929c
+
+window.label.focus:	parentrelative
+window.label.focus.color:	#74929c
+window.label.focus.colorTo:	#74929c
+window.label.focus.textColor:	#002537
+window.label.focus.justify:	Center
+
+window.justify:	Center
+window.label.unfocus:	parentrelative
+window.label.unfocus.color:	#74929c
+window.label.unfocus.colorTo:	#74929c
+window.label.unfocus.textColor:	#002537
+
+window.title.focus:	Flat Gradient Vertical
+window.title.focus.color:	#74929c
+window.title.focus.colorTo:	#74929c
+
+window.title.unfocus:	Flat Gradient Vertical
+window.title.unfocus.color:	#74929c
+window.title.unfocus.colorTo:	#74929c
+
+window.button.pressed:	Flat Gradient Diagonal
+window.button.pressed.color:	#74929c
+window.button.pressed.colorTo:	#74929c
+
+window.frame.focusColor:	#74929c
+window.frame.unfocusColor:	#74929c
+
+window.tab.justify:                     Left
+window.tab.label.unfocus:               Flat Solid
+window.tab.label.unfocus.color:         #74929c
+window.tab.label.unfocus.textColor:     #002537
+window.tab.label.focus:                 Flat Solid
+window.tab.label.focus.color:           #74929c
+window.tab.label.focus.textColor:       #002537
+window.tab.borderWidth:                 1
+window.tab.borderColor:                 #74929c
+
+handleWidth:	4
+frameWidth:	0
+bevelWidth:	1
+borderWidth:	1
+borderColor:	#002537
+
+!*font:			mints-strong
+*font:			-b&h-lucidatypewriter-medium-r-*-*-*-100-*-*-*-*-*-*
+
+*xft.font:		Arial
+*xft.size:		9
+menu*xft.font:		Trebuchet MS
+menu*xft.size:		11
+menu.title.xft.flags:	bold

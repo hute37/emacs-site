@@ -1,0 +1,131 @@
+#** Information **#
+style.name:     NV-91
+style.author:   vann at core dot com
+style.date:     August 27th, 2002                    
+style.credits:  Wallpaper and style name credit goes to Venox and Niytros
+
+#** Toolbar **#
+toolbar:					raised vertical gradient
+toolbar.color:					#FFFFFF
+toolbar.colorTo:				#F9F2D8
+
+toolbar.button:					raised vertical gradient
+toolbar.button.color:			#F59A25
+toolbar.button.colorTo:			#AC4A0D
+toolbar.button.picColor:		#FFFFFF
+
+toolbar.button.pressed:			sunken vertical gradient
+toolbar.button.pressed.color:	#D36206
+toolbar.button.pressed.colorTo:	#883300
+
+toolbar.label:					raised diagonal gradient
+toolbar.label.color:			#F59A25
+toolbar.label.colorTo:			#AC4A0D
+toolbar.label.textColor:		#FFFFFF
+
+toolbar.windowLabel:			raised vertical gradient
+toolbar.windowLabel.color:		#F59A25
+toolbar.windowLabel.colorTo:	#AC4A0D
+toolbar.windowLabel.textColor:	#FFFFFF
+
+toolbar.clock:					raised crossdiagonal gradient
+toolbar.clock.color:			#F59A25
+toolbar.clock.colorTo:			#AC4A0D
+toolbar.clock.textColor:		#FFFFFF
+
+toolbar.justify:				center
+
+
+#** Menu **#
+menu.title:					raised horizontal gradient interlaced
+menu.title.color:				#D36206
+menu.title.colorTo:				#883300
+menu.title.textColor:			#FFFFFF
+menu.title.justify:				left
+
+menu.frame:					flat diagonal gradient
+menu.frame.color:				#FFFFFF
+menu.frame.colorTo:				#F9F2D8
+menu.frame.textColor:			#000000
+menu.frame.disableColor:		#333333
+menu.frame.justify:				keft
+
+menu.bullet.position:			right
+menu.bullet:					triangle
+
+menu.hilite:					raised vertical gradient
+menu.hilite.color:				#E6700C
+menu.hilite.colorTo:			#883300
+menu.hilite.textColor:			#FFFFFF
+
+
+#** Window **#
+window.title.focus:				flat vertical gradient
+window.title.focus.color:		#FFFFFF
+window.title.focus.colorTo:		#F9F2D8
+window.title.unfocus:			flat
+window.title.unfocus.color:		#AC4A0D
+
+window.label.focus:				raised vertical gradient interlaced
+window.label.focus.color:		#F59A25
+window.label.focus.colorTo:		#AC4A0D
+window.label.focus.textColor:	#FFFFFF
+window.label.unfocus:			parentrelative
+window.label.unfocus.textColor:	#CCCCCC
+
+window.button.focus:			raised crossdiagonal gradient
+window.button.focus.color:		#F59A25
+window.button.focus.colorTo:	#AC4A0D
+window.button.focus.picColor:	#FFFFFF
+window.button.unfocus:			parentrelative
+window.button.unfocus.picColor:	#999999
+
+window.button.pressed:			sunken crossdiagonal gradient
+window.button.pressed.color:	#D36206
+window.button.pressed.colorTo:	#883300
+
+window.handle.focus:			raised vertical gradient
+window.handle.focus.color:		#FFFFFF
+window.handle.focus.colorTo:	#F9F2D8
+window.handle.unfocus:			flat
+window.handle.unfocus.color:	#999999
+
+window.grip.focus:				raised diagonal gradient interlaced
+window.grip.focus.color:		#D36206
+window.grip.focus.colorTo:		#883300
+
+window.grip.unfocus:			flat
+window.grip.unfocus.color:		#883300
+
+window.frame.focusColor:		#5A6672
+window.frame.unfocusColor:		#5A6672
+
+
+window.justify:					right
+
+#Fluxbox stuff
+window.tab.label.focus:				raised diagonal gradient
+window.tab.label.focus.color:		#E6700C
+window.tab.label.focus.colorTo:		#883300
+window.tab.label.focus.textColor: 	#FFFFFF
+
+window.tab.label.unfocus:			flat
+window.tab.label.unfocus.color:		#AC4A0D
+window.tab.label.unfocus.textColor: #CCCCCC
+
+
+#** Other **#
+borderColor:			#202020
+
+bevelWidth:			3
+borderWidth:			1
+frameWidth:			1
+handleWidth:			5
+
+*textColor:			#FFFFFF
+*font:				snap
+
+rootCommand:			bsetbg -full ~/.blackbox/backgrounds/NV-91.jpg
+
+
+

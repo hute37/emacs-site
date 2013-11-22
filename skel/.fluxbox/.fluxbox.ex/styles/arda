@@ -1,0 +1,125 @@
+! Arda for fluxbox.
+! Automagically fucked up by bbconf.
+! Manually fixed by style.author
+
+! Miscellaneous settings...
+style.name:	arda
+style.author:	iluvatar
+style.date:	Mon May 6 2002
+style.credits:	Props to all the shitty styles out there forcing me to make this		
+
+! Set background to arda.jpg		
+rootCommand:					bsetbg ~/.fluxbox/backgrounds/arda.jpg
+
+! Menu settings...
+menu.frame:					Flat Gradient Diagonal
+menu.frame.color:				#f6f8ff
+menu.frame.colorTo:				#cfd1d8
+menu.frame.textColor:				#4a4a4a
+menu.frame.font:				snap
+menu.frame.justify:				Left
+
+menu.title:					Raised Bevel1 Solid
+menu.title.color:				#66657f
+menu.title.textColor:				#ffffff
+menu.title.font:				snap
+menu.title.justify:				Center
+
+menu.hilite:					Raised Bevel1 Solid
+menu.hilite.color:				#bdcce6
+menu.hilite.textColor:				#000000
+
+menu.bullet:					Empty
+menu.bullet.position:				Left
+menu.frame.disableColor:			#676767
+
+! Window settings...
+window.button.focus:				Flat Solid
+window.button.focus.color:			#66657f
+window.button.focus.picColor:			#ffa200
+
+window.button.unfocus:				Flat Solid
+window.button.unfocus.color:			#777681
+window.button.unfocus.picColor:			#888888
+
+window.grip.focus:				Raised Bevel1 Solid
+window.grip.focus.color:			#3a3d4c
+
+window.grip.unfocus:				Raised Bevel1 Solid
+window.grip.unfocus.color:			#76777c
+
+window.handle.focus:				Raised Bevel1 Solid
+window.handle.focus.color:			#000000
+
+window.handle.unfocus:				Raised Bevel1 Solid
+window.handle.unfocus.color:			#000000
+
+window.label.focus:				Raised Bevel1 Solid
+window.label.focus.color:			#66657f
+window.label.focus.textColor:			#ffa200
+window.label.focus.font:			-artwiz-snap-medium-r-normal--10-100-75-75-p-90-iso646.1991-irv
+window.label.focus.justify:			Right
+
+window.font:					-artwiz-snap-medium-r-normal--10-100-75-75-p-90-iso646.1991-irv
+window.justify:	Right
+window.label.unfocus:				Raised Bevel1 Solid
+window.label.unfocus.color:			#777681
+window.label.unfocus.textColor:			#b0b0b0
+
+window.tab.justify:                    		Right 
+window.tab.label.unfocus:              		Flat Solid
+window.tab.label.unfocus.color:        		#63657c
+window.tab.label.unfocus.textColor:    		#818390
+window.tab.label.focus:                 	Flat Solid
+window.tab.label.focus.color:           	#73657c
+window.tab.label.focus.textColor:       	#ffa200
+window.tab.borderWidth:                 	1
+window.tab.borderColor:                 	#999999
+window.tab.font:                        	snap
+
+window.title.focus:				Raised Bevel1 Solid
+window.title.focus.color:			#66657f
+
+window.title.unfocus:				Raised Bevel1 Solid
+window.title.unfocus.color:			#777681
+
+window.button.pressed:				Raised Bevel1 Solid
+window.button.pressed.color:			#66657f
+
+window.frame.focusColor:			#66657f
+window.frame.unfocusColor:			#777681
+
+		handleWidth:	1
+		frameWidth:	1
+		bevelWidth:	1
+		borderWidth:	1
+		borderColor:	#9998bf
+
+! Toolbar settings...
+toolbar.button:					Raised Bevel1 Solid
+toolbar.button.color:				#66657f
+toolbar.button.picColor:			#ffa200
+
+toolbar.button.pressed:				Raised Bevel1 Solid
+toolbar.button.pressed.color:			#8b8ca5
+
+toolbar.label:					Flat Solid
+toolbar.label.color:				#66657f
+toolbar.label.colorTo:				#ffffff
+toolbar.label.textColor:			#ffffff
+
+toolbar.windowLabel:				Raised Bevel1 Solid
+toolbar.windowLabel.color:			#77657f
+toolbar.windowLabel.textColor:			#ffffff
+
+toolbar.clock:					Raised Bevel1 Solid
+toolbar.clock.color:				#66657f
+toolbar.clock.textColor:			#ffffff
+
+toolbar:					Raised Bevel1 Solid
+toolbar.color:					#66657f
+toolbar.textColor:				#ffffff
+toolbar.font:					snap
+toolbar.justify:				Right
+
+*Font: snap

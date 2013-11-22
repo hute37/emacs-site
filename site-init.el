@@ -218,6 +218,33 @@
 
 
 
+;; ---( Package Repositories )---------------------------------------------------------
+(message "SITE:PACKAGES.setup")
+
+
+(cond
+ ((string-lessp emacs-version "24.0") ;; 
+  (progn
+	(message "SITE:PACKAGES.skip")
+    ))
+ (t
+  (progn
+	(message "SITE:PACKAGES.repo")
+
+(require 'package)
+(add-to-list 'package-archives
+  '("marmalade" . "http://marmalade-repo.org/packages/"))
+;; You don't need this one if you have marmalade:
+;; (add-to-list 'package-archives
+;;  '("geiser" . "http://download.savannah.gnu.org/releases/geiser/packages"))
+(package-initialize)
+
+    ))
+)
+
+
+
+
 ;; ---( required )---------------------------------------------------------
 (message "SITE:AUTOLOAD.core")
 
@@ -229,7 +256,6 @@
 
 
 ;;(require 'lcomp) ;;to prevent M-c remap
-
 
 ;; ---( EmacsWiki )---------------------------------------------------------
 (message "SITE:AUTOLOAD.emacswiki")
@@ -351,7 +377,7 @@
 
  (if (fboundp 'pc-selection-mode)                                              
       (pc-selection-mode)                                                   
-      (require 'pc-select))   
+      (require 'pc-select)) ;; @todo: obsolete
 
  (custom-set-variables
   '(pc-selection-mode t nil (pc-select)))
@@ -1426,7 +1452,7 @@ $" nil t))
 
 (keyboard-translate 176 ?{ ) ;; -es
 (keyboard-translate 167 ?} ) ;; par
-(keyboard-translate 163 ?` ) ;; £
+(keyboard-translate 163 ?` ) ;; backquote
 (keyboard-translate 231 ?~ ) ;; ced
 
 
@@ -2752,7 +2778,7 @@ $" nil t))
 ;; 		)))
 
 
-;;(keyboard-translate 214 ?~ ) ;; C-ì
+;;(keyboard-translate 214 ?~ ) ;; C-
 
 ;; (defun accent-keys-tex-bind ( )
 ;;   "enable accent keys binding."
