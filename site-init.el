@@ -501,6 +501,8 @@
        (t ,(concat backup-directory "/") full-path prepend-name search-upward)
 ;      (t ,(concat backup-directory "/"))
 		  ))
+(setq tramp-bkup-backup-directory-info bkup-backup-directory-info)
+
 
 ;; ---( HideShow )--------------------------------------------------------
 
