@@ -1,3 +1,69 @@
 [begin] (fluxbox)
+      [submenu] (Shell) {}
+         [exec] (evilvte) {/usr/bin/evilvte} </usr/share/pixmaps/evilvte.xpm>
+         [exec] (Gnome Terminal) {/usr/bin/gnome-terminal} </usr/share/pixmaps/gnome-terminal.xpm>
+         [exec] (Terminator) {/usr/bin/terminator} </usr/share/pixmaps/terminator.png>
+         [exec] (Eterm) {/usr/bin/Eterm} <>
+         [exec] (mrxvt) {/usr/bin/mrxvt-full} <>
+         [exec] (pterm) {/usr/bin/pterm} </usr/share/pixmaps/pterm.xpm>
+         [exec] (ROXTerm) {/usr/bin/roxterm} </usr/share/pixmaps/roxterm.xpm>
+         [exec] (Rxvt-Unicode) {rxvt-unicode} </usr/share/pixmaps/urxvt.xpm>
+         [exec] (X-Terminal as root (GKsu\)) {/usr/bin/gksu -u root /usr/bin/x-terminal-emulator} </usr/share/pixmaps/gksu-debian.xpm>
+         [exec] (XTerm (Unicode\)) {uxterm} </usr/share/pixmaps/xterm-color_32x32.xpm>
+         [exec] (XTerm) {xterm} </usr/share/pixmaps/xterm-color_32x32.xpm>
+      [end]
+      [submenu] (Network) {}
+         [submenu] (Web Browsing) {}
+            [exec] (Firefox) {/usr/bin/firefox} </usr/share/pixmaps/firefox.png>
+            [exec] (Chromium) {/usr/bin/chromium-browser} </usr/share/pixmaps/chromium-browser.png>
+            [exec] (Chrome) {/usr/bin/google-chrome} </usr/share/pixmaps/google-chrome.png>
+         [end]
+         [submenu] (EMail) {}
+            [exec] (Thunderbird) {/usr/bin/thunderbird} </usr/share/pixmaps/thunderbird.png>
+         [end]
+         [submenu] (Communication) {}
+            [exec] (Skype) {/usr/bin/skype} </usr/share/pixmaps/skype.png>
+         [end]
+         [submenu] (File Transfer) {}
+            [exec] (FileZilla) {/usr/bin/filezilla} </usr/share/pixmaps/filezilla.xpm>
+            [exec] (Transmission BitTorrent Client (GTK\)) {/usr/bin/transmission-gtk} </usr/share/pixmaps/transmission.xpm>
+         [end]
+      [end]
+      [submenu] (Editors) {}
+         [exec] (Emacs 24 (X11\)) {/usr/bin/emacs24} <>
+         [exec] (Emacs 24 (text\)) { x-terminal-emulator -T "Emacs 24 (text)" -e /usr/bin/emacs24 -nw} <>
+         [exec] (Gedit) {/usr/bin/gedit} </usr/share/pixmaps/gedit-icon.xpm>
+         [exec] (GHex) {/usr/bin/ghex} <>
+         [exec] (GVIM) {/usr/bin/vim.gnome -g -f} </usr/share/pixmaps/vim-32.xpm>
+         [exec] (Nano) { x-terminal-emulator -T "Nano" -e /bin/nano} </usr/share/nano/nano-menu.xpm>
+         [exec] (scite) {/usr/bin/scite} </usr/share/scite/Sci32M.xpm>
+         [exec] (Xedit) {xedit} <>
+      [end]
+      [submenu] (Viewers) {}
+         [exec] (E-book reader) {FBReader} <>
+         [exec] (Evince) {/usr/bin/evince} </usr/share/pixmaps/evince.xpm>
+         [exec] (Eye of GNOME) {/usr/bin/eog} </usr/share/pixmaps/gnome-eog.xpm>
+         [exec] (kchmviewer) {/usr/bin/kchmviewer} </usr/share/pixmaps/kchmviewer.xpm>
+         [exec] (Me TV) {/usr/bin/me-tv} <me-tv.xpm>
+         [exec] (Pdf-Presenter-Console) {/usr/bin/pdf_presenter_console} <>
+         [exec] (Shotwell) {/usr/bin/shotwell} <>
+         [exec] (xCHM) {/usr/bin/xchm} </usr/share/pixmaps/xchm.xpm>
+         [exec] (Xditview) {xditview} <>
+         [exec] (XDvi) {/usr/bin/xdvi} <>
+      [end]
+      [submenu] (File Management) {}
+         [exec] (Nautilus) {/usr/bin/nautilus --no-desktop} </usr/share/pixmaps/nautilus.xpm>
+         [exec] (Baobab) {/usr/bin/baobab} </usr/share/pixmaps/baobab.xpm>
+         [exec] (Brasero) {/usr/bin/brasero} <>
+         [exec] (Eiciel) {/usr/bin/eiciel} </usr/share/pixmaps/eiciel.xpm>
+         [exec] (File-Roller) {/usr/bin/file-roller} </usr/share/pixmaps/file-roller.xpm>
+         [exec] (gdmap) {/usr/bin/gdmap} </usr/share/pixmaps/gdmap_icon.xpm>
+         [exec] (GNOME Search Tool) {/usr/bin/gnome-search-tool} </usr/share/pixmaps/gsearchtool.xpm>
+         [exec] (K3b) {/usr/bin/k3b} </usr/share/pixmaps/k3b.xpm>
+         [exec] (Komparator4) {/usr/bin/komparator4} <>
+         [exec] (mc) { x-terminal-emulator -T "mc" -e /usr/bin/mc} </usr/share/pixmaps/mc.xpm>
+         [exec] (ROX Filer) {/usr/bin/rox} <>
+         [exec] (xdiskusage) {xdiskusage} <>
+      [end]
 [include] (/etc/X11/fluxbox/fluxbox-menu)
 [end]

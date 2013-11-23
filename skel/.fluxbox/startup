@@ -15,6 +15,10 @@ xmodmap "/home/gio/.Xmodmap"
 # wmsmixer -w &
 # idesk &
 
+gnome-settings-daemon &
+dropbox start -i
+nautilus -n --no-desktop &
+
 # And last but not least we start fluxbox.
 # Because it is the last app you have to run it with ''exec'' before it.
 
