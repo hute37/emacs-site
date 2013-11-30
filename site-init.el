@@ -1078,8 +1078,7 @@ $" nil t))
 
 ;; ---( Return )---------------------------------------------
 
-(global-set-key [(control return)] 'ffap )
-
+;;(global-set-key [(control return)] 'cua-rect )
 (global-set-key [(meta return)] 'ffap)
 
 ;; ---( Space )---------------------------------------------
@@ -1094,7 +1093,6 @@ $" nil t))
 ;;(global-set-key [(control space)] 'hippie-expand )
 ;;(global-set-key [(meta space)] 'imenu)
 ;;(define-key global-map [M-S-down-mouse-3] 'imenu))
-
 
 
 
@@ -1116,13 +1114,13 @@ $" nil t))
  ((eq z-emacs-type 'fsf_emacs);; GNU-Emacs
   (progn
 
-
+;; C-\ defaults to toggle-input-method
 (define-key esc-map "\\" 'dabbrev-completion)
-(define-key global-map "\C-@" 'dabbrev-expand)
+(define-key global-map "\C-\\" 'dabbrev-expand)
 ;; Many people are used to typing C-SPC and getting C-@.
-(define-key global-map [?\C- ] 'dabbrev-expand)
+;;(define-key global-map [?\C- ] 'dabbrev-expand)
 ;;(global-set-key "\M- " 'hippie-expand) ; der står meta space!
-(define-key esc-map " " 'hippie-expand)
+(define-key esc-map "\C-M" 'hippie-expand)
 (setq hippie-expand-try-functions-list
       '(try-complete-file-name-partially
 	try-complete-file-name
@@ -1135,6 +1133,43 @@ $" nil t))
 	try-complete-lisp-symbol-partially
 	try-complete-lisp-symbol))
 
+
+
+    ))
+ (t
+  (progn
+    ))
+ )
+
+
+
+
+
+;;;////////////////////////////////////////////////////////////////
+;;;  @MARK
+;;;////////////////////////////////////////////////////////////////
+(message "SITE:MARK")
+
+;; ---( basic clipboard )------------------------------------------
+
+(cond
+ ((eq z-emacs-type 'xemacs) ;; XEmacs
+  (progn
+
+;;TODO: completion
+
+    ))
+ ((eq z-emacs-type 'fsf_emacs);; GNU-Emacs
+  (progn
+
+;; (define-key global-map "\C-@" 'set-mark-command)
+;; (define-key global-map "\C-@" 'cua-set-mark)
+(define-key esc-map " " 'pop-global-mark)
+
+;; ctrl-space set-mark-command
+;; ctrl-y yank
+;; ctrl-w cut
+;; meta-w copy
 
 
     ))
@@ -1374,72 +1409,72 @@ $" nil t))
 
 ;; ---( edit )----------------------------------------------------
 
-(define-key global-map [kp-insert]	'yank)
-(define-key global-map [(control kp-insert)]	'kill-ring-save)
-(define-key global-map [(meta kp-insert)]	'overwrite-mode)
+;; (define-key global-map [kp-insert]	'yank)
+;; (define-key global-map [(control kp-insert)]	'kill-ring-save)
+;; (define-key global-map [(meta kp-insert)]	'overwrite-mode)
 
-(define-key global-map [kp-delete]	'delete-char)
-(define-key global-map [(control kp-delete)]	'kill-region)
-;; (define-key global-map [(meta kp-delete)]	'delete-frame)
+;; (define-key global-map [kp-delete]	'delete-char)
+;; (define-key global-map [(control kp-delete)]	'kill-region)
+;; ;; (define-key global-map [(meta kp-delete)]	'delete-frame)
 
-(define-key global-map [kp-end]	'bs-show)
-(define-key global-map [kp-home]	'delete-other-windows)
+;; (define-key global-map [kp-end]	'bs-show)
+;; (define-key global-map [kp-home]	'delete-other-windows)
 
-(define-key global-map [(control kp-home)]	'dired)
-(define-key global-map [(control kp-end)]	'kill-this-buffer)
+;; (define-key global-map [(control kp-home)]	'dired)
+;; (define-key global-map [(control kp-end)]	'kill-this-buffer)
 
-(define-key global-map [(meta kp-home)]	'make-frame)
-(define-key global-map [(meta kp-end)]	'delete-frame)
+;; (define-key global-map [(meta kp-home)]	'make-frame)
+;; (define-key global-map [(meta kp-end)]	'delete-frame)
 
 ;; ---( scroll )----------------------------------------------------
 
-(define-key global-map [kp-left]	'backward-word)
-(define-key global-map [kp-right]	'forward-word)
-(define-key global-map [(control kp-left)]	'scroll-left)
-(define-key global-map [(control kp-right)]	'scroll-right)
-(define-key global-map [kp-up]	'scroll-down-one)
-(define-key global-map [kp-down]	'scroll-up-one)
+;; (define-key global-map [kp-left]	'backward-word)
+;; (define-key global-map [kp-right]	'forward-word)
+;; (define-key global-map [(control kp-left)]	'scroll-left)
+;; (define-key global-map [(control kp-right)]	'scroll-right)
+;; (define-key global-map [kp-up]	'scroll-down-one)
+;; (define-key global-map [kp-down]	'scroll-up-one)
 
-(define-key global-map [kp-multiply]	'scroll-left)
+;; (define-key global-map [kp-multiply]	'scroll-left)
 
 
 ;; ---( WM )----------------------------------------------------
 
-(define-key global-map [(control kp-prior)]	'shrink-window)
-(define-key global-map [(control kp-next)]
-  '(lambda () (interactive) (shrink-window -1)))
-(define-key global-map [(meta kp-prior)]
-  '(lambda () (interactive) (set-frame-height (selected-frame) (- (frame-height) 1))))
-(define-key global-map [(meta kp-next)]
-  '(lambda () (interactive) (set-frame-height (selected-frame) (+ (frame-height) 1))))
-(define-key global-map [(control meta kp-prior)]
-  '(lambda () (interactive) (set-frame-width (selected-frame) (- (frame-width) 1))))
-(define-key global-map [(control meta kp-next)]
-  '(lambda () (interactive) (set-frame-width (selected-frame) (+ (frame-width) 1))))
+;; (define-key global-map [(control kp-prior)]	'shrink-window)
+;; (define-key global-map [(control kp-next)]
+;;   '(lambda () (interactive) (shrink-window -1)))
+;; (define-key global-map [(meta kp-prior)]
+;;   '(lambda () (interactive) (set-frame-height (selected-frame) (- (frame-height) 1))))
+;; (define-key global-map [(meta kp-next)]
+;;   '(lambda () (interactive) (set-frame-height (selected-frame) (+ (frame-height) 1))))
+;; (define-key global-map [(control meta kp-prior)]
+;;   '(lambda () (interactive) (set-frame-width (selected-frame) (- (frame-width) 1))))
+;; (define-key global-map [(control meta kp-next)]
+;;   '(lambda () (interactive) (set-frame-width (selected-frame) (+ (frame-width) 1))))
 
 
-(progn
-  (define-key global-map [(control meta kp-up)]
-    '(lambda () (interactive)
-       (set-frame-position (selected-frame)
-			   (frame-parameter (selected-frame) 'left)
-			   (- (frame-parameter (selected-frame) 'top) 5))))
-  (define-key global-map [(control meta kp-down)]
-    '(lambda () (interactive)
-       (set-frame-position (selected-frame)
-			   (frame-parameter (selected-frame) 'left)
-			   (+ (frame-parameter (selected-frame) 'top) 5))))
-  (define-key global-map [(control meta kp-left)]
-    '(lambda () (interactive)
-       (set-frame-position (selected-frame)
-			   (- (frame-parameter (selected-frame) 'left) 5)
-			   (frame-parameter (selected-frame) 'top))))
-  (define-key global-map [(control meta kp-right)]
-    '(lambda () (interactive)
-       (set-frame-position (selected-frame)
-			   (+ (frame-parameter (selected-frame) 'left) 5)
-			   (frame-parameter (selected-frame) 'top))))
-  )
+;; (progn
+;;   (define-key global-map [(control meta kp-up)]
+;;     '(lambda () (interactive)
+;;        (set-frame-position (selected-frame)
+;; 			   (frame-parameter (selected-frame) 'left)
+;; 			   (- (frame-parameter (selected-frame) 'top) 5))))
+;;   (define-key global-map [(control meta kp-down)]
+;;     '(lambda () (interactive)
+;;        (set-frame-position (selected-frame)
+;; 			   (frame-parameter (selected-frame) 'left)
+;; 			   (+ (frame-parameter (selected-frame) 'top) 5))))
+;;   (define-key global-map [(control meta kp-left)]
+;;     '(lambda () (interactive)
+;;        (set-frame-position (selected-frame)
+;; 			   (- (frame-parameter (selected-frame) 'left) 5)
+;; 			   (frame-parameter (selected-frame) 'top))))
+;;   (define-key global-map [(control meta kp-right)]
+;;     '(lambda () (interactive)
+;;        (set-frame-position (selected-frame)
+;; 			   (+ (frame-parameter (selected-frame) 'left) 5)
+;; 			   (frame-parameter (selected-frame) 'top))))
+;;   )
 
 
 
