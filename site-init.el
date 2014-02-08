@@ -161,7 +161,8 @@
     ))
  ((eq system-type 'gnu/linux);; GNU-Linux
   (progn
-    (server-start)))
+    ;;(server-start)
+    ))
  ((eq system-type 'usg-unix-v);; Sun Solaris
   (progn
     (server-start)))
@@ -1002,11 +1003,15 @@ $" nil t))
 
 (global-set-key [(control up)] 'scroll-down-one )
 (global-set-key [(control down)] 'scroll-up-one )
+(global-set-key [(control kp-up)] 'scroll-down-one )
+(global-set-key [(control kp-down)] 'scroll-up-one )
 ;; (global-set-key [(meta up)] 'backward-block-of-lines )
 ;; (global-set-key [(meta down)] 'forward-block-of-lines )
 
 (global-set-key [(control right)] 'forward-word )
 (global-set-key [(control left)] 'backward-word )
+(global-set-key [(control kp-right)] 'forward-word )
+(global-set-key [(control kp-left)] 'backward-word )
 
 ;; (global-set-key [(control meta right)] 'backward-sexp )
 ;; (global-set-key [(control meta left)] 'forward-sexp )
@@ -1027,11 +1032,17 @@ $" nil t))
 (global-set-key [(meta down)] 'bs-show )
 (global-set-key [(meta right)] 'bs-cycle-next )
 (global-set-key [(meta left)] 'bs-cycle-previous )
+(global-set-key [(meta kp-up)] 'dired )
+(global-set-key [(meta kp-down)] 'bs-show )
+(global-set-key [(meta kp-right)] 'bs-cycle-next )
+(global-set-key [(meta kp-left)] 'bs-cycle-previous )
 
 ;; ---( Page )-------------------------------------------------------
 
 (global-set-key [(control prior)] 'other-frame )
 (global-set-key [(control next)] 'other-window )
+(global-set-key [(control kp-prior)] 'other-frame )
+(global-set-key [(control kp-next)] 'other-window )
 
 ;; (global-set-key [(meta control prior)] 'outline-previous-visible-heading )
 ;; (global-set-key [(meta control next)] 'outline-next-visible-heading )
@@ -1063,6 +1074,8 @@ $" nil t))
 
 (global-set-key [(meta home)] 'delete-other-windows )
 (global-set-key [(meta end)] 'kill-this-buffer )
+(global-set-key [(meta kp-home)] 'delete-other-windows )
+(global-set-key [(meta kp-end)] 'kill-this-buffer )
 
 ;; ---( BackSpace )---------------------------------------------
 
@@ -1079,7 +1092,7 @@ $" nil t))
 ;; ---( Return )---------------------------------------------
 
 ;;(global-set-key [(control return)] 'cua-rect )
-(global-set-key [(meta return)] 'ffap)
+;;(global-set-key [(meta return)] 'ffap)
 
 ;; ---( Space )---------------------------------------------
 
@@ -1111,7 +1124,7 @@ $" nil t))
 ;;TODO: completion
 
     ))
- ((eq z-emacs-type 'fsf_emacs);; GNU-Emacs
+ ((eq z-emacs-type 'fsf_emacs-disabled);; GNU-Emacs
   (progn
 
 ;; C-\ defaults to toggle-input-method
@@ -1498,17 +1511,17 @@ $" nil t))
 
 ;; ---( Undo )------------------------------------------------------------
 
-(define-key global-map "\C-z" 'undo)
+;;(define-key global-map "\C-z" 'undo)
 
 
 ;; ---( Compile )------------------------------------------------------------
 
-(global-set-key "\C-cc" 'mode-compile)
-(global-set-key "\C-c\C-c" 'mode-compile)
-(global-set-key "\C-cq" 'mode-compile-kill)
-(global-set-key "\C-b" 
-    '(lambda () (interactive)
-       (mode-compile)))
+;; (global-set-key "\C-cc" 'mode-compile)
+;; (global-set-key "\C-c\C-c" 'mode-compile)
+;; (global-set-key "\C-cq" 'mode-compile-kill)
+;; (global-set-key "\C-b" 
+;;     '(lambda () (interactive)
+;;        (mode-compile)))
 
 ;; ---( Search )------------------------------------------------------------
 
@@ -2240,7 +2253,7 @@ $" nil t))
  ((eq z-emacs-type 'xemacs) ;; XEmacs
   (progn
     ))
- ((eq z-emacs-type 'fsf_emacs);; GNU-Emacs
+ ((eq z-emacs-type 'fsf_emacs-disabled);; GNU-Emacs
   (progn
 
 
