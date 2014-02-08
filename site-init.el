@@ -570,6 +570,19 @@
   (scroll-down 1))
 
 
+;; ---( frames )---------------------------------------------------------
+
+;;(require 'frame-cmds)
+
+(defun toggle-fullscreen ()
+  "Toggle full screen on X11"
+  (interactive)
+  (when (eq window-system 'x)
+    (set-frame-parameter
+     nil 'fullscreen
+     (when (not (frame-parameter nil 'fullscreen)) 'fullboth))))
+
+
 ;; ---( grep )---------------------------------------------------------
 
 
@@ -1226,6 +1239,8 @@ $" nil t))
 
 (global-set-key [(meta control return)] 'ffap)
 
+(global-set-key [(meta return)] 'toggle-fullscreen)
+
 
 ;; ---( Meta-Control Keys )----------------------------------------
 
@@ -1352,6 +1367,7 @@ $" nil t))
     (global-set-key [f11] 'magit-status )
     (global-set-key [(shift meta f11)] 'vc-next-action)
     (global-set-key [(meta f11)] 'vc-diff )
+    (global-set-key [(control meta f11)] 'toggle-fullscreen )
     ))
  (t ;; fallback to VC bindings
   (progn
@@ -1360,6 +1376,7 @@ $" nil t))
     (global-set-key [(control f11)] 'vc-directory )
     (global-set-key [(meta f11)] 'vc-version-diff )
     (global-set-key [(shift meta f11)] 'function-key-error)
+    (global-set-key [(control meta f11)] 'toggle-fullscreen )
     ))
  )
 
