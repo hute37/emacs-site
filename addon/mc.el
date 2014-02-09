@@ -1,6 +1,6 @@
 ;;; mc.el --- Midnight Commander emulation for emacs using dired
 
-;; $Id: mc.el,v 1.1 2005-11-26 01:15:01 hute37 Exp $
+;; $Id: mc.el,v 1.65 2003/01/10 05:57:59 burton Exp $
 
 ;; Copyright (C) 1997-2000 Free Software Foundation, Inc.
 
@@ -435,7 +435,7 @@ horizontal and vice-versa."
   "Given a regular expression, move all matches to the given line"
 
   (save-excursion
-    (beginning-of-buffer)
+    (goto-char (point-min))
     
     (if (re-search-forward regexp nil t)
         
@@ -446,7 +446,7 @@ horizontal and vice-versa."
           (kill-line 1)
           (save-excursion
             
-            (beginning-of-buffer)
+            (goto-char (point-min))
             (forward-line line)
             (insert match))))))
 
@@ -588,7 +588,7 @@ isn't... turn it on. "
     (let(begin end)
 
       ;;determine begining and end
-      (beginning-of-buffer)
+      (goto-char (point-min))
       (search-forward "/" nil t)
       (setq begin (1- (point)))
 
@@ -608,7 +608,7 @@ isn't... turn it on. "
 
   ;;if the current line is not a directory ~exit..
   (save-excursion
-    ;;(beginning-of-line)
+    ;;(goto-char (point-at-bol))
 
     (let(filename)
       (setq filename (dired-get-filename))
@@ -658,7 +658,7 @@ isn't... turn it on. "
   (toggle-read-only -1)
 
   (save-excursion
-    (beginning-of-buffer)
+    (goto-char (point-min))
     
     (let(match result)
 
@@ -675,7 +675,7 @@ isn't... turn it on. "
         
         (delete-region (match-beginning 0) (match-end 0))
         (kill-line 1))      ;;now go through the list and insert each line into the buffer
-      (beginning-of-buffer)
+      (goto-char (point-min))
       (forward-line 2)
       
       (let(i)
@@ -694,18 +694,18 @@ isn't... turn it on. "
   "Go to the first directory/file in dired."
   (interactive)
 
-  (beginning-of-buffer)
+  (goto-char (point-min))
   (if (re-search-forward "\\.\\./$" nil t)
       (goto-char (match-beginning 0))
     (progn
-      (beginning-of-buffer)
+      (goto-char (point-min))
       (dired-next-line 2))))
 
 (defun mc-end-of-buffer()
   "Go to the last directory/file in dired."
   (interactive)
 
-  (end-of-buffer)
+  (goto-char (point-max))
   (dired-next-line -1))
 
 (defun mc-mode(&optional arg)
