@@ -85,6 +85,7 @@ determine this.")
 	       (concat emacs-site-path "addon" )
 	       ;;(concat emacs-site-path "addon/magit/magit-1.1.1" )
 	       (concat emacs-site-path "addon/magit/magit-1.2.0" )
+	       (concat emacs-site-path "addon/ecb" )
 	       )
 	      ))
 
