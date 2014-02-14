@@ -62,7 +62,7 @@ if [ -r ~/.emacs-site/skel/.bash_aliases-site ]; then
  . ~/.emacs-site/skel/.bash_aliases-site
 fi
 
-
+# geany
 cd ~/.emacs-site/
 UBUNTU_MENUPROXY=0 geany &
 
@@ -77,6 +77,27 @@ sudo apt-get install mutt
 
 mkdir -p ~/.mutt/cache/headers mkdir ~/.mutt/cache/bodies touch ~/.mutt/certificates 
 
+##
+# fonts
+#
+
+sudo -i
+
+cd ~/.emacs-site/system/usr/share/fonts/truetype
+
+ls
+
+ls mono
+
+cp -rp mono							/usr/share/fonts/truetype
+
+#	cp -rp artwiz-aleczapka		/usr/share/fonts/truetype
+#	cp -rp google-droid			/usr/share/fonts/truetype
+#	cp -rp terminus				/usr/share/fonts/truetype
+#	cp -rp ttf-inconsolata		/usr/share/fonts/truetype
+#	cp -rp ubuntu					/usr/share/fonts/truetype
+
+fc-cache -f -v
 
 
 
