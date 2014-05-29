@@ -235,6 +235,8 @@
 (require 'package)
 (add-to-list 'package-archives
   '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives
+'("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
 ;; You don't need this one if you have marmalade:
 ;; (add-to-list 'package-archives
 ;;  '("geiser" . "http://download.savannah.gnu.org/releases/geiser/packages"))
