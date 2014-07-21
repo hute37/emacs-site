@@ -2473,7 +2473,7 @@ $" nil t))
 ;; (add-to-list 'load-path (expand-file-name
 ;;       "~/.emacs.d/site-lisp/ecb/"))
 
-(require 'ecb)
+;;(require 'ecb)
 
 
 ;;; ;;;////////////////////////////////////////////////////////////////
