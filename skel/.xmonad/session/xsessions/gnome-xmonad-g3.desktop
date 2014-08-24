@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Xmonad/Gnome3
+Comment=Custom Xmonad/GNOME3.
+Exec=gnome-session-xmonad-g3
+TryExec=gnome-xmonad-session
+Icon=
+Type=Application

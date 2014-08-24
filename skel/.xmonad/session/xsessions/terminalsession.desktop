@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Terminal session
+Comment=Terminal client session for emergencies
+Exec=xterm -bg ghostwhite -fg black -cr red
+Terminal=true
+Type=Application
