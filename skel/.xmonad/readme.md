@@ -83,3 +83,31 @@ exec xmonad
 
 
 
+
+
+
+
+##
+#
+#
+
+
+startx $(which xterm) -- :3
+
+
+export DISPLAY=:3 
+
+
+
+ssh -XC -c blowfish-cbc,arcfour 192.168.100.101
+
+
+
+startx $(which xterm) -fg white -bg gray20 -fn fixed -- $(which Xdmx) :5 -input $DISPLAY  -display $DISPLAY -display :0.0 -fontpath tcp/localhost:7100 +xinerama -norender -noglxproxy -addremovescreens -ignorebadfontpaths -param XkbLayout it -param XkbOptions terminate:ctrl_alt_bksp -param XkbOptions ctrl:nocaps -ac
+
+
+
+
+
+
+
