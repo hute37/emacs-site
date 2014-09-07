@@ -105,6 +105,28 @@ ssh -XC -c blowfish-cbc,arcfour 192.168.100.101
 
 startx $(which xterm) -fg white -bg gray20 -fn fixed -- $(which Xdmx) :5 -input $DISPLAY  -display $DISPLAY -display :0.0 -fontpath tcp/localhost:7100 +xinerama -norender -noglxproxy -addremovescreens -ignorebadfontpaths -param XkbLayout it -param XkbOptions terminate:ctrl_alt_bksp -param XkbOptions ctrl:nocaps -ac
 
+##
+# startx (Fedora)
+#
+
+# vim $(which startx)
+
+if [ x"$tty_num" != x ]; then
+    # Specify TTY number directly to avoid recognizing startx session as
+    # inactive: RHBZ#820675
+    vtserverargs=${serverargs}" vt"${tty_num}
+else
+    echo "Error getting tty num"
+    exit 1
+fi
+
+
+#L289
+if [ "$server" != "$(which Xdmx)" ] ; then
+        serverargs="${serverargs} ${vtserverargs}"
+fi
+
+#####################
 
 
 
