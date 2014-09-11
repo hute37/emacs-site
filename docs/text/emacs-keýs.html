@@ -1,1 +1,196 @@
-<html />
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN"><html><head><title>Cool Keys in Emacs</title></head>
+
+  <body>
+    <h1>Emacs Key Combinations</h1>
+<p>Note that C-x means Control-X while M-x means Meta-X
+where meta may mean hitting and releasing the escape key, or alt.  
+These keys are excerpted from the Unix in a Nutshell book.
+ The first column has their default key binding; the second their function
+name; last is a short description. </p>
+
+<ol>
+      <li>File Handling Commands	
+<pre>C-x C-f		find-file		Find a file and read it to screen.
+C-x C-v		find-alternate-file	Read a different file.
+C-x i		insert-file		Insert a file at the cursors position.
+C-x C-s		save-buffer		Save the current buffer.
+C-x C-w		write-file		Write the contents of the buffer to a file.
+C-x C-c		save-buffers-kill-emacs	Save all open buffers and get out of emacs.
+C-z		suspend-emacs		Suspend emacs.
+</pre>
+	</li>
+      <li>Cursor Movement Commands
+<pre>C-f		forward-char		Move cursor one character.
+C-b		backward-char		Move backward one character.
+C-p		previous-line		Move up one line.
+C-n		next-line		Move down one line.
+M-f		forward-word		Move to the next word.  (words are defined by whitespace/special characters.)
+M-b		backward-word		Move to the previous word.
+C-a		beginning-of-line	Move to the beginning of the line.
+C-e		end-of-line		Move to the end of the line.
+M-a		backward-sentence	Move back one sentence.
+C-v		scroll-up		Scroll up one screen.
+M-v		scroll-down		Scroll down one screen.
+C-x [		backward-page		Go back one page.
+C-x ]		forward-page		Go forward one page.
+M-&gt;		end-of-buffer		Move to end of buffer.
+M-&lt;		beginning-of-buffer	Move to beginning of the current buffer.
+C-l		recenter		Redraw the screen with the current line in the center.
+M-(a number)	digit-argument		Do the next command (a number) of times.
+</pre>
+</li>
+      <li>Deletion Commands
+<pre>Del		backward-delete-char	Delete the previous character.
+C-d		delete-char		Delete the character under the cursor.
+M-Del		backward-kill-word	Delete the previous word.
+C-k		kill-line		Delete from the cursor to the end of line.
+M-k		kill-sentence		Delete the sentence the cursor is in.
+C-x Del		backward-kill-sentence	Delete the previous sentence.
+C-y		yank			Restore deleted text at cursor.
+C-w		kill-region		Delete a marked region.
+		backward-kill-paragraph	Delete the previous paragraph.
+		kill-paragraph		Delete from the cursor to the end of the paragraph.
+</pre>
+      </li>
+      <li>Paragraphs and Regions
+<pre>C-@		set-mark		Mark the beginning (or end) of a region.
+C-Space		set-mark		Ibid.
+C-x C-p		mark-page		Mark the current page.
+C-x C-x		exchange-point-and-make	Exchange the location of the cursor and the mark.
+C-x h		mark-whole-buffer	Mark the current buffer.
+M-q		fill-paragraph		Reset the paragraph.
+M-g		fill-region		Reformat individual paragraphs with region.
+M-h		mark-paragraph		Mark select paragraph.
+</pre>
+      </li>
+      <li>Stopping and Undoing Commands
+<pre>C-g		keyboard-quit		Stop current command Now!
+C-x u		advertised-undo		Undo the last edit (do it often)
+		revert-buffer		Return the buffer to the state when last autosaved.
+</pre>
+      </li>
+      <li>Transposition Commands
+<pre>C-t		transpose-chars		Transpose the two letters.
+M-t		transpose-words		Switch two words.
+C-x C-t		transpose-lines		Switch two lines.
+		transpose-sentences	Switch two sentences.
+		transpose-paragraphs	Switch two paragraphs.
+</pre>
+      </li>
+      <li>Capitalization Commands
+<pre>M-c		capitalize-word		Capitalize the first letter of the current word.
+M-u		upcase-word		Make the word all uppercase.
+M-l		downcase-word		Make the word all lowercase.
+C-x C-l		downcase-region		Make the region all lowercase.
+C-x C-u		uppercase-region	Make the region all uppercase.
+</pre>
+      </li>
+      <li>Incremental Search Commands
+<pre>C-s		isearch-forward		Start an incremental search forward.
+C-r		isearch-backward	Starts an incremental search in the reverse direction.
+Meta					Stop a successful search.
+C-g		keyboard-quit		Stop searching and return to the starting point.
+Del					Delete an incorrect character whilst searching.
+</pre>
+      </li>
+      <li>Word Abbreviation Commands
+<pre>		abbrev-mode		Enter abbreviation mode.
+C-x -		inverse-add-global-abbrev	Type in a global abbreviation, then its meaning.
+C-x C-h		inverse-add-local-abbrev	Type in a local abbreviation, then its meaning.
+		unexpand-abbrev		Undo the last word abbreviation.
+		write-abbrev-file	Write out the word abbreviation file.
+		edit-abbrevs		Edit the current word abbreviations.
+		list-abbrevs		View the current word abbreviations.
+		kill-all-abbrevs	Kill any abreviations for this session.
+</pre>
+      </li>
+      <li>Buffer Manipulation Commands
+<pre>C-x b		switch-to-buffer	Move to the specified buffer.
+C-x C-b		list-buffers		Display the list of currently active buffers.
+C-x k		kill-buffer		Kill the current buffer
+		kill-some-buffers	Ask about deleting each buffer currently active.
+		rename-buffer		Rename the current buffer to something else.
+C-x s		save-some-buffers	Ask whether to save each modified buffer
+</pre>
+      </li>
+      <li>Window Commands
+<pre>C-x 2		split-window-horizontally	Divide the current window horizontally in two.
+C-x 5		split-windws-vertically		Divide the current window vertically in two.
+C-x &gt;		scroll-right			Scroll the window right.
+C-x &lt;		scroll-left			Scroll the window left.
+C-x 0		delete-window			Delete the current window.
+C-x 1		delete-other-windows		Delete all the windows except this one.
+		delete-windows-on		Delete all windows open to a particular buffer.
+C-x ^		enlarge-window			Make the current window taller.
+		shrink-window			Make the current window smaller.
+C-x }		enlarge-window-horizontally	Make the window wider.
+C-x {		shrink-window-horizontally	Make the window less wide.
+M-C-v		scroll-other-window		Scroll the other window.
+C-x 4 f		find-file-other-window		Find a file in the other window.
+C-x 4 b		switch-to-buffer-other-window	Select a buffer in the other window.
+		compare-windows			Compare two buffers and show the first difference.
+</pre>
+      </li>
+      <li>Special Shell Characters
+<pre>		shell			Start a shell.
+C-c C-c		interrupt-shell-subjob	Terminate the current job in a shell.
+C-c C-d		send-shell-eof		Send the EOF character (Ctrl-d)
+C-c C-u		kill-shell-input	Erase the current line.
+C-c C-w		backward-kill-word	Erase the previous word.
+C-c C-z		stop-shell-subjob	Suspend the current shell job.
+</pre>
+      </li>
+      <li>Indentation Commands
+<pre>C-x		set-fill-prefix		Prepend each line in paragrph with characters
+					from beginning of the line up to the current
+					cursor column.  cancel by doing this in column 1.
+M-C-\		indent-region		Indent a region to match the first line in region.
+M-m		back-to-indentation	Move the cursor to first character in line.
+M-C-o		split-line			Split line at cursor into two lines...  weird.
+		fill-individual-paragraphs	Reformat indented paragraphs, keep indentation.
+</pre>
+x      </li>
+      <li>Centering Commands
+<pre>M-s		center-line		Center the current line.
+		center-paragraph	Center the paragraph that the cursor is on.
+		center-region		Center the currently defined region.
+</pre>
+      </li>
+      <li>Macro Commands
+<pre>C-x (		start-kbd-macro		Start a new macro definition.
+C-x )		end-kbd-macro		End the current macro definition.
+C-x e		call-last-kbd-macro	Execute the last defined macro.
+M-(number) C-x e	call-last-kbd-maco	Do that last macro (number times).
+C-u C-x (	stat-kbd-macro		Execute last macro and add to it.
+		name-last-kbd-macro	Name the last macro before saving it.
+		insert-last-keyboard-macro	Insert the macro you made into a file.
+		load-file			Load a file with macros in it.
+C-x q		kbd-macro-query		Insert a query into a keyboard macro.
+M-C-c		exit-recursive-edit		Get the hell out of a recursive edit.
+</pre>
+      </li>
+      <li>Detail Information Help Commands
+<pre>C-h a		command-apropos		What commands work like this...?
+		apropos			What functions and variables work like this...?
+C-h c		describe-key-briefly	What command does this key sequence do?
+C-h b		describe-bindings	What are the key bindings for this buffer?
+C-h k		describe-key		What command does this sequence do, and tell me about it.
+C-h l		view-lossage		What are the last 100 characters typed?
+C-h w		where-is		What is the key binding for this?
+C-h f		describe-function	What does this function do?
+C-h v		describe-variable	What is this variable?
+C-h m		describe-mode		Tell me about this mode.
+C-h s		describe-syntax		What is the syntax table for this buffer?
+</pre>
+      </li>
+
+
+      </ol>
+
+    <hr>
+    <address>Thanks to Ashton Trey Belew at Wesleyan for providing this file.</address>
+<!-- Created: Wed Jul 21 15:45:35 EDT 1999 -->
+<!-- hhmts start -->
+Last modified: Mon Sep 20 10:54:19 CDT 2004
+<!-- hhmts end -->
+  </body></html>
