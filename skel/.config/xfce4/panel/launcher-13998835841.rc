@@ -1,0 +1,13 @@
+[Global]
+MoveFirst=false
+ArrowPosition=0
+
+[Entry 0]
+Name=gnome-terminal
+Comment=gnome-terminal
+Icon=utilities-terminal
+Exec=gnome-terminal
+Path=/home/g.pelosi
+Terminal=false
+StartupNotify=false
+

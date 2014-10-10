@@ -70,51 +70,43 @@ Mod1 F2 :Exec fbrun
 160 :Exec amixer sset Master,0 toggle
 
 # current window commands
-#Mod1 F4 :Close
-#Mod1 F5 :Kill
-#Mod1 F9 :Minimize
-#Mod1 F10 :Maximize
-#Mod1 F11 :Fullscreen
-Mod1 Enter :Fullscreen
-Mod4 Enter :Fullscreen
+Mod1 F4 :Close
+Mod1 F5 :Kill
+Mod1 F9 :Minimize
+Mod1 F10 :Maximize
+Mod1 F11 :Fullscreen
 
 # open the window menu
-Mod4 space :WindowMenu
+Mod1 space :WindowMenu
 
 # exit fluxbox
 Control Mod1 Delete :Exit
 
 # change to previous/next workspace
-Mod1 Left :PrevWorkspace
-Mod1 Right :NextWorkspace
-Mod4 Left :PrevWorkspace
-Mod4 Right :NextWorkspace
+Control Mod1 Left :PrevWorkspace
+Control Mod1 Right :NextWorkspace
 
 # send the current window to previous/next workspace
-Shift Mod4 Left :SendToPrevWorkspace
-Shift Mod4 Right :SendToNextWorkspace
-Control Shift Mod4 Left :SendToPrevWorkspace
-Control Shift Mod4 Right :SendToNextWorkspace
-
-
+Mod4 Left :SendToPrevWorkspace
+Mod4 Right :SendToNextWorkspace
 
 # send the current window and follow it to previous/next workspace
 Control Mod4 Left :TakeToPrevWorkspace
 Control Mod4 Right :TakeToNextWorkspace
 
 # change to a specific workspace
-#Control F1 :Workspace 1
-#Control F2 :Workspace 2
-#Control F3 :Workspace 3
-#Control F4 :Workspace 4
-#Control F5 :Workspace 5
-#Control F6 :Workspace 6
-#Control F7 :Workspace 7
-#Control F8 :Workspace 8
-#Control F9 :Workspace 9
-#Control F10 :Workspace 10
-#Control F11 :Workspace 11
-#Control F12 :Workspace 12
+Control F1 :Workspace 1
+Control F2 :Workspace 2
+Control F3 :Workspace 3
+Control F4 :Workspace 4
+Control F5 :Workspace 5
+Control F6 :Workspace 6
+Control F7 :Workspace 7
+Control F8 :Workspace 8
+Control F9 :Workspace 9
+Control F10 :Workspace 10
+Control F11 :Workspace 11
+Control F12 :Workspace 12
 
 # send the current window to a specific workspace
 Mod4 F1 :SendToWorkspace 1

@@ -1,0 +1,16 @@
+[Floppy Drive]
+row=3
+col=11
+
+[Trash]
+row=7
+col=11
+
+[File System]
+row=2
+col=11
+
+[Home]
+row=1
+col=11
+

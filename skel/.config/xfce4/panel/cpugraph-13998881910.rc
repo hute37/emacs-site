@@ -1,0 +1,12 @@
+UpdateInterval=0
+TimeScale=0
+Width=60
+Mode=0
+Frame=0
+AssociateCommand=xterm -rv htop
+ColorMode=0
+Foreground1=#00FF00
+Foreground2=#FF0000
+Background=#1A1A1A
+Foreground3=#0000FF
+

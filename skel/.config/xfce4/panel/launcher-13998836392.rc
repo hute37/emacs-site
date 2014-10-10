@@ -1,0 +1,13 @@
+[Entry 0]
+Name=terminator
+Comment=terminator
+Icon=utilities-terminal
+Exec=terminator
+Path=/home/g.pelosi
+Terminal=false
+StartupNotify=false
+
+[Global]
+MoveFirst=false
+ArrowPosition=0
+

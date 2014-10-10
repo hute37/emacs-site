@@ -1,0 +1,10 @@
+[Entry 0]
+Name=New Item
+Icon=applications-other
+Terminal=false
+StartupNotify=false
+
+[Global]
+MoveFirst=false
+ArrowPosition=0
+

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="pointers" version="1.0">
+  <property name="Virtual_core_XTEST_pointer" type="string" value="Virtual core XTEST pointer"/>
+</channel>

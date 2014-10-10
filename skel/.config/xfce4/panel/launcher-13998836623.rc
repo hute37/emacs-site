@@ -1,0 +1,13 @@
+[Entry 0]
+Name=roxterm
+Comment=roxterm
+Icon=utilities-terminal
+Exec=roxterm
+Path=/home/g.pelosi
+Terminal=false
+StartupNotify=false
+
+[Global]
+MoveFirst=false
+ArrowPosition=0
+

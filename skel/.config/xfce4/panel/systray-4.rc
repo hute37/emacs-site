@@ -1,0 +1,11 @@
+[Global]
+ShowFrame=false
+Rows=1
+
+[Applications]
+update-notifier=false
+orage=false
+vmware-user=false
+kerneloops-applet=false
+networkmanager applet=false
+
