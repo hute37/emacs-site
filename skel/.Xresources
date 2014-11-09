@@ -101,33 +101,62 @@ URxvt*.color15: t_current_line
 #define tnb_aqua #70c0b1
 #define tnb_blue #7aa6da
 #define tnb_purple #c397d8
-Rxvt*.foreground: tnb_foreground
-Rxvt*.background: tnb_background
-Rxvt*.cursorColor: #aeafad
+TbRxvt*.foreground: tnb_foreground
+TbRxvt*.background: tnb_background
+TbRxvt*.cursorColor: #aeafad
 ! Black / Grey
-Rxvt*.color0: #000000
-Rxvt*.color8: #666666
+TbRxvt*.color0: #000000
+TbRxvt*.color8: #666666
 ! Red / Bright Red
-Rxvt*.color1: tnb_red
-Rxvt*.color9: #FF3334
+TbRxvt*.color1: tnb_red
+TbRxvt*.color9: #FF3334
 ! Green + Bright Green
-Rxvt*.color2: tnb_green
-Rxvt*.color10: #9ec400
+TbRxvt*.color2: tnb_green
+TbRxvt*.color10: #9ec400
 ! Yellow (Orange) + Bright Yellow (Yellow)
-Rxvt*.color3: tnb_orange
-Rxvt*.color11: tnb_yellow
+TbRxvt*.color3: tnb_orange
+TbRxvt*.color11: tnb_yellow
 ! Blue + Bright Blue
-Rxvt*.color4: tnb_blue
-Rxvt*.color12: tnb_blue
+TbRxvt*.color4: tnb_blue
+TbRxvt*.color12: tnb_blue
 ! Magenta (Purple) + Bright Magenta
-Rxvt*.color5: tnb_purple
-Rxvt*.color13: #b777e0
+TbRxvt*.color5: tnb_purple
+TbRxvt*.color13: #b777e0
 ! Cyan (Aqua) + Bright Cyan
-Rxvt*.color6: tnb_aqua
-Rxvt*.color14: #54ced6
+TbRxvt*.color6: tnb_aqua
+TbRxvt*.color14: #54ced6
 ! Light Grey (Selection) + White (Current Line)
-Rxvt*.color7: tnb_selection
-Rxvt*.color15: tnb_current_line
+TbRxvt*.color7: tnb_selection
+TbRxvt*.color15: tnb_current_line
+
+
+! http://www.xcolors.net/dl/orangish
+
+!black
+Rxvt*color0:  #251f1f
+Rxvt*color8:  #5e5e5e
+!red
+Rxvt*color1:  #eb4509
+Rxvt*color9:  #eb4509
+!green
+Rxvt*color2:  #94e76b
+Rxvt*color10: #95e76b
+!yellow
+Rxvt*color3:  #ffac18
+Rxvt*color11: #ffac18
+!blue
+Rxvt*color4:  #46aede
+Rxvt*color12: #46aede
+!magenta
+Rxvt*color5:  #e32c57
+Rxvt*color13: #e32c57
+!cyan
+Rxvt*color6:  #d6dbac
+Rxvt*color14: #d6dbac
+!white
+Rxvt*color7:  #efefef
+Rxvt*color15: #efefef
+
 
 
 
@@ -157,8 +186,14 @@ Rxvt*saveLines: 12000
 URxvt*font: xft:Droid Sans Mono:pixelsize=12:antialias=true:hinting=true
 URxvt*boldFont: xft:Droid Vera Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
 
-Rxvt*font: -*-fixed-medium-r-normal-*-14-*-*-*-*-*-iso8859-1
-Rxvt*boldFont: -*-fixed-bold-r-normal-*-14-*-*-*-*-*-iso8859-1
+Rxvt*font: xft:Terminus:pixelsize=15
+Rxvt*boldFont: xft:Terminus:bold:pixelsize=15
+!Rxvt*font: 7x14
+!Rxvt*boldFont: 7x14bold
+!Rxvt*font: -*-fixed-medium-r-normal-*-14-*-*-*-*-*-iso8859-1
+!Rxvt*boldFont: -*-fixed-bold-r-normal-*-14-*-*-*-*-*-iso8859-1
+!Rxvt*font: -*-fixed-medium-r-normal-*-14-*-*-*-*-*-iso10646-*
+!Rxvt*boldFont: -*-fixed-bold-r-normal-*-14-*-*-*-*-*-iso10646-*
 
 
 ! Xft: Bitstream fonts
