@@ -1,0 +1,3 @@
+#!/bin/sh
+exec xterm -bg black -fg green -cr yellow -fn fixed -sl 5000 $*
+

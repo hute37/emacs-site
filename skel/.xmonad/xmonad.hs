@@ -28,7 +28,8 @@ import qualified Data.Map        as M
 -- certain contrib modules.
 --
 --myTerminal      = "xterm"
-myTerminal      = "evilvte"
+--myTerminal      = "evilvte"
+myTerminal      = "~/.xmonad/xmterm"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
