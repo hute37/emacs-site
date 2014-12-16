@@ -22,6 +22,9 @@
 ! xterm
 !
 
+XTerm*visualBell: True
+
+
 !!
 ! urxvt
 !
