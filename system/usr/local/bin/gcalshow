@@ -1,0 +1,2 @@
+#!/bin/bash
+exec xterm -bg black -fg cyan -geometry 80x27 -e sh -c 'gcalcli calm; read z'
