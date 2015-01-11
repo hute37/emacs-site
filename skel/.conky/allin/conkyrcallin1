@@ -1,0 +1,81 @@
+# -- Conky settings -- #
+background no
+update_interval 1
+ 
+cpu_avg_samples 2
+net_avg_samples 2
+ 
+override_utf8_locale yes
+ 
+double_buffer yes
+no_buffers yes
+ 
+text_buffer_size 32768
+imlib_cache_size 0
+ 
+# -- Window specifications -- #
+ 
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorate,skip_taskbar,skip_pager,below
+ 
+border_inner_margin 0
+border_outer_margin 0
+ 
+minimum_size 1100 1000
+maximum_width 1070
+ 
+alignment tr
+gap_x 10
+gap_y 0
+ 
+# -- Graphics settings -- #
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+ 
+# -- Text settings -- #
+use_xft yes
+xftfont Ubuntu Mono:size=10
+xftalpha 0.8
+ 
+uppercase no
+ 
+default_color FFFFFF
+ 
+TEXT
+${goto 450}${image ~/.conky/ubuntu.png -p 600,30 -s 60x75}${voffset 40}${font hooge 05_53:size=30}${alignr}${time %H.%M}${font}
+${goto 700}${hr 2}
+${goto 15}${color #f8df58}${font Poky:pixelsize=14}x${color #f8df58}${font Radio Space:size=9}  DATA ${color}${font}${goto 350}${font hooge 05_53:size=14}${alignr}${time %A, %d %B %Y}${font}
+${goto 18}${font weather:size=16}x ${font}  HDD ${acpitemp} C ${goto 255}${font weather:size=16}z ${font}   GPU ${nvidia temp} C ${goto 450}${font StyleBats:size=14}P${font}   Uptime: ${uptime_short}${goto 700}${color #f8df58}${font OpenLogos:size=17}J${color #f8df58}${font Radio Space:size=9}   WEATHER $stippled_hr${font}
+
+${goto 920}${execi 300 curl -s "http://weather.yahooapis.com/forecastrss?w=1940345&u=c" -o ~/.cache/weather.xml}${font Open Sans Light:size=15}${execi 300 grep "yweather:location" ~/.cache/weather.xml | grep -o "city=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}, ${alignr}${execi 300 grep "yweather:location" ~/.cache/weather.xml | grep -o "country=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}${font}
+${font Open Sans Light:size=55}${alignr}${execi 300 grep "yweather:condition" ~/.cache/weather.xml | grep -o "temp=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}°${font}${voffset -35}
+${goto 900}${alignr}${execi 300 cp -f ~/.cony-weather/$(grep "yweather:condition" ~/.cache/weather.xml | grep -o "code=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*").png ~/.cache/weather.png}${image ~/.cache/weather.png -p 750,180 -s 100x100}
+${voffset 20}${goto 900}${alignr}${execi 300 grep "yweather:condition" ~/.cache/weather.xml | grep -o "text=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | tr '[a-z]' '[A-Z]'}
+${alignr}${image ~/.cony-weather/wind.png -p 980,280 -s 20x20}${alignr}${execi 300 grep "yweather:wind" ~/.cache/weather.xml | grep -o "speed=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}${execi 300 grep "yweather:units" ~/.cache/weather.xml | grep -o "speed=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}
+${alignr}${image ~/.cony-weather/humidity.png -p 980,300 -s 20x20}${alignr}${execi 300 grep "yweather:atmosphere" ~/.cache/weather.xml | grep -o "humidity=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*"}%${voffset 15}
+${goto 720}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "day=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==1' | tr '[a-z]' '[A-Z]'}${goto 800}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "day=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==2' | tr '[a-z]' '[A-Z]'}${goto 880}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "day=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==3' | tr '[a-z]' '[A-Z]'}${goto 960}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "day=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==4' | tr '[a-z]' '[A-Z]'}${goto 1040}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "day=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==5' | tr '[a-z]' '[A-Z]'}
+${goto 600}${execi 300 cp -f ~/.cony-weather/$(grep "yweather:forecast" ~/.cache/weather.xml | grep -o "code=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==1').png ~/.cache/weather-1.png}${image ~/.cache/weather-1.png -p 710,340 -s 30x30}${execi 300 cp -f ~/.cony-weather/$(grep "yweather:forecast" ~/.cache/weather.xml | grep -o "code=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==2').png ~/.cache/weather-2.png}${image ~/.cache/weather-2.png -p 790,340 -s 30x30}${execi 300 cp -f ~/.cony-weather/$(grep "yweather:forecast" ~/.cache/weather.xml | grep -o "code=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==3').png ~/.cache/weather-3.png}${image ~/.cache/weather-3.png -p 870,340 -s 30x30}${execi 300 cp -f ~/.cony-weather/$(grep "yweather:forecast" ~/.cache/weather.xml | grep -o "code=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==4').png ~/.cache/weather-4.png}${image ~/.cache/weather-4.png -p 950,340 -s 30x30}${execi 300 cp -f ~/.cony-weather/$(grep "yweather:forecast" ~/.cache/weather.xml | grep -o "code=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==5').png ~/.cache/weather-5.png}${image ~/.cache/weather-5.png -p 1030,340 -s 30x30}${voffset 20}
+${goto 720}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "high=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==1'}°${goto 800}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "high=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==2'}°${goto 880}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "high=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==3'}°${goto 960}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "high=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==4'}°${goto 1040}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "high=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==5'}°
+${goto 720}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "low=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==1'}°${goto 800}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "low=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==2'}°${goto 880}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "low=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==3'}°${goto 960}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "low=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==4'}°${goto 1040}${execi 300 grep "yweather:forecast" ~/.cache/weather.xml | grep -o "low=\"[^\"]*\"" | grep -o "\"[^\"]*\"" | grep -o "[^\"]*" | awk 'NR==5'}°${color}
+
+${voffset -275}${goto 13}${font PizzaDude Bullets:size=12}v${font}   Up Speed: ${upspeed wlan0} ${goto 250}${font VariShapes Solid:size=12}q ${font}   Total Up: ${totalup wlan0}${goto 450}${font StyleBats:size=16}8${font}${goto 480} Bat: ${battery BAT1}
+${goto 13}${font PizzaDude Bullets:size=12}r${font}   Down Speed: ${downspeed wlan0} ${goto 250}${font VariShapes Solid:size=12}Q ${font}   Total Down: ${totaldown wlan0}${goto 450}${font StyleBats:size=14}8${font}   WiFi: ${wireless_essid wlan0} : ${wireless_link_qual wlan0}%
+${goto 15}${color ffffff}${font StyleBats:size=12}A${font}   CPU0: ${cpu cpu0}% ${cpubar 7,80 cpu0}${goto 250}${font StyleBats:size=12}A${font}    CPU1: ${cpu cpu1}% ${cpubar 7,80 cpu1}${goto 450}${font PizzaDude Bullets:size=12}J${font}   RAM: $memperc% ${goto 570}   SWAP: $swapperc%
+
+${goto 13}${color #F8DF58}${font Poky:size=15}a${font Radio Space:size=9}   PROCESSES${goto 370}${font Poky:pixelsize=17}y${goto 400}${font Radio Space:size=9}DISKS${color}${font}
+${goto 45}Name ::. ${goto 170}PID${goto 225}CPU%${goto 280}MEM%${goto 400}${color #badcdd}Root:  ${fs_bar 7,100 /}${goto 570}${fs_free /} / ${fs_size /}
+${goto 45}${color #badcdd}${top name 1} ${goto 170}${top pid 1}${goto 225}${top cpu 1}${goto 280}${top mem 1}${goto 400}Home:  ${fs_bar 7,100 /home}${goto 570}${fs_free /home} / ${fs_size /home}
+
+${goto 13}${voffset -10}${color #f8df58}${font Poky:size=13}d${font Radio Space:size=9}   CALENDAR${color}${font}
+${goto 45}${font DejaVu Sans Mono:size=8}${execi 300 gcalcli --nc --cals=owner calw 2}${font}
+${goto 13}${font DejaVu Sans Mono:size=9}${head /home/sree/scripts/gcal.txt 10 20}${font}
+   
+${goto 13}${voffset 60}${color F8DF58}${font Radio Space:size=18}@${font}   EMAILS $stippled_hr${color}
+${goto 13}${font DejaVu Sans Mono:size=10}${execi 1800 perl ~/scripts/gmail.pl e}${font}
+
+
+   
