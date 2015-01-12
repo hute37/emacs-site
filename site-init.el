@@ -320,10 +320,10 @@
 
 ;; ---( Color )-----------------------------------------------------------
 
-(require 'color-theme)
-(require 'color-theme-zcoll)
-(require 'color-theme-solarized)
-(setq color-theme-is-global nil)
+;;(require 'color-theme)
+;;(require 'color-theme-zcoll)
+;;(require 'color-theme-solarized)
+;;(setq color-theme-is-global nil)
 
 
 
@@ -1555,7 +1555,7 @@ $" nil t))
 
 ;; ---( Numeric )--------------------------------------------------------
 
-(define-key esc-map "1" 'color-theme-select )
+;;(define-key esc-map "1" 'color-theme-select )
 (define-key esc-map "2" 'ergo-font-select )
 (define-key esc-map "3" 'bury-buffer)
 (define-key esc-map "4" 'delete-other-windows)
@@ -1653,10 +1653,10 @@ $" nil t))
 	      )
 	    )
 
-      (setq color-theme-is-global t)
-      (color-theme-z-gnome3)
-      (setq color-theme-is-global nil)
-      (color-theme-z-gnome3-d)            ;; default
+;;      (setq color-theme-is-global t)
+;;      (color-theme-z-gnome3)
+;;      (setq color-theme-is-global nil)
+;;      (color-theme-z-gnome3-d)            ;; default
       (setq initial-frame-alist
 	    (append
 	     '(
@@ -1717,8 +1717,8 @@ $" nil t))
 	    )
 
 
-      (setq color-theme-is-global t)
-      (color-theme-z-gnome3)            ;; default
+;;      (setq color-theme-is-global t)
+;;      (color-theme-z-gnome3)            ;; default
 
       ;; #ifdef COLOR
       ;; *customization: -color
@@ -1760,8 +1760,8 @@ $" nil t))
 	      (font . "-b&h-lucidatypewriter-medium-r-normal-*-*-120-*-*-m-*-iso8859-9")
 	      ))
 
-      (setq color-theme-is-global nil)
-      (color-theme-z-gnome3-d)            ;; default
+;;      (setq color-theme-is-global nil)
+;;      (color-theme-z-gnome3-d)            ;; default
 
       )
     )))
@@ -1806,9 +1806,9 @@ $" nil t))
 	    ))
 
 
-      (setq color-theme-is-global t)
+;;      (setq color-theme-is-global t)
 ;;      (color-theme-jonadabian)            ;; default
-      (color-theme-z-gnome2)            ;; default
+;;      (color-theme-z-gnome2)            ;; default
 
       ;; #ifdef COLOR
       ;; *customization: -color
@@ -1875,8 +1875,8 @@ $" nil t))
 	      )
 	    ))
 
-      (setq color-theme-is-global nil)
-      (color-theme-z-gnome2)            ;; default
+;;      (setq color-theme-is-global nil)
+;;      (color-theme-z-gnome2)            ;; default
 ;;      (color-theme-z-gnome3-d)            ;; default
       )
     )))
