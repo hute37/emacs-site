@@ -366,10 +366,13 @@
 
 (require 'pc-select)
 (pc-select-mode t)
+(message "pc-select@XEmacs")
 
     ))
- ((eq z-emacs-type 'fsf_emacs);; GNU-Emacs
+((and (eq z-emacs-type 'fsf_emacs)
+      (string-lessp emacs-version "24.0"));; GNU-Emacs
   (progn
+
 
 ;; pc-select
 ;;(require 'pc-select)
@@ -377,6 +380,7 @@
 ;;(pc-selection-mode t nil '(pc-select))
 ;;(setq pc-select-selection-keys-only t)
 ;;(pc-selection-mode)
+    (message "pc-select@Emacs22")
 
  (if (fboundp 'pc-selection-mode)                                              
       (pc-selection-mode)                                                   
@@ -390,6 +394,8 @@
  (t
   (progn
     ))
+
+
  )
 
 
@@ -2008,7 +2014,7 @@ $" nil t))
   (progn
 
     ))
- (t
+ ((not t)
   (progn
 
     (require 'multi-term)

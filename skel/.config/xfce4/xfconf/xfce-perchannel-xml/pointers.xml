@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <channel name="pointers" version="1.0">
-  <property name="Virtual_core_XTEST_pointer" type="string" value="Virtual core XTEST pointer"/>
+  <property name="Logitech_USB_Optical_Mouse" type="empty">
+    <property name="RightHanded" type="bool" value="true"/>
+    <property name="Threshold" type="int" value="4"/>
+    <property name="Acceleration" type="double" value="5.000000"/>
+  </property>
 </channel>

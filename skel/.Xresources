@@ -1,4 +1,16 @@
 
+
+! Xft settings ---------------------------------------------------------------
+
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+
+
+
+
 !!
 ! Emacs
 !
@@ -24,9 +36,252 @@
 
 XTerm*visualBell: True
 
+! Use the specified colour as the windows background colour [default White]; option -bg.
+XTerm*background: #000000
+
+! Use the specified colour as the windows foreground colour [default Black]; option -fg.
+XTerm*foreground: #00ffff
+
+!!
+! rxvt
+!
+
+Rxvt*geometry: 92x27
+
+!Rxvt*borderColor: Blue
+!Rxvt*scrollColor: Blue
+!Rxvt*troughColor: Gray
+Rxvt*scrollBar: False
+Rxvt*scrollBar_right: False
+Rxvt*SaveLines: 12000
+Rxvt*loginShell: True
+
+Rxvt*font: -*-clean-*-*-*-*-*-130-*-*-*-60-*-*
+Rxvt*boldFont: -*-clean-*-*-*-*-*-130-*-*-*-60-*-*
+
+!Rxvt*font: xft:Monospace:pixelsize=15
+!Rxvt*boldFont: xft:Monospace:bold:pixelsize=15
+!Rxvt*font: lucidasanstypewriter-10
+!Rxvt*boldFont: lucidasanstypewriter-bold-10
+!Rxvt*font: 7x13
+!Rxvt*boldFont: 7x13bold
+!Rxvt*font: fixed
+!Rxvt*boldFont: fixed
+!Rxvt*font: -*-fixed-medium-r-normal-*-14-*-*-*-*-*-iso8859-1
+!Rxvt*boldFont: -*-fixed-bold-r-normal-*-14-*-*-*-*-*-iso8859-1
+!Rxvt*font: -*-fixed-medium-r-normal-*-14-*-*-*-*-*-iso10646-*
+!Rxvt*boldFont: -*-fixed-bold-r-normal-*-14-*-*-*-*-*-iso10646-*
+
+
+!Gutterslob Visiblue
+Rxvt*background:           #000000
+Rxvt*foreground:           #666699
+
+
+!Visiblue
+Rxvt*color0:               #333366
+Rxvt*color8:               #333399
+
+Rxvt*color1:               #6666CC
+Rxvt*color9:               #9999FF
+
+Rxvt*color2:               #0099CC
+Rxvt*color10:              #00CCFF
+
+Rxvt*color3:               #3366CC
+Rxvt*color11:              #6699FF
+
+Rxvt*color4:               #006699
+Rxvt*color12:              #0099CC
+
+Rxvt*color5:               #0066FF
+Rxvt*color13:              #0099FF
+
+Rxvt*color6:               #669999
+Rxvt*color14:              #66CCCC
+
+Rxvt*color7:               #99CCCC
+Rxvt*color15:              #CCFFFF
+
+
+
+!Rxvt*background: #000020
+!Rxvt*foreground: #ffffbf
+! VIM-like colors
+!Rxvt*color0:    #000000
+!Rxvt*color1:    #FFFFFF
+!Rxvt*color2:    #00A800
+!Rxvt*color3:    #FFFF00
+!Rxvt*color4:    #0000A8
+!Rxvt*color5:    #A800A8
+!Rxvt*color6:    #00A8A8
+!Rxvt*color7:    #D8D8D8
+!Rxvt*color8:    #000000
+!Rxvt*color9:    #FFFFFF
+!Rxvt*color10:   #00A800
+!Rxvt*color11:   #FFFF00
+!Rxvt*color12:   #0000A8
+!Rxvt*color13:   #A800A8
+!Rxvt*color14:   #00A8A8
+!Rxvt*color15:   #D8D8D8
+
+! http://www.xcolors.net/dl/orangish
+
+! Use the specified colour as the windows background colour [default White]; option -bg.
+!Rxvt*background: #000000
+
+! Use the specified colour as the windows foreground colour [default Black]; option -fg.
+!Rxvt*foreground: #00ffff
+
+!black
+!Rxvt*color0:  #251f1f
+!Rxvt*color8:  #5e5e5e
+!red
+!Rxvt*color1:  #eb4509
+!Rxvt*color9:  #eb4509
+!green
+!Rxvt*color2:  #94e76b
+!Rxvt*color10: #95e76b
+!yellow
+!Rxvt*color3:  #ffac18
+!Rxvt*color11: #ffac18
+!blue
+!Rxvt*color4:  #46aede
+!Rxvt*color12: #46aede
+!magenta
+!Rxvt*color5:  #e32c57
+!Rxvt*color13: #e32c57
+!cyan
+!Rxvt*color6:  #d6dbac
+!Rxvt*color14: #d6dbac
+!white
+!Rxvt*color7:  #efefef
+!Rxvt*color15: #efefef
+
 
 !!
 ! urxvt
+!
+
+!! urxvt --help 2>&1| sed -n '/:  /s/^ */! URxvt*/gp'
+!! man -Pcat urxvt | sed -n '/th: b/,/^B/p'|sed '$d'|sed '/^ \{7\}[a-z]/s/^ */^/g' | sed -e :a -e 'N;s/\n/@@/g;ta;P;D' | sed 's,\^\([^@]\+\)@*[\t ]*\([^\^]\+\),! \2\n! URxvt*\1\n\n,g' | sed 's,@@\(  \+\),\n\1,g' | sed 's,@*$,,g' | sed '/^[^!]/d' | tr -d "'\`"
+
+!-------------------------------------------------------------------------------
+!
+!	U R X V T - Settings
+!
+!URxvt*geometry: 92x35
+URxvt*geometry:					100x35
+URxvt*borderLess:				false
+URxvt*depth:					32
+!URxvt*scrollBar_right:				true
+!URxvt*font:					xft:terminus-9
+URxvt*cursorBlink:				true
+URxvt*cursorUnderline:				false
+!URxvt*perl-ext-common:				default,clipboard,tabbed,matcher
+!URxvt*perl-ext-common:				default,tabbed,matcher
+URxvt*perl-ext-common:				default,font-size
+URxvt*perl-ext:					default
+
+
+URxvt*print-pipe:  cat > $HOME/$(echo urxvt.dump.$(date +'%Y%M%d%H%m%S'))
+
+URxvt.keysym.C-plus:     perl:font-size:increase
+URxvt.keysym.C-minus:   perl:font-size:decrease
+URxvt.keysym.C-S-plus:   perl:font-size:incglobal
+URxvt.keysym.C-S-minus: perl:font-size:decglobal
+
+
+!
+! scroll
+!
+! jump scrolling
+URxvt*jumpScroll: true
+! skip scrolling
+URxvt*skipScroll: false
+! scroll to bottom on output
+URxvt*scrollTtyOutput: true
+! scroll to bottom when a non-special key is pressed
+URxvt*scrollTtyKeypress: false
+! scroll to bottom when tty receives new lines
+URxvt*scrollWithBuffer: false
+! scroll page by page
+URxvt*mouseWheelScrollPage: false
+
+
+!URxvt.scrollBar:				off
+!URxvt.iconFile:					~/icons/Terminal.svg
+
+!URxvt.tabbed.tabbar-fg:			 	7
+!URxvt.tabbed.tabbar-bg: 			5
+!URxvt.tabbed.tab-fg:    			4
+!URxvt.tabbed.tab-bg:    			6
+
+URxvt*termName:				 	rxvt-256color
+URxvt.urlLauncher:				/usr/bin/firefox-aurora
+URxvt.matcher.button:				1
+
+URxvt*visualBell:   true
+! scrollbar - true (default) or false
+!URxvt*scrollBar: true
+URxvt*scrollBar: true
+
+! scrollbar position - left=false (default) or right=true
+URxvt*scrollBar_right: false
+
+! scrollbar style - rxvt (default), plain, next, or xterm
+!URxvt*scrollstyle: rxvt
+URxvt*scrollstyle: next
+
+
+! transparency - true or false (default)
+URxvt*transparent: false
+
+! character spacing
+URxvt.letterSpace: -1
+
+
+
+! Xft: Google Droid fonts
+
+URxvt*font: xft:Droid Sans Mono:pixelsize=12:antialias=true:hinting=true
+URxvt*boldFont: xft:Droid Sans Mono:pixelsize=12:antialias=true:hinting=true
+!URxvt*boldFont: xft:Droid Vera Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
+
+!---------------------------------------------------------------------------------
+!
+!	U R X V T - Colors
+!
+!---------------------------------------------------------------------------------
+
+
+!!black
+!URxvt.color0:  #000000
+!URxvt.color8:  #2B2B2B
+!!red
+!URxvt.color1:  #A5372E
+!URxvt.color9:  #E06C5C 
+!!green
+!URxvt.color2:  #4A663C 
+!URxvt.color10: #7B996C
+!!yellow
+!URxvt.color3:  #7C5618
+!URxvt.color11: #B38849
+!!blue
+!URxvt.color4:  #566060
+!URxvt.color12: #889393
+!!magenta
+!URxvt.color5:  #8E4948
+!URxvt.color13: #C67C78
+!!cyan
+!URxvt.color6:  #6D5B42
+!URxvt.color14: #A28D73
+!!white
+!URxvt.color7:  #8D8D8D
+!URxvt.color15: #C6C6C6
+!
+!urxvt.background: #1c1c1c
+!urxvt.foreground: 15
 !
 
 
@@ -37,128 +292,159 @@ XTerm*visualBell: True
 ! URxvt*background: Blue
 
 
+! Use the specified colour for the scrollbar [default #B2B2B2].
 
-! transparency - true or false (default)
-URxvt*transparent: false
+URxvt*scrollColor: #121212
 
-! character spacing
-URxvt.letterSpace: -1
+! Use the specified colour for the scrollbars trough area [default #969696].
+URxvt*troughColor: #ff0000
+
+! The colour of the border around the text area and between the scrollbar and the text
+URxvt*borderColor: #000000
+
+URxvt*tintColor: #ff8080
+
+
+!!
+!! http://www.xcolors.net/dl/Visiblue
+!!
+
+!!urxvt.background: [50]#FFFFFF
+urxvt*background: rgba:0000/0000/0000/dddd
+
+!!Gutterslob Visiblue
+!urxvt*background:           #000000
+
+!urxvt*foreground:           #2AB3B6
+urxvt*foreground:           #4ad3d6
+!!urxvt*foreground:           #FF0000
 !
-! tomorrow: https://github.com/chriskempson/tomorrow-theme
+!
+!!Visiblue
+!!!urxvt*color0:               #333366
+!!!urxvt*color8:               #333399
+urxvt*color0:               #282828
+urxvt*color8:               #333333
+!
+urxvt*color1:               #6666CC
+urxvt*color9:               #9999FF
+!
+urxvt*color2:               #0099CC
+urxvt*color10:              #00CCFF
+!
+urxvt*color3:               #3366CC
+urxvt*color11:              #6699FF
+!
+!!!urxvt*color4:               #006699
+urxvt*color4:               #002233
+urxvt*color12:              #0099CC
+!
+urxvt*color5:               #0066FF
+urxvt*color13:              #0099FF
+!
+urxvt*color6:               #669999
+urxvt*color14:              #66CCCC
+!
+urxvt*color7:               #99CCCC
+urxvt*color15:              #CCFFFF
+!
+URxvt*colorBD:  orange
+URxvt*colorIT:  lightskyblue
+URxvt*colorRV:  red
+URxvt*colorUL:  green
+URxvt*underlineColor:  navyblue
 !
 
-!TomorrowNight
-#define t_background #1d1f21
-#define t_current_line #282a2e
-#define t_selection #373b41
-#define t_foreground #c5c8c6
-#define t_comment #969896
-#define t_red #cc6666
-#define t_orange #de935f
-#define t_yellow #f0c674
-#define t_green #b5bd68
-#define t_aqua #8abeb7
-#define t_blue #81a2be
-#define t_purple #b294bb
+!!
+!! tomorrow: https://github.com/chriskempson/tomorrow-theme
+!!
 
-URxvt*.foreground: t_foreground
-URxvt*.background: t_background
-URxvt*.cursorColor: #aeafad
-! Black / Grey
-URxvt*.color0: #000000
-URxvt*.color8: #666666
-! Red / Bright Red
-URxvt*.color1: t_red
-URxvt*.color9: #FF3334
-! Green + Bright Green
-URxvt*.color2: t_green
-URxvt*.color10: #9ec400
-! Yellow (Orange) + Bright Yellow (Yellow)
-URxvt*.color3: t_orange
-URxvt*.color11: t_yellow
-! Blue + Bright Blue
-URxvt*.color4: t_blue
-URxvt*.color12: t_blue
-! Magenta (Purple) + Bright Magenta
-URxvt*.color5: t_purple
-URxvt*.color13: #b777e0
-! Cyan (Aqua) + Bright Cyan
-URxvt*.color6: t_aqua
-URxvt*.color14: #54ced6
-! Light Grey (Selection) + White (Current Line)
-URxvt*.color7: t_selection
-URxvt*.color15: t_current_line
+!!TomorrowNight
+!#define t_background #1d1f21
+!#define t_current_line #282a2e
+!#define t_selection #373b41
+!#define t_foreground #c5c8c6
+!#define t_comment #969896
+!#define t_red #cc6666
+!#define t_orange #de935f
+!#define t_yellow #f0c674
+!#define t_green #b5bd68
+!#define t_aqua #8abeb7
+!#define t_blue #81a2be
+!#define t_purple #b294bb
 
-
-
-!TomorrowNightBright
-#define tnb_background #000000
-#define tnb_current_line #2a2a2a
-#define tnb_selection #424242
-#define tnb_foreground #eaeaea
-#define tnb_comment #969896
-#define tnb_red #d54e53
-#define tnb_orange #e78c45
-#define tnb_yellow #e7c547
-#define tnb_green #b9ca4a
-#define tnb_aqua #70c0b1
-#define tnb_blue #7aa6da
-#define tnb_purple #c397d8
-TbRxvt*.foreground: tnb_foreground
-TbRxvt*.background: tnb_background
-TbRxvt*.cursorColor: #aeafad
-! Black / Grey
-TbRxvt*.color0: #000000
-TbRxvt*.color8: #666666
-! Red / Bright Red
-TbRxvt*.color1: tnb_red
-TbRxvt*.color9: #FF3334
-! Green + Bright Green
-TbRxvt*.color2: tnb_green
-TbRxvt*.color10: #9ec400
-! Yellow (Orange) + Bright Yellow (Yellow)
-TbRxvt*.color3: tnb_orange
-TbRxvt*.color11: tnb_yellow
-! Blue + Bright Blue
-TbRxvt*.color4: tnb_blue
-TbRxvt*.color12: tnb_blue
-! Magenta (Purple) + Bright Magenta
-TbRxvt*.color5: tnb_purple
-TbRxvt*.color13: #b777e0
-! Cyan (Aqua) + Bright Cyan
-TbRxvt*.color6: tnb_aqua
-TbRxvt*.color14: #54ced6
-! Light Grey (Selection) + White (Current Line)
-TbRxvt*.color7: tnb_selection
-TbRxvt*.color15: tnb_current_line
+!URxvt*.foreground: t_foreground
+!URxvt*.background: t_background
+!URxvt*.cursorColor: #aeafad
+!! Black / Grey
+!URxvt*.color0: #000000
+!URxvt*.color8: #666666
+!! Red / Bright Red
+!URxvt*.color1: t_red
+!URxvt*.color9: #FF3334
+!! Green + Bright Green
+!URxvt*.color2: t_green
+!URxvt*.color10: #9ec400
+!! Yellow (Orange) + Bright Yellow (Yellow)
+!URxvt*.color3: t_orange
+!URxvt*.color11: t_yellow
+!! Blue + Bright Blue
+!URxvt*.color4: t_blue
+!URxvt*.color12: t_blue
+!! Magenta (Purple) + Bright Magenta
+!URxvt*.color5: t_purple
+!URxvt*.color13: #b777e0
+!! Cyan (Aqua) + Bright Cyan
+!URxvt*.color6: t_aqua
+!URxvt*.color14: #54ced6
+!! Light Grey (Selection) + White (Current Line)
+!URxvt*.color7: t_selection
+!URxvt*.color15: t_current_line
 
 
-! http://www.xcolors.net/dl/orangish
 
-!black
-Rxvt*color0:  #251f1f
-Rxvt*color8:  #5e5e5e
-!red
-Rxvt*color1:  #eb4509
-Rxvt*color9:  #eb4509
-!green
-Rxvt*color2:  #94e76b
-Rxvt*color10: #95e76b
-!yellow
-Rxvt*color3:  #ffac18
-Rxvt*color11: #ffac18
-!blue
-Rxvt*color4:  #46aede
-Rxvt*color12: #46aede
-!magenta
-Rxvt*color5:  #e32c57
-Rxvt*color13: #e32c57
-!cyan
-Rxvt*color6:  #d6dbac
-Rxvt*color14: #d6dbac
-!white
-Rxvt*color7:  #efefef
-Rxvt*color15: #efefef
+!!TomorrowNightBright
+!#define tnb_background #000000
+!#define tnb_current_line #2a2a2a
+!#define tnb_selection #424242
+!#define tnb_foreground #eaeaea
+!#define tnb_comment #969896
+!#define tnb_red #d54e53
+!#define tnb_orange #e78c45
+!#define tnb_yellow #e7c547
+!#define tnb_green #b9ca4a
+!#define tnb_aqua #70c0b1
+!#define tnb_blue #7aa6da
+!#define tnb_purple #c397d8
+!TbRxvt*.foreground: tnb_foreground
+!TbRxvt*.background: tnb_background
+!TbRxvt*.cursorColor: #aeafad
+!! Black / Grey
+!TbRxvt*.color0: #000000
+!TbRxvt*.color8: #666666
+!! Red / Bright Red
+!TbRxvt*.color1: tnb_red
+!TbRxvt*.color9: #FF3334
+!! Green + Bright Green
+!TbRxvt*.color2: tnb_green
+!TbRxvt*.color10: #9ec400
+!! Yellow (Orange) + Bright Yellow (Yellow)
+!TbRxvt*.color3: tnb_orange
+!TbRxvt*.color11: tnb_yellow
+!! Blue + Bright Blue
+!TbRxvt*.color4: tnb_blue
+!TbRxvt*.color12: tnb_blue
+!! Magenta (Purple) + Bright Magenta
+!TbRxvt*.color5: tnb_purple
+!TbRxvt*.color13: #b777e0
+!! Cyan (Aqua) + Bright Cyan
+!TbRxvt*.color6: tnb_aqua
+!TbRxvt*.color14: #54ced6
+!! Light Grey (Selection) + White (Current Line)
+!TbRxvt*.color7: tnb_selection
+!TbRxvt*.color15: tnb_current_line
+
+
 
 
 
@@ -174,8 +460,7 @@ Rxvt*color15: #efefef
 !URxvt*shading: 40
 
 ! scrollback buffer lines - 65535 is max on most machines (64 is default)
-URxvt*saveLines: 12000
-Rxvt*saveLines: 12000
+!URxvt*saveLines: 12000
 
 ! Xft (X FreeType) with Bitstream, DejaVu, Liberation, or Terminus fonts:
 !  Fedora/debian packages: libXft/libxft2 
@@ -184,19 +469,7 @@ Rxvt*saveLines: 12000
 !  your terminal is sluggish. Use only ONE of the Xft pairs below:
 !
 
-! Xft: Google Droid fonts
 
-URxvt*font: xft:Droid Sans Mono:pixelsize=12:antialias=true:hinting=true
-URxvt*boldFont: xft:Droid Vera Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
-
-Rxvt*font: xft:Terminus:pixelsize=15
-Rxvt*boldFont: xft:Terminus:bold:pixelsize=15
-!Rxvt*font: 7x14
-!Rxvt*boldFont: 7x14bold
-!Rxvt*font: -*-fixed-medium-r-normal-*-14-*-*-*-*-*-iso8859-1
-!Rxvt*boldFont: -*-fixed-bold-r-normal-*-14-*-*-*-*-*-iso8859-1
-!Rxvt*font: -*-fixed-medium-r-normal-*-14-*-*-*-*-*-iso10646-*
-!Rxvt*boldFont: -*-fixed-bold-r-normal-*-14-*-*-*-*-*-iso10646-*
 
 
 ! Xft: Bitstream fonts
@@ -237,15 +510,6 @@ Rxvt*boldFont: xft:Terminus:bold:pixelsize=15
 !URxvt*background: Blue
 
 
-! scrollbar - true (default) or false
-URxvt*scrollBar: true
-
-! scrollbar position - left=false (default) or right=true
-URxvt*scrollBar_right: false
-
-! scrollbar style - rxvt (default), plain, next, or xterm
-!URxvt*scrollstyle: rxvt
-URxvt*scrollstyle: next
 
 !!
 ! urxvt
@@ -274,8 +538,6 @@ URxvt*scrollstyle: next
 ! URxvt*buffered: boolean
 
 ! Create the window with the specified X window geometry [default 80x24]; option -geometry.
-URxvt*geometry: 92x35
-Rxvt*geometry: 92x35
 
 ! Use the specified colour as the windows background colour [default White]; option -bg.
 ! URxvt*background: colour

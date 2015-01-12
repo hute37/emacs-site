@@ -1,0 +1,72 @@
+# -- Conky settings -- #
+background no
+update_interval 1
+ 
+cpu_avg_samples 2
+net_avg_samples 2
+ 
+override_utf8_locale yes
+ 
+double_buffer yes
+no_buffers yes
+ 
+text_buffer_size 2048
+imlib_cache_size 0
+ 
+# -- Window specifications -- #
+ 
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorate,skip_taskbar,skip_pager,below
+ 
+border_inner_margin 0
+border_outer_margin 0
+ 
+minimum_size 1100 1000
+maximum_width 1070
+ 
+alignment tr
+gap_x 10
+gap_y 0
+ 
+# -- Graphics settings -- #
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+ 
+# -- Text settings -- #
+use_xft yes
+xftfont Radio Space:size=8.5
+xftalpha 0.8
+ 
+uppercase no
+ 
+default_color FFFFFF
+ 
+TEXT
+${goto 450}${image ~/.conky/e.png -p 600,30 -s 60x75}${voffset 40}${font anorexia 05_53:size=30}${alignr}${time %H.%M}${font}
+${goto 700}${hr 2}
+${goto 15}${color #f8df58}${font Poky:pixelsize=14}x${color #f8df58}${font}  DATA ${color}${goto 350}${font hooge 05_53:size=14}${alignr}${time %A, %d %B %Y}${font}
+${goto 18}${font anorexia:size=16}x ${font} HDD ${acpitemp} C ${goto 255}${font weather:size=16}z ${font}GPU ${nvidia temp} C ${goto 450}${font StyleBats:size=14}P${font}   Uptime: ${uptime_short}${goto 700}${color #f8df58}${font OpenLogos:size=17}J${color #f8df58}${font}   WEATHER $stippled_hr
+
+${goto 600}${execpi 1800 python ~/.conky/conkyForecast.py --location=INXX0012 --template=~/.conky/conky3Days.template}
+${voffset -325}${goto 13}${font PizzaDude Bullets:size=12}v${font}   Up Speed: ${upspeed wlan0} ${goto 250}${font VariShapes Solid:size=12}q ${font}Total Up: ${totalup wlan0}${goto 450}${font StyleBats:size=16}8${font}${goto 480}Bat: ${battery BAT1}
+${goto 13}${font PizzaDude Bullets:size=12}r${font}   Down Speed: ${downspeed wlan0} ${goto 250}${font VariShapes Solid:size=12}Q ${font}Total Down: ${totaldown wlan0}${goto 450}${font StyleBats:size=14}8${font}   WiFi: ${wireless_essid wlan0} : ${wireless_link_qual wlan0}%
+${goto 15}${color ffffff}${font StyleBats:size=12}A${font}   CPU0: ${cpu cpu0}% ${cpubar 7,100 cpu0}${goto 250}${font anoeyia:size=12}A${font}   CPU1: ${cpu cpu1}% ${cpubar 7,100 cpu1}${goto 450}${font anorexia:size=12}J${font}   RAM: $memperc% ${goto 570} SWAP: $swapperc%
+
+${goto 13}${color #F8DF58}${font Poky:size=15}a${font}   PROCESSES${goto 370}${font Poky:pixelsize=17}y${goto 400}${font}DISKS${color}
+${goto 45}${font anorexia:size=9}Name ::. ${goto 170}PID${goto 225}CPU%${goto 280}MEM%${goto 400}${color #badcdd}Root:  ${fs_bar 7,100 /}${goto 570}${fs_free /} / ${fs_size /}
+${goto 45}${color #badcdd}${top name 1} ${goto 170}${top pid 1}${goto 225}${top cpu 1}${goto 280}${top mem 1}${goto 400}Home:  ${fs_bar 7,100 /home}${goto 570}${fs_free /home} / ${fs_size /home}
+${goto 45}${color #badcdd}${top name 2} ${goto 170}${top pid 2}${goto 225}${top cpu 2}${goto 280}${top mem 2}${goto 400}Vaio1:   ${fs_bar 7,100 /media/Vaio1}${goto 570}${fs_free /media/Vaio1}/ ${fs_size /media/Vaio1}
+${goto 45}${color #badcdd}${top name 3} ${goto 170}${top pid 3}${goto 225}${top cpu 3}${goto 280}${top mem 3}${goto 400}Vaio2:  ${fs_bar 7,100 /media/Vaio2}${goto 570}${fs_free /media/Vaio2}/ ${fs_size /media/Vaio2}${font}${goto 800}${voffset 10}${stippled_hr}
+
+${goto 13}${voffset -10}${color #f8df58}${font Poky:size=13}d${font}   CALENDAR${color}
+${goto 45}${font DejaVu Sans Mono:size=7}${execi 1800 gcalcli --nc --cals=owner calw 2}${font}
+   
+${goto 700}${voffset -20}${color F8DF58}${font anorexia:size=18}@${font}   EMAILS $stippled_hr
+${goto 700}${font Liberation Serif:size=10}${execi 1800 perl ~/.conky/gmail.pl e}${font}
+
+
+   
