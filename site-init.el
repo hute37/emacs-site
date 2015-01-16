@@ -1848,7 +1848,7 @@ $" nil t))
 			"9x15"
 			"10x20"
 			"monospace-11"
-			"Droid Sans Mono-11"
+;;			"Droid Sans Mono-11"
 ;;			"Inconsolata-12"
 	))
      (setq initial-frame-alist
