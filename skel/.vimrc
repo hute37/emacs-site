@@ -21,6 +21,7 @@ set nocompatible
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
+if v:progname =~? "vim"
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
 else
@@ -29,6 +30,10 @@ else
 endif
 set backupdir=~/.backups/vim//,.
 set backupcopy=yes
+else
+  set nobackup		" do not keep a backup file, use versions instead
+endif
+
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
@@ -45,9 +50,12 @@ map Q gq
 inoremap <C-U> <C-G>u<C-U>
 
 " In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-  set mouse=a
+if v:progname =~? "vim"
+ if has('mouse')
+   set mouse=a
+ endif
 endif
+
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
