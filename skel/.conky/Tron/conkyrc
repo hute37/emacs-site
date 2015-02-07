@@ -103,11 +103,15 @@ ${goto 90}${font Ubuntu:size=7,weight:normal}${color2}${tcp_portmon 1 65535 rip 
 ${goto 90}${font Ubuntu:size=7,weight:normal}${color2}${tcp_portmon 1 65535 rip 13}${alignr 1}${tcp_portmon 1 65535 rport 13}
 ${goto 90}${font Ubuntu:size=7,weight:normal}${color2}${tcp_portmon 1 65535 rip 14}${alignr 1}${tcp_portmon 1 65535 rport 14}
 
-${voffset 2}
-${goto -190}${font Ubuntu:size=7,weight:bold}${color}RSS
 ${voffset 1}
-${goto -190}${font Ubuntu:size=7,weight:normal}${color}${rss https://bbs.archlinux.org/extern.php?action=feed&type=rss 1 item_titles 6}
+${goto -190}${font Ubuntu:size=8,weight:bold}${color}RSS
 ${voffset 1}
-${goto -190}${font Ubuntu:size=7,weight:normal}${color}${rss https://planet.archlinux.org/rss20.xml 1 item_titles 8 }
+${goto -190}${font Ubuntu:size=8,weight:normal}${color}${rss http://rss.slashdot.org/slashdot/Slashdot 1 item_titles 5}
+${voffset 1}
+${goto -190}${font Ubuntu:size=8,weight:normal}${color}${rss http://feeds.feedburner.com/hn500points 1 item_titles 5}
+#${voffset 1}
+#${goto -190}${font Ubuntu:size=7,weight:normal}${color}${rss https://bbs.archlinux.org/extern.php?action=feed&type=rss 1 item_titles 6}
+#${voffset 1}
+#${goto -190}${font Ubuntu:size=7,weight:normal}${color}${rss https://planet.archlinux.org/rss20.xml 1 item_titles 8 }
 
 
