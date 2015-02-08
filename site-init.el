@@ -278,7 +278,7 @@
 (message "SITE:AUTOLOAD.misc")
 ;; ---( all )---------------------------------------------------------
 
-(load "all")                            ;; xedit all
+;;(load "all")                            ;; xedit all
 
 ;; ---( mode-compile )-----------------------------------------------------
 
@@ -317,7 +317,7 @@
 
 ;; ---( Custom Fonts )----------------------------------------------------
 
-(require 'ergo-font)
+;;(require 'ergo-font)
 
 
 ;; ---( Color )-----------------------------------------------------------
@@ -1564,20 +1564,22 @@ $" nil t))
 ;; ---( Numeric )--------------------------------------------------------
 
 ;;(define-key esc-map "1" 'color-theme-select )
-(define-key esc-map "2" 'ergo-font-select )
-(define-key esc-map "3" 'bury-buffer)
-(define-key esc-map "4" 'delete-other-windows)
-(define-key esc-map "5" 'other-frame )
-(define-key esc-map "6" 'other-window )
-(define-key esc-map "7" 'ergo-font-small-frame ) ;;mouse-set-font
-(define-key esc-map "8" 'speedbar )
-(define-key esc-map "9" 'describe-mode )
-(define-key esc-map "0" 'delete-other-windows )
+;;(define-key esc-map "2" 'ergo-font-select )
+;;(define-key esc-map "3" 'bury-buffer)
+;;(define-key esc-map "4" 'delete-other-windows)
+;;(define-key esc-map "5" 'other-frame )
+;;(define-key esc-map "6" 'other-window )
+;;(define-key esc-map "7" 'ergo-font-small-frame ) ;;mouse-set-font
+;;(define-key esc-map "8" 'speedbar )
+;;(define-key esc-map "9" 'describe-mode )
+;;(define-key esc-map "0" 'delete-other-windows )
 
 
 ;; ---( Jump )------------------------------------------------------------
 
-(define-key esc-map "n" 'goto-line )
+
+;;(define-key esc-map "n" 'goto-line )
+;;(define-key esc-map "g" 'goto-line )
 
 ;; ---( CUA Clipboard )---------------------------------------------------
 
@@ -1618,12 +1620,6 @@ $" nil t))
 
 
 
-
-
-
-
-
-
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @LAYOUT
 ;;;////////////////////////////////////////////////////////////////
@@ -1632,8 +1628,6 @@ $" nil t))
 (cond
  ((eq z-emacs-type 'fsf_emacs);; GNU-Emacs
   (progn
-
-
 
 
 
@@ -1917,6 +1911,139 @@ $" nil t))
 ;;;
 ;;;
 ;;;
+
+
+;;;////////////////////////////////////////////////////////////////
+;;;  @MSTEMACS
+;;;////////////////////////////////////////////////////////////////
+(message "SITE:MSTEMACS")
+
+;; from Mastering Emacs site
+
+
+;; ---( ido )--------------------------------------
+
+(require 'ido)
+
+(global-set-key (kbd "M-i") 'ido-goto-symbol)
+
+;; ---( isearch word at point )--------------------------------------
+
+(defvar smart-use-extended-syntax nil
+  "If t the smart symbol functionality will consider extended
+syntax in finding matches, if such matches exist.")
+
+(defvar smart-last-symbol-name ""
+  "Contains the current symbol name.
+
+This is only refreshed when `last-command' does not contain
+either `smart-symbol-go-forward' or `smart-symbol-go-backward'")
+
+(make-local-variable 'smart-use-extended-syntax)
+
+(defvar smart-symbol-old-pt nil
+  "Contains the location of the old point")
+
+(defun smart-symbol-goto (name direction)
+  "Jumps to the next NAME in DIRECTION in the current buffer.
+
+DIRECTION must be either `forward' or `backward'; no other option
+is valid."
+
+  ;; if `last-command' did not contain
+  ;; `smart-symbol-go-forward/backward' then we assume it's a
+  ;; brand-new command and we re-set the search term.
+  (unless (memq last-command '(smart-symbol-go-forward
+                               smart-symbol-go-backward))
+    (setq smart-last-symbol-name name))
+  (setq smart-symbol-old-pt (point))
+  (message (format "%s scan for symbol \"%s\""
+                   (capitalize (symbol-name direction))
+                   smart-last-symbol-name))
+  (unless (catch 'done
+            (while (funcall (cond
+                             ((eq direction 'forward) ; forward
+                              'search-forward)
+                             ((eq direction 'backward) ; backward
+                              'search-backward)
+                             (t (error "Invalid direction"))) ; all others
+                            smart-last-symbol-name nil t)
+              (unless (memq (syntax-ppss-context
+                             (syntax-ppss (point))) '(string comment))
+                (throw 'done t))))
+    (goto-char smart-symbol-old-pt)))
+
+(defun smart-symbol-go-forward ()
+  "Jumps forward to the next symbol at point"
+  (interactive)
+  (smart-symbol-goto (smart-symbol-at-pt 'end) 'forward))
+
+(defun smart-symbol-go-backward ()
+  "Jumps backward to the previous symbol at point"
+  (interactive)
+  (smart-symbol-goto (smart-symbol-at-pt 'beginning) 'backward))
+
+(defun smart-symbol-at-pt (&optional dir)
+  "Returns the symbol at point and moves point to DIR (either `beginning' or `end') of the symbol.
+
+If `smart-use-extended-syntax' is t then that symbol is returned
+instead."
+  (with-syntax-table (make-syntax-table)
+    (if smart-use-extended-syntax
+        (modify-syntax-entry ?. "w"))
+    (modify-syntax-entry ?_ "w")
+    (modify-syntax-entry ?- "w")
+    ;; grab the word and return it
+    (let ((word (thing-at-point 'word))
+          (bounds (bounds-of-thing-at-point 'word)))
+      (if word
+          (progn
+            (cond
+             ((eq dir 'beginning) (goto-char (car bounds)))
+             ((eq dir 'end) (goto-char (cdr bounds)))
+             (t (error "Invalid direction")))
+            word)
+        (error "No symbol found")))))
+
+;; ---( isearch at word keys )-----------------------------------------
+
+(global-set-key (kbd "M-n") 'smart-symbol-go-forward)
+(global-set-key (kbd "M-p") 'smart-symbol-go-backward)
+
+
+
+;; ---( etags/ido )--------------------------------------
+
+(require 'etags)
+(defun ido-find-tag ()
+  "Find a tag using ido"
+  (interactive)
+  (tags-completion-table)
+  (let (tag-names)
+    (mapc (lambda (x)
+	    (unless (integerp x)
+	      (push (prin1-to-string x t) tag-names)))
+	  tags-completion-table)
+    (find-tag (ido-completing-read "Tag: " tag-names))))
+
+(defun ido-find-file-in-tag-files ()
+  (interactive)
+  (save-excursion
+    (let ((enable-recursive-minibuffers t))
+      (visit-tags-table-buffer))
+    (find-file
+     (expand-file-name
+      (ido-completing-read
+       "Project file: " (tags-table-files) nil t)))))
+
+
+
+;; ---( etags/ido keys )---------------------------------------
+
+(global-set-key [remap find-tag] 'ido-find-tag)
+(global-set-key (kbd "C-.") 'ido-find-file-in-tag-files)
+
+
 
 
 ;;;////////////////////////////////////////////////////////////////
