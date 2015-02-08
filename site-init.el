@@ -1923,9 +1923,33 @@ $" nil t))
 
 ;; ---( ido )--------------------------------------
 
+
+
+(cond
+ ((eq z-emacs-type 'xemacs) ;; XEmacs
+  (progn
+
+    ))
+ ((eq z-emacs-type 'fsf_emacs);; GNU-Emacs
+  (progn
+
+
+
+
 (require 'ido)
 
 (global-set-key (kbd "M-i") 'ido-goto-symbol)
+
+
+
+
+    ))
+ (t
+  (progn
+    ))
+ )
+
+
 
 ;; ---( isearch word at point )--------------------------------------
 
@@ -2014,6 +2038,18 @@ instead."
 
 ;; ---( etags/ido )--------------------------------------
 
+
+(cond
+ ((eq z-emacs-type 'xemacs) ;; XEmacs
+  (progn
+
+    ))
+ ((eq z-emacs-type 'fsf_emacs);; GNU-Emacs
+  (progn
+
+
+
+
 (require 'etags)
 (defun ido-find-tag ()
   "Find a tag using ido"
@@ -2042,6 +2078,15 @@ instead."
 
 (global-set-key [remap find-tag] 'ido-find-tag)
 (global-set-key (kbd "C-.") 'ido-find-file-in-tag-files)
+
+
+
+
+    ))
+ (t
+  (progn
+    ))
+ )
 
 
 
