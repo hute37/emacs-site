@@ -17,7 +17,9 @@
 ;;(add-to-list 'gnus-secondary-select-methods '(nntp "localhost"))
 (add-to-list 'gnus-secondary-select-methods '(nntp "news.gnus.org"))
      
-(add-to-list 'gnus-secondary-select-methods '(nnml ""))
+(add-to-list 'gnus-secondary-select-methods '(nntp "news.gwene.org"))
+
+;;(add-to-list 'gnus-secondary-select-methods '(nnml ""))
      
 ;;(setq mail-sources '((pop :server "pop.provider.org" :user "you" :password "secret")))
 
