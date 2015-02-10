@@ -1,0 +1,26 @@
+#Arkid by rent0n | rent0n86.deviantart.com
+
+style "smoke-window"
+{
+    bg[NORMAL] = "#BEBB9B" 
+    XfceNotifyWindow::border-color = "#FFFFFF"
+    XfceNotifyWindow::border-radius = 0.0
+    XfceNotifyWindow::border-width = 0.0
+}
+class "XfceNotifyWindow" style "smoke-window"
+
+style "smoke-button"
+{
+    bg[NORMAL] = "#BEBB9B"
+    bg[PRELIGHT] = "#BEBB9B"
+    fg[NORMAL] = "#FFFFFF"
+    fg[PRELIGHT] = "#FFFFFF"
+}
+widget_class "XfceNotifyWindow.*.GtkButton*" style "smoke-button"
+
+style "smoke-text"
+{
+    fg[NORMAL] = "#FFFFFF"
+    GtkWidget::link-color = "#606060"
+}
+widget_class "XfceNotifyWindow.*.<GtkLabel>" style "smoke-text"

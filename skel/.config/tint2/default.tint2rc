@@ -6,19 +6,19 @@
 # ID 1
 rounded = 0
 border_width = 2
-background_color = #070809 21
+background_color = #000000 100
 border_color = #2AB3B6 100
 
 # ID 2
 rounded = 0
 border_width = 1
-background_color = #070809 40
+background_color = #000000 100
 border_color = #2AB3B6 100
 
 # ID 3
 rounded = 0
 border_width = 3
-background_color = #070809 40
+background_color = #000000 100
 border_color = #2AB3B6 100
 
 # ID 4

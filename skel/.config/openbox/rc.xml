@@ -39,7 +39,7 @@
   </placement>
   <theme>
     <name>Tron</name>
-    <titleLayout>NDLIMC</titleLayout>
+    <titleLayout>DLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
       N: window icon
@@ -330,13 +330,49 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
-    <keybind key="W-e">
+    <keybind key="W-x">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>Konqueror</name>
+          <name>urxvt</name>
         </startupnotify>
-        <command>kfmclient openProfile filemanagement</command>
+        <command>urxvt</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-x">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>xterm</name>
+        </startupnotify>
+        <command>xterm</command>
+      </action>
+    </keybind>
+    <keybind key="W-C-x">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>gnome-terminal</name>
+        </startupnotify>
+        <command>gnome-terminal || mate-terminal</command>
+      </action>
+    </keybind>
+    <keybind key="W-A-x">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>terminator</name>
+        </startupnotify>
+        <command>terminator</command>
+      </action>
+    </keybind>
+    <keybind key="W-r">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>dmemu</name>
+        </startupnotify>
+        <command>dmenu_run</command>
       </action>
     </keybind>
   </keyboard>
