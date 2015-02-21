@@ -2263,13 +2263,25 @@ instead."
 ))
 
 
-
-
 (dolist (spec term-function-key-alist)
   (define-key term-raw-map
     (read-kbd-macro (format "<%s>" (car spec)))
     'term-send-function-key))
 
+ 
+    ))
+ )
+
+
+
+
+(cond
+ ((string-lessp emacs-version "22.0") 
+  (progn
+
+    ))
+ (t
+  (progn
 
 
 ;; http://oremacs.com/2015/01/10/dired-ansi-term/
