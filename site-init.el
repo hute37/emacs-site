@@ -465,6 +465,16 @@
 ;;(setq auto-revert-interval 5) ;--- check interval: 5 sec. -------------
 
 
+
+
+;; ---( Dired )-------------------------------------------------------
+
+;; http://oremacs.com/2015/01/10/dired-ansi-term/
+(require 'dired-x)
+
+;; Split window default target
+(setq dired-dwim-target t)
+
 ;; ---( Grep )--------------------------------------------------------
 
 ;; Ignore case by default:
@@ -2186,7 +2196,7 @@ instead."
   (progn
 
     ))
- ((not t)
+ (t ;;(not t)
   (progn
 
     (require 'multi-term)
@@ -2199,7 +2209,7 @@ instead."
 (add-hook 'term-mode-hook 
 	  (lambda()
 	    (global-unset-key (kbd "C-r"))
-	    (color-theme-z-term)
+	    ;;(color-theme-z-term)
 ;	    (local-unset-key (kbd "C-r"))
 	    (message "%s" "This is in term mode and hook enabled.")
 ))
@@ -2259,6 +2269,68 @@ instead."
   (define-key term-raw-map
     (read-kbd-macro (format "<%s>" (car spec)))
     'term-send-function-key))
+
+
+
+;; http://oremacs.com/2015/01/10/dired-ansi-term/
+
+(defun terminal () 
+  "Switch to terminal. Launch if nonexistent." 
+  (interactive) 
+  (if (get-buffer "*ansi-term*") 
+      (switch-to-buffer "*ansi-term*") 
+    (ansi-term "/bin/bash")) 
+  (get-buffer-process "*ansi-term*")) 
+
+(defun named-term (name) 
+  (interactive "sName: ") 
+  (ansi-term "/bin/bash" name))
+
+(defun z-terminal () 
+  "Switch to terminal. Launch if nonexistent." 
+  (interactive) 
+  (if (get-buffer "*ansi-term*") 
+      (switch-to-buffer "*ansi-term*") 
+    (ansi-term "/bin/zsh")) 
+  (get-buffer-process "*ansi-term*")) 
+
+(defun z-named-term (name) 
+  (interactive "sName: ") 
+  (ansi-term "/bin/zsh" name))
+
+(defalias 'tt 'terminal) 
+(defalias 'ttn 'named-term)
+
+(defalias 'zz 'z-terminal) 
+(defalias 'zzn 'z-named-term)
+
+
+
+(defun dired-open-term () 
+  "Open an `ansi-term' that corresponds to current directory." 
+  (interactive) 
+  (let ((current-dir (dired-current-directory))) 
+    (term-send-string (terminal) 
+		      (if (file-remote-p current-dir) 
+			  (let ((v (tramp-dissect-file-name current-dir t))) 
+			    (format "ssh %s@%s\n" (aref v 1) (aref v 2))) 
+			(format "cd '%s'\n" current-dir)))))
+
+
+ 
+(defun dired-open-eshell () 
+  (interactive) 
+  (eshell-cmd 
+   (format "cd %s" 
+	   (expand-file-name default-directory))))
+
+(define-key dired-mode-map (kbd "`") 'dired-open-term) 
+(define-key dired-mode-map (kbd "'") 'dired-open-eshell)
+
+(global-set-key (kbd "M-t") 'terminal)
+
+
+
 
 
 
