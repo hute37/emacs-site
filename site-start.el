@@ -78,6 +78,12 @@ determine this.")
 (setq emacs-site-path (concat emacs-site-home "emacs-site/"))
 
 
+(cond
+ ((string-lessp emacs-version "29.9") ;; 
+  (progn
+    (message "SITE:ADDONS.include")
+
+
 (setq load-path 
       (append load-path 
 	      (list 
@@ -103,6 +109,21 @@ determine this.")
         (lambda ()
 	      (setq Info-additional-directory-list Info-default-directory-list)
 	      ))
+
+
+    
+
+    
+    ))
+ (t
+  (progn
+	(message "SITE:ADDONS.skip")
+
+
+    ))
+)
+
+
 
 
 

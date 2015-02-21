@@ -2196,7 +2196,7 @@ instead."
   (progn
 
     ))
- (t ;;(not t)
+ ((not t)
   (progn
 
     (require 'multi-term)
