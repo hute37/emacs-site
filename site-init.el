@@ -2284,7 +2284,10 @@ instead."
   (progn
 
 
-;; http://oremacs.com/2015/01/10/dired-ansi-term/
+    ;; http://oremacs.com/2015/01/10/dired-ansi-term/
+
+;;(setq explicit-shell-file-name "/bin/bash")
+    
 
 (defun terminal () 
   "Switch to terminal. Launch if nonexistent." 
@@ -2316,6 +2319,21 @@ instead."
 (defalias 'zz 'z-terminal) 
 (defalias 'zzn 'z-named-term)
 
+(defun oleh-term-exec-hook ()
+  (let* ((buff (current-buffer))
+         (proc (get-buffer-process buff)))
+    (set-process-sentinel
+     proc
+     `(lambda (process event)
+        (if (string= event "finished\n")
+            (kill-buffer ,buff))))))
+
+(add-hook 'term-exec-hook 'oleh-term-exec-hook)
+
+
+(eval-after-load "term"
+  '(define-key term-raw-map (kbd "C-c C-y") 'term-paste))
+
 
 
 (defun dired-open-term () 
@@ -2323,6 +2341,17 @@ instead."
   (interactive) 
   (let ((current-dir (dired-current-directory))) 
     (term-send-string (terminal) 
+		      (if (file-remote-p current-dir) 
+			  (let ((v (tramp-dissect-file-name current-dir t))) 
+			    (format "ssh %s@%s\n" (aref v 1) (aref v 2))) 
+			(format "cd '%s'\n" current-dir)))))
+
+
+(defun dired-open-z-term () 
+  "Open an `ansi-term' that corresponds to current directory." 
+  (interactive) 
+  (let ((current-dir (dired-current-directory))) 
+    (term-send-string (z-terminal) 
 		      (if (file-remote-p current-dir) 
 			  (let ((v (tramp-dissect-file-name current-dir t))) 
 			    (format "ssh %s@%s\n" (aref v 1) (aref v 2))) 
@@ -2337,6 +2366,8 @@ instead."
 	   (expand-file-name default-directory))))
 
 (define-key dired-mode-map (kbd "`") 'dired-open-term) 
+(define-key dired-mode-map (kbd "é") 'dired-open-term) 
+(define-key dired-mode-map (kbd "è") 'dired-open-z-term) 
 (define-key dired-mode-map (kbd "'") 'dired-open-eshell)
 
 (global-set-key (kbd "M-t") 'terminal)
