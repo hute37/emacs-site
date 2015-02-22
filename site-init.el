@@ -935,7 +935,7 @@ $" nil t))
 (cond
  ((string-lessp emacs-version "24.3") ;; 
   (progn
-    (message "SITE:UI:skip powerline")
+    (message "SITE:powerline skip")
     ))
  (t
   (progn
@@ -966,7 +966,7 @@ $" nil t))
     ;;(powerline-default-theme)
      
     
-    (message "SITE:UI:powerline")
+    (message "SITE:powerline done")
     
     ))
 )
@@ -2421,6 +2421,53 @@ instead."
 
     ))
  )
+
+;; ;; ---( Pretty-Lambdas )---------------------------------------------------------------
+
+(cond
+ ((string-lessp emacs-version "24.3") ;; 
+  (progn
+    (message "SITE:pretty-lambda skip")
+    ))
+ (t
+  (progn
+
+    (require 'pretty-lambdada)
+    (global-pretty-lambda-mode)
+    
+    (message "SITE:pretty-lambda done")
+    
+    ))
+)
+
+
+;; ---( Jumpc )---------------------------------------------------------------
+
+
+(cond
+ ((string-lessp emacs-version "24.3") ;; 
+  (progn
+    (message "SITE:jumpc skip")
+    ))
+ (t
+  (progn
+
+    (require 'jumpc)
+    (jumpc)
+    ;;
+    ;; Then either:
+    ;;
+    (jumpc-bind-vim-key)
+    ;;
+    ;; Or:
+    ;;
+    ;; (global-set-key (kbd "<f8>") 'jumpc-jump-backward)
+    ;; (global-set-key (kbd "<f9>") 'jumpc-jump-forward)
+    
+    (message "SITE:jumpc done")
+    
+    ))
+)
 
 
 ;; ;; ---( Sunrise )---------------------------------------------------------------
