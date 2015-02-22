@@ -931,6 +931,44 @@ $" nil t))
     ))
  )
 
+
+(cond
+ ((string-lessp emacs-version "22.0") ;; 
+  (progn
+    (message "SITE:UI:skip powerline")
+    ))
+ (t
+  (progn
+
+    ;; powerine
+    ;; smart-mode-line
+    ;; smart-mode-line-powerline-theme
+    (require 'powerline)
+
+    (require 'smart-mode-line)
+    (setq sml/theme 'powerline)
+    (sml/setup)
+
+    (sml/apply-theme 'powerline)
+    ;;(sml/apply-theme 'dark)
+    ;;(sml/apply-theme 'light)
+    ;;(sml/apply-theme 'respectful)
+    ;;(sml/apply-theme 'automatic)
+
+    ;;(powerline-default-theme)
+     
+    (set-face-attribute 'mode-line nil
+			:foreground "Black"
+			:background "DarkOrange"
+			:box nil)
+    
+    (message "SITE:UI:powerline")
+    
+    ))
+)
+
+
+
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @FRAME L&F
 ;;;////////////////////////////////////////////////////////////////
