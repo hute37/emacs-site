@@ -933,7 +933,7 @@ $" nil t))
 
 
 (cond
- ((string-lessp emacs-version "22.0") ;; 
+ ((string-lessp emacs-version "24.3") ;; 
   (progn
     (message "SITE:UI:skip powerline")
     ))
@@ -945,11 +945,19 @@ $" nil t))
     ;; smart-mode-line-powerline-theme
     (require 'powerline)
 
-    (require 'smart-mode-line)
-    (setq sml/theme 'powerline)
-    (sml/setup)
+    (set-face-attribute 'mode-line nil
+			:foreground "Black"
+			:background "DarkOrange"
+			:box nil)
 
-    (sml/apply-theme 'powerline)
+    (powerline-default-theme)
+
+;;    (require 'smart-mode-line)
+;;    (setq sml/theme 'powerline)
+;;    (load-theme 'smart-mode-line-powerline t)
+;;    (sml/setup)
+
+    ;;(sml/apply-theme 'powerline)
     ;;(sml/apply-theme 'dark)
     ;;(sml/apply-theme 'light)
     ;;(sml/apply-theme 'respectful)
@@ -957,10 +965,6 @@ $" nil t))
 
     ;;(powerline-default-theme)
      
-    (set-face-attribute 'mode-line nil
-			:foreground "Black"
-			:background "DarkOrange"
-			:box nil)
     
     (message "SITE:UI:powerline")
     
