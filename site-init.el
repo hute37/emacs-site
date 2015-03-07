@@ -1,7 +1,11 @@
-;;; $Id: site-init.el,v 1.37 2008-03-05 23:32:27 hute37 Exp $
+;;; $Id: site-init.el,v 1.38 2015-03-07 15:47:51 hute37 Exp $
 
 ;;;
-;;; $Revision: 1.37 $
+;;; $Revision: 1.38 $
+;;;
+;;; $Log: site-init.el,v $
+;;; Revision 1.38  2015-03-07 15:47:51  hute37
+;;; maint branch at v24.4.1
 ;;;
 ;;; $Log: site-init.el,v $
 ;;; Revision 1.37  2008-03-05 23:32:27  hute37
