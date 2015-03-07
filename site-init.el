@@ -933,7 +933,7 @@ $" nil t))
 
 
 (cond
- ((string-lessp emacs-version "24.3") ;; 
+ ((string-lessp emacs-version "94.3") ;; 
   (progn
     (message "SITE:powerline skip")
     ))
@@ -2425,7 +2425,7 @@ instead."
 ;; ;; ---( Pretty-Lambdas )---------------------------------------------------------------
 
 (cond
- ((string-lessp emacs-version "24.3") ;; 
+ ((string-lessp emacs-version "94.3") ;; 
   (progn
     (message "SITE:pretty-lambda skip")
     ))
@@ -2445,7 +2445,7 @@ instead."
 
 
 (cond
- ((string-lessp emacs-version "24.3") ;; 
+ ((string-lessp emacs-version "94.3") ;; 
   (progn
     (message "SITE:jumpc skip")
     ))
