@@ -940,6 +940,7 @@ $" nil t))
  (t
   (progn
 
+    (require 'cl-lib)
     ;; powerine
     ;; smart-mode-line
     ;; smart-mode-line-powerline-theme
@@ -965,6 +966,7 @@ $" nil t))
 
     ;;(powerline-default-theme)
      
+    (powerline-reset)
     
     (message "SITE:powerline done")
     
