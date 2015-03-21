@@ -49,6 +49,12 @@
 ;; @see: http://pages.sachachua.com/.emacs.d/Sacha.html
 
 
+;; ---( Encoding )--------------------------------------------------------
+
+(prefer-coding-system 'utf-8)
+(when (display-graphic-p)
+  (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
+
 ;; ---( Backup )--------------------------------------------------------
 
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
@@ -78,11 +84,12 @@
 
 ;; ---( util )---------------------------------------------------------
 
-;; Replace "yes or no" with y or n
-(defun yes-or-no-p (arg)
-  "An alias for y-or-n-p, because I hate having to type 'yes' or 'no'."
-  (y-or-n-p arg))
+;;;; Replace "yes or no" with y or n
+;;(defun yes-or-no-p (arg)
+;;  "An alias for y-or-n-p, because I hate having to type 'yes' or 'no'."
+;;  (y-or-n-p arg))
 
+(fset 'yes-or-no-p 'y-or-n-p)
 
 ;; ---( site.edit: end )-------------------------------------------------------
 (message "SITE:EDIT - end")

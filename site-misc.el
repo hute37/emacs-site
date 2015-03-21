@@ -7,8 +7,9 @@
 
 ;;; Setup registers for files I commonly edit.
 (set-register ?e '(file . "~/.emacs"))
+(set-register ?h '(file . "~/Dropbox/Todo/mine.org"))
+(set-register ?t '(file . "~/Dropbox/Todo/todo.org"))
 ;; (set-register ?m '(file . "/home/eric/Temp/mail.md"))
-;; (set-register ?t '(file . "/home/eric/.todo.org"))
 ;; (set-register ?j '(file . "/tmp/Entry.jrnl.txt"))
 
 
