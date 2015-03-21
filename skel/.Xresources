@@ -34,13 +34,59 @@ Xft.hintstyle:  hintslight
 ! xterm
 !
 
+! @see: https://wiki.archlinux.org/index.php/Xterm
+! @see: http://linux.die.net/man/1/xterm
+!
+!
+!  appres XTerm xterm
+!  xrdb -q| grep -i font
+
 XTerm*visualBell: True
+xterm*bellIsUrgent: true
 
 ! Use the specified colour as the windows background colour [default White]; option -bg.
 XTerm*background: #000000
 
 ! Use the specified colour as the windows foreground colour [default Black]; option -fg.
 XTerm*foreground: #00ffff
+
+! UTF-8
+
+XTerm*locale: true
+
+! meta
+XTerm*metaSendsEscape: true
+
+! color
+xterm*termName: xterm-256color
+Xterm*termName: xterm-256color
+
+
+! scrolling
+
+Xterm*saveLines: 8192
+
+! geometry
+!xterm*VT100.geometry: 92x32
+
+! fonts
+XTerm*renderFont: false
+!xterm*faceName: Droid Sans Mono:size=10:antialias=true
+!xterm*font: 7x13
+xterm*font: fixed
+
+! Forbid bold font faces; bold type is light blue.
+XTerm*colorBDMode: true
+XTerm*colorBD: rgb:82/a4/d3
+! ! Do not underscore text, underlined text is white.
+XTerm*colorULMode: true
+XTerm*colorUL: rgb:e4/e4/e4
+
+
+
+XTerm.VT100.translations: #override \
+Meta <Key> KP_Subtract: smaller-vt-font() \n\
+Meta <Key> KP_Add: larger-vt-font() \n\
 
 !!
 ! rxvt
