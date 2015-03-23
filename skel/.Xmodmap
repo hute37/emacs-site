@@ -46,14 +46,16 @@ add mod4    = Super_L Super_R
 add control = Control_L Control_R
 
 
+! add mod5 = ISO_Level3_Shift Mode_Switch Caps_Lock
+
 !------------------------------------------
 ! Caps_Lock becomes an additional BackSpace
 !------------------------------------------
-clear mod5
+clear mod3
 !remove lock = Caps_Lock
 clear Lock
 keycode  66 = Hyper_L
 !keysym Caps_Lock = Hyper_L
-add mod5 = Hyper_L
+add mod3 = Hyper_L
 !keysym Caps_Lock = BackSpace
 
