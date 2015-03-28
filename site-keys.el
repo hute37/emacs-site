@@ -456,32 +456,54 @@
 (define-key global-map [begin]	'recenter)
 (define-key global-map [(control kp-begin)] '(lambda () (interactive) (recenter 0)))
 
-;; ---( comment )----------------------------------------------------
+;; ---( brief )--------------------------------------------------------
 
-(define-key global-map [(control kp-divide)]	'comment-region)
-(define-key global-map [(meta kp-divide)]	'uncomment-region)
+(define-key global-map [kp-divide]     'push-mark-command)
+(define-key global-map [kp-multiply]   'pop-to-mark-command)
+(define-key global-map [kp-subtract]   'kill-region)
+(define-key global-map [kp-add]        'kill-ring-save)
+(define-key global-map [kp-enter]      'yank)
+(define-key global-map [kp-insert]     'yank)
+
+(define-key global-map [kp-delete]             'undo)
+(define-key global-map [(meta kp-delete)]   'repeat-complex-command) ;; ctrl-x esc esc
+;; requires redo, redo+ or undo-tree
+;;(define-key global-map [(control kp-delete)]   'redo)
 
 ;; ---( rect )----------------------------------------------------
 
-(define-key global-map [(control kp-add)] 'kill-rectangle)
-(define-key global-map [(control kp-subtract)] 'delete-rectangle)
-(define-key global-map [(control kp-enter)] 'yank-rectangle)
-(global-set-key [kp-subtract]
-  '(lambda () (interactive)
-	  (copy-rectangle-to-register ?r (region-beginning) (region-end) t )))
-(global-set-key [kp-add]
-  '(lambda () (interactive)
-	  (copy-rectangle-to-register ?r (region-beginning) (region-end))))
-(global-unset-key [kp-enter])
-(global-set-key [kp-enter]
-  '(lambda () (interactive)
-	  (insert-register ?r)
-	  (let ((col (current-column)))
-		 (forward-line)
-		 (move-to-column col t))))
-(global-set-key [(meta kp-enter)]
-  '(lambda () (interactive)
-	  (insert-register ?r)))
+(define-key global-map [(control kp-divide)]       'open-rectangle)
+(define-key global-map [(control meta kp-divide)]  'clear-rectangle)
+(define-key global-map [(control kp-multiply)]     'replace-rectangle)
+(define-key global-map [(control kp-subtract)]     'kill-rectangle)
+(define-key global-map [(control kp-add)]          'copy-rectangle-as-kill)
+(define-key global-map [(control kp-enter)]        'yank-rectangle)
+(define-key global-map [(control kp-delete)]       'delete-rectangle)
+
+(define-key global-map [(control kp-insert)]
+   '(lambda () (interactive)
+ 	  (progn  
+            (yank-rectangle)
+            (next-line 1 nil)
+            )))
+
+
+;; (global-set-key [kp-subtract]
+;;   '(lambda () (interactive)
+;; 	  (copy-rectangle-to-register ?r (region-beginning) (region-end) t )))
+;; (global-set-key [kp-add]
+;;   '(lambda () (interactive)
+;; 	  (copy-rectangle-to-register ?r (region-beginning) (region-end))))
+;; (global-unset-key [kp-enter])
+;; (global-set-key [kp-enter]
+;;   '(lambda () (interactive)
+;; 	  (insert-register ?r)
+;; 	  (let ((col (current-column)))
+;; 		 (forward-line)
+;; 		 (move-to-column col t))))
+;; (global-set-key [(meta kp-enter)]
+;;   '(lambda () (interactive)
+;; 	  (insert-register ?r)))
 
 ;; ---( edit )----------------------------------------------------
 
