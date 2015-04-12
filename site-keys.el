@@ -451,6 +451,46 @@
 ;; ============================================
 (message "SITE:K-NUMPAD")
 
+
+
+;; ---( line/region )--------------------------------------------------
+
+;; @see: http://ergoemacs.org/emacs/emacs_copy_cut_current_line.html
+;; @see: http://emacswiki.org/emacs/CopyingWholeLines
+
+(defun xah-copy-line-or-region ()
+  "Copy current line, or text selection.
+When `universal-argument' is called first, copy whole buffer (but respect `narrow-to-region')."
+  (interactive)
+  (let (p1 p2)
+    (if (null current-prefix-arg)
+        (progn (if (use-region-p)
+                   (progn (setq p1 (region-beginning))
+                          (setq p2 (region-end)))
+                 (progn (setq p1 (line-beginning-position))
+;;                        (setq p2 (line-end-position)))))
+                        (setq p2 (line-beginning-position 2)))))
+      (progn (setq p1 (point-min))
+             (setq p2 (point-max))))
+    (kill-ring-save p1 p2)))
+
+(defun xah-cut-line-or-region ()
+  "Cut current line, or text selection.
+When `universal-argument' is called first, cut whole buffer (but respect `narrow-to-region')."
+  (interactive)
+  (let (p1 p2)
+    (if (null current-prefix-arg)
+        (progn (if (use-region-p)
+                   (progn (setq p1 (region-beginning))
+                          (setq p2 (region-end)))
+                 (progn (setq p1 (line-beginning-position))
+                        (setq p2 (line-beginning-position 2)))))
+      (progn (setq p1 (point-min))
+             (setq p2 (point-max))))
+    (kill-region p1 p2)))
+
+
+
 ;; ---( center )--------------------------------------------------
 
 (define-key global-map [begin]	'recenter)
@@ -460,10 +500,13 @@
 
 (define-key global-map [kp-divide]     'push-mark-command)
 (define-key global-map [kp-multiply]   'pop-to-mark-command)
-(define-key global-map [kp-subtract]   'kill-region)
-(define-key global-map [kp-add]        'kill-ring-save)
+(define-key global-map [kp-subtract]   'xah-cut-line-or-region)
+(define-key global-map [kp-add]        'xah-copy-line-or-region)
 (define-key global-map [kp-enter]      'yank)
 (define-key global-map [kp-insert]     'yank)
+
+;; @see: http://unix.stackexchange.com/questions/75473/how-to-disable-caps-lock-without-remapping-or-disabling-it
+;; @see: 
 
 ;;(keyboard-translate 176 ?{ ) ;; -es
 (define-key key-translation-map (kbd "<kp-delete>") (kbd "<delete>"))
