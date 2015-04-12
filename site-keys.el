@@ -465,8 +465,11 @@
 (define-key global-map [kp-enter]      'yank)
 (define-key global-map [kp-insert]     'yank)
 
-(define-key global-map [kp-delete]             'undo)
-(define-key global-map [(meta kp-delete)]   'repeat-complex-command) ;; ctrl-x esc esc
+;;(keyboard-translate 176 ?{ ) ;; -es
+(define-key key-translation-map (kbd "<kp-delete>") (kbd "<delete>"))
+
+(define-key global-map [(meta kp-insert)]   'repeat-complex-command) ;; ctrl-x esc esc
+(define-key global-map [(meta kp-delete)]   'undo) ;; ctrl-x esc esc
 ;; requires redo, redo+ or undo-tree
 ;;(define-key global-map [(control kp-delete)]   'redo)
 
