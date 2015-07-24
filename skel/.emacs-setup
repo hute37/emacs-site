@@ -2,12 +2,9 @@
 # emacs site setup
 #
 
-cd; cat .ssh/id_rsa.pub # add to github ...
-
-
 sudo mkdir -p /usr/local/share/emacs/emacs-share
 
-sudo chgrp -R staff /usr/local/share/emacs/emacs-share
+sudo chgrp -R users /usr/local/share/emacs/emacs-share
 
 sudo chmod -R g+w /usr/local/share/emacs/emacs-share
 
@@ -16,7 +13,7 @@ sudo chmod -R g+s /usr/local/share/emacs/emacs-share
 
 cd /usr/local/share/emacs/emacs-share
 
-git clone git@github.com:hute37/emacs-site.git
+git clone --shared --depth 1 git@github.com:hute37/emacs-site.git
 
 #git remote add upstream git@github.com:hute37/emacs-site.git
 #git fetch upstream
@@ -25,6 +22,7 @@ cd ./emacs-site
 
 git config --global core.autocrlf "false"
 git config --global color.ui "auto"
+git config --global push.default simple
 git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit"
 #git config --global alias.meld \!/usr/local/bin/git-meld.pl
 
@@ -51,20 +49,18 @@ ln -s ~/.emacs-site/system/bin ~/bin/site
 
 
 #cat >> ~/.bash_profile 
-if [ -r ~/.emacs-site/skel/.bash_profile-site ]; then
- . ~/.emacs-site/skel/.bash_profile-site
-fi
+echo 'if [ -r ~/.emacs-site/skel/.bash_profile-site ]; then' >> ~/.bash_profile
+echo ' source ~/.emacs-site/skel/.bash_profile-site || true' >> ~/.bash_profile
+echo 'fi' >> ~/.bash_profile
 
 
 
 #cat >> ~/.bash_aliases 
-if [ -r ~/.emacs-site/skel/.bash_aliases-site ]; then
- . ~/.emacs-site/skel/.bash_aliases-site
-fi
+echo 'if [ -r ~/.emacs-site/skel/.bash_aliases-site ]; then' >> ~/.bash_aliases
+echo ' source ~/.emacs-site/skel/.bash_aliases-site || true' >> ~/.bash_aliases
+echo 'fi' >> ~/.bash_aliases
 
-# geany
-cd ~/.emacs-site/
-UBUNTU_MENUPROXY=0 geany &
+
 
 
 ##
@@ -73,9 +69,13 @@ UBUNTU_MENUPROXY=0 geany &
 
 # @see: http://lifehacker.com/5574557/how-to-use-the-fast-and-powerful-mutt-email-client-with-gmail
 
-sudo apt-get install mutt 
+#sudo apt-get install mutt 
 
-mkdir -p ~/.mutt/cache/headers mkdir ~/.mutt/cache/bodies touch ~/.mutt/certificates 
+mkdir -p ~/.mutt/cache/headers mkdir ~/.mutt/cache/bodies touch ~/.mutt/certificates
+
+cd; cat .ssh/id_rsa.pub # add to github ...
+
+
 
 ##
 # fonts
