@@ -1,9 +1,0 @@
-#!/bin/bash
-set -e
-caller=$(ps axww | grep "^ *$$" -B3 | grep " apt-get " | head -n1 | sed 's/^.*\(apt-get .*\)/\1/' )
-git add .
-# git diff --quiet --exit-code --cached || git commit -m"snapshot after: $caller"
-git commit --allow-empty -a -m"snapshot after: $caller"
-#echo "git commit (rc:$?)"
-#exit 0
-

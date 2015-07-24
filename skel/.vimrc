@@ -25,7 +25,8 @@ if v:progname =~? "vim"
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
 else
-  set backup		" keep a backup file (restore to previous version)
+"  set backup		" keep a backup file (restore to previous version)
+  set nobackup		" keep a backup file (restore to previous version)
   set undofile		" keep an undo file (undo changes after closing)
 endif
 set backupdir=~/.backups/vim//,.
@@ -52,7 +53,8 @@ inoremap <C-U> <C-G>u<C-U>
 " In many terminal emulators the mouse works just fine, thus enable it.
 if v:progname =~? "vim"
  if has('mouse')
-   set mouse=a
+"   set mouse=a
+   set mouse=
  endif
 endif
 

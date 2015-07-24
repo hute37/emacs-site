@@ -1,5 +1,0 @@
-#!/bin/bash
-
-echo ".git" >> /etc/.bzrignore
-
-
