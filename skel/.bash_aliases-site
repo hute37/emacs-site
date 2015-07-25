@@ -12,6 +12,8 @@
 # . ~/.bash_aliases-site 
 #fi
 
+[ -x /usr/libexec/mc/mc-wrapper.sh ] && alias mc='. /usr/libexec/mc/mc-wrapper.sh'
+[ -x /usr/share/mc/bin/mc-wrapper.sh ] && alias mc='. /usr/share/mc/bin/mc-wrapper.sh'
 
 
 # enable color support of ls and also add handy aliases
