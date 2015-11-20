@@ -1,10 +1,10 @@
-;; ---( site.func: begin )-------------------------------------------------------
-(message "SITE:FUNC - begin")
+;; ---( site.user: begin )-------------------------------------------------------
+(message "SITE:USER - begin")
 
 ;; ---( ... )--------------------------------------------------------------
 
 (setq user-full-name "Giovanni Pelosi"
       user-mail-address "hute37@gmail.com")
 
-;; ---( site.func: end )-------------------------------------------------------
-(message "SITE:FUNC - end")
+;; ---( site.user: end )-------------------------------------------------------
+(message "SITE:USER - end")

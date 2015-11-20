@@ -1,3 +1,8 @@
+# ------------------------------------------------
+export _DOT_ZSHRC_0=`date  --rfc-3339=ns`
+# ------------------------------------------------
+
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -77,11 +82,15 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ssh-x='ssh -c arcfour,blowfish-cbc -XC'
-alias s='less -SR'
-alias e='emacsclient -n'
-alias ec='emacsclient -c'
 
 unset GREP_OPTIONS
+
+
+[ -f ~/.aliases ] && source ~/.aliases || true
+
+
+# ------------------------------------------------
+export _DOT_ZSHRC_1=`date  --rfc-3339=ns`
+# ------------------------------------------------
+
+

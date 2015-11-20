@@ -1,16 +1,9 @@
 # -*- mode: shell-script;-*-
 
-##
-#  include in ~/.bash_aliases
-#
+# ------------------------------------------------
+export _DOT_ALIASES_0=`date  --rfc-3339=ns`
+# ------------------------------------------------
 
-### if [ -r  ~/.emacs-site/skel/.bash_aliases-site ]; then
-###   cd; ln -s  ~/.emacs-site/skel/.bash_aliases-site 
-### fi
-#
-#if [ -r  ~/.bash_aliases-site ]; then
-# . ~/.bash_aliases-site 
-#fi
 
 [ -x /usr/libexec/mc/mc-wrapper.sh ] && alias mc='. /usr/libexec/mc/mc-wrapper.sh'
 [ -x /usr/share/mc/bin/mc-wrapper.sh ] && alias mc='. /usr/share/mc/bin/mc-wrapper.sh'
@@ -37,8 +30,12 @@ alias lla='ls -lArthtu --full-time'
 #
 alias t='tail -F'
 alias v='less -S --follow-name -#24 +F'
-alias s='less -S'
+alias s='less -SR'
 alias e='emacsclient --no-wait'
+alias ec='emacsclient -c'
+
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #
 
@@ -53,4 +50,8 @@ alias ssh-x='ssh -c arcfour,blowfish-cbc -XC'
 
 alias XX='/usr/bin/Xephyr :5 -query localhost -once -fullscreen -ac -keybd "ephyr,,,xkbmodel=pc105,xkblayout=it,xkbrules=evdev,xkboption="'
 
+
+# ------------------------------------------------
+export _DOT_ALIASES_0=`date  --rfc-3339=ns`
+# ------------------------------------------------
 

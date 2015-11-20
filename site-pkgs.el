@@ -1,5 +1,5 @@
-;; ---( site.func: begin )-------------------------------------------------------
-(message "SITE:FUNC - begin")
+;; ---( site.pkgs: begin )-------------------------------------------------------
+(message "SITE:PKGS - begin")
 
 ;; ;;;////////////////////////////////////////////////////////////////
 ;; ;;;  @PACKAGES
@@ -111,6 +111,20 @@
 ;; 		       )
 ;; 	     )
 
+;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;  @ACE
+;; ;;;////////////////////////////////////////////////////////////////
+
+
+;; ;; ---( ace )--------------------------------------------------------------
+
+
+(use-package ace-jump-mode
+  :ensure t
+  :commands ace-jump-mode
+  :init
+  (bind-key "C-." 'ace-jump-mode))
+
 
 
 ;; ;;;////////////////////////////////////////////////////////////////
@@ -185,18 +199,89 @@
 
 
 ;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @ACE
+;; ;;;  @PROJECT
 ;; ;;;////////////////////////////////////////////////////////////////
 
 
-;; ;; ---( ace )--------------------------------------------------------------
+;; ---( projectile )--------------------------------------------------------------
 
-
-(use-package ace-jump-mode
+(use-package projectile
   :ensure t
-  :commands ace-jump-mode
+  :diminish projectile-mode
   :init
-  (bind-key "C-." 'ace-jump-mode))
+  (setq projectile-enable-caching t
+        projectile-cache-file (emacs-d "var/projectile.cache")
+        projectile-known-projects-file (emacs-d "var/projectile-bookmarks.eld"))
+  :config
+  (projectile-global-mode))
+
+
+;; ---( etags )--------------------------------------------------------------
+
+(use-package etags
+  :bind ("M-T" . tags-search))
+
+;; ---( gtags )--------------------------------------------------------------
+
+(use-package gtags
+  :disabled t
+  :commands gtags-mode
+  :diminish gtags-mode
+  :config
+  (bind-key "C-c t ." 'gtags-find-rtag)
+  (bind-key "C-c t f" 'gtags-find-file)
+  (bind-key "C-c t p" 'gtags-parse-file)
+  (bind-key "C-c t g" 'gtags-find-with-grep)
+  (bind-key "C-c t i" 'gtags-find-with-idutils)
+  (bind-key "C-c t s" 'gtags-find-symbol)
+  (bind-key "C-c t r" 'gtags-find-rtag)
+  (bind-key "C-c t v" 'gtags-visit-rootdir)
+  (bind-key "<mouse-2>" 'gtags-find-tag-from-here gtags-mode-map)
+  (use-package helm-gtags
+    :bind ("M-T" . helm-gtags-select)
+    :config
+    (bind-key "M-," 'helm-gtags-resume gtags-mode-map))
+  )
+
+
+;; ;; ---( ack )--------------------------------------------------------------
+
+(use-package ack
+  :ensure t)
+;;(use-package ack-and-a-half)
+
+;; ---( grep )--------------------------------------------------------------
+
+(use-package grep
+  :bind (("M-s d" . find-grep-dired)
+         ("M-s F" . find-grep)
+         ("M-s G" . grep)
+         ("M-s p" . find-grep-in-project))
+  :init
+  (defun find-grep-in-project (command-args)
+    (interactive
+     (let ((default (thing-at-point 'symbol)))
+       (list (read-shell-command "Run find (like this): "
+                                 (cons (concat "git --no-pager grep -n "
+                                               default)
+                                       (+ 24 (length default)))
+                                 'grep-find-history))))
+    (if command-args
+        (let ((null-device nil)) ; see grep
+          (grep command-args))))
+  :config
+  (add-hook 'grep-mode-hook #'(lambda () (use-package grep-ed)))
+  (grep-apply-setting 'grep-command "egrep -nH -e ")
+  (if nil
+      (progn
+        (setq-default grep-first-column 1)
+        (grep-apply-setting
+         'grep-find-command
+         '("ag --noheading --nocolor --smart-case --nogroup --column -- "
+           . 61)))
+    (grep-apply-setting
+     'grep-find-command
+     '("find . -type f -print0 | xargs -P4 -0 egrep -nH " . 49))))
 
 
 
@@ -362,33 +447,35 @@ The values are saved in `latex-help-cmd-alist' for speed."
 (use-package ruby-mode
   :mode ("\\.rb\\'" . ruby-mode)
   :interpreter ("ruby" . ruby-mode)
-  :functions inf-ruby-keys
-  :config
-  (use-package yari
-    :init
-    (progn
-      (defvar yari-helm-source-ri-pages
-        '((name . "RI documentation")
-          (candidates . (lambda () (yari-ruby-obarray)))
-          (action ("Show with Yari" . yari))
-          (candidate-number-limit . 300)
-          (requires-pattern . 2)
-          "Source for completing RI documentation."))
-      (defun helm-yari (&optional rehash)
-        (interactive (list current-prefix-arg))
-        (when current-prefix-arg (yari-ruby-obarray rehash))
-        (helm 'yari-helm-source-ri-pages (yari-symbol-at-point)))))
-  (defun my-ruby-smart-return ()
-    (interactive)
-    (when (memq (char-after) '(?\| ?\" ?\'))
-      (forward-char))
-    (call-interactively 'newline-and-indent))
-  (defun my-ruby-mode-hook ()
-    (require 'inf-ruby)
-    (inf-ruby-keys)
-    (bind-key "<return>" 'my-ruby-smart-return ruby-mode-map)
-    (bind-key "C-h C-i" 'helm-yari ruby-mode-map))
-  (add-hook 'ruby-mode-hook 'my-ruby-mode-hook))
+  ;; :functions inf-ruby-keys
+  ;; :config
+  ;; (use-package yari
+  ;;   :init
+  ;;   (progn
+  ;;     (defvar yari-helm-source-ri-pages
+  ;;       '((name . "RI documentation")
+  ;;         (candidates . (lambda () (yari-ruby-obarray)))
+  ;;         (action ("Show with Yari" . yari))
+  ;;         (candidate-number-limit . 300)
+  ;;         (requires-pattern . 2)
+  ;;         "Source for completing RI documentation."))
+  ;;     (defun helm-yari (&optional rehash)
+  ;;       (interactive (list current-prefix-arg))
+  ;;       (when current-prefix-arg (yari-ruby-obarray rehash))
+  ;;       (helm 'yari-helm-source-ri-pages (yari-symbol-at-point)))))
+  ;; (defun my-ruby-smart-return ()
+  ;;   (interactive)
+  ;;   (when (memq (char-after) '(?\| ?\" ?\'))
+  ;;     (forward-char))
+  ;;   (call-interactively 'newline-and-indent))
+  ;; (defun my-ruby-mode-hook ()
+  ;;   (require 'inf-ruby)
+  ;;   (inf-ruby-keys)
+  ;;   (bind-key "<return>" 'my-ruby-smart-return ruby-mode-map)
+  ;;   (bind-key "C-h C-i" 'helm-yari ruby-mode-map))
+  ;; (add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
+  )
+
 
 
 ;; ---( puppet )--------------------------------------------------------------
@@ -400,6 +487,82 @@ The values are saved in `latex-help-cmd-alist' for speed."
   ;; (use-package puppet-ext
   ;;   :ensure t)
   )
+
+
+
+
+;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;  @COMPLETION
+;; ;;;////////////////////////////////////////////////////////////////
+
+
+;; ---( autocomplete )--------------------------------------------------------------
+
+(use-package auto-complete
+  :ensure t
+  :diminish auto-complete-mode
+  :init
+  (use-package pos-tip)
+  (require 'auto-complete-config)
+  (ac-config-default)
+  :config
+  ;; @see: http://auto-complete.org/doc/manual.html
+  ;;(ac-set-trigger-key "<backtab>")
+  ;;(ac-set-trigger-key "TAB")
+  (setq ac-ignore-case 'smart)
+  (setq ac-auto-start nil)
+  (setq ac-use-menu-map t)
+  ;;(define-key ac-mode-map (kbd "M-SPC") 'auto-complete)
+  (define-key ac-mode-map  [(control menu)] 'auto-complete)
+  (ac-set-trigger-key "TAB")
+  ;; (define-key ac-completing-map "\M-/" 'ac-stop)
+  ;; (define-key ac-completing-map "\t" 'ac-complete)
+  ;; (define-key ac-completing-map "\r" nil)
+  ;; (setq ac-use-menu-map t)
+  ;; (define-key ac-menu-map "\C-n" 'ac-next)
+  ;; (define-key ac-menu-map "\C-p" 'ac-previous)
+  ;; (setq ac-use-quick-help nil)
+  ;; (setq ac-menu-height 20)
+  ;; (setq ac-show-menu-immediately-on-auto-complete t)
+  ;; (setq ac-auto-show-menu 0.8)
+  ;; (setq ac-delay 0.4)
+  
+  ;; (setq-default ac-sources '(ac-source-filename
+  ;;                            ac-source-functions
+  ;;                            ac-source-yasnippet
+  ;;                            ac-source-variables
+  ;;                            ac-source-symbols
+  ;;                            ac-source-features
+  ;;                            ac-source-abbrev
+  ;;                            ac-source-words-in-same-mode-buffers
+  ;;                            ac-source-dictionary))
+  
+  ;; (defun ac-emacs-lisp-mode-setup ()
+  ;;   (setq ac-sources '(ac-source-symbols ac-source-words-in-same-mode-buffers)))
+  ;; (add-hook 'c++-mode (lambda () (add-to-list 'ac-sources 'ac-source-semantic)))
+  
+  ;; (bind-key "A-M-?" 'ac-last-help)
+  ;; (unbind-key "C-s" ac-completing-map)
+  
+  )
+
+
+;; ---( company )--------------------------------------------------------------
+
+(use-package company
+  :disabled t
+  :diminish company-mode
+  :commands company-mode
+  :config
+  ;; From https://github.com/company-mode/company-mode/issues/87
+  ;; See also https://github.com/company-mode/company-mode/issues/123
+  (defadvice company-pseudo-tooltip-unless-just-one-frontend
+      (around only-show-tooltip-when-invoked activate)
+    (when (company-explicit-action-p)
+      ad-do-it))
+  (use-package helm-company
+    :disabled t))
+
 
 
 ;; ;;;////////////////////////////////////////////////////////////////
@@ -717,14 +880,6 @@ The values are saved in `latex-help-cmd-alist' for speed."
 ;; ;;;////////////////////////////////////////////////////////////////
 
 
-;; ---( twitter )------------------------------------------------------
-
-(use-package twittering-mode
-  :disabled t
-  :commands twit
-  :config
-  (setq twittering-use-master-password t))
-
 ;; ---( w3m )------------------------------------------------------
 
 (use-package w3m
@@ -821,12 +976,89 @@ end tell"))))
               w3m-minor-mode-map)
     (bind-key "S-<return>" 'w3m-safe-view-this-url w3m-minor-mode-map)))
 
+;; ---( twitter )------------------------------------------------------
+
+(use-package twittering-mode
+  :disabled t
+  :commands twit
+  :config
+  (setq twittering-use-master-password t))
+
+;; ---( hackernews )------------------------------------------------------
+
+(use-package hackernews
+  :defer t
+  )
+
 
 
 ;; ;;;////////////////////////////////////////////////////////////////
 ;; ;;;  @HELM
 ;; ;;;////////////////////////////////////////////////////////////////
 
+
+;; ---( ido )--------------------------------------------------------------
+
+(use-package ido
+  :disabled t
+  :defer 5
+  :defines (ido-cur-item
+            ido-require-match
+            ido-selected
+            ido-final-text
+            ido-show-confirm-message)
+  :bind (("C-x b" . ido-switch-buffer)
+         ("C-x B" . ido-switch-buffer-other-window)
+         ("M-x" . ido-hacks-execute-extended-command))
+  :preface
+  (eval-when-compile
+    (defvar ido-require-match)
+    (defvar ido-cur-item)
+    (defvar ido-show-confirm-message)
+    (defvar ido-selected)
+    (defvar ido-final-text))
+  (defun ido-smart-select-text ()
+    "Select the current completed item. Do NOT descend into directories."
+    (interactive)
+    (when (and (or (not ido-require-match)
+                   (if (memq ido-require-match
+                             '(confirm confirm-after-completion))
+                       (if (or (eq ido-cur-item 'dir)
+                               (eq last-command this-command))
+                           t
+                         (setq ido-show-confirm-message t)
+                         nil))
+                   (ido-existing-item-p))
+               (not ido-incomplete-regexp))
+      (when ido-current-directory
+        (setq ido-exit 'takeprompt)
+        (unless (and ido-text (= 0 (length ido-text)))
+          (let ((match (ido-name (car ido-matches))))
+            (throw 'ido
+                   (setq ido-selected
+                         (if match
+                             (replace-regexp-in-string "/\\'" "" match)
+                           ido-text)
+                         ido-text ido-selected
+                         ido-final-text ido-text)))))
+      (exit-minibuffer)))
+  :config
+  (ido-mode 'buffer)
+  (use-package ido-hacks
+    :config
+    (ido-hacks-mode 1))
+  (use-package ido-vertical-mode
+    :disabled t
+    :config
+    (ido-vertical-mode 1))
+  (use-package flx-ido
+    :disabled t
+    :config
+    (flx-ido-mode 1))
+  (add-hook 'ido-minibuffer-setup-hook
+            #'(lambda ()
+                (bind-key "<return>" 'ido-smart-select-text
+                          ido-file-completion-map))))
 
 ;; ---( helm )--------------------------------------------------------------
 
@@ -933,195 +1165,6 @@ end tell"))))
 
 
 
-
-;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @PROJECT
-;; ;;;////////////////////////////////////////////////////////////////
-
-
-;; ---( projectile )--------------------------------------------------------------
-
-(use-package projectile
-  :ensure t
-  :diminish projectile-mode
-  :init
-  (setq projectile-enable-caching t
-        projectile-cache-file (emacs-d "var/projectile.cache")
-        projectile-known-projects-file (emacs-d "var/projectile-bookmarks.eld"))
-  :config
-  (projectile-global-mode))
-
-
-;; ---( etags )--------------------------------------------------------------
-
-(use-package etags
-  :bind ("M-T" . tags-search))
-
-;; ---( gtags )--------------------------------------------------------------
-
-(use-package gtags
-  :disabled t
-  :commands gtags-mode
-  :diminish gtags-mode
-  :config
-  (bind-key "C-c t ." 'gtags-find-rtag)
-  (bind-key "C-c t f" 'gtags-find-file)
-  (bind-key "C-c t p" 'gtags-parse-file)
-  (bind-key "C-c t g" 'gtags-find-with-grep)
-  (bind-key "C-c t i" 'gtags-find-with-idutils)
-  (bind-key "C-c t s" 'gtags-find-symbol)
-  (bind-key "C-c t r" 'gtags-find-rtag)
-  (bind-key "C-c t v" 'gtags-visit-rootdir)
-  (bind-key "<mouse-2>" 'gtags-find-tag-from-here gtags-mode-map)
-  (use-package helm-gtags
-    :bind ("M-T" . helm-gtags-select)
-    :config
-    (bind-key "M-," 'helm-gtags-resume gtags-mode-map))
-  )
-
-
-;; ;; ---( ack )--------------------------------------------------------------
-
-(use-package ack
-  :ensure t)
-;;(use-package ack-and-a-half)
-
-;; ---( grep )--------------------------------------------------------------
-
-(use-package grep
-  :bind (("M-s d" . find-grep-dired)
-         ("M-s F" . find-grep)
-         ("M-s G" . grep)
-         ("M-s p" . find-grep-in-project))
-  :init
-  (defun find-grep-in-project (command-args)
-    (interactive
-     (let ((default (thing-at-point 'symbol)))
-       (list (read-shell-command "Run find (like this): "
-                                 (cons (concat "git --no-pager grep -n "
-                                               default)
-                                       (+ 24 (length default)))
-                                 'grep-find-history))))
-    (if command-args
-        (let ((null-device nil)) ; see grep
-          (grep command-args))))
-  :config
-  (add-hook 'grep-mode-hook #'(lambda () (use-package grep-ed)))
-  (grep-apply-setting 'grep-command "egrep -nH -e ")
-  (if nil
-      (progn
-        (setq-default grep-first-column 1)
-        (grep-apply-setting
-         'grep-find-command
-         '("ag --noheading --nocolor --smart-case --nogroup --column -- "
-           . 61)))
-    (grep-apply-setting
-     'grep-find-command
-     '("find . -type f -print0 | xargs -P4 -0 egrep -nH " . 49))))
-
-
-
-
-;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @COMPLETION
-;; ;;;////////////////////////////////////////////////////////////////
-
-
-;; ---( autocomplete )--------------------------------------------------------------
-
-(use-package auto-complete-config
-  :disabled t
-  :diminish auto-complete-mode
-  :init
-  (use-package pos-tip)
-  (ac-config-default)
-  :config
-  (ac-set-trigger-key "<backtab>")
-  (setq ac-use-menu-map t)
-  (bind-key "A-M-?" 'ac-last-help)
-  (unbind-key "C-s" ac-completing-map))
-
-
-;; ---( company )--------------------------------------------------------------
-
-(use-package company
-  :disabled t
-  :diminish company-mode
-  :commands company-mode
-  :config
-  ;; From https://github.com/company-mode/company-mode/issues/87
-  ;; See also https://github.com/company-mode/company-mode/issues/123
-  (defadvice company-pseudo-tooltip-unless-just-one-frontend
-      (around only-show-tooltip-when-invoked activate)
-    (when (company-explicit-action-p)
-      ad-do-it))
-  (use-package helm-company
-    :disabled t))
-
-
-;; ---( ido )--------------------------------------------------------------
-
-(use-package ido
-  :disabled t
-  :defer 5
-  :defines (ido-cur-item
-            ido-require-match
-            ido-selected
-            ido-final-text
-            ido-show-confirm-message)
-  :bind (("C-x b" . ido-switch-buffer)
-         ("C-x B" . ido-switch-buffer-other-window)
-         ("M-x" . ido-hacks-execute-extended-command))
-  :preface
-  (eval-when-compile
-    (defvar ido-require-match)
-    (defvar ido-cur-item)
-    (defvar ido-show-confirm-message)
-    (defvar ido-selected)
-    (defvar ido-final-text))
-  (defun ido-smart-select-text ()
-    "Select the current completed item. Do NOT descend into directories."
-    (interactive)
-    (when (and (or (not ido-require-match)
-                   (if (memq ido-require-match
-                             '(confirm confirm-after-completion))
-                       (if (or (eq ido-cur-item 'dir)
-                               (eq last-command this-command))
-                           t
-                         (setq ido-show-confirm-message t)
-                         nil))
-                   (ido-existing-item-p))
-               (not ido-incomplete-regexp))
-      (when ido-current-directory
-        (setq ido-exit 'takeprompt)
-        (unless (and ido-text (= 0 (length ido-text)))
-          (let ((match (ido-name (car ido-matches))))
-            (throw 'ido
-                   (setq ido-selected
-                         (if match
-                             (replace-regexp-in-string "/\\'" "" match)
-                           ido-text)
-                         ido-text ido-selected
-                         ido-final-text ido-text)))))
-      (exit-minibuffer)))
-  :config
-  (ido-mode 'buffer)
-  (use-package ido-hacks
-    :config
-    (ido-hacks-mode 1))
-  (use-package ido-vertical-mode
-    :disabled t
-    :config
-    (ido-vertical-mode 1))
-  (use-package flx-ido
-    :disabled t
-    :config
-    (flx-ido-mode 1))
-  (add-hook 'ido-minibuffer-setup-hook
-            #'(lambda ()
-                (bind-key "<return>" 'ido-smart-select-text
-                          ido-file-completion-map))))
-
 ;; ;;;////////////////////////////////////////////////////////////////
 ;; ;;;  @ORG
 ;; ;;;////////////////////////////////////////////////////////////////
@@ -1154,6 +1197,7 @@ end tell"))))
 ;;     (my-org-startup))
 ;;   (bind-key "<tab>" 'smart-tab org-mode-map))
 
+
 ;; ;;;////////////////////////////////////////////////////////////////
 ;; ;;;  @HYDRA
 ;; ;;;////////////////////////////////////////////////////////////////
@@ -1165,5 +1209,5 @@ end tell"))))
   :ensure t)
 
 
-;; ---( site.func: end )-------------------------------------------------------
-(message "SITE:FUNC - end")
+;; ---( site.pkgs: end )-------------------------------------------------------
+(message "SITE:PKGS - end")

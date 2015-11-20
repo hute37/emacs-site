@@ -162,60 +162,60 @@
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @COMPLETION
 ;;;////////////////////////////////////////////////////////////////
-(message "SITE:COMPLETION")
+;; (message "SITE:COMPLETION")
 
-;; ---( hippie-expand )------------------------------------------
-;; hippie-expand  (auto skriv resten af ord jeg har skrevet før)
+;; ;; ---( hippie-expand )------------------------------------------
+;; ;; hippie-expand  (auto skriv resten af ord jeg har skrevet før)
 
-(cond
- ((string-lessp emacs-version "29.3")
-  (progn
+;; (cond
+;;  ((string-lessp emacs-version "29.3")
+;;   (progn
 
-;;TODO: completion
+;; ;;TODO: completion
 
-    ))
- (t
-  (progn
+;;     ))
+;;  (t
+;;   (progn
 
-;; C-\ defaults to toggle-input-method
-(define-key esc-map "\\" 'dabbrev-completion)
-(define-key global-map "\C-\\" 'dabbrev-expand)
-;; Many people are used to typing C-SPC and getting C-@.
-;;(define-key global-map [?\C- ] 'dabbrev-expand)
-;;(global-set-key "\M- " 'hippie-expand) ; der står meta space!
-(define-key esc-map "\C-M" 'hippie-expand)
-(setq hippie-expand-try-functions-list
-      '(try-complete-file-name-partially
-	try-complete-file-name
-	try-expand-all-abbrevs
-	try-expand-list
-	try-expand-line
-	try-expand-dabbrev
-	try-expand-dabbrev-all-buffers
-	try-expand-dabbrev-from-kill
-	try-complete-lisp-symbol-partially
-	try-complete-lisp-symbol))
-
-
-
-    ))
- )
+;; ;; C-\ defaults to toggle-input-method
+;; (define-key esc-map "\\" 'dabbrev-completion)
+;; (define-key global-map "\C-\\" 'dabbrev-expand)
+;; ;; Many people are used to typing C-SPC and getting C-@.
+;; ;;(define-key global-map [?\C- ] 'dabbrev-expand)
+;; ;;(global-set-key "\M- " 'hippie-expand) ; der står meta space!
+;; (define-key esc-map "\C-M" 'hippie-expand)
+;; (setq hippie-expand-try-functions-list
+;;       '(try-complete-file-name-partially
+;; 	try-complete-file-name
+;; 	try-expand-all-abbrevs
+;; 	try-expand-list
+;; 	try-expand-line
+;; 	try-expand-dabbrev
+;; 	try-expand-dabbrev-all-buffers
+;; 	try-expand-dabbrev-from-kill
+;; 	try-complete-lisp-symbol-partially
+;; 	try-complete-lisp-symbol))
 
 
 
-
-(cond
- ((string-lessp emacs-version "29.3")
-  (progn
+;;     ))
+;;  )
 
 
-    ))
- (t
-  (progn
 
 
-    ))
- )
+;; (cond
+;;  ((string-lessp emacs-version "29.3")
+;;   (progn
+
+
+;;     ))
+;;  (t
+;;   (progn
+
+
+;;     ))
+;;  )
 
 
 ;;;////////////////////////////////////////////////////////////////
