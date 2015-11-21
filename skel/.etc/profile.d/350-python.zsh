@@ -16,3 +16,10 @@ set -a
 [ -r $VENV_CONFIG ] && source $VENV_CONFIG || true
 set +a
 
+mkdir -p $WORKON_HOME
+    
+[ -x $VIRTUALENVWRAPPER_SCRIPT ] && source $VIRTUALENVWRAPPER_SCRIPT || true
+
+if [ -n "$VENV_NAME" ] ; then
+    workon "$VENV_NAME"
+fi
