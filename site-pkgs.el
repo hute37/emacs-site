@@ -284,6 +284,80 @@
      '("find . -type f -print0 | xargs -P4 -0 egrep -nH " . 49))))
 
 
+;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;  @COMPLETION
+;; ;;;////////////////////////////////////////////////////////////////
+
+
+;; ---( autocomplete )--------------------------------------------------------------
+
+(use-package auto-complete
+  :disabled t
+  :diminish auto-complete-mode
+  :init
+  (use-package pos-tip)
+  (require 'auto-complete-config)
+  (ac-config-default)
+  :config
+  ;; @see: http://auto-complete.org/doc/manual.html
+  ;;(ac-set-trigger-key "<backtab>")
+  ;;(ac-set-trigger-key "TAB")
+  (setq ac-ignore-case 'smart)
+  (setq ac-auto-start nil)
+  (setq ac-use-menu-map t)
+  ;;(define-key ac-mode-map (kbd "M-SPC") 'auto-complete)
+  (define-key ac-mode-map  [(control menu)] 'auto-complete)
+  (ac-set-trigger-key "TAB")
+  ;; (define-key ac-completing-map "\M-/" 'ac-stop)
+  ;; (define-key ac-completing-map "\t" 'ac-complete)
+  ;; (define-key ac-completing-map "\r" nil)
+  ;; (setq ac-use-menu-map t)
+  ;; (define-key ac-menu-map "\C-n" 'ac-next)
+  ;; (define-key ac-menu-map "\C-p" 'ac-previous)
+  ;; (setq ac-use-quick-help nil)
+  ;; (setq ac-menu-height 20)
+  ;; (setq ac-show-menu-immediately-on-auto-complete t)
+  ;; (setq ac-auto-show-menu 0.8)
+  ;; (setq ac-delay 0.4)
+  
+  ;; (setq-default ac-sources '(ac-source-filename
+  ;;                            ac-source-functions
+  ;;                            ac-source-yasnippet
+  ;;                            ac-source-variables
+  ;;                            ac-source-symbols
+  ;;                            ac-source-features
+  ;;                            ac-source-abbrev
+  ;;                            ac-source-words-in-same-mode-buffers
+  ;;                            ac-source-dictionary))
+  
+  ;; (defun ac-emacs-lisp-mode-setup ()
+  ;;   (setq ac-sources '(ac-source-symbols ac-source-words-in-same-mode-buffers)))
+  ;; (add-hook 'c++-mode (lambda () (add-to-list 'ac-sources 'ac-source-semantic)))
+  
+  ;; (bind-key "A-M-?" 'ac-last-help)
+  ;; (unbind-key "C-s" ac-completing-map)
+  
+  )
+
+
+;; ---( company )--------------------------------------------------------------
+
+(use-package company
+  :ensure t
+  :diminish company-mode
+  :commands company-mode
+  :config
+  ;; From https://github.com/company-mode/company-mode/issues/87
+  ;; See also https://github.com/company-mode/company-mode/issues/123
+  ;; (defadvice company-pseudo-tooltip-unless-just-one-frontend
+  ;;     (around only-show-tooltip-when-invoked activate)
+  ;;   (when (company-explicit-action-p)
+  ;;     ad-do-it))
+  (use-package helm-company
+    :disabled t))
+
+
+
 
 
 ;; ;;;////////////////////////////////////////////////////////////////
@@ -406,6 +480,89 @@ The values are saved in `latex-help-cmd-alist' for speed."
 
 ;; ---( python )--------------------------------------------------------------
 
+
+(use-package elpy
+  :ensure t
+  :preface
+  (defvar elpy-mode-map
+    (let ((map (make-sparse-keymap)))
+      ;; Alphabetical order to make it easier to find free C-c C-X
+      ;; bindings in the future. Heh.
+
+      ;; (define-key map (kbd "<backspace>") 'python-indent-dedent-line-backspace)
+      ;; (define-key map (kbd "<backtab>")   'python-indent-dedent-line)
+
+      ;; (define-key map (kbd "C-M-x")   'python-shell-send-defun)
+      ;; (define-key map (kbd "C-c <")   'python-indent-shift-left)
+      ;; (define-key map (kbd "C-c >")   'python-indent-shift-right)
+      (define-key map (kbd "C-c RET") 'elpy-importmagic-add-import)
+      (define-key map (kbd "C-c C-b") 'elpy-nav-expand-to-indentation)
+      (define-key map (kbd "C-c C-c") 'elpy-shell-send-region-or-buffer)
+      (define-key map (kbd "C-c C-d") 'elpy-doc)
+      (define-key map (kbd "C-c C-e") 'elpy-multiedit-python-symbol-at-point)
+      (define-key map (kbd "C-c C-f") 'elpy-find-file)
+      (define-key map (kbd "C-c C-n") 'elpy-flymake-next-error)
+      (define-key map (kbd "C-c C-o") 'elpy-occur-definitions)
+      (define-key map (kbd "C-c C-p") 'elpy-flymake-previous-error)
+      (define-key map (kbd "C-c C-s") 'elpy-rgrep-symbol)
+      (define-key map (kbd "C-c C-t") 'elpy-test)
+      (define-key map (kbd "C-c C-v") 'elpy-check)
+      (define-key map (kbd "C-c C-z") 'elpy-shell-switch-to-shell)
+      (define-key map (kbd "C-c C-r i") 'elpy-importmagic-fixup)
+      (define-key map (kbd "C-c C-r p") 'elpy-autopep8-fix-code)
+      (define-key map (kbd "C-c C-r r") 'elpy-refactor)
+
+      ;; (define-key map (kbd "<S-return>") 'elpy-open-and-indent-line-below)
+      ;; (define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-above)
+
+      ;; (define-key map (kbd "<C-return>") 'elpy-shell-send-current-statement)
+
+      ;; (define-key map (kbd "<C-down>") 'elpy-nav-forward-block)
+      ;; (define-key map (kbd "<C-up>") 'elpy-nav-backward-block)
+      ;; (define-key map (kbd "<C-left>") 'elpy-nav-backward-indent)
+      ;; (define-key map (kbd "<C-right>") 'elpy-nav-forward-indent)
+
+      ;; (define-key map (kbd "<M-down>") 'elpy-nav-move-line-or-region-down)
+      ;; (define-key map (kbd "<M-up>") 'elpy-nav-move-line-or-region-up)
+      ;; (define-key map (kbd "<M-left>") 'elpy-nav-indent-shift-left)
+      ;; (define-key map (kbd "<M-right>") 'elpy-nav-indent-shift-right)
+
+      ;; (define-key map (kbd "M-.")     'elpy-goto-definition)
+      ;; (define-key map (kbd "M-TAB")   'elpy-company-backend)
+    
+      (define-key map (kbd "<S-return>") 'elpy-open-and-indent-line-below)
+      (define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-above)
+
+      (define-key map (kbd "<C-return>") 'elpy-shell-send-current-statement)
+
+      (define-key map (kbd "<M-right>") 'elpy-nav-forward-block)
+      (define-key map (kbd "<M-left>") 'elpy-nav-backward-block)
+      ;; (define-key map (kbd "<C-S-left>") 'elpy-nav-backward-indent)
+      ;; (define-key map (kbd "<C-S-right>") 'elpy-nav-forward-indent)
+
+      ;; (define-key map (kbd "<M-S-down>") 'elpy-nav-move-line-or-region-down)
+      ;; (define-key map (kbd "<M-S-up>") 'elpy-nav-move-line-or-region-up)
+      (define-key map (kbd "<M-S-left>") 'elpy-nav-indent-shift-left)
+      (define-key map (kbd "<M-S-right>") 'elpy-nav-indent-shift-right)
+
+      (define-key map (kbd "M-.")     'elpy-goto-definition)
+      (define-key map [(control menu)]   'elpy-company-backend)
+
+      map)
+    "Key map for the Emacs Lisp Python Environment.")
+  :config
+  (elpy-enable)
+  (elpy-use-ipython)
+  (defalias 'workon 'pyvenv-workon))
+
+(use-package ein
+  :ensure t
+  :config
+  (defalias 'eip 'ein:notebooklist-open))
+
+
+
+
 ;; (use-package python-mode
 ;;   :mode ("\\.py\\'" . python-mode)
 ;;   :interpreter ("python" . python-mode)
@@ -433,12 +590,6 @@ The values are saved in `latex-help-cmd-alist' for speed."
 ;;     (bind-key "C-c C-z" 'python-shell python-mode-map)
 ;;     (unbind-key "C-c c" python-mode-map))
 ;;   (add-hook 'python-mode-hook 'my-python-mode-hook))
-
-
-;; (use-package ein
-;;   :defer t
-;;   :config
-;;   (use-package puppet-ext))
 
 
 
@@ -488,80 +639,6 @@ The values are saved in `latex-help-cmd-alist' for speed."
   ;;   :ensure t)
   )
 
-
-
-
-;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @COMPLETION
-;; ;;;////////////////////////////////////////////////////////////////
-
-
-;; ---( autocomplete )--------------------------------------------------------------
-
-(use-package auto-complete
-  :ensure t
-  :diminish auto-complete-mode
-  :init
-  (use-package pos-tip)
-  (require 'auto-complete-config)
-  (ac-config-default)
-  :config
-  ;; @see: http://auto-complete.org/doc/manual.html
-  ;;(ac-set-trigger-key "<backtab>")
-  ;;(ac-set-trigger-key "TAB")
-  (setq ac-ignore-case 'smart)
-  (setq ac-auto-start nil)
-  (setq ac-use-menu-map t)
-  ;;(define-key ac-mode-map (kbd "M-SPC") 'auto-complete)
-  (define-key ac-mode-map  [(control menu)] 'auto-complete)
-  (ac-set-trigger-key "TAB")
-  ;; (define-key ac-completing-map "\M-/" 'ac-stop)
-  ;; (define-key ac-completing-map "\t" 'ac-complete)
-  ;; (define-key ac-completing-map "\r" nil)
-  ;; (setq ac-use-menu-map t)
-  ;; (define-key ac-menu-map "\C-n" 'ac-next)
-  ;; (define-key ac-menu-map "\C-p" 'ac-previous)
-  ;; (setq ac-use-quick-help nil)
-  ;; (setq ac-menu-height 20)
-  ;; (setq ac-show-menu-immediately-on-auto-complete t)
-  ;; (setq ac-auto-show-menu 0.8)
-  ;; (setq ac-delay 0.4)
-  
-  ;; (setq-default ac-sources '(ac-source-filename
-  ;;                            ac-source-functions
-  ;;                            ac-source-yasnippet
-  ;;                            ac-source-variables
-  ;;                            ac-source-symbols
-  ;;                            ac-source-features
-  ;;                            ac-source-abbrev
-  ;;                            ac-source-words-in-same-mode-buffers
-  ;;                            ac-source-dictionary))
-  
-  ;; (defun ac-emacs-lisp-mode-setup ()
-  ;;   (setq ac-sources '(ac-source-symbols ac-source-words-in-same-mode-buffers)))
-  ;; (add-hook 'c++-mode (lambda () (add-to-list 'ac-sources 'ac-source-semantic)))
-  
-  ;; (bind-key "A-M-?" 'ac-last-help)
-  ;; (unbind-key "C-s" ac-completing-map)
-  
-  )
-
-
-;; ---( company )--------------------------------------------------------------
-
-(use-package company
-  :disabled t
-  :diminish company-mode
-  :commands company-mode
-  :config
-  ;; From https://github.com/company-mode/company-mode/issues/87
-  ;; See also https://github.com/company-mode/company-mode/issues/123
-  (defadvice company-pseudo-tooltip-unless-just-one-frontend
-      (around only-show-tooltip-when-invoked activate)
-    (when (company-explicit-action-p)
-      ad-do-it))
-  (use-package helm-company
-    :disabled t))
 
 
 
