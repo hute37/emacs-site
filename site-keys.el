@@ -139,6 +139,14 @@
 (global-set-key [(control tab)]  'bs-cycle-next)
 
 
+
+;; ---( menu )---------------------------------------------
+
+;; (define-key map [(control menu)]   'elpy-company-backend)
+;; (global-set-key [(control menu)]   'company-complete)
+
+(global-set-key [(meta menu)]   'imenu)
+
 ;; ---( Return )---------------------------------------------
 
 ;;(global-set-key [(control return)] 'cua-rect )

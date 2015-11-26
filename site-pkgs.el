@@ -346,6 +346,15 @@
   :ensure t
   :diminish company-mode
   :commands company-mode
+  :bind ("<C-menu>" . company-complete)
+  :init
+  (add-hook 'clojure-mode-hook 'company-mode)
+  (add-hook 'cider-repl-mode-hook 'company-mode)
+  (add-hook 'lisp-mode-hook 'company-mode)
+  (add-hook 'emacs-lisp-mode-hook 'company-mode)
+  (add-hook 'lisp-interaction-mode-hook 'company-mode)
+  (add-hook 'ielm-mode-hook 'company-mode)
+  (add-hook 'json-mode-hook 'company-mode)
   :config
   ;; From https://github.com/company-mode/company-mode/issues/87
   ;; See also https://github.com/company-mode/company-mode/issues/123
@@ -357,6 +366,11 @@
     :disabled t))
 
 
+;; ---( yasnippet )--------------------------------------------------------------
+
+(use-package yasnippet
+  :config
+  (yas-reload-all))
 
 
 
@@ -484,6 +498,11 @@ The values are saved in `latex-help-cmd-alist' for speed."
 (use-package elpy
   :ensure t
   :preface
+  
+  ;; @see: https://elpy.readthedocs.org/en/latest/
+  ;; @see: https://github.com/jorgenschaefer/elpy
+  ;; @see: https://youtu.be/0kuCeS-mfyc
+  
   (defvar elpy-mode-map
     (let ((map (make-sparse-keymap)))
       ;; Alphabetical order to make it easier to find free C-c C-X
@@ -493,8 +512,10 @@ The values are saved in `latex-help-cmd-alist' for speed."
       ;; (define-key map (kbd "<backtab>")   'python-indent-dedent-line)
 
       ;; (define-key map (kbd "C-M-x")   'python-shell-send-defun)
-      ;; (define-key map (kbd "C-c <")   'python-indent-shift-left)
-      ;; (define-key map (kbd "C-c >")   'python-indent-shift-right)
+      
+      (define-key map (kbd "M-c <")   'python-indent-shift-left)
+      (define-key map (kbd "M-c >")   'python-indent-shift-right)
+      
       (define-key map (kbd "M-c RET") 'elpy-importmagic-add-import)
       (define-key map (kbd "M-c M-b") 'elpy-nav-expand-to-indentation)
       (define-key map (kbd "M-c M-c") 'elpy-shell-send-region-or-buffer)
@@ -545,7 +566,9 @@ The values are saved in `latex-help-cmd-alist' for speed."
       (define-key map (kbd "<M-S-left>") 'elpy-nav-indent-shift-left)
       (define-key map (kbd "<M-S-right>") 'elpy-nav-indent-shift-right)
 
-      (define-key map (kbd "M-.")     'elpy-goto-definition)
+      (define-key map [(meta prior)]    'elpy-goto-definition)
+      (define-key map [(meta next)]     'pop-tag-mark)
+      
       (define-key map [(control menu)]   'elpy-company-backend)
 
       map)
