@@ -14,8 +14,8 @@
 
 (mouse-wheel-mode t)                      ;; enable wheel
 
-(global-set-key [C-mouse-4] 'text-scale-decrease)
-(global-set-key [C-mouse-5] 'text-scale-increase)
+(global-set-key [C-mouse-4] 'text-scale-increase)
+(global-set-key [C-mouse-5] 'text-scale-decrease)
 (global-set-key [M-mouse-4] 'bs-cycle-next)
 (global-set-key [M-mouse-5] 'bs-cycle-previous)
 
