@@ -476,6 +476,16 @@ The values are saved in `latex-help-cmd-alist' for speed."
                            "-xml" "-i" "-wrap" "0" "-omit" "-q" "-utf8")))
   (bind-key "C-c M-h" 'tidy-xml-buffer nxml-mode-map))
 
+;; ---( yaml )--------------------------------------------------------------
+
+(use-package pdf-tools
+  :ensure t
+  :defer t
+  :config
+  (pdf-tools-install)
+)
+
+
 
 
 
