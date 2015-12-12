@@ -1,0 +1,8 @@
+# -*- mode: shell-script;-*-
+#
+# ~/.zsh_aliases
+#
+
+[ -f ~/.aliases ] && source ~/.aliases || true
+
+

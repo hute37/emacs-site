@@ -6,7 +6,7 @@
 
 
 # ------------------------------------------------
-export _DOT_BASH_PROFILE_0=`date  --rfc-3339=ns`
+export _DOT_BASH_PROFILE_0="$(date  --rfc-3339=ns)"
 # ------------------------------------------------
 
 ##
@@ -14,7 +14,7 @@ export _DOT_BASH_PROFILE_0=`date  --rfc-3339=ns`
 #
 
 function log_bash_profile {
-   echo "`date  --rfc-3339=ns` [profile.d/bash] $*" >> ~/.bash_profile.log
+   echo "$(date  --rfc-3339=ns)[profile.d/bash] $*" >> ~/.bash_profile.log
 }
 
 : > ~/.bash_profile.log
@@ -78,5 +78,5 @@ esac
 
 log_bash_profile "## << ~/.bash_profile ##"
 # ------------------------------------------------
-export _DOT_BASH_PROFILE_1=`date  --rfc-3339=ns`
+export _DOT_BASH_PROFILE_1="$(date  --rfc-3339=ns)"
 # ------------------------------------------------

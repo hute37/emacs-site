@@ -6,7 +6,7 @@
 
 
 # ------------------------------------------------
-export _DOT_ZSH_PROFILE_0=`date  --rfc-3339=ns`
+export _DOT_ZSH_PROFILE_0="$(date  --rfc-3339=ns)"
 # ------------------------------------------------
 
 ##
@@ -14,7 +14,7 @@ export _DOT_ZSH_PROFILE_0=`date  --rfc-3339=ns`
 #
 
 function log_zsh_profile {
-   echo "`date  --rfc-3339=ns` [profile.d/bash] $*" >> ~/.zsh_profile.log
+   echo "$(date  --rfc-3339=ns) [profile.d/zsh] $*" >> ~/.zsh_profile.log
 }
 
 : > ~/.zsh_profile.log
@@ -42,7 +42,6 @@ fi
 ##
 # include
 #
-
 set -a
 [ -r ~/.etc/zsh_profile.conf ] && source ~/.etc/zsh_profile.conf || true
 set +a
@@ -63,5 +62,5 @@ fi
 
 log_zsh_profile "## << ~/.zsh_profile ##"
 # ------------------------------------------------
-export _DOT_ZSH_PROFILE_1=`date  --rfc-3339=ns`
+export _DOT_ZSH_PROFILE_1="$(date  --rfc-3339=ns)"
 # ------------------------------------------------
