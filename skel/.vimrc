@@ -25,15 +25,18 @@ if v:progname =~? "vim"
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
 else
-"  set backup		" keep a backup file (restore to previous version)
-  set nobackup		" keep a backup file (restore to previous version)
+  set backup		" keep a backup file (restore to previous version)
+  "set nobackup		" keep a backup file (restore to previous version)
   set undofile		" keep an undo file (undo changes after closing)
 endif
-set backupdir=~/.backups/vim//,.
+set backupdir=~/.backups/vim/,.
+set undodir=~/.backups/vim/,.
 set backupcopy=yes
 else
   set nobackup		" do not keep a backup file, use versions instead
 endif
+
+
 
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
@@ -114,3 +117,4 @@ if has('langmap') && exists('+langnoremap')
   " compatible).
   set langnoremap
 endif
+

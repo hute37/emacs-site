@@ -57,7 +57,19 @@
 
 ;; ---( Backup )--------------------------------------------------------
 
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+
+;; Save all tempfiles in $TMPDIR/emacs$UID/ -- defconsts
+(setq emacs-bck-dir "~/.backups/emacs")
+
+(make-directory emacs-bck-dir t)
+
+(setq backup-directory-alist '(("" . "~/.backups/emacs")))
+
+;;(setq auto-save-file-name-transforms
+;;      `((".*" emacs-bck-dir t)))
+;;(setq auto-save-list-file-prefix
+;;      emacs-bck-dir)
+
 
 ;; ---( Autosave )--------------------------------------------------------
 

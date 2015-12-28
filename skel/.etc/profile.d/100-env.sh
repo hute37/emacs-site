@@ -22,11 +22,14 @@ fi
 LESS="-i -j.49 -M -R -S -z-2"
 PAGER=less
 
+XZ_OPT=-9 
 
 export PATH
 export EDITOR
 export LESS
 export PAGER
+export XZ_OPT
+
 
 
 
