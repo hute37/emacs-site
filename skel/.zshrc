@@ -1,5 +1,5 @@
 # ------------------------------------------------
-export _DOT_ZSHRC_0=`date  --rfc-3339=ns`
+export _DOT_ZSHRC_0="$(date  --rfc-3339=ns)"
 # ------------------------------------------------
 
 
@@ -11,6 +11,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
+#ZSH_THEME="avit"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -56,7 +57,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
+# export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -86,11 +87,11 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin
 unset GREP_OPTIONS
 
 
-[ -f ~/.aliases ] && source ~/.aliases || true
+[ -f ~/.zsh_aliases ] && source ~/.zsh_aliases || true
 
 
 # ------------------------------------------------
-export _DOT_ZSHRC_1=`date  --rfc-3339=ns`
+export _DOT_ZSHRC_1="$(date  --rfc-3339=ns)"
 # ------------------------------------------------
 
 

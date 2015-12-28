@@ -1,3 +1,4 @@
+#!/bin/sh
 # -*- mode: shell-script;-*-
 
 ##
@@ -11,14 +12,22 @@ fi
 
 
 # Preferred editor for local and remote sessions
- if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vim'
+ if [ -n $SSH_CONNECTION ]; then
+   EDITOR='vim'
  else
    # export EDITOR='mvim'
-   export EDITOR='vim'
+   EDITOR='vim'
  fi
 
-export LESS="-i -j.49 -M -R -S -z-2"
-export PAGER=less
+LESS="-i -j.49 -M -R -S -z-2"
+PAGER=less
+
+
+export PATH
+export EDITOR
+export LESS
+export PAGER
+
+
 
 

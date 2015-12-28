@@ -1,7 +1,7 @@
 # -*- mode: shell-script;-*-
 
 # ------------------------------------------------
-export _DOT_ALIASES_0=`date  --rfc-3339=ns`
+export _DOT_ALIASES_0="$(date  --rfc-3339=ns)"
 # ------------------------------------------------
 
 
@@ -53,6 +53,6 @@ alias XX='/usr/bin/Xephyr :5 -query localhost -once -fullscreen -ac -keybd "ephy
 
 
 # ------------------------------------------------
-export _DOT_ALIASES_0=`date  --rfc-3339=ns`
+export _DOT_ALIASES_0="$(date  --rfc-3339=ns)"
 # ------------------------------------------------
 

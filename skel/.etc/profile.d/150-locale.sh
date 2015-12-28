@@ -1,13 +1,17 @@
+#!/bin/sh
 # -*- mode: shell-script;-*-
 
 ##
 #  locale definition
 #
 
-function env_locale {
+env_locale() {
 
-export LC_COLLATE=C
-export LANG=en_US.UTF-8
+LC_COLLATE=C
+LANG=en_US.UTF-8
+
+export LC_COLLATE
+export LANG
     
 }
 

@@ -1,21 +1,22 @@
+#!/bin/sh
 # -*- mode: shell-script;-*-
 
 ##
 #  ~/.profile
 #
 
-
+# WARNING: check it with checkbashism (dash != bash)
 
 # ------------------------------------------------
-export _DOT_PROFILE_0=`date  --rfc-3339=ns`
+_DOT_PROFILE_0="$(date  --rfc-3339=ns)"; export _DOT_PROFILE_0
 # ------------------------------------------------
 
 ##
 # log
 #
 
-function log_profile {
-   echo "`date  --rfc-3339=ns` [profile.d] $*" >> ~/.profile.log
+log_profile () {
+   echo "$(date  --rfc-3339=ns) [profile.d] $*" >> ~/.profile.log
 }
 
 : > ~/.profile.log
@@ -25,32 +26,22 @@ log_profile "## >> ~/.profile (PID: $$) --ARGS $0 $* ##"
 # the default umask is set in /etc/profile
 #umask 022
 
-##
-# shell
-#
-
-if [ -n "$BASH_VERSION" ]; then
-    export _DOT_SHELL='bash'
-fi
-
-if [ -n "$ZSH_VERSION" ]; then
-    export _DOT_SHELL='zsh'
-fi
-
 
 ##
 # include
 #
 
 set -a
-[ -r ~/.etc/profile.conf ] && source ~/.etc/profile.conf || true
+[ -r ~/.etc/profile.conf ] && . ~/.etc/profile.conf || true
 set +a
 
 
 # Load profiles from ~/.etc/profile.d
-if test -d ~/.etc/profile.d/; then
-    case "$_DOT_SHELL" in
-        bash|zsh)
+if [ -d ~/.etc/profile.d ]; then
+
+    case "$0" in
+        *csh) ;;
+        *sh*)
 
 	    for profile in ~/.etc/profile.d/*.sh; do
 	        if [ -x "$profile" ]; then
@@ -71,5 +62,5 @@ fi
 
 log_profile "## << ~/.profile ##"
 # ------------------------------------------------
-export _DOT_PROFILE_1=`date  --rfc-3339=ns`
+_DOT_PROFILE_1="$(date  --rfc-3339=ns)"; export _DOT_PROFILE_1
 # ------------------------------------------------
