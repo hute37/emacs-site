@@ -1,5 +1,5 @@
 #!/bin/bash
 
 tilda -c glances -x 1700 -y 30 -t 80 &
-tilda -c 'sudo journalctl -f' glances -x 1700 -y 550 -t 80 & 
+tilda -c 'sudo journalctl -f' glances -x 1700 -y 480 -t 80 & 
 

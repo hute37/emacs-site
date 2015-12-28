@@ -5,6 +5,7 @@ export _DOT_ALIASES_0=`date  --rfc-3339=ns`
 # ------------------------------------------------
 
 
+[ -x /usr/lib/mc/mc-wrapper.sh ] && alias mc='. /usr/lib/mc/mc-wrapper.sh'
 [ -x /usr/libexec/mc/mc-wrapper.sh ] && alias mc='. /usr/libexec/mc/mc-wrapper.sh'
 [ -x /usr/share/mc/bin/mc-wrapper.sh ] && alias mc='. /usr/share/mc/bin/mc-wrapper.sh'
 
