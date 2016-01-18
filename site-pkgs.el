@@ -479,7 +479,7 @@ The values are saved in `latex-help-cmd-alist' for speed."
 ;; ---( yaml )--------------------------------------------------------------
 
 (use-package pdf-tools
-  :ensure t
+  :defer t
   :config
   (pdf-tools-install)
 )
@@ -495,10 +495,23 @@ The values are saved in `latex-help-cmd-alist' for speed."
 
 ;; ---( ess )--------------------------------------------------------------
 
-(use-package ess-site
-  :defer t
+(use-package ess
+  :ensure t
   ;;:load-path "site-lisp/ess/lisp/"
   :commands R)
+
+(use-package ess-R-data-view
+  :ensure t)
+
+(use-package ess-R-object-popup
+  :ensure t)
+
+(use-package ess-R-data-smart-equals
+  :disabled t)
+
+(use-package ess-R-data-smart-underscore
+  :disabled t)
+
 
 
 ;; ---( python )--------------------------------------------------------------
