@@ -8,10 +8,12 @@
 env_locale() {
 
 LC_COLLATE=C
-LANG=en_US.UTF-8
+LANG=en_GB.UTF-8
+LC_ALL=en_GB.UTF-8
 
 export LC_COLLATE
 export LANG
+export LC_ALL
     
 }
 

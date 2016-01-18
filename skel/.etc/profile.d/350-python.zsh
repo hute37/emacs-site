@@ -18,7 +18,8 @@ set +a
 
 mkdir -p $WORKON_HOME
     
-[ -x $VIRTUALENVWRAPPER_SCRIPT ] && source $VIRTUALENVWRAPPER_SCRIPT || true
+[ -n "$VIRTUALENVWRAPPER_SCRIPT" ] && \
+[ -x "$VIRTUALENVWRAPPER_SCRIPT" ] && source $VIRTUALENVWRAPPER_SCRIPT || true
 
 if [ -n "$VENV_NAME" ] ; then
     workon "$VENV_NAME"
