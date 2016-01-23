@@ -493,11 +493,24 @@ The values are saved in `latex-help-cmd-alist' for speed."
 ;; ;;;////////////////////////////////////////////////////////////////
 
 
-;; ---( ess )--------------------------------------------------------------
+;; ---( R )--------------------------------------------------------------
 
 (use-package ess
   :ensure t
   ;;:load-path "site-lisp/ess/lisp/"
+  ;;:config (ess-toggle-underscore nil)
+  :init
+  (add-hook 'ess-mode-hook (lambda () (ess-toggle-underscore nil)))
+  (add-hook 'inferior-ess-mode-hook
+            '(lambda nil
+               (define-key inferior-ess-mode-map [\C-up]
+                 'comint-previous-matching-input-from-input)
+               (define-key inferior-ess-mode-map [\C-down]
+                 'comint-next-matching-input-from-input)
+               (define-key inferior-ess-mode-map [\C-x \t]
+                 'comint-dynamic-complete-filename)
+               )
+            )
   :commands R)
 
 (use-package ess-R-data-view
@@ -815,13 +828,18 @@ The values are saved in `latex-help-cmd-alist' for speed."
   :ensure t
   :bind ("M-o C" . highlight-changes-mode))
 
+
+
+;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;  @SERVER
+;; ;;;////////////////////////////////////////////////////////////////
+
+
 ;; ---( server )--------------------------------------------------------------
 
 (use-package edit-server
-  :disabled t
-  :if (and window-system
-           (not running-alternate-emacs)
-           (not noninteractive))
+  :ensure t
+  :if window-system
 ;;  :load-path "site-lisp/emacs_chrome/servers/"
   :init
   (add-hook 'after-init-hook 'server-start t)
