@@ -27,6 +27,7 @@ alias lls='ls -lArthS'
 alias llt='ls -lArtht --full-time'
 alias lla='ls -lArthtu --full-time'
 
+alias lt="ls --color -lFhart"
 
 #
 alias t='tail -F'
@@ -51,6 +52,19 @@ alias ssh-x='ssh -c arcfour,blowfish-cbc -XC'
 
 alias XX='/usr/bin/Xephyr :5 -query localhost -once -fullscreen -ac -keybd "ephyr,,,xkbmodel=pc105,xkblayout=it,xkbrules=evdev,xkboption="'
 
+
+#
+
+splog() { cd $PGDATA/pg_log && less --follow-name +F -S $(ls -rt | tail -n1); }
+
+
+# arch
+
+alias pkg-dist-upgrade='sudo etckeeper pre-install && yaourt -Syua && sudo etckeeper post-install'
+alias pkg-upgrade='sudo etckeeper pre-install && sudo pacman -Syu && sudo etckeeper post-install'
+
+pkg-grep() { pacman -Ss "$1" | paste - - | grep --color=always -e "${2:-$1}" | less -R ; }
+pkg-search() { pacman --color=always -Ss "python" | paste - - | less -R; }
 
 # ------------------------------------------------
 export _DOT_ALIASES_0="$(date  --rfc-3339=ns)"
