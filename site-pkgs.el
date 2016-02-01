@@ -500,7 +500,7 @@ The values are saved in `latex-help-cmd-alist' for speed."
   ;;:load-path "site-lisp/ess/lisp/"
   ;;:config (ess-toggle-underscore nil)
   :init
-  (add-hook 'ess-mode-hook (lambda () (ess-toggle-underscore nil)))
+  ;;(add-hook 'ess-mode-hook (lambda () (ess-toggle-underscore nil)))
   (add-hook 'inferior-ess-mode-hook
             '(lambda nil
                (define-key inferior-ess-mode-map [\C-up]
