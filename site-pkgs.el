@@ -500,7 +500,93 @@ The values are saved in `latex-help-cmd-alist' for speed."
   ;;:load-path "site-lisp/ess/lisp/"
   ;;:config (ess-toggle-underscore nil)
   :init
-  ;;(add-hook 'ess-mode-hook (lambda () (ess-toggle-underscore nil)))
+  (add-hook 'ess-mode-hook
+            (lambda ()
+
+            
+              ;; Replace \C-c with \M-c for CUA and ctrl key swap
+              
+              ;; ;; By popular demand:
+              ;;(define-key map "\C-m"             'ess-newline-and-indent); = [RETURN]
+              ;;(define-key map [remap yank]       'ess-yank)
+
+              (define-key ess-mode-map (kbd "M-c M-c")      'ess-eval-region-and-go)
+              
+              (define-key ess-mode-map (kbd "M-c C-r")      'ess-eval-region)
+              (define-key ess-mode-map (kbd "M-c M-r")      'ess-eval-region-and-go)
+              (define-key ess-mode-map (kbd "M-c C-b")      'ess-eval-buffer)
+              (define-key ess-mode-map (kbd "M-c M-b")      'ess-eval-buffer-and-go)
+              (define-key ess-mode-map (kbd "M-c C-<up>")   'ess-eval-buffer-from-beg-to-here)
+              (define-key ess-mode-map (kbd "M-c C-<down>") 'ess-eval-buffer-from-here-to-end)
+              (define-key ess-mode-map (kbd "M-c C-f")      'ess-eval-function)
+              (define-key ess-mode-map (kbd "M-c M-f")      'ess-eval-function-and-go)
+              (define-key ess-mode-map (kbd "M-c C-c")      'ess-eval-region-or-function-or-paragraph-and-step)
+              (define-key ess-mode-map (kbd "M-c C-p")      'ess-eval-paragraph-and-step)
+              (define-key ess-mode-map (kbd "M-c M-p")      'ess-eval-paragraph-and-go)
+              (define-key ess-mode-map (kbd "M-c M-x")      'ess-eval-region-or-function-or-paragraph)
+              (define-key ess-mode-map (kbd "M-c M-n")      'ess-eval-line-and-step)
+              (define-key ess-mode-map (kbd "M-c M-j")      'ess-eval-line)
+              (define-key ess-mode-map [(control return)]   'ess-eval-region-or-line-and-step)
+              (define-key ess-mode-map (kbd "M-c M-j")      'ess-eval-line-and-go)
+              ;; the next three can only work in S/R - mode {FIXME}
+              (define-key ess-mode-map (kbd "M-c M-a")      'ess-goto-beginning-of-function-or-para)
+              (define-key ess-mode-map (kbd "M-c M-e")      'ess-goto-end-of-function-or-para)
+              (define-key ess-mode-map "\C-xnd"             'ess-narrow-to-defun-or-para)
+              (define-key ess-mode-map "\C-xnf"             'ess-narrow-to-defun-or-para)
+              (define-key ess-mode-map (kbd "M-c M-y")      'ess-switch-to-ESS-deprecated)
+              (define-key ess-mode-map (kbd "M-c M-z")      'ess-switch-to-inferior-or-script-buffer)
+              (define-key ess-mode-map (kbd "M-c C-z")      'ess-switch-to-inferior-or-script-buffer)
+              (define-key ess-mode-map (kbd "C-c C-z")      'ess-switch-to-inferior-or-script-buffer)
+              (define-key ess-mode-map (kbd "C-c M-l")      'ess-load-file)
+              (define-key ess-mode-map (kbd "M-c M-l")      'ess-load-file); alias, as in 'iESS' where C-c C-l is comint-list-*
+              (define-key ess-mode-map (kbd "M-c M-v")      'ess-display-help-on-object)
+              ;;(define-key ess-mode-map "\C-c5\C-d"'ess-dump-object-into-edit-buffer-other-frame)
+              (define-key ess-mode-map (kbd "M-c M-s")      'ess-switch-process) ; use a
+              
+              ;; different process for the buffer.
+              ;; (define-key map "\C-c\C-t"        'ess-execute-in-tb)
+              ;;(define-key ess-mode-map (kbd "M-c \t")     'ess-complete-object-name-deprecated)
+              ;; (define-key ess-mode-map "\C-c\t"        'comint-dynamic-complete-filename)
+              
+              (unless (and (featurep 'emacs) (>= emacs-major-version 24))
+                (define-key ess-mode-map (kbd "M-c <tab>")  'comint-dynamic-complete))
+              (define-key ess-mode-map (kbd "M-c .")        'ess-list-object-completions)
+              
+              ;; wrong here (define-key ess-mode-map "\C-c\C-k" 'ess-request-a-process)
+              (define-key ess-mode-map (kbd "M-c M-k")      'ess-force-buffer-current)
+              (define-key ess-mode-map (kbd "M-c `")        'ess-show-traceback)
+              (define-key ess-mode-map (kbd "M-c \\")       'ess-show-call-stack)
+              
+              ;;(define-key ess-mode-map (kbd "M-c .")      (lambda () (interactive) (message "ess-set-style moved to C-c C-e C-s. Sorry for the inconvenience")))
+              
+              ;;(define-key ess-mode-map "{"                'ess-electric-brace)
+              ;;(define-key ess-mode-map "}"                'ess-electric-brace)
+              
+              (define-key ess-mode-map (kbd "M-c M-q")      'ess-indent-exp)
+              (define-key ess-mode-map (kbd "<M-S-right>")  'ess-mark-function-or-para)
+              (if (featurep 'xemacs) ;; work around Xemacs bug (\C-\M-h redefines M-BS):
+                  (define-key ess-mode-map [(meta backspace)] 'backward-kill-word))
+              ;;(define-key ess-mode-map [delete]           'backward-delete-char-untabify)
+              
+              ;;(define-key ess-mode-map "\t"               'ess-indent-or-complete)
+              (define-key ess-mode-map (kbd "M-c C-q")      'ess-quit)
+              (define-key ess-mode-map (kbd "M-c M-r")      'ess-use-this-dir)
+
+              ;; smart operators; most likely will go in the future into a separate local map
+              ;;(define-key map ","          'ess-smart-comma)
+
+              (define-key ess-mode-map (kbd "M-c M-d")       'ess-doc-map)
+              (define-key ess-mode-map (kbd "M-c M-e")       'ess-extra-map)
+              (define-key ess-mode-map (kbd "M-c M-t")       'ess-dev-map)
+              (define-key ess-mode-map (kbd "M-c C-d")       'ess-doc-map)
+              (define-key ess-mode-map (kbd "M-c C-e")       'ess-extra-map)
+              (define-key ess-mode-map (kbd "M-c C-t")       'ess-dev-map)
+
+              
+;;            (ess-toggle-underscore nil))
+               ;; (define-key ess-mode-map (kbd "M-c M-c") 
+               ;;   'ess-eval-region-and-go)
+            ))
   (add-hook 'inferior-ess-mode-hook
             '(lambda nil
                (define-key inferior-ess-mode-map [\C-up]

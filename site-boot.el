@@ -20,11 +20,21 @@
     (message "SITE:~/" filename ".")
     ))
 
+(defun h7/clear ()
+"#H clear initial settings."
+ (progn
+    (message "SITE: Clear, ...")
+    (global-unset-key [(meta c)]) ;; meta-C alias for Ctrl-C
+    (message "SITE: Clear.")
+    ))
+
 ;; ---( init sequence )-------------------------------------------------------
 
 (defun h7/init ()
     "#H main init sequence."
   (progn
+    
+    (h7/clear)
     
     (h7/load "site-pkgs")
     (h7/load "site-func")

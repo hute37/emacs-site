@@ -536,10 +536,12 @@ When `universal-argument' is called first, cut whole buffer (but respect `narrow
 
 (define-key global-map [(control kp-insert)]
    '(lambda () (interactive)
- 	  (progn  
-            (yank-rectangle)
-            (next-line 1 nil)
-            )))
+      (progn
+        (set-goal-column nil)
+        (yank-rectangle)
+        (next-line 1 nil)
+        (set-goal-column t)
+        )))
 
 
 ;; (global-set-key [kp-subtract]
@@ -695,15 +697,19 @@ When `universal-argument' is called first, cut whole buffer (but respect `narrow
 
 ;; ---( CUA Clipboard )---------------------------------------------------
 
-(define-key esc-map "c" 'kill-ring-save )
-(define-key esc-map "v" 'yank )
-(define-key esc-map "z" 'kill-region )
+;; (define-key esc-map "c" 'kill-ring-save )
+;; (define-key esc-map "v" 'yank )
+;; (define-key esc-map "z" 'kill-region )
 
 
 ;; ---( Misc )------------------------------------------------------------
 
 (define-key esc-map "o" 'dired-other-frame )
 
+
+;; ---( meta c )----------------------------------------------------------
+
+;;(global-unset-key [(meta c)])
 
 ;; ---( meta f )----------------------------------------------------------
 
