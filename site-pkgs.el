@@ -503,6 +503,7 @@ The values are saved in `latex-help-cmd-alist' for speed."
   (add-hook 'ess-mode-hook
             (lambda ()
 
+              (ess-set-style 'RStudio)
             
               ;; Replace \C-c with \M-c for CUA and ctrl key swap
               
