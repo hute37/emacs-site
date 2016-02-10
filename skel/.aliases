@@ -52,6 +52,8 @@ alias ssh-x='ssh -c arcfour,blowfish-cbc -XC'
 
 alias XX='/usr/bin/Xephyr :5 -query localhost -once -fullscreen -ac -keybd "ephyr,,,xkbmodel=pc105,xkblayout=it,xkbrules=evdev,xkboption="'
 
+##
+# @see: https://wiki.archlinux.org/index.php/man_page
 #
 
 man() {

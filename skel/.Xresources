@@ -82,7 +82,7 @@ XTerm*colorBD: rgb:82/a4/d3
 XTerm*colorULMode: true
 XTerm*colorUL: rgb:e4/e4/e4
 
-
+XTerm*veryBoldColors: 6
 
 XTerm.VT100.translations: #override \
 Meta <Key> KP_Subtract: smaller-vt-font() \n\
@@ -399,6 +399,8 @@ URxvt*colorIT:  lightskyblue
 URxvt*colorRV:  red
 URxvt*colorUL:  green
 URxvt*underlineColor:  navyblue
+Urxvt*veryBoldColors: 6
+
 !
 
 !!
