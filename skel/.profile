@@ -58,7 +58,7 @@ if [ -d ~/.etc/profile.d ]; then
     esac
 fi
 
-
+env | sort >> ~/.profile.log
 
 log_profile "## << ~/.profile ##"
 # ------------------------------------------------
