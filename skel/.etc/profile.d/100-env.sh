@@ -22,12 +22,16 @@ fi
 LESS="-i -j.49 -M -R -S -z-2"
 PAGER=less
 
+
+BROWSER=`which firefox`
+
 XZ_OPT=-9 
 
 export PATH
 export EDITOR
 export LESS
 export PAGER
+export BROWSER
 export XZ_OPT
 
 

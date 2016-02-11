@@ -41,7 +41,7 @@ if [ -d ~/.etc/profile.d ]; then
 
     case "$0" in
         *csh) ;;
-        *sh*)
+        *)
 
 	    for profile in ~/.etc/profile.d/*.sh; do
 	        if [ -x "$profile" ]; then
@@ -53,7 +53,7 @@ if [ -d ~/.etc/profile.d ]; then
 	    unset profile
 
             ;;
-        *)
+        *none)
             ;;
     esac
 fi
