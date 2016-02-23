@@ -785,6 +785,25 @@ The values are saved in `latex-help-cmd-alist' for speed."
   )
 
 
+;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;  @VM
+;; ;;;////////////////////////////////////////////////////////////////
+
+
+;; ---( docker )--------------------------------------------------------------
+
+
+(use-package docker
+  :ensure t
+  :defer t)
+
+(use-package docker-tramp
+  :ensure t
+  :defer t)
+
+(use-package dockerfile-mode
+  :mode "Dockerfile\\'")
+
 
 
 ;; ;;;////////////////////////////////////////////////////////////////
