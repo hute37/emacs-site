@@ -785,6 +785,27 @@ The values are saved in `latex-help-cmd-alist' for speed."
   )
 
 
+
+;; ---( scala )--------------------------------------------------------------
+
+;; @see: https://gitlab.com/balajisi/emacs/blob/master/init.el
+
+(use-package scala-mode2
+  :ensure
+  :defer t
+  :init
+  (progn
+    (use-package ensime
+      :ensure)
+    (use-package sbt-mode
+      :ensure)))
+
+
+
+;;  (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
+
+
 ;; ;;;////////////////////////////////////////////////////////////////
 ;; ;;;  @VM
 ;; ;;;////////////////////////////////////////////////////////////////
@@ -802,6 +823,7 @@ The values are saved in `latex-help-cmd-alist' for speed."
   :defer t)
 
 (use-package dockerfile-mode
+  :ensure t
   :mode "Dockerfile\\'")
 
 
