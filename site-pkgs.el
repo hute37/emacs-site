@@ -790,19 +790,33 @@ The values are saved in `latex-help-cmd-alist' for speed."
 
 ;; @see: https://gitlab.com/balajisi/emacs/blob/master/init.el
 
+
+;; requires: sbt-plugin
+;;
+;; cat > ~/.sbt/0.13/plugins/plugin.sbt <<EOF
+;;
+;; resolvers += Resolver.sonatypeRepo("snapshots")
+;; addSbtPlugin("org.ensime" % "ensime-sbt" % "0.1.5-SNAPSHOT")
+;;
+;; EOF
+;;
+;; and sbt gen-ensime to generate .ensime config in project root
+;;
+
 (use-package scala-mode2
   :ensure
   :defer t
   :init
   (progn
     (use-package ensime
-      :ensure)
+      :ensure
+      :config
+      ;;(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+      )
     (use-package sbt-mode
       :ensure)))
 
 
-
-;;  (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 
 
