@@ -46,6 +46,40 @@
 
 
 ;; ============================================
+;; ---( CUA Mode )-----
+;; ============================================
+
+;; ---( CUA Clipboard )-------------------------------------------
+
+;; (define-key esc-map "c" 'kill-ring-save )
+;; (define-key esc-map "v" 'yank )
+;; (define-key esc-map "z" 'kill-region )
+
+;; ---( Rect )----------------------------------------------------
+
+(add-hook 'cua-mode-hook
+          '(lambda ()
+             (define-key cua--rectangle-keymap (kbd "C-'") 'cua-clear-rectangle-mark)
+             (define-key cua--region-keymap    (kbd "C-'") 'cua-toggle-rectangle-mark)
+             (define-key cua-global-keymap     (kbd "C-'") 'cua-set-rectangle-mark)
+             
+             (define-key cua--rectangle-keymap [(control return)] nil)
+             (define-key cua--region-keymap    [(control return)] nil)
+             (define-key cua-global-keymap     [(control return)] nil)
+             )
+          )
+;;(cua-mode t)
+
+
+;; ---( Enable )--------------------------------------------------
+
+(custom-set-variables
+ '(cua-mode t nil (cua-base))
+)
+
+
+
+;; ============================================
 ;; ---( Edit Keys )-----
 ;; ============================================
 
@@ -146,11 +180,6 @@
 ;; (global-set-key [(control menu)]   'company-complete)
 
 (global-set-key [(meta menu)]   'imenu)
-
-;; ---( Return )---------------------------------------------
-
-;;(global-set-key [(control return)] 'cua-rect )
-;;(global-set-key [(meta return)] 'ffap)
 
 ;; ---( Space )---------------------------------------------
 
@@ -694,12 +723,6 @@ When `universal-argument' is called first, cut whole buffer (but respect `narrow
 
 ;;(define-key esc-map "n" 'goto-line )
 ;;(define-key esc-map "g" 'goto-line )
-
-;; ---( CUA Clipboard )---------------------------------------------------
-
-;; (define-key esc-map "c" 'kill-ring-save )
-;; (define-key esc-map "v" 'yank )
-;; (define-key esc-map "z" 'kill-region )
 
 
 ;; ---( Misc )------------------------------------------------------------

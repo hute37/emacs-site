@@ -810,9 +810,21 @@ The values are saved in `latex-help-cmd-alist' for speed."
   (progn
     (use-package ensime
       :ensure
-      :config
+      :commands ensime-scala-mode-hook     
       ;;(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-      )
+      :init
+      (progn
+        (add-hook 'scala-mode-hook
+                  (lambda ()
+                    (ensime)
+                    (ensime-scala-mode)
+                    ))
+        )
+      :config
+            (progn
+              (define-key ensime-mode-map (kbd "M-c M-c")    'ensime-inf-eval-region)
+              (define-key ensime-mode-map (kbd "<C-return>") 'ensime-inf-eval-region)
+              ))
     (use-package sbt-mode
       :ensure)))
 

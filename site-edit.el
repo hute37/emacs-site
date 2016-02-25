@@ -28,7 +28,6 @@
 (global-auto-revert-mode 1)
 
 (custom-set-variables
- '(cua-mode t nil (cua-base))
 )
 
 
