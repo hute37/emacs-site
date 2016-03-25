@@ -829,6 +829,36 @@ The values are saved in `latex-help-cmd-alist' for speed."
       :ensure)))
 
 
+;; ---( haskell )--------------------------------------------------------------
+
+;; @see: https://gitlab.com/balajisi/emacs/blob/master/init.el
+;; @see: https://github.com/serras/emacs-haskell-tutorial/blob/master/tutorial.md
+
+;;;; Haskell Modes - Haskell, GHC, SHM, Idris etc.
+(use-package haskell-mode
+  :ensure
+
+  :mode (("\\.hs\\(c\\|-boot\\)?\\'" . haskell-mode)
+         ("\\.lhs\\'" . literate-haskell-mode))
+
+  :config
+  (use-package ghc
+    :ensure)
+  (use-package flycheck-haskell
+    :ensure)
+  )
+
+(defun balaji/haskell-mode-hook ()
+  (turn-on-haskell-indentation)
+  (ghc-init)
+  (lambda () (add-to-list 'ac-sources 'ac-source-ghc))
+  )
+
+(add-hook 'haskell-mode-hook 'balaji/haskell-mode-hook)
+
+(use-package idris-mode
+  :ensure
+  :disabled t)
 
 
 

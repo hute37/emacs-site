@@ -35,7 +35,7 @@
 
 ;;;////////////////////////////////////////////////////////////////
 ;;;  @FEATURES
-;;;////////////////////////////////////////////////////////////////
+;;;///////////////////////////////////////////////////////////////
 (message "SITE:FEATURES")
 
 
@@ -50,7 +50,15 @@
 
 ;; ---( Encoding )--------------------------------------------------------
 
+;; @see: https://gitlab.com/balajisi/emacs/blob/master/init.el
+
 (prefer-coding-system 'utf-8)
+(set-language-environment 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+
+
 (when (display-graphic-p)
   (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
 
