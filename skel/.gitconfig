@@ -55,6 +55,7 @@
 	theirs = "!f() { git co --theirs $@ && git add $@; }; f"
 	skip = merge --strategy ours
 	over = merge --strategy theirs
+	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 [core]
 	autocrlf = false
 [color]
