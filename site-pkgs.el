@@ -1051,6 +1051,15 @@ The values are saved in `latex-help-cmd-alist' for speed."
       (define-key map [delete] 'eshell-isearch-delete-char)
       map)
     "Keymap used in isearch in Eshell.")
+  (defun eshell-clear-buffer ()
+    "Clear terminal"
+    (interactive)
+    (let ((inhibit-read-only t))
+      (erase-buffer)
+      (eshell-send-input)))
+  (add-hook 'eshell-mode-hook
+            '(lambda()
+               (local-set-key (kbd "C-l") 'eshell-clear-buffer)))
   (defun eshell-initialize ()
     (defun eshell-spawn-external-command (beg end)
       "Parse and expand any history references in current input."
