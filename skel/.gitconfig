@@ -64,3 +64,11 @@
 	fontdiff = -family cantarell -size 8 -weight normal -slant roman -underline 0 -overstrike 0
 [push]
 	default = simple
+        
+[merge]
+tool = meld3_auto
+conflictstyle = diff3
+[mergetool "meld3_auto"]
+cmd = meld --diff $LOCAL $MERGED $REMOTE --diff $BASE $LOCAL --diff $BASE $REMOTE  --auto-merge
+[mergetool "meld3_noauto"]
+cmd = meld --diff $LOCAL $MERGED $REMOTE --diff $BASE $LOCAL --diff $BASE $REMOTE
