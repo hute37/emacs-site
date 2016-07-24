@@ -369,6 +369,7 @@
 ;; ---( yasnippet )--------------------------------------------------------------
 
 (use-package yasnippet
+  :disabled t
   :config
   (yas-reload-all))
 
@@ -466,15 +467,26 @@ The values are saved in `latex-help-cmd-alist' for speed."
   :init
   (defalias 'xml-mode 'nxml-mode)
   :config
-  (defun my-nxml-mode-hook ()
-    (bind-key "<return>" 'newline-and-indent nxml-mode-map))
-  (add-hook 'nxml-mode-hook 'my-nxml-mode-hook)
-  (defun tidy-xml-buffer ()
-    (interactive)
-    (save-excursion
-      (call-process-region (point-min) (point-max) "tidy" t t nil
-                           "-xml" "-i" "-wrap" "0" "-omit" "-q" "-utf8")))
-  (bind-key "C-c M-h" 'tidy-xml-buffer nxml-mode-map))
+)
+
+
+;; (use-package nxml-mode
+;;   :commands nxml-mode
+;;   :init
+;;   (defalias 'xml-mode 'nxml-mode)
+;;   :config
+    
+;;   (defun my-nxml-mode-hook ()
+;;     (bind-key "<return>" 'newline-and-indent nxml-mode-map))
+;;   (add-hook 'nxml-mode-hook 'my-nxml-mode-hook)
+;;   (defun tidy-xml-buffer ()
+;;     (interactive)
+;;     (save-excursion
+;;       (call-process-region (point-min) (point-max) "tidy" t t nil
+;;                            "-xml" "-i" "-wrap" "0" "-omit" "-q" "-utf8")))
+;;   (bind-key "C-c M-h" 'tidy-xml-buffer nxml-mode-map)
+;;   (setq ac-sources '(ac-source-symbols ac-source-words-in-same-mode-buffers)))
+
 
 ;; ---( yaml )--------------------------------------------------------------
 
@@ -496,7 +508,7 @@ The values are saved in `latex-help-cmd-alist' for speed."
 ;; ---( R )--------------------------------------------------------------
 
 (use-package ess
-  :ensure t
+  :defer t
   ;;:load-path "site-lisp/ess/lisp/"
   ;;:config (ess-toggle-underscore nil)
   :init
@@ -601,10 +613,10 @@ The values are saved in `latex-help-cmd-alist' for speed."
   :commands R)
 
 (use-package ess-R-data-view
-  :ensure t)
+  :defer t)
 
 (use-package ess-R-object-popup
-  :ensure t)
+  :defer t)
 
 (use-package ess-R-data-smart-equals
   :disabled t)
