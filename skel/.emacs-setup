@@ -60,8 +60,12 @@ echo 'if [ -r ~/.emacs-site/skel/.bash_aliases-site ]; then' >> ~/.bash_aliases
 echo ' source ~/.emacs-site/skel/.bash_aliases-site || true' >> ~/.bash_aliases
 echo 'fi' >> ~/.bash_aliases
 
+##
+# xwin
+#
 
-
+startx /usr/bin/xterm +tb -name Login -T Login -- -fullscreen -noresize -unixkill -nowinkill -keyhook
+ 
 
 ##
 # mutt
