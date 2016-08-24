@@ -1,6 +1,11 @@
 [user]
-	name = G Pelosi
-	email = hute37@gmail.com
+        name = G Pelosi
+        email = hute37@gmail.com
+	
+[user.tv]
+        name = Giovanni Pelosi
+        email = giovanni.pelosi@consulenti.chili-tv.it
+	
 [github]
 	user = hute37
 	token = 7bbaab4c6c3dabf44517721636742ab7
@@ -66,7 +71,7 @@
 	default = simple
         
 [merge]
-tool = meld3_auto
+tool = meld3_noauto
 conflictstyle = diff3
 [mergetool "meld3_auto"]
 cmd = meld --diff $LOCAL $MERGED $REMOTE --diff $BASE $LOCAL --diff $BASE $REMOTE  --auto-merge
