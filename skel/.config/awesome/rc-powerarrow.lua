@@ -68,12 +68,13 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-darker/t
 --modkey     = "Mod4"
 --altkey     = "Mod1"
 terminal   = "urxvtc" or "xterm"
+terminal2  = "xterm"  or "urxvtc"
 editor     = os.getenv("EDITOR") or "vim" or "nano" or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
 -- user defined
 browser    = "firefox"
-gui_editor = "gvim"
+gui_editor = "gedit"
 graphics   = "gimp"
 mail       = terminal .. " -e mutt "
 iptraf     = terminal .. " -g 180x54-20+34 -e sudo iptraf-ng -i all "
@@ -474,10 +475,6 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-    -- Take a screenshot
-    -- https://github.com/copycat-killer/dots/blob/master/bin/screenshot
-    awful.key({ altkey }, "p", function() os.execute("screenshot") end),
-
     -- Tag browsing
     awful.key({ modkey }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey }, "Right",  awful.tag.viewnext       ),
@@ -500,26 +497,38 @@ globalkeys = awful.util.table.join(
     --     end),
 
     -- By direction client focus
-    awful.key({ modkey }, "j",
-        function()
-            awful.client.focus.bydirection("down")
+    -- awful.key({ modkey }, "j",
+    --     function()
+    --         awful.client.focus.bydirection("down")
+    --         if client.focus then client.focus:raise() end
+    -- end),
+    -- awful.key({ modkey }, "k",
+    --     function()
+    --         awful.client.focus.bydirection("up")
+    --         if client.focus then client.focus:raise() end
+    -- end),
+    -- awful.key({ modkey }, "h",
+    --     function()
+    --         awful.client.focus.bydirection("left")
+    --         if client.focus then client.focus:raise() end
+    -- end),
+    -- awful.key({ modkey }, "l",
+    --     function()
+    --         awful.client.focus.bydirection("right")
+    --         if client.focus then client.focus:raise() end
+    -- end),
+    awful.key({ modkey,           }, "j",
+        function ()
+            awful.client.focus.byidx( 1)
             if client.focus then client.focus:raise() end
-        end),
-    awful.key({ modkey }, "k",
-        function()
-            awful.client.focus.bydirection("up")
+    end),
+    awful.key({ modkey,           }, "k",
+        function ()
+            awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
-        end),
-    awful.key({ modkey }, "h",
-        function()
-            awful.client.focus.bydirection("left")
-            if client.focus then client.focus:raise() end
-        end),
-    awful.key({ modkey }, "l",
-        function()
-            awful.client.focus.bydirection("right")
-            if client.focus then client.focus:raise() end
-        end),
+    end),
+    
+    
 
     -- Show Menu
     awful.key({ modkey }, "w",
@@ -547,6 +556,8 @@ globalkeys = awful.util.table.join(
         end),
     -- awful.key({ altkey, "Shift"   }, "l",      function () awful.tag.incmwfact( 0.05)     end),
     -- awful.key({ altkey, "Shift"   }, "h",      function () awful.tag.incmwfact(-0.05)     end),
+    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
+    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
     awful.key({ modkey, "Shift"   }, "l",      function () awful.tag.incnmaster(-1)       end),
     awful.key({ modkey, "Shift"   }, "h",      function () awful.tag.incnmaster( 1)       end),
     awful.key({ modkey, "Control" }, "l",      function () awful.tag.incncol(-1)          end),
@@ -557,6 +568,7 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
+    awful.key({ modkey, "Shift"   }, "Return", function () awful.util.spawn(terminal2) end),
     awful.key({ modkey, "Control" }, "r",      awesome.restart),
     awful.key({ modkey, "Shift"   }, "q",      awesome.quit),
 
@@ -566,6 +578,10 @@ globalkeys = awful.util.table.join(
     -- Widgets popups
     -- awful.key({ altkey,           }, "c",      function () lain.widgets.calendar:show(7) end),
     -- awful.key({ altkey,           }, "h",      function () fswidget.show(7) end),
+
+    -- Take a screenshot
+    -- https://github.com/copycat-killer/dots/blob/master/bin/screenshot
+    awful.key({ altkey }, "p", function() os.execute("screenshot") end),
 
     -- ALSA volume control
     -- #see: https://awesome.naquadah.org/wiki/Volume_control_and_display
@@ -792,6 +808,18 @@ client.connect_signal("manage", function (c, startup)
              end
          end
      end)
+
+    if not startup then
+        -- Set the windows at the slave,
+        -- i.e. put it at the end of others instead of setting it master.
+        -- awful.client.setslave(c)
+
+        -- Put windows in a smart way, only if they does not set an initial position.
+        if not c.size_hints.user_position and not c.size_hints.program_position then
+            awful.placement.no_overlap(c)
+            awful.placement.no_offscreen(c)
+        end
+    end
 
     local titlebars_enabled = false
     if titlebars_enabled and (c.type == "normal" or c.type == "dialog") then
