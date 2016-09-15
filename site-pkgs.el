@@ -508,7 +508,7 @@ The values are saved in `latex-help-cmd-alist' for speed."
 ;; ---( R )--------------------------------------------------------------
 
 (use-package ess
-  :defer t
+  :ensure t
   ;;:load-path "site-lisp/ess/lisp/"
   ;;:config (ess-toggle-underscore nil)
   :init
