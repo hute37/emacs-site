@@ -491,7 +491,7 @@ The values are saved in `latex-help-cmd-alist' for speed."
 ;; ---( yaml )--------------------------------------------------------------
 
 (use-package pdf-tools
-  :defer t
+  :ensure t
   :config
   (pdf-tools-install)
 )
@@ -815,8 +815,18 @@ The values are saved in `latex-help-cmd-alist' for speed."
 ;; and sbt gen-ensime to generate .ensime config in project root
 ;;
 
+(use-package ensime
+  :ensure t
+  :pin melpa)
+
+;;(use-package ensime
+;;  :pin melpa-stable)
+
+
+
+
 (use-package scala-mode2
-  :ensure
+  :disabled t
   :defer t
   :init
   (progn
