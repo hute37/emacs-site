@@ -65,6 +65,8 @@ echo 'fi' >> ~/.bash_aliases
 #
 
 startx /usr/bin/xterm +tb -name Login -T Login -- -fullscreen -noresize -unixkill -nowinkill -keyhook
+
+startx /usr/bin/xterm +tb -name Login -T Login -- -fullscreen -noresize -unixkill -nowinkill -keyhook
  
 
 ##
@@ -78,6 +80,30 @@ startx /usr/bin/xterm +tb -name Login -T Login -- -fullscreen -noresize -unixkil
 mkdir -p ~/.mutt/cache/headers mkdir ~/.mutt/cache/bodies touch ~/.mutt/certificates
 
 cd; cat .ssh/id_rsa.pub # add to github ...
+
+##
+# Xephyr + Awesome
+#
+
+Xephyr -keybd ephyr,,,xkbmodel=evdev,xkblayout=it -listen tcp -ac -reset -output VGA1 :5
+
+
+export DISPLAY=:5.0
+xterm
+
+ssh hr
+
+export DISPLAY=hb:5.0
+
+xrdb -merge ~/.Xresources
+
+xterm -geometry 130x50-0+0 &
+
+dbus-launch $(which awesome)
+
+dex -a -e Awesome
+
+
 
 
 
