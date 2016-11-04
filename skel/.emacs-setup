@@ -66,7 +66,9 @@ echo 'fi' >> ~/.bash_aliases
 
 startx /usr/bin/xterm +tb -name Login -T Login -- -fullscreen -noresize -unixkill -nowinkill -keyhook
 
-startx /usr/bin/xterm +tb -name Login -T Login -- -fullscreen -noresize -unixkill -nowinkill -keyhook
+startx /etc/X11/xinit/Xsession openbox         --  -nodecoration -noresize -unixkill -nowinkill
+startx /etc/X11/xinit/Xsession openbox-gnome   --  -nodecoration -noresize -unixkill -nowinkill
+startx /etc/X11/xinit/Xsession mate            --  -nodecoration -noresize -unixkill -nowinkill
  
 
 ##
