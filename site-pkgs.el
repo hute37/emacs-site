@@ -882,6 +882,34 @@ The values are saved in `latex-help-cmd-alist' for speed."
   :ensure
   :disabled t)
 
+;; ---( drools )--------------------------------------------------------------
+
+;; @see: https://github.com/pdorrell/rules-editing-mode
+;; @see: https://github.com/pdorrell/rules-editing-mode/blob/master/my-drools.el
+
+;;;; Drools Mode
+
+
+(autoload 'drools-mode "drools-mode")
+
+(defun set-extension-mode (extension mode)
+  (setq auto-mode-alist
+	(cons (cons (concat "\\" extension "\\'") mode)
+	      auto-mode-alist) ) )
+
+(set-extension-mode ".drl" 'drools-mode)
+(set-extension-mode ".dslr" 'drools-mode)
+
+(add-hook 'drools-mode-hook 'my-drools-hook)
+
+(defun drools-return-and-indent()
+  (interactive)
+  (newline) (indent-for-tab-command) )
+
+(defun my-drools-hook ()
+  (setq indent-tabs-mode nil)
+(local-set-key [?\C-m] 'drools-return-and-indent) )
+
 
 
 ;; ;;;////////////////////////////////////////////////////////////////
