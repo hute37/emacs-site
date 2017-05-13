@@ -709,7 +709,7 @@ The values are saved in `latex-help-cmd-alist' for speed."
     "Key map for the Emacs Lisp Python Environment.")
   :config
   (elpy-enable)
-  (elpy-use-ipython)
+  (elpy-use-ipython "ipython3") 
   (defalias 'workon 'pyvenv-workon))
 
 (use-package ein
