@@ -36,6 +36,12 @@ alias s='less -SR'
 alias e='emacsclient --no-wait'
 alias ec='emacsclient -c'
 
+
+alias gss='git status -s'
+alias gstt='git status'
+alias gst='git status; [ -f ./.gitmodules ] && git submodule status'
+
+
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
