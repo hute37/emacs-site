@@ -7,7 +7,7 @@
 #set -x
 
 
-SPARK_DEFAULT=/opt/sc/spark
+SPARK_DEFAULT=/opt/srv/apache/spark
 
 if [ -d "$SPARK_DEFAULT" ]; then
 
