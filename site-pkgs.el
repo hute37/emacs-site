@@ -626,6 +626,26 @@ The values are saved in `latex-help-cmd-alist' for speed."
 
 
 
+;; ---( polymoden )--------------------------------------------------------------
+
+(use-package polymode
+  :ensure t
+  :mode (
+         ("\\.md$" . poly-markdown-mode)
+         ("\\.Snw$" . poly-noweb+r-mode)
+         ("\\.Rnw$" . poly-noweb+r-mode)
+         ("\\.Rmd$" . poly-markdown+r-mode)
+         ("\\.rapport$" . poly-rapport-mode)
+         ("\\.Rhtml$" . poly-html+r-mode)
+         ("\\.Rbrew$" . poly-brew+r-mode)
+         ("\\.Rcpp$" . poly-r+c++-mode)
+         ("\\.cppR$" . poly-c++r-mode)
+         )
+)
+
+
+
+
 ;; ---( python )--------------------------------------------------------------
 
 
