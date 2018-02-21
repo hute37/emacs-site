@@ -66,8 +66,10 @@
 
 ;; ---( ... )--------------------------------------------------------------
 
-(use-package pretty-symbols
-  :ensure t)
+;; @see: http://emacsredux.com/blog/2014/08/25/a-peek-at-emacs-24-dot-4-prettify-symbols-mode/
+
+;; (use-package pretty-symbols
+;;   :ensure t)
 
 ;; (use-package pretty-lambdada
 ;;   :ensure t
