@@ -66,11 +66,14 @@
 
 ;; ---( ... )--------------------------------------------------------------
 
-(use-package pretty-lambdada
-  :ensure t
-  :init (dolist (hook '(lisp-mode-hook emacs-lisp-mode-hook)))
-  :config (dolist (global-pretty-lambda-mode)))
-;;(use-package pretty-lambdada)
+(use-package pretty-symbols
+  :ensure t)
+
+;; (use-package pretty-lambdada
+;;   :ensure t
+;;   :init (dolist (hook '(lisp-mode-hook emacs-lisp-mode-hook)))
+;;   :config (dolist (global-pretty-lambda-mode)))
+;; ;;(use-package pretty-lambdada)
 
 (use-package jumpc
   :ensure t
@@ -729,7 +732,9 @@ The values are saved in `latex-help-cmd-alist' for speed."
     "Key map for the Emacs Lisp Python Environment.")
   :config
   (elpy-enable)
-  (elpy-use-ipython "ipython3") 
+  (setq python-shell-interpreter "jupyter"
+        python-shell-interpreter-args "console --simple-prompt")
+  ;; (elpy-use-ipython "ipython3") 
   (defalias 'workon 'pyvenv-workon))
 
 (use-package ein
