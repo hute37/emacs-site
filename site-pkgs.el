@@ -495,11 +495,11 @@ The values are saved in `latex-help-cmd-alist' for speed."
 
 ;; ---( yaml )--------------------------------------------------------------
 
-(use-package pdf-tools
-  :ensure t
-  :config
-  (pdf-tools-install)
-)
+;; (use-package pdf-tools
+;;   :ensure f
+;;   :config
+;;   (pdf-tools-install)
+;; )
 
 
 
