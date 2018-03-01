@@ -1609,6 +1609,55 @@ end tell"))))
 
 
 ;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;  @NEWS
+;; ;;;////////////////////////////////////////////////////////////////
+
+
+;; ---( elfeed )--------------------------------------------------------------
+
+;; @see: https://github.com/skeeto/elfeed
+
+(use-package elfeed
+  :ensure t
+  :defer 30
+  )
+
+;; @see: http://pragmaticemacs.com/emacs/read-your-rss-feeds-in-emacs-with-elfeed/
+
+(use-package elfeed-org
+  :ensure t
+  :config
+  (elfeed-org)
+  (setq rmh-elfeed-org-files (list "~/.emacs.d//elfeed.org"))
+  )
+
+;; @see: https://github.com/algernon/elfeed-goodies
+(use-package elfeed-goodies
+  :ensure t
+  :defer 30
+  )
+
+;; ---( GNus )--------------------------------------------------------------
+
+;; @see: https://www.emacswiki.org/emacs/GnusRss
+
+
+
+;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;  @TWITTER
+;; ;;;////////////////////////////////////////////////////////////////
+
+
+;; ---( twittering-mode )--------------------------------------------------------------
+
+(use-package twittering-mode
+  :ensure t
+  :defer 30
+  )
+
+
+
+;; ;;;////////////////////////////////////////////////////////////////
 ;; ;;;  @HYDRA
 ;; ;;;////////////////////////////////////////////////////////////////
 
