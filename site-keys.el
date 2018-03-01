@@ -12,7 +12,7 @@
 
 ;; ---( Wheel )---------------------------------------------------------------
 
-(mouse-wheel-mode t)                      ;; enable wheel
+;; (mouse-wheel-mode t)                      ;; enable wheel
 
 (global-set-key [C-mouse-4] 'text-scale-increase)
 (global-set-key [C-mouse-5] 'text-scale-decrease)
