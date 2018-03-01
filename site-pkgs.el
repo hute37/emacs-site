@@ -1098,6 +1098,29 @@ The values are saved in `latex-help-cmd-alist' for speed."
 
 ;; ---( server )--------------------------------------------------------------
 
+;;
+;; @see: http://babbagefiles.blogspot.it/2017/03/take-elfeed-everywhere-mobile-rss.html
+;;
+;;  ~/.config/systemd/user/emacs.service
+;;
+;; ------------------------------------------------------------------
+;; [Unit]
+;; Description=Emacs: the extensible, self-documenting text editor
+;;
+;; [Service]
+;; Type=forking
+;; ExecStart=/usr/bin/emacs --daemon
+;; ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
+;; Restart=always
+;;
+;; [Install]
+;; WantedBy=default.target
+;; ------------------------------------------------------------------
+;;
+;; systemctl --user enable --now emacs
+;; loginctl enable-linger USERNAME
+;;
+
 (use-package edit-server
   :ensure t
   :if window-system
