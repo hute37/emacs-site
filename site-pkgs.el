@@ -1617,25 +1617,38 @@ end tell"))))
 
 ;; @see: https://github.com/skeeto/elfeed
 
-(use-package elfeed
-  :ensure t
-  :defer 30
-  )
+;; (use-package elfeed
+;;   :ensure t
+;;   :defer 30
+;;   )
 
 ;; @see: http://pragmaticemacs.com/emacs/read-your-rss-feeds-in-emacs-with-elfeed/
+;; @see: https://github.com/danlamanna/.emacs.d/blob/master/init.el
 
 (use-package elfeed-org
   :ensure t
-  :config
-  (elfeed-org)
-  (setq rmh-elfeed-org-files (list "~/.emacs.d//elfeed.org"))
-  )
+  :config (progn
+            (use-package elfeed
+              :ensure t
+              :config (progn
+                        (custom-set-variables
+                         ;; oldest articles should be at the top
+                         '(elfeed-sort-order 'ascending))))
+
+            (use-package elfeed-goodies
+              :ensure t
+              :config (progn
+                        (elfeed-goodies/setup)))
+
+            (setq rmh-elfeed-org-files (list "~/.rss/elfeed.org"))
+            (elfeed-org)))
+  
 
 ;; @see: https://github.com/algernon/elfeed-goodies
-(use-package elfeed-goodies
-  :ensure t
-  :defer 30
-  )
+;; (use-package elfeed-goodies
+;;   :ensure t
+;;   :defer 30
+;;   )
 
 ;; ---( GNus )--------------------------------------------------------------
 
