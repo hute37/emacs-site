@@ -1647,6 +1647,7 @@ end tell"))))
 
 ;; @see: http://pragmaticemacs.com/emacs/read-your-rss-feeds-in-emacs-with-elfeed/
 ;; @see: https://github.com/danlamanna/.emacs.d/blob/master/init.el
+;; @see: http://feedly.com/i/opml
 
 (use-package elfeed-org
   :ensure t
