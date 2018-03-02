@@ -83,6 +83,12 @@
 
 ;; ---( powerline )--------------------------------------------------------------
 
+(use-package powerline
+  :ensure t
+  :init (powerline-default-theme)
+)
+
+
 ;; (use-package powerline
 ;; 	     :init (dolist
 
