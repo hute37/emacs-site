@@ -36,6 +36,12 @@ alias s='less -SR'
 alias e='emacsclient --no-wait'
 alias ec='emacsclient -c'
 
+
+alias gss='git status -s'
+alias gstt='git status'
+alias gst='git status; [ -f ./.gitmodules ] && git submodule status'
+
+
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
@@ -51,6 +57,14 @@ alias p9='unset PS; exec bash'
 alias ssh-x='ssh -c arcfour,blowfish-cbc -XC'
 
 alias XX='/usr/bin/Xephyr :5 -query localhost -once -fullscreen -ac -keybd "ephyr,,,xkbmodel=pc105,xkblayout=it,xkbrules=evdev,xkboption="'
+
+
+##
+# @see: https://stackoverflow.com/questions/12943819/how-to-prettyprint-a-json-file
+#
+
+alias jqpp="python -c 'import sys, json; print json.dumps(json.load(sys.stdin), sort_keys=True, indent=2)'"
+
 
 ##
 # @see: https://wiki.archlinux.org/index.php/man_page

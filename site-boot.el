@@ -28,6 +28,19 @@
     (message "SITE: Clear.")
     ))
 
+(defun h7/path (directory)
+"#H add load path."
+    (message "SITE: path " directory ", ...")
+    (progn
+      (setq load-path 
+            (append load-path 
+                    (list directory )
+                    ))
+    (message "SITE: path " directory ".")
+    ))
+
+
+
 ;; ---( init sequence )-------------------------------------------------------
 
 (defun h7/init ()
@@ -46,6 +59,8 @@
     (h7/load "site-tool")
     
     (h7/load "site-user")
+    
+    (h7/path "~/.emacs-site/addon")
     
 ;;    (h7/home "emacs-user")
     
