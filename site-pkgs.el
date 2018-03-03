@@ -17,28 +17,48 @@
 
 ;; ---( Boot )--------------------------------------------------------------
 
+;; (setq debug-on-error t)
+
 (require 'package)
+(nconc package-archives
+       '(("melpa" . "http://melpa.org/packages/")
+         ("org" . "http://orgmode.org/elpa/")))
 (setq package-enable-at-startup nil)
-
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-(unless (assoc-default "melpa" package-archives)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t))
-
 (package-initialize)
 
-;; Bootstrap `use-package'
-(unless (and
-	 (package-installed-p 'bind-key)
-	 (package-installed-p 'diminish)
-	 (package-installed-p 'use-package)
-	 (package-installed-p 'req-package)
-	 )
-  (package-refresh-contents)
-  (package-install 'bind-key)
-  (package-install 'diminish)
-  (package-install 'use-package)
-  (package-install 'req-package)
-  )
+(unless (package-installed-p 'use-package)
+  (progn
+    (package-refresh-contents)
+    (package-install 'use-package)))
+(eval-when-compile
+  (eval-after-load 'advice
+    '(setq ad-redefinition-action 'accept))
+  (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
+
+;; (require 'package)
+;; (setq package-enable-at-startup nil)
+
+;; ;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+;; (unless (assoc-default "melpa" package-archives)
+;;   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t))
+
+;; (package-initialize)
+
+;; ;; Bootstrap `use-package'
+;; (unless (and
+;; 	 (package-installed-p 'bind-key)
+;; 	 (package-installed-p 'diminish)
+;; 	 (package-installed-p 'use-package)
+;; 	 (package-installed-p 'req-package)
+;; 	 )
+;;   (package-refresh-contents)
+;;   (package-install 'bind-key)
+;;   (package-install 'diminish)
+;;   (package-install 'use-package)
+;;   (package-install 'req-package)
+;;   )
 
 
 ;; @see: https://github.com/jwiegley/dot-emacs/blob/master/init.el
@@ -1315,118 +1335,17 @@ The values are saved in `latex-help-cmd-alist' for speed."
 
 
 ;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @INET
+;; ;;;  @EVIL
 ;; ;;;////////////////////////////////////////////////////////////////
 
 
-;; ---( w3m )------------------------------------------------------
+;; ---( evil )--------------------------------------------------------------
 
-(use-package w3m
-  :disabled t
-  :commands (w3m-search w3m-find-file)
-  :bind (("C-. u" . w3m-browse-url)
-         ("C-. U" . w3m-browse-url-new-session)
-         ("C-. A-u" . w3m-browse-chrome-url-new-session)
-         ("C-. w" . show-browser)
-         ("A-M-e" . goto-emacswiki)
-         ("A-M-g" . w3m-search)
-         ("A-M-w" . wikipedia-query))
-  :init
-  (setq w3m-command "w3m")
-  (setq w3m-coding-system 'utf-8
-        w3m-file-coding-system 'utf-8
-        w3m-file-name-coding-system 'utf-8
-        w3m-input-coding-system 'utf-8
-        w3m-output-coding-system 'utf-8
-        w3m-terminal-coding-system 'utf-8)
-  (add-hook 'w3m-mode-hook 'w3m-link-numbering-mode)
-  (autoload 'w3m-session-crash-recovery-remove "w3m-session")
-  (defun show-browser ()
-    (interactive)
-    (let ((w3m-buf
-           (catch 'found
-             (dolist (buf (buffer-list))
-               (if (string-match "\\*w3m" (buffer-name buf))
-                   (throw 'found buf))))))
-      (if w3m-buf
-          (switch-to-buffer-other-window w3m-buf)
-        (call-interactively 'w3m-find-file))))
-  (defun wikipedia-query (term)
-    (interactive (list (read-string "Wikipedia search: " (word-at-point))))
-    (require 'w3m-search)
-    (w3m-search "en.wikipedia" term))
-  (eval-when-compile
-    (autoload 'w3m-search-escape-query-string "w3m-search"))
-  (defun wolfram-alpha-query (term)
-    (interactive (list (read-string "Ask Wolfram Alpha: " (word-at-point))))
-    (require 'w3m-search)
-    (w3m-browse-url (concat "http://m.wolframalpha.com/input/?i="
-                            (w3m-search-escape-query-string term))))
-  (defun goto-emacswiki ()
-    (interactive)
-    (w3m-browse-url "http://www.emacswiki.org"))
-  (defun w3m-browse-url-new-session (url)
-    (interactive (progn
-                   (require 'browse-url)
-                   (browse-url-interactive-arg "Emacs-w3m URL: ")))
-    (w3m-browse-url url t))
-  (defun w3m-browse-chrome-url-new-session ()
-    (interactive)
-    (let ((url (do-applescript
-                (string-to-multibyte "tell application \"Google Chrome\"
-URL of active tab of front window
-end tell"))))
-      (w3m-browse-url (substring url 1 (1- (length url))) t)))
-  :config
-  (let (proxy-host proxy-port)
-    (with-temp-buffer
-      (shell-command "scutil --proxy" (current-buffer))
-      (when (re-search-forward "HTTPPort : \\([0-9]+\\)" nil t)
-        (setq proxy-port (match-string 1)))
-      (when (re-search-forward "HTTPProxy : \\(\\S-+\\)" nil t)
-        (setq proxy-host (match-string 1))))
-    (if (and proxy-host proxy-port)
-        (setq w3m-command-arguments
-              (nconc w3m-command-arguments
-                     (list "-o" (format "http_proxy=http://%s:%s/"
-                                        proxy-host proxy-port)))))
-    (use-package w3m-type-ahead
-      :requires w3m
-      :init
-      (add-hook 'w3m-mode-hook 'w3m-type-ahead-mode))
-    (add-hook 'w3m-display-hook
-              (lambda (url)
-                (let ((buffer-read-only nil))
-                  (delete-trailing-whitespace))))
-    (defun my-w3m-linknum-follow ()
-      (interactive)
-      (w3m-linknum-follow))
-    (bind-key "k" 'w3m-delete-buffer w3m-mode-map)
-    (bind-key "i" 'w3m-view-previous-page w3m-mode-map)
-    (bind-key "p" 'w3m-previous-anchor w3m-mode-map)
-    (bind-key "n" 'w3m-next-anchor w3m-mode-map)
-    (defun dka-w3m-textarea-hook()
-      (save-excursion
-        (while (re-search-forward "\r\n" nil t)
-          (replace-match "\n" nil nil))
-        (delete-other-windows)))
-    (add-hook 'w3m-form-input-textarea-mode-hook 'dka-w3m-textarea-hook)
-    (bind-key "<return>" 'w3m-view-url-with-external-browser
-              w3m-minor-mode-map)
-    (bind-key "S-<return>" 'w3m-safe-view-this-url w3m-minor-mode-map)))
+;; @see: https://raw.githubusercontent.com/noctuid/evil-guide/master/README.org
 
-;; ---( twitter )------------------------------------------------------
-
-(use-package twittering-mode
-  :disabled t
-  :commands twit
-  :config
-  (setq twittering-use-master-password t))
-
-;; ---( hackernews )------------------------------------------------------
-
-(use-package hackernews
-  :defer t
+(use-package evil
+  :ensure t
+  :defer 30
   )
 
 
@@ -1604,17 +1523,274 @@ end tell"))))
 
 
 
+
+;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;  @NET
+;; ;;;////////////////////////////////////////////////////////////////
+
+
+;; ---( restclient )------------------------------------------------------
+
+;; @see: https://github.com/pashky/restclient.el
+
+(use-package restclient
+  :ensure t
+  :defer 30
+  :init
+    (progn
+      ;; (unless restclient-use-org
+      ;;   (add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode)))
+      ;; (spacemacs/set-leader-keys-for-major-mode 'restclient-mode
+      ;;   "n" 'restclient-jump-next
+      ;;   "p" 'restclient-jump-prev
+      ;;   "s" 'restclient-http-send-current-stay-in-window
+      ;;   "S" 'restclient-http-send-current
+      ;;   "r" 'spacemacs/restclient-http-send-current-raw-stay-in-window
+      ;;   "R" 'restclient-http-send-current-raw
+      ;;   "y" 'restclient-copy-curl-command)
+      ) 
+  )
+
+
+;; ---( ob-http )------------------------------------------------------
+
+;; @see: https://github.com/zweifisch/ob-http
+;; @see: https://emacs.stackexchange.com/questions/2427/how-to-test-rest-api-with-emacs
+
+;; (use-package ob-http
+;;   :ensure t
+;;   :defer 30
+;;   )
+
+
+
+
 ;; ;;;////////////////////////////////////////////////////////////////
 ;; ;;;  @ORG
 ;; ;;;////////////////////////////////////////////////////////////////
 
-
 ;; ---( org-mode )--------------------------------------------------------------
 
+
+;; @see: https://github.com/anschwa/emacs.d
+
+;; (use-package async
+;;   :ensure t
+;;   :demand
+;;   :init (setq async-bytecomp-allowed-packages '(all))
+;;   :config (async-bytecomp-package-mode 1))
+
+
 (use-package org
-  :ensure t
-  :defer 30
+  :defer
+  :ensure org-plus-contrib
+  :mode ("\\.\\(org\\|org_archive\\)$" . org-mode)
+  :config
+  (require 'ob)
+  ;; (require 'ob-async)
+  (require 'ob-python)
+  ;; (require 'ob-clojure)
+  ;; (require 'ob-perl)
+  ;; (require 'ob-dot)
+  ;; (require 'ob-R)
+  ;; (require 'ob-gnuplot)
+  ;; (require 'ob-lisp)
+  (require 'ob-org)
+  ;; (require 'ob-screen)
+  ;; (require 'ob-calc)
+  ;; (require 'ob-js)
+  ;; (require 'ob-latex)
+  ;; (require 'ob-plantuml)
+  (require 'ob-sh)
+  ;; (require 'ob-ditaa)
+  ;; (require 'ob-awk)
+  ;; (require 'ob-octave)
+  ;; (require 'ob-sed)
+  ;; (require 'ob-sql)
+  ;; (require 'ob-sqlite)
+
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '(
+      ;; (perl . t)
+      ;; (dot . t)
+      ;; (R . t)
+      ;; (gnuplot . t)
+      ;; (clojure . t)
+      ;; (graphviz . t)
+      ;; (lisp . t)
+      ;; (stan . t)
+      (org . t)
+      ;; (screen . t)
+      ;; (calc . t)
+      ;; (js . t)
+      ;; (latex . t)
+      ;; (plantuml . t)
+      ;; (ruby . t)
+      (sh . t)
+      (python . t)
+      (emacs-lisp . t)
+      ;; (ditaa . t)
+      ;; (awk . t)
+      ;; (octave . t)
+      ;; (sed . t)
+      ;; (sql . t)
+      ;; (sqlite . t)
+      ))
   )
+  
+  ;; (setq org-confirm-babel-evaluate nil
+  ;;       org-export-babel-evaluate 'inline-only)
+  ;; (org-babel-do-load-languages
+  ;;  'org-babel-load-languages
+  ;;  '((emacs-lisp . t)
+  ;;    (org . t)
+  ;;    (shell . t)
+  ;;    (makefile . t)
+  ;;    (latex . t)
+  ;;    (fortran . t)
+  ;;    (gnuplot . t)
+  ;;    (python . t))))
+
+(use-package ob-http
+  :after org
+  :ensure t
+  :config
+  (add-to-list 'org-babel-load-languages '(http . t))
+  (org-babel-do-load-languages
+   'org-babel-load-languages org-babel-load-languages))
+
+
+
+
+;; @see: https://github.com/anschwa/emacs.d
+
+;; (use-package ob-core)
+;; ;;(use-package ob-R)
+;; ;;(use-package ob-http)
+;; ;;(use-package ob-restclient)
+;; (use-package ox-md)
+;; (use-package ox-man)
+;; (use-package ox-latex)
+;; (use-package ox-beamer)
+
+
+;; (use-package org
+;;   :ensure t
+;;   :defer 30
+;;   :init
+;;   (progn
+;;     ;; Fontify org-mode code blocks
+;;     (setq org-src-fontify-natively t)
+
+;;     ;; Essential Settings
+;;     (setq org-log-done 'time)
+;;     (setq org-html-doctype "html5")
+;;     (setq org-export-headline-levels 6)
+;;     (setq org-export-with-smart-quotes t)
+
+;;     ;; Configure Mobile Org
+;;     ;; Set to the location of your Org files on your local system
+;;     ; (setq org-directory "~/Dropbox/Development/Org")
+;;     ;; Set to <your Dropbox root directory>/MobileOrg.
+;;     ; (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
+;;     ;; Set to the name of the file where new notes will be stored
+;;     ; (setq org-mobile-inbox-for-pull "~/Dropbox/Development/Org/inbox.org")
+
+;;     ;; Custom TODO keywords
+;;     (setq org-todo-keywords
+;;           '((sequence "TODO(t)" "NOW(n@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
+
+;;     ;; Set up latex
+;;     (setq org-export-with-LaTeX-fragments t)
+;;     (setq org-latex-create-formula-image-program 'imagemagick)
+
+;;     ;; Tell the latex export to use the minted package for source
+;;     ;; code coloration.
+;;     ; (setq org-latex-listings 'minted)
+
+;;     ;; Add minted to the defaults packages to include when exporting.
+;;     ; (add-to-list 'org-latex-packages-alist '("" "minted"))
+
+;;     ;; local variable for keeping track of pdf-process options
+;;     (setq pdf-processp nil))
+;;   :config
+;;   (progn
+;;     ;; Unbind from org-mode only
+;;     (unbind-key "<C-S-up>" org-mode-map)
+;;     (unbind-key "<C-S-down>" org-mode-map)
+;;     ;; Bind new keys to org-mode only
+;;     (bind-key "<s-up>" 'org-metaup org-mode-map)
+;;     (bind-key "<s-down>" 'org-metadown org-mode-map)
+;;     (bind-key "<s-left>" 'org-promote-subtree org-mode-map)
+;;     (bind-key "<s-right>" 'org-demote-subtree org-mode-map)
+
+;;     ;; Let the exporter use the -shell-escape option to let latex
+;;     ;; execute external programs.
+;;     (defun toggle-org-latex-pdf-process ()
+;;       "Change org-latex-pdf-process variable.
+
+;;       Toggle from using latexmk or pdflatex. LaTeX-Mk handles BibTeX,
+;;       but opens a new PDF every-time."
+;;       (interactive)
+;;       (if pdf-processp
+;;           ;; LaTeX-Mk for BibTex
+;;           (progn
+;;             (setq pdf-processp nil)
+;;             (setq org-latex-pdf-process
+;;                   '("latexmk -pdflatex='pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f' -gg -pdf -bibtex-cond -f %f"))
+;;             (message "org-latex-pdf-process: latexmk"))
+;;         ;; Plain LaTeX export
+;;         (progn
+;;           (setq pdf-processp t)
+;;           (setq org-latex-pdf-process
+;;                 '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+;;           (message "org-latex-pdf-process: xelatex"))))
+
+;;     ;; Call toggle-org-latex-pdf-process
+;;     (toggle-org-latex-pdf-process)
+
+;;     ;; Set up babel source-block execution
+;;     (org-babel-do-load-languages
+;;      'org-babel-load-languages
+;;      '((emacs-lisp . t)
+;; ;;     (R . t)
+;;        (python . t)
+;;        (haskell . t)
+;;        (sh . t)
+;;        (scheme . t)
+;;        (ledger . t)                     ; for finances
+;;        (C . t)
+;; ;;     (http . t)
+;;        ))
+
+;;     ;; Prevent Weird LaTeX class issue
+;;     (unless (boundp 'org-latex-classes)
+;;       (setq org-latex-classes nil))
+;;     (add-to-list 'org-latex-classes
+;;                  '("per-file-class"
+;;                    "\\documentclass{article}
+;;                         [NO-DEFAULT-PACKAGES]
+;;                         [EXTRA]"))
+
+;;     (defun myorg-update-parent-cookie ()
+;;       (when (equal major-mode 'org-mode)
+;;         (save-excursion
+;;           (ignore-errors
+;;             (org-back-to-heading)
+;;             (org-update-parent-todo-statistics)))))
+
+;;     (defadvice org-kill-line (after fix-cookies activate)
+;;       (myorg-update-parent-cookie))
+
+;;     (defadvice kill-whole-line (after fix-cookies activate)
+;;       (myorg-update-parent-cookie))))
+
+;; (use-package org
+;;   :ensure t
+;;   :defer 30
+;;   )
+
 
 ;;(use-package dot-org
 ;;  :ensure t
@@ -1635,6 +1811,110 @@ end tell"))))
 ;;     (run-with-idle-timer 300 t 'jump-to-org-agenda)
 ;;     (my-org-startup))
 ;;   (bind-key "<tab>" 'smart-tab org-mode-map))
+
+
+
+;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;  @INET
+;; ;;;////////////////////////////////////////////////////////////////
+
+
+;; ---( w3m )------------------------------------------------------
+
+(use-package w3m
+  :disabled t
+  :commands (w3m-search w3m-find-file)
+  :bind (("C-. u" . w3m-browse-url)
+         ("C-. U" . w3m-browse-url-new-session)
+         ("C-. A-u" . w3m-browse-chrome-url-new-session)
+         ("C-. w" . show-browser)
+         ("A-M-e" . goto-emacswiki)
+         ("A-M-g" . w3m-search)
+         ("A-M-w" . wikipedia-query))
+  :init
+  (setq w3m-command "w3m")
+  (setq w3m-coding-system 'utf-8
+        w3m-file-coding-system 'utf-8
+        w3m-file-name-coding-system 'utf-8
+        w3m-input-coding-system 'utf-8
+        w3m-output-coding-system 'utf-8
+        w3m-terminal-coding-system 'utf-8)
+  (add-hook 'w3m-mode-hook 'w3m-link-numbering-mode)
+  (autoload 'w3m-session-crash-recovery-remove "w3m-session")
+  (defun show-browser ()
+    (interactive)
+    (let ((w3m-buf
+           (catch 'found
+             (dolist (buf (buffer-list))
+               (if (string-match "\\*w3m" (buffer-name buf))
+                   (throw 'found buf))))))
+      (if w3m-buf
+          (switch-to-buffer-other-window w3m-buf)
+        (call-interactively 'w3m-find-file))))
+  (defun wikipedia-query (term)
+    (interactive (list (read-string "Wikipedia search: " (word-at-point))))
+    (require 'w3m-search)
+    (w3m-search "en.wikipedia" term))
+  (eval-when-compile
+    (autoload 'w3m-search-escape-query-string "w3m-search"))
+  (defun wolfram-alpha-query (term)
+    (interactive (list (read-string "Ask Wolfram Alpha: " (word-at-point))))
+    (require 'w3m-search)
+    (w3m-browse-url (concat "http://m.wolframalpha.com/input/?i="
+                            (w3m-search-escape-query-string term))))
+  (defun goto-emacswiki ()
+    (interactive)
+    (w3m-browse-url "http://www.emacswiki.org"))
+  (defun w3m-browse-url-new-session (url)
+    (interactive (progn
+                   (require 'browse-url)
+                   (browse-url-interactive-arg "Emacs-w3m URL: ")))
+    (w3m-browse-url url t))
+  (defun w3m-browse-chrome-url-new-session ()
+    (interactive)
+    (let ((url (do-applescript
+                (string-to-multibyte "tell application \"Google Chrome\"
+URL of active tab of front window
+end tell"))))
+      (w3m-browse-url (substring url 1 (1- (length url))) t)))
+  :config
+  (let (proxy-host proxy-port)
+    (with-temp-buffer
+      (shell-command "scutil --proxy" (current-buffer))
+      (when (re-search-forward "HTTPPort : \\([0-9]+\\)" nil t)
+        (setq proxy-port (match-string 1)))
+      (when (re-search-forward "HTTPProxy : \\(\\S-+\\)" nil t)
+        (setq proxy-host (match-string 1))))
+    (if (and proxy-host proxy-port)
+        (setq w3m-command-arguments
+              (nconc w3m-command-arguments
+                     (list "-o" (format "http_proxy=http://%s:%s/"
+                                        proxy-host proxy-port)))))
+    (use-package w3m-type-ahead
+      :requires w3m
+      :init
+      (add-hook 'w3m-mode-hook 'w3m-type-ahead-mode))
+    (add-hook 'w3m-display-hook
+              (lambda (url)
+                (let ((buffer-read-only nil))
+                  (delete-trailing-whitespace))))
+    (defun my-w3m-linknum-follow ()
+      (interactive)
+      (w3m-linknum-follow))
+    (bind-key "k" 'w3m-delete-buffer w3m-mode-map)
+    (bind-key "i" 'w3m-view-previous-page w3m-mode-map)
+    (bind-key "p" 'w3m-previous-anchor w3m-mode-map)
+    (bind-key "n" 'w3m-next-anchor w3m-mode-map)
+    (defun dka-w3m-textarea-hook()
+      (save-excursion
+        (while (re-search-forward "\r\n" nil t)
+          (replace-match "\n" nil nil))
+        (delete-other-windows)))
+    (add-hook 'w3m-form-input-textarea-mode-hook 'dka-w3m-textarea-hook)
+    (bind-key "<return>" 'w3m-view-url-with-external-browser
+              w3m-minor-mode-map)
+    (bind-key "S-<return>" 'w3m-safe-view-this-url w3m-minor-mode-map)))
+
 
 
 ;; ;;;////////////////////////////////////////////////////////////////
@@ -1697,6 +1977,19 @@ end tell"))))
   :ensure t
   :defer 30
   )
+;; (use-package twittering-mode
+;;   :disabled t
+;;   :commands twit
+;;   :config
+;;   (setq twittering-use-master-password t))
+
+
+;; ;; ---( hackernews )------------------------------------------------------
+
+;; (use-package hackernews
+;;   :defer t
+;;   )
+
 
 
 

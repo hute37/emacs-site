@@ -131,5 +131,22 @@ $" nil t))
                        (save-buffer))
               (message "No transformation."))))))
 
+
+;; ---( format )---------------------------------------------------------
+
+
+;; @see: https://github.com/seth/my-emacs-dot-d/blob/master/emacs-init.org
+
+(defun google-search ()
+  "Googles a query or region if any."
+  (interactive)
+  (browse-url
+   (concat
+    "http://www.google.com/search?ie=utf-8&oe=utf-8&q="
+    (if mark-active
+        (buffer-substring (region-beginning) (region-end))
+      (read-string "Google: ")))))
+
+
 ;; ---( site.func: end )-------------------------------------------------------
 (message "SITE:FUNC - end")

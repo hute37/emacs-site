@@ -1,0 +1,18 @@
+* Test
+
+#+BEGIN_SRC http :pretty
+  GET https://api.github.com/repos/zweifisch/ob-http/languages
+  Accept: application/vnd.github.v3+json
+#+END_SRC
+
+
+#+BEGIN_SRC sh
+  date
+#+END_SRC
+
+
+#+BEGIN_SRC emacs-lisp
+(defun org-xor (a b)
+"Exclusive or."
+(if a (not b) b))
+#+END_SRC
