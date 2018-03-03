@@ -135,7 +135,7 @@
 ;; ;; ---( magit )--------------------------------------------------------------
 
 (use-package magit
-  :ensure t)
+  :disabled t)
 
 
 (use-package magit-zzz
@@ -871,11 +871,11 @@ The values are saved in `latex-help-cmd-alist' for speed."
 
 
 (use-package docker
-  :ensure t
+  :disabled t
   :defer t)
 
 (use-package docker-tramp
-  :ensure t
+  :disabled t
   :defer t)
 
 (use-package dockerfile-mode
