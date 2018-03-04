@@ -26,16 +26,16 @@
 (setq package-enable-at-startup nil)
 (package-initialize)
 
-(unless (package-installed-p 'use-package)
-  (progn
-    (package-refresh-contents)
-    (package-install 'use-package)))
-(eval-when-compile
-  (eval-after-load 'advice
-    '(setq ad-redefinition-action 'accept))
-  (require 'use-package))
-(require 'diminish)
-(require 'bind-key)
+;; (unless (package-installed-p 'use-package)
+;;   (progn
+;;     (package-refresh-contents)
+;;     (package-install 'use-package)))
+;; (eval-when-compile
+;;   (eval-after-load 'advice
+;;     '(setq ad-redefinition-action 'accept))
+;;   (require 'use-package))
+;; (require 'diminish)
+;; (require 'bind-key)
 
 ;; (require 'package)
 ;; (setq package-enable-at-startup nil)
@@ -46,19 +46,19 @@
 
 ;; (package-initialize)
 
-;; ;; Bootstrap `use-package'
-;; (unless (and
-;; 	 (package-installed-p 'bind-key)
-;; 	 (package-installed-p 'diminish)
-;; 	 (package-installed-p 'use-package)
-;; 	 (package-installed-p 'req-package)
-;; 	 )
-;;   (package-refresh-contents)
-;;   (package-install 'bind-key)
-;;   (package-install 'diminish)
-;;   (package-install 'use-package)
-;;   (package-install 'req-package)
-;;   )
+;; Bootstrap `use-package'
+(unless (and
+	 (package-installed-p 'bind-key)
+	 (package-installed-p 'diminish)
+	 (package-installed-p 'use-package)
+	 (package-installed-p 'req-package)
+	 )
+  (package-refresh-contents)
+  (package-install 'bind-key)
+  (package-install 'diminish)
+  (package-install 'use-package)
+  (package-install 'req-package)
+)
 
 
 ;; @see: https://github.com/jwiegley/dot-emacs/blob/master/init.el
