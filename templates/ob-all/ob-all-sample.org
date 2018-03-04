@@ -1,0 +1,41 @@
+* Test
+
+#+BEGIN_SRC sh
+  date
+#+END_SRC
+
+#+BEGIN_SRC shell
+ls
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(defun org-xor (a b)
+"Exclusive or."
+(if a (not b) b))
+#+END_SRC
+
+#+RESULTS:
+: org-xor
+
+
+#+BEGIN_SRC python
+import time
+print("Hello, today's date is %s" % time.ctime())
+print('Two plus two is')
+return 2 ** 2 ** 2 ** 2 
+#+END_SRC
+
+#+RESULTS:
+: 65536
+
+#+BEGIN_SRC http :pretty
+  GET https://api.github.com/repos/zweifisch/ob-http/languages
+  Accept: application/vnd.github.v3+json
+#+END_SRC
+
+#+RESULTS:
+: {
+:   "Emacs Lisp": 14525,
+:   "Shell": 139
+: }
+
