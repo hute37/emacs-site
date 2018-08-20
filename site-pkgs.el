@@ -99,7 +99,7 @@
 
 (use-package jumpc
   :ensure t
-  :config (dolist (jumpc-bind-vim-key)))
+  :config (progn (jumpc-bind-vim-key)))
 
 ;; ---( powerline )--------------------------------------------------------------
 
@@ -1601,7 +1601,7 @@ The values are saved in `latex-help-cmd-alist' for speed."
   ;; (require 'ob-js)
   ;; (require 'ob-latex)
   ;; (require 'ob-plantuml)
-  (require 'ob-sh)
+  (require 'ob-shell)
   ;; (require 'ob-ditaa)
   ;; (require 'ob-awk)
   ;; (require 'ob-octave)
@@ -1627,7 +1627,7 @@ The values are saved in `latex-help-cmd-alist' for speed."
       ;; (latex . t)
       ;; (plantuml . t)
       ;; (ruby . t)
-      (sh . t)
+      (shell . t)
       (python . t)
       (emacs-lisp . t)
       ;; (ditaa . t)
