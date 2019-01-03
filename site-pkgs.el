@@ -771,7 +771,13 @@ The values are saved in `latex-help-cmd-alist' for speed."
   (defalias 'eip 'ein:notebooklist-open))
 
 
-
+(use-package pipenv
+  :ensure t
+  :hook (python-mode . pipenv-mode)
+  :init
+  (setq
+   pipenv-projectile-after-switch-function
+   #'pipenv-projectile-after-switch-extended))
 
 ;; (use-package python-mode
 ;;   :mode ("\\.py\\'" . python-mode)
