@@ -416,15 +416,22 @@
 
 (use-package markdown-mode
   :ensure t
-  :mode ("\\.\\(m\\(ark\\)?down\\|md\\)$" . markdown-mode)
-  :init
-  (add-hook 'markdown-mode-hook 'spell-check-and-wrap-at-80)
-  :config
-  (progn
-    (let ((preferred-markdown-impl "peg-markdown"))
-      (when (executable-find preferred-markdown-impl)
-        (setq markdown-command preferred-markdown-impl)))))
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
 
+;; (use-package markdown-mode
+;;   :ensure t
+;;   :mode ("\\.\\(m\\(ark\\)?down\\|md\\)$" . markdown-mode)
+;;   :init
+;;   (add-hook 'markdown-mode-hook 'spell-check-and-wrap-at-80)
+;;   :config
+;;   (progn
+;;     (let ((preferred-markdown-impl "peg-markdown"))
+;;       (when (executable-find preferred-markdown-impl)
+;;         (setq markdown-command preferred-markdown-impl)))))
 
 
 ;; ---( LaTeX )--------------------------------------------------------------
@@ -657,22 +664,22 @@ The values are saved in `latex-help-cmd-alist' for speed."
 
 
 
-;; ---( polymoden )--------------------------------------------------------------
+;; ---( polymode )--------------------------------------------------------------
 
-(use-package polymode
-  :ensure t
-  :mode (
-         ("\\.md$" . poly-markdown-mode)
-         ("\\.Snw$" . poly-noweb+r-mode)
-         ("\\.Rnw$" . poly-noweb+r-mode)
-         ("\\.Rmd$" . poly-markdown+r-mode)
-         ("\\.rapport$" . poly-rapport-mode)
-         ("\\.Rhtml$" . poly-html+r-mode)
-         ("\\.Rbrew$" . poly-brew+r-mode)
-         ("\\.Rcpp$" . poly-r+c++-mode)
-         ("\\.cppR$" . poly-c++r-mode)
-         )
-)
+;; (use-package polymode
+;;   :ensure t
+;;   :mode (
+;;          ("\\.md$" . poly-markdown-mode)
+;;          ("\\.Snw$" . poly-noweb+r-mode)
+;;          ("\\.Rnw$" . poly-noweb+r-mode)
+;;          ("\\.Rmd$" . poly-markdown+r-mode)
+;;          ("\\.rapport$" . poly-rapport-mode)
+;;          ("\\.Rhtml$" . poly-html+r-mode)
+;;          ("\\.Rbrew$" . poly-brew+r-mode)
+;;          ("\\.Rcpp$" . poly-r+c++-mode)
+;;          ("\\.cppR$" . poly-c++r-mode)
+;;          )
+;; )
 
 
 
