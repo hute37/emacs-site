@@ -1,122 +1,106 @@
-conky.config = {
---==============================================================================
---                               conkyrc_orange
+#==============================================================================
+#                               conkyrc_orange
+#
+#  author  : SLK
+#  version : v2011011601
+#  license : Distributed under the terms of GNU GPL version 2 or later
+#
+#==============================================================================
 
---  author  : SLK
---  version : v2011011601
---  license : Distributed under the terms of GNU GPL version 2 or later
+background yes
+update_interval 1
 
---==============================================================================
+cpu_avg_samples 2
+net_avg_samples 2
+temperature_unit celsius
 
-	background = true,
-	update_interval = 1,
+double_buffer yes
+no_buffers yes
+text_buffer_size 2048
 
-	cpu_avg_samples = 2,
-	net_avg_samples = 2,
-	temperature_unit = 'celsius',
+gap_x 10
+gap_y 30
+minimum_size 190 450
+maximum_width 190
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
+border_inner_margin 0
+border_outer_margin 0
+alignment tr
 
-	double_buffer = true,
-	no_buffers = true,
-	text_buffer_size = 2048,
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
 
-	gap_x = 10,
-	gap_y = 30,
-	minimum_width = 190, minimum_height = 800,
-	maximum_width = 190,
-	own_window = true,
-	own_window_type = 'override',
-	own_window_transparent = true,
-	own_window_hints = 'undecorated,sticky,skip_taskbar,skip_pager,below',
-	border_inner_margin = 0,
-	border_outer_margin = 0,
-	alignment = 'top_right',
+override_utf8_locale yes
+use_xft yes
+#xftfont caviar dreams:size=8
+xftfont RobotoCondensed-Regular:size=8
+xftalpha 0.5
+uppercase no
 
-	draw_shades = false,
-	draw_outline = false,
-	draw_borders = false,
-	draw_graph_borders = false,
+default_color 002F2F
+color1 008C8E
+color2 004A4C
+color3 000809
+color4 00AAAC
 
-	override_utf8_locale = true,
-	use_xft = true,
---xftfont caviar dreams:size=8
---font = 'RobotoCondensed-Regular:size=8',
-	font = 'Serif-Regular:size=8',
-	xftalpha = 0.5,
-	uppercase = false,
+lua_load ~/.conky/Tron/conky.lua
+lua_draw_hook_post main
 
-	default_color = '#002F2F',
-	color1 = '#008C8E',
-	color2 = '#004A4C',
-	color3 = '#000809',
-	color4 = '#00AAAC',
-
-	lua_load = '~/.conky/Tron/conky.lua',
-	lua_draw_hook_post = 'main',
-
---${voffset 35}
---${goto 95}${color3}${font Ubuntu:size=32}${time %e}${color1}${voffset 0}${offset -60}${font Ubuntu:size=10}${time %A}
---${goto 85}${color2}${voffset -2}${font Ubuntu:size=9}${time %b}${voffset -2} ${color3}${font Ubuntu:size=12}${time %Y}${font}
-
---${voffset 70}
+#${voffset 35}
+#${goto 95}${color3}${font ubuntu:size=32}${time %e}${color1}${voffset 0}${offset -60}${font ubuntu:size=10}${time %A}
+#${goto 85}${color2}${voffset -2}${font ubuntu:size=9}${time %b}${voffset -2} ${color3}${font ubuntu:size=12}${time %Y}${font}
+#
+#${voffset 70}
 
 
-};
-
-conky.text = [[
+TEXT
 ${voffset 35}
-${goto 100}${color}${font Ubuntu:size=22}${time %e}${color1}${offset -54}${font Ubuntu:size=9}${time %a}
-${goto 85}${color1}${voffset -2}${font Ubuntu:size=9}${time %b}${voffset -2} ${color3}${font Ubuntu:size=12}${time %Y}${font}
+${goto 100}${color}${font ubuntu:size=22}${time %e}${color1}${offset -54}${font ubuntu:size=9}${time %a}
+${goto 85}${color1}${voffset -2}${font ubuntu:size=9}${time %b}${voffset -2} ${color3}${font ubuntu:size=12}${time %Y}${font}
 
-${voffset 85}
-${goto 90}${font Ubuntu:style=Bold,size=7}${color}CPU
-${goto 90}${font Ubuntu:size=7}${color1}${top name 1}${alignr}${top cpu 1}%
-${goto 90}${font Ubuntu:size=7}${color2}${top name 2}${alignr}${top cpu 2}%
-${goto 90}${font Ubuntu:size=7}${color3}${top name 3}${alignr}${top cpu 3}%
+${voffset 80}
+${goto 90}${font Ubuntu:size=7,weight:bold}${color}CPU
+${goto 90}${font Ubuntu:size=7,weight:normal}${color1}${top name 1}${alignr}${top cpu 1}%
+${goto 90}${font Ubuntu:size=7,weight:normal}${color2}${top name 2}${alignr}${top cpu 2}%
+${goto 90}${font Ubuntu:size=7,weight:normal}${color3}${top name 3}${alignr}${top cpu 3}%
 ${goto 90}${cpugraph 10,100 002020 008080}
-${goto 90}${voffset -10}${font Ubuntu:size=7}${color}${threads} proc
+${goto 90}${voffset -10}${font Ubuntu:size=7,weight:normal}${color}${threads} proc
 
-${voffset 30}
-${goto 90}${font Ubuntu:style=Bold,size=7}${color}MEM
-${goto 90}${font Ubuntu:size=7}${color1}${top_mem name 1}${alignr}${top_mem mem 1}%
-${goto 90}${font Ubuntu:size=7}${color2}${top_mem name 2}${alignr}${top_mem mem 2}%
-${goto 90}${font Ubuntu:size=7}${color3}${top_mem name 3}${alignr}${top_mem mem 3}%
+${voffset 20}
+${goto 90}${font Ubuntu:size=7,weight:bold}${color}MEM
+${goto 90}${font Ubuntu:size=7,weight:normal}${color1}${top_mem name 1}${alignr}${top_mem mem 1}%
+${goto 90}${font Ubuntu:size=7,weight:normal}${color2}${top_mem name 2}${alignr}${top_mem mem 2}%
+${goto 90}${font Ubuntu:size=7,weight:normal}${color3}${top_mem name 3}${alignr}${top_mem mem 3}%
 
-${voffset 22}
-${goto 90}${font Ubuntu:style=Bold,size=7}${color}DISKS
-${goto 90}${font Ubuntu:size=7}${color}free: ${fs_free /} /
-${goto 90}${font Ubuntu:size=7}${color}free: ${fs_free /home} /home
+${voffset 15}
+${goto 90}${font Ubuntu:size=7,weight:bold}${color}DISKS
+${goto 90}${font Ubuntu:size=7,weight:normal}${color}used: ${fs_used /} /
+${goto 90}${font Ubuntu:size=7,weight:normal}${color}used: ${fs_used /home} /home
 ${goto 90}${diskiograph 10,100 002020 008080}${voffset -30}
 
-${voffset 25}
-${goto 70}${font Ubuntu:style=Bold,size=7}${color3}NET${alignr}${color2}${font Ubuntu:style=Bold,size=7}${color2}${if_up eth0}eth ${addr eth0} ${endif}${if_up wlan0}wifi ${addr wlan0}${endif}
-${goto 90}${font Ubuntu:style=Bold,size=7}${color}open ports: ${alignr}${color2}${tcp_portmon 1 65535 count}
-${goto 90}${font Ubuntu:style=Bold,size=7}${color}${offset 10}IP${alignr}DPORT
-${goto 90}${font Ubuntu:size=7}${color2}${tcp_portmon 1 65535 rip  0}${alignr 1}${tcp_portmon 1 65535 rport  0}
-${goto 90}${font Ubuntu:size=7}${color2}${tcp_portmon 1 65535 rip  1}${alignr 1}${tcp_portmon 1 65535 rport  1}
-${goto 90}${font Ubuntu:size=7}${color2}${tcp_portmon 1 65535 rip  2}${alignr 1}${tcp_portmon 1 65535 rport  2}
-${goto 90}${font Ubuntu:size=7}${color2}${tcp_portmon 1 65535 rip  3}${alignr 1}${tcp_portmon 1 65535 rport  3}
-${goto 90}${font Ubuntu:size=7}${color2}${tcp_portmon 1 65535 rip  4}${alignr 1}${tcp_portmon 1 65535 rport  4}
-${goto 90}${font Ubuntu:size=7}${color2}${tcp_portmon 1 65535 rip  5}${alignr 1}${tcp_portmon 1 65535 rport  5}
-${goto 90}${font Ubuntu:size=7}${color2}${tcp_portmon 1 65535 rip  6}${alignr 1}${tcp_portmon 1 65535 rport  6}
-${goto 90}${font Ubuntu:size=7}${color2}${tcp_portmon 1 65535 rip  7}${alignr 1}${tcp_portmon 1 65535 rport  7}
-${goto 90}${font Ubuntu:size=7}${color2}${tcp_portmon 1 65535 rip  8}${alignr 1}${tcp_portmon 1 65535 rport  8}
-${goto 90}${font Ubuntu:size=7}${color2}${tcp_portmon 1 65535 rip  9}${alignr 1}${tcp_portmon 1 65535 rport  9}
-${goto 90}${font Ubuntu:size=7}${color2}${tcp_portmon 1 65535 rip 10}${alignr 1}${tcp_portmon 1 65535 rport 10}
-${goto 90}${font Ubuntu:size=7}${color2}${tcp_portmon 1 65535 rip 11}${alignr 1}${tcp_portmon 1 65535 rport 11}
-${goto 90}${font Ubuntu:size=7}${color2}${tcp_portmon 1 65535 rip 12}${alignr 1}${tcp_portmon 1 65535 rport 12}
-${goto 90}${font Ubuntu:size=7}${color2}${tcp_portmon 1 65535 rip 13}${alignr 1}${tcp_portmon 1 65535 rport 13}
-${goto 90}${font Ubuntu:size=7}${color2}${tcp_portmon 1 65535 rip 14}${alignr 1}${tcp_portmon 1 65535 rport 14}
-
-${voffset 1}
-${goto -190}${font Ubuntu:style=Bold,size=8}${color}RSS
-${voffset 1}
-${goto -190}${font Ubuntu:size=8}${color}${rss http://rss.slashdot.org/slashdot/Slashdot 1 item_titles 5}
-${voffset 1}
-${goto -190}${font Ubuntu:size=8}${color}${rss http://feeds.feedburner.com/hn500points 1 item_titles 5}
-#${voffset 1}
-#${goto -190}${font Ubuntu:size=7}${color}${rss https://bbs.archlinux.org/extern.php?action=feed&type=rss 1 item_titles 6}
-#${voffset 1}
-#${goto -190}${font Ubuntu:size=7}${color}${rss https://planet.archlinux.org/rss20.xml 1 item_titles 8 }
+${voffset 15}
+${goto 70}${font Ubuntu:size=18,weight:bold}${color3}NET${alignr}${color2}${font Ubuntu:size=7,weight:bold}${color2}${if_up eth0}eth ${addr eth0} ${endif}${if_up wlan0}wifi ${addr wlan0}${endif}
+${goto 90}${font Ubuntu:size=7,weight:bold}${color}open ports: ${alignr}${color2}${tcp_portmon 1 65535 count}
+${goto 90}${font Ubuntu:size=7,weight:bold}${color}${offset 10}IP${alignr}DPORT
+${goto 90}${font Ubuntu:size=7,weight:normal}${color2}${tcp_portmon 1 65535 rip  0}${alignr 1}${tcp_portmon 1 65535 rport  0}
+${goto 90}${font Ubuntu:size=7,weight:normal}${color2}${tcp_portmon 1 65535 rip  1}${alignr 1}${tcp_portmon 1 65535 rport  1}
+${goto 90}${font Ubuntu:size=7,weight:normal}${color2}${tcp_portmon 1 65535 rip  2}${alignr 1}${tcp_portmon 1 65535 rport  2}
+${goto 90}${font Ubuntu:size=7,weight:normal}${color2}${tcp_portmon 1 65535 rip  3}${alignr 1}${tcp_portmon 1 65535 rport  3}
+${goto 90}${font Ubuntu:size=7,weight:normal}${color2}${tcp_portmon 1 65535 rip  4}${alignr 1}${tcp_portmon 1 65535 rport  4}
+${goto 90}${font Ubuntu:size=7,weight:normal}${color2}${tcp_portmon 1 65535 rip  5}${alignr 1}${tcp_portmon 1 65535 rport  5}
+${goto 90}${font Ubuntu:size=7,weight:normal}${color2}${tcp_portmon 1 65535 rip  6}${alignr 1}${tcp_portmon 1 65535 rport  6}
+${goto 90}${font Ubuntu:size=7,weight:normal}${color2}${tcp_portmon 1 65535 rip  7}${alignr 1}${tcp_portmon 1 65535 rport  7}
+${goto 90}${font Ubuntu:size=7,weight:normal}${color2}${tcp_portmon 1 65535 rip  8}${alignr 1}${tcp_portmon 1 65535 rport  8}
+${goto 90}${font Ubuntu:size=7,weight:normal}${color2}${tcp_portmon 1 65535 rip  9}${alignr 1}${tcp_portmon 1 65535 rport  9}
+${goto 90}${font Ubuntu:size=7,weight:normal}${color2}${tcp_portmon 1 65535 rip 10}${alignr 1}${tcp_portmon 1 65535 rport 10}
+${goto 90}${font Ubuntu:size=7,weight:normal}${color2}${tcp_portmon 1 65535 rip 11}${alignr 1}${tcp_portmon 1 65535 rport 11}
+${goto 90}${font Ubuntu:size=7,weight:normal}${color2}${tcp_portmon 1 65535 rip 12}${alignr 1}${tcp_portmon 1 65535 rport 12}
+${goto 90}${font Ubuntu:size=7,weight:normal}${color2}${tcp_portmon 1 65535 rip 13}${alignr 1}${tcp_portmon 1 65535 rport 13}
+${goto 90}${font Ubuntu:size=7,weight:normal}${color2}${tcp_portmon 1 65535 rip 14}${alignr 1}${tcp_portmon 1 65535 rport 14}
 
 
-]];
