@@ -1,11 +1,29 @@
 [user]
-        name = G Pelosi
+        name = GC.Pelosi
+        email = giovanni.pelosi@unimib.it
+[user.h37]
+        name = hute37
         email = hute37@gmail.com
-	
-[user.tv]
-        name = Giovanni Pelosi
-        email = giovanni.pelosi@consulenti.chili-tv.it
-	
+[user.ub]
+        name = GC.Pelosi
+        email = giovanni.pelosi@unimib.it
+[core]
+	autocrlf = false
+[color]
+	ui = auto
+[gui]
+	fontdiff = -family cantarell -size 8 -weight normal -slant roman -underline 0 -overstrike 0
+[push]
+	default = simple
+[merge]
+	tool = meld3_noauto
+	conflictstyle = diff3
+[mergetool "meld3_auto"]
+	cmd = meld --diff $LOCAL $MERGED $REMOTE --diff $BASE $LOCAL --diff $BASE $REMOTE  --auto-merge
+[mergetool "meld3_noauto"]
+	cmd = meld --diff $LOCAL $MERGED $REMOTE --diff $BASE $LOCAL --diff $BASE $REMOTE
+[credential]
+	helper = store
 [github]
 	user = hute37
 	token = 7bbaab4c6c3dabf44517721636742ab7
@@ -61,19 +79,3 @@
 	skip = merge --strategy ours
 	over = merge --strategy theirs
 	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
-[core]
-	autocrlf = false
-[color]
-	ui = auto
-[gui]
-	fontdiff = -family cantarell -size 8 -weight normal -slant roman -underline 0 -overstrike 0
-[push]
-	default = simple
-        
-[merge]
-tool = meld3_noauto
-conflictstyle = diff3
-[mergetool "meld3_auto"]
-cmd = meld --diff $LOCAL $MERGED $REMOTE --diff $BASE $LOCAL --diff $BASE $REMOTE  --auto-merge
-[mergetool "meld3_noauto"]
-cmd = meld --diff $LOCAL $MERGED $REMOTE --diff $BASE $LOCAL --diff $BASE $REMOTE
