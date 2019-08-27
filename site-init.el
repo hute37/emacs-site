@@ -232,15 +232,27 @@
   (progn
 	(message "SITE:PACKAGES.repo")
 
-(require 'package)
-(add-to-list 'package-archives
-  '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives
-'("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
-;; You don't need this one if you have marmalade:
-;; (add-to-list 'package-archives
-;;  '("geiser" . "http://download.savannah.gnu.org/releases/geiser/packages"))
-(package-initialize)
+        (require 'package)
+        
+        (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+        (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
+        
+        (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+        (add-to-list 'package-archives '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
+        
+        ;; You don't need this one if you have marmalade:
+        ;; (add-to-list 'package-archives '("geiser" . "http://download.savannah.gnu.org/releases/geiser/packages"))
+
+    ;; (setq 
+    ;;  load-prefer-newer t
+    ;;  package-user-dir "~/.emacs.d/elpa"
+    ;;  package--init-file-ensured t
+    ;;  package-enable-at-startup nil)
+    
+    ;; (unless (file-directory-p package-user-dir)
+    ;;   (make-directory package-user-dir t))    
+        
+    (package-initialize)
 
     ))
 )
