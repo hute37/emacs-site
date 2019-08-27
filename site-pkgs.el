@@ -503,9 +503,9 @@
 ;; ---( yaml )--------------------------------------------------------------
 
 (use-package pdf-tools
-  :ensure t
-  :config
-  (pdf-tools-install)
+  :ensure f
+  ;; :config
+  ;; (pdf-tools-install)
 )
 
 
