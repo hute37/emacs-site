@@ -1,0 +1,71 @@
+! special
+urxvt*.foreground:   #41f141
+! *.background:   #221e2d
+urxvt*.cursorColor:  #ffff40
+
+! black
+urxvt*.color0:       #000000
+urxvt*.color8:       #404040
+
+! red
+urxvt*.color1:       #FF0000
+urxvt*.color9:       #800000
+
+! green
+urxvt*.color2:       #00FF00
+urxvt*.color10:      #008000
+
+! yellow
+urxvt*.color3:       #FFFF00
+urxvt*.color11:      #808000
+
+! blue
+urxvt*.color4:       #0000FF
+urxvt*.color12:      #000080
+
+! magenta
+urxvt*.color5:       #FF00FF
+urxvt*.color13:      #800080
+
+! cyan
+urxvt*.color6:       #00FFFF
+urxvt*.color14:      #008080
+
+! white
+urxvt*.color7:       #FFFFFF
+urxvt*.color15:      #808080
+
+!Xft.dpi: 96
+!Xft.antialias: true
+!Xft.hinting: true
+!Xft.rgba: rgb
+!Xft.autohint: false
+!Xft.hintstyle: hintslight
+!Xft.lcdfilter: lcddefault
+!Xcursor.theme: Chameleon-Pearl-Regular-0.5
+!Xcursor.size:  0
+
+!XTerm*background: #272827
+!XTerm*foreground: #fdf6e3
+!XTerm*reverseVideo: on
+!XTerm*faceName: DejaVu Sans Mono:size=14:antialias=true
+!XTerm*selectToClipboard: true
+
+!URxvt.font: xft:terminus:size=12:antialias=true
+!URxvt.depth: 32
+
+!! BACKGROUND TRANSPARENT
+!URxvt.background: [80]#06060a
+
+!URxvt*scrollBar:                      false
+!URxvt*mouseWheelScrollPage:           false
+!URxvt*cursorBlink:                    true
+!URxvt*background:                     black
+!URxvt*foreground:                     grey
+!URxvt*saveLines:                      5000
+
+! for 'fake' transparency (without Compton) uncomment the following three lines
+! URxvt*inheritPixmap:                  true
+! URxvt*transparent:                    true
+! URxvt*shading:                        138
+
