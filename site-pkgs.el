@@ -20,11 +20,31 @@
 ;; (setq debug-on-error t)
 
 (require 'package)
-(nconc package-archives
-       '(("melpa" . "http://melpa.org/packages/")
-         ("org" . "http://orgmode.org/elpa/")))
+;;(nconc package-archives
+;;       '(("melpa" . "http://melpa.org/packages/")
+;;         ("org" . "http://orgmode.org/elpa/")))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
+
+;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+;;(add-to-list 'package-archives '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
+
+;; You don't need this one if you have marmalade:
+;; (add-to-list 'package-archives '("geiser" . "http://download.savannah.gnu.org/releases/geiser/packages"))
+
 (setq package-enable-at-startup nil)
+
+;; (setq 
+;;  load-prefer-newer t
+;;  package-user-dir "~/.emacs.d/elpa"
+;;  package--init-file-ensured t
+;;  package-enable-at-startup nil)
+
+;; (unless (file-directory-p package-user-dir)
+;;   (make-directory package-user-dir t))    
+
 (package-initialize)
+
 
 ;; (unless (package-installed-p 'use-package)
 ;;   (progn
@@ -961,147 +981,423 @@
 
 ;; ---( LaTeX )--------------------------------------------------------------
 
+;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
 
-(use-package tex-site
-  :disabled t
-  :load-path "site-lisp/auctex/preview/"
-  :defines (latex-help-cmd-alist latex-help-file)
-  :mode ("\\.tex\\'" . TeX-latex-mode)
+(use-package auctex
+  :ensure t
+  :defer t)
+
+(use-package auctex-latexmk
+  :defer t
+  :init
+  (add-hook 'LaTeX-mode-hook 'auctex-latexmk-setup))
+
+(use-package cdlatex
+  :ensure t
+  :defer t)
+
+(use-package company-auctex
+  :defer t
+  :init
+  (add-hook 'LaTeX-mode-hook 'company-auctex-init))
+
+(use-package tex
+  :defer t
+  :init
+  (setq TeX-auto-save t
+        TeX-parse-self t
+        TeX-syntactic-comment t
+        TeX-PDF-mode t
+        ;; Synctex support
+        TeX-source-correlate-mode t
+        TeX-source-correlate-start-server nil
+        ;; Setup reftex style (RefTeX is supported through extension)
+        reftex-use-fonts t
+        ;; Don't insert line-break at inline math
+        LaTeX-fill-break-at-separators nil)
+  (defvar latex-nofill-env '("equation"
+                             "equation*"
+                             "align"
+                             "align*"
+                             "tabular"
+                             "tikzpicture")
+    "List of environment names in which `auto-fill-mode' will be inhibited.")
+  (add-hook 'LaTeX-mode-hook 'latex/auto-fill-mode)
+  (add-hook 'LaTeX-mode-hook 'latex-math-mode)
+  (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+  ;; (add-hook 'LaTeX-mode-hook 'my/latex-mode-defaults)
+
   :config
-  (defun latex-help-get-cmd-alist () ;corrected version:
-    "Scoop up the commands in the index of the latex info manual.
-The values are saved in `latex-help-cmd-alist' for speed."
-    ;; mm, does it contain any cached entries
-    (if (not (assoc "\\begin" latex-help-cmd-alist))
-        (save-window-excursion
-          (setq latex-help-cmd-alist nil)
-          (Info-goto-node (concat latex-help-file "Command Index"))
-          (goto-char (point-max))
-          (while (re-search-backward "^\\* \\(.+\\): *\\(.+\\)\\." nil t)
-            (let ((key (buffer-substring (match-beginning 1) (match-end 1)))
-                  (value (buffer-substring (match-beginning 2)
-                                           (match-end 2))))
-              (add-to-list 'latex-help-cmd-alist (cons key value))))))
-    latex-help-cmd-alist)
+  ;; (defun my/latex-mode-defaults ()
+  ;;   (visual-line-mode +1)
+  ;;   (yas-minor-mode -1))
+
+  (defun latex//autofill ()
+    "Check whether the pointer is ucrrently inside on the
+environments described in `latex-nofill-env' and if so, inhibits
+the automatic filling of the current paragraph."
+    (let ((do-auto-fill t)
+          (current-environment "")
+          (level 0))
+      (while (and do-auto-fill (not (string= current-environment "document")))
+        (setq level (1+ level)
+              current-environment (LaTeX-current-environment level)
+              do-auto-fill (not (member current-environment latex-nofill-env))))
+      (when do-auto-fill
+        (do-auto-fill))))
+
+  (defun latex/auto-fill-mode ()
+    "Toggle uato-fill-mode using the custom auto-fill function."
+    (interactive)
+    (auto-fill-mode)
+    (setq auto-fill-function 'latex//autofill))
+
+  ;; (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
+  ;; (add-to-list 'auto-mode-alist '("\\.l[gh]s\\'" . tex-mode))
+
+  (when (eq system-type 'darwin)
+    (setq TeX-view-program-selection
+          '((output-dvi "DVI Viewer")
+            (output-pdf "PDF Viewer")
+            (output-html "HTML Viewer")))
+
+    (setq TeX-view-program-list
+          '(("DVI Viewer" "open %o")
+            ("PDF Viewer" "open %o")
+            ("HTML Viewer" "open %o")))))
 
 
-  (use-package latex-mode
-    :defer t
-    :config
-    (progn
-      (use-package preview)
-      (use-package ac-math)
-      (defun ac-latex-mode-setup ()
-        (nconc ac-sources
-               '(ac-source-math-unicode ac-source-math-latex
-                                        ac-source-latex-commands)))
-      (add-to-list 'ac-modes 'latex-mode)
-      (add-hook 'latex-mode-hook 'ac-latex-mode-setup)
-      (info-lookup-add-help :mode 'latex-mode
-                            :regexp ".*"
-                            :parse-rule "\\\\?[a-zA-Z]+\\|\\\\[^a-zA-Z]"
-                            :doc-spec '(("(latex2e)Concept Index" )
-                                        ("(latex2e)Command Index")))))
-  )
+
+;; (use-package tex-site
+;;   :disabled t
+;;   :load-path "site-lisp/auctex/preview/"
+;;   :defines (latex-help-cmd-alist latex-help-file)
+;;   :mode ("\\.tex\\'" . TeX-latex-mode)
+;;   :config
+;;   (defun latex-help-get-cmd-alist () ;corrected version:
+;;     "Scoop up the commands in the index of the latex info manual.
+;; The values are saved in `latex-help-cmd-alist' for speed."
+;;     ;; mm, does it contain any cached entries
+;;     (if (not (assoc "\\begin" latex-help-cmd-alist))
+;;         (save-window-excursion
+;;           (setq latex-help-cmd-alist nil)
+;;           (Info-goto-node (concat latex-help-file "Command Index"))
+;;           (goto-char (point-max))
+;;           (while (re-search-backward "^\\* \\(.+\\): *\\(.+\\)\\." nil t)
+;;             (let ((key (buffer-substring (match-beginning 1) (match-end 1)))
+;;                   (value (buffer-substring (match-beginning 2)
+;;                                            (match-end 2))))
+;;               (add-to-list 'latex-help-cmd-alist (cons key value))))))
+;;     latex-help-cmd-alist)
+
+
+;;   (use-package latex-mode
+;;     :defer t
+;;     :config
+;;     (progn
+;;       (use-package preview)
+;;       (use-package ac-math)
+;;       (defun ac-latex-mode-setup ()
+;;         (nconc ac-sources
+;;                '(ac-source-math-unicode ac-source-math-latex
+;;                                         ac-source-latex-commands)))
+;;       (add-to-list 'ac-modes 'latex-mode)
+;;       (add-hook 'latex-mode-hook 'ac-latex-mode-setup)
+;;       (info-lookup-add-help :mode 'latex-mode
+;;                             :regexp ".*"
+;;                             :parse-rule "\\\\?[a-zA-Z]+\\|\\\\[^a-zA-Z]"
+;;                             :doc-spec '(("(latex2e)Concept Index" )
+;;                                         ("(latex2e)Command Index")))))
+;;   )
 
 
 ;; ;;;////////////////////////////////////////////////////////////////
 ;; ;;;  @ORG
 ;; ;;;////////////////////////////////////////////////////////////////
 
-;; ---( org-mode )--------------------------------------------------------------
 
+;; ---(org-ref)------------------------------------------------------------------------
 
-;; @see: https://github.com/anschwa/emacs.d
+(use-package org-ref
+  :after org
+  :ensure t
+  :init
+  (setq reftex-default-bibliography '("~/Dropbox/Local/data/org/ref/references.bib"))
+  (setq org-ref-bibliography-notes "~/Dropbox/Local/data/org/ref/notes.org"
+        org-ref-default-bibliography '("~/Dropbox/Local/data/org/ref/references.bib")
+        org-ref-pdf-directory "~/Dropbox/Local/docs/papers/")
 
-;; (use-package async
-;;   :ensure t
-;;   :demand
-;;   :init (setq async-bytecomp-allowed-packages '(all))
-;;   :config (async-bytecomp-package-mode 1))
+  (setq helm-bibtex-bibliography "~/Dropbox/Local/data/org/ref/references.bib")
+  (setq helm-bibtex-library-path "~/Dropbox/Local/docs/papers/")
 
+  (setq helm-bibtex-pdf-open-function
+        (lambda (fpath)
+          (start-process "open" "*open*" "open" fpath)))
 
-(use-package org
-  :defer
-  :ensure org-plus-contrib
-  :mode ("\\.\\(org\\|org_archive\\)$" . org-mode)
+  (setq helm-bibtex-notes-path "~/Dropbox/Local/data/org/ref/notes.org")
   :config
-  (require 'ob)
-  ;; (require 'ob-async)
-  (require 'ob-python)
-  ;; (require 'ob-clojure)
-  ;; (require 'ob-perl)
-  ;; (require 'ob-dot)
-  ;; (require 'ob-R)
-  ;; (require 'ob-gnuplot)
-  ;; (require 'ob-lisp)
-  (require 'ob-org)
-  ;; (require 'ob-screen)
-  ;; (require 'ob-calc)
-  ;; (require 'ob-js)
-  ;; (require 'ob-latex)
-  ;; (require 'ob-plantuml)
-  (require 'ob-shell)
-  ;; (require 'ob-ditaa)
-  ;; (require 'ob-awk)
-  ;; (require 'ob-octave)
-  ;; (require 'ob-sed)
-  ;; (require 'ob-sql)
-  ;; (require 'ob-sqlite)
+  (key-chord-define-global "uu" 'org-ref-cite-hydra/body)
+  ;; variables that control bibtex key format for auto-generation
+  ;; I want firstauthor-year-title-words
+  ;; this usually makes a legitimate filename to store pdfs under.
+  (setq bibtex-autokey-year-length 4
+        bibtex-autokey-name-year-separator "-"
+        bibtex-autokey-year-title-separator "-"
+        bibtex-autokey-titleword-separator "-"
+        bibtex-autokey-titlewords 2
+        bibtex-autokey-titlewords-stretch 1
+        bibtex-autokey-titleword-length 5))
 
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '(
-      ;; (perl . t)
-      ;; (dot . t)
-      ;; (R . t)
-      ;; (gnuplot . t)
-      ;; (clojure . t)
-      ;; (graphviz . t)
-      ;; (lisp . t)
-      ;; (stan . t)
-      (org . t)
-      ;; (screen . t)
-      ;; (calc . t)
-      ;; (js . t)
-      ;; (latex . t)
-      ;; (plantuml . t)
-      ;; (ruby . t)
-      (shell . t)
-      (python . t)
-      (emacs-lisp . t)
-      ;; (ditaa . t)
-      ;; (awk . t)
-      ;; (octave . t)
-      ;; (sed . t)
-      ;; (sql . t)
-      ;; (sqlite . t)
-      ))
-  )
-  
-  ;; (setq org-confirm-babel-evaluate nil
-  ;;       org-export-babel-evaluate 'inline-only)
-  ;; (org-babel-do-load-languages
-  ;;  'org-babel-load-languages
-  ;;  '((emacs-lisp . t)
-  ;;    (org . t)
-  ;;    (shell . t)
-  ;;    (makefile . t)
-  ;;    (latex . t)
-  ;;    (fortran . t)
-  ;;    (gnuplot . t)
-  ;;    (python . t))))
-
-(use-package ob-http
+(use-package org-autolist
   :after org
   :ensure t
   :config
-  (add-to-list 'org-babel-load-languages '(http . t))
+  (org-autolist-mode +1))
+
+(use-package doi-utils
+  :after org
+;;  :ensure t
+  )
+
+(use-package org-ref-bibtex
+  :after org
+;;  :ensure t
+  :init
+  (setq org-ref-bibtex-hydra-key-binding "\C-cj"))
+
+;; ---( org-mode )--------------------------------------------------------------
+
+;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
+
+
+(use-package org
+  :defer t
+  :bind (("C-c a" . org-agenda)
+         ("C-c c" . org-capture)
+         ("C-c l" . org-store-link))
+  :config
+  (require 'ox-md)
+  (unbind-key "C-c ;" org-mode-map)
+
+  ;;file to save todo items
+  (setq org-agenda-files (quote ("~/Dropbox/Local/data/org/all/todo.org")))
+
+
+  ;;set priority range from A to C with default A
+  (setq org-highest-priority ?A)
+  (setq org-lowest-priority ?C)
+  (setq org-default-priority ?A)
+
+
+  ;;set colours for priorities
+  (setq org-priority-faces '((?A . (:foreground "OliveDrab" :weight bold))
+                             (?B . (:foreground "LightSteelBlue"))
+                             (?C . (:foreground "#F0DFAF"))))
+
+
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;; org-mode agenda options                                                ;;
+  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+  ;;open agenda in current window
+  (setq org-agenda-window-setup (quote current-window))
+  ;;warn me of any deadlines in next 7 days
+  (setq org-deadline-warning-days 7)
+
+  ;;don't show tasks as scheduled if they are already shown as a deadline
+  (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
+  ;;don't give awarning colour to tasks with impending deadlines
+  ;;if they are scheduled to be done
+  (setq org-agenda-skip-deadline-prewarning-if-scheduled (quote pre-scheduled))
+  ;;don't show tasks that are scheduled or have deadlines in the
+  ;;normal todo list
+  (setq org-agenda-todo-ignore-deadlines (quote all))
+  (setq org-agenda-todo-ignore-scheduled (quote all))
+
+  ;;sort tasks in order of when they are due and then by priority
+
+  (setq org-agenda-sorting-strategy
+        (quote
+         ((agenda deadline-up priority-down)
+          (todo priority-down category-keep)
+          (tags priority-down category-keep)
+          (search category-keep))))
+
+  (setq org-capture-templates
+        '(("t" "todo" entry (file+headline "~/Dropbox/Local/data/org/all/todo.org" "Tasks")
+           "* TODO [#A] %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n")))
+
+
+  (defun my/org-mode-defaults ()
+    (turn-on-org-cdlatex)
+    ;; (diminish 'org-cdlatex-mode "")
+    (turn-on-auto-fill)
+
+    ;; make `company-backends' local is critcal
+    ;; or else, you will have completion in every major mode, that's very annoying!
+    (make-local-variable 'company-backends)
+    ;; company-ispell is the plugin to complete words
+    (add-to-list 'company-backends 'company-ispell))
+
+  (add-hook 'org-mode-hook 'my/org-mode-defaults)
+
+  ;; Fontify org-mode code blocks
+  (setq org-src-fontify-natively t)
+
+  (setq org-todo-keywords
+        (quote ((sequence "TODO(t)" "|" "CANCELLED(c@/!)" "DONE(d)"))))
+
+  (setq org-use-fast-todo-selection t)
+  (setq org-treat-S-cursor-todo-selection-as-state-change nil)
+
+  (setq org-todo-keyword-faces
+        '(("TODO" . (:foreground "green" :weight bold))
+          ("NEXT" :foreground "blue" :weight bold)
+          ("WAITING" :foreground "orange" :weight bold)
+          ("HOLD" :foreground "magenta" :weight bold)
+          ("CANCELLED" :foreground "forest green" :weight bold)))
+
+  (setq org-enforce-todo-dependencies t)
+  (setq org-src-tab-acts-natively t)
+
+  (setq org-latex-pdf-process
+        (quote ("pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f"
+                "bibtex $(basename %b)"
+                "pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f"
+                "pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f")))
+
+  (setq org-latex-create-formula-image-program 'imagemagick)
+
+  ;; Tell the latex export to use the minted package for source
+  ;; code coloration.
+  (add-to-list 'org-latex-packages-alist '("" "minted"))
+  (require 'ox-latex)
+  (setq org-latex-listings 'minted)
+
+  ;; (setq org-latex-minted-options
+  ;;       '(("frame" "lines") ("framesep" "6pt")
+  ;;         ("mathescape" "true") ("fontsize" "\\small")))
+
+  (setq org-confirm-babel-evaluate nil)
+
+  ;; execute external programs.
   (org-babel-do-load-languages
-   'org-babel-load-languages org-babel-load-languages))
+   (quote org-babel-load-languages)
+   (quote ((emacs-lisp . t)
+           (dot . t)
+           (ditaa . t)
+           (python . t)
+           ;; (ruby . t)
+           ;; (R . t)           
+           (gnuplot . t)
+           ;; (clojure . t)
+           ;; (sh . t)
+           ;; (haskell . t)
+           (octave . t)
+           (org . t)
+           (plantuml . t)
+           (scala . t)
+           (sql . t)
+           (latex . t))))
+
+  (eval-after-load 'org-src
+    '(define-key org-src-mode-map
+       "\C-x\C-s" #'org-edit-src-exit)))
 
 
 
+;; ---( org-mode-v1 )--------------------------------------------------------------
+
+;; ;; @see: https://github.com/anschwa/emacs.d
+
+;; ;; (use-package async
+;; ;;   :ensure t
+;; ;;   :demand
+;; ;;   :init (setq async-bytecomp-allowed-packages '(all))
+;; ;;   :config (async-bytecomp-package-mode 1))
+
+
+;; (use-package org
+;;   :defer
+;;   :ensure org-plus-contrib
+;;   :mode ("\\.\\(org\\|org_archive\\)$" . org-mode)
+;;   :config
+;;   (require 'ob)
+;;   ;; (require 'ob-async)
+;;   (require 'ob-python)
+;;   ;; (require 'ob-clojure)
+;;   ;; (require 'ob-perl)
+;;   ;; (require 'ob-dot)
+;;   ;; (require 'ob-R)
+;;   ;; (require 'ob-gnuplot)
+;;   ;; (require 'ob-lisp)
+;;   (require 'ob-org)
+;;   ;; (require 'ob-screen)
+;;   ;; (require 'ob-calc)
+;;   ;; (require 'ob-js)
+;;   ;; (require 'ob-latex)
+;;   ;; (require 'ob-plantuml)
+;;   (require 'ob-shell)
+;;   ;; (require 'ob-ditaa)
+;;   ;; (require 'ob-awk)
+;;   ;; (require 'ob-octave)
+;;   ;; (require 'ob-sed)
+;;   ;; (require 'ob-sql)
+;;   ;; (require 'ob-sqlite)
+
+;;   (org-babel-do-load-languages
+;;    'org-babel-load-languages
+;;    '(
+;;       ;; (perl . t)
+;;       ;; (dot . t)
+;;       ;; (R . t)
+;;       ;; (gnuplot . t)
+;;       ;; (clojure . t)
+;;       ;; (graphviz . t)
+;;       ;; (lisp . t)
+;;       ;; (stan . t)
+;;       (org . t)
+;;       ;; (screen . t)
+;;       ;; (calc . t)
+;;       ;; (js . t)
+;;       ;; (latex . t)
+;;       ;; (plantuml . t)
+;;       ;; (ruby . t)
+;;       (shell . t)
+;;       (python . t)
+;;       (emacs-lisp . t)
+;;       ;; (ditaa . t)
+;;       ;; (awk . t)
+;;       ;; (octave . t)
+;;       ;; (sed . t)
+;;       ;; (sql . t)
+;;       ;; (sqlite . t)
+;;       ))
+;;   )
+  
+;;   ;; (setq org-confirm-babel-evaluate nil
+;;   ;;       org-export-babel-evaluate 'inline-only)
+;;   ;; (org-babel-do-load-languages
+;;   ;;  'org-babel-load-languages
+;;   ;;  '((emacs-lisp . t)
+;;   ;;    (org . t)
+;;   ;;    (shell . t)
+;;   ;;    (makefile . t)
+;;   ;;    (latex . t)
+;;   ;;    (fortran . t)
+;;   ;;    (gnuplot . t)
+;;   ;;    (python . t))))
+
+;; (use-package ob-http
+;;   :after org
+;;   :ensure t
+;;   :config
+;;   (add-to-list 'org-babel-load-languages '(http . t))
+;;   (org-babel-do-load-languages
+;;    'org-babel-load-languages org-babel-load-languages))
+
+
+
+;; ---(org-misc)------------------------------------------------------------------------
 
 ;; @see: https://github.com/anschwa/emacs.d
 
