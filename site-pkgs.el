@@ -118,7 +118,7 @@
 ;; ;;(use-package pretty-lambdada)
 
 (use-package jumpc
-  :ensure t
+  :disabled t
   :config (progn (jumpc-bind-vim-key)))
 
 ;; ---( powerline )--------------------------------------------------------------
@@ -298,7 +298,7 @@
 ;; ;; ---( ack )--------------------------------------------------------------
 
 (use-package ack
-  :ensure t)
+  :disabled t)
 ;;(use-package ack-and-a-half)
 
 ;; ---( grep )--------------------------------------------------------------
@@ -983,8 +983,9 @@
 
 ;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
 
+;;   :ensure t
+
 (use-package auctex
-  :ensure t
   :defer t)
 
 (use-package auctex-latexmk
@@ -1908,7 +1909,7 @@ the automatic filling of the current paragraph."
 ;; @see: https://raw.githubusercontent.com/noctuid/evil-guide/master/README.org
 
 (use-package evil
-  :ensure t
+  :disabled t
   :defer 30
   )
 
