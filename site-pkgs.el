@@ -9,6 +9,7 @@
 ;; @see: http://pages.sachachua.com/.emacs.d/Sacha.html
 ;; @see: https://github.com/bdd/.emacs.d/blob/master/packages.el
 ;; @see: http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.html
+;; @see: https://ladicle.com/post/config/
 
 ;; ---( Install )--------------------------------------------------------------
 
@@ -301,6 +302,26 @@
   :disabled t)
 ;;(use-package ack-and-a-half)
 
+;; ---( ag )--------------------------------------------------------------
+
+(use-package wgrep
+  :defer t
+  :custom
+  (wgrep-enable-key "e")
+  (wgrep-auto-save-buffer )
+  (twgrep-change-readonly-file t))
+
+(use-package ag
+  :custom
+  (ag-highligh-search )
+  (tag-reuse-buffers )
+  (tag-reuse-window t)
+  :bind
+  ("M-s a" . ag-project)
+  :config
+  (use-package wgrep-ag))
+
+
 ;; ---( grep )--------------------------------------------------------------
 
 (use-package grep
@@ -333,97 +354,6 @@
     (grep-apply-setting
      'grep-find-command
      '("find . -type f -print0 | xargs -P4 -0 egrep -nH " . 49))))
-
-
-;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @COMPLETION
-;; ;;;////////////////////////////////////////////////////////////////
-
-
-;; ---( autocomplete )--------------------------------------------------------------
-
-(use-package auto-complete
-  :disabled t
-  :diminish auto-complete-mode
-  :init
-  (use-package pos-tip)
-  (require 'auto-complete-config)
-  (ac-config-default)
-  :config
-  ;; @see: http://auto-complete.org/doc/manual.html
-  ;;(ac-set-trigger-key "<backtab>")
-  ;;(ac-set-trigger-key "TAB")
-  (setq ac-ignore-case 'smart)
-  (setq ac-auto-start nil)
-  (setq ac-use-menu-map t)
-  ;;(define-key ac-mode-map (kbd "M-SPC") 'auto-complete)
-  (define-key ac-mode-map  [(control menu)] 'auto-complete)
-  (ac-set-trigger-key "TAB")
-  ;; (define-key ac-completing-map "\M-/" 'ac-stop)
-  ;; (define-key ac-completing-map "\t" 'ac-complete)
-  ;; (define-key ac-completing-map "\r" nil)
-  ;; (setq ac-use-menu-map t)
-  ;; (define-key ac-menu-map "\C-n" 'ac-next)
-  ;; (define-key ac-menu-map "\C-p" 'ac-previous)
-  ;; (setq ac-use-quick-help nil)
-  ;; (setq ac-menu-height 20)
-  ;; (setq ac-show-menu-immediately-on-auto-complete t)
-  ;; (setq ac-auto-show-menu 0.8)
-  ;; (setq ac-delay 0.4)
-  
-  ;; (setq-default ac-sources '(ac-source-filename
-  ;;                            ac-source-functions
-  ;;                            ac-source-yasnippet
-  ;;                            ac-source-variables
-  ;;                            ac-source-symbols
-  ;;                            ac-source-features
-  ;;                            ac-source-abbrev
-  ;;                            ac-source-words-in-same-mode-buffers
-  ;;                            ac-source-dictionary))
-  
-  ;; (defun ac-emacs-lisp-mode-setup ()
-  ;;   (setq ac-sources '(ac-source-symbols ac-source-words-in-same-mode-buffers)))
-  ;; (add-hook 'c++-mode (lambda () (add-to-list 'ac-sources 'ac-source-semantic)))
-  
-  ;; (bind-key "A-M-?" 'ac-last-help)
-  ;; (unbind-key "C-s" ac-completing-map)
-  
-  )
-
-
-;; ---( company )--------------------------------------------------------------
-
-(use-package company
-  :ensure t
-  :diminish company-mode
-  :commands company-mode
-  :bind ("<C-menu>" . company-complete)
-  :init
-  (add-hook 'clojure-mode-hook 'company-mode)
-  (add-hook 'cider-repl-mode-hook 'company-mode)
-  (add-hook 'lisp-mode-hook 'company-mode)
-  (add-hook 'emacs-lisp-mode-hook 'company-mode)
-  (add-hook 'lisp-interaction-mode-hook 'company-mode)
-  (add-hook 'ielm-mode-hook 'company-mode)
-  (add-hook 'json-mode-hook 'company-mode)
-  :config
-  ;; From https://github.com/company-mode/company-mode/issues/87
-  ;; See also https://github.com/company-mode/company-mode/issues/123
-  ;; (defadvice company-pseudo-tooltip-unless-just-one-frontend
-  ;;     (around only-show-tooltip-when-invoked activate)
-  ;;   (when (company-explicit-action-p)
-  ;;     ad-do-it))
-  (use-package helm-company
-    :disabled t))
-
-
-;; ---( yasnippet )--------------------------------------------------------------
-
-(use-package yasnippet
-  :disabled t
-  :config
-  (yas-reload-all))
-
 
 
 ;; ;;;////////////////////////////////////////////////////////////////
@@ -1914,10 +1844,107 @@ the automatic filling of the current paragraph."
   )
 
 
+;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;  @HYDRA
+;; ;;;////////////////////////////////////////////////////////////////
+
+
+;; ;; ---( hydra )--------------------------------------------------------------
+
+(use-package hydra
+  :ensure t)
+
+
 
 ;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @HELM
+;; ;;;  @COMPLETION
 ;; ;;;////////////////////////////////////////////////////////////////
+
+
+;; ---( autocomplete )--------------------------------------------------------------
+
+(use-package auto-complete
+  :disabled t
+  :diminish auto-complete-mode
+  :init
+  (use-package pos-tip)
+  (require 'auto-complete-config)
+  (ac-config-default)
+  :config
+  ;; @see: http://auto-complete.org/doc/manual.html
+  ;;(ac-set-trigger-key "<backtab>")
+  ;;(ac-set-trigger-key "TAB")
+  (setq ac-ignore-case 'smart)
+  (setq ac-auto-start nil)
+  (setq ac-use-menu-map t)
+  ;;(define-key ac-mode-map (kbd "M-SPC") 'auto-complete)
+  (define-key ac-mode-map  [(control menu)] 'auto-complete)
+  (ac-set-trigger-key "TAB")
+  ;; (define-key ac-completing-map "\M-/" 'ac-stop)
+  ;; (define-key ac-completing-map "\t" 'ac-complete)
+  ;; (define-key ac-completing-map "\r" nil)
+  ;; (setq ac-use-menu-map t)
+  ;; (define-key ac-menu-map "\C-n" 'ac-next)
+  ;; (define-key ac-menu-map "\C-p" 'ac-previous)
+  ;; (setq ac-use-quick-help nil)
+  ;; (setq ac-menu-height 20)
+  ;; (setq ac-show-menu-immediately-on-auto-complete t)
+  ;; (setq ac-auto-show-menu 0.8)
+  ;; (setq ac-delay 0.4)
+  
+  ;; (setq-default ac-sources '(ac-source-filename
+  ;;                            ac-source-functions
+  ;;                            ac-source-yasnippet
+  ;;                            ac-source-variables
+  ;;                            ac-source-symbols
+  ;;                            ac-source-features
+  ;;                            ac-source-abbrev
+  ;;                            ac-source-words-in-same-mode-buffers
+  ;;                            ac-source-dictionary))
+  
+  ;; (defun ac-emacs-lisp-mode-setup ()
+  ;;   (setq ac-sources '(ac-source-symbols ac-source-words-in-same-mode-buffers)))
+  ;; (add-hook 'c++-mode (lambda () (add-to-list 'ac-sources 'ac-source-semantic)))
+  
+  ;; (bind-key "A-M-?" 'ac-last-help)
+  ;; (unbind-key "C-s" ac-completing-map)
+  
+  )
+
+
+;; ---( company )--------------------------------------------------------------
+
+(use-package company
+  :ensure t
+  :diminish company-mode
+  :commands company-mode
+  :bind ("<C-menu>" . company-complete)
+  :init
+  (add-hook 'clojure-mode-hook 'company-mode)
+  (add-hook 'cider-repl-mode-hook 'company-mode)
+  (add-hook 'lisp-mode-hook 'company-mode)
+  (add-hook 'emacs-lisp-mode-hook 'company-mode)
+  (add-hook 'lisp-interaction-mode-hook 'company-mode)
+  (add-hook 'ielm-mode-hook 'company-mode)
+  (add-hook 'json-mode-hook 'company-mode)
+  :config
+  ;; From https://github.com/company-mode/company-mode/issues/87
+  ;; See also https://github.com/company-mode/company-mode/issues/123
+  ;; (defadvice company-pseudo-tooltip-unless-just-one-frontend
+  ;;     (around only-show-tooltip-when-invoked activate)
+  ;;   (when (company-explicit-action-p)
+  ;;     ad-do-it))
+  (use-package helm-company
+    :disabled t))
+
+
+;; ---( yasnippet )--------------------------------------------------------------
+
+(use-package yasnippet
+  :disabled t
+  :config
+  (yas-reload-all))
+
 
 
 ;; ---( ido )--------------------------------------------------------------
@@ -1986,6 +2013,7 @@ the automatic filling of the current paragraph."
 ;; ---( helm )--------------------------------------------------------------
 
 (use-package helm
+  :disabled t
   :ensure helm
   :diminish helm-mode
   :init
@@ -2011,7 +2039,7 @@ the automatic filling of the current paragraph."
          ("C-x c b" . my/helm-do-grep-book-notes)
          ("C-x c SPC" . helm-all-mark-rings)))
 
-(ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
+;; (ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
 
 ;; ;; ---( helm-descbinds )--------------------------------------------------------------
 
@@ -2088,6 +2116,39 @@ the automatic filling of the current paragraph."
 
 
 
+;; ---( ivy )--------------------------------------------------------------
+
+
+;; @see: https://blog.jft.rocks/emacs/helm-to-ivy.html
+
+;; Ivy and Counsel
+(use-package ivy
+  :ensure t
+  :diminish (ivy-mode . "")
+  :config
+  (ivy-mode 1)
+  (setq enable-recursive-minibuffers t)
+  ;; add ‘recentf-mode’ and bookmarks to ‘ivy-switch-buffer’.
+  (setq ivy-use-virtual-buffers t)
+  ;; number of result lines to display
+  (setq ivy-height 10)
+  ;; no regexp by default
+  (setq ivy-initial-inputs-alist nil)
+  ;; configure regexp engine.
+  (setq ivy-re-builders-alist
+  ;; allow input not in order
+        '((t   . ivy--regex-ignore-order))))
+
+(use-package counsel
+  :ensure t)
+
+(use-package counsel-projectile
+  :ensure t
+  :after (counsel projectile))
+
+(use-package ivy-hydra
+  :ensure t
+  :after (ivy hydra))
 
 ;; ;;;////////////////////////////////////////////////////////////////
 ;; ;;;  @NET
@@ -2308,17 +2369,6 @@ end tell"))))
 ;;   )
 
 
-
-
-;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @HYDRA
-;; ;;;////////////////////////////////////////////////////////////////
-
-
-;; ;; ---( hydra )--------------------------------------------------------------
-
-(use-package hydra
-  :ensure t)
 
 
 ;; ---( site.pkgs: end )-------------------------------------------------------
