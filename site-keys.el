@@ -373,7 +373,7 @@
 
 (global-set-key [f3] 'isearch-repeat-forward )
 (global-set-key [(shift f3)] 'isearch-repeat-backward )
-(global-set-key [(control f3)] 'view-mode ) 
+(global-set-key [(control f3)] 'isearch-iforward ) 
 (global-set-key [(meta f3)] 'occur )
 (global-set-key [(shift meta f3)] 'function-key-error)
 
@@ -696,7 +696,7 @@ When `universal-argument' is called first, cut whole buffer (but respect `narrow
 ;; ---( Search )------------------------------------------------------------
 
 ;;(global-set-key "\C-f" 'occur)
-(define-key esc-map "s" 'occur)
+;;(define-key esc-map "s" 'occur)
 
 
 

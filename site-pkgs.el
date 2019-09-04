@@ -163,20 +163,6 @@
 ;; 		       )
 ;; 	     )
 
-;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @ACE
-;; ;;;////////////////////////////////////////////////////////////////
-
-
-;; ;; ---( ace )--------------------------------------------------------------
-
-
-(use-package ace-jump-mode
-  :ensure t
-  :commands ace-jump-mode
-  :init
-  (bind-key "C-." 'ace-jump-mode))
-
 
 
 ;; ;;;////////////////////////////////////////////////////////////////
@@ -1845,13 +1831,29 @@ the automatic filling of the current paragraph."
 
 
 ;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @HYDRA
+;; ;;;  @JUMP
 ;; ;;;////////////////////////////////////////////////////////////////
 
 
 ;; ;; ---( hydra )--------------------------------------------------------------
 
 (use-package hydra
+  :ensure t)
+
+
+;; ;; ---( ace )--------------------------------------------------------------
+
+
+(use-package ace-jump-mode
+  :ensure t
+  :commands ace-jump-mode
+  :init
+  (bind-key "C-." 'ace-jump-mode))
+
+
+;; ;; ---( avy )--------------------------------------------------------------
+
+(use-package avy
   :ensure t)
 
 
@@ -2120,27 +2122,54 @@ the automatic filling of the current paragraph."
 
 
 ;; @see: https://blog.jft.rocks/emacs/helm-to-ivy.html
+;; @see: https://truthseekers.io/lessons/how-to-use-ivy-swiper-counsel-in-emacs-for-noobs/
+;; @see: https://www.reddit.com/r/emacs/comments/910pga/tip_how_to_use_ivy_and_its_utilities_in_your/
+;; @see: https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-ivy.el
 
-;; Ivy and Counsel
-(use-package ivy
-  :ensure t
-  :diminish (ivy-mode . "")
-  :config
-  (ivy-mode 1)
-  (setq enable-recursive-minibuffers t)
-  ;; add ‘recentf-mode’ and bookmarks to ‘ivy-switch-buffer’.
-  (setq ivy-use-virtual-buffers t)
-  ;; number of result lines to display
-  (setq ivy-height 10)
-  ;; no regexp by default
-  (setq ivy-initial-inputs-alist nil)
-  ;; configure regexp engine.
-  (setq ivy-re-builders-alist
-  ;; allow input not in order
-        '((t   . ivy--regex-ignore-order))))
+
 
 (use-package counsel
-  :ensure t)
+  :ensure t
+  :after ivy
+  :config (counsel-mode))
+
+(use-package ivy
+  :ensure t
+  :defer 0.1
+  :diminish
+  :bind (("C-c C-r" . ivy-resume)
+         ("C-x B" . ivy-switch-buffer-other-window)
+         ;; :map ivy--minibuffer-map
+         ;; ("<left>" . ivy-backward-kill-work)
+         ;; ("<right>" . ivy-alt-done)
+         )
+  :custom
+  (ivy-count-format "(%d/d%)")
+  (ivy-use-virtual-buffers t)
+  (ivy-height 20)
+  :config
+  (ivy-mode)
+  )
+
+(use-package ivy-rich
+  :ensure t
+  :after ivy
+  :custom
+  (ivy-virtual-abbreviate 'full
+                          ivy-rich-switch-buffer-align-virtual-buffer t
+                          ivy-rich-path-style 'abbrev)
+  :config
+  (ivy-set-display-transformer 'ivy-switch-buffer
+                               'ivy-rich-switch-buffer-transformer)
+  (ivy-rich-mode)
+  )
+
+(use-package swiper
+  :ensure t
+  :after ivy
+  :bind (("C-s" . swiper))
+  )
+
 
 (use-package counsel-projectile
   :ensure t
@@ -2149,6 +2178,7 @@ the automatic filling of the current paragraph."
 (use-package ivy-hydra
   :ensure t
   :after (ivy hydra))
+
 
 ;; ;;;////////////////////////////////////////////////////////////////
 ;; ;;;  @NET
