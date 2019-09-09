@@ -51,11 +51,20 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+#plugins=(git  zsh-dircolors-solarized)
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+
+##
+# @see: https://github.com/ThiefMaster/zsh-config/blob/master/zshrc.d/shellopts.zsh
+#
+
+unsetopt	AUTO_CD
+
 
 # export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -89,6 +98,8 @@ unset GREP_OPTIONS
 
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases || true
 
+export ANSIBLE_VAULT_PASSWORD_FILE=~/.ans-wall.asc
+export PYENV_ROOT=~/.pyenv
 
 # ------------------------------------------------
 export _DOT_ZSHRC_1="$(date  --rfc-3339=ns)"
