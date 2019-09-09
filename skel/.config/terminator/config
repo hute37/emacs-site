@@ -1,89 +1,317 @@
 [global_config]
+  dbus = False
   focus = mouse
+  tab_position = bottom
+  scroll_tabbar = True
+  always_split_with_profile = True
 [keybindings]
+  new_tab = <Primary><Shift>t
+  cycle_next = None
   cycle_prev = None
-  close_window = None
-  group_tab = None
-  move_tab_right = None
-  resize_left = None
-  reset_clear = None
+  go_next = <Alt>Down
+  go_prev = None
+  go_up = None
+  go_down = None
+  go_left = None
   go_right = None
-  new_tab = None
-  resize_right = None
+  split_horiz = <Primary><Shift>h
+  split_vert = <Primary><Shift>v
+  close_term = None
+  copy = None
+  paste = None
+  toggle_scrollbar = None
+  search = None
+  close_window = None
+  resize_up = None
   resize_down = None
+  resize_left = None
+  resize_right = None
+  move_tab_right = None
+  move_tab_left = None
   toggle_zoom = <Alt>Up
   scaled_zoom = None
-  group_all = None
+  next_tab = <Primary>Page_Down
+  prev_tab = <Primary>Page_Up
   full_screen = <Alt>Return
-  prev_tab = None
-  split_vert = None
-  ungroup_all = None
-  ungroup_tab = None
-  paste = None
-  cycle_next = None
-  go_prev = None
-  close_term = None
-  new_terminator = None
-  go_next = <Alt>Down
-  go_left = None
-  copy = None
-  hide_window = None
   reset = None
-  search = None
-  go_up = None
-  resize_up = None
-  next_tab = None
-  split_horiz = None
-  go_down = None
+  reset_clear = None
+  hide_window = None
+  group_all = None
+  ungroup_all = None
+  group_tab = None
+  ungroup_tab = None
   new_window = None
-  move_tab_left = None
-  toggle_scrollbar = None
+  new_terminator = None
+  help = None
 [profiles]
-  [[steel]]
-    use_system_font = False
-    visible_bell = True
-    scrollback_lines = 5000
-    scrollbar_position = left
-    cursor_color = "#f10606"
-    foreground_color = "#1e1e1e"
-    font = Droid Sans Mono 10
-    background_color = "#c0c6c8"
   [[default]]
-    scrollback_lines = 5000
+    background_color = "#282828"
     cursor_color = "#fd070c"
-  [[consolas]]
-    scrollbar_position = left
+    font = Monospace 14
+    foreground_color = "#ebdbb2"
+    scrollback_lines = 5000
+    palette = "#282828:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#a89984:#928374:#fb4934:#b8bb26:#fabd2f:#83a598:#d3869b:#8ec07c:#ebdbb2"
     use_system_font = False
+  [[consolas]]
+    cursor_color = "#f9f311"
+    font = Terminus 12
+    foreground_color = "#00ff00"
+    scrollbar_position = left
     scrollback_lines = 5000
     palette = "#000000:#aa0000:#00aa00:#aa5500:#0000aa:#aa00aa:#00aaaa:#aaaaaa:#555555:#ff5555:#55ff55:#ffff55:#5555ff:#ff55ff:#55ffff:#ffffff"
-    cursor_color = "#f9f311"
-    font = Terminus 8
-  [[unity]]
-    scrollback_lines = 5000
-    font = Ubuntu Mono 14
-    background_color = "#300a24"
     use_system_font = False
-    foreground_color = "#ffffff"
-  [[forest]]
-    use_system_font = False
-    font = Inconsolata Medium 18
-    background_color = "#0b240b"
-    scrollbar_position = hidden
-    foreground_color = "#85ff00"
-  [[logger]]
-    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+  [[copper]]
     visible_bell = True
-    scrollback_lines = 2000
+    cursor_color = "#aaaaaa"
+    font = Hack 13
+    foreground_color = "#e53c00"
+    palette = "#000000:#cd0000:#00cd00:#cdcd00:#0000cd:#cd00cd:#00cdcd:#faebd7:#404040:#ff0000:#00ff00:#ffff00:#0000ff:#ff00ff:#00ffff:#ffffff"
     use_system_font = False
-    foreground_color = "#000000"
-    font = Envy Code R 8
+  [[donkey]]
+    visible_bell = True
+    cursor_color = "#fce94f"
+    cursor_color_fg = False
+    font = VL Gothic 14
+    foreground_color = "#d8f8ff"
+    scrollback_lines = 15000
+    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    use_system_font = False
+  [[forest]]
+    background_color = "#0b240b"
+    cursor_color = "#85ff00"
+    font = Inconsolata Medium 22
+    foreground_color = "#85ff00"
+    scrollbar_position = hidden
+    use_system_font = False
+  [[incas]]
+    visible_bell = True
+    background_color = "#fbf1c7"
+    cursor_color = "#8ae234"
+    cursor_color_fg = False
+    font = VL Gothic 12
+    foreground_color = "#3c3836"
+    scrollback_lines = 5000
+    palette = "#fbf1c7:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#7c6f64:#928374:#9d0006:#79740e:#b57614:#076678:#8f3f71:#427b58:#3c3836"
+    use_system_font = False
+    copy_on_selection = True
+  [[iron]]
+    background_color = "#fbf1c7"
+    cursor_color = "#aaaaaa"
+    font = Monospace 14
+    foreground_color = "#3c3836"
+    palette = "#fbf1c7:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#7c6f64:#928374:#9d0006:#79740e:#b57614:#076678:#8f3f71:#427b58:#3c3836"
+    use_system_font = False
+  [[lava]]
+    cursor_color = "#aaaaaa"
+    font = DejaVu Sans Mono 14
+    foreground_color = "#cc0000"
+    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    use_system_font = False
+  [[light]]
+    cursor_color = "#aaaaaa"
+  [[lighter]]
+    visible_bell = True
+    background_color = "#fdf6e3"
+    cursor_color = "#aaaaaa"
+    font = Noto Sans Mono CJK TC 13
+    foreground_color = "#657b83"
+    scrollback_lines = 10000
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    use_system_font = False
+    copy_on_selection = True
+  [[logger]]
+    visible_bell = True
     background_color = "#ffffdd"
+    cursor_color = "#000000"
+    font = Envy Code R 13
+    foreground_color = "#000000"
+    scrollback_lines = 2000
+    palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
+    use_system_font = False
+  [[solaris]]
+    visible_bell = True
+    background_color = "#002b36"
+    cursor_color = "#aaaaaa"
+    font = Noto Mono 18
+    foreground_color = "#839496"
+    scrollback_lines = 10000
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+    use_system_font = False
+    copy_on_selection = True
+  [[steel]]
+    visible_bell = True
+    background_color = "#282828"
+    cursor_color = "#aaaaaa"
+    font = DejaVu Sans Mono 14
+    foreground_color = "#ebdbb2"
+    scrollback_lines = 50000
+    palette = "#282828:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#a89984:#928374:#fb4934:#b8bb26:#fabd2f:#83a598:#d3869b:#8ec07c:#ebdbb2"
+    use_system_font = False
+  [[ubuntu]]
+    background_color = "#481036"
+    cursor_color = "#aaaaaa"
+    font = Ubuntu Mono 16
+    foreground_color = "#ffffff"
+    use_system_font = False
 [layouts]
   [[default]]
     [[[child1]]]
-      type = Terminal
       parent = window0
+      type = Terminal
     [[[window0]]]
-      type = Window
       parent = ""
+      type = Window
+  [[light]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_window = True
+      maximised = True
+      order = 0
+      parent = ""
+      position = 0:0
+      size = 1280, 960
+      title = gio@alhena: ~
+      type = Window
+    [[[child1]]]
+      active_page = 0
+      labels = None, None, None
+      last_active_term = 7327fb4f-9e37-4a6d-9b63-08989646b1d7, d3d012d5-8e5a-4860-ba1c-a34ce70ee8a1, 56e6bb5e-4b82-4513-82fc-f458de51dd6b
+      order = 0
+      parent = child0
+      type = Notebook
+    [[[terminal2]]]
+      order = 0
+      parent = child1
+      profile = lighter
+      type = Terminal
+      uuid = 7327fb4f-9e37-4a6d-9b63-08989646b1d7
+    [[[terminal3]]]
+      order = 1
+      parent = child1
+      profile = lighter
+      type = Terminal
+      uuid = d3d012d5-8e5a-4860-ba1c-a34ce70ee8a1
+    [[[terminal4]]]
+      order = 2
+      parent = child1
+      profile = lighter
+      type = Terminal
+      uuid = 56e6bb5e-4b82-4513-82fc-f458de51dd6b
+  [[light-x]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = 7327fb4f-9e37-4a6d-9b63-08989646b1d7
+      last_active_window = True
+      maximised = False
+      order = 0
+      parent = ""
+      position = 26:23
+      size = 946, 625
+      title = gio@alhena: ~
+      type = Window
+    [[[terminal1]]]
+      order = 0
+      parent = child0
+      profile = default
+      type = Terminal
+      uuid = 7327fb4f-9e37-4a6d-9b63-08989646b1d7
+  [[poke]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_window = False
+      maximised = True
+      order = 0
+      parent = ""
+      position = 0:0
+      size = 1280, 960
+      title = gio@alhena: ~
+      type = Window
+    [[[child1]]]
+      active_page = 2
+      labels = None, None, None
+      last_active_term = 7327fb4f-9e37-4a6d-9b63-08989646b1d7, d3d012d5-8e5a-4860-ba1c-a34ce70ee8a1, 56e6bb5e-4b82-4513-82fc-f458de51dd6b
+      order = 0
+      parent = child0
+      type = Notebook
+    [[[child10]]]
+      order = 0
+      parent = child9
+      position = 669
+      ratio = 0.64450867052
+      type = VPaned
+    [[[child5]]]
+      fullscreen = False
+      last_active_term = 92034904-4cc7-4698-bc7f-dd51fb2839d6
+      last_active_window = False
+      maximised = False
+      order = 0
+      parent = ""
+      position = 26:23
+      size = 946, 625
+      title = gio@alhena: ~
+      type = Window
+    [[[child7]]]
+      fullscreen = False
+      last_active_term = d24fb25a-ea88-4f8f-82c9-9a4660cb2505
+      last_active_window = False
+      maximised = False
+      order = 0
+      parent = ""
+      position = 26:23
+      size = 946, 601
+      title = gio@alhena: ~
+      type = Window
+    [[[child9]]]
+      fullscreen = False
+      last_active_term = ed6ecb35-f01a-44cb-8b32-ee336dfcfc56
+      last_active_window = True
+      maximised = True
+      order = 0
+      parent = ""
+      position = 0:0
+      size = 1920, 1043
+      title = gio@alhena: ~
+      type = Window
+    [[[terminal11]]]
+      order = 0
+      parent = child10
+      profile = consolas
+      type = Terminal
+      uuid = ed6ecb35-f01a-44cb-8b32-ee336dfcfc56
+    [[[terminal12]]]
+      order = 1
+      parent = child10
+      profile = ubuntu
+      type = Terminal
+      uuid = 843d27b5-c0b1-48a8-8ea5-882e0451f771
+    [[[terminal2]]]
+      order = 0
+      parent = child1
+      profile = lighter
+      type = Terminal
+      uuid = 7327fb4f-9e37-4a6d-9b63-08989646b1d7
+    [[[terminal3]]]
+      order = 1
+      parent = child1
+      profile = lighter
+      type = Terminal
+      uuid = d3d012d5-8e5a-4860-ba1c-a34ce70ee8a1
+    [[[terminal4]]]
+      order = 2
+      parent = child1
+      profile = lighter
+      type = Terminal
+      uuid = 56e6bb5e-4b82-4513-82fc-f458de51dd6b
+    [[[terminal6]]]
+      order = 0
+      parent = child5
+      profile = steel
+      type = Terminal
+      uuid = 92034904-4cc7-4698-bc7f-dd51fb2839d6
+    [[[terminal8]]]
+      order = 0
+      parent = child7
+      profile = donkey
+      type = Terminal
+      uuid = d24fb25a-ea88-4f8f-82c9-9a4660cb2505
 [plugins]

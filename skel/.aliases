@@ -31,15 +31,23 @@ alias lt="ls --color -lFhart"
 
 #
 alias t='tail -F'
-alias v='less -S --follow-name -#24 +F'
-alias s='less -SR'
+alias v='less -SRX --follow-name -#24 +F'
+alias s='less -SRX'
 alias e='emacsclient --no-wait'
 alias ec='emacsclient -c'
 
+##
+# git
+#
 
 alias gss='git status -s'
 alias gstt='git status'
 alias gst='git status; [ -f ./.gitmodules ] && git submodule status'
+
+
+##
+# sh
+#
 
 
 # alias zshconfig="mate ~/.zshrc"
@@ -52,11 +60,33 @@ alias p1='PS=1 exec bash'
 alias p9='unset PS; exec bash'
 
 
+##
+# X
 #
+
 
 alias ssh-x='ssh -c arcfour,blowfish-cbc -XC'
 
 alias XX='/usr/bin/Xephyr :5 -query localhost -once -fullscreen -ac -keybd "ephyr,,,xkbmodel=pc105,xkblayout=it,xkbrules=evdev,xkboption="'
+
+##
+# tmux
+#
+
+alias tsu='tmux attach || tmux'
+
+
+##
+# nvidia
+#
+
+# sudo nvidia-smi daemon
+alias g-smi="nvidia-smi"
+alias g-log="nvidia-smi -l 2 --query-gpu=utilization.gpu,utilization.memory,temperature.gpu,temperature.memory,memory.total,memory.used,memory.free  --format=csv"
+alias g-mon="nvidia-smi pmon"
+alias g-top="watch -n 1.0 nvidia-smi pmon -c 5"
+alias g-stat="gpustat -cp -i "
+
 
 
 ##

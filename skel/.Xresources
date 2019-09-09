@@ -217,7 +217,7 @@ Rxvt*color15:              #CCFFFF
 !	U R X V T - Settings
 !
 !URxvt*geometry: 92x35
-URxvt*geometry:					100x35
+URxvt*geometry:					110x35
 URxvt*borderLess:				false
 URxvt*depth:					32
 !URxvt*scrollBar_right:				true
