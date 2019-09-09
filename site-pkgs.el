@@ -2180,7 +2180,7 @@ the automatic filling of the current paragraph."
     ;; (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
 
     ;; Do not show "./" and "../" in the `counsel-find-file' completion list
-    (setq ivy-extra-directories nil)    ;Default value: ("../" "./")
+    ;;(setq ivy-extra-directories nil)    ;Default value: ("../" "./")
 
     ;; https://github.com/abo-abo/swiper/blob/master/ivy-hydra.el
     (use-package ivy-hydra
