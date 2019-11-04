@@ -2149,7 +2149,8 @@ the automatic filling of the current paragraph."
   )
 
 (use-package counsel-projectile
-  :ensure t
+  :disabled t
+;; :ensure t
   :after (counsel projectile))
 
 (use-package ivy-hydra
