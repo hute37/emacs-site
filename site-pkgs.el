@@ -2547,7 +2547,8 @@ end tell"))))
 ;; @see: http://feedly.com/i/opml
 
 (use-package elfeed-org
-  :ensure t
+  :disabled t
+;;:ensure t
   :config (progn
             (use-package elfeed
               :ensure t
