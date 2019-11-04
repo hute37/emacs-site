@@ -436,7 +436,10 @@
 ;; ---( R )--------------------------------------------------------------
 
 (use-package ess
-  :ensure t
+  :if (version<= "25.1" emacs-version)
+  :defer t
+  ;; :ensure t
+  
   ;;:load-path "site-lisp/ess/lisp/"
   ;;:config (ess-toggle-underscore nil)
   :init
@@ -663,13 +666,18 @@
   (defalias 'workon 'pyvenv-workon))
 
 (use-package ein
-  :ensure t
+  :unless (version< emacs-version "25.1")
+  :defer t
+  ;; :ensure t
+  
   :config
   (defalias 'eip 'ein:notebooklist-open))
 
 
 (use-package pipenv
-  :ensure t
+  :unless (version< emacs-version "25.1")
+  :defer t
+  ;; :ensure t
   :hook (python-mode . pipenv-mode)
   :init
   (setq
