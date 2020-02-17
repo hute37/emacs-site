@@ -1220,7 +1220,7 @@ the automatic filling of the current paragraph."
            (octave . t)
            (org . t)
            (plantuml . t)
-           (scala . t)
+           ;; (scala . t)
            (sql . t)
            (latex . t))))
 
