@@ -2022,18 +2022,22 @@ the automatic filling of the current paragraph."
 
 ;; ---( helm )--------------------------------------------------------------
 
+;; @see: https://pages.sachachua.com/.emacs.d/Sacha.html#org04e47b9
+
+(message "#helm(0): '( (h7/use-helm . %s) )" (h7/use-helm)) 
 (use-package helm
-  :disabled t
-  :ensure helm
+  :if (h7/use-helm)
   :diminish helm-mode
   :init
   (progn
     (require 'helm-config)
+    (message "#helm(1): '( (h7/use-helm . %s) )" (h7/use-helm)) 
     (setq helm-candidate-number-limit 100)
     ;; From https://gist.github.com/antifuchs/9238468
     (setq helm-idle-delay 0.0 ; update fast sources immediately (doesn't).
           helm-input-idle-delay 0.01  ; this actually updates things
                                         ; reeeelatively quickly.
+          helm-yas-display-key-on-candidate t
           helm-quick-update t
           helm-M-x-requires-pattern nil
           helm-ff-skip-boring-files t)
@@ -2046,8 +2050,94 @@ the automatic filling of the current paragraph."
          ("M-x" . helm-M-x)
          ("C-x c o" . helm-occur)
          ("C-x c s" . helm-swoop)
+         ("C-x c y" . helm-yas-complete)
+         ("C-x c Y" . helm-yas-create-snippet-on-region)
          ("C-x c b" . my/helm-do-grep-book-notes)
          ("C-x c SPC" . helm-all-mark-rings)))
+(ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
+
+(use-package helm-descbinds
+  :if (h7/use-helm)
+  :defer t
+  :bind (("C-h b" . helm-descbinds)
+         ("C-h w" . helm-descbinds)))
+
+
+;; ;; @see: https://lupan.pl/dotemacs/
+
+;; (use-package helm
+;;   :if (h7/use-helm)
+;;   :ensure t
+;;   :demand
+;;   :init
+;;   (setq helm-split-window-default-side 'other
+;;         helm-split-window-inside-p t
+;;         helm-swoop-split-with-multiple-windows t        
+;;         helm-command-prefix-key "s-c")
+;;   :config
+;;   (require 'helm-config)              ; required to setup "s-c" keymap
+;;   (helm-mode 1)
+;;   (helm-autoresize-mode 1)
+;;   ;; Only rebind M-x and C-x C-f on successful load of helm to remain
+;;   ;; this basic operations if helm is not installed.
+;;   (bind-key "M-x" #'helm-M-x)
+;;   (bind-key "C-x C-f" #'helm-find-files)
+;;   :bind
+;;   (("M-y" . helm-show-kill-ring)
+;;    ("C-c o" . helm-occur)
+;;    ("C-x b" . helm-mini)
+;;    ("C-x r b" . helm-bookmarks)
+;;    ("C-h a" . helm-apropos)
+;;    ("C-h d" . helm-info-at-point)
+;;    ("C-c a" . helm-all-mark-rings)
+;;    ("C-c h e" . helm-info-emacs)
+;;    ("C-c h g" . helm-info-gnus)
+;;    ("C-c R" . helm-register)
+;;    ("s-P" . helm-run-external-command)
+;;    ;; More key bindings in "s-c" keymap
+;;    :map helm-find-files-map
+;;    ("<backtab>" . helm-select-action)
+;;    ("C-i" . helm-execute-persistent-action)))
+
+
+;; (use-package helm
+;;   :if (h7/use-helm)
+;;   :ensure t
+;; ;;  :demand t
+;;   :bind ("M-x" . helm-M-x)
+;;   :config
+;;   (use-package helm-descbinds
+;;     :config (helm-descbinds-mode))
+;;   (ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
+;;   (helm-mode 1)
+;;   )
+
+;; (use-package helm
+;;   :if (h7/use-helm)
+;;   :ensure t
+;;   :diminish helm-mode
+;;   :init
+;;   (progn
+;;     (require 'helm-config)
+;;     (setq helm-candidate-number-limit 100)
+;;     ;; From https://gist.github.com/antifuchs/9238468
+;;     (setq helm-idle-delay 0.0 ; update fast sources immediately (doesn't).
+;;           helm-input-idle-delay 0.01  ; this actually updates things
+;;                                         ; reeeelatively quickly.
+;;           helm-quick-update t
+;;           helm-M-x-requires-pattern nil
+;;           helm-ff-skip-boring-files t)
+;;     (helm-mode))
+;;   :bind (("C-c h" . helm-mini)
+;;          ("C-h a" . helm-apropos)
+;;          ("C-x C-b" . helm-buffers-list)
+;;          ("C-x b" . helm-buffers-list)
+;;          ("M-y" . helm-show-kill-ring)
+;;          ("M-x" . helm-M-x)
+;;          ("C-x c o" . helm-occur)
+;;          ("C-x c s" . helm-swoop)
+;;          ("C-x c b" . my/helm-do-grep-book-notes)
+;;          ("C-x c SPC" . helm-all-mark-rings)))
 
 ;; (ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
 
@@ -2128,32 +2218,70 @@ the automatic filling of the current paragraph."
 
 ;; ---( ivy )--------------------------------------------------------------
 
-
 ;; @see: https://blog.jft.rocks/emacs/helm-to-ivy.html
 ;; @see: https://truthseekers.io/lessons/how-to-use-ivy-swiper-counsel-in-emacs-for-noobs/
-;; @see: https://www.reddit.com/r/emacs/comments/910pga/tip_how_to_use_ivy_and_its_utilities_in_your/
 ;; @see: https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-ivy.el
 ;; @see: https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-ivy.el
+;; @see: https://www.reddit.com/r/emacs/comments/910pga/tip_how_to_use_ivy_and_its_utilities_in_your/
 
 ;; .........................................................................
 
+;; :defer 0.1
+
+;; (use-package ivy
+;;   :if (h7/use-ivy)
+;;   :ensure t
+;;   :diminish
+;;   :bind (("C-c C-r" . ivy-resume)
+;;          ("C-x B" . ivy-switch-buffer-other-window))
+;;   :custom
+;;   (ivy-count-format "(%d/%d) ")
+;;   (ivy-use-virtual-buffers t)
+;;   :config (ivy-mode))
+
+;; (use-package ivy-rich
+;;   :if (h7/use-ivy)
+;;   :after ivy
+;;   :ensure t
+;;   :custom
+;;   (ivy-virtual-abbreviate 'full
+;;                           ivy-rich-switch-buffer-align-virtual-buffer t
+;;                           ivy-rich-path-style 'abbrev)
+;;   :config
+;;   (ivy-set-display-transformer 'ivy-switch-buffer
+;;                                'ivy-rich-switch-buffer-transformer))
+
+;; (use-package swiper
+;;   :if (h7/use-ivy)
+;;   :after ivy
+;;   :bind (("C-s" . swiper)
+;;          ("C-r" . swiper)))
+
+
+;; .........................................................................
+(message "#ivy(0): '( (h7/use-ivy . %s) )" (h7/use-ivy)) 
+ 
 (use-package counsel
+  :if (h7/use-ivy)
   :ensure t
   :after ivy
   :config (counsel-mode))
 
 (use-package swiper
+  :if (h7/use-ivy)
   :ensure t
   :after ivy
   :bind (("C-s" . swiper))
   )
 
 (use-package counsel-projectile
+  :if (h7/use-ivy)
   :disabled t
 ;; :ensure t
   :after (counsel projectile))
 
 (use-package ivy-hydra
+  :if (h7/use-ivy)
   :ensure t
   :after (ivy hydra))
 
@@ -2163,6 +2291,7 @@ the automatic filling of the current paragraph."
 ;; Ivy (better than ido in my opinion)
 
 (use-package ivy
+  :if (h7/use-ivy)
 
   ;; (*) Error (use-package): ivy/:catch: Symbol’s value as variable is void: modi-mode-map
   
@@ -2173,17 +2302,19 @@ the automatic filling of the current paragraph."
   
   :config
   (progn
+    (message "#ivy(1): '( (h7/use-ivy . %s) )" (h7/use-ivy))
+    
     ;; Disable ido
     (with-eval-after-load 'ido
       (ido-mode -1)
       ;; Enable ivy
       (ivy-mode 1))
-
-    ;; Show recently killed buffers when calling `ivy-switch-buffer'
-    (setq ivy-use-virtual-buffers t)
-    (setq ivy-virtual-abbreviate 'full) ;Show the full virtual file paths
-
-    (setq ivy-count-format "%d/%d ")
+    
+     ;; Show recently killed buffers when calling `ivy-switch-buffer'
+     (setq ivy-use-virtual-buffers t)
+     (setq ivy-virtual-abbreviate 'full) ;Show the full virtual file paths
+ 
+     (setq ivy-count-format "%d/%d ")
     
     ;; - (setq ivy-re-builders-alist '((t . ivy--regex-plus))) ;Default
     ;; (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
@@ -2191,100 +2322,103 @@ the automatic filling of the current paragraph."
     ;; Do not show "./" and "../" in the `counsel-find-file' completion list
     ;;(setq ivy-extra-directories nil)    ;Default value: ("../" "./")
 
-    ;; https://github.com/abo-abo/swiper/blob/master/ivy-hydra.el
-    (use-package ivy-hydra
-      :ensure t
-      :config
-      (progn
-        ;; Re-define the `hydra-ivy' defined in `ivy-hydra' package.
-        (defhydra hydra-ivy (:hint nil
-                             :color pink)
-          "
- ^ _,_ ^      _f_ollow      occ_u_r      _g_o          ^^_c_alling: %-7s(if ivy-calling \"on\" \"off\")      _w_(prev)/_s_(next)/_a_(read) action: %-14s(ivy-action-name)
- _p_/_n_      _d_one        ^^           _i_nsert      ^^_m_atcher: %-7s(ivy--matcher-desc)^^^^^^^^^^^^      _C_ase-fold: %-10`ivy-case-fold-search
- ^ _._ ^      _D_o it!      ^^           _q_uit        _<_/_>_ shrink/grow^^^^^^^^^^^^^^^^^^^^^^^^^^^^       _t_runcate: %-11`truncate-lines
-"
-          ;; Arrows
-          ("," ivy-beginning-of-buffer)      ;Default h
-          ("p" ivy-previous-line)            ;Default j
-          ("n" ivy-next-line)                ;Default k
-          ("." ivy-end-of-buffer)            ;Default l
-          ;; Quit ivy
-          ("q" keyboard-escape-quit :exit t) ;Default o
-          ("C-g" keyboard-escape-quit :exit t)
-          ;; Quit hydra
-          ("i" nil)
-          ("C-o" nil)
-          ;; actions
-          ("f" ivy-alt-done :exit nil)
-          ;; Exchange the default bindings for C-j and C-m
-          ("C-m" ivy-alt-done :exit nil) ;RET, default C-j
-          ("C-j" ivy-done :exit t)       ;Default C-m
-          ("d" ivy-done :exit t)
-          ("D" ivy-immediate-done :exit t)
-          ("g" ivy-call)
-          ("c" ivy-toggle-calling)
-          ("m" ivy-rotate-preferred-builders)
-          (">" ivy-minibuffer-grow)
-          ("<" ivy-minibuffer-shrink)
-          ("w" ivy-prev-action)
-          ("s" ivy-next-action)
-          ("a" ivy-read-action)
-          ("t" (setq truncate-lines (not truncate-lines)))
-          ("C" ivy-toggle-case-fold)
-          ("u" ivy-occur :exit t)
-          ("?" (ivy-exit-with-action    ;Default D
-                (lambda (_) (find-function #'hydra-ivy/body))) "Definition of this hydra" :exit t))
+     ;; https://github.com/abo-abo/swiper/blob/master/ivy-hydra.el
+     (use-package ivy-hydra
+       :if (h7/use-ivy)
+       :ensure t
+       :config
+       (progn
+         ;; Re-define the `hydra-ivy' defined in `ivy-hydra' package.
+         (defhydra hydra-ivy (:hint nil
+                              :color pink)
+           "
+  ^ _,_ ^      _f_ollow      occ_u_r      _g_o          ^^_c_alling: %-7s(if ivy-calling \"on\" \"off\")      _w_(prev)/_s_(next)/_a_(read) action: %-14s(ivy-action-name)
+  _p_/_n_      _d_one        ^^           _i_nsert      ^^_m_atcher: %-7s(ivy--matcher-desc)^^^^^^^^^^^^      _C_ase-fold: %-10`ivy-case-fold-search
+  ^ _._ ^      _D_o it!      ^^           _q_uit        _<_/_>_ shrink/grow^^^^^^^^^^^^^^^^^^^^^^^^^^^^       _t_runcate: %-11`truncate-lines
+ "
+           ;; Arrows
+           ("," ivy-beginning-of-buffer)      ;Default h
+           ("p" ivy-previous-line)            ;Default j
+           ("n" ivy-next-line)                ;Default k
+           ("." ivy-end-of-buffer)            ;Default l
+           ;; Quit ivy
+           ("q" keyboard-escape-quit :exit t) ;Default o
+           ("C-g" keyboard-escape-quit :exit t)
+           ;; Quit hydra
+           ("i" nil)
+           ("C-o" nil)
+           ;; actions
+           ("f" ivy-alt-done :exit nil)
+           ;; Exchange the default bindings for C-j and C-m
+           ("C-m" ivy-alt-done :exit nil) ;RET, default C-j
+           ("C-j" ivy-done :exit t)       ;Default C-m
+           ("d" ivy-done :exit t)
+           ("D" ivy-immediate-done :exit t)
+           ("g" ivy-call)
+           ("c" ivy-toggle-calling)
+           ("m" ivy-rotate-preferred-builders)
+           (">" ivy-minibuffer-grow)
+           ("<" ivy-minibuffer-shrink)
+           ("w" ivy-prev-action)
+           ("s" ivy-next-action)
+           ("a" ivy-read-action)
+           ("t" (setq truncate-lines (not truncate-lines)))
+           ("C" ivy-toggle-case-fold)
+           ("u" ivy-occur :exit t)
+           ("?" (ivy-exit-with-action    ;Default D
+                 (lambda (_) (find-function #'hydra-ivy/body))) "Definition of this hydra" :exit t))
+ 
+         (bind-keys
+          :map ivy-minibuffer-map
+          ("C-t" . ivy-rotate-preferred-builders)
+          ("C-o" . hydra-ivy/body)
+          ("M-o" . ivy-dispatching-done-hydra))))
 
-        (bind-keys
-         :map ivy-minibuffer-map
-         ("C-t" . ivy-rotate-preferred-builders)
-         ("C-o" . hydra-ivy/body)
-         ("M-o" . ivy-dispatching-done-hydra))))
+     (bind-keys
+      :map ivy-minibuffer-map
+      ;; Exchange the default bindings for C-j and C-m
+      ("C-m" . ivy-alt-done)             ;RET, default C-j
+      ("C-j" . ivy-done)                 ;Default C-m
+      ("C-S-m" . ivy-immediate-done))
 
-    (bind-keys
-     :map ivy-minibuffer-map
-     ;; Exchange the default bindings for C-j and C-m
-     ("C-m" . ivy-alt-done)             ;RET, default C-j
-     ("C-j" . ivy-done)                 ;Default C-m
-     ("C-S-m" . ivy-immediate-done))
+     (bind-keys
+      :map ivy-occur-mode-map
+      ("n" . ivy-occur-next-line)
+      ("p" . ivy-occur-previous-line)
+      ("b" . backward-char)
+      ("f" . forward-char)
+      ("v" . ivy-occur-press)            ;Default f
+      ("RET" . ivy-occur-press))
 
-    (bind-keys
-     :map ivy-occur-mode-map
-     ("n" . ivy-occur-next-line)
-     ("p" . ivy-occur-previous-line)
-     ("b" . backward-char)
-     ("f" . forward-char)
-     ("v" . ivy-occur-press)            ;Default f
-     ("RET" . ivy-occur-press))
+     (with-eval-after-load 'setup-windows-buffers
+       (bind-keys
+        :map ivy-minibuffer-map
+        ("C-x k" . modi/kill-buffer-dwim) ;Aborts recursive edit
+        ("C-)" . modi/kill-buffer-dwim))) ;Aborts recursive edit
 
-    (with-eval-after-load 'setup-windows-buffers
-      (bind-keys
-       :map ivy-minibuffer-map
-       ("C-x k" . modi/kill-buffer-dwim) ;Aborts recursive edit
-       ("C-)" . modi/kill-buffer-dwim))) ;Aborts recursive edit
+     (key-chord-define ivy-minibuffer-map "m," #'ivy-beginning-of-buffer)
+     (key-chord-define ivy-minibuffer-map ",." #'ivy-end-of-buffer)
 
-    (key-chord-define ivy-minibuffer-map "m," #'ivy-beginning-of-buffer)
-    (key-chord-define ivy-minibuffer-map ",." #'ivy-end-of-buffer)
+     ;; Bind C-k to kill a buffer directly from the list shown on doing M-x ivy-switch-buffer.
+     ;; https://github.com/abo-abo/swiper/issues/164
+     (defun modi/ivy-kill-buffer ()
+       (interactive)
+       (ivy-set-action 'kill-buffer)
+       (ivy-done))
+     (bind-keys
+      :map ivy-switch-buffer-map
+      ("C-k" . modi/ivy-kill-buffer))
+  ))
 
-    ;; Bind C-k to kill a buffer directly from the list shown on doing M-x ivy-switch-buffer.
-    ;; https://github.com/abo-abo/swiper/issues/164
-    (defun modi/ivy-kill-buffer ()
-      (interactive)
-      (ivy-set-action 'kill-buffer)
-      (ivy-done))
-    (bind-keys
-     :map ivy-switch-buffer-map
-     ("C-k" . modi/ivy-kill-buffer))))
-
-;; https://github.com/Yevgnen/ivy-rich
-;; Richer "C-x b" buffer-switching Ivy interface.
-(use-package ivy-rich
-  :after ivy
-  :ensure t
-  :config
-  (progn
-    (ivy-rich-mode)))
+ ;; https://github.com/Yevgnen/ivy-rich
+ ;; Richer "C-x b" buffer-switching Ivy interface.
+ (use-package ivy-rich
+   :if (h7/use-ivy)
+   :after ivy
+   :ensure t
+   :config
+   (progn
+     (ivy-rich-mode)))
 
 
 ;; --- (provide 'setup-ivy)
