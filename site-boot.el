@@ -28,6 +28,28 @@
     (message "SITE: Clear.")
     ))
 
+(defun h7/local ()
+"#H clear initial settings."
+ (progn
+   (message "SITE: Local, ...")
+   (setq h7-local-conf "~/.emacs-local.el")
+   (cond 
+    ((file-exists-p h7-local-conf)
+	 (progn 
+           (message "SITE: Local: " h7-local-conf ", ...")
+           (load h7-local-conf)
+           (message "SITE: Local: " h7-local-conf ".")
+           (setq h7-locals t)
+	  ))
+	(t
+	 (progn 
+           (setq h7-locals t)
+	  ))
+	)
+
+    (message "SITE: Local.")
+    ))
+
 (defun h7/path (directory)
 "#H add load path."
     (message "SITE: path " directory ", ...")
@@ -48,6 +70,10 @@
   (progn
     
     (h7/clear)
+    
+    (h7/load "site-pref")
+
+    (h7/local)
     
     (h7/load "site-pkgs")
     (h7/load "site-func")
