@@ -1045,7 +1045,7 @@ the automatic filling of the current paragraph."
 
 (use-package org-ref
   :after org
-  :ensure t
+;;  :ensure t
   :init
   (setq reftex-default-bibliography '("~/Dropbox/Local/data/org/ref/references.bib"))
   (setq org-ref-bibliography-notes "~/Dropbox/Local/data/org/ref/notes.org"
