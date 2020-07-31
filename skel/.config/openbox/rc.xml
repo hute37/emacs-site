@@ -50,7 +50,7 @@
       S: shade (roll up/down)
       D: omnipresent (on all desktops).
   -->
-    <keepBorder>yes</keepBorder>
+    <keepBorder>no</keepBorder>
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
       <name>sans</name>
@@ -116,13 +116,17 @@
 
        use obconf if you want to change these without having to log out
        and back in -->
-    <number>4</number>
+    <number>8</number>
     <firstdesk>1</firstdesk>
     <names>
       <name>alpha</name>
       <name>beta</name>
       <name>gamma</name>
       <name>delta</name>
+      <name>epsilon</name>
+      <name>zeta</name>
+      <name>eta</name>
+      <name>theta</name>
     </names>
     <popupTime>875</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
@@ -178,25 +182,37 @@
     <keybind key="C-A-Left">
       <action name="GoToDesktop">
         <to>left</to>
-        <wrap>no</wrap>
+        <wrap>yes</wrap>
       </action>
     </keybind>
     <keybind key="C-A-Right">
       <action name="GoToDesktop">
         <to>right</to>
-        <wrap>no</wrap>
+        <wrap>yes</wrap>
+      </action>
+    </keybind>
+    <keybind key="S-C-A-Left">
+      <action name="SendToDesktop">
+        <to>left</to>
+        <wrap>yes</wrap>
+      </action>
+    </keybind>
+    <keybind key="S-C-A-Right">
+      <action name="SendToDesktop">
+        <to>right</to>
+        <wrap>yes</wrap>
       </action>
     </keybind>
     <keybind key="W-Left">
       <action name="GoToDesktop">
         <to>left</to>
-        <wrap>no</wrap>
+        <wrap>yes</wrap>
       </action>
     </keybind>
     <keybind key="W-Right">
       <action name="GoToDesktop">
         <to>right</to>
-        <wrap>no</wrap>
+        <wrap>yes</wrap>
       </action>
     </keybind>
     <keybind key="W-Up">
@@ -220,13 +236,13 @@
     <keybind key="S-W-Left">
       <action name="SendToDesktop">
         <to>left</to>
-        <wrap>no</wrap>
+        <wrap>yes</wrap>
       </action>
     </keybind>
     <keybind key="S-W-Right">
       <action name="SendToDesktop">
         <to>right</to>
-        <wrap>no</wrap>
+        <wrap>yes</wrap>
       </action>
     </keybind>
     <keybind key="S-A-Up">
@@ -241,24 +257,84 @@
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="W-F1">
+    <keybind key="W-1">
       <action name="GoToDesktop">
         <to>1</to>
       </action>
     </keybind>
-    <keybind key="W-F2">
+    <keybind key="W-2">
       <action name="GoToDesktop">
         <to>2</to>
       </action>
     </keybind>
-    <keybind key="W-F3">
+    <keybind key="W-3">
       <action name="GoToDesktop">
         <to>3</to>
       </action>
     </keybind>
-    <keybind key="W-F4">
+    <keybind key="W-4">
       <action name="GoToDesktop">
         <to>4</to>
+      </action>
+    </keybind>
+    <keybind key="W-5">
+      <action name="GoToDesktop">
+        <to>5</to>
+      </action>
+    </keybind>
+    <keybind key="W-6">
+      <action name="GoToDesktop">
+        <to>6</to>
+      </action>
+    </keybind>
+    <keybind key="W-7">
+      <action name="GoToDesktop">
+        <to>7</to>
+      </action>
+    </keybind>
+    <keybind key="W-8">
+      <action name="GoToDesktop">
+        <to>8</to>
+      </action>
+    </keybind>
+    <keybind key="S-W-1">
+      <action name="SendToDesktop">
+        <to>1</to>
+      </action>
+    </keybind>
+    <keybind key="S-W-2">
+      <action name="SendToDesktop">
+        <to>2</to>
+      </action>
+    </keybind>
+    <keybind key="S-W-3">
+      <action name="SendToDesktop">
+        <to>3</to>
+      </action>
+    </keybind>
+    <keybind key="S-W-4">
+      <action name="SendToDesktop">
+        <to>4</to>
+      </action>
+    </keybind>
+    <keybind key="S-W-5">
+      <action name="SendToDesktop">
+        <to>5</to>
+      </action>
+    </keybind>
+    <keybind key="S-W-6">
+      <action name="SendToDesktop">
+        <to>6</to>
+      </action>
+    </keybind>
+    <keybind key="S-W-7">
+      <action name="SendToDesktop">
+        <to>7</to>
+      </action>
+    </keybind>
+    <keybind key="S-W-8">
+      <action name="SendToDesktop">
+        <to>8</to>
       </action>
     </keybind>
     <keybind key="W-d">
@@ -277,6 +353,18 @@
       <action name="ShowMenu">
         <menu>client-menu</menu>
       </action>
+    </keybind>
+    <keybind key="A-Return">
+      <action name="ToggleFullscreen"/>
+    </keybind>
+    <keybind key="W-Return">
+      <action name="ToggleFullscreen"/>
+    </keybind>
+    <keybind key="A-w">
+      <action name="ToggleDecorations"/>
+    </keybind>
+    <keybind key="W-w">
+      <action name="ToggleDecorations"/>
     </keybind>
     <!-- Keybindings for window switching -->
     <keybind key="A-Tab">
@@ -330,6 +418,15 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
+    <keybind key="A-S-x">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>x-terminal-emulator</name>
+        </startupnotify>
+        <command>x-terminal-emulator</command>
+      </action>
+    </keybind>
     <keybind key="W-x">
       <action name="Execute">
         <startupnotify>
@@ -690,22 +787,22 @@
     <context name="MoveResize">
       <mousebind button="Up" action="Click">
         <action name="GoToDesktop">
-          <to>previous</to>
+          <to>next</to>
         </action>
       </mousebind>
       <mousebind button="Down" action="Click">
         <action name="GoToDesktop">
-          <to>next</to>
+          <to>previous</to>
         </action>
       </mousebind>
       <mousebind button="A-Up" action="Click">
         <action name="GoToDesktop">
-          <to>previous</to>
+          <to>next</to>
         </action>
       </mousebind>
       <mousebind button="A-Down" action="Click">
         <action name="GoToDesktop">
-          <to>next</to>
+          <to>previous</to>
         </action>
       </mousebind>
     </context>
