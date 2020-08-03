@@ -173,8 +173,12 @@
 ;; ;; ---( magit )--------------------------------------------------------------
 
 (use-package magit
-  :ensure t)
+  :ensure t
+  :config
+  (setenv "EDITOR" "emacsclient")
+  (setenv "GIT_EDITOR" "emacsclient"))
 
+;; git config --global core.editor "`which emacsclient` -t -s $EMACS_SERVER_FILE"
 
 (use-package magit-zzz
   :disabled t
@@ -235,6 +239,16 @@
                 (flyspell-mode)))
   (add-hook 'magit-status-mode-hook #'(lambda () (magit-monitor t))))
 
+;; ---( projectile )--------------------------------------------------------------
+
+(use-package git-timemachine
+  :ensure t)
+
+;; (use-package git-timemachine
+;;   :ensure t
+;;   :bind (("s-g" . git-timemachine)))
+
+
 
 ;; ;;;////////////////////////////////////////////////////////////////
 ;; ;;;  @PROJECT
@@ -252,6 +266,9 @@
         projectile-known-projects-file (emacs-d "var/projectile-bookmarks.eld"))
   :config
   (projectile-global-mode))
+
+
+
 
 
 ;; ---( etags )--------------------------------------------------------------
@@ -382,6 +399,15 @@
 (use-package css-mode
   :mode ("\\.css\\'" . css-mode))
 
+;; ;; @see: https://gitea.petton.fr/nico/emacs.d/src/commit/8ae2b902c916600c9296d967f36ed69ad50e8199/init.el?lang=sv-SE
+;; (use-package rainbow-mode
+;;   :disabled t	     
+;;   :config
+;;   (add-hook 'css-mode-hook 'rainbow-mode)
+;;   (add-hook 'less-mode-hook 'rainbow-mode))
+
+
+
 ;; ---( json )--------------------------------------------------------------
 
 (use-package json-mode
@@ -416,13 +442,24 @@
 ;;   (setq ac-sources '(ac-source-symbols ac-source-words-in-same-mode-buffers)))
 
 
-;; ---( yaml )--------------------------------------------------------------
+;; (use-package web-mode
+;;   :disabled t	     
+;;   :config
+;;   (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+;;   (add-to-list 'auto-mode-alist '("\\.htm\\'" . web-mode))
+;;   (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+;;   (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+;;   (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+;;   (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+;;   (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+;;   (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+;;   (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 
-(use-package pdf-tools
-  :ensure f
-  ;; :config
-  ;; (pdf-tools-install)
-)
+;;   (setq web-mode-css-indent-offset 2))
+
+  
+
+
 
 
 
@@ -1034,6 +1071,15 @@ the automatic filling of the current paragraph."
 ;;                             :doc-spec '(("(latex2e)Concept Index" )
 ;;                                         ("(latex2e)Command Index")))))
 ;;   )
+
+
+;; ---( pdf )--------------------------------------------------------------
+
+(use-package pdf-tools
+  :ensure f
+  ;; :config
+  ;; (pdf-tools-install)
+)
 
 
 ;; ;;;////////////////////////////////////////////////////////////////
@@ -1821,6 +1867,21 @@ the automatic filling of the current paragraph."
 	 (sr-within dir (sr-alternate-buffer (dired dir))))
 	(sr-history-push default-directory)
 	(sr-beginning-of-buffer)))))
+
+
+;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;  @SEC3ET
+;; ;;;////////////////////////////////////////////////////////////////
+
+
+;; ---( pass )--------------------------------------------------------------
+
+;; @see: https://gitea.petton.fr/nico/emacs.d/src/commit/8ae2b902c916600c9296d967f36ed69ad50e8199/init.el?lang=sv-SE
+
+;; (use-package pass
+;;   :mode ("org/reference/password-store/" . pass-view-mode)
+;;   :bind ("C-x p" . pass))
+
 
 
 ;; ;;;////////////////////////////////////////////////////////////////
