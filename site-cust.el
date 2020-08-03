@@ -41,6 +41,9 @@
 ;;       scroll-conservatively most-positive-fixnum
 ;;       scroll-step 0)
 
+
+(setq tramp-default-method "ssh")
+
 (setq initial-scratch-message nil)
 
 
