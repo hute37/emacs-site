@@ -242,7 +242,7 @@
 ;; ---( projectile )--------------------------------------------------------------
 
 (use-package git-timemachine
-  :ensure t)
+  :disabled t)
 
 ;; (use-package git-timemachine
 ;;   :ensure t
