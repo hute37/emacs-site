@@ -1,0 +1,179 @@
+##
+# 'termite' config
+# =================
+#
+# - [main](https://github.com/thestinger/termite)
+# - [wiki](https://wiki.archlinux.org/index.php/Termite)
+# - [install](https://computingforgeeks.com/install-termite-terminal-on-ubuntu-18-04-ubuntu-16-04-lts/)
+#
+#
+
+[options]
+allow_bold = true
+audible_bell = false
+bold_is_bright = true
+#cell_height_scale = 1.0
+#cell_width_scale = 1.0
+#clickable_url = true
+dynamic_title = true
+
+#font = Monospace 9
+font = Hack 10
+font = VL Gothic 10
+font = mononoki 10
+
+#fullscreen = true
+icon_name = termite
+#mouse_autohide = false
+scroll_on_output = false
+scroll_on_keystroke = true
+# Length of the scrollback buffer, 0 disabled the scrollback buffer
+# and setting it to a negative value means "infinite scrollback"
+scrollback_lines = 10000
+#search_wrap = true
+urgent_on_bell = true
+#hyperlinks = false
+
+# $BROWSER is used by default if set, with xdg-open as a fallback
+browser = xdg-open
+
+# "system", "on" or "off"
+#cursor_blink = system
+
+# "block", "underline" or "ibeam"
+cursor_shape = block
+
+# Hide links that are no longer valid in url select overlay mode
+#filter_unmatched_urls = true
+
+# Emit escape sequences for extra modified keys
+#modify_other_keys = false
+
+# set size hints for the window
+#size_hints = false
+
+# "off", "left" or "right"
+#scrollbar = off
+
+###   [colors]
+###   # If both of these are unset, cursor falls back to the foreground color,
+###   # and cursor_foreground falls back to the background color.
+###   #cursor = #dcdccc
+###   #cursor_foreground = #dcdccc
+###
+###   #foreground = #dcdccc
+###   #foreground_bold = #ffffff
+###   #background = #3f3f3f
+###
+###   # 20% background transparency (requires a compositor)
+###   #background = rgba(63, 63, 63, 0.8)
+###
+###   # If unset, will reverse foreground and background
+###   highlight = #2f2f2f
+###
+###   # Colors from color0 to color254 can be set
+###   color0 = #3f3f3f
+###   color1 = #705050
+###   color2 = #60b48a
+###   color3 = #dfaf8f
+###   color4 = #506070
+###   color5 = #dc8cc3
+###   color6 = #8cd0d3
+###   color7 = #dcdccc
+###   color8 = #709080
+###   color9 = #dca3a3
+###   color10 = #c3bf9f
+###   color11 = #f0dfaf
+###   color12 = #94bff3
+###   color13 = #ec93d3
+###   color14 = #93e0e3
+###   color15 = #ffffff
+###
+
+###   [colors]
+###
+###   ##
+###   # scheme: Kibble
+###   # @see: http://mayccoll.github.io/Gogh/
+###
+###   # If both of these are unset, cursor falls back to the foreground color,
+###   # and cursor_foreground falls back to the background color.
+###   cursor = #dcdccc
+###   cursor_foreground = #dcdccc
+###
+###   foreground = #f7f7f7
+###   foreground_bold = #fffff0
+###   #background = #0e100a
+###   #background = #00100a
+###   background = #000a08
+###
+###   # 20% background transparency (requires a compositor)
+###   #background = rgba(63, 63, 63, 0.8)
+###
+###   # If unset, will reverse foreground and background
+###   highlight = #2f2f2f
+###
+###   # Colors from color0 to color254 can be set
+###   color0 = #4d4d4d
+###   color1 = #c70031
+###   color2 = #29cf13
+###   color3 = #d8e30e
+###   color4 = #3449d1
+###   color5 = #8400ff
+###   color6 = #0798ab
+###   color7 = #e2d1e3
+###
+###   color8  = #5a5a5a
+###   color9  = #f01578
+###   color10 = #6ce05c
+###   color11 = #f3f79e
+###   color12 = #97a4f7
+###   color13 = #c495f0
+###   color14 = #68f2e0
+###   color15 = #ffffff
+###
+
+[colors]
+##
+# scheme: Andromeda
+# @see: https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/termite/Andromeda
+#
+
+#background = #262a33
+#foreground = #e5e5e5
+cursor = #f8f8f0
+background = #02080a
+foreground = #a5d5e5
+color0 = #000000
+color1 = #cd3131
+color2 = #05bc79
+color3 = #e5e512
+color4 = #2472c8
+color5 = #bc3fbc
+color6 = #0fa8cd
+color7 = #e5e5e5
+color8 = #666666
+color9 = #cd3131
+color10 = #05bc79
+color11 = #e5e512
+color12 = #2472c8
+color13 = #bc3fbc
+color14 = #0fa8cd
+color15 = #e5e5e5
+colorBD = #e5e5e5
+colorIT =
+colorUL =
+
+
+[hints]
+#font = Monospace 12
+#foreground = #dcdccc
+#background = #3f3f3f
+#active_foreground = #e68080
+#active_background = #3f3f3f
+padding = 2
+#border = #3f3f3f
+#border_width = 0.5
+#roundness = 2.0
+
+# vim: ft=dosini cms=#%s
