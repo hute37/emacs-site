@@ -21,6 +21,7 @@ dynamic_title = true
 font = Hack 10
 font = VL Gothic 10
 font = mononoki 10
+font = Iosevka Term 10
 
 #fullscreen = true
 icon_name = termite
