@@ -21,7 +21,7 @@ INSTALL
 
 ```bash
 
-wget https://drive.google.com/file/d/1XhaddF8MjU5yYCGInW3kp5sltu_IBZWr/view?usp=sharing
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1XhaddF8MjU5yYCGInW3kp5sltu_IBZWr -O ttf-iosevka.tar.xz
 
 mkdir -p  /usr/local/share/fonts/truetype
 cd        /usr/local/share/fonts/truetype
