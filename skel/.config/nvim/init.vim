@@ -84,6 +84,8 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'morhetz/gruvbox'
 Plug 'tomasr/molokai'
+Plug 'fmoralesc/molokayo'
+Plug 'ciaranm/inkpot'
 Plug 'altercation/vim-colors-solarized'
 Plug 'gosukiwi/vim-atom-dark'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
@@ -116,7 +118,8 @@ call plug#end()
 ""let g:airline_theme='<theme>' " <theme> is a valid theme name
 
 "" colorscheme gruvbox
-colorscheme molokai
+"" colorscheme molokai
+colorscheme inkpot
 
 if has('gui_running')
     set background=light
@@ -142,5 +145,66 @@ let g:ctrlp_use_caching = 0
 " #KEYMAP
 "
 
-"" let mapleader=' '
+let mapleader=' '
+
+" @see: https://vim.fandom.com/wiki/Avoid_the_escape_key
+nnoremap <C-space> a
+imap <C-space> <Esc>
+tnoremap <C-space>  <C-\><C-n>
+"" inoremap <silent> <Up> <ESC><Up>
+"" inoremap <silent> <Down> <ESC><Down>
+" @see: https://vim.fandom.com/wiki/Alternative_tab_navigation
+
+nnoremap th  :tabfirst<CR>
+nnoremap tk  :tabnext<CR>
+nnoremap tj  :tabprev<CR>
+nnoremap tl  :tablast<CR>
+nnoremap tt  :tabedit<Space>
+nnoremap tn  :tabnext<Space>
+nnoremap tm  :tabm<Space>
+nnoremap td  :tabclose<CR>
+
+nnoremap <F8>  :tabnext<CR>
+nnoremap <F7>  :tabprev<CR>
+tnoremap <F8>  <C-\><C-n>:tabnext<CR>
+tnoremap <F7>  <C-\><C-n>:tabprev<CR>
+
+" @see: https://vim.fandom.com/wiki/Switch_between_Vim_window_splits_easily
+
+imap <C-w> <C-o><C-w>
+imap <F6> <C-o><C-w>
+map <F6> <C-W>w
+tnoremap <F6>  <C-\><C-n><C-W>w
+
+nnoremap <F5> :buffers<CR>:buffer<Space>
+""nnoremap <C-6> :b#
+
+" @see: https://vim.fandom.com/wiki/Short_mappings_for_common_tasks
+
+vmap <cr> y
+vmap > >gv
+vmap < <gv
+
+"" nnoremap Y y$
+nmap <C-W>* <C-W>s*
+nmap <C-W># <C-W>s#
+
+" 
+
+map <C-Down> <c-e>
+map <C-Up> <c-y>
+map <S-Down> j
+map <S-Up> k
+
+
+nnoremap <esc><esc> :silent! nohls<cr>
+
+nnoremap <leader>x :
+nnoremap <leader>u :tabedit ~/.config/nvim/init.vim
+nnoremap <leader>i :source ~/.config/nvim/init.vim
+
+nnoremap <leader>t :tabedit<cr>:terminal<cr>:startinsert<cr>
+nnoremap <leader>r :split<cr>:wincmd j<cr>:terminal<cr>:startinsert<cr>
+""nnoremap <leader>r :split term://$SHELL<cr>:startinsert<cr>
+
 
