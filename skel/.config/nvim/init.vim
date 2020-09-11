@@ -36,8 +36,8 @@ cp -pv ~/.config/nvim/init.vim ~/.emacs-site/skel/.config/nvim/
 
 cd ~/.emacs-site/
 git status
-git add .; git commit -m 'nvim config' 
-git pull; git push
+git add . && git commit -m 'nvim config' 
+git pull  && git push
 
 ##
 # nodots
