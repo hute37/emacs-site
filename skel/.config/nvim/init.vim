@@ -2,7 +2,7 @@
 " neovim config
 " @see: https://github.com/hute37/emacs-site/blob/master/skel/.config/nvim/init.vim
 "
-" (folding: reduce=zR,zr, more=zM,zm alter=Za,za)
+" (folding: reduce=zR,zr, more=zM,zm alter=Za,za, nogutter=:set foldcolumn=0)
 "
 
 """{{{ #DOC  ///////////////////////////////////////////////////////////////
@@ -59,10 +59,19 @@ function _dc_nvim_setup()
 # apt install $Y ruby rake bundler ruby-neovim
 
 ##
+# clean
+#
+
+ls -l   ~/.config/nvim
+ls -l   ~/.local/share/nvim
+rm -rf  ~/.config/nvim
+rm -rf  ~/.local/share/nvim
+
+##
 # nodots
 #
 
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+curl -fLo ~/.config/nvim/init.vim --create-dirs \
    https://raw.githubusercontent.com/hute37/emacs-site/master/skel/.config/nvim/init.vim
 
 ##
@@ -476,6 +485,6 @@ vnoremap <leader>p "_dP
 
 """{{{ #MODE ///////////////////////////////////////////////////////////////
 
-" vim: noet sw=4 ts=4 fdm=marker
+" vim: noet sw=4 ts=4 fdm=marker foldcolumn=0
 
 """}}}
