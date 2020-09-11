@@ -15,9 +15,38 @@ function _dc_nvim_setup()
  * [init.vim](https://github.com/hute37/emacs-site/blob/master/skel/.config/nvim/init.vim)
     
 ```bash
+##
+# apt
+#
+
+# sudo apt search neovim
+# Y=y
+# apt install $Y neovim neovim-qt lua-nvim python3-neovim
+# apt install $Y ruby rake bundler ruby-neovim
+
+##
+# dots
+#
+
+# cp -pv ~/.emacs-site/skel/.config/nvim/init.vim  ~/.config/nvim/
+
+cp -pv ~/.config/nvim/init.vim ~/.emacs-site/skel/.config/nvim/ 
+
+cd ~/.emacs-site/
+git status
+git add .; git commit -m 'nvim config' 
+git pull; git push
+
+##
+# nodots
+#
 
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
    https://raw.githubusercontent.com/hute37/emacs-site/master/skel/.config/nvim/init.vim
+
+##
+# env
+#
 
 echo "alias s='less -SRX'"          >> ~/.aliases   
 echo "alias e='emacsclient'"        >> ~/.aliases   
@@ -30,6 +59,10 @@ echo "[ -f ~/.aliases ] && source ~/.aliases || true"               >> ~/.bash_a
 echo "[ -f ~/.bash_aliases ] && source ~/.bash_aliases || true"     >> ~/.bashrc
 
 source ~/.aliases
+
+##
+# run
+#
 
 nvim --headless +PlugUpgrade +PlugInstall +PlugUpdate +qall
 
@@ -376,6 +409,7 @@ map <S-Up> k
 
 nnoremap <esc><esc> :silent! nohls<cr>
 
+nnoremap <A-x> :
 nnoremap <leader>x :
 nnoremap <leader>u :tabedit ~/.config/nvim/init.vim
 nnoremap <leader>i :source ~/.config/nvim/init.vim
