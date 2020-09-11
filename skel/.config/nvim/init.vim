@@ -7,6 +7,40 @@
 
 """{{{ #DOC  ///////////////////////////////////////////////////////////////
 
+""""{{{ ---(nvim update)------------------------------
+function _dc_nvim_update()
+	" nvim config setup"
+	doc <<MD
+
+ * [init.vim](https://github.com/hute37/emacs-site/blob/master/skel/.config/nvim/init.vim)
+    
+```bash
+##
+# dots
+#
+
+# in
+cp -pv ~/.emacs-site/skel/.config/nvim/init.vim  ~/.config/nvim/
+
+# out
+cp -pv ~/.config/nvim/init.vim ~/.emacs-site/skel/.config/nvim/ 
+
+cd ~/.emacs-site/
+git status
+git add . && git commit -m 'nvim config' 
+git pull  && git push
+
+##
+# run
+#
+
+nvim --headless +PlugUpgrade +PlugInstall +PlugUpdate +qall
+
+```
+MD
+endfunction
+""""}}}
+
 """"{{{ ---(nvim setup)------------------------------
 function _dc_nvim_setup()
 	" nvim config setup"
@@ -23,21 +57,6 @@ function _dc_nvim_setup()
 # Y=y
 # apt install $Y neovim neovim-qt lua-nvim python3-neovim
 # apt install $Y ruby rake bundler ruby-neovim
-
-##
-# dots
-#
-
-# in
-cp -pv ~/.emacs-site/skel/.config/nvim/init.vim  ~/.config/nvim/
-
-# out
-cp -pv ~/.config/nvim/init.vim ~/.emacs-site/skel/.config/nvim/ 
-
-cd ~/.emacs-site/
-git status
-git add . && git commit -m 'nvim config' 
-git pull  && git push
 
 ##
 # nodots
@@ -408,6 +427,28 @@ map <C-Up> <c-y>
 map <S-Down> j
 map <S-Up> k
 
+" Splits and Tabbed Files
+set splitbelow splitright
+
+" Remap splits navigation to just CTRL + hjkl
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Make adjusing split sizes a bit more friendly
+""noremap <silent> <C-Left> :vertical resize +3<CR>
+""noremap <silent> <C-Right> :vertical resize -3<CR>
+""noremap <silent> <C-Up> :resize +3<CR>
+""noremap <silent> <C-Down> :resize -3<CR>
+
+" Change 2 split windows from vert to horiz or horiz to vert
+map <Leader>vv <C-w>t<C-w>H
+map <Leader>hh <C-w>t<C-w>K
+
+" Removes pipes | that act as seperators on splits
+set fillchars+=vert:\ 
+
 
 nnoremap <esc><esc> :silent! nohls<cr>
 
@@ -416,8 +457,8 @@ nnoremap <leader>x :
 nnoremap <leader>u :tabedit ~/.config/nvim/init.vim
 nnoremap <leader>i :source ~/.config/nvim/init.vim
 
-nnoremap <leader>t :tabedit<cr>:terminal<cr>:startinsert<cr>
-nnoremap <leader>r :split<cr>:wincmd j<cr>:terminal<cr>:startinsert<cr>
+nnoremap <leader>t :tabedit<cr>:terminal<cr>i
+nnoremap <leader>r :split<cr>:wincmd j<cr>:terminal<cr>i
 ""nnoremap <leader>r :split term://$SHELL<cr>:startinsert<cr>
 
 " @see: https://superuser.com/questions/321547/how-do-i-replace-paste-yanked-text-in-vim-without-yanking-the-deleted-lines/321726#321726
