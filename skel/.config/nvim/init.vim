@@ -28,8 +28,10 @@ function _dc_nvim_setup()
 # dots
 #
 
-# cp -pv ~/.emacs-site/skel/.config/nvim/init.vim  ~/.config/nvim/
+# in
+cp -pv ~/.emacs-site/skel/.config/nvim/init.vim  ~/.config/nvim/
 
+# out
 cp -pv ~/.config/nvim/init.vim ~/.emacs-site/skel/.config/nvim/ 
 
 cd ~/.emacs-site/
