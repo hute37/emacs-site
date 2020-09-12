@@ -358,7 +358,7 @@ set guioptions-=L  "remove left-hand scroll bar
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = '►'
 let g:NERDTreeDirArrowCollapsible = '▼'
-let NERDTreeShowLineNumbers=1
+let NERDTreeShowLineNumbers=0
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI = 1
 let g:NERDTreeWinSize=38
