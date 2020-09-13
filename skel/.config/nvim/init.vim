@@ -363,6 +363,8 @@ set guioptions-=L  "remove left-hand scroll bar
 " Uncomment to autostart the NERDTree
 " autocmd vimenter * NERDTree
 map <C-n> :NERDTreeToggle<CR>
+map <silent> <C-p> :NERDTreeFind<CR>
+
 let g:NERDTreeDirArrowExpandable = '►'
 let g:NERDTreeDirArrowCollapsible = '▼'
 let NERDTreeShowLineNumbers=0
@@ -497,6 +499,14 @@ vnoremap <leader>d "_d
 " replace currently selected text with default register
 " without yanking it
 vnoremap <leader>p "_dP
+
+" @see: https://stackoverflow.com/questions/1889596/vim-mappable-unused-shortcut-letters
+map ,w :w!<CR>
+map ,e :e #<CR>
+map ,q :q<CR>
+map ,p :qa<CR>
+"imap ,, <ESC>
+
 
 """}}}
 
