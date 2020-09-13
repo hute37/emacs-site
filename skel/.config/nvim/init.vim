@@ -504,7 +504,10 @@ vnoremap <leader>p "_dP
 map ,w :w!<CR>
 map ,e :e #<CR>
 map ,q :q<CR>
-map ,p :qa<CR>
+map ,k :qa<CR>
+map ,, <F6>
+map ,. :q<CR>
+ 
 "imap ,, <ESC>
 
 
