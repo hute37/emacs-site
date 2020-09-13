@@ -78,6 +78,12 @@ curl -fLo ~/.config/nvim/init.vim --create-dirs \
 # env
 #
 
+cat <'EOF'
+export ALTERNATE_EDITOR=""
+export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
+export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI mode	
+EOF
+	
 echo "alias s='less -SRX'"          >> ~/.aliases   
 echo "alias e='emacsclient'"        >> ~/.aliases   
 echo "alias v='nvim'"               >> ~/.aliases   
@@ -101,7 +107,7 @@ MD
 endfunction
 """"}}}
 
-"""""{{{ ---(nvim setup)------------------------------
+"""""{{{ ---(nvim refs)------------------------------
 function _dc_nvim_references()
 	" nvim config setup"
 	doc <<MD
@@ -215,7 +221,8 @@ Plug 'junegunn/limelight.vim'                      " Hyperfocus on a range
 Plug 'junegunn/vim-emoji'                          " Vim needs emojis!
 
 "[[ Commands ]]
-Plug 'vim-utils/vim-man'
+""Plug 'vim-utils/vim-man'
+Plug 'paretje/nvim-man'
 
 "[[ Editing ]]
 Plug 'mbbill/undotree'
@@ -375,12 +382,23 @@ let g:netrw_browse_split = 2
 let g:netrw_banner=0
 let g:netrw_winsize = 25
 
+
+""""}}}
+
+""""{{{ [[ Commands ]]
+
+"[[ Commands.Man ]]
+
+let g:nvim_man_default_target = 'tab'
+
+"[[ Commands.Ctrlp ]]
+
 let g:ctrlp_use_caching = 0
 "" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s.git ls-files -oc ']
 
 """"}}}
 
-"""}}}
+""""}}}
 
 
 """{{{ #KEYMAP
