@@ -207,8 +207,9 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'vifm/vifm.vim'                               " Vifm
 Plug 'scrooloose/nerdtree'                         " Nerdtree
+Plug 'Xuyuanp/nerdtree-git-plugin'				   " Nerdtree git plugin
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'     " Highlighting Nerdtree
-""Plug 'ryanoasis/vim-devicons'                      " Icons for Nerdtree
+""Plug 'ryanoasis/vim-devicons'                    " Icons for Nerdtree
 
 "" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " lazy load
 
@@ -362,14 +363,15 @@ set guioptions-=L  "remove left-hand scroll bar
 "[[ Files.NERDTree ]]
 " Uncomment to autostart the NERDTree
 " autocmd vimenter * NERDTree
-map <C-n> :NERDTreeToggle<CR>
-map <silent> <C-p> :NERDTreeFind<CR>
+map <silent> <F3> :NERDTreeToggle<CR>
+map <silent> <F4> :NERDTreeFind<CR>
 
 let g:NERDTreeDirArrowExpandable = '►'
 let g:NERDTreeDirArrowCollapsible = '▼'
 let NERDTreeShowLineNumbers=0
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI = 1
+let NERDTreeQuitOnOpen = 1
 let g:NERDTreeWinSize=38
 
 "[[ Files.Vifm ]]
@@ -483,8 +485,8 @@ nnoremap <esc><esc> :silent! nohls<cr>
 
 nnoremap <A-x> :
 nnoremap <leader>x :
-nnoremap <leader>u :tabedit ~/.config/nvim/init.vim
-nnoremap <leader>i :source ~/.config/nvim/init.vim
+nnoremap <leader>u :tabedit ~/.config/nvim/init.vim<CR>
+nnoremap <leader>i :source ~/.config/nvim/init.vim<CR>
 
 nnoremap <leader>t :tabedit<cr>:terminal<cr>i
 nnoremap <leader>r :split<cr>:wincmd j<cr>:terminal<cr>i
@@ -508,6 +510,19 @@ map ,k :qa<CR>
 map ,, <F6>
 map ,. :q<CR>
  
+map ,1 <F1>
+map ,2 <F2>
+map ,3 <F3>
+map ,4 <F4>
+map ,5 <F5>
+map ,6 <F6>
+map ,7 <F7>
+map ,8 <F8>
+map ,9 <F9>
+map ,0 <F10>
+map ,- <F11>
+map ,= <F12>
+
 "imap ,, <ESC>
 
 
