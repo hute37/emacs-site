@@ -289,10 +289,20 @@ set path+=**					" Searches current directory recursively.
  
 " [[undo]]
 
+if has('nvim')
 if !isdirectory($HOME."/.local/share/nvim/undo")
     call mkdir($HOME."/.local/share/nvim/undo", "p", 0700)
 endif
 set undodir=$HOME/.local/share/nvim/undo
+endif
+
+if !has('nvim')
+if !isdirectory($HOME."/.vim/undo")
+    call mkdir($HOME."/.vim/undo", "p", 0700)
+endif
+set undodir=$HOME/.vim/undo
+endif
+
 set undofile
 
 set noswapfile
