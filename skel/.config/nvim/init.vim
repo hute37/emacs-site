@@ -212,7 +212,7 @@ Plug 'vifm/vifm.vim'                               " Vifm
 Plug 'scrooloose/nerdtree'                         " Nerdtree
 Plug 'Xuyuanp/nerdtree-git-plugin'				   " Nerdtree git plugin
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'     " Highlighting Nerdtree
-""Plug 'ryanoasis/vim-devicons'                    " Icons for Nerdtree
+Plug 'ryanoasis/vim-devicons'                    " Icons for Nerdtree
 
 "" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " lazy load
 
@@ -494,7 +494,9 @@ nnoremap <leader>i :source ~/.config/nvim/init.vim<CR>
 
 nnoremap <leader>t :tabedit<cr>:terminal<cr>i
 nnoremap <leader>r :split<cr>:wincmd j<cr>:terminal<cr>i
-""nnoremap <leader>r :split term://$SHELL<cr>:startinsert<cr>
+nnoremap <C-F9> :tabedit<cr>:terminal<cr>i
+nnoremap <F9> :split<cr>:wincmd j<cr>:terminal<cr>i
+"""nnoremap <leader>r :split term://$SHELL<cr>:startinsert<cr>
 
 " @see: https://superuser.com/questions/321547/how-do-i-replace-paste-yanked-text-in-vim-without-yanking-the-deleted-lines/321726#321726
  
