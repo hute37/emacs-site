@@ -19,10 +19,8 @@ function _dc_nvim_update()
 # dots
 #
 
-# in
-### cp -pv ~/.emacs-site/skel/.config/nvim/init.vim  ~/.config/nvim/
+# ===( -> out )=====
 
-# out
 cp -pv ~/.config/nvim/init.vim ~/.emacs-site/skel/.config/nvim/ 
 
 cd ~/.emacs-site/
@@ -30,11 +28,16 @@ git status
 git add . && git commit -m 'nvim config' 
 git pull  && git push
 
-##
+#%
+
+# ===( -> in )=====
+# cp -pv ~/.emacs-site/skel/.config/nvim/init.vim  ~/.config/nvim/
+
+###
 # run
 #
 
-nvim --headless +PlugUpgrade +PlugInstall +PlugUpdate +qall
+nvim --headless +PlugUpgrade +PlugClean +PlugInstall +PlugUpdate +qall
 
 ```
 MD
@@ -371,6 +374,7 @@ let g:NERDTreeDirArrowCollapsible = '▼'
 let NERDTreeShowLineNumbers=0
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 let NERDTreeQuitOnOpen = 1
 let g:NERDTreeWinSize=38
 
