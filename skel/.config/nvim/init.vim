@@ -176,12 +176,22 @@ let g:nvim_config_root = expand('<sfile>:p:h')
 
 """{{{ #PLUGINS ///////////////////////////////////////////////////////////
 
-
+if has('nvim')
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs 
             \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall | source ~/.config/nvim/init.vim
 endif
+endif
+
+if !has('nvim')
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs 
+            \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source ~/.config/nvim/init.vim
+endif
+endif
+
 
 " ---------------------------------------------------
 
@@ -409,14 +419,16 @@ let g:ctrlp_use_caching = 0
 """"}}}
 
 
-"""{{{ #KEYMAP
+"""{{{ #KEYMAP ////////////////////////////////////////////////////////////
 
 let mapleader=' '
 
 " @see: https://vim.fandom.com/wiki/Avoid_the_escape_key
 nnoremap <C-space> a
 imap <C-space> <Esc>
+if exists(':tnoremap')
 tnoremap <C-space>  <C-\><C-n>
+endif
 "" inoremap <silent> <Up> <ESC><Up>
 "" inoremap <silent> <Down> <ESC><Down>
 " @see: https://vim.fandom.com/wiki/Alternative_tab_navigation
@@ -432,15 +444,18 @@ nnoremap td  :tabclose<CR>
 
 nnoremap <F8>  :tabnext<CR>
 nnoremap <F7>  :tabprev<CR>
+if exists(':tnoremap')
 tnoremap <F8>  <C-\><C-n>:tabnext<CR>
 tnoremap <F7>  <C-\><C-n>:tabprev<CR>
-
+endif
 " @see: https://vim.fandom.com/wiki/Switch_between_Vim_window_splits_easily
 
 imap <C-w> <C-o><C-w>
 imap <F6> <C-o><C-w>
 map <F6> <C-W>w
+if exists(':tnoremap')
 tnoremap <F6>  <C-\><C-n><C-W>w
+endif
 
 nnoremap <F5> :buffers<CR>:buffer<Space>
 ""nnoremap <C-6> :b#
