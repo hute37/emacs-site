@@ -20,7 +20,7 @@ function _dc_nvim_update()
 #
 
 # in
-cp -pv ~/.emacs-site/skel/.config/nvim/init.vim  ~/.config/nvim/
+### cp -pv ~/.emacs-site/skel/.config/nvim/init.vim  ~/.config/nvim/
 
 # out
 cp -pv ~/.config/nvim/init.vim ~/.emacs-site/skel/.config/nvim/ 
@@ -503,13 +503,14 @@ vnoremap <leader>d "_d
 vnoremap <leader>p "_dP
 
 " @see: https://stackoverflow.com/questions/1889596/vim-mappable-unused-shortcut-letters
-map ,w :w!<CR>
+nmap ,w :w!<CR>
 map ,e :e #<CR>
 map ,q :q<CR>
 map ,k :qa<CR>
 map ,, <F6>
 map ,. :q<CR>
- 
+
+" function key synonyms
 map ,1 <F1>
 map ,2 <F2>
 map ,3 <F3>
