@@ -235,8 +235,12 @@ Plug 'junegunn/limelight.vim'                      " Hyperfocus on a range
 Plug 'junegunn/vim-emoji'                          " Vim needs emojis!
 
 "[[ Commands ]]
-""Plug 'vim-utils/vim-man'
+if has('nvim')
 Plug 'paretje/nvim-man'
+endif
+if !has('nvim')
+Plug 'vim-utils/vim-man'
+endif
 
 "[[ Editing ]]
 Plug 'mbbill/undotree'
