@@ -236,7 +236,8 @@ Plug 'junegunn/vim-emoji'                          " Vim needs emojis!
 
 "[[ Commands ]]
 if has('nvim')
-Plug 'paretje/nvim-man'
+""Plug 'paretje/nvim-man'
+Plug 'jez/vim-superman'
 endif
 if !has('nvim')
 Plug 'vim-utils/vim-man'
