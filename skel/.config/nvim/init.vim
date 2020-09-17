@@ -333,9 +333,9 @@ set t_Co=256                    " Set if term supports 256 colors.
 
 """{{{ #THEME /////////////////////////////////////////////////////////////
 
-""""{{{ #COLOR
+""""{{{ [[ Color ]]
 
-""let g:airline_theme='<theme>' " <theme> is a valid theme name
+"[[ Color.Scheme ]]
 
 "" colorscheme gruvbox
 "" colorscheme molokai
@@ -354,7 +354,23 @@ endif
 
 """"}}}
 
-""""{{{ #LAYOUT
+""""{{{ [[ Status ]]
+
+"[[ Status.vim-airline ]]
+
+let g:airline_powerline_fonts = 1
+
+let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+"let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+"let g:airline#extensions#tabline#formatter = 'default'
+
+
+""""}}}
+
+""""{{{ [[ Layout ]]
 
 " Uncomment to prevent non-normal modes showing in powerline and below powerline.
 set noshowmode
@@ -372,7 +388,7 @@ set nowrap
 
 """"}}}
 
-""""{{{ #GUI
+""""{{{ [[ Gui ]]
 
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
