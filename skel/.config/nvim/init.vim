@@ -8,6 +8,7 @@
 """{{{ #DOC  ///////////////////////////////////////////////////////////////
 
 """"{{{ ---(nvim update)------------------------------
+if 0
 function _dc_nvim_update()
 	" nvim config setup"
 	doc <<MD
@@ -42,9 +43,11 @@ nvim --headless +PlugUpgrade +PlugClean +PlugInstall +PlugUpdate +qall
 ```
 MD
 endfunction
+endif
 """"}}}
 
 """"{{{ ---(nvim setup)------------------------------
+if 0
 function _dc_nvim_setup()
 	" nvim config setup"
 	doc <<MD
@@ -108,9 +111,11 @@ nvim --headless +PlugUpgrade +PlugInstall +PlugUpdate +qall
 ```
 MD
 endfunction
+endif
 """"}}}
 
 """""{{{ ---(nvim refs)------------------------------
+if 0
 function _dc_nvim_references()
 	" nvim config setup"
 	doc <<MD
@@ -141,6 +146,7 @@ function _dc_nvim_references()
 ```
 MD
 endfunction
+endif
 """"}}}
 
 """}}}
