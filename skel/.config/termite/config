@@ -17,12 +17,13 @@ bold_is_bright = true
 #clickable_url = true
 dynamic_title = true
 
-#font = Monospace 9
-font = Hack 10
+font = Monospace 9
+font = Hack Nerd Font 10
 font = VL Gothic 10
 font = mononoki 10
 font = Iosevka Term 10
 font = Iosevka Nerd Font Mono 10
+font = Iosevka Nerd Font 10
 
 #fullscreen = true
 icon_name = termite
