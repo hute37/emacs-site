@@ -90,9 +90,9 @@ export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
 export VISUAL="emacsclient -c -a emacs"         # $VISUAL opens in GUI mode	
 EOF
 	
-echo "alias s='less -SRX'"          >> ~/.aliases   
-echo "alias e='emacsclient'"        >> ~/.aliases   
-echo "alias v='nvim'"               >> ~/.aliases   
+echo "alias s='less -SRX'"                                          >> ~/.aliases   
+echo "alias e='emacsclient'"                                        >> ~/.aliases   
+echo "which nvim >/dev/null  && alias v='nvim' || alias v='vim'"    >> ~/.aliases   
 
 echo "[ -f ~/.aliases ] && source ~/.aliases || true"               >> ~/.zsh_aliases   
 echo "[ -f ~/.zsh_aliases ] && source ~/.zsh_aliases || true"       >> ~/.zshrc
