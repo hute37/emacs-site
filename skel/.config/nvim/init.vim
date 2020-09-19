@@ -214,6 +214,7 @@ Plug 'morhetz/gruvbox'
 Plug 'tomasr/molokai'
 Plug 'fmoralesc/molokayo'
 Plug 'ciaranm/inkpot'
+Plug 'whatyouhide/vim-gotham'
 Plug 'altercation/vim-colors-solarized'
 Plug 'gosukiwi/vim-atom-dark'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
@@ -345,6 +346,7 @@ set t_Co=256                    " Set if term supports 256 colors.
 
 "" colorscheme gruvbox
 "" colorscheme molokai
+"" silent! colorscheme gotham
 silent! colorscheme inkpot
 
 if has('gui_running')
