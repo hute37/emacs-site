@@ -31,10 +31,12 @@ alias lt="ls --color -lFhart"
 
 #
 alias t='tail -F'
-alias v='less -SRX --follow-name -#24 +F'
+alias sv='less -SRX --follow-name -#24 +F'
 alias s='less -SRX'
+which nvim >/dev/null  && alias v='nvim' || alias v='vim'
 alias e='emacsclient --no-wait'
 alias ec='emacsclient -c'
+
 
 ##
 # git
