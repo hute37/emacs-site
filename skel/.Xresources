@@ -1013,4 +1013,11 @@ Urxvt*veryBoldColors: 6
 ! me.QueensU.CA>
 ! URxvt*mj olesen <olesen
 
-
+                                                                                                
+! --- The following options options can be reloaded via USR1 signal. ---                        
+st.font:               DroidSansMono NF:pixelsize=22:antialias=true:hinting=true;               
+!st.font:              Fantasque Sans Mono:pixelsize=22:antialias=true:autohint=true;           
+!st.font:              Iosevka Nerd Font:pixelsize=18:antialias=true:autohint=true;             
+!st.font:              Iosevka Nerd Font:pixelsize=14:antialias=true:autohint=true;             
+!st.font:              Liberation Mono:pixelsize=12:antialias=true:autohint=true;               
+                                                                                            
