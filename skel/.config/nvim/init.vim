@@ -325,7 +325,11 @@ set nobackup
 """"{{{ #ENVIRON
 
 " [[ Clipboard ]]
-set clipboard+=unnamedplus
+
+" @see: https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim 
+
+""set clipboard+=unnamed
+""set clipboard+=unnamedplus
 
 " [[ Terminal ]]
 set t_Co=256                    " Set if term supports 256 colors.
@@ -548,7 +552,7 @@ nnoremap <leader>i :source ~/.config/nvim/init.vim<CR>
 
 nnoremap <leader>t :tabedit<cr>:terminal<cr>i
 nnoremap <leader>r :split<cr>:wincmd j<cr>:terminal<cr>i
-nnoremap <C-F9> :tabedit<cr>:terminal<cr>i
+nnoremap <C-F9> :tabnew<cr>:terminal<cr>i
 nnoremap <F9> :split<cr>:wincmd j<cr>:terminal<cr>i
 """nnoremap <leader>r :split term://$SHELL<cr>:startinsert<cr>
 
