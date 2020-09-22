@@ -59,10 +59,16 @@ function _dc_nvim_setup()
 # apt
 #
 
-# sudo apt search neovim
-# Y=y
-# apt install $Y neovim neovim-qt lua-nvim python3-neovim
-# apt install $Y ruby rake bundler ruby-neovim
+sudo apt search neovim
+
+Y=-y
+sudo apt install $Y neovim neovim-qt lua-nvim python3-neovim
+sudo apt install $Y ruby rake bundler ruby-neovim
+sudo apt install $Y ranger atool caca-utils highlight figlet
+sudo apt install $Y vifm
+sudo apt install $Y w3m lynx
+
+
 
 ##
 # clean
@@ -484,6 +490,8 @@ nnoremap tt  :tabedit<Space>
 nnoremap tn  :tabnext<Space>
 nnoremap tm  :tabm<Space>
 nnoremap td  :tabclose<CR>
+
+nnoremap <F2>  :w<CR>
 
 nnoremap <F8>  :tabnext<CR>
 nnoremap <F7>  :tabprev<CR>
