@@ -33,9 +33,22 @@ alias lt="ls --color -lFhart"
 alias t='tail -F'
 alias sv='less -SRX --follow-name -#24 +F'
 alias s='less -SRX'
+
 which nvim >/dev/null  && alias v='nvim' || alias v='vim'
 alias e='emacsclient --no-wait'
 alias ec='emacsclient -c'
+
+
+##
+# tmux
+#
+
+alias tsu='tmux attach || tmux'
+
+alias tus='tmux new-session -A -s user_clip /bin/zsh --login -c "nvim -c :e ~/.user-clip.md -c :split -c :term"'
+alias tub='tmux new-session -A -s user_web /bin/zsh --login -c "w3m https://duckduckgo.com"'
+alias ddg='w3m https://duckduckgo.com'
+alias dgg='w3m https://www.google.com'
 
 
 ##
@@ -51,6 +64,8 @@ alias gst='git status; [ -f ./.gitmodules ] && git submodule status'
 # sh
 #
 
+
+alias zz='exec zsh --login'
 
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -69,13 +84,8 @@ alias p9='unset PS; exec bash'
 
 alias ssh-x='ssh -c arcfour,blowfish-cbc -XC'
 
-alias XX='/usr/bin/Xephyr :5 -query localhost -once -fullscreen -ac -keybd "ephyr,,,xkbmodel=pc105,xkblayout=it,xkbrules=evdev,xkboption="'
-
-##
-# tmux
-#
-
-alias tsu='tmux attach || tmux'
+alias XQ='/usr/bin/Xephyr :5 -query localhost -once -fullscreen -ac -keybd "ephyr,,,xkbmodel=pc105,xkblayout=it,xkbrules=evdev,xkboption="'
+alias XX='startx -- /usr/bin/Xephyr :3'
 
 
 ##
@@ -95,14 +105,14 @@ alias g-stat="gpustat -cp -i "
 # @see: https://stackoverflow.com/questions/12943819/how-to-prettyprint-a-json-file
 #
 
-alias jqpp="python -c 'import sys, json; print json.dumps(json.load(sys.stdin), sort_keys=True, indent=2)'"
+# alias jqpp="python -c 'import sys, json; print json.dumps(json.load(sys.stdin), sort_keys=True, indent=2)'"
 
 
 ##
 # @see: https://wiki.archlinux.org/index.php/man_page
 #
 
-man() {
+mman() {
     env LESS_TERMCAP_mb=$'\E[01;31m' \
     LESS_TERMCAP_md=$'\E[01;38;5;74m' \
     LESS_TERMCAP_me=$'\E[0m' \
@@ -115,16 +125,18 @@ man() {
 
 #
 
-splog() { cd $PGDATA/pg_log && less --follow-name +F -S $(ls -rt | tail -n1); }
+# splog() { cd $PGDATA/pg_log && less --follow-name +F -S $(ls -rt | tail -n1); }
 
 
 # arch
-
-alias pkg-dist-upgrade='sudo etckeeper pre-install && yaourt -Syua && sudo etckeeper post-install'
-alias pkg-upgrade='sudo etckeeper pre-install && sudo pacman -Syu && sudo etckeeper post-install'
-
-pkg-grep() { pacman -Ss "$1" | paste - - | grep --color=always -e "${2:-$1}" | less -R ; }
-pkg-search() { pacman --color=always -Ss "python" | paste - - | less -R; }
+#
+#    
+# alias pkg-dist-upgrade='sudo etckeeper pre-install && yaourt -Syua && sudo etckeeper post-install'
+# alias pkg-upgrade='sudo etckeeper pre-install && sudo pacman -Syu && sudo etckeeper post-install'
+#
+#
+# pkg-grep() { pacman -Ss "$1" | paste - - | grep --color=always -e "${2:-$1}" | less -R ; }
+# pkg-search() { pacman --color=always -Ss "python" | paste - - | less -R; }
 
 # ------------------------------------------------
 export _DOT_ALIASES_0="$(date  --rfc-3339=ns)"
