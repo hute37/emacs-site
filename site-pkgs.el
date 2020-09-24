@@ -1083,6 +1083,66 @@ the automatic filling of the current paragraph."
 
 
 ;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;  @FONT
+;; ;;;////////////////////////////////////////////////////////////////
+
+
+;; ---( ligatures )--------------------------------------------------------------
+
+(cond
+ ((string-lessp emacs-version "27.1") ;;
+  (progn
+    (message "SITE:font-legacy, ...")
+    (message "SITE:font-legacy.")
+    ))
+ (t
+  (progn
+    (message "SITE:font-ligatures, ...")
+
+
+(use-package fira-code-mode
+  :ensure t
+  :custom (fira-code-mode-disabled-ligatures '("[]" "x"))  ; ligatures you don't want
+  :hook prog-mode)                                         ; mode to enable fira-code-mode in
+
+    
+    (message "SITE:font-ligatures.")
+    ))
+)
+
+
+
+
+;; @see: https://github.com/tonsky/FiraCode/issues/211#issuecomment-239058632
+
+;; (use-package ligature
+;;   ;;:load-path "path-to-ligature-repo"
+;;   :config
+;;   ;; Enable the "www" ligature in every possible major mode
+;;   (ligature-set-ligatures 't '("www"))
+;;   ;; Enable traditional ligature support in eww-mode, if the
+;;   ;; `variable-pitch' face supports it
+;;   (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
+;;   ;; Enable all Cascadia Code ligatures in programming modes
+;;   (ligature-set-ligatures 'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
+;;                                        ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
+;;                                        "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
+;;                                        "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
+;;                                        "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
+;;                                        "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
+;;                                        "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
+;;                                        "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
+;;                                        ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
+;;                                        "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
+;;                                        "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
+;;                                        "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
+;;                                        "\\" "://"))
+;;   ;; Enables ligature checks globally in all buffers. You can also do it
+;;   ;; per mode with `ligature-mode'.
+;;   (global-ligature-mode t))
+
+
+;; ;;;////////////////////////////////////////////////////////////////
 ;; ;;;  @ORG
 ;; ;;;////////////////////////////////////////////////////////////////
 
