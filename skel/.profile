@@ -1,66 +1,20 @@
-#!/bin/sh
-# -*- mode: shell-script;-*-
+# ~/.profile: executed by the command interpreter for login shells.
+# This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
+# exists.
+# see /usr/share/doc/bash/examples/startup-files for examples.
+# the files are located in the bash-doc package.
 
-##
-#  ~/.profile
-#
-
-# WARNING: check it with checkbashism (dash != bash)
-
-# ------------------------------------------------
-_DOT_PROFILE_0="$(date  --rfc-3339=ns)"; export _DOT_PROFILE_0
-# ------------------------------------------------
-
-##
-# log
-#
-
-log_profile () {
-   echo "$(date  --rfc-3339=ns) [profile.d] $*" >> ~/.profile.log
-}
-
-: > ~/.profile.log
-log_profile "## >> ~/.profile (PID: $$) --ARGS $0 $* ##"
-
-
-# the default umask is set in /etc/profile
+# the default umask is set in /etc/profile; for setting the umask
+# for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-
-##
-# include
-#
-
-set -a
-[ -r ~/.etc/profile.conf ] && . ~/.etc/profile.conf || true
-set +a
-
-
-# Load profiles from ~/.etc/profile.d
-if [ -d ~/.etc/profile.d ]; then
-
-    case "$0" in
-        *csh) ;;
-        *)
-
-	    for profile in ~/.etc/profile.d/*.sh; do
-	        if [ -x "$profile" ]; then
-            	    log_profile "++ >> $profile"
-		    . "$profile" || true
-            	    log_profile "++ << $profile ($?)"
-                fi
-	    done
-	    unset profile
-
-            ;;
-        *none)
-            ;;
-    esac
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+	. "$HOME/.bashrc"
+    fi
 fi
 
-env | sort >> ~/.profile.log
-
-log_profile "## << ~/.profile ##"
-# ------------------------------------------------
-_DOT_PROFILE_1="$(date  --rfc-3339=ns)"; export _DOT_PROFILE_1
-# ------------------------------------------------
+# set PATH so it includes user's private bin directories
+PATH="$HOME/bin:$HOME/.local/bin:$PATH"
