@@ -335,7 +335,7 @@ set nobackup
 " @see: https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim 
 
 ""set clipboard+=unnamed
-""set clipboard+=unnamedplus
+set clipboard+=unnamedplus
 
 " [[ Terminal ]]
 set t_Co=256                    " Set if term supports 256 colors.
@@ -425,8 +425,8 @@ set guioptions-=L  "remove left-hand scroll bar
 "[[ Files.NERDTree ]]
 " Uncomment to autostart the NERDTree
 " autocmd vimenter * NERDTree
-map <silent> <F3> :NERDTreeToggle<CR>
-map <silent> <F4> :NERDTreeFind<CR>
+map <silent> <F4> :NERDTreeToggle<CR>
+map <silent> <C-F4> :NERDTreeFind<CR>
 
 let g:NERDTreeDirArrowExpandable = '►'
 let g:NERDTreeDirArrowCollapsible = '▼'
@@ -566,7 +566,11 @@ nnoremap <F9> :split<cr>:wincmd j<cr>:terminal<cr>i
 
 " @see: https://superuser.com/questions/321547/how-do-i-replace-paste-yanked-text-in-vim-without-yanking-the-deleted-lines/321726#321726
  
-" delete without yanking
+" x-primary selection
+nnoremap <leader>y "*y
+vnoremap <leader>y "*y
+
+"" delete without yanking
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 
