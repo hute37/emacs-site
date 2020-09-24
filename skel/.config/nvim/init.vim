@@ -59,10 +59,16 @@ function _dc_nvim_setup()
 # apt
 #
 
-# sudo apt search neovim
-# Y=y
-# apt install $Y neovim neovim-qt lua-nvim python3-neovim
-# apt install $Y ruby rake bundler ruby-neovim
+sudo apt search neovim
+
+Y=-y
+sudo apt install $Y neovim neovim-qt lua-nvim python3-neovim
+sudo apt install $Y ruby rake bundler ruby-neovim
+sudo apt install $Y ranger atool caca-utils highlight figlet
+sudo apt install $Y vifm
+sudo apt install $Y w3m lynx
+
+
 
 ##
 # clean
@@ -214,6 +220,7 @@ Plug 'morhetz/gruvbox'
 Plug 'tomasr/molokai'
 Plug 'fmoralesc/molokayo'
 Plug 'ciaranm/inkpot'
+Plug 'whatyouhide/vim-gotham'
 Plug 'altercation/vim-colors-solarized'
 Plug 'gosukiwi/vim-atom-dark'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
@@ -324,7 +331,11 @@ set nobackup
 """"{{{ #ENVIRON
 
 " [[ Clipboard ]]
-set clipboard+=unnamedplus
+
+" @see: https://vi.stackexchange.com/questions/84/how-can-i-copy-text-to-the-system-clipboard-from-vim 
+
+""set clipboard+=unnamed
+""set clipboard+=unnamedplus
 
 " [[ Terminal ]]
 set t_Co=256                    " Set if term supports 256 colors.
@@ -345,6 +356,7 @@ set t_Co=256                    " Set if term supports 256 colors.
 
 "" colorscheme gruvbox
 "" colorscheme molokai
+"" silent! colorscheme gotham
 silent! colorscheme inkpot
 
 if has('gui_running')
@@ -479,6 +491,8 @@ nnoremap tn  :tabnext<Space>
 nnoremap tm  :tabm<Space>
 nnoremap td  :tabclose<CR>
 
+nnoremap <F2>  :w<CR>
+
 nnoremap <F8>  :tabnext<CR>
 nnoremap <F7>  :tabprev<CR>
 if exists(':tnoremap')
@@ -546,7 +560,7 @@ nnoremap <leader>i :source ~/.config/nvim/init.vim<CR>
 
 nnoremap <leader>t :tabedit<cr>:terminal<cr>i
 nnoremap <leader>r :split<cr>:wincmd j<cr>:terminal<cr>i
-nnoremap <C-F9> :tabedit<cr>:terminal<cr>i
+nnoremap <C-F9> :tabnew<cr>:terminal<cr>i
 nnoremap <F9> :split<cr>:wincmd j<cr>:terminal<cr>i
 """nnoremap <leader>r :split term://$SHELL<cr>:startinsert<cr>
 

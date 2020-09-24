@@ -1,17 +1,23 @@
 [user]
-        name = hute37
-        email = hute37@gmail.com
+        name = GC.Pelosi
+        email = giovanni.pelosi@unimib.it
 [user.h37]
         name = hute37
         email = hute37@gmail.com
+[user.ub]
+        name = GC.Pelosi
+        email = giovanni.pelosi@unimib.it
 [core]
 	autocrlf = false
+	longpaths = true
 [color]
 	ui = auto
 [gui]
 	fontdiff = -family cantarell -size 8 -weight normal -slant roman -underline 0 -overstrike 0
 [push]
 	default = simple
+[pull]
+	rebase = false
 [merge]
 	tool = meld3_noauto
 	conflictstyle = diff3
@@ -75,4 +81,5 @@
 	theirs = "!f() { git co --theirs $@ && git add $@; }; f"
 	skip = merge --strategy ours
 	over = merge --strategy theirs
-	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+    alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+
