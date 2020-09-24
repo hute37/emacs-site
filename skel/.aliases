@@ -45,6 +45,7 @@ alias ec='emacsclient -c'
 
 alias tsu='tmux attach || tmux'
 
+alias tux='urxvt -geometry 102x43+10+5'
 alias tus='tmux new-session -A -s user_clip /bin/zsh --login -c "nvim -c :e ~/.user-clip.md -c :split -c :term"'
 alias tub='tmux new-session -A -s user_web /bin/zsh --login -c "w3m https://duckduckgo.com"'
 alias ddg='w3m https://duckduckgo.com'
@@ -112,7 +113,7 @@ alias g-stat="gpustat -cp -i "
 # @see: https://wiki.archlinux.org/index.php/man_page
 #
 
-mman() {
+man() {
     env LESS_TERMCAP_mb=$'\E[01;31m' \
     LESS_TERMCAP_md=$'\E[01;38;5;74m' \
     LESS_TERMCAP_me=$'\E[0m' \
