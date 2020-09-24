@@ -14,6 +14,9 @@
   </item>
   <!-- This requires the presence of the 'menu' package to work -->
   <menu id="/Debian" />
+  <item label="Run ...">
+    <action name="Execute"><execute>dmenu_run</execute></action>
+  </item>
   <separator />
   <menu id="client-list-menu" />
   <separator />

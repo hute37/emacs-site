@@ -15,22 +15,34 @@
 # If you want to use XFCE config tools...
 #
 #xfce-mcs-manager &
+#
 
+if [ -f ~/.Xresources ]; then
+  xrdb -merge ~/.Xresources
+fi
+
+if [ -f ~/.config/openbox/autostart.d/xsetroot.on ]; then
 if which xsetroot >/dev/null 2>&1; then
   xsetroot -solid black &
 fi
+fi
 
+if [ -f ~/.config/openbox/autostart.d/xsetroot.on ]; then
 if which tint2 >/dev/null 2>&1; then
   tint2 &
 fi
+fi
 
-
+if [ -f ~/.config/openbox/autostart.d/conky.on ]; then
 if which conky >/dev/null 2>&1; then
   conky &
 fi
+fi
 
+if [ -f ~/.config/openbox/autostart.d/gcalshow.on ]; then
 if which gcalshow >/dev/null 2>&1; then
   gcalshow &
+fi
 fi
 
 
