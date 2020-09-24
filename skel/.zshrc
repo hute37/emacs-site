@@ -10,7 +10,7 @@ export _DOT_ZSHRC_0="$(date  --rfc-3339=ns)"
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='%# '
 
 if [[ -n "$EMACS" ]]; then
-    if infocmp eterm-color; then
+    if infocmp eterm-color 2>&1 >/dev/null; then
         export TERM=eterm-color
     else
         export TERM=xterm-256color
