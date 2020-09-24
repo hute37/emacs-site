@@ -42,7 +42,15 @@
 ;;       scroll-step 0)
 
 
+;; ---( tramp )---------------------------------------------------------
+
+;; @see: https://www.emacswiki.org/emacs/TrampMode#toc8
+
 (setq tramp-default-method "ssh")
+(setq tramp-terminal-type "tramp")
+(eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
+
+;; ---( banner )---------------------------------------------------------
 
 (setq initial-scratch-message nil)
 
