@@ -423,12 +423,29 @@
 
 ;;(global-set-key [f9] 'function-key-error ) ;;WM expose
 ;;(global-set-key [f9] 'perldb ) ;;@TODO: move to local mode map
-(global-set-key [(shift f9)] 'mode-compile-kill )
-(global-set-key [(control f9)] 'mode-compile )
+(global-set-key [(f9)] 'eshell )
+(global-set-key [(shift f9)] 'eshell )
+
+(cond
+ ((fboundp 'vterm);;
+  (progn
+    (global-set-key [(control f9)] 'vterm )
+    ))
+ ((fboundp 'multi-term);;
+  (progn
+    (global-set-key [(control f9)] 'multi-term )
+    ))
+ (t ;; fallback to VC bindings
+  (progn
+    (global-set-key [(control f9)] 'ansi-term )
+    ))
+ )
+
+;;(global-set-key [(shift meta f9)] 'mode-compile-kill )
+(global-set-key [(meta f9)] 'mode-compile )
 ;;(global-set-key [(meta f9)] 'recompile )
 ;;(global-set-key [(shift meta f9)] 'compile)
-
-(global-set-key [(meta f9)] 'shell)
+;;(global-set-key [(meta f9)] 'shell)
 (global-set-key [(shift meta f9)] 'list-processes)
 
 
