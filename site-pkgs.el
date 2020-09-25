@@ -1835,6 +1835,30 @@ the automatic filling of the current paragraph."
   (defadvice term-process-pager (after term-process-rebind-keys activate)
     (define-key term-pager-break-map "\177" 'term-pager-back-page)))
 
+;; ---( vterm )--------------------------------------------------------------
+
+(cond
+ ((string-lessp emacs-version "27.1") ;;
+  (progn
+    (message "SITE:term-legacy, ...")
+    (setq h7/term-vterm-enabled nil)
+    (message "SITE:term-legacy.")
+    ))
+ (t
+  (progn
+    (message "SITE:term-libvterm, ...")
+
+(use-package vterm
+    :ensure t)
+    
+(setq h7/term-vterm-enabled t)
+
+    (message "SITE:term-libvterm.")
+    ))
+)
+
+
+
 
 ;; ---( sh-script )--------------------------------------------------------------
 

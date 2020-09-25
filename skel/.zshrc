@@ -9,7 +9,7 @@ export _DOT_ZSHRC_0="$(date  --rfc-3339=ns)"
 [[ $TERM == "tramp" ]] && unsetopt zle && PS1='$ ' && return                                     
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='%# '
 
-if [[ -n "$EMACS" ]]; then
+if [[ -n "$EMACS" || -n "$INSIDE_EMACS" ]]; then
     if infocmp eterm-color 2>&1 >/dev/null; then
         export TERM=eterm-color
     else
@@ -18,7 +18,15 @@ if [[ -n "$EMACS" ]]; then
     alias emacs="emacsclient --no-wait"
     export EDITOR="emacsclient --no-wait"
     export VISUAL="emacsclient"
+else
+    if [[ -n $SSH_CONNECTION ]]; then
+        which nvim >/dev/null  && export EDITOR='nvim' || export EDITOR='vim'    
+    else
+        which nvim >/dev/null  && export EDITOR='nvim' || export EDITOR='vim'    
+    fi
 fi
+# echo "EDITOR=$EDITOR"
+# echo "VISUAL=$VISUAL"
 
 # }}} ------------------------------------------------------------------------
 
@@ -113,11 +121,6 @@ unsetopt	AUTO_CD
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-    which nvim >/dev/null  && export EDITOR='nvim' || export EDITOR='vim'    
-else
-    which nvim >/dev/null  && export EDITOR='nvim' || export EDITOR='vim'    
-fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -136,6 +139,10 @@ fi
 setopt shwordsplit
 
 unset GREP_OPTIONS
+
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+    [ -f /etc/profile.d/vte.sh ] && source /etc/profile.d/vte.sh
+fi
 
 
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases || true
