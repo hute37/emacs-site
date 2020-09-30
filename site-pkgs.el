@@ -2541,8 +2541,8 @@ the automatic filling of the current paragraph."
         ("C-x k" . modi/kill-buffer-dwim) ;Aborts recursive edit
         ("C-)" . modi/kill-buffer-dwim))) ;Aborts recursive edit
 
-     (key-chord-define ivy-minibuffer-map "m," #'ivy-beginning-of-buffer)
-     (key-chord-define ivy-minibuffer-map ",." #'ivy-end-of-buffer)
+     ;;(key-chord-define ivy-minibuffer-map "m," #'ivy-beginning-of-buffer)
+     ;;(key-chord-define ivy-minibuffer-map ",." #'ivy-end-of-buffer)
 
      ;; Bind C-k to kill a buffer directly from the list shown on doing M-x ivy-switch-buffer.
      ;; https://github.com/abo-abo/swiper/issues/164
@@ -2874,7 +2874,7 @@ end tell"))))
 ;; ---( twittering-mode )--------------------------------------------------------------
 
 (use-package twittering-mode
-  :ensure t
+  :disabled t
   :defer 30
   )
 ;; (use-package twittering-mode
