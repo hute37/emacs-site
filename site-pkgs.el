@@ -44,7 +44,7 @@
 ;; (unless (file-directory-p package-user-dir)
 ;;   (make-directory package-user-dir t))    
 
-(package-initialize)
+;;(package-initialize)
 
 
 ;; (unless (package-installed-p 'use-package)
