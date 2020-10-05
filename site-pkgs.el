@@ -102,8 +102,8 @@
 
 ;; ---( ... )--------------------------------------------------------------
 
-(use-package bs
-  :ensure t)
+;;(use-package bs
+;;  :ensure t)
 
 ;; ---( ... )--------------------------------------------------------------
 
@@ -1622,15 +1622,15 @@ the automatic filling of the current paragraph."
 
 ;; ---( whitespace )--------------------------------------------------------------
 
-(use-package whitespace
-  :ensure t
-  :bind (("C-c T w" . whitespace-mode))
-  :init
-  (dolist (hook '(conf-mode-hook))
-;;  (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
-    (add-hook hook #'whitespace-mode))
-  :config (setq whitespace-line-column nil)
-  :diminish whitespace-mode)
+;; (use-package whitespace
+;;   :ensure t
+;;   :bind (("C-c T w" . whitespace-mode))
+;;   :init
+;;   (dolist (hook '(conf-mode-hook))
+;; ;;  (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
+;;     (add-hook hook #'whitespace-mode))
+;;   :config (setq whitespace-line-column nil)
+;;   :diminish whitespace-mode)
 
 ;; (use-package whitespace
 ;;   :diminish (global-whitespace-mode
@@ -1706,9 +1706,9 @@ the automatic filling of the current paragraph."
 
 ;; ---( hilit-chg )--------------------------------------------------------------
 
-(use-package hilit-chg
-  :ensure t
-  :bind ("M-o C" . highlight-changes-mode))
+;; (use-package hilit-chg
+;;   :ensure t
+;;   :bind ("M-o C" . highlight-changes-mode))
 
 
 
