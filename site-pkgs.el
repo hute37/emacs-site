@@ -1852,11 +1852,16 @@ the automatic filling of the current paragraph."
     (message "SITE:term-libvterm, ...")
 
 (use-package vterm
-  :bind (("C-v" . vterm-yank))
-         ;; ("[kp-enter]" . vterm-yank)
-         ;; ("[kp-divide]" . vterm-yank-pop)
-         ;; ("[kp-multiply]" . vterm-copy-mode))
-  :defer
+  :bind (("C-<F9>" . vterm)
+         :map vterm-mode-map
+         ("C-v" . vterm-yank)
+         ("S-<insert>" . vterm-yank)
+         ([kp-enter] . vterm-yank)
+         ([kp-divide] . vterm-yank-pop)
+         ([kp-multiply] . vterm-copy-mode))
+  :ensure t)
+
+(use-package multi-vterm
   :ensure t)
 
 ;; @see: https://lupan.pl/dotemacs/
