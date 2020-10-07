@@ -1151,6 +1151,7 @@ the automatic filling of the current paragraph."
 
 (use-package org-ref
   :after org
+  :disabled t
 ;;  :ensure t
   :init
   (setq reftex-default-bibliography '("~/Dropbox/Local/data/org/ref/references.bib"))
@@ -1187,11 +1188,13 @@ the automatic filling of the current paragraph."
 
 (use-package doi-utils
   :after org
+  :disabled t
 ;;  :ensure t
   )
 
 (use-package org-ref-bibtex
   :after org
+  :disabled t
 ;;  :ensure t
   :init
   (setq org-ref-bibtex-hydra-key-binding "\C-cj"))
@@ -1259,7 +1262,7 @@ the automatic filling of the current paragraph."
 
 
   (defun my/org-mode-defaults ()
-    (turn-on-org-cdlatex)
+    ;; (turn-on-org-cdlatex)
     ;; (diminish 'org-cdlatex-mode "")
     (turn-on-auto-fill)
 
@@ -1321,7 +1324,7 @@ the automatic filling of the current paragraph."
            ;; (R . t)           
            (gnuplot . t)
            ;; (clojure . t)
-           ;; (sh . t)
+           (shell . t)
            ;; (haskell . t)
            (octave . t)
            (org . t)
