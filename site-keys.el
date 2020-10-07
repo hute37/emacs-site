@@ -405,19 +405,19 @@
 
 ;; ---( F7: Debug/Step )----------------------------------------------------
 
-(global-set-key [f7] 'gud-step ) ;;@TODO: move to local mode map
-(global-set-key [(control f7)] 'function-key-error)
-(global-set-key [(meta f7)] 'function-key-error)
-(global-set-key [(shift f7)] 'function-key-error)
-(global-set-key [(shift meta f7)] 'function-key-error)
+;; (global-set-key [f7] 'gud-step ) ;;@TODO: move to local mode map
+;; ;; (global-set-key [(control f7)] 'function-key-error) 
+;; (global-set-key [(meta f7)] 'function-key-error)
+;; (global-set-key [(shift f7)] 'function-key-error)
+;; (global-set-key [(shift meta f7)] 'function-key-error)
 
 ;; ---( F8: Debug/Next )----------------------------------------------------
 
-;;(global-set-key [f8] 'function-key-error ) ;;WM expose
-(global-set-key [(control f8)] 'gud-next) ;;@TODO: move to local mode map
-(global-set-key [(meta f8)] 'function-key-error)
-(global-set-key [(shift f8)] 'function-key-error)
-(global-set-key [(shift meta f8)] 'function-key-error)
+;; ;;(global-set-key [f8] 'function-key-error ) ;;WM expose
+;; (global-set-key [(control f8)] 'gud-next) ;;@TODO: move to local mode map
+;; (global-set-key [(meta f8)] 'function-key-error)
+;; (global-set-key [(shift f8)] 'function-key-error)
+;; (global-set-key [(shift meta f8)] 'function-key-error)
 
 ;; ---( F9: compile/run )----------------------------------------------------
 

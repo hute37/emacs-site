@@ -1862,6 +1862,10 @@ the automatic filling of the current paragraph."
   :ensure t)
 
 (use-package multi-vterm
+  :bind (("C-S-<f9>" . multi-vterm)
+         :map vterm-mode-map
+         ("C-<f7>" . multi-vterm-prev)
+         ("C-<f8>" . multi-vterm-next))
   :ensure t)
 
 ;; @see: https://lupan.pl/dotemacs/
