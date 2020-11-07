@@ -1151,6 +1151,7 @@ the automatic filling of the current paragraph."
 
 (use-package org-ref
   :after org
+  :disabled t
 ;;  :ensure t
   :init
   (setq reftex-default-bibliography '("~/Dropbox/Local/data/org/ref/references.bib"))
@@ -1187,11 +1188,13 @@ the automatic filling of the current paragraph."
 
 (use-package doi-utils
   :after org
+  :disabled t
 ;;  :ensure t
   )
 
 (use-package org-ref-bibtex
   :after org
+  :disabled t
 ;;  :ensure t
   :init
   (setq org-ref-bibtex-hydra-key-binding "\C-cj"))
@@ -1259,7 +1262,7 @@ the automatic filling of the current paragraph."
 
 
   (defun my/org-mode-defaults ()
-    (turn-on-org-cdlatex)
+    ;; (turn-on-org-cdlatex)
     ;; (diminish 'org-cdlatex-mode "")
     (turn-on-auto-fill)
 
@@ -1321,7 +1324,7 @@ the automatic filling of the current paragraph."
            ;; (R . t)           
            (gnuplot . t)
            ;; (clojure . t)
-           ;; (sh . t)
+           (shell . t)
            ;; (haskell . t)
            (octave . t)
            (org . t)
@@ -1849,7 +1852,27 @@ the automatic filling of the current paragraph."
     (message "SITE:term-libvterm, ...")
 
 (use-package vterm
-    :ensure t)
+  :bind (("C-<F9>" . vterm)
+         :map vterm-mode-map
+         ("C-v" . vterm-yank)
+         ("S-<insert>" . vterm-yank)
+         ([kp-enter] . vterm-yank)
+         ([kp-divide] . vterm-yank-pop)
+         ([kp-multiply] . vterm-copy-mode))
+  :ensure t)
+
+(use-package multi-vterm
+  :bind (("C-S-<f9>" . multi-vterm)
+         :map vterm-mode-map
+         ("C-<f7>" . multi-vterm-prev)
+         ("C-<f8>" . multi-vterm-next))
+  :ensure t)
+
+;; @see: https://lupan.pl/dotemacs/
+;; (use-package vterm-toggle
+;;   :bind (("H-z" . vterm-toggle)
+;;          ("H-F" . vterm-toggle-forward)
+;;          ("H-B" . vterm-toggle-backward)))
     
 (setq h7/term-vterm-enabled t)
 
