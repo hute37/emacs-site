@@ -65,7 +65,21 @@ case "$TERM" in
 #ZSH_THEME="refined"
 #ZSH_THEME="simple"
 #ZSH_THEME="skaro"
-ZSH_THEME="terminalparty"
+#ZSH_THEME="terminalparty"
+#ZSH_THEME="flazz"
+#ZSH_THEME="garyblessington"
+#ZSH_THEME="gallois"
+#ZSH_THEME="imajes"
+#ZSH_THEME="sorin"
+#ZSH_THEME="sporty_256"
+#ZSH_THEME="sunaku"
+#ZSH_THEME="sunrise"
+#ZSH_THEME="theunraveler"
+#ZSH_THEME="zhann"
+#ZSH_THEME="af-magic"
+#ZSH_THEME="afowler"
+#ZSH_THEME="spaceship"
+ZSH_THEME="agkozak"; AGKOZAK_USER_HOST_DISPLAY=0
 
     ;;
 esac    
