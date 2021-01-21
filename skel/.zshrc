@@ -59,7 +59,13 @@ case "$TERM" in
 #ZSH_THEME="jnrowe"
 #ZSH_THEME="kolo"
 #ZSH_THEME="macovsky"
-ZSH_THEME="mgutz"
+#ZSH_THEME="mgutz"
+#ZSH_THEME="muse"
+#ZSH_THEME="nicoulaj"
+#ZSH_THEME="refined"
+#ZSH_THEME="simple"
+#ZSH_THEME="skaro"
+ZSH_THEME="terminalparty"
 
     ;;
 esac    
