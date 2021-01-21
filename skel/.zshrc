@@ -79,7 +79,8 @@ case "$TERM" in
 #ZSH_THEME="af-magic"
 #ZSH_THEME="afowler"
 #ZSH_THEME="spaceship"
-ZSH_THEME="agkozak"; AGKOZAK_USER_HOST_DISPLAY=0
+#ZSH_THEME="agkozak"; AGKOZAK_USER_HOST_DISPLAY=0
+ZSH_THEME="sobole"; SOBOLE_THEME_MODE=dark
 
     ;;
 esac    
