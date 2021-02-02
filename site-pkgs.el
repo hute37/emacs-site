@@ -387,12 +387,6 @@
 ;;         (setq markdown-command preferred-markdown-impl)))))
 
 
-;; ---( yaml )--------------------------------------------------------------
-
-(use-package yaml-mode
-  :ensure t
-  :defer t)
-
 
 ;; ---( css )--------------------------------------------------------------
 
@@ -596,20 +590,20 @@
 
 ;; ---( polymode )--------------------------------------------------------------
 
-;; (use-package polymode
-;;   :ensure t
-;;   :mode (
-;;          ("\\.md$" . poly-markdown-mode)
-;;          ("\\.Snw$" . poly-noweb+r-mode)
-;;          ("\\.Rnw$" . poly-noweb+r-mode)
-;;          ("\\.Rmd$" . poly-markdown+r-mode)
-;;          ("\\.rapport$" . poly-rapport-mode)
-;;          ("\\.Rhtml$" . poly-html+r-mode)
-;;          ("\\.Rbrew$" . poly-brew+r-mode)
-;;          ("\\.Rcpp$" . poly-r+c++-mode)
-;;          ("\\.cppR$" . poly-c++r-mode)
-;;          )
-;; )
+(use-package polymode
+  :ensure t
+  :mode (
+         ("\\.md$" . poly-markdown-mode)
+         ("\\.Snw$" . poly-noweb+r-mode)
+         ("\\.Rnw$" . poly-noweb+r-mode)
+         ("\\.Rmd$" . poly-markdown+r-mode)
+         ("\\.rapport$" . poly-rapport-mode)
+         ("\\.Rhtml$" . poly-html+r-mode)
+         ("\\.Rbrew$" . poly-brew+r-mode)
+         ("\\.Rcpp$" . poly-r+c++-mode)
+         ("\\.cppR$" . poly-c++r-mode)
+         )
+)
 
 
 
@@ -918,6 +912,12 @@
 ;; ;;;////////////////////////////////////////////////////////////////
 
 
+;; ---( yaml )--------------------------------------------------------------
+
+(use-package yaml-mode
+  :ensure t
+  :defer t)
+
 ;; ---( docker )--------------------------------------------------------------
 
 
@@ -932,6 +932,80 @@
 (use-package dockerfile-mode
   :ensure t
   :mode "Dockerfile\\'")
+
+
+;; ---( ops )--------------------------------------------------------------
+
+
+(use-package ansible
+  :commands ansible
+  :ensure t
+  :custom
+  (ansible-vault-password-file "~/.ans-wall.asc")
+  )
+
+
+(use-package ansible-doc
+  :after ansible
+  :diminish ansible-doc-mode
+  :ensure t
+
+  :commands
+  (ansible-doc
+   ansible-doc-mode))
+
+;; (use-package ansible-vault
+;;   :after ansible
+;;   :init
+;;   (add-hook 'yaml-mode-hook 'ansible-vault-mode-maybe)
+;;   )
+
+
+(use-package company-ansible
+  :after ansible
+  :commands company-ansible
+  :ensure t
+
+  :init
+  (with-eval-after-load 'company
+    (defun gr/setup-company-ansible ()
+      (set (make-local-variable 'company-backends) '(company-ansible)))
+    (add-hook 'ansible-hook 'gr/setup-company-ansible)))
+
+
+(use-package poly-ansible
+  :after polymode
+  :ensure t
+
+  :preface
+  (eval-when-compile
+    (defvar pm-inner/jinja2 nil))
+
+  :mode
+  ("playbook\\.ya?ml\\'" . poly-ansible-mode)
+  ("/ansible/.*\\.ya?ml\\'" . poly-ansible-mode)
+  ("/\\(?:group\\|host\\)_vars/" . poly-ansible-mode)
+
+  :init
+  (with-eval-after-load 'fill-column-indicator
+    (add-hook 'ansible-hook 'fci-mode))
+
+  :config
+  (setq pm-inner/jinja2
+    (pm-inner-chunkmode :mode #'jinja2-mode
+                        :head-matcher "{[%{#][+-]?"
+                        :tail-matcher "[+-]?[%}#]}"
+                        :head-mode 'body
+                        :tail-mode 'body
+                        :head-adjust-face nil
+                        :tail-adjust-face nil)))
+
+
+(use-package company-terraform
+  :ensure t
+  :defer t)
+
+
 
 
 
