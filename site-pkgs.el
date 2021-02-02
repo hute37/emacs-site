@@ -954,11 +954,15 @@
   (ansible-doc
    ansible-doc-mode))
 
-;; (use-package ansible-vault
-;;   :after ansible
-;;   :init
-;;   (add-hook 'yaml-mode-hook 'ansible-vault-mode-maybe)
-;;   )
+(use-package ansible-vault
+  :after ansible
+  :ensure t
+  :init
+  (with-eval-after-load 'ansible
+    (defun ansible-vault-mode-maybe ()
+      (when (ansible-vault--is-vault-file)
+        (ansible-vault-mode 1))))
+  (add-hook 'yaml-mode-hook 'ansible-vault-mode-maybe))
 
 
 (use-package company-ansible
