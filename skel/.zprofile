@@ -9,7 +9,7 @@
 export _DOT_ZSH_PROFILE_0="$(date  --rfc-3339=ns)"
 # ------------------------------------------------
 
-echo "% > ~/.zprofile"
+#% echo "% > ~/.zprofile"
 
 ##
 # log
@@ -63,7 +63,7 @@ fi
 
 
 log_zsh_profile "## << ~/.zsh_profile ##"
-echo "% < ~/.zprofile"
+#% echo "% < ~/.zprofile"
 # ------------------------------------------------
 export _DOT_ZSH_PROFILE_1="$(date  --rfc-3339=ns)"
 # ------------------------------------------------
