@@ -42,9 +42,9 @@ case "$TERM" in
     xdumb) unsetopt zle;;
     *)
 
-ZSH_THEME="robbyrussell"
-#ZSH_THEME="avit"
 #ZSH_THEME="robbyrussell"
+#ZSH_THEME="avit"
+#ZSH_THEME="awesomepanda"
 #ZSH_THEME="bureau"
 #ZSH_THEME="agnoster"
 #ZSH_THEME="gentoo"
@@ -53,6 +53,34 @@ ZSH_THEME="robbyrussell"
 #ZSH_THEME="jreese"
 #ZSH_THEME="lukerandall"
 #ZSH_THEME="clean"
+#ZSH_THEME="cypher"
+#ZSH_THEME="arrow"
+#ZSH_THEME="eastwood"
+#ZSH_THEME="jnrowe"
+#ZSH_THEME="kolo"
+#ZSH_THEME="macovsky"
+#ZSH_THEME="mgutz"
+#ZSH_THEME="muse"
+#ZSH_THEME="nicoulaj"
+#ZSH_THEME="refined"
+#ZSH_THEME="simple"
+#ZSH_THEME="skaro"
+#ZSH_THEME="terminalparty"
+#ZSH_THEME="flazz"
+#ZSH_THEME="garyblessington"
+#ZSH_THEME="gallois"
+#ZSH_THEME="imajes"
+#ZSH_THEME="sorin"
+#ZSH_THEME="sporty_256"
+#ZSH_THEME="sunaku"
+#ZSH_THEME="sunrise"
+#ZSH_THEME="theunraveler"
+#ZSH_THEME="zhann"
+#ZSH_THEME="af-magic"
+#ZSH_THEME="afowler"
+#ZSH_THEME="spaceship"
+#ZSH_THEME="agkozak"; AGKOZAK_USER_HOST_DISPLAY=0
+ZSH_THEME="sobole"; SOBOLE_THEME_MODE=dark
 
     ;;
 esac    
@@ -149,23 +177,28 @@ fi
 
 export ANSIBLE_VAULT_PASSWORD_FILE=~/.ans-wall.asc
 
-
-### # >>> conda initialize >>>
-### # !! Contents within this block are managed by 'conda init' !!
-### __conda_setup="$('/data/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-### if [ $? -eq 0 ]; then
-###     eval "$__conda_setup"
-### else
-###     if [ -f "/data/anaconda/etc/profile.d/conda.sh" ]; then
-###         . "/data/anaconda/etc/profile.d/conda.sh"
-###     else
-###         export PATH="/data/anaconda/bin:$PATH"
-###     fi
-### fi
-### unset __conda_setup
-### # <<< conda initialize <<<
-
-
+### {{{ #CONDA //////////////////////////////////////////////////////////////////////////////
+if [ -f ~/.conda.on ]; then
+   if [ -z "${CONDA_SHLVL+x}" ]; then
+       [ -f /etc/profile.off/conda.sh ] && . /etc/profile.off/conda.sh || true
+   fi
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/data/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/data/anaconda/etc/profile.d/conda.sh" ]; then
+        . "/data/anaconda/etc/profile.d/conda.sh"
+    else
+        export PATH="/data/anaconda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+ . ~/.conda.on || true
+fi
+### }}}
 
 # ---(pyenv:begin)-----
 if [ ! -f ~/.pyrc.off ]; then
