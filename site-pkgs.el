@@ -1792,6 +1792,22 @@ the automatic filling of the current paragraph."
 ;;   :bind ("M-o C" . highlight-changes-mode))
 
 
+;; ---( folding )--------------------------------------------------------------
+
+(use-package vimish-fold
+  :ensure t
+  :hook ((
+          terraform-mode
+          markdown-mode
+          yaml-mode
+          text-mode
+          ) . vimish-fold-mode)
+)
+
+;; (use-package folding
+;;   :ensure t
+;; )
+
 
 ;; ;;;////////////////////////////////////////////////////////////////
 ;; ;;;  @SERVER
