@@ -1798,11 +1798,13 @@ the automatic filling of the current paragraph."
   :ensure t
   :hook ((
           terraform-mode
-          markdown-mode
           yaml-mode
           text-mode
           ) . vimish-fold-mode)
 )
+
+;;        markdown-mode
+
 
 ;; (use-package folding
 ;;   :ensure t
