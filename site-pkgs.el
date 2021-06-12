@@ -877,19 +877,19 @@
          ("\\.lhs\\'" . literate-haskell-mode))
 
   :config
-  (use-package ghc
-    :ensure)
+  ;; (use-package ghc
+  ;;   :ensure)
   (use-package flycheck-haskell
     :ensure)
   )
 
-(defun balaji/haskell-mode-hook ()
-  (turn-on-haskell-indentation)
-  (ghc-init)
-  (lambda () (add-to-list 'ac-sources 'ac-source-ghc))
-  )
+;; (defun balaji/haskell-mode-hook ()
+;;   (turn-on-haskell-indentation)
+;;   ;; (ghc-init)
+;;   (lambda () (add-to-list 'ac-sources 'ac-source-ghc))
+;;   )
 
-(add-hook 'haskell-mode-hook 'balaji/haskell-mode-hook)
+;; (add-hook 'haskell-mode-hook 'balaji/haskell-mode-hook)
 
 (use-package idris-mode
   :ensure
