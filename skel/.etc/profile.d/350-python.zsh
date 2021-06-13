@@ -1,29 +1,19 @@
 # -*- mode: shell-script;-*-
 
 ##
-#  virtualenv (wrapper) python environment
+#  pyenv environment
 #
+if [ "$PY_RC_ENV" ]; then
 
-venv_wrap_zsh() {
+py_rc_env() {
 
-export SYS_PYTHON=`which python`
-export VIRTUALENVWRAPPER_PYTHON="$SYS_PYTHON"
-export VIRTUALENVWRAPPER_SCRIPT=`which virtualenvwrapper.sh`
-
-export VENV_CONFIG=~/.etc/venv.conf
-export WORKON_HOME=~/.virtualenvs
-
-set -a
-[ -r $VENV_CONFIG ] && source $VENV_CONFIG || true
-set +a
-
-mkdir -p $WORKON_HOME
-    
-[ -n "$VIRTUALENVWRAPPER_SCRIPT" ] && \
-[ -x "$VIRTUALENVWRAPPER_SCRIPT" ] && source $VIRTUALENVWRAPPER_SCRIPT || true
-
-if [ -n "$VENV_NAME" ] ; then
-    workon "$VENV_NAME"
-fi
+eval "$(pyenv init -)"
 
 }
+
+# in ~/.zshrc
+# py_rc_env
+
+
+fi
+
