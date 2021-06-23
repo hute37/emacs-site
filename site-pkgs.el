@@ -122,12 +122,22 @@
   :disabled t
   :config (progn (jumpc-bind-vim-key)))
 
-;; ---( powerline )--------------------------------------------------------------
+;; ---( mode-line )--------------------------------------------------------------
 
-(use-package powerline
+(use-package minions
   :ensure t
-  :init (powerline-default-theme)
+  :config (minions-mode 1)
 )
+
+(use-package mood-line
+  :ensure t
+  :config (mood-line-mode 1)
+)
+
+;; (use-package powerline
+;;   :ensure t
+;;   :init (powerline-default-theme)
+;; )
 
 
 ;; (use-package powerline
