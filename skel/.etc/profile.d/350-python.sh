@@ -43,7 +43,6 @@ export PATH="$HOME/.poetry/bin:$PATH"
 py_rc_poetry_sh
 
 fi
-fi
 
 
 
