@@ -732,16 +732,18 @@
   :config
   (defalias 'eip 'ein:notebooklist-open))
 
+(use-package poetry
+ :ensure t)
 
-(use-package pipenv
-  :unless (version< emacs-version "25.1")
-  :defer t
-  ;; :ensure t
-  :hook (python-mode . pipenv-mode)
-  :init
-  (setq
-   pipenv-projectile-after-switch-function
-   #'pipenv-projectile-after-switch-extended))
+;; (use-package pipenv
+;;   :unless (version< emacs-version "25.1")
+;;   :defer t
+;;   ;; :ensure t
+;;   :hook (python-mode . pipenv-mode)
+;;   :init
+;;   (setq
+;;    pipenv-projectile-after-switch-function
+;;    #'pipenv-projectile-after-switch-extended))
 
 ;; (use-package python-mode
 ;;   :mode ("\\.py\\'" . python-mode)
