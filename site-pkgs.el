@@ -2021,34 +2021,34 @@ the automatic filling of the current paragraph."
 
 ;; ---( multi-term )--------------------------------------------------------------
 
-(use-package multi-term
-  :disabled t
-  :bind (("C-. t" . multi-term-next)
-         ("C-. T" . multi-term))
-  :init
-  (defun screen ()
-    (interactive)
-    (let (term-buffer)
-      ;; Set buffer.
-      (setq term-buffer
-            (let ((multi-term-program (executable-find "screen"))
-                  (multi-term-program-switches "-DR"))
-              (multi-term-get-buffer)))
-      (set-buffer term-buffer)
-      ;; Internal handle for `multi-term' buffer.
-      (multi-term-internal)
-      ;; Switch buffer
-      (switch-to-buffer term-buffer)))
-  :config
-  (defalias 'my-term-send-raw-at-prompt 'term-send-raw)
-  (defun my-term-end-of-buffer ()
-    (interactive)
-    (call-interactively #'end-of-buffer)
-    (if (and (eobp) (bolp))
-        (delete-char -1)))
-  (require 'term)
-  (defadvice term-process-pager (after term-process-rebind-keys activate)
-    (define-key term-pager-break-map "\177" 'term-pager-back-page)))
+;; (use-package multi-term
+;;   :disabled t
+;;   :bind (("C-. t" . multi-term-next)
+;;          ("C-. T" . multi-term))
+;;   :init
+;;   (defun screen ()
+;;     (interactive)
+;;     (let (term-buffer)
+;;       ;; Set buffer.
+;;       (setq term-buffer
+;;             (let ((multi-term-program (executable-find "screen"))
+;;                   (multi-term-program-switches "-DR"))
+;;               (multi-term-get-buffer)))
+;;       (set-buffer term-buffer)
+;;       ;; Internal handle for `multi-term' buffer.
+;;       (multi-term-internal)
+;;       ;; Switch buffer
+;;       (switch-to-buffer term-buffer)))
+;;   :config
+;;   (defalias 'my-term-send-raw-at-prompt 'term-send-raw)
+;;   (defun my-term-end-of-buffer ()
+;;     (interactive)
+;;     (call-interactively #'end-of-buffer)
+;;     (if (and (eobp) (bolp))
+;;         (delete-char -1)))
+;;   (require 'term)
+;;   (defadvice term-process-pager (after term-process-rebind-keys activate)
+;;     (define-key term-pager-break-map "\177" 'term-pager-back-page)))
 
 ;; ---( vterm )--------------------------------------------------------------
 
@@ -2118,74 +2118,82 @@ the automatic filling of the current paragraph."
   )
 
 
-;; ---( sunrise-commander )--------------------------------------------------------------
+;; ---( ranger )--------------------------------------------------------------
+
+(use-package ranger
+  :ensure t
+  ;;:bind ("C-, C-," . ranger)
+  )
 
 
-(use-package sunrise-commander
-  :bind (("C-c j" . my-activate-sunrise)
-	 ("C-c C-j" . sunrise-cd))
-  :commands sunrise
-  :defines sr-tabs-mode-map
-  :preface
-  (defun my-activate-sunrise ()
-    (interactive)
-    (let ((sunrise-exists
-	   (loop for buf in (buffer-list)
-		 when (string-match " (Sunrise)$" (buffer-name buf))
-		 return buf)))
-      (if sunrise-exists
-	  (call-interactively 'sunrise)
-	(sunrise "~/dl/" "~/Archives/"))))
-  :config
-  (require 'sunrise-x-modeline)
-  (require 'sunrise-x-tree)
-  (require 'sunrise-x-tabs)
-  (bind-key "/" 'sr-sticky-isearch-forward sr-mode-map)
-  (bind-key "<backspace>" 'sr-scroll-quick-view-down sr-mode-map)
-  (bind-key "C-x t" 'sr-toggle-truncate-lines sr-mode-map)
-  (bind-key "q" 'sr-history-prev sr-mode-map)
-  (bind-key "z" 'sr-quit sr-mode-map)
-  (unbind-key "C-e" sr-mode-map)
-  (unbind-key "C-p" sr-tabs-mode-map)
-  (unbind-key "C-n" sr-tabs-mode-map)
-  (unbind-key "M-<backspace>" sr-term-line-minor-mode-map)
-  (bind-key "M-[" 'sr-tabs-prev sr-tabs-mode-map)
-  (bind-key "M-]" 'sr-tabs-next sr-tabs-mode-map)
-  (defun sr-browse-file (&optional file)
-    "Display the selected file with the default appication."
-    (interactive)
-    (setq file (or file (dired-get-filename)))
-    (save-selected-window
-      (sr-select-viewer-window)
-      (let ((buff (current-buffer))
-	    (fname (if (file-directory-p file)
-		       file
-		     (file-name-nondirectory file)))
-	    (app (cond
-		  ((eq system-type 'darwin) "open %s")
-		  ((eq system-type 'windows-nt) "open %s")
-		  (t "xdg-open %s"))))
-	(start-process-shell-command "open" nil (format app file))
-	(unless (eq buff (current-buffer))
-	  (sr-scrollable-viewer (current-buffer)))
-	(message "Opening \"%s\" ..." fname))))
-  (defun sr-goto-dir (dir)
-    "Change the current directory in the active pane to the given one."
-    (interactive (list (progn
-			 (require 'lusty-explorer)
-			 (lusty-read-directory))))
-    (if sr-goto-dir-function
-	(funcall sr-goto-dir-function dir)
-      (unless (and (eq major-mode 'sr-mode)
-		   (sr-equal-dirs dir default-directory))
-	(if (and sr-avfs-root
-		 (null (posix-string-match "#" dir)))
-	    (setq dir (replace-regexp-in-string
-		       (expand-file-name sr-avfs-root) "" dir)))
-	(sr-save-aspect
-	 (sr-within dir (sr-alternate-buffer (dired dir))))
-	(sr-history-push default-directory)
-	(sr-beginning-of-buffer)))))
+;; ;; ---( sunrise-commander )--------------------------------------------------------------
+
+
+;; (use-package sunrise-commander
+;;   :bind (("C-c j" . my-activate-sunrise)
+;; 	 ("C-c C-j" . sunrise-cd))
+;;   :commands sunrise
+;;   :defines sr-tabs-mode-map
+;;   :preface
+;;   (defun my-activate-sunrise ()
+;;     (interactive)
+;;     (let ((sunrise-exists
+;; 	   (loop for buf in (buffer-list)
+;; 		 when (string-match " (Sunrise)$" (buffer-name buf))
+;; 		 return buf)))
+;;       (if sunrise-exists
+;; 	  (call-interactively 'sunrise)
+;; 	(sunrise "~/dl/" "~/Archives/"))))
+;;   :config
+;;   (require 'sunrise-x-modeline)
+;;   (require 'sunrise-x-tree)
+;;   (require 'sunrise-x-tabs)
+;;   (bind-key "/" 'sr-sticky-isearch-forward sr-mode-map)
+;;   (bind-key "<backspace>" 'sr-scroll-quick-view-down sr-mode-map)
+;;   (bind-key "C-x t" 'sr-toggle-truncate-lines sr-mode-map)
+;;   (bind-key "q" 'sr-history-prev sr-mode-map)
+;;   (bind-key "z" 'sr-quit sr-mode-map)
+;;   (unbind-key "C-e" sr-mode-map)
+;;   (unbind-key "C-p" sr-tabs-mode-map)
+;;   (unbind-key "C-n" sr-tabs-mode-map)
+;;   (unbind-key "M-<backspace>" sr-term-line-minor-mode-map)
+;;   (bind-key "M-[" 'sr-tabs-prev sr-tabs-mode-map)
+;;   (bind-key "M-]" 'sr-tabs-next sr-tabs-mode-map)
+;;   (defun sr-browse-file (&optional file)
+;;     "Display the selected file with the default appication."
+;;     (interactive)
+;;     (setq file (or file (dired-get-filename)))
+;;     (save-selected-window
+;;       (sr-select-viewer-window)
+;;       (let ((buff (current-buffer))
+;; 	    (fname (if (file-directory-p file)
+;; 		       file
+;; 		     (file-name-nondirectory file)))
+;; 	    (app (cond
+;; 		  ((eq system-type 'darwin) "open %s")
+;; 		  ((eq system-type 'windows-nt) "open %s")
+;; 		  (t "xdg-open %s"))))
+;; 	(start-process-shell-command "open" nil (format app file))
+;; 	(unless (eq buff (current-buffer))
+;; 	  (sr-scrollable-viewer (current-buffer)))
+;; 	(message "Opening \"%s\" ..." fname))))
+;;   (defun sr-goto-dir (dir)
+;;     "Change the current directory in the active pane to the given one."
+;;     (interactive (list (progn
+;; 			 (require 'lusty-explorer)
+;; 			 (lusty-read-directory))))
+;;     (if sr-goto-dir-function
+;; 	(funcall sr-goto-dir-function dir)
+;;       (unless (and (eq major-mode 'sr-mode)
+;; 		   (sr-equal-dirs dir default-directory))
+;; 	(if (and sr-avfs-root
+;; 		 (null (posix-string-match "#" dir)))
+;; 	    (setq dir (replace-regexp-in-string
+;; 		       (expand-file-name sr-avfs-root) "" dir)))
+;; 	(sr-save-aspect
+;; 	 (sr-within dir (sr-alternate-buffer (dired dir))))
+;; 	(sr-history-push default-directory)
+;; 	(sr-beginning-of-buffer)))))
 
 
 ;; ;;;////////////////////////////////////////////////////////////////

@@ -40,9 +40,18 @@
 
 ;; ---( comma )----------------------------------------------------
 
-(defvar ctl-h7-map)
-(define-prefix-command 'ctl-h7-map)
-(bind-key "C-," 'ctl-h7-map)
+(global-unset-key (kbd "C-,"))
+
+(defalias 'ctl-h7-map (make-sparse-keymap))
+(defvar ctl-h7-map (symbol-function 'ctl-h7-map)
+  "Global keymap for characters following C-,.")
+(define-key global-map (kbd "C-,") 'ctl-h7-map)
+
+
+;; ---( keymap )----------------------------------------------------
+
+(define-key ctl-h7-map (kbd ",") 'ranger)
+(define-key ctl-h7-map (kbd "C-,") 'ranger)
 
 
 ;; ============================================
