@@ -695,10 +695,10 @@
       ;; (define-key map (kbd "M-.")     'elpy-goto-definition)
       ;; (define-key map (kbd "M-TAB")   'elpy-company-backend)
     
-      (define-key map (kbd "<S-return>") 'elpy-open-and-indent-line-below)
-      (define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-above)
+      (define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-below)
+      ;;(define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-above)
 
-      (define-key map (kbd "<C-return>") 'elpy-shell-send-current-statement)
+      ;;(define-key map (kbd "<C-return>") 'elpy-shell-send-current-statement)
 
       (define-key map (kbd "<M-right>") 'elpy-nav-forward-block)
       (define-key map (kbd "<M-left>") 'elpy-nav-backward-block)
@@ -724,13 +724,44 @@
   ;; (elpy-use-ipython "ipython3") 
   (defalias 'workon 'pyvenv-workon))
 
+
 (use-package ein
   :unless (version< emacs-version "25.1")
   ;; :defer t
   :ensure t
-  
+  :init
+  (progn
+    (with-eval-after-load 'ein-notebooklist
+      (define-key ein:notebooklist-mode-map (kbd "<S-return>") 'ein:worksheet-execute-cell-and-goto-next-km)
+      (define-key ein:notebooklist-mode-map (kbd "<C-return>") 'ein:worksheet-execute-cell)
+      ))
   :config
   (defalias 'eip 'ein:notebooklist-open))
+
+
+
+;; (use-package ein
+;;   :unless (version< emacs-version "25.1")
+;;   :ensure t
+;;   :defer t
+;;   :commands ein:notebooklist-open
+;;   :init
+;;   ;; (progn
+;;   ;;   (with-eval-after-load 'ein-notebooklist
+;;   ;;     ;; removing keybindings
+;;   ;;     (define-key ein:notebook-mode-map (kbd "M-p") nil)
+;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-up>") nil)
+;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-down>") nil)
+;;   ;;     ;; changing keybinding
+;;   ;;     (define-key ein:notebook-mode-map (kbd "C-s") 'ein:notebook-save-notebook-command)
+;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-S-up>") 'ein:worksheet-move-cell-up)
+;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-S-down>") 'ein:worksheet-move-cell-down)))
+;;   :config
+;;   (defalias 'einp 'ein:notebooklist-open)
+;;   (defalias 'eins 'ein:jupyter-server-start)
+;;   )
+  
+
 
 (use-package poetry
  :ensure t)
