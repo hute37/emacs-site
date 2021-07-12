@@ -775,6 +775,92 @@
 
 
 
+;; ---( julia )--------------------------------------------------------------
+
+
+;; @see: https://github.com/JuliaEditorSupport/julia-emacs
+;; @see: https://github.com/tpapp/julia-repl
+;; @see: https://github.com/nnicandro/emacs-jupyter
+;; @see: https://julia-users-zurich.github.io/talks/talk-2018-04/emacs.html
+;; @see: https://github.com/cgroll/dot_emacs.d/blob/master/init.el
+
+
+(use-package julia-mode
+   :ensure t
+   :defer t
+   :commands julia-mode
+   :mode ("\\.jl$" . julia-mode)
+   :init
+   (progn
+      (autoload 'julia-mode "julia-mode" nil t)
+      (setq inferior-julia-program-name "julia")
+      )
+   :config
+   (progn
+      (setq inferior-julia-program-name "julia")
+      )
+   )
+
+
+(use-package julia-repl
+   :ensure t
+   :defer t
+   :config
+   (progn
+     (add-to-list 'julia-mode-hook 'julia-repl-mode)
+     )
+   )
+
+
+
+
+;; ;; allow julia to be loaded through call to julia-mode or
+;; ;; ess-inferior process
+;; ;; follow-ups: etags?
+;; (use-package julia-mode
+;;    :defer t
+;;    :commands julia-mode
+;;    :mode ("\\.jl$" . julia-mode)
+;;    :init
+;;    (progn
+;;       (autoload 'julia-mode "julia-mode" nil t)
+;;       (setq inferior-julia-program-name "/usr/bin/julia")
+;;       )
+;;    :config
+;;    (progn
+;;       (add-to-list 'julia-mode-hook 'cg/modify-current-syntax-table)
+;;       (setq inferior-julia-program-name "/usr/bin/julia")
+;;       (add-to-list 'julia-mode-hook 'cg/command-line-keybindings)
+;;       ;; (add-to-list 'inferior-ess-mode-hook 'cg/command-line-keybindings)      
+;;       )
+;;    )
+
+;; (use-package ess-julia.el
+;;    :defer t
+;;    :commands julia
+;;    :init                                ; run before actual loading
+;;    (progn
+;;       (autoload 'julia "ess-julia.el" nil t)
+;;       (setq inferior-julia-program-name "/usr/bin/julia")
+;;       )
+;;    :config
+;;    (progn
+;;       (require 'ess-site)
+;;       (setq inferior-julia-program-name "/usr/bin/julia")
+;;       (setq ess-tracebug-prefix "\M-c")   ; define debug-mode starting key
+;;       (setq ess-use-tracebug t)           ; tracebug is called for R
+;;                                         ; AND JULIA!!
+;;       (setq ess-tracebug-inject-source-p t)
+;;       (add-to-list 'julia-mode-hook 'cg/command-line-keybindings)
+;;       ;; (add-to-list 'inferior-ess-mode-hook 'cg/command-line-keybindings)            
+;;       )
+;;    )
+;; ;; in order to add ess-process afterward, apply julia-mode again on
+;; ;; open buffers - probably ess-julia.el has to be loaded again also:
+;; ;; M-x load-file ess-julia.el
+
+
+
 ;; ---( ruby )--------------------------------------------------------------
 
 (use-package ruby-mode
