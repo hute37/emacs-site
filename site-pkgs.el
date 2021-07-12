@@ -726,8 +726,8 @@
 
 (use-package ein
   :unless (version< emacs-version "25.1")
-  :defer t
-  ;; :ensure t
+  ;; :defer t
+  :ensure t
   
   :config
   (defalias 'eip 'ein:notebooklist-open))
@@ -2224,22 +2224,36 @@ the automatic filling of the current paragraph."
   :commands company-mode
   :bind ("<C-menu>" . company-complete)
   :init
-  (add-hook 'clojure-mode-hook 'company-mode)
-  (add-hook 'cider-repl-mode-hook 'company-mode)
-  (add-hook 'lisp-mode-hook 'company-mode)
-  (add-hook 'emacs-lisp-mode-hook 'company-mode)
-  (add-hook 'lisp-interaction-mode-hook 'company-mode)
-  (add-hook 'ielm-mode-hook 'company-mode)
-  (add-hook 'json-mode-hook 'company-mode)
+  ;; (add-hook 'clojure-mode-hook 'company-mode)
+  ;; (add-hook 'cider-repl-mode-hook 'company-mode)
+  ;; (add-hook 'lisp-mode-hook 'company-mode)
+  ;; (add-hook 'emacs-lisp-mode-hook 'company-mode)
+  ;; (add-hook 'lisp-interaction-mode-hook 'company-mode)
+  ;; (add-hook 'ielm-mode-hook 'company-mode)
+  ;; (add-hook 'json-mode-hook 'company-mode)
   :config
+  (setq company-idle-delay 0.3)
+  (global-company-mode t)  
+  (use-package helm-company
+    :disabled t))
+
+;; @see: https://cloudnine.github.io/science/2020-07-27-emacs-company-mode/
+;; @see: https://github.com/mswift42/.emacs.d/blob/master/init.el
+;; @see: https://medium.com/helpshift-engineering/configuring-emacs-from-scratch-use-package-c30382297877
+;; (use-package company
+;;   :bind (:map company-active-map
+;;          ("C-n" . company-select-next)
+;;          ("C-p" . company-select-previous))
+;;   :config
+;;   (setq company-idle-delay 0.3)
+;;   (global-company-mode t))
+
   ;; From https://github.com/company-mode/company-mode/issues/87
   ;; See also https://github.com/company-mode/company-mode/issues/123
   ;; (defadvice company-pseudo-tooltip-unless-just-one-frontend
   ;;     (around only-show-tooltip-when-invoked activate)
   ;;   (when (company-explicit-action-p)
   ;;     ad-do-it))
-  (use-package helm-company
-    :disabled t))
 
 
 ;; ---( yasnippet )--------------------------------------------------------------
