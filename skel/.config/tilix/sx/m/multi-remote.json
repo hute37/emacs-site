@@ -1,0 +1,243 @@
+{
+    "child": {
+        "child1": {
+            "child1": {
+                "child1": {
+                    "child1": {
+                        "directory": "",
+                        "height": 251,
+                        "overrideCommand": "ssh machine-foo-1",
+                        "profile": "fd5c25ca-5175-487c-a9c2-a9eb7da12f20",
+                        "readOnly": false,
+                        "synchronizedInput": true,
+                        "type": "Terminal",
+                        "width": 480
+                    },
+                    "child2": {
+                        "directory": "",
+                        "height": 251,
+                        "overrideCommand": "ssh machine-foo-5",
+                        "profile": "0aedc910-0a62-4c8a-b9cf-12db49e8da3b",
+                        "readOnly": false,
+                        "synchronizedInput": true,
+                        "type": "Terminal",
+                        "width": 480
+                    },
+                    "orientation": 1,
+                    "position": 0,
+                    "ratio": 0.5,
+                    "type": "Paned"
+                },
+                "child2": {
+                    "child1": {
+                        "directory": "",
+                        "height": 251,
+                        "overrideCommand": "ssh machine-foo-9",
+                        "profile": "d8a83515-9384-4d73-8d25-647b23cb0520",
+                        "readOnly": false,
+                        "synchronizedInput": true,
+                        "type": "Terminal",
+                        "width": 480
+                    },
+                    "child2": {
+                        "directory": "",
+                        "height": 251,
+                        "overrideCommand": "ssh node-bar5",
+                        "profile": "3cb490df-bdce-4f6b-9093-cddd40fb863e",
+                        "readOnly": false,
+                        "synchronizedInput": true,
+                        "type": "Terminal",
+                        "width": 480
+                    },
+                    "orientation": 1,
+                    "position": 0,
+                    "ratio": 0.5,
+                    "type": "Paned"
+                },
+                "orientation": 1,
+                "position": 0,
+                "ratio": 0.5,
+                "type": "Paned"
+            },
+            "child2": {
+                "child1": {
+                    "child1": {
+                        "directory": "",
+                        "height": 251,
+                        "overrideCommand": "ssh machine-foo-2",
+                        "profile": "de479d2e-5aa5-4125-9a20-98e6c2ef11c5",
+                        "readOnly": false,
+                        "synchronizedInput": true,
+                        "type": "Terminal",
+                        "width": 480
+                    },
+                    "child2": {
+                        "directory": "",
+                        "height": 251,
+                        "overrideCommand": "ssh machine-foo-6",
+                        "profile": "5784dde7-7e81-4960-a974-a12f9d13c5bc",
+                        "readOnly": false,
+                        "synchronizedInput": true,
+                        "type": "Terminal",
+                        "width": 480
+                    },
+                    "orientation": 1,
+                    "position": 0,
+                    "ratio": 0.5,
+                    "type": "Paned"
+                },
+                "child2": {
+                    "child1": {
+                        "directory": "",
+                        "height": 251,
+                        "overrideCommand": "ssh machine-foo-10",
+                        "profile": "45479a0d-3272-45d7-8c8a-15d152a53d9c",
+                        "readOnly": false,
+                        "synchronizedInput": true,
+                        "type": "Terminal",
+                        "width": 480
+                    },
+                    "child2": {
+                        "directory": "",
+                        "height": 251,
+                        "overrideCommand": "ssh node-bar6",
+                        "profile": "68f62c33-4fe3-4000-b0ed-bb135337a567",
+                        "readOnly": false,
+                        "synchronizedInput": true,
+                        "type": "Terminal",
+                        "width": 480
+                    },
+                    "orientation": 1,
+                    "position": 0,
+                    "ratio": 0.5,
+                    "type": "Paned"
+                },
+                "orientation": 1,
+                "position": 0,
+                "ratio": 0.5,
+                "type": "Paned"
+            },
+            "orientation": 0,
+            "position": 0,
+            "ratio": 0.5,
+            "type": "Paned"
+        },
+        "child2": {
+            "child1": {
+                "child1": {
+                    "child1": {
+                        "directory": "",
+                        "height": 251,
+                        "overrideCommand": "ssh machine-foo-3",
+                        "profile": "29a9c07f-232e-455e-a6a1-12cd698294be",
+                        "readOnly": false,
+                        "synchronizedInput": true,
+                        "type": "Terminal",
+                        "width": 480
+                    },
+                    "child2": {
+                        "directory": "",
+                        "height": 251,
+                        "overrideCommand": "ssh machine-foo-7",
+                        "profile": "7d0383e3-cf44-4617-826f-215e5daaa668",
+                        "readOnly": false,
+                        "synchronizedInput": true,
+                        "type": "Terminal",
+                        "width": 480
+                    },
+                    "orientation": 1,
+                    "position": 0,
+                    "ratio": 0.5,
+                    "type": "Paned"
+                },
+                "child2": {
+                    "child1": {
+                        "directory": "",
+                        "height": 251,
+                        "overrideCommand": "ssh machine-foo-11",
+                        "profile": "d95d7491-bd8f-4499-8806-53c6692dbdfd",
+                        "readOnly": false,
+                        "synchronizedInput": true,
+                        "type": "Terminal",
+                        "width": 480
+                    },
+                    "child2": {
+                        "directory": "",
+                        "height": 251,
+                        "overrideCommand": "ssh node-bar7",
+                        "profile": "d71fa01b-2f89-454c-91c3-8b0748d2918d",
+                        "readOnly": false,
+                        "synchronizedInput": true,
+                        "type": "Terminal",
+                        "width": 480
+                    },
+                    "orientation": 1,
+                    "position": 0,
+                    "ratio": 0.5,
+                    "type": "Paned"
+                },
+                "orientation": 1,
+                "position": 0,
+                "ratio": 0.5,
+                "type": "Paned"
+            },
+            "child2": {
+                "child1": {
+                    "child1": {
+                        "directory": "",
+                        "height": 251,
+                        "overrideCommand": "ssh machine-foo-4",
+                        "profile": "3bb8f457-b183-4b78-a825-3766385d7cd7",
+                        "readOnly": false,
+                        "synchronizedInput": true,
+                        "type": "Terminal",
+                        "width": 480
+                    },
+                    "child2": {
+                        "directory": "",
+                        "height": 251,
+                        "overrideCommand": "ssh machine-foo-8",
+                        "profile": "98485c11-ea75-44e8-bcbc-2d703544d70a",
+                        "readOnly": false,
+                        "synchronizedInput": true,
+                        "type": "Terminal",
+                        "width": 480
+                    },
+                    "orientation": 1,
+                    "position": 0,
+                    "ratio": 0.5,
+                    "type": "Paned"
+                },
+                "child2": {
+                    "directory": "",
+                    "height": 251,
+                    "overrideCommand": "ssh buzz",
+                    "profile": "6d605bb2-4a3f-4ff2-8b44-8e15e02ce4ff",
+                    "readOnly": false,
+                    "synchronizedInput": true,
+                    "type": "Terminal",
+                    "width": 480
+                },
+                "orientation": 1,
+                "position": 0,
+                "ratio": 0.5,
+                "type": "Paned"
+            },
+            "orientation": 0,
+            "position": 0,
+            "ratio": 0.5,
+            "type": "Paned"
+        },
+        "orientation": 0,
+        "position": 0,
+        "ratio": 0.5,
+        "type": "Paned"
+    },
+    "height": 1006,
+    "name": "Default",
+    "synchronizedInput": false,
+    "type": "Session",
+    "uuid": "",
+    "version": "1.0",
+    "width": 1920
+}
