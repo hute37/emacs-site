@@ -1,0 +1,75 @@
+{
+  "child": {
+    "child1": {
+        "directory": "",
+        "height": 978,
+        "profile": "10435844-6d27-4d84-90c5-e7f81b955c00",
+        "readOnly": false,
+        "synchronizedInput": true,
+        "type": "Terminal",
+        "uuid": "80d50513-ec71-4be8-b9eb-dca7cf98621e",
+        "width": 1643
+    },
+    "child2": {
+        "directory": "",
+        "height": 978,
+        "profile": "de9f033a-1034-4137-a75a-f9cb4470091b",
+        "readOnly": false,
+        "synchronizedInput": true,
+        "type": "Terminal",
+        "uuid": "5f73ba3b-df37-4376-828c-dab91176c4a6",
+        "width": 1643
+    },
+    "child3": {
+        "directory": "",
+        "height": 978,
+        "profile": "42a95cb5-b935-4acb-aa40-9caa4f308709",
+        "readOnly": false,
+        "synchronizedInput": true,
+        "type": "Terminal",
+        "uuid": "7468426d-18ff-4e1c-824b-3bcda4150290",
+        "width": 1643
+    },
+    "child4": {
+        "directory": "",
+        "height": 978,
+        "profile": "32772efd-ee56-4007-97e0-2a04936fd672",
+        "readOnly": false,
+        "synchronizedInput": true,
+        "type": "Terminal",
+        "uuid": "d1b58446-1c79-49ac-b3cd-0c12151b5165",
+        "width": 1643
+    },
+    "child5": {
+        "directory": "",
+        "height": 978,
+        "profile": "809fcff7-62e1-4f3a-9669-778b8ec9da32",
+        "readOnly": false,
+        "synchronizedInput": true,
+        "type": "Terminal",
+        "uuid": "5d12d98a-10d7-4d5d-b0ae-422abed9c129",
+        "width": 1643
+    },
+    "child6": {
+        "directory": "",
+        "height": 978,
+        "profile": "15cac589-704a-4068-9392-107c687aa099",
+        "readOnly": false,
+        "synchronizedInput": true,
+        "type": "Terminal",
+        "uuid": "e1bd9bcd-7ea8-45cb-83a7-32d25c53539a",
+        "width": 1643
+    },
+    "orientation": 0,
+    "position": 50,
+    "ratio": 0.5,
+    "type": "Paned"
+  },
+  "height": 978,
+  "name": "${title}",
+  "synchronizedInput": false,
+  "type": "Session",
+  "uuid": "b267e28c-7c65-4eda-946b-b48c44d480f3",
+  "version": "1.0",
+  "width": 1643
+}

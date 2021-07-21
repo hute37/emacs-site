@@ -1,0 +1,19 @@
+{
+    "child": {
+        "directory": "",
+        "height": 978,
+        "profile": "de9f033a-1034-4137-a75a-f9cb4470091b",
+        "readOnly": false,
+        "synchronizedInput": true,
+        "type": "Terminal",
+        "uuid": "5f73ba3b-df37-4376-828c-dab91176c4a6",
+        "width": 1643
+    },
+    "height": 978,
+    "name": "${title}",
+    "synchronizedInput": false,
+    "type": "Session",
+    "uuid": "a26929d0-5ad4-4a87-990d-87509d904a67",
+    "version": "1.0",
+    "width": 1643
+}
