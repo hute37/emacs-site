@@ -19,7 +19,7 @@ set $mod Mod4
 
 # wallpaper
 #exec_always --no-startup-id feh --bg-fill /home/hoothoot/Downloads/wp.jpg
-exec_always --no-startup-id xsetroot -gray
+exec_always --no-startup-id xsetroot -solid black
 
 # workspace namen
 set $tag1 "1: alpha"
@@ -28,7 +28,7 @@ set $tag3 "3: gamma"
 set $tag4 "4: delta"
 
 # eigene Binds
-set $mod+F1 exec google-chrome
+set $mod+F1 exec "w3m https://i3wm.org/docs/userguide.html"
 
 #######
 
@@ -65,7 +65,7 @@ bindsym Mod1+Return exec i3-sensible-terminal
 bindsym Mod1+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym Mod1+d exec dmenu_run
+bindsym Mod1+p exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
