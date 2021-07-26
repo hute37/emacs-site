@@ -12,6 +12,11 @@
   :type 'boolean
   :group 'h7prefs)
 
+(defcustom z-use-pdf-tools nil
+  "Non-nil means to activate  'pdf-tools' instead of 'docview'."
+  :type 'boolean
+  :group 'h7prefs)
+
 
 ;; ---( ... )--------------------------------------------------------------
 
@@ -20,6 +25,15 @@
 
 (defun h7/use-ivy ()
  (not z-use-helm))
+
+
+;; ---( ... )--------------------------------------------------------------
+
+(defun h7/use-pdf-tools ()
+ z-use-pdf-tools)
+
+(defun h7/use-pdf-docview ()
+ (not z-use-pdf-tools))
 
 
 ;; ---( site.func: end )-------------------------------------------------------

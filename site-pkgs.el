@@ -1300,11 +1300,34 @@ the automatic filling of the current paragraph."
 
 ;; ---( pdf )--------------------------------------------------------------
 
+(message "#pdf-tools(0): '( (h7/use-pdf-tools . %s) )" (h7/use-pdf-tools)) 
+
 (use-package pdf-tools
-  :ensure f
-  ;; :config
-  ;; (pdf-tools-install)
+  :if (h7/use-pdf-tools)
+  :config
+  (pdf-tools-install)
 )
+
+(use-package saveplace-pdf-view
+  :if (h7/use-pdf-tools)
+)
+
+(use-package pdfgrep
+  :ensure t
+)
+
+(use-package paperless
+  :ensure t
+)
+
+;; (use-package toc-mode
+;;   :disabled t
+;; )
+
+;; (use-package biblithek
+;;   :disabled t
+;; )
+
 
 
 ;; ;;;////////////////////////////////////////////////////////////////
