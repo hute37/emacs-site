@@ -1303,10 +1303,16 @@ the automatic filling of the current paragraph."
 (message "#pdf-tools(0): '( (h7/use-pdf-tools . %s) )" (h7/use-pdf-tools)) 
 
 (use-package pdf-tools
-  :if (h7/use-pdf-tools)
+;;  :if (h7/use-pdf-tools)
+  :ensure t
+  :pin manual ;; don't reinstall when package updates
+  :mode  ("\\.pdf\\'" . pdf-view-mode)
   :config
-  (pdf-tools-install)
-)
+  (setq-default pdf-view-display-size 'fit-page)
+  (setq pdf-annot-activate-created-annotations t)
+  (require 'pdf-occur)
+  (pdf-tools-install :no-query)
+  )
 
 (use-package saveplace-pdf-view
   :if (h7/use-pdf-tools)
