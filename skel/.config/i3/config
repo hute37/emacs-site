@@ -80,9 +80,14 @@ bindsym Mod1+$right focus right
 
 # alternatively, you can use the cursor keys:
 bindsym Mod1+Left focus left
-bindsym Mod1+Down focus down
-bindsym Mod1+Up focus up
+#bindsym Mod1+Down focus down
+#bindsym Mod1+Up focus up
 bindsym Mod1+Right focus right
+
+bindsym Mod1+KP_Left focus left
+bindsym Mod1+KP_Down focus down
+bindsym Mod1+KP_Up focus up
+bindsym Mod1+KP_Right focus right
 
 # move focused window
 bindsym Mod1+Shift+$left move left
@@ -95,6 +100,11 @@ bindsym Mod1+Shift+Left move left
 bindsym Mod1+Shift+Down move down
 bindsym Mod1+Shift+Up move up
 bindsym Mod1+Shift+Right move right
+
+bindsym Mod1+Shift+KP_Left move left
+bindsym Mod1+Shift+KP_Down move down
+bindsym Mod1+Shift+KP_Up move up
+bindsym Mod1+Shift+KP_Right move right
 
 # split in horizontal orientation
 bindsym Mod1+h split h
@@ -133,6 +143,9 @@ bindsym Mod1+minus scratchpad show
 
 bindsym Mod1+Prior workspace prev
 bindsym Mod1+Next workspace next
+
+bindsym Mod1+KP_Prior workspace prev
+bindsym Mod1+KP_Next workspace next
 
 bindsym Mod1+n workspace prev
 bindsym Mod1+m workspace next
