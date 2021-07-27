@@ -60,6 +60,7 @@ floating_modifier Mod1
 
 # start a terminal
 bindsym Mod1+Return exec i3-sensible-terminal
+bindsym Mod1+KP_Enter exec TERMINAL=termite i3-sensible-terminal
 
 # kill focused window
 bindsym Mod1+Shift+q kill
@@ -119,7 +120,7 @@ bindsym Mod1+space focus mode_toggle
 bindsym Mod1+a focus parent
 
 # focus the child container
-#bindsym Mod1+d focus child
+bindsym Mod1+d focus child
 
 # move the currently focused window to the scratchpad
 bindsym Mod1+Shift+minus move scratchpad
@@ -196,8 +197,64 @@ bindsym Mod1+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+#bar {
+#	position top
+#        tray_output primary
+#	#status_command i3status -c ~/.i3/i3status.conf
+#}
+
+# @see: http://dotshare.it/dots/1013/
+
 bar {
-	position top
-        tray_output primary
-	#status_command i3status -c ~/.i3/i3status.conf
+  position top
+  tray_output primary
+  status_command i3blocks -c ~/.config/i3/i3blocks.conf
+  # status_command i3status -c ~/.config/i3/i3status.conf
+  # status_command i3status -c ~/.i3/i3status.conf | ~/.i3/i3status-wrapper.py
+  # status_command i3status -c ~/.i3/i3status.conf
+  # status_command py3status -c ~/.i3/i3status.conf
+  # status_command ~/.i3/conky.sh
+  workspace_buttons yes
+  separator_symbol "⁖"
+  #separator_symbol "┆"
+  #separator_symbol "⁞"
+  colors {
+    background #073642
+    statusline #839496
+    separator #e0e0f0
+    #separator #b58900
+    # class border backgrd text
+    focused_workspace #cb4b16 #cb4b16 #ffffff
+    active_workspace  #cb4b16 #cb4b16 #ffffff
+    inactive_workspace #252525 #252525 #6b6b6b
+    urgent_workspace #252525 #252525 #c7a551
+  }
 }
+
+
+# class border backgr text separator
+#client.focused #cb4b16 #cb4b16 #ffffff #b58900
+#client.focused_inactive #333333 #333333 #888888 #292d2e
+#client.unfocused #333333 #333333 #888888 #292d2e
+#client.urgent #2f343a #900000 #ffffff #900000
+
+# Autostarts
+#exec --no-startup-id clipit
+#exec --no-startup-id setxkbmap it
+#exec --no-startup-id unclutter -idle 2
+#exec --no-startup-id dunst -config ~/.i3/dunstrc
+#exec --no-startup-id feh --bg-scale ~/pictures/Wallpapers/The_Incredulity_of_Saint_Thomas_by_Caravaggio.jpg
+#exec --no-startup-id devmon
+#exec --no-startup-id blueman-applet
+#exec --no-startup-id bitlbee -F
+#exec --no-startup-id ~/scripts/icemcfd11-lmgrd.sh
+
+# Shortcuts
+#bindsym $mod+Print exec scrot 'screenshot-%Y-%m-%d-%H-%M-%S_$wx$h.png' -e 'mv $f ~/pictures/'
+#bindsym $mod+c exec chromium
+#bindsym $mod+g exec chromium --app=https://mail.google.com/mail/u/0/#inbox
+#bindsym $mod+i exec ~/scripts/icemcfd11-launch.sh
+#bindsym $mod+p exec /opt/arch/paraview/4.3.1/bin/paraview
+#bindsym $mod+t exec /opt/arch/tecplot/2008/bin/tec360
+
+
