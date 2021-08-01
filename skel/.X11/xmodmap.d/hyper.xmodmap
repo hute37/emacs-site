@@ -1,0 +1,69 @@
+!!
+! caps-lock, menu => Hyper_L,Hyper_R (mod3)
+!
+! @see: https://protesilaos.com/codelog/2019-10-10-debian-xmodmap/
+
+
+!!!!!!!!!!!!!!!
+! Prior notes !
+!!!!!!!!!!!!!!!
+
+! These settings have been implemented succesfully on Debian 10
+! 'buster' running a variety of desktop environments on top of Xorg.
+
+! To get the current status of the modifiers:
+!
+!	xmodmap -pm
+!
+! To find out the key codes that are available:
+!
+!	xmodmap -pke
+!
+! Or narrow the results, e.g.:
+!
+!	xmodmap -pke | grep -E '(Alt|Shift)'
+!
+! Alternatively, use `xev` to print the key code upon key press.
+!
+! Here are some of the most likely candidates for changes:
+!
+!	keycode 37  = Control_L
+!	keycode 50  = Shift_L
+!	keycode 62  = Shift_R
+!	keycode 64  = Alt_L
+!	keycode 66  = Caps_Lock
+!	keycode 105 = Control_R
+!	keycode 133 = Super_L
+!	keycode 135 = Menu
+
+!!!!!!!!!!!!!!!!!
+! Modifications !
+!!!!!!!!!!!!!!!!!
+
+! Clear the modifiers concerned
+clear lock
+clear mod3
+clear mod4
+
+! Set Caps Lock as an extra Ctrl
+keycode 66 = Hyper_L
+!keycode 66 = Control_L
+
+! Set the Right Super as Hyper
+!keycode 134 = Hyper_R
+
+!!! OR Set the Right Alt as Hyper
+!! keycode 108 = Hyper_R
+
+! Set the Menu key as Compose
+!keycode 135 = Multi_key
+keycode 135 = Hyper_R
+
+! Add/update the modifiers
+!add control = Control_L
+
+! Add a new Hyper_R modifier and move Hyper_L from mod4 to mod3
+add mod3 = Hyper_L Hyper_R
+add mod4 = Super_L Super_R
+
+
