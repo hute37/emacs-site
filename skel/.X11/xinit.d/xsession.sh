@@ -18,9 +18,11 @@ sx_xfce() {
 
 sx_i3() {
 
-    xrdb -merge ~/.Xresources
-   	eval $(ssh-agent)
-   	dbus-launch i3
+    [ -f ~/.Xmodmap ]    	&& xmodmap ~/.Xmodmap
+    [ -f ~/.Xresources ] 	&& xrdb -merge ~/.Xresources
+    [ -z "SSH_AUTH_SOCK" ] 	&& eval $(ssh-agent)
+
+    dbus-launch i3
 
 }
 
