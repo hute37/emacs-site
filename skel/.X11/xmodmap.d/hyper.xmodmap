@@ -42,6 +42,7 @@
 
 ! Clear the modifiers concerned
 clear lock
+clear mod1
 clear mod3
 clear mod4
 
@@ -57,13 +58,15 @@ keycode 66 = Hyper_L
 
 ! Set the Menu key as Compose
 !keycode 135 = Multi_key
-keycode 135 = Hyper_R
+!keycode 135 = Hyper_R
+keycode 135 = Alt_R
 
 ! Add/update the modifiers
 !add control = Control_L
 
 ! Add a new Hyper_R modifier and move Hyper_L from mod4 to mod3
-add mod3 = Hyper_L Hyper_R
+add mod1 = Alt_L Alt_R Meta_L
+add mod3 = Hyper_L
 add mod4 = Super_L Super_R
 
 

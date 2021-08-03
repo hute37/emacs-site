@@ -8,6 +8,7 @@ if [ -n "$1" ]; then
 fi
 
 : ${U_SESSION:=$U_SESSION_DEFAULT}
+: ${U_INIT:="$HOME/.X11/xinit.d"}
 
 
 sx_xfce() {
@@ -18,9 +19,16 @@ sx_xfce() {
 
 sx_i3() {
 
+    set -x
+
     [ -e ~/.Xmodmap ]    	&& xmodmap ~/.Xmodmap
     [ -e ~/.Xresources ] 	&& xrdb -merge ~/.Xresources
+
+    [ -x $U_INIT/urvxtd.sh ]    && . $U_INIT/urvxtd.sh
+
     [ -z "SSH_AUTH_SOCK" ] 	&& eval $(ssh-agent)
+
+    set +x
 
     dbus-launch i3
 
