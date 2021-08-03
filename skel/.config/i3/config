@@ -1,3 +1,4 @@
+# vim: noet sw=4 ts=4 fdm=marker foldcolumn=0
 # i3 config file (v4)
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
@@ -8,32 +9,139 @@
 # To get a config file with the same key positions, but for your current
 # layout, use the i3-config-wizard
 #
+# (folding: reduce=zR,zr, more=zM,zm alter=Za,za, nogutter=:set foldcolumn=0)
 
+# {{{ [init] /////////////////////////////////////////////////////////////////////
 
 ####### meins
 # mod taste mod1=alt mod4=cmd
 #set $mod Mod4
-set $mod Mod1
+set $mod Mod3
+set $alt Mod1
+set $sup Mod4
+set $mod3 Mod3
 
+##
+# xmodmap -pe; xmodmap ~/.Xmodmap; xmodmap -pe
+#
+# cat <<'###::EOF' | sed -e 's/^###: //' >> ~/.Xmodmap
+###: !!
+###: ! x11:     setxkbmap --options caps:hyper,alt_win:menu
+###: ! wayland: localectl --options caps:hyper,alt_win:menu
+###: !
+###:
+###: ! Clear the modifiers concerned
+###: clear lock
+###: clear mod1
+###: clear mod3
+###: clear mod4
+###: 
+###: ! Set Caps Lock as an extra Ctrl
+###: keycode 66 = Hyper_L
+###: !keycode 66 = Control_L
+###: 
+###: ! Set the Right Super as Hyper
+###: !keycode 134 = Hyper_R
+###: 
+###: !!! OR Set the Right Alt as Hyper
+###: !! keycode 108 = Hyper_R
+###: 
+###: ! Set the Menu key as Compose
+###: !keycode 135 = Multi_key
+###: !keycode 135 = Hyper_R
+###: keycode 135 = Alt_R
+###: 
+###: ! Add/update the modifiers
+###: !add control = Control_L
+###: 
+###: ! Add a new Hyper_R modifier and move Hyper_L from mod4 to mod3
+###: add mod1 = Alt_L Alt_R Meta_L
+###: add mod3 = Hyper_L
+###: add mod4 = Super_L Super_R
+###: 
+###::EOF
+
+# workspace namen
+#set $tag1 "1: alpha"
+#set $tag2 "2: beta"
+#set $tag3 "3: gamma"
+#set $tag4 "4: delta"
+
+# focus following the mouse
+focus_follows_mouse yes
+
+workspace_auto_back_and_forth yes
+
+
+# }}} [init] \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+# {{{ [session] /////////////////////////////////////////////////////////////////////
+
+
+#exec --no-startup-id localectl --options caps:hyper,alt_win:menu
+#exec --no-startup-id setxkbmap it
+#exec --no-startup-id xmodmapA ~/.Xmodmap
+
+# Autostarts
+
+# lxappearance &; gtk-chtheme &; q4-qtconfig &
 # gnome daemon aus
 #exec_always --no-startup-id gnome-settings-daemon
+exec_always --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+
+
+# exec urxvtd daemon
+# urxvtc run via Xinitrc because otherwise the scratchpad don't work (race condition?)
+# exec --no-startup-id ~/.i3/scripts/urxvtc.sh
+
+# resize correctly in vmware
+#exec --no-startup-id vmware-user-suid-wrapper
+#exec --no-startup-id vmware-user
+
+# start owncloud client
+#exec --no-startup-id nextcloud &
 
 # wallpaper
 #exec_always --no-startup-id feh --bg-fill /home/hoothoot/Downloads/wp.jpg
-exec_always --no-startup-id xsetroot -solid black
+#exec --no-startup-id $XDG_CONFIG_HOME/.fehbg
+#exec_always --no-startup-id xsetroot -solid black
+exec_always --no-startup-id xsetroot -solid "#081010"
 
-# workspace namen
-set $tag1 "1: alpha"
-set $tag2 "2: beta"
-set $tag3 "3: gamma"
-set $tag4 "4: delta"
 
-# eigene Binds
-set $mod+F1 exec "w3m https://i3wm.org/docs/userguide.html"
+# Hide the mouse after some time 
+# exec --no-startup-id unclutter
 
-#######
+# launch scripts
+#exec --no-startup-id /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
 
-# {{{ [layout] /////////////////////////////////////////////////////////////////////
+# launch redshift
+#exec --no-startup-id redshift &
+
+# launch dunst
+#exec --no-startup-id dunst
+
+# launch brave
+#exec --no-startup-id brave
+
+
+
+
+
+#exec --no-startup-id clipit
+#exec --no-startup-id unclutter -idle 2
+#exec --no-startup-id dunst -config ~/.i3/dunstrc
+#exec --no-startup-id feh --bg-scale ~/pictures/Wallpapers/The_Incredulity_of_Saint_Thomas_by_Caravaggio.jpg
+#exec --no-startup-id devmon
+#exec --no-startup-id blueman-applet
+#exec --no-startup-id nm-applet
+#exec --no-startup-id bitlbee -F
+#exec --no-startup-id ~/scripts/icemcfd11-lmgrd.sh
+
+# }}} [session] \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+# {{{ [theme] /////////////////////////////////////////////////////////////////////
+
+# {{{ (fonts) >>> ...................................................
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -43,13 +151,9 @@ set $mod+F1 exec "w3m https://i3wm.org/docs/userguide.html"
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:Helvetica Mono 10
 
-# Windows
-#new_window pixel 1
-#new_float pixel 1
-#gaps inner 10
-#gaps outer 0
-# windows pop-ups
-for_window [window_role="pop-up"] floating enable,move absolute center
+# }}} (fonts) <<< ...................................................
+
+# {{{ (theme:a) >>> ...................................................
 
 set $based3    #002b36
 set $based2    #073642
@@ -74,9 +178,166 @@ set $green     #859900
 #client.unfocused          $based3   $based3   $base0   $based3  $based3
 #client.urgent             $based3   $magenta  $base3   $based3  $magenta
 
+# }}} (theme:a) <<< ...................................................
+
+# {{{ (theme:b) >>> ...................................................
+
+
+# get color from xressource configuration - variable_name xressource_color fallback
+
+# special
+set_from_resource $foreground foreground #C6C6C6
+set_from_resource $background background #1C1C1C
+set_from_resource $cursorColor cursorColor #C6C6C6
+
+# black
+set_from_resource $black1 color0 #303030
+set_from_resource $black2 color8 #444444
+set $trueblack #000000
+
+# red
+set_from_resource $red1 color1 #d75f5f
+set_from_resource $red2 color9 #d75f5f
+
+# green
+set_from_resource $green1 color2 #87AF87
+set_from_resource $green2 color10 #87AF87
+
+# yellow
+set_from_resource $yellow1 color3 #ffd75f
+set_from_resource $yellow2 color11 #ffd75f
+
+# blue
+set_from_resource $blue1 color4 #87afd7
+set_from_resource $blue2 color12 #87afd7
+
+# magenta
+set_from_resource $cyan1 color5 #afafd7
+set_from_resource $cyan2 color13 #afafd7
+
+# cyan
+set_from_resource $cyan1 color6 #afd7ff
+set_from_resource $cyan2 color14 #afd7ff
+
+# white
+set_from_resource $white1 color7 #e4e4e4
+set_from_resource $white2 color15 #ffffff
+
+set_from_resource $bar_background #073642
+set_from_resource $bar_statusline #839496
+set_from_resource $bar_separator #e0e0f0
+#separator #b58900
+# class border backgrd text
+set_from_resource $bar_focused_workspace #cb4b16 #cb4b16 #ffffff
+set_from_resource $bar_active_workspace  #cb4b16 #cb4b16 #ffffff
+set_from_resource $bar_inactive_workspace #252525 #252525 #6b6b6b
+set_from_resource $bar_urgent_workspace #252525 #252525 #c7a551
+
+
+
+# class                 border  backgr. text    indicator child_border
+#client.focused          #333333 $black2 $white2 #285577
+#client.focused_inactive #333333 $background $foreground #484e50
+#client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+#client.urgent           $red1   $red1   $white2 $red1     $red1
+#client.placeholder      #000000 #0c0c0c $white2 #000000   #0c0c0c
+
+
+# }}} (theme:b) <<< ...................................................
+
+# {{{ (theme:c) >>> ...................................................
+
+client.focused          #3F8AC2 #096BAA #00BAA7 #00DA8E
+client.focused_inactive #333333 #5F676A #ffffff #484e50
+client.unfocused        #333333 #424242 #888888 #292d2e 
+client.urgent           #C10004 #900000 #ffffff #900000
+
+# }}} (theme:c) <<< ...................................................
+
+# }}} [theme] \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+# {{{ [layout] /////////////////////////////////////////////////////////////////////
+
+# Windows
+#new_window pixel 1
+#new_float pixel 1
+#gaps inner 10
+#gaps outer 0
+#
+
+# hide borders
+#hide_edge_borders both
+
+
+# xrandr outputs
+
+set $out_left	"NX1"
+set $out_right	"NX2"
+
+
 
 
 # }}} [layout] \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+# {{{ [classes] /////////////////////////////////////////////////////////////////////
+
+# enable floating mode for all dialogs
+for_window [window_role="pop-up"] floating enable,move absolute center
+
+# enable floating mode for all XTerm windows
+for_window [class="XTerm"] floating enable
+for_window [class="Terminology"] floating enable
+for_window [class="i3-docs"] floating enable
+for_window [class="Console"] floating enable
+for_window [class="Tmux"] floating enable
+for_window [class="Login"] border pixel 5
+
+# Make all urxvts use a 1-pixel border:
+for_window [class="urxvt"] border pixel 1
+
+# enable floating mode for all Gimp windows
+#for_window [class="Gimp"] floating enable
+
+for_window [class="Lxappearance"] floating enable
+for_window [class="Gtk-chtheme"] floating enable
+for_window [class="Qtconfig-qt4"] floating enable
+
+#exec --no-startup-id lxappearance
+#exec --no-startup-id gtk-chtheme
+#exec --no-startup-id qt4-qtconfig
+
+
+# bind software to workspace
+# can use xprop - WM_CLASS(STRING) = "urxvt", "URxvt"
+assign [class="firefox" instance="Navigator"] 5
+assign [class="Console"] 2
+#assign [class="Emacs"] 3
+assign [class="Code"] 3
+assign [class="i3-docs"] 8
+
+
+#
+
+# }}} [classes] \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+# {{{ [mouse] /////////////////////////////////////////////////////////////////////
+
+# The middle button over a titlebar kills the window
+#bindsym --release button2 kill
+
+# The middle button and a modifer over any part of the window kills the window
+#bindsym --whole-window $mod+button2 kill
+
+# The right button toggles floating
+bindsym button3 floating toggle
+bindsym $mod+button3 floating toggle
+
+# The side buttons move the window around
+#bindsym button9 move left
+#bindsym button8 move right
+
+
+# }}} [mouse] \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 # {{{ [keymaps] /////////////////////////////////////////////////////////////////////
 
@@ -103,24 +364,49 @@ set $right l
 #set $right ograve
 
 
-
-
 # use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+#floating_modifier $mod
+floating_modifier $alt
+
+
+# term
+
+set $term		"i3-sensible-terminal"
+set $term-alt	"TERMINAL=termite i3-sensible-terminal"
+set $term-full	"TERMINAL=terminator i3-sensible-terminal"
+set $term-main	"TERMINAL=querminal i3-sensible-terminal"
+set $term-min	"xfce4-terminal --hide-menubar --hide-toolbar --hide-scrollbar --hide-borders"
+
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+KP_Enter exec TERMINAL=termite i3-sensible-terminal
+bindsym $mod+Return exec $term
+bindsym $mod+Ctrl+Return exec $term, splitv
+bindsym $mod+Ctrl+Shift+Return exec $term, splith
+#bindsym $mod+Return exec TERMINAL=urxvtc i3-sensible-terminal
+bindsym $mod+KP_Enter exec $term-alt
+bindsym $mod+KP_Multiply exec $term-full
+bindsym $mod+KP_Divide exec $term-min
+
+bindsym $alt+Shift+Return exec $term
+#bindsym $alt+Shift+Return exec TERMINAL=urxvtc i3-sensible-terminal
+bindsym $alt+KP_Multiply exec $term-full
+bindsym $alt+KP_Divide exec $term-min
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+p exec dmenu_run
+bindsym $alt+p exec dmenu_run
+
 bindsym $mod+d exec "rofi -show combi"
 
 bindsym $mod+n exec "rofi -show"
 bindsym $mod+m exec "rofi -show drun"
+
+# reference
+#bindsym $mod+question exec  "terminology -B -2 -f='Noto Sans Mono/18' -n=i3-docs -T='I3 Docs' -e 'w3m https://i3wm.org/docs/userguide.html'"
+bindsym $mod+question exec  "xterm -class 'i3-docs' -j -bc -cr green -fullscreen -fn 10x20  -e ~/.config/i3/scripts/i3-web.sh", workspace 8
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -135,9 +421,14 @@ bindsym $mod+$right focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
-#bindsym $mod+Down focus down
-#bindsym $mod+Up focus up
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
 bindsym $mod+Right focus right
+
+#bindsym $mod3+Left focus left
+#bindsym $mod3+Down focus down
+#bindsym $mod3+Up focus up
+#bindsym $mod3+Right focus right
 
 bindsym $mod+KP_Left focus left
 bindsym $mod+KP_Down focus down
@@ -161,27 +452,40 @@ bindsym $mod+Shift+KP_Down move down
 bindsym $mod+Shift+KP_Up move up
 bindsym $mod+Shift+KP_Right move right
 
-# split in horizontal orientation
-bindsym $mod+v split h
-
-# split in vertical orientation
-bindsym $mod+g split v
-
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+Return fullscreen toggle
+bindsym $alt+Return fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
-bindsym $mod+space layout toggle split
+#bindsym $mod+Shift+t layout tabbed
+#bindsym $mod+Shift+s layout stacking
+
+#bindsym $mod+Shift+h layout splith
+#bindsym $mod+Shift+g layout splith
+#bindsym $mod+Shift+v layout splitv
+
+#bindsym $mod+space layout toggle split
+
+# split in horizontal orientation
+bindsym $mod+v split h
+
+# split in vertical orientation
+bindsym $mod+g split v
+
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+bindsym $alt+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $modi+plus focus mode_toggle
+bindsym $mod+space focus mode_toggle
+bindsym $alt+space focus mode_toggle
+#bindsym $mod+plus focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -191,21 +495,30 @@ bindsym $mod+w focus child
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
+bindsym $alt+Shift+minus move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
+bindsym $alt+minus scratchpad show
 
 # workspaces
 
 bindsym $mod+Prior workspace prev
 bindsym $mod+Next workspace next
 
+bindsym $alt+Prior workspace prev
+bindsym $alt+Next workspace next
+
 bindsym $mod+KP_Prior workspace prev
 bindsym $mod+KP_Next workspace next
 
 #bindsym $mod+n workspace prev
 #bindsym $mod+m workspace next
+
+bindsym $mod+Ctrl+Left move workspace to output $out_left
+bindsym $mod+Ctrl+Right move workspace to output $out_right
+
 
 
 # switch to workspace
@@ -218,7 +531,18 @@ bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+0 workspace 0
+
+bindsym $alt+1 workspace 1
+bindsym $alt+2 workspace 2
+bindsym $alt+3 workspace 3
+bindsym $alt+4 workspace 4
+bindsym $alt+5 workspace 5
+bindsym $alt+6 workspace 6
+bindsym $alt+7 workspace 7
+bindsym $alt+8 workspace 8
+bindsym $alt+9 workspace 9
+bindsym $alt+0 workspace 0
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -230,17 +554,49 @@ bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+0 move container to workspace 0
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $alt+Shift+1 move container to workspace 1
+bindsym $alt+Shift+2 move container to workspace 2
+bindsym $alt+Shift+3 move container to workspace 3
+bindsym $alt+Shift+4 move container to workspace 4
+bindsym $alt+Shift+5 move container to workspace 5
+bindsym $alt+Shift+6 move container to workspace 6
+bindsym $alt+Shift+7 move container to workspace 7
+bindsym $alt+Shift+8 move container to workspace 8
+bindsym $alt+Shift+9 move container to workspace 9
+bindsym $alt+Shift+0 move container to workspace 0
+
+
+
+# multimedia
+
+# Screen brightness controls
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 20" # increase screen brightness
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 20" # decrease screen brightness
+#bindsym XF86Display exec "arandr"
+
+# Volume controls
+bindsym XF86AudioMute exec "pamixer --toggle-mute && killall -USR1 i3blocks"
+bindsym XF86AudioRaiseVolume exec "pamixer --increase 5 --allow-boost && killall -USR1 i3blocks"
+bindsym XF86AudioLowerVolume exec "pamixer --decrease 5 --allow-boost && killall -USR1 i3blocks"
+
+#bindsym XF86AudioMute exec "pamixer --toggle-mute && killall -USR1 i3status"
+#bindsym XF86AudioRaiseVolume exec "pamixer --increase 5 --allow-boost && killall -USR1 i3status"
+#bindsym XF86AudioLowerVolume exec "pamixer --decrease 5 --allow-boost && killall -USR1 i3status"
+#bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '3%+'"
+#bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '1%-'"
+#bindsym XF86AudioMute exec "amixer -D pulse set Master toggle"
+#bindsym XF86AudioMicMute exec "amixer -D pulse sset Capture toggle"
+
+#bindsym XF86WakeUp exec "synclient TouchpadOff=$(synclient | awk '/TouchpadOff/ {print ($3+1)%2}')"
+#bindsym $mod+a exec "xterm -e alsamixer"
+#bindsym $mod+Shift+a exec "pavucontrol"
+
 
 # }}} [keymaps] \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
+# {{{ [modes] /////////////////////////////////////////////////////////////////////
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -267,6 +623,68 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+# Shortcuts
+#bindsym $mod+Print exec scrot 'screenshot-%Y-%m-%d-%H-%M-%S_$wx$h.png' -e 'mv $f ~/pictures/'
+#bindsym $mod+c exec chromium
+#bindsym $mod+g exec chromium --app=https://mail.google.com/mail/u/0/#inbox
+#bindsym $mod+i exec ~/scripts/icemcfd11-launch.sh
+#bindsym $mod+p exec /opt/arch/paraview/4.3.1/bin/paraview
+#bindsym $mod+t exec /opt/arch/tecplot/2008/bin/tec360
+
+
+
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+bindsym $alt+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+bindsym $alt+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+
+
+
+#set $i3lockwall sh ~/.config/i3/scripts/lock.sh
+set $i3lockwall "i3lock -n -c '#000408'"
+bindsym $mod+Ctrl+Shift+l exec --no-startup-id $i3lockwall
+
+
+
+# shutdown / restart / suspend...
+set $mode_system "System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (CTRL+s) shutdown"
+#set $mode_system "System"
+
+mode $mode_system {
+
+    #bindsym l exec --no-startup-id i3exit lock, mode "default"
+    #bindsym e exec --no-startup-id i3exit logout, mode "default"
+    #bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    #bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    #bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    #bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+
+    bindsym l exec --no-startup-id $i3lockwall, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $i3lockwall && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $i3lockwall && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Ctrl+s exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+BackSpace mode $mode_system
+
+
+# }}} [modes] \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+# {{{ [bar] /////////////////////////////////////////////////////////////////////
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -297,37 +715,11 @@ bar {
     separator #e0e0f0
     #separator #b58900
     # class border backgrd text
-    focused_workspace #cb4b16 #cb4b16 #ffffff
     active_workspace  #cb4b16 #cb4b16 #ffffff
     inactive_workspace #252525 #252525 #6b6b6b
     urgent_workspace #252525 #252525 #c7a551
   }
 }
 
-
-# class border backgr text separator
-#client.focused #cb4b16 #cb4b16 #ffffff #b58900
-#client.focused_inactive #333333 #333333 #888888 #292d2e
-#client.unfocused #333333 #333333 #888888 #292d2e
-#client.urgent #2f343a #900000 #ffffff #900000
-
-# Autostarts
-#exec --no-startup-id clipit
-#exec --no-startup-id setxkbmap it
-#exec --no-startup-id unclutter -idle 2
-#exec --no-startup-id dunst -config ~/.i3/dunstrc
-#exec --no-startup-id feh --bg-scale ~/pictures/Wallpapers/The_Incredulity_of_Saint_Thomas_by_Caravaggio.jpg
-#exec --no-startup-id devmon
-#exec --no-startup-id blueman-applet
-#exec --no-startup-id bitlbee -F
-#exec --no-startup-id ~/scripts/icemcfd11-lmgrd.sh
-
-# Shortcuts
-#bindsym $mod+Print exec scrot 'screenshot-%Y-%m-%d-%H-%M-%S_$wx$h.png' -e 'mv $f ~/pictures/'
-#bindsym $mod+c exec chromium
-#bindsym $mod+g exec chromium --app=https://mail.google.com/mail/u/0/#inbox
-#bindsym $mod+i exec ~/scripts/icemcfd11-launch.sh
-#bindsym $mod+p exec /opt/arch/paraview/4.3.1/bin/paraview
-#bindsym $mod+t exec /opt/arch/tecplot/2008/bin/tec360
-
+# }}} [bar] \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
