@@ -32,7 +32,7 @@ Xft.hintstyle:  hintslight
 
 
 !!
-! xterm
+! Xterm
 !
 
 ! @see: https://wiki.archlinux.org/index.php/Xterm
@@ -67,14 +67,6 @@ Xterm*termName: xterm-256color
 
 Xterm*saveLines: 8192
 
-! geometry
-!xterm*VT100.geometry: 92x32
-
-! fonts
-XTerm*renderFont: false
-!xterm*faceName: Droid Sans Mono:size=10:antialias=true
-!xterm*font: 7x13
-xterm*font: fixed
 
 ! Forbid bold font faces; bold type is light blue.
 XTerm*colorBDMode: true
@@ -89,8 +81,103 @@ XTerm.VT100.translations: #override \
 Meta <Key> KP_Subtract: smaller-vt-font() \n\
 Meta <Key> KP_Add: larger-vt-font() \n\
 
+
 !!
-! rxvt
+! xterm
+!
+
+! geometry
+!xterm*VT100.geometry: 92x32
+
+! fonts
+xterm*renderFont: false
+!xterm*faceName: Droid Sans Mono:size=10:antialias=true
+!xterm*font: 7x13
+xterm*font: fixed
+! fonts
+
+
+
+
+!!
+! wterm
+!
+
+! geometry
+wterm*VT100.geometry: 92x32
+
+! fonts
+wterm*renderFont: true
+wterm*allowBoldFonts: true
+wterm*cursorBlink: true
+wterm*faceName: Noto Sans Mono SemiCondensed:size=14:antialias=true:hinting=true
+!w3mvt*boldFont: xft:Noto Sans Mono SemiCondensed SemiBold:pixelsize=18:antialias=true:hinting=true
+
+wterm*faceSize: 14
+wterm*faceSize1: 9
+wterm*faceSize2: 10
+wterm*faceSize3: 12
+wterm*faceSize4: 14
+wterm*faceSize5: 16
+wterm*faceSize6: 18
+
+!!
+! Theme: "Catch Me If You Can" by dkeg - http://terminal.sexy
+!
+
+! special
+wterm*foreground:   #f9f9f9
+wterm*background:   #170f0d
+!wterm*cursorColor:  #f9f9f9
+wterm*cursorColor:  #ff8949
+
+! black
+wterm*color0:       #130f0c
+wterm*color8:       #c69f77
+
+! red
+wterm*color1:       #604c38
+wterm*color9:       #cab9a8
+
+! green
+wterm*color2:       #8d7f85
+wterm*color10:      #d5c6b8
+
+! yellow
+wterm*color3:       #907256
+wterm*color11:      #dcd1c7
+
+! blue
+wterm*color4:       #aa8d70
+wterm*color12:      #e0e0e2
+
+! magenta
+wterm*color5:       #b9a38d
+wterm*color13:      #e4dad2
+
+! cyan
+wterm*color6:       #c4bfbf
+wterm*color14:      #eae3dc
+
+! white
+wterm*color7:       #c4ae99
+wterm*color15:      #f6f2f0
+
+
+wterm*colorBD:  orange
+wterm*colorIT:  lightskyblue
+wterm*colorRV:  red
+wterm*colorUL:  green
+wterm*underlineColor:  navyblue
+!wterm*veryBoldColors: 6
+
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!
+! Rxvt
 !
 
 Rxvt*geometry: 92x27
@@ -120,35 +207,44 @@ Rxvt*boldFont: -*-clean-*-*-*-*-*-130-*-*-*-60-*-*
 !Rxvt*boldFont: -*-fixed-bold-r-normal-*-14-*-*-*-*-*-iso10646-*
 
 
+
+!!
+! rxvt
+!
+
+
+rxvt*font: xft:Noto Sans Mono:pixelsize=14:antialias=true:hinting=true
+rxvt*boldFont: xft:Noto Sans Mono SemiBold:pixelsize=14:antialias=true:hinting=true
+
 !Gutterslob Visiblue
-Rxvt*background:           #000000
-Rxvt*foreground:           #666699
+rxvt*background:           #000000
+rxvt*foreground:           #666699
 
 
 !Visiblue
-Rxvt*color0:               #333366
-Rxvt*color8:               #333399
+rxvt*color0:               #333366
+rxvt*color8:               #333399
 
-Rxvt*color1:               #6666CC
-Rxvt*color9:               #9999FF
+rxvt*color1:               #6666CC
+rxvt*color9:               #9999FF
 
-Rxvt*color2:               #0099CC
-Rxvt*color10:              #00CCFF
+rxvt*color2:               #0099CC
+rxvt*color10:              #00CCFF
 
-Rxvt*color3:               #3366CC
-Rxvt*color11:              #6699FF
+rxvt*color3:               #3366CC
+rxvt*color11:              #6699FF
 
-Rxvt*color4:               #006699
-Rxvt*color12:              #0099CC
+rxvt*color4:               #006699
+rxvt*color12:              #0099CC
 
-Rxvt*color5:               #0066FF
-Rxvt*color13:              #0099FF
+rxvt*color5:               #0066FF
+rxvt*color13:              #0099FF
 
-Rxvt*color6:               #669999
-Rxvt*color14:              #66CCCC
+rxvt*color6:               #669999
+rxvt*color14:              #66CCCC
 
-Rxvt*color7:               #99CCCC
-Rxvt*color15:              #CCFFFF
+rxvt*color7:               #99CCCC
+rxvt*color15:              #CCFFFF
 
 
 
@@ -212,6 +308,8 @@ Rxvt*color15:              #CCFFFF
 
 !! urxvt --help 2>&1| sed -n '/:  /s/^ */! URxvt*/gp'
 !! man -Pcat urxvt | sed -n '/th: b/,/^B/p'|sed '$d'|sed '/^ \{7\}[a-z]/s/^ */^/g' | sed -e :a -e 'N;s/\n/@@/g;ta;P;D' | sed 's,\^\([^@]\+\)@*[\t ]*\([^\^]\+\),! \2\n! URxvt*\1\n\n,g' | sed 's,@@\(  \+\),\n\1,g' | sed 's,@*$,,g' | sed '/^[^!]/d' | tr -d "'\`"
+
+!! @see: https://www.askapache.com/s/u.askapache.com/2013/07/Xresources.txt
 
 !-------------------------------------------------------------------------------
 !
@@ -293,8 +391,10 @@ URxvt.letterSpace: -1
 
 ! Xft: Google Droid fonts
 
-URxvt*font: xft:Droid Sans Mono:pixelsize=12:antialias=true:hinting=true
-URxvt*boldFont: xft:Droid Sans Mono:pixelsize=12:antialias=true:hinting=true
+URxvt*font: xft:Noto Sans Mono:pixelsize=12:antialias=true:hinting=true
+URxvt*boldFont: xft:Noto Sans Mono SemiBold:pixelsize=12:antialias=true:hinting=true
+!URxvt*font: xft:Droid Sans Mono:pixelsize=12:antialias=true:hinting=true
+!URxvt*boldFont: xft:Droid Sans Mono:pixelsize=12:antialias=true:hinting=true
 !URxvt*boldFont: xft:Droid Vera Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
 
 !---------------------------------------------------------------------------------
@@ -303,6 +403,27 @@ URxvt*boldFont: xft:Droid Sans Mono:pixelsize=12:antialias=true:hinting=true
 !
 !---------------------------------------------------------------------------------
 
+!!
+! basic urxvt palette
+! 
+URxvt*color0:        Black
+URxvt*color1:        Red3
+URxvt*color2:        Green3
+URxvt*color3:        Yellow3
+URxvt*color4:        Blue3
+URxvt*color5:        Magenta3
+URxvt*color6:        Cyan3
+URxvt*color7:        AntiqueWhite
+URxvt*color8:        Grey25
+URxvt*color9:        Red
+URxvt*color10:       Green
+URxvt*color11:       Yellow
+URxvt*color12:       Blue
+URxvt*color13:       Magenta
+URxvt*color14:       Cyan
+URxvt*color15:       White
+URxvt*foreground:    Black
+URxvt*background:    White
 
 !!black
 !URxvt.color0:  #000000
@@ -397,14 +518,275 @@ urxvt*color14:              #66CCCC
 urxvt*color7:               #99CCCC
 urxvt*color15:              #CCFFFF
 !
-URxvt*colorBD:  orange
-URxvt*colorIT:  lightskyblue
-URxvt*colorRV:  red
-URxvt*colorUL:  green
-URxvt*underlineColor:  navyblue
-Urxvt*veryBoldColors: 6
+urxvt*colorBD:  orange
+urxvt*colorIT:  lightskyblue
+urxvt*colorRV:  red
+urxvt*colorUL:  green
+urxvt*underlineColor:  navyblue
+urxvt*veryBoldColors: 6
 
+
+
+!!
+! w3mvt - w3m
 !
+
+
+w3mvt*geometry:					110x35
+w3mvt*borderLess:				false
+w3mvt*depth:					24
+w3mvt*cursorBlink:				true
+w3mvt*cursorUnderline:				false
+!w3mvt*perl-ext-common:				default,clipboard,tabbed,matcher
+!w3mvt*perl-ext-common:				default,tabbed,matcher
+w3mvt*perl-ext-common:				default,font-size
+w3mvt*perl-ext:					default
+
+
+w3mvt*print-pipe:  cat > $HOME/$(echo urxvt.dump.$(date +'%Y%M%d%H%m%S'))
+
+w3mvt.keysym.C-plus:     perl:font-size:increase
+w3mvt.keysym.C-minus:   perl:font-size:decrease
+w3mvt.keysym.C-S-plus:   perl:font-size:incglobal
+w3mvt.keysym.C-S-minus: perl:font-size:decglobal
+
+w3mvt*jumpScroll: true
+w3mvt*skipScroll: false
+w3mvt*scrollTtyOutput: true
+w3mvt*scrollTtyKeypress: false
+w3mvt*scrollWithBuffer: false
+w3mvt*mouseWheelScrollPage: false
+
+
+!w3mvt.scrollBar:				off
+!w3mvt.iconFile:					~/icons/Terminal.svg
+
+!w3mvt.tabbed.tabbar-fg:			 	7
+!w3mvt.tabbed.tabbar-bg: 			5
+!w3mvt.tabbed.tab-fg:    			4
+!w3mvt.tabbed.tab-bg:    			6
+
+w3mvt*termName:				 	rxvt-256color
+w3mvt.urlLauncher:				/usr/bin/w3m
+w3mvt.matcher.button:				1
+w3mvt*visualBell:   true
+
+w3mvt*scrollBar: false
+
+w3mvt*transparent: false
+
+! Xft: DejaVu fonts
+!  Fedora/debian packages: dejavu-sans-mono-fonts/ttf-dejavu 
+!w3mvt*font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
+!w3mvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
+!
+! Xft: DejaVu fonts
+!  Fedora/debian packages: dejavu-sans-mono-fonts/ttf-dejavu 
+w3mvt*font: xft:Noto Sans Mono SemiCondensed:pixelsize=18:antialias=true:hinting=true
+w3mvt*boldFont: xft:Noto Sans Mono SemiCondensed SemiBold:pixelsize=18:antialias=true:hinting=true
+
+!!
+! Theme: "Catch Me If You Can" by dkeg - http://terminal.sexy
+!
+
+! special
+w3mvt*foreground:   #f9f9f9
+w3mvt*background:   #170f0d
+w3mvt*cursorColor:  #f9f9f9
+
+! black
+w3mvt*color0:       #130f0c
+w3mvt*color8:       #c69f77
+
+! red
+w3mvt*color1:       #604c38
+w3mvt*color9:       #cab9a8
+
+! green
+w3mvt*color2:       #8d7f85
+w3mvt*color10:      #d5c6b8
+
+! yellow
+w3mvt*color3:       #907256
+w3mvt*color11:      #dcd1c7
+
+! blue
+w3mvt*color4:       #aa8d70
+w3mvt*color12:      #e0e0e2
+
+! magenta
+w3mvt*color5:       #b9a38d
+w3mvt*color13:      #e4dad2
+
+! cyan
+w3mvt*color6:       #c4bfbf
+w3mvt*color14:      #eae3dc
+
+! white
+w3mvt*color7:       #c4ae99
+w3mvt*color15:      #f6f2f0
+
+
+! w3mvt*colorBD:  orange
+! w3mvt*colorIT:  lightskyblue
+! w3mvt*colorRV:  red
+! w3mvt*colorUL:  green
+! w3mvt*underlineColor:  navyblue
+! w3mvt*veryBoldColors: 6
+
+
+
+! !!
+! ! Theme: "Monokai (dark)" by Chris Kempson - http://terminal.sexy
+! !
+
+
+! ! special
+! w3mvt*foreground:   #98d1ce
+! w3mvt*background:   #0a0f14
+! w3mvt*cursorColor:  #98d1ce
+
+! ! black
+! w3mvt*color0:       #0a0f14
+! w3mvt*color8:       #10151b
+
+! ! red
+! w3mvt*color1:       #c33027
+! w3mvt*color9:       #d26939
+
+! ! green
+! w3mvt*color2:       #26a98b
+! w3mvt*color10:      #081f2d
+
+! ! yellow
+! w3mvt*color3:       #edb54b
+! w3mvt*color11:      #245361
+
+! ! blue
+! w3mvt*color4:       #195465
+! w3mvt*color12:      #093748
+
+! ! magenta
+! w3mvt*color5:       #4e5165
+! w3mvt*color13:      #888ba5
+
+! ! cyan
+! w3mvt*color6:       #33859d
+! w3mvt*color14:      #599caa
+
+! ! white
+! w3mvt*color7:       #98d1ce
+! w3mvt*color15:      #d3ebe9
+
+
+
+
+! !!
+! ! Theme: "gotham" - http://terminal.sexy
+! !
+
+! ! special
+! *.foreground:   #98d1ce
+! *.background:   #0a0f14
+! *.cursorColor:  #98d1ce
+
+! ! black
+! *.color0:       #0a0f14
+! *.color8:       #10151b
+
+! ! red
+! *.color1:       #c33027
+! *.color9:       #d26939
+
+! ! green
+! *.color2:       #26a98b
+! *.color10:      #081f2d
+
+! ! yellow
+! *.color3:       #edb54b
+! *.color11:      #245361
+
+! ! blue
+! *.color4:       #195465
+! *.color12:      #093748
+
+! ! magenta
+! *.color5:       #4e5165
+! *.color13:      #888ba5
+
+! ! cyan
+! *.color6:       #33859d
+! *.color14:      #599caa
+
+! ! white
+! *.color7:       #98d1ce
+! *.color15:      #d3ebe9
+
+
+
+! !!
+! ! Theme: "hund" - http://terminal.sexy
+! !
+
+! ! special
+! w3mvt*foreground:   #98d1ce
+! w3mvt*background:   #0a0f14
+! w3mvt*cursorColor:  #98d1ce
+
+! ! black
+! w3mvt*color0:       #0a0f14
+! w3mvt*color8:       #10151b
+
+! ! red
+! w3mvt*color1:       #c33027
+! w3mvt*color9:       #d26939
+
+! ! green
+! w3mvt*color2:       #26a98b
+! w3mvt*color10:      #081f2d
+
+! ! yellow
+! w3mvt*color3:       #edb54b
+! w3mvt*color11:      #245361
+
+! ! blue
+! w3mvt*color4:       #195465
+! w3mvt*color12:      #093748
+
+! ! magenta
+! w3mvt*color5:       #4e5165
+! w3mvt*color13:      #888ba5
+
+! ! cyan
+! w3mvt*color6:       #33859d
+! w3mvt*color14:      #599caa
+
+! ! white
+! w3mvt*color7:       #98d1ce
+! w3mvt*color15:      #d3ebe9
+
+
+
+! w3mvt*color0:        Black
+! w3mvt*color1:        Red3
+! w3mvt*color2:        Green3
+! w3mvt*color3:        Yellow3
+! w3mvt*color4:        Blue3
+! w3mvt*color5:        Magenta3
+! w3mvt*color6:        Cyan3
+! w3mvt*color7:        AntiqueWhite
+! w3mvt*color8:        Grey25
+! w3mvt*color9:        Red
+! w3mvt*color10:       Green
+! w3mvt*color11:       Yellow
+! w3mvt*color12:       Blue
+! w3mvt*color13:       Magenta
+! w3mvt*color14:       Cyan
+! w3mvt*color15:       White
+! w3mvt*foreground:    Black
+! w3mvt*background:    White
+
+
 
 !!
 !! tomorrow: https://github.com/chriskempson/tomorrow-theme
@@ -423,36 +805,34 @@ Urxvt*veryBoldColors: 6
 !#define t_aqua #8abeb7
 !#define t_blue #81a2be
 !#define t_purple #b294bb
-
-!URxvt*.foreground: t_foreground
-!URxvt*.background: t_background
-!URxvt*.cursorColor: #aeafad
-!! Black / Grey
-!URxvt*.color0: #000000
-!URxvt*.color8: #666666
-!! Red / Bright Red
-!URxvt*.color1: t_red
-!URxvt*.color9: #FF3334
-!! Green + Bright Green
-!URxvt*.color2: t_green
-!URxvt*.color10: #9ec400
-!! Yellow (Orange) + Bright Yellow (Yellow)
-!URxvt*.color3: t_orange
-!URxvt*.color11: t_yellow
-!! Blue + Bright Blue
-!URxvt*.color4: t_blue
-!URxvt*.color12: t_blue
-!! Magenta (Purple) + Bright Magenta
-!URxvt*.color5: t_purple
-!URxvt*.color13: #b777e0
-!! Cyan (Aqua) + Bright Cyan
-!URxvt*.color6: t_aqua
-!URxvt*.color14: #54ced6
-!! Light Grey (Selection) + White (Current Line)
-!URxvt*.color7: t_selection
-!URxvt*.color15: t_current_line
-
-
+!
+!wrxvt*.foreground: t_foreground
+!wrxvt*.background: t_background
+!wrxvt*.cursorColor: #aeafad
+!!! Black / Grey
+!wrxvt*.color0: #000000
+!wrxvt*.color8: #666666
+!!! Red / Bright Red
+!wrxvt*color1: t_red
+!wrxvt*color9: #FF3334
+!!! Green + Bright Green
+!wrxvt*color2: t_green
+!wrxvt*color10: #9ec400
+!!! Yellow (Orange) + Bright Yellow (Yellow)
+!wrxvt*color3: t_orange
+!wrxvt*color11: t_yellow
+!!! Blue + Bright Blue
+!wrxvt*color4: t_blue
+!wrxvt*color12: t_blue
+!!! Magenta (Purple) + Bright Magenta
+!wrxvt*color5: t_purple
+!wrxvt*color13: #b777e0
+!!! Cyan (Aqua) + Bright Cyan
+!wrxvt*color6: t_aqua
+!wrxvt*color14: #54ced6
+!!! Light Grey (Selection) + White (Current Line)
+!wrxvt*color7: t_selection
+!wrxvt*color15: t_current_line
 
 !!TomorrowNightBright
 !#define tnb_background #000000

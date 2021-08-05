@@ -42,6 +42,12 @@ alias ec='emacsclient -c'
 
 
 ##
+# term
+#
+
+alias wterm="xterm -name 'wterm'"
+
+##
 # tmux
 #
 
@@ -132,6 +138,10 @@ man() {
     LESS_TERMCAP_us=$'\E[04;38;5;146m' \
     /usr/bin/man "$@"
 }
+
+vman() { nvim -c "Man $@" .c 'other'; }
+wman() { w3mman  -N $@; }
+cman() { PAGER=cat man $@; }
 
 ##
 # @see: https://unix.stackexchange.com/questions/267361/syntax-highlighting-in-the-terminal
