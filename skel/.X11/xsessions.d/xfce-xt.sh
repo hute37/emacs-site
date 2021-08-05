@@ -1,6 +1,7 @@
 #!/bin/sh
 
-LG=2=; xfce4-terminal  --geometry 224x32+32-72 --hide-borders -e "less +F $HOME/.xsession-errors" &
+#LG=2=; xfce4-terminal  --geometry 224x32+32-72 --hide-borders -e "less +F $HOME/.xsession-errors" &
+LG=2=; xfce4-terminal  --geometry 195x32+32-72 --hide-borders -e "less +F $HOME/.xsession-errors" &
 
 es=140; emacs --eval="(set-face-attribute 'mode-line nil  :height $es)" --eval="(set-face-attribute 'default (selected-frame) :height $es)" &
 firefox &
