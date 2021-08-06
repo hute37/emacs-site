@@ -285,12 +285,12 @@ set $out_right	"NX2"
 for_window [window_role="pop-up"] floating enable,move absolute center
 
 # enable floating mode for all XTerm windows
-for_window [class="XTerm"] floating enable
+for_window [class="XTerm" instance="xterm"] floating enable
+for_window [class="Xterm" instance="Login"] border pixel 5
 for_window [class="Terminology"] floating enable
 for_window [class="i3-docs"] floating enable
 for_window [class="Console"] floating enable
 for_window [class="Tmux"] floating enable
-for_window [class="Login"] border pixel 5
 
 # Make all urxvts use a 1-pixel border:
 for_window [class="urxvt"] border pixel 1
