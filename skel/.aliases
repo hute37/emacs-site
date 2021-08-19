@@ -36,7 +36,7 @@ alias s='less -SRX'
 alias rr='ranger'
 alias re='env VISUAL="emacsclient -n" ranger'
 
-which nvim >/dev/null  && alias v='nvim' || alias v='vim'
+which nvim >/dev/null 2>&1 && alias v='nvim' || alias v='vim'
 alias e='emacsclient --no-wait'
 alias ec='emacsclient -c'
 
