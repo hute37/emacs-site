@@ -20,9 +20,9 @@ if [[ -n "$EMACS" || -n "$INSIDE_EMACS" ]]; then
     export VISUAL="emacsclient"
 else
     if [[ -n $SSH_CONNECTION ]]; then
-        which nvim >/dev/null  && export EDITOR='nvim' || export EDITOR='vim'    
+        which nvim >/dev/null 2>&1 && export EDITOR='nvim' || export EDITOR='vim'    
     else
-        which nvim >/dev/null  && export EDITOR='nvim' || export EDITOR='vim'    
+        which nvim >/dev/null 2>&1 && export EDITOR='nvim' || export EDITOR='vim'    
     fi
 fi
 # echo "EDITOR=$EDITOR"
@@ -42,7 +42,7 @@ case "$TERM" in
     xdumb) unsetopt zle;;
     *)
 
-#ZSH_THEME="robbyrussell"
+ZSH_THEME="robbyrussell"
 #ZSH_THEME="avit"
 #ZSH_THEME="awesomepanda"
 #ZSH_THEME="bureau"
@@ -80,7 +80,7 @@ case "$TERM" in
 #ZSH_THEME="afowler"
 #ZSH_THEME="spaceship"
 #ZSH_THEME="agkozak"; AGKOZAK_USER_HOST_DISPLAY=0
-ZSH_THEME="sobole"; SOBOLE_THEME_MODE=dark
+#ZSH_THEME="sobole"; SOBOLE_THEME_MODE=dark
 
     ;;
 esac    
