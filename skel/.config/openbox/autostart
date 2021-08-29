@@ -21,6 +21,18 @@ if [ -f ~/.Xresources ]; then
   xrdb -merge ~/.Xresources
 fi
 
+if [ -f ~/.config/openbox/autostart.d/xrandr.on ]; then
+if which _xrandr-def.sh >/dev/null 2>&1; then
+  _xrandr-def.sh &
+fi
+fi
+
+if [ -f ~/.config/openbox/autostart.d/xmodmap.on ]; then
+if which _xmodmap-def.sh >/dev/null 2>&1; then
+  _xmodmap-def.sh &
+fi
+fi
+
 if [ -f ~/.config/openbox/autostart.d/xsetroot.on ]; then
 if which xsetroot >/dev/null 2>&1; then
   xsetroot -solid black &
