@@ -11,13 +11,17 @@
       <property name="position-locked" type="bool" value="true"/>
       <property name="size" type="uint" value="30"/>
       <property name="plugin-ids" type="array">
-        <value type="int" value="1"/>
+        <value type="int" value="16"/>
+        <value type="int" value="24"/>
+        <value type="int" value="18"/>
+        <value type="int" value="4"/>
+        <value type="int" value="19"/>
         <value type="int" value="3"/>
         <value type="int" value="15"/>
-        <value type="int" value="4"/>
+        <value type="int" value="22"/>
         <value type="int" value="5"/>
         <value type="int" value="6"/>
-        <value type="int" value="2"/>
+        <value type="int" value="21"/>
       </property>
       <property name="background-style" type="uint" value="1"/>
       <property name="background-color" type="array">
@@ -40,20 +44,26 @@
         <value type="int" value="13"/>
         <value type="int" value="14"/>
       </property>
+      <property name="size" type="uint" value="32"/>
+      <property name="autohide-behavior" type="uint" value="1"/>
     </property>
+    <property name="dark-mode" type="bool" value="false"/>
   </property>
   <property name="plugins" type="empty">
-    <property name="plugin-1" type="string" value="applicationsmenu"/>
-    <property name="plugin-2" type="string" value="actions"/>
     <property name="plugin-3" type="string" value="tasklist"/>
     <property name="plugin-15" type="string" value="separator">
       <property name="expand" type="bool" value="true"/>
       <property name="style" type="uint" value="0"/>
     </property>
     <property name="plugin-4" type="string" value="pager"/>
-    <property name="plugin-5" type="string" value="clock"/>
+    <property name="plugin-5" type="string" value="clock">
+      <property name="digital-format" type="string" value="%_H:%M"/>
+    </property>
     <property name="plugin-6" type="string" value="systray">
       <property name="names-visible" type="array">
+        <value type="string" value="networkmanager applet"/>
+      </property>
+      <property name="known-legacy-items" type="array">
         <value type="string" value="networkmanager applet"/>
       </property>
     </property>
@@ -86,6 +96,60 @@
     </property>
     <property name="plugin-14" type="string" value="directorymenu">
       <property name="base-directory" type="string" value="/home/gio"/>
+    </property>
+    <property name="plugin-16" type="string" value="whiskermenu"/>
+    <property name="plugin-18" type="string" value="separator"/>
+    <property name="plugin-19" type="string" value="separator"/>
+    <property name="plugin-21" type="string" value="windowmenu"/>
+    <property name="plugin-22" type="string" value="weather">
+      <property name="msl" type="int" value="130"/>
+      <property name="timezone" type="string" value="Europe/Rome"/>
+      <property name="offset" type="string" value="+02:00"/>
+      <property name="cache-max-age" type="int" value="172800"/>
+      <property name="power-saving" type="bool" value="true"/>
+      <property name="units" type="empty">
+        <property name="temperature" type="int" value="0"/>
+        <property name="pressure" type="int" value="0"/>
+        <property name="windspeed" type="int" value="0"/>
+        <property name="precipitation" type="int" value="0"/>
+        <property name="altitude" type="int" value="0"/>
+        <property name="apparent-temperature" type="int" value="0"/>
+      </property>
+      <property name="round" type="bool" value="true"/>
+      <property name="single-row" type="bool" value="true"/>
+      <property name="tooltip-style" type="int" value="1"/>
+      <property name="forecast" type="empty">
+        <property name="layout" type="int" value="1"/>
+        <property name="days" type="int" value="5"/>
+      </property>
+      <property name="theme-dir" type="string" value="/usr/share/xfce4/weather/icons/liquid-dark"/>
+      <property name="scrollbox" type="empty">
+        <property name="show" type="bool" value="true"/>
+        <property name="animate" type="bool" value="true"/>
+        <property name="lines" type="int" value="1"/>
+        <property name="color" type="string" value="rgba(0,0,0,0)"/>
+        <property name="use-color" type="bool" value="false"/>
+      </property>
+      <property name="location" type="empty">
+        <property name="name" type="string" value="Milan, Italy"/>
+        <property name="latitude" type="string" value="45.472200"/>
+        <property name="longitude" type="string" value="9.192200"/>
+      </property>
+    </property>
+    <property name="plugin-24" type="string" value="launcher">
+      <property name="items" type="array">
+        <value type="string" value="16295662544.desktop"/>
+        <value type="string" value="16295661991.desktop"/>
+        <value type="string" value="162956686611.desktop"/>
+        <value type="string" value="162956686110.desktop"/>
+        <value type="string" value="16295662332.desktop"/>
+        <value type="string" value="16295663277.desktop"/>
+        <value type="string" value="16295663678.desktop"/>
+        <value type="string" value="16295662443.desktop"/>
+        <value type="string" value="16295664169.desktop"/>
+        <value type="string" value="16295663006.desktop"/>
+        <value type="string" value="16295662905.desktop"/>
+      </property>
     </property>
   </property>
 </channel>
