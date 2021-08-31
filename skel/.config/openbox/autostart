@@ -23,6 +23,7 @@ fi
 
 if [ -f ~/.config/openbox/autostart.d/xsetroot.on ]; then
 if which xsetroot >/dev/null 2>&1; then
+  xsetroot -cursor_name left_ptr
   xsetroot -solid black &
 fi
 fi
