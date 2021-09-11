@@ -17,6 +17,12 @@
 #xfce-mcs-manager &
 #
 
+if [ -f ~/.config/openbox/autostart.d/ssh-agent.on ]; then
+  eval $(ssh-agent)
+fi
+
+
+
 if [ -e ~/.Xresources ]; then
   xrdb -merge ~/.Xresources
 fi

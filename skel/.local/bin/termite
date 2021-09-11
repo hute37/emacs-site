@@ -1,0 +1,1 @@
+exec alacritty --config-file ~/.config/alacritty/termite.yml $@
