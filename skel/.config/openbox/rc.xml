@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- custom@hadar (arch). -->
 <openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
+ <!-- # {{{ [feel] ///////////////////////////////////////////////////////////////////// -->
   <resistance>
     <strength>10</strength>
     <screen_edge_strength>20</screen_edge_strength>
@@ -37,6 +38,8 @@
        following: 'Mouse' - where the mouse is, or
                   'Active' - where the active window is -->
   </placement>
+ <!-- # }}} [feel] \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+ <!-- # {{{ [look] ///////////////////////////////////////////////////////////////////// -->
   <theme>
     <name>Tron</name>
     <titleLayout>DLIMC</titleLayout>
@@ -107,6 +110,8 @@
       <!-- 'italic' or 'normal' -->
     </font>
   </theme>
+ <!-- # }}} [look] \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+ <!-- # {{{ [init] ///////////////////////////////////////////////////////////////////// -->
   <desktops>
     <!-- this stuff is only used at startup, pagers allow you to change them
        during a session
@@ -176,6 +181,8 @@
     <moveButton>Middle</moveButton>
     <!-- 'Left', 'Middle', 'Right' -->
   </dock>
+ <!-- # }}} [feel] \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+ <!-- # {{{ [keys] ///////////////////////////////////////////////////////////////////// -->
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
     <!-- Keybindings for desktop switching -->
@@ -215,6 +222,30 @@
         <wrap>yes</wrap>
       </action>
   </keybind>
+    <keybind key="A-Prior">
+      <action name="GoToDesktop">
+        <to>left</to>
+        <wrap>yes</wrap>
+      </action>
+    </keybind>
+    <keybind key="A-Next">
+      <action name="GoToDesktop">
+        <to>right</to>
+        <wrap>yes</wrap>
+      </action>
+  </keybind>
+    <keybind key="H-Prior">
+      <action name="GoToDesktop">
+        <to>left</to>
+        <wrap>yes</wrap>
+      </action>
+    </keybind>
+    <keybind key="H-Next">
+      <action name="GoToDesktop">
+        <to>right</to>
+        <wrap>yes</wrap>
+      </action>
+  </keybind>
   <!--
     <keybind key="W-Up">
       <action name="ToggleMaximizeFull"/>
@@ -222,7 +253,7 @@
     <keybind key="W-Down">
       <action name="NextWindow"/>
       </keybind>
-   -->       
+   -->
     <keybind key="C-A-Up">
       <action name="GoToDesktop">
         <to>up</to>
@@ -423,10 +454,30 @@
     <keybind key="A-S-Return">
       <action name="Execute">
         <startupnotify>
+                        <enabled>true</enabled>
+                        <!-- <name>x-terminal-emulator</name> -->
+          <name>rxvt</name>
+                                </startupnotify>
+                                <!-- <command>x-terminal-emulator</command> -->
+        <command>rxvt</command>
+      </action>
+    </keybind>
+    <keybind key="H-S-Return">
+      <action name="Execute">
+        <startupnotify>
           <enabled>true</enabled>
-          <name>x-terminal-emulator</name>
+          <name>xterm</name>
         </startupnotify>
-        <command>x-terminal-emulator</command>
+        <command>xterm</command>
+      </action>
+    </keybind>
+    <keybind key="H-Return">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>termite</name>
+        </startupnotify>
+        <command>termite</command>
       </action>
     </keybind>
     <keybind key="A-S-x">
@@ -456,7 +507,7 @@
         <command>xterm</command>
       </action>
   </keybind>
-  <!--      
+  <!--
     <keybind key="W-C-x">
       <action name="Execute">
         <startupnotify>
@@ -475,8 +526,8 @@
         <command>terminator</command>
       </action>
       </keybind>
-  -->          
-    <keybind key="C-A-r">
+  -->
+  <keybind key="C-A-r">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
@@ -485,6 +536,71 @@
         <command>dmenu_run</command>
       </action>
   </keybind>
+    <keybind key="H-p">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>dmemu</name>
+        </startupnotify>
+        <command>dmenu_run</command>
+      </action>
+  </keybind>
+    <keybind key="A-p">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>dmemu</name>
+        </startupnotify>
+        <command>dmenu_run</command>
+      </action>
+  </keybind>
+
+    <keybind key="H-d">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>rofi</name>
+        </startupnotify>
+        <command>rofi -show combi</command>
+        </action>
+  </keybind>
+    <keybind key="H-n">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>rofi</name>
+        </startupnotify>
+        <command>rofi -show run</command>
+        </action>
+  </keybind>
+    <keybind key="H-p">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>rofi</name>
+        </startupnotify>
+        <command>rofi -show run</command>
+        </action>
+  </keybind>
+    <keybind key="H-d">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>rofi</name>
+        </startupnotify>
+        <command>rofi -show drun</command>
+        </action>
+  </keybind>
+    <keybind key="H-Tab">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>rofi</name>
+        </startupnotify>
+        <command>rofi -show window</command>
+        </action>
+  </keybind>
+
 
 <!-- Keybinding for Volume management -->
     <keybind key="XF86AudioRaiseVolume">
@@ -529,7 +645,9 @@
       </action>
     </keybind>
   </keyboard>
-  <mouse>
+ <!-- # }}} [keys] \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+ <!-- # {{{ [mice] ///////////////////////////////////////////////////////////////////// -->
+ <mouse>
     <dragThreshold>1</dragThreshold>
     <!-- number of pixels the mouse must move before a drag begins -->
     <doubleClickTime>500</doubleClickTime>
@@ -863,7 +981,9 @@
       </mousebind>
     </context>
   </mouse>
-  <menu>
+ <!-- # }}} [mice] \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+ <!-- # {{{ [menu] ///////////////////////////////////////////////////////////////////// -->
+ <menu>
     <!-- You can specify more than one menu file in here and they are all loaded,
        just don't make menu ids clash or, well, it'll be kind of pointless -->
     <!-- default menu file (or custom one in $HOME/.config/openbox/) -->
@@ -888,6 +1008,8 @@
     <manageDesktops>yes</manageDesktops>
     <!-- show the manage desktops section in the client-list-(combined-)menu -->
   </menu>
+ <!-- # }}} [menu] \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+ <!-- # {{{ [apps] ///////////////////////////////////////////////////////////////////// -->
   <applications>
     <!--
   # this is an example with comments through out. use these to make your
@@ -917,7 +1039,7 @@
   # order that they appear in this list
 
 
-    # each rule element can be left out or set to 'default' to specify to not 
+    # each rule element can be left out or set to 'default' to specify to not
     # change that attribute of the window
 
     <decor>yes</decor>
@@ -984,4 +1106,8 @@
   # end of the example
 -->
   </applications>
+ <!-- # }}} [apps] \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 </openbox_config>
+<!--
+# vim: noet sw=4 ts=4 fdm=marker foldcolumn=0
+-->
