@@ -17,7 +17,7 @@
 #xfce-mcs-manager &
 #
 
-if [ -f ~/.Xresources ]; then
+if [ -e ~/.Xresources ]; then
   xrdb -merge ~/.Xresources
 fi
 
