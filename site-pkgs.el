@@ -20,12 +20,75 @@
 
 ;; (setq debug-on-error t)
 
-(require 'package)
-;;(nconc package-archives
-;;       '(("melpa" . "http://melpa.org/packages/")
-;;         ("org" . "http://orgmode.org/elpa/")))
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
+
+;; @see: https://ianyepan.github.io/posts/setting-up-use-package/
+;; @see: https://www.reddit.com/r/emacs/comments/dfcyy6/how_to_install_and_use_usepackage/
+;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
+
+(eval-and-compile
+  (require 'package)
+  (add-to-list 'package-archives '("org"   . "http://orgmode.org/elpa/")) ; Org-mode's repository
+  (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  ;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+  ;;(package-initialize)
+  ;; i always fetch the archive contents on startup and during compilation, which is slow
+  ;; (package-refresh-contents)
+  (unless (package-installed-p 'use-package)
+    (package-install 'use-package))
+  (require 'use-package)
+  ;; i don't really know why this isn't the default...
+  ;;(setf use-package-always-ensure t)
+  
+  ;;(use-package use-package-ensure
+  ;;  :config  (setq use-package-always-ensure t))
+
+  (unless (package-installed-p 'quelpa)
+    (with-temp-buffer
+      (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+      (eval-buffer)
+      (quelpa-self-upgrade)))
+  (quelpa
+   '(quelpa-use-package
+     :fetcher git
+     :url "https://github.com/quelpa/quelpa-use-package.git"))
+  (require 'quelpa-use-package)
+ )
+
+;; ;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
+
+;; ;;; initialization
+;; (require 'package)
+;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
+;; (package-initialize)
+;; (when (not package-archive-contents)
+;;   (package-refresh-contents))
+;; (package-install 'use-package)
+;; (use-package use-package-ensure
+;;   :config  (setq use-package-always-ensure t))
+
+;; (unless (package-installed-p 'quelpa)
+;;   (with-temp-buffer
+;;     (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+;;     (eval-buffer)
+;;     (quelpa-self-upgrade)))
+;; (quelpa
+;;  '(quelpa-use-package
+;;    :fetcher git
+;;    :url "https://github.com/quelpa/quelpa-use-package.git"))
+;; (require 'quelpa-use-package)
+
+
+
+
+
+;;(require 'package)
+;; ;;(nconc package-archives
+;; ;;      '(("melpa" . "http://melpa.org/packages/")
+;; ;;        ("org" . "http://orgmode.org/elpa/")))
+;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;;(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
 
 ;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 ;;(add-to-list 'package-archives '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
@@ -33,7 +96,7 @@
 ;; You don't need this one if you have marmalade:
 ;; (add-to-list 'package-archives '("geiser" . "http://download.savannah.gnu.org/releases/geiser/packages"))
 
-(setq package-enable-at-startup nil)
+;;(setq package-enable-at-startup nil)
 
 ;; (setq 
 ;;  load-prefer-newer t
@@ -1302,17 +1365,29 @@ the automatic filling of the current paragraph."
 
 (message "#pdf-tools(0): '( (h7/use-pdf-tools . %s) )" (h7/use-pdf-tools)) 
 
+;; (use-package pdf-tools
+;;   ;;  :if (h7/use-pdf-tools)
+;;   :quelpa (pdf-tools :fetcher github :repo "vedang/pdf-tools")
+;;   :ensure t
+;;   :pin manual ;; don't reinstall when package updates
+;;   :mode  ("\\.pdf\\'" . pdf-view-mode)
+;;   :config
+;;   (setq-default pdf-view-display-size 'fit-page)
+;;   (setq pdf-annot-activate-created-annotations t)
+;;   (require 'pdf-occur)
+;;   (pdf-tools-install :no-query)
+;;   )
+
 (use-package pdf-tools
-;;  :if (h7/use-pdf-tools)
   :ensure t
-  :pin manual ;; don't reinstall when package updates
-  :mode  ("\\.pdf\\'" . pdf-view-mode)
   :config
-  (setq-default pdf-view-display-size 'fit-page)
-  (setq pdf-annot-activate-created-annotations t)
-  (require 'pdf-occur)
-  (pdf-tools-install :no-query)
-  )
+  (pdf-tools-install t)
+  (quelpa '(pdf-continuous-scroll-mode
+          :fetcher github
+          :repo "dalanicolai/pdf-continuous-scroll-mode.el"))
+
+  (add-hook 'pdf-view-mode-hook 'pdf-continuous-scroll-mode))
+
 
 (use-package saveplace-pdf-view
   :if (h7/use-pdf-tools)
