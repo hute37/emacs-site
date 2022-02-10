@@ -1379,6 +1379,7 @@ the automatic filling of the current paragraph."
 ;;   )
 
 (use-package pdf-tools
+  :if (h7/use-pdf-tools)
   :ensure t
   :config
   (pdf-tools-install t)
