@@ -784,9 +784,14 @@
   (elpy-enable)
   (setq python-shell-interpreter "jupyter"
         python-shell-interpreter-args "console --simple-prompt")
+ 
   ;; (elpy-use-ipython "ipython3") 
   (defalias 'workon 'pyvenv-workon))
 
+(setenv "PYTHONIOENCODING" "utf-8")
+(add-to-list 'process-coding-system-alist '("python" . (utf-8 . utf-8)))
+(add-to-list 'process-coding-system-alist '("elpy" . (utf-8 . utf-8)))
+(add-to-list 'process-coding-system-alist '("flake8" . (utf-8 . utf-8)))
 
 (use-package ein
   :unless (version< emacs-version "25.1")
@@ -1432,6 +1437,7 @@ the automatic filling of the current paragraph."
 
 (use-package fira-code-mode
   :ensure t
+;; :disabled t
   :custom (fira-code-mode-disabled-ligatures '("[]" "x"))  ; ligatures you don't want
   :hook prog-mode)                                         ; mode to enable fira-code-mode in
 
