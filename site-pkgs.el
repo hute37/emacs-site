@@ -154,6 +154,11 @@
 (require 'bind-key)
 (require 'use-package)
 
+;; use-package-ensure-system-package
+;; provides way to define system package dependencies for Emacs packages
+(use-package use-package-ensure-system-package
+  :ensure t)
+
 ;;(require 'req-package)
 ;;(use-package req-package)
 
@@ -196,6 +201,18 @@
   :ensure t
   :config (mood-line-mode 1)
 )
+
+;; delight
+;; hides modeline displays
+(use-package delight
+  :ensure t)
+(require 'delight)                ;; if you use :delight
+(require 'bind-key)                ;; if you use any :bind variant
+
+;; ;; Required to hide the modeline 
+;; (use-package hide-mode-line
+;;   :ensure t
+;;   :defer t)
 
 ;; (use-package powerline
 ;;   :ensure t
@@ -341,7 +358,31 @@
   (projectile-global-mode))
 
 
+;; ---( treemacs )--------------------------------------------------------------
 
+;; Provides workspaces with file browsing (tree file viewer)
+;; and project management when coupled with `projectile`.
+
+(use-package treemacs
+  :ensure t
+  :defer t
+  :config
+  (setq treemacs-no-png-images t
+	  treemacs-width 24)
+  :bind ("C-c t" . treemacs))
+
+(use-package treemacs-projectile
+  :after treemacs projectile
+  :ensure t)
+
+(use-package treemacs-icons-dired
+  :after treemacs dired
+  :ensure t
+  :config (treemacs-icons-dired-mode))
+
+(use-package treemacs-magit
+  :after treemacs magit
+  :ensure t)
 
 
 ;; ---( etags )--------------------------------------------------------------
@@ -699,11 +740,204 @@
 
 
 
+;; ---( LSP mode )------------------------------------------------------------
+
+;; @see: https://emacs-lsp.github.io/lsp-mode/page/installation/
+(use-package lsp-mode
+  :init
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  (setq lsp-keymap-prefix "C-c l")
+  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+         (python-mode . lsp)
+         ;; if you want which-key integration
+         (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
+
+;; optionally
+(use-package lsp-ui :commands lsp-ui-mode)
+;; if you are helm user
+;;(use-package helm-lsp :commands helm-lsp-workspace-symbol)
+;; if you are ivy user
+(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+
+;; optionally if you want to use debugger
+
+;; Provides visual help in the buffer 
+;; For example definitions on hover. 
+;; The `imenu` lets me browse definitions quickly.
+(use-package lsp-ui
+  :ensure t
+  :defer t
+  :config
+  (setq lsp-ui-sideline-enable nil
+	    lsp-ui-doc-delay 2)
+  :hook (lsp-mode . lsp-ui-mode)
+  :bind (:map lsp-ui-mode-map
+	      ("C-c i" . lsp-ui-imenu)))
+
+
+;; ---( dap )--------------------------------------------------------------
+
+;; Integration with the debug server 
+(use-package dap-mode
+  :ensure t
+  :defer t
+  :after lsp-mode
+  :config
+  (dap-auto-configure-mode))
+
+;; (use-package dap-mode)
+;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+
+
+
 ;; ---( python )--------------------------------------------------------------
+
+;; @see: https://gitlab.com/nathanfurnal/dotemacs/-/snippets/2060535?utm_source=pocket_mylist
+;; @see: https://github.com/jidicula/dotfiles/blob/main/init.el?utm_source=pocket_mylist
+
+
+;; Built-in Python utilities
+(use-package python
+  :ensure t
+  :config
+  ;; Remove guess indent python message
+  (setq python-indent-guess-indent-offset-verbose nil)
+  ;; Use IPython when available or fall back to regular Python 
+  (cond
+   ((executable-find "ipython")
+    (progn
+      (setq python-shell-buffer-name "IPython")
+      (setq python-shell-interpreter "ipython")
+      (setq python-shell-interpreter-args "-i --simple-prompt")))
+   ((executable-find "python3")
+    (setq python-shell-interpreter "python3"))
+   ((executable-find "python2")
+    (setq python-shell-interpreter "python2"))
+   (t
+    (setq python-shell-interpreter "python"))))
+
+
+;; Hide the modeline for inferior python processes
+(use-package inferior-python-mode
+  :ensure nil
+  :hook (inferior-python-mode . hide-mode-line-mode))
+
+;; Required to hide the modeline 
+(use-package hide-mode-line
+  :ensure t
+  :defer t)
+
+
+
+;; Required to easily switch virtual envs 
+;; via the menu bar or with `pyvenv-workon` 
+;; Setting the `WORKON_HOME` environment variable points 
+;; at where the envs are located. I use (miniconda ^H) poetry. 
+(use-package pyvenv
+  :ensure t
+  :defer t
+  :config
+  ;; Setting work on to easily switch between environments
+  ;;(setenv "WORKON_HOME" (expand-file-name "~/miniconda3/envs/"))
+  (setenv "WORKON_HOME" (expand-file-name "~/.cache/pypoetry/virtualenvs"))
+  ;; Display virtual envs in the menu bar
+  (setq pyvenv-menu t)
+  ;; Restart the python process when switching environments
+  (add-hook 'pyvenv-post-activate-hooks (lambda ()
+					  (pyvenv-restart-python)))
+  :hook (python-mode . pyvenv-mode))
+
+;; Language server for Python 
+;; Read the docs for the different variables set in the config.
+(use-package lsp-pyright
+  :ensure t
+  :defer t
+  :config
+  ;;(setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
+  (setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
+  (setq lsp-pyright-disable-language-service nil
+	lsp-pyright-disable-organize-imports nil
+	lsp-pyright-auto-import-completions t
+	lsp-pyright-use-library-code-for-types t
+	;;lsp-pyright-venv-path "~/miniconda3/envs")
+	lsp-pyright-venv-path "~/.cache/pypoetry/virtualenvs")
+  :hook ((python-mode . (lambda () 
+                          (require 'lsp-pyright) (lsp-deferred)))))
+
+;; Format the python buffer following YAPF rules
+;; There's also blacken if you like it better.
+(use-package yapfify
+  :ensure t
+  :defer t
+  :hook (python-mode . yapf-mode))
+
+
+
+;; python-black
+(use-package python-black
+  ;;:delight python-black-on-save-mode "⚫️"
+  :ensure t
+  :hook
+  (python-mode . python-black-on-save-mode)
+  :init
+  (put 'python-black-command 'safe-local-variable #'stringp)
+  (put 'python-black-extra-args 'safe-local-variable #'stringp)
+  (put 'python-black-on-save-mode 'safe-local-variable #'booleanp)
+  )
+
+;; poetry
+(use-package poetry
+  :ensure t
+  ;; :init
+  ;; imperfect tracking strategy causes lags in builds
+  ;; (setq poetry-tracking-strategy 'switch-buffer)
+  :hook
+  ;; activate poetry-tracking-mode when python-mode is active
+  (python-mode . poetry-tracking-mode)
+  )
+
+;; (use-package poetry
+;;   :ensure t
+;;   :config
+;;   (add-hook 'poetry-tracking-mode-hook (lambda () (remove-hook 'post-command-hook 'poetry-track-virtualenv)))
+;;   (add-hook 'python-mode-hook 'poetry-track-virtualenv)
+;;   (add-hook 'projectile-after-switch-project-hook 'poetry-track-virtualenv))
+
+
+
+;; (use-package python-mode
+;;   :mode ("\\.py\\'" . python-mode)
+;;   :interpreter ("python" . python-mode)
+;;   :config
+;;   (defvar python-mode-initialized nil)
+;;   (defun my-python-mode-hook ()
+;;     (unless python-mode-initialized
+;;       (setq python-mode-initialized t)
+;;       (info-lookup-add-help
+;;        :mode 'python-mode
+;;        :regexp "[a-zA-Z_0-9.]+"
+;;        :doc-spec
+;;        '(("(python)Python Module Index" )
+;;          ("(python)Index"
+;;           (lambda
+;;             (item)
+;;             (cond
+;;              ((string-match
+;;                "\\([A-Za-z0-9_]+\\)() (in module \\([A-Za-z0-9_.]+\\))" item)
+;;               (format "%s.%s" (match-string 2 item)
+;;                       (match-string 1 item)))))))))
+;;     (setq indicate-empty-lines t)
+;;     (set (make-local-variable 'parens-require-spaces) nil)
+;;     (setq indent-tabs-mode nil)
+;;     (bind-key "C-c C-z" 'python-shell python-mode-map)
+;;     (unbind-key "C-c c" python-mode-map))
+;;   (add-hook 'python-mode-hook 'my-python-mode-hook))
 
 
 (use-package elpy
-  :ensure t
+  :disabled t
   :preface
   
   ;; @see: https://elpy.readthedocs.org/en/latest/
@@ -830,10 +1064,6 @@
 ;;   )
   
 
-
-(use-package poetry
- :ensure t)
-
 ;; (use-package pipenv
 ;;   :unless (version< emacs-version "25.1")
 ;;   :defer t
@@ -843,34 +1073,6 @@
 ;;   (setq
 ;;    pipenv-projectile-after-switch-function
 ;;    #'pipenv-projectile-after-switch-extended))
-
-;; (use-package python-mode
-;;   :mode ("\\.py\\'" . python-mode)
-;;   :interpreter ("python" . python-mode)
-;;   :config
-;;   (defvar python-mode-initialized nil)
-;;   (defun my-python-mode-hook ()
-;;     (unless python-mode-initialized
-;;       (setq python-mode-initialized t)
-;;       (info-lookup-add-help
-;;        :mode 'python-mode
-;;        :regexp "[a-zA-Z_0-9.]+"
-;;        :doc-spec
-;;        '(("(python)Python Module Index" )
-;;          ("(python)Index"
-;;           (lambda
-;;             (item)
-;;             (cond
-;;              ((string-match
-;;                "\\([A-Za-z0-9_]+\\)() (in module \\([A-Za-z0-9_.]+\\))" item)
-;;               (format "%s.%s" (match-string 2 item)
-;;                       (match-string 1 item)))))))))
-;;     (setq indicate-empty-lines t)
-;;     (set (make-local-variable 'parens-require-spaces) nil)
-;;     (setq indent-tabs-mode nil)
-;;     (bind-key "C-c C-z" 'python-shell python-mode-map)
-;;     (unbind-key "C-c c" python-mode-map))
-;;   (add-hook 'python-mode-hook 'my-python-mode-hook))
 
 
 
@@ -1945,6 +2147,31 @@ the automatic filling of the current paragraph."
 ;;     (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-c"))
 ;;     (guide-key-mode 1)))
 
+;; ---( which-key )--------------------------------------------------------------
+
+;; optional if you want which-key integration
+;; (use-package which-key
+;;     :config
+;;     (which-key-mode))
+
+(use-package which-key
+  :delight
+  :ensure t
+  :init
+  (which-key-mode)
+  )
+
+
+;; ---( environment )--------------------------------------------------------------
+
+;; Restart Emacs from inside Emacs with `M-x restart-emacs`
+(use-package restart-emacs
+  :defer t)
+
+;; use-package-ensure-system-package
+;; provides way to define system package dependencies for Emacs packages
+(use-package use-package-ensure-system-package
+  :ensure t)
 
 ;; ---( windmove )--------------------------------------------------------------
 
@@ -2470,8 +2697,12 @@ the automatic filling of the current paragraph."
   :config
   (setq company-idle-delay 0.3)
   (global-company-mode t)  
-  (use-package helm-company
-    :disabled t))
+  ;; (use-package helm-company :disabled t)
+  :hook (
+         (text-mode . company-mode)
+         (prog-mode . company-mode)
+         )
+  )
 
 ;; @see: https://cloudnine.github.io/science/2020-07-27-emacs-company-mode/
 ;; @see: https://github.com/mswift42/.emacs.d/blob/master/init.el
