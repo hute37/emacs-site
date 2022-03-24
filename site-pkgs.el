@@ -746,7 +746,8 @@
 (use-package lsp-mode
   :init
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-  (setq lsp-keymap-prefix "C-c l")
+  (setq lsp-keymap-prefix "C-l")
+  ;;(setq lsp-keymap-prefix "C-c l")
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
          (python-mode . lsp)
          ;; if you want which-key integration
@@ -1746,7 +1747,7 @@ the automatic filling of the current paragraph."
   :defer t
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture)
-         ("C-c l" . org-store-link))
+         ("C-c k" . org-store-link))
   :config
   (require 'ox-md)
   (unbind-key "C-c ;" org-mode-map)
@@ -2161,6 +2162,12 @@ the automatic filling of the current paragraph."
   (which-key-mode)
   )
 
+;; ---( comint )--------------------------------------------------------------
+
+(use-package comint
+  :custom
+  (comint-buffer-maximum-size 20000 "Increase comint buffer size.")
+  (comint-prompt-read-only t "Make the prompt read only."))
 
 ;; ---( environment )--------------------------------------------------------------
 
@@ -3154,7 +3161,10 @@ the automatic filling of the current paragraph."
       ;; Exchange the default bindings for C-j and C-m
       ("C-m" . ivy-alt-done)             ;RET, default C-j
       ("C-j" . ivy-done)                 ;Default C-m
-      ("C-S-m" . ivy-immediate-done))
+      ("C-S-m" . ivy-immediate-done)
+      ("M-m" . ivy-previous-history-element)
+      ("M-n" . ivy-next-history-element)
+      )
 
      (bind-keys
       :map ivy-occur-mode-map
