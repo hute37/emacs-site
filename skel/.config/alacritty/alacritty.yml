@@ -687,19 +687,39 @@ schemes:
  Theme_Rigelx: &Theme_Rigelx
   # Default colors
   primary:
-    background: '0x002635'
+    background: '0x001024'
     foreground: '0xe6e6dc'
-   # Normal colors
+   # Normal colors (XTerm)
+   #normal:
+   # black:   '#000000'
+   # red:     '#cd0000'
+   # green:   '#00cd00'
+   # yellow:  '#cdcd00'
+   # blue:    '#0000ee'
+   # magenta: '#cd00cd'
+   # cyan:    '#00cdcd'
+   # white:   '#e5e5e5'
+   # Normal colors (Tango)
+   #normal:
+   # black:   '#2e3436'
+   # red:     '#cc0000'
+   # green:   '#73d216'
+   # yellow:  '#edd400'
+   # blue:    '#3465a4'
+   # magenta: '#75507b'
+   # cyan:    '#06989a'
+   # white:   '#d3d7cf'
+   # Normal colors (Tango)
   normal:
     black:   '#000000'
-    red:     '#cd0000'
-    green:   '#00cd00'
-    yellow:  '#cdcd00'
-    blue:    '#0000ee'
-    magenta: '#cd00cd'
-    cyan:    '#00cdcd'
-    white:   '#e5e5e5'
-  # Bright colors
+    red:     '#cc0000'
+    green:   '#73d216'
+    yellow:  '#edd400'
+    blue:    '#2055b4'
+    magenta: '#75507b'
+    cyan:    '#04989a'
+    white:   '#d3d7cf'
+   # Bright colors
   bright:
     black:   '0x517f8d'
     red:     '0xff5a67'
@@ -708,7 +728,7 @@ schemes:
     blue:    '0x7eb2dd'
     magenta: '0xfb94ff'
     cyan:    '0x00ffff'
-    white:   '0xb7cff9'
+    white:   '0xc7dff9'
   cursor:
     text: "0x002635"
     cursor: "0xffcc1b"
@@ -913,16 +933,16 @@ colors: *Theme_Rigelx
   # When set to `true`, selected text will be copied to the primary clipboard.
   #save_to_clipboard: false
 
-#cursor:
+cursor:
   # Cursor style
-  #style:
+  style:
     # Cursor shape
     #
     # Values for `shape`:
     #   - ▇ Block
     #   - _ Underline
     #   - | Beam
-    #shape: Block
+    shape: Block
 
     # Cursor blinking state
     #
@@ -931,7 +951,7 @@ colors: *Theme_Rigelx
     #   - Off: Disable blinking by default
     #   - On: Enable blinking by default
     #   - Always: Force the cursor to always blink
-    #blinking: Off
+    blinking: On
 
   # Vi mode cursor style
   #
@@ -939,14 +959,14 @@ colors: *Theme_Rigelx
   # the style of the active value of the normal cursor.
   #
   # See `cursor.style` for available options.
-  #vi_mode_style: None
+  vi_mode_style: Underline
 
   # Cursor blinking interval in milliseconds.
   #blink_interval: 750
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
-  #unfocused_hollow: true
+  unfocused_hollow: true
 
   # Thickness of the cursor relative to the cell width as floating point number
   # from `0.0` to `1.0`.
