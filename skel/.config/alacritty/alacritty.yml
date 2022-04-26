@@ -688,7 +688,8 @@ schemes:
  Theme_Rigelx: &Theme_Rigelx
   # Default colors
   primary:
-    background: '0x001024'
+    background: '#060D18'
+  # background: '0x001024'
     foreground: '0xe6e6dc'
    # Normal colors (XTerm)
    #normal:
