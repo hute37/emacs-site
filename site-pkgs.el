@@ -583,7 +583,7 @@
 (use-package ess
   :if (version<= "25.1" emacs-version)
   :defer t
-  ;; :ensure t
+  :ensure t
   
   ;;:load-path "site-lisp/ess/lisp/"
   ;;:config (ess-toggle-underscore nil)
