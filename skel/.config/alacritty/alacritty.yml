@@ -14,7 +14,7 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-#env:
+env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
@@ -22,6 +22,7 @@
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
   #TERM: alacritty
+  TERM: xterm-256color
 
 window:
   # Window dimensions (changes require restart)
@@ -687,7 +688,8 @@ schemes:
  Theme_Rigelx: &Theme_Rigelx
   # Default colors
   primary:
-    background: '0x001024'
+    background: '#060D18'
+  # background: '0x001024'
     foreground: '0xe6e6dc'
    # Normal colors (XTerm)
    #normal:
