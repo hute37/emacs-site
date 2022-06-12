@@ -21,9 +21,34 @@
 ;; (setq debug-on-error t)
 
 
-;; @see: https://ianyepan.github.io/posts/setting-up-use-package/
-;; @see: https://www.reddit.com/r/emacs/comments/dfcyy6/how_to_install_and_use_usepackage/
-;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
+;; @see: https://github.com/radian-software/straight.el
+;; @see: 
+;; @see: https://youtu.be/UmbVeqphGlc
+
+;; (setq straight-use-package-by-default t)
+;; (setq use-package-always-ensure t)
+;; 
+;; (defvar bootstrap-version)
+;; (let ((bootstrap-file
+;;        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+;;       (bootstrap-version 5))
+;;   (unless (file-exists-p bootstrap-file)
+;;     (with-current-buffer
+;;         (url-retrieve-synchronously
+;;          "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+;;          'silent 'inhibit-cookies)
+;;       (goto-char (point-max))
+;;       (eval-print-last-sexp)))
+;;   (load bootstrap-file nil 'nomessage))
+;; 
+;; (setq package-enable-at-startup nil)
+;; (straight-use-package 'use-package)
+;; (eval-when-compile (require 'use-package))
+
+
+;; ;; @see: https://ianyepan.github.io/posts/setting-up-use-package/
+;; ;; @see: https://www.reddit.com/r/emacs/comments/dfcyy6/how_to_install_and_use_usepackage/
+;; ;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
 
 (eval-and-compile
   (require 'package)
@@ -39,7 +64,7 @@
   (require 'use-package)
   ;; i don't really know why this isn't the default...
   ;;(setf use-package-always-ensure t)
-  
+
   ;;(use-package use-package-ensure
   ;;  :config  (setq use-package-always-ensure t))
 
@@ -55,7 +80,7 @@
   (require 'quelpa-use-package)
  )
 
-;; ;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
+;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
 
 ;; ;;; initialization
 ;; (require 'package)
@@ -128,7 +153,7 @@
 ;; (unless (assoc-default "melpa" package-archives)
 ;;   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t))
 
-;; (package-initialize)
+;;(package-initialize)
 
 ;; Bootstrap `use-package'
 (unless (and
@@ -137,13 +162,15 @@
 	 (package-installed-p 'use-package)
 	 (package-installed-p 'req-package)
 	 )
-  (package-refresh-contents)
+(package-refresh-contents)
   (package-install 'bind-key)
   (package-install 'diminish)
   (package-install 'use-package)
   (package-install 'req-package)
 )
 
+;; (straight-use-package 'bind-key)
+;; (straight-use-package 'diminish)
 
 ;; @see: https://github.com/jwiegley/dot-emacs/blob/master/init.el
 
@@ -159,7 +186,7 @@
 (use-package use-package-ensure-system-package
   :ensure t)
 
-;;(require 'req-package)
+(require 'req-package)
 ;;(use-package req-package)
 
 ;; ---( ... )--------------------------------------------------------------
@@ -2441,6 +2468,10 @@ the automatic filling of the current paragraph."
 
 (use-package vterm
   :bind (("C-<F9>" . vterm)
+             ;; :straight (:post-build (cl-letf (((symbol-function #'pop-to-buffer)
+             ;;                        (lambda (buffer) (with-current-buffer buffer (message (buffer-string))))))
+             ;;               (setq vterm-always-compile-module t)
+             ;;               (require 'vterm)))
          :map vterm-mode-map
          ("C-v" . vterm-yank)
          ("S-<insert>" . vterm-yank)
@@ -2448,6 +2479,7 @@ the automatic filling of the current paragraph."
          ([kp-divide] . vterm-yank-pop)
          ([kp-multiply] . vterm-copy-mode))
   :ensure t)
+
 
 (use-package multi-vterm
   :bind (("C-S-<f9>" . multi-vterm)
