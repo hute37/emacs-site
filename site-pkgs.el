@@ -1669,7 +1669,7 @@ the automatic filling of the current paragraph."
       (unless (file-exists-p ligature-source)
 	(progn
 	  (make-directory ligature-path t)
-          (url-copy-file "https://raw.githubusercontent.com/mickeynp/ligature.el/master/ligature.el" ligature-file t))))
+          (url-copy-file "https://raw.githubusercontent.com/mickeynp/ligature.el/master/ligature.el" ligature-source t))))
     
 (load-library "~/.emacs.d/local/repos/ligatures.el/ligatures")
     
