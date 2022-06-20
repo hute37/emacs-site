@@ -35,28 +35,11 @@ set -a
 [ -r ~/.etc/profile.conf ] && . ~/.etc/profile.conf || true
 set +a
 
+export _DOT_XPROFILE=1
 
 # Load profiles from ~/.etc/profile.d
-if [ -d ~/.etc/profile.d ]; then
 
-    case "$0" in
-        *csh) ;;
-        *)
-
-	    for profile in ~/.etc/profile.d/*.sh; do
-	        if [ -x "$profile" ]; then
-            	    log_profile "++ >> $profile"
-		    . "$profile" || true
-            	    log_profile "++ << $profile ($?)"
-                fi
-	    done
-	    unset profile
-
-            ;;
-        *none)
-            ;;
-    esac
-fi
+[ -f ~/.profile ] && . ~/.profile || true
 
 env | sort >> ~/.xprofile.log
 
