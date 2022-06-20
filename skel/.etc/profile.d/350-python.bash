@@ -2,7 +2,7 @@
 ##
 #  pyenv environment
 #
-if [ "$PY_RC_ENV" ]; then
+if [ "$PY_RC_ENV" = "1" ]; then
 
 py_rc_env() {
 
