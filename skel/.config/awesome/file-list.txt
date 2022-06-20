@@ -1,0 +1,774 @@
+.:
+total 152
+-rw-r--r-- 1 gio gio  1892 Nov 26  2021 ISSUE_TEMPLATE.md
+-rw-r--r-- 1 gio gio  5791 Nov 26  2021 README.rst
+-rw-r--r-- 1 gio gio 13329 Nov 23  2021 _archmenu.lua
+-rw-r--r-- 1 gio gio 13329 Nov 23  2021 archmenu.lua
+drwxr-xr-x 1 gio gio  4096 Nov 25  2021 debian
+-rw-r--r-- 1 gio gio     0 Jun  1 11:19 file-list.txt
+drwxr-xr-x 1 gio gio  4096 Nov 26  2021 freedesktop
+drwxr-xr-x 1 gio gio  4096 Nov 26  2021 lain
+-rw-r--r-- 1 gio gio 32044 Jun  1 11:13 rc-copycats.lua
+-rw-r--r-- 1 gio gio 32476 Nov 23  2021 rc-powerarrow.lua
+-rw-r--r-- 1 gio gio 23342 Feb 26  2019 rc-xloc.lua
+-rw-r--r-- 1 gio gio 20072 Nov 23  2021 rc-zenburn.lua
+lrwxrwxrwx 1 gio gio    15 Nov 26  2021 rc.lua -> rc-copycats.lua
+drwxr-xr-x 1 gio gio  4096 Nov 26  2021 themes
+
+./debian:
+total 8
+-rw-r--r-- 1 gio gio 5840 Nov 25  2021 menu.lua
+
+./freedesktop:
+total 68
+-rw-r--r-- 1 gio gio 18046 Nov 26  2021 LICENSE
+-rw-r--r-- 1 gio gio  1768 Nov 26  2021 README.rst
+-rw-r--r-- 1 gio gio   480 Nov 26  2021 awesome-freedesktop-scm-1.rockspec
+-rw-r--r-- 1 gio gio  7968 Nov 26  2021 desktop.lua
+-rw-r--r-- 1 gio gio   321 Nov 26  2021 init.lua
+-rw-r--r-- 1 gio gio  3501 Nov 26  2021 menu.lua
+-rw-r--r-- 1 gio gio 24897 Nov 26  2021 screenshot.png
+
+./lain:
+total 40
+-rw-r--r-- 1 gio gio   967 Nov 26  2021 ISSUE_TEMPLATE.md
+-rw-r--r-- 1 gio gio 18046 Nov 26  2021 LICENSE
+-rw-r--r-- 1 gio gio  1498 Nov 26  2021 README.rst
+-rw-r--r-- 1 gio gio  4695 Nov 26  2021 helpers.lua
+drwxr-xr-x 1 gio gio  4096 Nov 26  2021 icons
+-rw-r--r-- 1 gio gio   271 Nov 26  2021 init.lua
+-rw-r--r-- 1 gio gio   708 Nov 26  2021 lain-scm-1.rockspec
+drwxr-xr-x 1 gio gio  4096 Nov 26  2021 layout
+drwxr-xr-x 1 gio gio  4096 Nov 26  2021 util
+drwxr-xr-x 1 gio gio  4096 Nov 26  2021 widget
+drwxr-xr-x 1 gio gio  4096 Nov 26  2021 wiki
+
+./lain/icons:
+total 8
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 cal
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 layout
+-rw-r--r-- 1 gio gio  526 Nov 26  2021 mail.png
+-rw-r--r-- 1 gio gio 1476 Nov 26  2021 no_net.png
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 openweathermap
+-rw-r--r-- 1 gio gio  636 Nov 26  2021 taskwarrior.png
+
+./lain/icons/cal:
+total 0
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 black
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 white
+
+./lain/icons/cal/black:
+total 124
+-rw-r--r-- 1 gio gio  836 Nov 26  2021 1.png
+-rw-r--r-- 1 gio gio 2311 Nov 26  2021 10.png
+-rw-r--r-- 1 gio gio 1742 Nov 26  2021 11.png
+-rw-r--r-- 1 gio gio 2282 Nov 26  2021 12.png
+-rw-r--r-- 1 gio gio 2407 Nov 26  2021 13.png
+-rw-r--r-- 1 gio gio 1359 Nov 26  2021 14.png
+-rw-r--r-- 1 gio gio 1823 Nov 26  2021 15.png
+-rw-r--r-- 1 gio gio 2019 Nov 26  2021 16.png
+-rw-r--r-- 1 gio gio 1504 Nov 26  2021 17.png
+-rw-r--r-- 1 gio gio 2102 Nov 26  2021 18.png
+-rw-r--r-- 1 gio gio 1988 Nov 26  2021 19.png
+-rw-r--r-- 1 gio gio 1425 Nov 26  2021 2.png
+-rw-r--r-- 1 gio gio 2549 Nov 26  2021 20.png
+-rw-r--r-- 1 gio gio 2047 Nov 26  2021 21.png
+-rw-r--r-- 1 gio gio 1890 Nov 26  2021 22.png
+-rw-r--r-- 1 gio gio 2150 Nov 26  2021 23.png
+-rw-r--r-- 1 gio gio 2023 Nov 26  2021 24.png
+-rw-r--r-- 1 gio gio 2089 Nov 26  2021 25.png
+-rw-r--r-- 1 gio gio 2244 Nov 26  2021 26.png
+-rw-r--r-- 1 gio gio 1904 Nov 26  2021 27.png
+-rw-r--r-- 1 gio gio 2314 Nov 26  2021 28.png
+-rw-r--r-- 1 gio gio 2225 Nov 26  2021 29.png
+-rw-r--r-- 1 gio gio 1594 Nov 26  2021 3.png
+-rw-r--r-- 1 gio gio 2626 Nov 26  2021 30.png
+-rw-r--r-- 1 gio gio 2165 Nov 26  2021 31.png
+-rw-r--r-- 1 gio gio 1042 Nov 26  2021 4.png
+-rw-r--r-- 1 gio gio 1387 Nov 26  2021 5.png
+-rw-r--r-- 1 gio gio 1581 Nov 26  2021 6.png
+-rw-r--r-- 1 gio gio 1178 Nov 26  2021 7.png
+-rw-r--r-- 1 gio gio 1639 Nov 26  2021 8.png
+-rw-r--r-- 1 gio gio 1615 Nov 26  2021 9.png
+
+./lain/icons/cal/white:
+total 124
+-rw-r--r-- 1 gio gio  714 Nov 26  2021 1.png
+-rw-r--r-- 1 gio gio 2357 Nov 26  2021 10.png
+-rw-r--r-- 1 gio gio 1622 Nov 26  2021 11.png
+-rw-r--r-- 1 gio gio 2316 Nov 26  2021 12.png
+-rw-r--r-- 1 gio gio 2045 Nov 26  2021 13.png
+-rw-r--r-- 1 gio gio 1365 Nov 26  2021 14.png
+-rw-r--r-- 1 gio gio 1711 Nov 26  2021 15.png
+-rw-r--r-- 1 gio gio 2056 Nov 26  2021 16.png
+-rw-r--r-- 1 gio gio 1435 Nov 26  2021 17.png
+-rw-r--r-- 1 gio gio 2183 Nov 26  2021 18.png
+-rw-r--r-- 1 gio gio 2055 Nov 26  2021 19.png
+-rw-r--r-- 1 gio gio 1422 Nov 26  2021 2.png
+-rw-r--r-- 1 gio gio 2633 Nov 26  2021 20.png
+-rw-r--r-- 1 gio gio 2054 Nov 26  2021 21.png
+-rw-r--r-- 1 gio gio 1872 Nov 26  2021 22.png
+-rw-r--r-- 1 gio gio 2229 Nov 26  2021 23.png
+-rw-r--r-- 1 gio gio 2067 Nov 26  2021 24.png
+-rw-r--r-- 1 gio gio 2149 Nov 26  2021 25.png
+-rw-r--r-- 1 gio gio 2340 Nov 26  2021 26.png
+-rw-r--r-- 1 gio gio 1980 Nov 26  2021 27.png
+-rw-r--r-- 1 gio gio 2415 Nov 26  2021 28.png
+-rw-r--r-- 1 gio gio 2316 Nov 26  2021 29.png
+-rw-r--r-- 1 gio gio 1586 Nov 26  2021 3.png
+-rw-r--r-- 1 gio gio 2729 Nov 26  2021 30.png
+-rw-r--r-- 1 gio gio 2196 Nov 26  2021 31.png
+-rw-r--r-- 1 gio gio 1000 Nov 26  2021 4.png
+-rw-r--r-- 1 gio gio 1437 Nov 26  2021 5.png
+-rw-r--r-- 1 gio gio 1714 Nov 26  2021 6.png
+-rw-r--r-- 1 gio gio 1147 Nov 26  2021 7.png
+-rw-r--r-- 1 gio gio 1811 Nov 26  2021 8.png
+-rw-r--r-- 1 gio gio 1670 Nov 26  2021 9.png
+
+./lain/icons/layout:
+total 0
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 default
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 zenburn
+
+./lain/icons/layout/default:
+total 0
+-rw-r--r-- 1 gio gio 233 Nov 26  2021 cascade.png
+-rw-r--r-- 1 gio gio 230 Nov 26  2021 cascadetile.png
+-rw-r--r-- 1 gio gio 230 Nov 26  2021 cascadetilew.png
+-rw-r--r-- 1 gio gio 233 Nov 26  2021 cascadew.png
+-rw-r--r-- 1 gio gio 169 Nov 26  2021 centerfair.png
+-rw-r--r-- 1 gio gio 169 Nov 26  2021 centerfairw.png
+-rw-r--r-- 1 gio gio 204 Nov 26  2021 centerwork.png
+-rw-r--r-- 1 gio gio 199 Nov 26  2021 centerworkh.png
+-rw-r--r-- 1 gio gio 200 Nov 26  2021 centerworkhw.png
+-rw-r--r-- 1 gio gio 195 Nov 26  2021 centerworkw.png
+-rw-r--r-- 1 gio gio 191 Nov 26  2021 termfair.png
+-rw-r--r-- 1 gio gio 191 Nov 26  2021 termfairw.png
+
+./lain/icons/layout/zenburn:
+total 0
+-rw-r--r-- 1 gio gio 225 Nov 26  2021 cascade.png
+-rw-r--r-- 1 gio gio 227 Nov 26  2021 cascadetile.png
+-rw-r--r-- 1 gio gio 361 Nov 26  2021 centerfair.png
+-rw-r--r-- 1 gio gio 185 Nov 26  2021 centerwork.png
+-rw-r--r-- 1 gio gio 204 Nov 26  2021 centerworkh.png
+-rw-r--r-- 1 gio gio 237 Nov 26  2021 termfair.png
+
+./lain/icons/openweathermap:
+total 96
+-rw-r--r-- 1 gio gio 3993 Nov 26  2021 01d.png
+-rw-r--r-- 1 gio gio 3071 Nov 26  2021 01n.png
+-rw-r--r-- 1 gio gio 4886 Nov 26  2021 02d.png
+-rw-r--r-- 1 gio gio 4488 Nov 26  2021 02n.png
+-rw-r--r-- 1 gio gio 5147 Nov 26  2021 03d.png
+-rw-r--r-- 1 gio gio 4778 Nov 26  2021 03n.png
+-rw-r--r-- 1 gio gio 4847 Nov 26  2021 04d.png
+lrwxrwxrwx 1 gio gio    7 Nov 26  2021 04n.png -> 04d.png
+-rw-r--r-- 1 gio gio 5623 Nov 26  2021 09d.png
+lrwxrwxrwx 1 gio gio    7 Nov 26  2021 09n.png -> 09d.png
+-rw-r--r-- 1 gio gio 6584 Nov 26  2021 10d.png
+lrwxrwxrwx 1 gio gio    7 Nov 26  2021 10n.png -> 10d.png
+-rw-r--r-- 1 gio gio 6692 Nov 26  2021 11d.png
+lrwxrwxrwx 1 gio gio    7 Nov 26  2021 11n.png -> 11d.png
+-rw-r--r-- 1 gio gio 7839 Nov 26  2021 13d.png
+lrwxrwxrwx 1 gio gio    7 Nov 26  2021 13n.png -> 13d.png
+-rw-r--r-- 1 gio gio 4710 Nov 26  2021 50d.png
+lrwxrwxrwx 1 gio gio    7 Nov 26  2021 50n.png -> 50d.png
+-rw-r--r-- 1 gio gio  302 Nov 26  2021 README.md
+-rw-r--r-- 1 gio gio 7417 Nov 26  2021 na.png
+
+./lain/layout:
+total 28
+-rw-r--r-- 1 gio gio  5411 Nov 26  2021 cascade.lua
+-rw-r--r-- 1 gio gio  7866 Nov 26  2021 centerwork.lua
+-rw-r--r-- 1 gio gio   405 Nov 26  2021 init.lua
+-rw-r--r-- 1 gio gio 10104 Nov 26  2021 termfair.lua
+
+./lain/util:
+total 56
+-rw-r--r-- 1 gio gio 22351 Nov 26  2021 dkjson.lua
+-rw-r--r-- 1 gio gio  5197 Nov 26  2021 init.lua
+-rw-r--r-- 1 gio gio  2240 Nov 26  2021 markup.lua
+-rw-r--r-- 1 gio gio  4997 Nov 26  2021 menu_iterator.lua
+-rw-r--r-- 1 gio gio  6043 Nov 26  2021 quake.lua
+-rw-r--r-- 1 gio gio  2858 Nov 26  2021 separators.lua
+
+./lain/widget:
+total 96
+-rw-r--r-- 1 gio gio 1524 Nov 26  2021 alsa.lua
+-rw-r--r-- 1 gio gio 5559 Nov 26  2021 alsabar.lua
+-rw-r--r-- 1 gio gio 9172 Nov 26  2021 bat.lua
+-rw-r--r-- 1 gio gio 7573 Nov 26  2021 cal.lua
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 contrib
+-rw-r--r-- 1 gio gio 2258 Nov 26  2021 cpu.lua
+-rw-r--r-- 1 gio gio 5188 Nov 26  2021 fs.lua
+-rw-r--r-- 1 gio gio 3147 Nov 26  2021 imap.lua
+-rw-r--r-- 1 gio gio  399 Nov 26  2021 init.lua
+-rw-r--r-- 1 gio gio 1753 Nov 26  2021 mem.lua
+-rw-r--r-- 1 gio gio 6120 Nov 26  2021 mpd.lua
+-rw-r--r-- 1 gio gio 4511 Nov 26  2021 net.lua
+-rw-r--r-- 1 gio gio 1712 Nov 26  2021 pulse.lua
+-rw-r--r-- 1 gio gio 6158 Nov 26  2021 pulsebar.lua
+-rw-r--r-- 1 gio gio  879 Nov 26  2021 sysload.lua
+-rw-r--r-- 1 gio gio 1257 Nov 26  2021 temp.lua
+-rw-r--r-- 1 gio gio 5659 Nov 26  2021 weather.lua
+
+./lain/widget/contrib:
+total 20
+-rw-r--r-- 1 gio gio  383 Nov 26  2021 init.lua
+-rw-r--r-- 1 gio gio 3761 Nov 26  2021 moc.lua
+-rw-r--r-- 1 gio gio 1731 Nov 26  2021 redshift.lua
+-rw-r--r-- 1 gio gio 2718 Nov 26  2021 task.lua
+-rw-r--r-- 1 gio gio 4842 Nov 26  2021 tp_smapi.lua
+
+./lain/wiki:
+total 152
+-rw-r--r-- 1 gio gio  1321 Nov 26  2021 Home.md
+-rw-r--r-- 1 gio gio  8608 Nov 26  2021 Layouts.md
+-rw-r--r-- 1 gio gio 12394 Nov 26  2021 Utilities.md
+-rw-r--r-- 1 gio gio  2465 Nov 26  2021 Widgets.md
+-rw-r--r-- 1 gio gio   217 Nov 26  2021 _Footer.md
+-rw-r--r-- 1 gio gio  1969 Nov 26  2021 _Sidebar.md
+-rw-r--r-- 1 gio gio  4301 Nov 26  2021 alsa.md
+-rw-r--r-- 1 gio gio  4126 Nov 26  2021 alsabar.md
+-rw-r--r-- 1 gio gio  3788 Nov 26  2021 bat.md
+-rw-r--r-- 1 gio gio  2978 Nov 26  2021 cal.md
+-rw-r--r-- 1 gio gio   747 Nov 26  2021 cpu.md
+-rw-r--r-- 1 gio gio  2944 Nov 26  2021 fs.md
+-rw-r--r-- 1 gio gio  4232 Nov 26  2021 imap.md
+-rw-r--r-- 1 gio gio   977 Nov 26  2021 mem.md
+-rw-r--r-- 1 gio gio  3993 Nov 26  2021 moc.md
+-rw-r--r-- 1 gio gio  6164 Nov 26  2021 mpd.md
+-rw-r--r-- 1 gio gio  4431 Nov 26  2021 net.md
+-rw-r--r-- 1 gio gio  4306 Nov 26  2021 pulse.md
+-rw-r--r-- 1 gio gio  3725 Nov 26  2021 pulsebar.md
+-rw-r--r-- 1 gio gio  3632 Nov 26  2021 redshift.md
+-rw-r--r-- 1 gio gio   677 Nov 26  2021 sysload.md
+-rw-r--r-- 1 gio gio  2158 Nov 26  2021 task.md
+-rw-r--r-- 1 gio gio  1074 Nov 26  2021 temp.md
+-rw-r--r-- 1 gio gio  4060 Nov 26  2021 tp_smapi.md
+-rw-r--r-- 1 gio gio  7404 Nov 26  2021 watch.md
+-rw-r--r-- 1 gio gio  5287 Nov 26  2021 weather.md
+
+./themes:
+total 0
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 blackburn
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 copland
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 dremora
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 holo
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 multicolor
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 powerarrow
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 powerarrow-dark
+drwxr-sr-x 1 gio gio 4096 Nov 23  2021 powerarrow-darker
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 rainbow
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 steamburn
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 vertex
+
+./themes/blackburn:
+total 492
+drwxr-xr-x 1 gio gio   4096 Nov 26  2021 icons
+-rw-r--r-- 1 gio gio  11021 Nov 26  2021 theme.lua
+-rwxr-xr-x 1 gio gio 487448 Nov 26  2021 wall.png
+
+./themes/blackburn/icons:
+total 0
+-rwxr-xr-x 1 gio gio  174 Nov 26  2021 awesome.png
+-rwxr-xr-x 1 gio gio  145 Nov 26  2021 dwindle.png
+-rwxr-xr-x 1 gio gio  143 Nov 26  2021 fairh.png
+-rwxr-xr-x 1 gio gio  145 Nov 26  2021 fairv.png
+-rwxr-xr-x 1 gio gio  147 Nov 26  2021 floating.png
+-rwxr-xr-x 1 gio gio  149 Nov 26  2021 magnifier.png
+-rwxr-xr-x 1 gio gio  159 Nov 26  2021 max.png
+-rwxr-xr-x 1 gio gio  145 Nov 26  2021 spiral.png
+-rwxr-xr-x 1 gio gio  153 Nov 26  2021 square_sel.png
+-rwxr-xr-x 1 gio gio  166 Nov 26  2021 square_unsel.png
+-rwxr-xr-x 1 gio gio   84 Nov 26  2021 submenu.png
+-rwxr-xr-x 1 gio gio  141 Nov 26  2021 tile.png
+-rwxr-xr-x 1 gio gio  143 Nov 26  2021 tilebottom.png
+-rwxr-xr-x 1 gio gio  142 Nov 26  2021 tileleft.png
+-rwxr-xr-x 1 gio gio  143 Nov 26  2021 tiletop.png
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 titlebar
+
+./themes/blackburn/icons/titlebar:
+total 0
+-rwxr-xr-x 1 gio gio 170 Nov 26  2021 close_focus.png
+-rwxr-xr-x 1 gio gio 216 Nov 26  2021 close_normal.png
+-rwxr-xr-x 1 gio gio 170 Nov 26  2021 floating_focus_active.png
+-rwxr-xr-x 1 gio gio 154 Nov 26  2021 floating_focus_inactive.png
+-rwxr-xr-x 1 gio gio 217 Nov 26  2021 floating_normal_active.png
+-rwxr-xr-x 1 gio gio 176 Nov 26  2021 floating_normal_inactive.png
+-rwxr-xr-x 1 gio gio 226 Nov 26  2021 maximized_focus_active.png
+-rwxr-xr-x 1 gio gio 176 Nov 26  2021 maximized_focus_inactive.png
+-rwxr-xr-x 1 gio gio 219 Nov 26  2021 maximized_normal_active.png
+-rwxr-xr-x 1 gio gio 174 Nov 26  2021 maximized_normal_inactive.png
+-rwxr-xr-x 1 gio gio 174 Nov 26  2021 ontop_focus_active.png
+-rwxr-xr-x 1 gio gio 161 Nov 26  2021 ontop_focus_inactive.png
+-rwxr-xr-x 1 gio gio 220 Nov 26  2021 ontop_normal_active.png
+-rwxr-xr-x 1 gio gio 171 Nov 26  2021 ontop_normal_inactive.png
+-rwxr-xr-x 1 gio gio 170 Nov 26  2021 sticky_focus_active.png
+-rwxr-xr-x 1 gio gio 155 Nov 26  2021 sticky_focus_inactive.png
+-rwxr-xr-x 1 gio gio 234 Nov 26  2021 sticky_normal_active.png
+-rwxr-xr-x 1 gio gio 165 Nov 26  2021 sticky_normal_inactive.png
+
+./themes/copland:
+total 4564
+drwxr-xr-x 1 gio gio    4096 Nov 26  2021 icons
+-rw-r--r-- 1 gio gio   15992 Nov 26  2021 theme.lua
+-rw-r--r-- 1 gio gio 4656918 Nov 26  2021 wall.png
+
+./themes/copland/icons:
+total 0
+-rwxr-xr-x 1 gio gio  212 Nov 26  2021 ac.png
+-rwxr-xr-x 1 gio gio  174 Nov 26  2021 awesome.png
+-rwxr-xr-x 1 gio gio  242 Nov 26  2021 bat.png
+-rwxr-xr-x 1 gio gio  275 Nov 26  2021 bat_low.png
+-rwxr-xr-x 1 gio gio  244 Nov 26  2021 bat_no.png
+-rwxr-xr-x 1 gio gio  223 Nov 26  2021 centerfair.png
+-rwxr-xr-x 1 gio gio  231 Nov 26  2021 centerwork.png
+-rwxr-xr-x 1 gio gio  219 Nov 26  2021 disk.png
+-rwxr-xr-x 1 gio gio  238 Nov 26  2021 dwindle.png
+-rwxr-xr-x 1 gio gio  230 Nov 26  2021 fairh.png
+-rwxr-xr-x 1 gio gio  240 Nov 26  2021 fairv.png
+-rwxr-xr-x 1 gio gio  226 Nov 26  2021 floating.png
+-rwxr-xr-x 1 gio gio  154 Nov 26  2021 fullscreen.png
+-rwxr-xr-x 1 gio gio  220 Nov 26  2021 magnifier.png
+-rwxr-xr-x 1 gio gio  241 Nov 26  2021 max.png
+-rwxr-xr-x 1 gio gio  223 Nov 26  2021 pause.png
+-rwxr-xr-x 1 gio gio  179 Nov 26  2021 play.png
+-rwxr-xr-x 1 gio gio  240 Nov 26  2021 spiral.png
+-rwxr-xr-x 1 gio gio  203 Nov 26  2021 square_sel.png
+-rwxr-xr-x 1 gio gio  122 Nov 26  2021 square_unsel.png
+-rwxr-xr-x 1 gio gio  206 Nov 26  2021 stop.png
+-rwxr-xr-x 1 gio gio  142 Nov 26  2021 submenu.png
+-rwxr-xr-x 1 gio gio  232 Nov 26  2021 termfair.png
+-rwxr-xr-x 1 gio gio  236 Nov 26  2021 tile.png
+-rwxr-xr-x 1 gio gio  236 Nov 26  2021 tilebottom.png
+-rwxr-xr-x 1 gio gio  226 Nov 26  2021 tileleft.png
+-rwxr-xr-x 1 gio gio  217 Nov 26  2021 tiletop.png
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 titlebar
+-rwxr-xr-x 1 gio gio  177 Nov 26  2021 vol.png
+-rwxr-xr-x 1 gio gio  195 Nov 26  2021 vol_low.png
+-rwxr-xr-x 1 gio gio  211 Nov 26  2021 vol_mute.png
+-rwxr-xr-x 1 gio gio  196 Nov 26  2021 vol_no.png
+
+./themes/copland/icons/titlebar:
+total 0
+-rwxr-xr-x 1 gio gio 170 Nov 26  2021 close_focus.png
+-rwxr-xr-x 1 gio gio 216 Nov 26  2021 close_normal.png
+-rwxr-xr-x 1 gio gio 170 Nov 26  2021 floating_focus_active.png
+-rwxr-xr-x 1 gio gio 154 Nov 26  2021 floating_focus_inactive.png
+-rwxr-xr-x 1 gio gio 214 Nov 26  2021 floating_normal_active.png
+-rwxr-xr-x 1 gio gio 176 Nov 26  2021 floating_normal_inactive.png
+-rwxr-xr-x 1 gio gio 251 Nov 26  2021 maximized_focus_active.png
+-rwxr-xr-x 1 gio gio 176 Nov 26  2021 maximized_focus_inactive.png
+-rwxr-xr-x 1 gio gio 219 Nov 26  2021 maximized_normal_active.png
+-rwxr-xr-x 1 gio gio 174 Nov 26  2021 maximized_normal_inactive.png
+-rwxr-xr-x 1 gio gio 174 Nov 26  2021 ontop_focus_active.png
+-rwxr-xr-x 1 gio gio 161 Nov 26  2021 ontop_focus_inactive.png
+-rwxr-xr-x 1 gio gio 221 Nov 26  2021 ontop_normal_active.png
+-rwxr-xr-x 1 gio gio 171 Nov 26  2021 ontop_normal_inactive.png
+-rwxr-xr-x 1 gio gio 170 Nov 26  2021 sticky_focus_active.png
+-rwxr-xr-x 1 gio gio 155 Nov 26  2021 sticky_focus_inactive.png
+-rwxr-xr-x 1 gio gio 234 Nov 26  2021 sticky_normal_active.png
+-rwxr-xr-x 1 gio gio 165 Nov 26  2021 sticky_normal_inactive.png
+
+./themes/dremora:
+total 1508
+drwxr-xr-x 1 gio gio    4096 Nov 26  2021 icons
+-rw-r--r-- 1 gio gio   10481 Nov 26  2021 theme.lua
+-rwxr-xr-x 1 gio gio 1529307 Nov 26  2021 wall.png
+
+./themes/dremora/icons:
+total 0
+-rwxr-xr-x 1 gio gio  174 Nov 26  2021 awesome.png
+-rwxr-xr-x 1 gio gio  139 Nov 26  2021 dwindle.png
+-rwxr-xr-x 1 gio gio  137 Nov 26  2021 fairh.png
+-rwxr-xr-x 1 gio gio  140 Nov 26  2021 fairv.png
+-rwxr-xr-x 1 gio gio  141 Nov 26  2021 floating.png
+-rwxr-xr-x 1 gio gio  162 Nov 26  2021 magnifier.png
+-rwxr-xr-x 1 gio gio  178 Nov 26  2021 max.png
+-rwxr-xr-x 1 gio gio  160 Nov 26  2021 spiral.png
+-rwxr-xr-x 1 gio gio  154 Nov 26  2021 square_sel.png
+-rwxr-xr-x 1 gio gio  174 Nov 26  2021 square_unsel.png
+-rwxr-xr-x 1 gio gio  142 Nov 26  2021 submenu.png
+-rwxr-xr-x 1 gio gio  152 Nov 26  2021 tile.png
+-rwxr-xr-x 1 gio gio  157 Nov 26  2021 tilebottom.png
+-rwxr-xr-x 1 gio gio  135 Nov 26  2021 tileleft.png
+-rwxr-xr-x 1 gio gio  157 Nov 26  2021 tiletop.png
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 titlebar
+
+./themes/dremora/icons/titlebar:
+total 0
+-rwxr-xr-x 1 gio gio 170 Nov 26  2021 close_focus.png
+-rwxr-xr-x 1 gio gio 216 Nov 26  2021 close_normal.png
+-rwxr-xr-x 1 gio gio 170 Nov 26  2021 floating_focus_active.png
+-rwxr-xr-x 1 gio gio 154 Nov 26  2021 floating_focus_inactive.png
+-rwxr-xr-x 1 gio gio 217 Nov 26  2021 floating_normal_active.png
+-rwxr-xr-x 1 gio gio 176 Nov 26  2021 floating_normal_inactive.png
+-rwxr-xr-x 1 gio gio 226 Nov 26  2021 maximized_focus_active.png
+-rwxr-xr-x 1 gio gio 176 Nov 26  2021 maximized_focus_inactive.png
+-rwxr-xr-x 1 gio gio 219 Nov 26  2021 maximized_normal_active.png
+-rwxr-xr-x 1 gio gio 174 Nov 26  2021 maximized_normal_inactive.png
+-rwxr-xr-x 1 gio gio 178 Nov 26  2021 ontop_focus_active.png
+-rwxr-xr-x 1 gio gio 161 Nov 26  2021 ontop_focus_inactive.png
+-rwxr-xr-x 1 gio gio 225 Nov 26  2021 ontop_normal_active.png
+-rwxr-xr-x 1 gio gio 171 Nov 26  2021 ontop_normal_inactive.png
+-rwxr-xr-x 1 gio gio 170 Nov 26  2021 sticky_focus_active.png
+-rwxr-xr-x 1 gio gio 155 Nov 26  2021 sticky_focus_inactive.png
+-rwxr-xr-x 1 gio gio 234 Nov 26  2021 sticky_normal_active.png
+-rwxr-xr-x 1 gio gio 165 Nov 26  2021 sticky_normal_inactive.png
+
+./themes/holo:
+total 3256
+drwxr-xr-x 1 gio gio    4096 Nov 26  2021 icons
+-rw-r--r-- 1 gio gio   17821 Nov 26  2021 theme.lua
+-rwxr-xr-x 1 gio gio 3313310 Nov 26  2021 wall.png
+
+./themes/holo/icons:
+total 0
+-rwxr-xr-x 1 gio gio 194 Nov 26  2021 awesome_icon.png
+-rwxr-xr-x 1 gio gio 167 Nov 26  2021 awesome_icon_white.png
+-rwxr-xr-x 1 gio gio 163 Nov 26  2021 bar.png
+-rwxr-xr-x 1 gio gio 173 Nov 26  2021 bottom_bar.png
+-rwxr-xr-x 1 gio gio 240 Nov 26  2021 cal.png
+-rwxr-xr-x 1 gio gio 249 Nov 26  2021 clock.png
+-rwxr-xr-x 1 gio gio 229 Nov 26  2021 cpu.png
+-rwxr-xr-x 1 gio gio 188 Nov 26  2021 dwindle.png
+-rwxr-xr-x 1 gio gio 188 Nov 26  2021 fairh.png
+-rwxr-xr-x 1 gio gio 190 Nov 26  2021 fairv.png
+-rwxr-xr-x 1 gio gio 194 Nov 26  2021 floating.png
+-rwxr-xr-x 1 gio gio 192 Nov 26  2021 magnifier.png
+-rwxr-xr-x 1 gio gio 211 Nov 26  2021 max.png
+-rwxr-xr-x 1 gio gio 365 Nov 26  2021 mpd.png
+-rwxr-xr-x 1 gio gio 320 Nov 26  2021 net_down.png
+-rwxr-xr-x 1 gio gio 323 Nov 26  2021 net_up.png
+-rwxr-xr-x 1 gio gio 352 Nov 26  2021 next.png
+-rwxr-xr-x 1 gio gio 176 Nov 26  2021 pause.png
+-rwxr-xr-x 1 gio gio 249 Nov 26  2021 play.png
+-rwxr-xr-x 1 gio gio 350 Nov 26  2021 prev.png
+-rwxr-xr-x 1 gio gio 189 Nov 26  2021 spiral.png
+-rwxr-xr-x 1 gio gio 148 Nov 26  2021 spr_bottom_right.png
+-rwxr-xr-x 1 gio gio 160 Nov 26  2021 spr_left.png
+-rwxr-xr-x 1 gio gio 148 Nov 26  2021 spr_right.png
+-rwxr-xr-x 1 gio gio 131 Nov 26  2021 spr_small.png
+-rwxr-xr-x 1 gio gio 131 Nov 26  2021 spr_very_small.png
+-rwxr-xr-x 1 gio gio 170 Nov 26  2021 square_sel.png
+-rwxr-xr-x 1 gio gio 161 Nov 26  2021 square_unsel.png
+-rwxr-xr-x 1 gio gio 176 Nov 26  2021 stop.png
+-rwxr-xr-x 1 gio gio 184 Nov 26  2021 tile.png
+-rwxr-xr-x 1 gio gio 186 Nov 26  2021 tilebottom.png
+-rwxr-xr-x 1 gio gio 186 Nov 26  2021 tileleft.png
+-rwxr-xr-x 1 gio gio 186 Nov 26  2021 tiletop.png
+
+./themes/multicolor:
+total 2052
+drwxr-xr-x 1 gio gio    4096 Nov 26  2021 icons
+-rw-r--r-- 1 gio gio   15227 Nov 26  2021 theme.lua
+-rwxr-xr-x 1 gio gio 2082259 Nov 26  2021 wall.png
+
+./themes/multicolor/icons:
+total 0
+-rwxr-xr-x 1 gio gio  125 Nov 26  2021 ac.png
+-rwxr-xr-x 1 gio gio  167 Nov 26  2021 bat.png
+-rwxr-xr-x 1 gio gio  356 Nov 26  2021 clock.png
+-rwxr-xr-x 1 gio gio  266 Nov 26  2021 cpu.png
+-rwxr-xr-x 1 gio gio  140 Nov 26  2021 dish.png
+-rwxr-xr-x 1 gio gio  214 Nov 26  2021 dwindle.png
+-rwxr-xr-x 1 gio gio  212 Nov 26  2021 fairh.png
+-rwxr-xr-x 1 gio gio  224 Nov 26  2021 fairv.png
+-rwxr-xr-x 1 gio gio  187 Nov 26  2021 floating.png
+-rwxr-xr-x 1 gio gio  142 Nov 26  2021 fs.png
+-rwxr-xr-x 1 gio gio  188 Nov 26  2021 fullscreen.png
+-rwxr-xr-x 1 gio gio  188 Nov 26  2021 magnifier.png
+-rwxr-xr-x 1 gio gio  180 Nov 26  2021 mail.png
+-rwxr-xr-x 1 gio gio  323 Nov 26  2021 max.png
+-rwxr-xr-x 1 gio gio  117 Nov 26  2021 mem.png
+-rwxr-xr-x 1 gio gio  348 Nov 26  2021 net_down.png
+-rwxr-xr-x 1 gio gio  350 Nov 26  2021 net_up.png
+-rwxr-xr-x 1 gio gio  242 Nov 26  2021 note.png
+-rwxr-xr-x 1 gio gio  342 Nov 26  2021 note_on.png
+-rwxr-xr-x 1 gio gio  215 Nov 26  2021 spiral.png
+-rwxr-xr-x 1 gio gio  350 Nov 26  2021 spkr.png
+-rwxr-xr-x 1 gio gio  146 Nov 26  2021 square_a.png
+-rwxr-xr-x 1 gio gio  141 Nov 26  2021 square_b.png
+-rwxr-xr-x 1 gio gio  180 Nov 26  2021 submenu.png
+-rwxr-xr-x 1 gio gio  353 Nov 26  2021 temp.png
+-rwxr-xr-x 1 gio gio  213 Nov 26  2021 tile.png
+-rwxr-xr-x 1 gio gio  205 Nov 26  2021 tilebottom.png
+-rwxr-xr-x 1 gio gio  212 Nov 26  2021 tileleft.png
+-rwxr-xr-x 1 gio gio  205 Nov 26  2021 tiletop.png
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 titlebar
+
+./themes/multicolor/icons/titlebar:
+total 52
+-rwxr-xr-x 1 gio gio 1205 Nov 26  2021 close_focus.png
+-rwxr-xr-x 1 gio gio  966 Nov 26  2021 close_normal.png
+-rwxr-xr-x 1 gio gio  380 Nov 26  2021 floating_focus_active.png
+-rwxr-xr-x 1 gio gio  199 Nov 26  2021 floating_focus_inactive.png
+-rwxr-xr-x 1 gio gio  386 Nov 26  2021 floating_normal_active.png
+-rwxr-xr-x 1 gio gio  237 Nov 26  2021 floating_normal_inactive.png
+-rwxr-xr-x 1 gio gio  463 Nov 26  2021 maximized_focus_active.png
+-rwxr-xr-x 1 gio gio  474 Nov 26  2021 maximized_focus_inactive.png
+-rwxr-xr-x 1 gio gio  480 Nov 26  2021 maximized_normal_active.png
+-rwxr-xr-x 1 gio gio  452 Nov 26  2021 maximized_normal_inactive.png
+-rwxr-xr-x 1 gio gio  234 Nov 26  2021 minimize_focus.png
+-rwxr-xr-x 1 gio gio  225 Nov 26  2021 minimize_normal.png
+-rwxr-xr-x 1 gio gio  212 Nov 26  2021 ontop_focus_active.png
+-rwxr-xr-x 1 gio gio  629 Nov 26  2021 ontop_focus_inactive.png
+-rwxr-xr-x 1 gio gio  467 Nov 26  2021 ontop_normal_active.png
+-rwxr-xr-x 1 gio gio  604 Nov 26  2021 ontop_normal_inactive.png
+-rwxr-xr-x 1 gio gio  622 Nov 26  2021 sticky_focus_active.png
+-rwxr-xr-x 1 gio gio  741 Nov 26  2021 sticky_focus_inactive.png
+-rwxr-xr-x 1 gio gio  654 Nov 26  2021 sticky_normal_active.png
+-rwxr-xr-x 1 gio gio  758 Nov 26  2021 sticky_normal_inactive.png
+
+./themes/powerarrow:
+total 1332
+-rw-r--r-- 1 gio gio    3051 Nov 26  2021 binclock.lua
+drwxr-xr-x 1 gio gio    4096 Nov 26  2021 icons
+-rw-r--r-- 1 gio gio   19477 Nov 26  2021 theme.lua
+-rwxr-xr-x 1 gio gio 1338833 Nov 26  2021 wall.png
+
+./themes/powerarrow/icons:
+total 4
+-rwxr-xr-x 1 gio gio  333 Nov 26  2021 ac.png
+-rwxr-xr-x 1 gio gio  129 Nov 26  2021 awesome.png
+-rwxr-xr-x 1 gio gio  334 Nov 26  2021 battery.png
+-rwxr-xr-x 1 gio gio  327 Nov 26  2021 battery_empty.png
+-rwxr-xr-x 1 gio gio  332 Nov 26  2021 battery_low.png
+-rwxr-xr-x 1 gio gio 1166 Nov 26  2021 brightness.png
+-rwxr-xr-x 1 gio gio  333 Nov 26  2021 cpu.png
+-rwxr-xr-x 1 gio gio  173 Nov 26  2021 floating.png
+-rwxr-xr-x 1 gio gio  326 Nov 26  2021 fwd.png
+-rwxr-xr-x 1 gio gio  342 Nov 26  2021 hdd.png
+-rwxr-xr-x 1 gio gio  183 Nov 26  2021 mail.png
+-rwxr-xr-x 1 gio gio  183 Nov 26  2021 mail_on.png
+-rwxr-xr-x 1 gio gio  325 Nov 26  2021 mem.png
+-rwxr-xr-x 1 gio gio  162 Nov 26  2021 net.png
+-rwxr-xr-x 1 gio gio  328 Nov 26  2021 next.png
+-rwxr-xr-x 1 gio gio  153 Nov 26  2021 note.png
+-rwxr-xr-x 1 gio gio  164 Nov 26  2021 note_on.png
+-rwxr-xr-x 1 gio gio  345 Nov 26  2021 pacman.png
+-rwxr-xr-x 1 gio gio  316 Nov 26  2021 pause.png
+-rwxr-xr-x 1 gio gio  337 Nov 26  2021 phones.png
+-rwxr-xr-x 1 gio gio  329 Nov 26  2021 play.png
+-rwxr-xr-x 1 gio gio  325 Nov 26  2021 prev.png
+-rwxr-xr-x 1 gio gio  331 Nov 26  2021 rwd.png
+-rwxr-xr-x 1 gio gio  160 Nov 26  2021 scissors.png
+-rwxr-xr-x 1 gio gio  139 Nov 26  2021 square_sel.png
+-rwxr-xr-x 1 gio gio  209 Nov 26  2021 square_unsel.png
+-rwxr-xr-x 1 gio gio  322 Nov 26  2021 stop.png
+-rwxr-xr-x 1 gio gio  142 Nov 26  2021 submenu.png
+-rwxr-xr-x 1 gio gio  169 Nov 26  2021 task.png
+-rwxr-xr-x 1 gio gio  338 Nov 26  2021 temp.png
+-rwxr-xr-x 1 gio gio  163 Nov 26  2021 tile.png
+-rwxr-xr-x 1 gio gio  166 Nov 26  2021 tilebottom.png
+-rwxr-xr-x 1 gio gio  165 Nov 26  2021 tileleft.png
+-rwxr-xr-x 1 gio gio  166 Nov 26  2021 tiletop.png
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 titlebar
+
+./themes/powerarrow/icons/titlebar:
+total 0
+-rwxr-xr-x 1 gio gio 187 Nov 26  2021 close_focus.png
+-rwxr-xr-x 1 gio gio 324 Nov 26  2021 close_normal.png
+-rwxr-xr-x 1 gio gio 187 Nov 26  2021 floating_focus_active.png
+-rwxr-xr-x 1 gio gio 250 Nov 26  2021 floating_focus_inactive.png
+-rwxr-xr-x 1 gio gio 324 Nov 26  2021 floating_normal_active.png
+-rwxr-xr-x 1 gio gio 250 Nov 26  2021 floating_normal_inactive.png
+-rwxr-xr-x 1 gio gio 196 Nov 26  2021 maximized_focus_active.png
+-rwxr-xr-x 1 gio gio 263 Nov 26  2021 maximized_focus_inactive.png
+-rwxr-xr-x 1 gio gio 333 Nov 26  2021 maximized_normal_active.png
+-rwxr-xr-x 1 gio gio 269 Nov 26  2021 maximized_normal_inactive.png
+-rwxr-xr-x 1 gio gio 191 Nov 26  2021 ontop_focus_active.png
+-rwxr-xr-x 1 gio gio 255 Nov 26  2021 ontop_focus_inactive.png
+-rwxr-xr-x 1 gio gio 326 Nov 26  2021 ontop_normal_active.png
+-rwxr-xr-x 1 gio gio 256 Nov 26  2021 ontop_normal_inactive.png
+-rwxr-xr-x 1 gio gio 187 Nov 26  2021 sticky_focus_active.png
+-rwxr-xr-x 1 gio gio 252 Nov 26  2021 sticky_focus_inactive.png
+-rwxr-xr-x 1 gio gio 324 Nov 26  2021 sticky_normal_active.png
+-rwxr-xr-x 1 gio gio 249 Nov 26  2021 sticky_normal_inactive.png
+
+./themes/powerarrow-dark:
+total 108
+drwxr-xr-x 1 gio gio  4096 Nov 26  2021 icons
+-rw-r--r-- 1 gio gio 15696 Nov 26  2021 theme.lua
+-rwxr-xr-x 1 gio gio 91059 Nov 26  2021 wall.png
+
+./themes/powerarrow-dark/icons:
+total 4
+-rwxr-xr-x 1 gio gio  106 Nov 26  2021 ac.png
+-rwxr-xr-x 1 gio gio  148 Nov 26  2021 battery.png
+-rwxr-xr-x 1 gio gio  132 Nov 26  2021 battery_empty.png
+-rwxr-xr-x 1 gio gio  131 Nov 26  2021 battery_low.png
+-rwxr-xr-x 1 gio gio  179 Nov 26  2021 centerfair.png
+-rwxr-xr-x 1 gio gio  195 Nov 26  2021 centerwork.png
+-rwxr-xr-x 1 gio gio  195 Nov 26  2021 centerworkh.png
+-rwxr-xr-x 1 gio gio  185 Nov 26  2021 cpu.png
+-rwxr-xr-x 1 gio gio  208 Nov 26  2021 dwindle.png
+-rwxr-xr-x 1 gio gio  203 Nov 26  2021 fairh.png
+-rwxr-xr-x 1 gio gio  214 Nov 26  2021 fairv.png
+-rwxr-xr-x 1 gio gio  198 Nov 26  2021 floating.png
+-rwxr-xr-x 1 gio gio  253 Nov 26  2021 hdd.png
+-rwxr-xr-x 1 gio gio  228 Nov 26  2021 magnifier.png
+-rwxr-xr-x 1 gio gio  189 Nov 26  2021 mail.png
+-rwxr-xr-x 1 gio gio  213 Nov 26  2021 mail_on.png
+-rwxr-xr-x 1 gio gio  228 Nov 26  2021 max.png
+-rwxr-xr-x 1 gio gio   93 Nov 26  2021 mem.png
+-rwxr-xr-x 1 gio gio  193 Nov 26  2021 net.png
+-rwxr-xr-x 1 gio gio  186 Nov 26  2021 net_wired.png
+-rwxr-xr-x 1 gio gio  196 Nov 26  2021 note.png
+-rwxr-xr-x 1 gio gio  175 Nov 26  2021 note_on.png
+-rwxr-xr-x 1 gio gio  130 Nov 26  2021 scissors.png
+-rwxr-xr-x 1 gio gio  206 Nov 26  2021 spiral.png
+-rwxr-xr-x 1 gio gio   81 Nov 26  2021 square_sel.png
+-rwxr-xr-x 1 gio gio   88 Nov 26  2021 square_unsel.png
+-rwxr-xr-x 1 gio gio  142 Nov 26  2021 submenu.png
+-rwxr-xr-x 1 gio gio  189 Nov 26  2021 task.png
+-rwxr-xr-x 1 gio gio  119 Nov 26  2021 temp.png
+-rwxr-xr-x 1 gio gio  972 Nov 26  2021 termfair.png
+-rwxr-xr-x 1 gio gio  195 Nov 26  2021 tile.png
+-rwxr-xr-x 1 gio gio  200 Nov 26  2021 tilebottom.png
+-rwxr-xr-x 1 gio gio  193 Nov 26  2021 tileleft.png
+-rwxr-xr-x 1 gio gio  199 Nov 26  2021 tiletop.png
+drwxr-xr-x 1 gio gio 4096 Nov 26  2021 titlebar
+-rwxr-xr-x 1 gio gio  123 Nov 26  2021 vol.png
+-rwxr-xr-x 1 gio gio  193 Nov 26  2021 vol_low.png
+-rwxr-xr-x 1 gio gio  227 Nov 26  2021 vol_mute.png
+-rwxr-xr-x 1 gio gio  127 Nov 26  2021 vol_no.png
+
+./themes/powerarrow-dark/icons/titlebar:
+total 0
+-rwxr-xr-x 1 gio gio 187 Nov 26  2021 close_focus.png
+-rwxr-xr-x 1 gio gio 254 Nov 26  2021 close_normal.png
+-rwxr-xr-x 1 gio gio 186 Nov 26  2021 floating_focus_active.png
+-rwxr-xr-x 1 gio gio 154 Nov 26  2021 floating_focus_inactive.png
+-rwxr-xr-x 1 gio gio 217 Nov 26  2021 floating_normal_active.png
+-rwxr-xr-x 1 gio gio 176 Nov 26  2021 floating_normal_inactive.png
+-rwxr-xr-x 1 gio gio 264 Nov 26  2021 maximized_focus_active.png
+-rwxr-xr-x 1 gio gio 176 Nov 26  2021 maximized_focus_inactive.png
+-rwxr-xr-x 1 gio gio 244 Nov 26  2021 maximized_normal_active.png
+-rwxr-xr-x 1 gio gio 174 Nov 26  2021 maximized_normal_inactive.png
+-rwxr-xr-x 1 gio gio 184 Nov 26  2021 ontop_focus_active.png
+-rwxr-xr-x 1 gio gio 161 Nov 26  2021 ontop_focus_inactive.png
+-rwxr-xr-x 1 gio gio 224 Nov 26  2021 ontop_normal_active.png
+-rwxr-xr-x 1 gio gio 171 Nov 26  2021 ontop_normal_inactive.png
+-rwxr-xr-x 1 gio gio 184 Nov 26  2021 sticky_focus_active.png
+-rwxr-xr-x 1 gio gio 155 Nov 26  2021 sticky_focus_inactive.png
+-rwxr-xr-x 1 gio gio 235 Nov 26  2021 sticky_normal_active.png
+-rwxr-xr-x 1 gio gio 165 Nov 26  2021 sticky_normal_inactive.png
+
+./themes/powerarrow-darker:
+total 596
+-rw-r--r-- 1 gio gio 598713 Nov 23  2021 darkwood.png
+drwxr-sr-x 1 gio gio   4096 Nov 23  2021 icons
+drwxr-sr-x 1 gio gio   4096 Nov 23  2021 logo
+-rw-r--r-- 1 gio gio   4355 Nov 23  2021 theme.lua
+lrwxrwxrwx 1 gio gio     12 Nov 25  2021 wall.png -> darkwood.png
+
+./themes/powerarrow-darker/icons:
+total 0
+-rw-r--r-- 1 gio gio 106 Nov 23  2021 ac.png
+-rw-r--r-- 1 gio gio 148 Nov 23  2021 battery.png
+-rw-r--r-- 1 gio gio 132 Nov 23  2021 battery_empty.png
+-rw-r--r-- 1 gio gio 131 Nov 23  2021 battery_low.png
+-rw-r--r-- 1 gio gio 185 Nov 23  2021 cpu.png
+-rw-r--r-- 1 gio gio 208 Nov 23  2021 dwindle.png
+-rw-r--r-- 1 gio gio 203 Nov 23  2021 fairh.png
+-rw-r--r-- 1 gio gio 214 Nov 23  2021 fairv.png
+-rw-r--r-- 1 gio gio 198 Nov 23  2021 floating.png
+-rw-r--r-- 1 gio gio 253 Nov 23  2021 hdd.png
+-rw-r--r-- 1 gio gio 228 Nov 23  2021 magnifier.png
+-rw-r--r-- 1 gio gio 189 Nov 23  2021 mail.png
+-rw-r--r-- 1 gio gio 213 Nov 23  2021 mail_on.png
+-rw-r--r-- 1 gio gio 228 Nov 23  2021 max.png
+-rw-r--r-- 1 gio gio  93 Nov 23  2021 mem.png
+-rw-r--r-- 1 gio gio 193 Nov 23  2021 net.png
+-rw-r--r-- 1 gio gio 186 Nov 23  2021 net_wired.png
+-rw-r--r-- 1 gio gio 196 Nov 23  2021 note.png
+-rw-r--r-- 1 gio gio 175 Nov 23  2021 note_on.png
+-rw-r--r-- 1 gio gio 130 Nov 23  2021 scissors.png
+-rw-r--r-- 1 gio gio 206 Nov 23  2021 spiral.png
+-rw-r--r-- 1 gio gio  81 Nov 23  2021 square_sel.png
+-rw-r--r-- 1 gio gio  88 Nov 23  2021 square_unsel.png
+-rw-r--r-- 1 gio gio 142 Nov 23  2021 submenu.png
+-rw-r--r-- 1 gio gio 189 Nov 23  2021 task.png
+-rw-r--r-- 1 gio gio 119 Nov 23  2021 temp.png
+-rw-r--r-- 1 gio gio 195 Nov 23  2021 tile.png
+-rw-r--r-- 1 gio gio 200 Nov 23  2021 tilebottom.png
+-rw-r--r-- 1 gio gio 193 Nov 23  2021 tileleft.png
+-rw-r--r-- 1 gio gio 199 Nov 23  2021 tiletop.png
+-rw-r--r-- 1 gio gio 123 Nov 23  2021 vol.png
+-rw-r--r-- 1 gio gio 193 Nov 23  2021 vol_low.png
+-rw-r--r-- 1 gio gio 227 Nov 23  2021 vol_mute.png
+-rw-r--r-- 1 gio gio 127 Nov 23  2021 vol_no.png
+
+./themes/powerarrow-darker/logo:
+total 0
+-rw-r--r-- 1 gio gio 182 Nov 23  2021 awesome16.png
+-rw-r--r-- 1 gio gio 189 Nov 23  2021 awesome32.png
+-rw-r--r-- 1 gio gio 187 Nov 23  2021 awesome48.png
+-rw-r--r-- 1 gio gio 195 Nov 23  2021 awesome64.png
+
+./themes/rainbow:
+total 16
+drwxr-xr-x 1 gio gio  4096 Nov 26  2021 icons
+-rw-r--r-- 1 gio gio 11914 Nov 26  2021 theme.lua
+-rwxr-xr-x 1 gio gio  3846 Nov 26  2021 wall.png
+
+./themes/rainbow/icons:
+total 0
+-rwxr-xr-x 1 gio gio 174 Nov 26  2021 awesome.png
+-rwxr-xr-x 1 gio gio 139 Nov 26  2021 square_sel.png
+-rwxr-xr-x 1 gio gio 146 Nov 26  2021 square_unsel.png
+-rwxr-xr-x 1 gio gio 142 Nov 26  2021 submenu.png
+
+./themes/steamburn:
+total 2032
+drwxr-xr-x 1 gio gio    4096 Nov 26  2021 icons
+-rw-r--r-- 1 gio gio   10799 Nov 26  2021 theme.lua
+-rwxr-xr-x 1 gio gio 2066426 Nov 26  2021 wall.png
+
+./themes/steamburn/icons:
+total 0
+-rwxr-xr-x 1 gio gio 174 Nov 26  2021 awesome.png
+-rwxr-xr-x 1 gio gio 147 Nov 26  2021 square_sel.png
+-rwxr-xr-x 1 gio gio 158 Nov 26  2021 square_unsel.png
+-rwxr-xr-x 1 gio gio 142 Nov 26  2021 submenu.png
+
+./themes/vertex:
+total 2248
+drwxr-xr-x 1 gio gio    4096 Nov 26  2021 icons
+-rw-r--r-- 1 gio gio   20563 Nov 26  2021 theme.lua
+-rwxr-xr-x 1 gio gio 2276310 Nov 26  2021 wall.png
+
+./themes/vertex/icons:
+total 104
+-rwxr-xr-x 1 gio gio  168 Nov 26  2021 awesome.png
+-rwxr-xr-x 1 gio gio 1693 Nov 26  2021 bat-000-charging.png
+-rwxr-xr-x 1 gio gio 1892 Nov 26  2021 bat-000.png
+-rwxr-xr-x 1 gio gio 1882 Nov 26  2021 bat-020-charging.png
+-rwxr-xr-x 1 gio gio 1313 Nov 26  2021 bat-020.png
+-rwxr-xr-x 1 gio gio 1284 Nov 26  2021 bat-040-charging.png
+-rwxr-xr-x 1 gio gio 1311 Nov 26  2021 bat-040.png
+-rwxr-xr-x 1 gio gio 1315 Nov 26  2021 bat-060-charging.png
+-rwxr-xr-x 1 gio gio 1371 Nov 26  2021 bat-060.png
+-rwxr-xr-x 1 gio gio 1286 Nov 26  2021 bat-080-charging.png
+-rwxr-xr-x 1 gio gio 1381 Nov 26  2021 bat-080.png
+-rwxr-xr-x 1 gio gio 1777 Nov 26  2021 bat-100-charging.png
+-rwxr-xr-x 1 gio gio 1375 Nov 26  2021 bat-100.png
+-rwxr-xr-x 1 gio gio 1968 Nov 26  2021 bat-charged.png
+-rwxr-xr-x 1 gio gio 1982 Nov 26  2021 ethernet-connected.png
+-rwxr-xr-x 1 gio gio 2648 Nov 26  2021 ethernet-disconnected.png
+-rwxr-xr-x 1 gio gio  231 Nov 26  2021 panel.png
+-rwxr-xr-x 1 gio gio 2317 Nov 26  2021 volume-high.png
+-rwxr-xr-x 1 gio gio 1606 Nov 26  2021 volume-low.png
+-rwxr-xr-x 1 gio gio 1923 Nov 26  2021 volume-medium.png
+-rwxr-xr-x 1 gio gio 1696 Nov 26  2021 volume-muted-blocked.png
+-rwxr-xr-x 1 gio gio 1131 Nov 26  2021 volume-muted.png
+-rwxr-xr-x 1 gio gio 1967 Nov 26  2021 volume-off.png
+-rwxr-xr-x 1 gio gio 1331 Nov 26  2021 wireless-disconnected.png
+-rwxr-xr-x 1 gio gio 1407 Nov 26  2021 wireless-full.png
+-rwxr-xr-x 1 gio gio 1669 Nov 26  2021 wireless-high.png
+-rwxr-xr-x 1 gio gio  913 Nov 26  2021 wireless-low.png
+-rwxr-xr-x 1 gio gio 1360 Nov 26  2021 wireless-medium.png
+-rwxr-xr-x 1 gio gio  419 Nov 26  2021 wireless-none.png

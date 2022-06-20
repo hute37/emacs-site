@@ -20,12 +20,100 @@
 
 ;; (setq debug-on-error t)
 
-(require 'package)
-;;(nconc package-archives
-;;       '(("melpa" . "http://melpa.org/packages/")
-;;         ("org" . "http://orgmode.org/elpa/")))
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
+
+;; @see: https://github.com/radian-software/straight.el
+;; @see: 
+;; @see: https://youtu.be/UmbVeqphGlc
+
+;; (setq straight-use-package-by-default t)
+;; (setq use-package-always-ensure t)
+;; 
+;; (defvar bootstrap-version)
+;; (let ((bootstrap-file
+;;        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+;;       (bootstrap-version 5))
+;;   (unless (file-exists-p bootstrap-file)
+;;     (with-current-buffer
+;;         (url-retrieve-synchronously
+;;          "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+;;          'silent 'inhibit-cookies)
+;;       (goto-char (point-max))
+;;       (eval-print-last-sexp)))
+;;   (load bootstrap-file nil 'nomessage))
+;; 
+;; (setq package-enable-at-startup nil)
+;; (straight-use-package 'use-package)
+;; (eval-when-compile (require 'use-package))
+
+
+;; ;; @see: https://ianyepan.github.io/posts/setting-up-use-package/
+;; ;; @see: https://www.reddit.com/r/emacs/comments/dfcyy6/how_to_install_and_use_usepackage/
+;; ;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
+
+(eval-and-compile
+  (require 'package)
+  (add-to-list 'package-archives '("org"   . "http://orgmode.org/elpa/")) ; Org-mode's repository
+  (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  ;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+  ;;(package-initialize)
+  ;; i always fetch the archive contents on startup and during compilation, which is slow
+  ;; (package-refresh-contents)
+  (unless (package-installed-p 'use-package)
+    (package-install 'use-package))
+  (require 'use-package)
+  ;; i don't really know why this isn't the default...
+  ;;(setf use-package-always-ensure t)
+
+  ;;(use-package use-package-ensure
+  ;;  :config  (setq use-package-always-ensure t))
+
+  (unless (package-installed-p 'quelpa)
+    (with-temp-buffer
+      (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+      (eval-buffer)
+      (quelpa-self-upgrade)))
+  (quelpa
+   '(quelpa-use-package
+     :fetcher git
+     :url "https://github.com/quelpa/quelpa-use-package.git"))
+  (require 'quelpa-use-package)
+ )
+
+;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
+
+;; ;;; initialization
+;; (require 'package)
+;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
+;; (package-initialize)
+;; (when (not package-archive-contents)
+;;   (package-refresh-contents))
+;; (package-install 'use-package)
+;; (use-package use-package-ensure
+;;   :config  (setq use-package-always-ensure t))
+
+;; (unless (package-installed-p 'quelpa)
+;;   (with-temp-buffer
+;;     (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+;;     (eval-buffer)
+;;     (quelpa-self-upgrade)))
+;; (quelpa
+;;  '(quelpa-use-package
+;;    :fetcher git
+;;    :url "https://github.com/quelpa/quelpa-use-package.git"))
+;; (require 'quelpa-use-package)
+
+
+
+
+
+;;(require 'package)
+;; ;;(nconc package-archives
+;; ;;      '(("melpa" . "http://melpa.org/packages/")
+;; ;;        ("org" . "http://orgmode.org/elpa/")))
+;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;;(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
 
 ;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 ;;(add-to-list 'package-archives '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
@@ -33,7 +121,7 @@
 ;; You don't need this one if you have marmalade:
 ;; (add-to-list 'package-archives '("geiser" . "http://download.savannah.gnu.org/releases/geiser/packages"))
 
-(setq package-enable-at-startup nil)
+;;(setq package-enable-at-startup nil)
 
 ;; (setq 
 ;;  load-prefer-newer t
@@ -65,7 +153,7 @@
 ;; (unless (assoc-default "melpa" package-archives)
 ;;   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t))
 
-;; (package-initialize)
+;;(package-initialize)
 
 ;; Bootstrap `use-package'
 (unless (and
@@ -74,13 +162,15 @@
 	 (package-installed-p 'use-package)
 	 (package-installed-p 'req-package)
 	 )
-  (package-refresh-contents)
+(package-refresh-contents)
   (package-install 'bind-key)
   (package-install 'diminish)
   (package-install 'use-package)
   (package-install 'req-package)
 )
 
+;; (straight-use-package 'bind-key)
+;; (straight-use-package 'diminish)
 
 ;; @see: https://github.com/jwiegley/dot-emacs/blob/master/init.el
 
@@ -91,7 +181,12 @@
 (require 'bind-key)
 (require 'use-package)
 
-;;(require 'req-package)
+;; use-package-ensure-system-package
+;; provides way to define system package dependencies for Emacs packages
+(use-package use-package-ensure-system-package
+  :ensure t)
+
+(require 'req-package)
 ;;(use-package req-package)
 
 ;; ---( ... )--------------------------------------------------------------
@@ -133,6 +228,18 @@
   :ensure t
   :config (mood-line-mode 1)
 )
+
+;; delight
+;; hides modeline displays
+(use-package delight
+  :ensure t)
+(require 'delight)                ;; if you use :delight
+(require 'bind-key)                ;; if you use any :bind variant
+
+;; ;; Required to hide the modeline 
+;; (use-package hide-mode-line
+;;   :ensure t
+;;   :defer t)
 
 ;; (use-package powerline
 ;;   :ensure t
@@ -278,7 +385,31 @@
   (projectile-global-mode))
 
 
+;; ---( treemacs )--------------------------------------------------------------
 
+;; Provides workspaces with file browsing (tree file viewer)
+;; and project management when coupled with `projectile`.
+
+(use-package treemacs
+  :ensure t
+  :defer t
+  :config
+  (setq treemacs-no-png-images t
+	  treemacs-width 24)
+  :bind ("C-c t" . treemacs))
+
+(use-package treemacs-projectile
+  :after treemacs projectile
+  :ensure t)
+
+(use-package treemacs-icons-dired
+  :after treemacs dired
+  :ensure t
+  :config (treemacs-icons-dired-mode))
+
+(use-package treemacs-magit
+  :after treemacs magit
+  :ensure t)
 
 
 ;; ---( etags )--------------------------------------------------------------
@@ -479,7 +610,7 @@
 (use-package ess
   :if (version<= "25.1" emacs-version)
   :defer t
-  ;; :ensure t
+  :ensure t
   
   ;;:load-path "site-lisp/ess/lisp/"
   ;;:config (ess-toggle-underscore nil)
@@ -636,11 +767,205 @@
 
 
 
+;; ---( LSP mode )------------------------------------------------------------
+
+;; @see: https://emacs-lsp.github.io/lsp-mode/page/installation/
+(use-package lsp-mode
+  :init
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  (setq lsp-keymap-prefix "C-l")
+  ;;(setq lsp-keymap-prefix "C-c l")
+  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+         (python-mode . lsp)
+         ;; if you want which-key integration
+         (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
+
+;; optionally
+(use-package lsp-ui :commands lsp-ui-mode)
+;; if you are helm user
+;;(use-package helm-lsp :commands helm-lsp-workspace-symbol)
+;; if you are ivy user
+(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+
+;; optionally if you want to use debugger
+
+;; Provides visual help in the buffer 
+;; For example definitions on hover. 
+;; The `imenu` lets me browse definitions quickly.
+(use-package lsp-ui
+  :ensure t
+  :defer t
+  :config
+  (setq lsp-ui-sideline-enable nil
+	    lsp-ui-doc-delay 2)
+  :hook (lsp-mode . lsp-ui-mode)
+  :bind (:map lsp-ui-mode-map
+	      ("C-c i" . lsp-ui-imenu)))
+
+
+;; ---( dap )--------------------------------------------------------------
+
+;; Integration with the debug server 
+(use-package dap-mode
+  :ensure t
+  :defer t
+  :after lsp-mode
+  :config
+  (dap-auto-configure-mode))
+
+;; (use-package dap-mode)
+;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+
+
+
 ;; ---( python )--------------------------------------------------------------
+
+;; @see: https://gitlab.com/nathanfurnal/dotemacs/-/snippets/2060535?utm_source=pocket_mylist
+;; @see: https://github.com/jidicula/dotfiles/blob/main/init.el?utm_source=pocket_mylist
+
+
+;; Built-in Python utilities
+(use-package python
+  :ensure t
+  :config
+  ;; Remove guess indent python message
+  (setq python-indent-guess-indent-offset-verbose nil)
+  ;; Use IPython when available or fall back to regular Python 
+  (cond
+   ((executable-find "ipython")
+    (progn
+      (setq python-shell-buffer-name "IPython")
+      (setq python-shell-interpreter "ipython")
+      (setq python-shell-interpreter-args "-i --simple-prompt")))
+   ((executable-find "python3")
+    (setq python-shell-interpreter "python3"))
+   ((executable-find "python2")
+    (setq python-shell-interpreter "python2"))
+   (t
+    (setq python-shell-interpreter "python"))))
+
+
+;; Hide the modeline for inferior python processes
+(use-package inferior-python-mode
+  :ensure nil
+  :hook (inferior-python-mode . hide-mode-line-mode))
+
+;; Required to hide the modeline 
+(use-package hide-mode-line
+  :ensure t
+  :defer t)
+
+
+
+;; Required to easily switch virtual envs 
+;; via the menu bar or with `pyvenv-workon` 
+;; Setting the `WORKON_HOME` environment variable points 
+;; at where the envs are located. I use (miniconda ^H) poetry. 
+(use-package pyvenv
+  :ensure t
+  :defer t
+  :config
+  ;; Setting work on to easily switch between environments
+  ;;(setenv "WORKON_HOME" (expand-file-name "~/miniconda3/envs/"))
+  (setenv "WORKON_HOME" (expand-file-name "~/.cache/pypoetry/virtualenvs"))
+  ;; Display virtual envs in the menu bar
+  (setq pyvenv-menu t)
+  ;; Restart the python process when switching environments
+  (add-hook 'pyvenv-post-activate-hooks (lambda ()
+					  (pyvenv-restart-python)))
+  :hook (python-mode . pyvenv-mode))
+
+;; Language server for Python 
+;; Read the docs for the different variables set in the config.
+(use-package lsp-pyright
+  :ensure t
+  :defer t
+  :config
+  ;;(setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
+  (setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
+  (setq lsp-pyright-disable-language-service nil
+	lsp-pyright-disable-organize-imports nil
+	lsp-pyright-auto-import-completions t
+	lsp-pyright-use-library-code-for-types t
+	;;lsp-pyright-venv-path "~/miniconda3/envs")
+	lsp-pyright-venv-path "~/.cache/pypoetry/virtualenvs")
+  :hook ((python-mode . (lambda () 
+                          (require 'lsp-pyright) (lsp-deferred)))))
+
+;; Format the python buffer following YAPF rules
+;; There's also blacken if you like it better.
+(use-package yapfify
+  :ensure t
+  :defer t
+  :hook (python-mode . yapf-mode))
+
+
+
+;; python-black
+(use-package python-black
+  ;;:delight python-black-on-save-mode "⚫️"
+  :ensure t
+  :hook
+  (python-mode . python-black-on-save-mode)
+  :init
+  (put 'python-black-command 'safe-local-variable #'stringp)
+  (put 'python-black-extra-args 'safe-local-variable #'stringp)
+  (put 'python-black-on-save-mode 'safe-local-variable #'booleanp)
+  )
+
+;; poetry
+(use-package poetry
+  :ensure t
+  ;; :init
+  ;; imperfect tracking strategy causes lags in builds
+  ;; (setq poetry-tracking-strategy 'switch-buffer)
+  :hook
+  ;; activate poetry-tracking-mode when python-mode is active
+  (python-mode . poetry-tracking-mode)
+  )
+
+;; (use-package poetry
+;;   :ensure t
+;;   :config
+;;   (add-hook 'poetry-tracking-mode-hook (lambda () (remove-hook 'post-command-hook 'poetry-track-virtualenv)))
+;;   (add-hook 'python-mode-hook 'poetry-track-virtualenv)
+;;   (add-hook 'projectile-after-switch-project-hook 'poetry-track-virtualenv))
+
+
+
+;; (use-package python-mode
+;;   :mode ("\\.py\\'" . python-mode)
+;;   :interpreter ("python" . python-mode)
+;;   :config
+;;   (defvar python-mode-initialized nil)
+;;   (defun my-python-mode-hook ()
+;;     (unless python-mode-initialized
+;;       (setq python-mode-initialized t)
+;;       (info-lookup-add-help
+;;        :mode 'python-mode
+;;        :regexp "[a-zA-Z_0-9.]+"
+;;        :doc-spec
+;;        '(("(python)Python Module Index" )
+;;          ("(python)Index"
+;;           (lambda
+;;             (item)
+;;             (cond
+;;              ((string-match
+;;                "\\([A-Za-z0-9_]+\\)() (in module \\([A-Za-z0-9_.]+\\))" item)
+;;               (format "%s.%s" (match-string 2 item)
+;;                       (match-string 1 item)))))))))
+;;     (setq indicate-empty-lines t)
+;;     (set (make-local-variable 'parens-require-spaces) nil)
+;;     (setq indent-tabs-mode nil)
+;;     (bind-key "C-c C-z" 'python-shell python-mode-map)
+;;     (unbind-key "C-c c" python-mode-map))
+;;   (add-hook 'python-mode-hook 'my-python-mode-hook))
 
 
 (use-package elpy
-  :ensure t
+  :disabled t
   :preface
   
   ;; @see: https://elpy.readthedocs.org/en/latest/
@@ -721,9 +1046,14 @@
   (elpy-enable)
   (setq python-shell-interpreter "jupyter"
         python-shell-interpreter-args "console --simple-prompt")
+ 
   ;; (elpy-use-ipython "ipython3") 
   (defalias 'workon 'pyvenv-workon))
 
+(setenv "PYTHONIOENCODING" "utf-8")
+(add-to-list 'process-coding-system-alist '("python" . (utf-8 . utf-8)))
+(add-to-list 'process-coding-system-alist '("elpy" . (utf-8 . utf-8)))
+(add-to-list 'process-coding-system-alist '("flake8" . (utf-8 . utf-8)))
 
 (use-package ein
   :unless (version< emacs-version "25.1")
@@ -762,10 +1092,6 @@
 ;;   )
   
 
-
-(use-package poetry
- :ensure t)
-
 ;; (use-package pipenv
 ;;   :unless (version< emacs-version "25.1")
 ;;   :defer t
@@ -775,34 +1101,6 @@
 ;;   (setq
 ;;    pipenv-projectile-after-switch-function
 ;;    #'pipenv-projectile-after-switch-extended))
-
-;; (use-package python-mode
-;;   :mode ("\\.py\\'" . python-mode)
-;;   :interpreter ("python" . python-mode)
-;;   :config
-;;   (defvar python-mode-initialized nil)
-;;   (defun my-python-mode-hook ()
-;;     (unless python-mode-initialized
-;;       (setq python-mode-initialized t)
-;;       (info-lookup-add-help
-;;        :mode 'python-mode
-;;        :regexp "[a-zA-Z_0-9.]+"
-;;        :doc-spec
-;;        '(("(python)Python Module Index" )
-;;          ("(python)Index"
-;;           (lambda
-;;             (item)
-;;             (cond
-;;              ((string-match
-;;                "\\([A-Za-z0-9_]+\\)() (in module \\([A-Za-z0-9_.]+\\))" item)
-;;               (format "%s.%s" (match-string 2 item)
-;;                       (match-string 1 item)))))))))
-;;     (setq indicate-empty-lines t)
-;;     (set (make-local-variable 'parens-require-spaces) nil)
-;;     (setq indent-tabs-mode nil)
-;;     (bind-key "C-c C-z" 'python-shell python-mode-map)
-;;     (unbind-key "C-c c" python-mode-map))
-;;   (add-hook 'python-mode-hook 'my-python-mode-hook))
 
 
 
@@ -1302,17 +1600,30 @@ the automatic filling of the current paragraph."
 
 (message "#pdf-tools(0): '( (h7/use-pdf-tools . %s) )" (h7/use-pdf-tools)) 
 
+;; (use-package pdf-tools
+;;   ;;  :if (h7/use-pdf-tools)
+;;   :quelpa (pdf-tools :fetcher github :repo "vedang/pdf-tools")
+;;   :ensure t
+;;   :pin manual ;; don't reinstall when package updates
+;;   :mode  ("\\.pdf\\'" . pdf-view-mode)
+;;   :config
+;;   (setq-default pdf-view-display-size 'fit-page)
+;;   (setq pdf-annot-activate-created-annotations t)
+;;   (require 'pdf-occur)
+;;   (pdf-tools-install :no-query)
+;;   )
+
 (use-package pdf-tools
-;;  :if (h7/use-pdf-tools)
+  :if (h7/use-pdf-tools)
   :ensure t
-  :pin manual ;; don't reinstall when package updates
-  :mode  ("\\.pdf\\'" . pdf-view-mode)
   :config
-  (setq-default pdf-view-display-size 'fit-page)
-  (setq pdf-annot-activate-created-annotations t)
-  (require 'pdf-occur)
-  (pdf-tools-install :no-query)
-  )
+  (pdf-tools-install t)
+  (quelpa '(pdf-continuous-scroll-mode
+          :fetcher github
+          :repo "dalanicolai/pdf-continuous-scroll-mode.el"))
+
+  (add-hook 'pdf-view-mode-hook 'pdf-continuous-scroll-mode))
+
 
 (use-package saveplace-pdf-view
   :if (h7/use-pdf-tools)
@@ -1353,11 +1664,48 @@ the automatic filling of the current paragraph."
   (progn
     (message "SITE:font-ligatures, ...")
 
+    (setq ligature-path (expand-file-name "local/repos/ligatures.el" user-emacs-directory))
+    (let ((ligature-source (expand-file-name "ligatures.el" ligature-path)))
+      (unless (file-exists-p ligature-source)
+	(progn
+	  (make-directory ligature-path t)
+          (url-copy-file "https://raw.githubusercontent.com/mickeynp/ligature.el/master/ligature.el" ligature-source t))))
+    
+(load-library "~/.emacs.d/local/repos/ligatures.el/ligatures")
+    
+(use-package ligature
+;;  :load-path "local/repos/ligatures.el/ligature"
+  :config
+  ;; Enable the "www" ligature in every possible major mode
+  (ligature-set-ligatures 't '("www"))
+  ;; Enable traditional ligature support in eww-mode, if the
+  ;; `variable-pitch' face supports it
+  (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
+  ;; Enable all Cascadia Code ligatures in programming modes
+  (ligature-set-ligatures 'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
+                                       ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
+                                       "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
+                                       "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
+                                       "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
+                                       "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
+                                       "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
+                                       "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
+                                       ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
+                                       "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
+                                       "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
+                                       "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
+                                       "\\\\" "://"))
+  ;; Enables ligature checks globally in all buffers. You can also do it
+  ;; per mode with `ligature-mode'.
+  (global-ligature-mode t))
 
-(use-package fira-code-mode
-  :ensure t
-  :custom (fira-code-mode-disabled-ligatures '("[]" "x"))  ; ligatures you don't want
-  :hook prog-mode)                                         ; mode to enable fira-code-mode in
+
+    
+;; (use-package fira-code-mode
+;;   :ensure t
+;; ;; :disabled t
+;;   :custom (fira-code-mode-disabled-ligatures '("[]" "x"))  ; ligatures you don't want
+;;   :hook prog-mode)                                         ; mode to enable fira-code-mode in
 
     
     (message "SITE:font-ligatures.")
@@ -1462,7 +1810,7 @@ the automatic filling of the current paragraph."
   :defer t
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture)
-         ("C-c l" . org-store-link))
+         ("C-c k" . org-store-link))
   :config
   (require 'ox-md)
   (unbind-key "C-c ;" org-mode-map)
@@ -1863,6 +2211,37 @@ the automatic filling of the current paragraph."
 ;;     (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-c"))
 ;;     (guide-key-mode 1)))
 
+;; ---( which-key )--------------------------------------------------------------
+
+;; optional if you want which-key integration
+;; (use-package which-key
+;;     :config
+;;     (which-key-mode))
+
+(use-package which-key
+  :delight
+  :ensure t
+  :init
+  (which-key-mode)
+  )
+
+;; ---( comint )--------------------------------------------------------------
+
+(use-package comint
+  :custom
+  (comint-buffer-maximum-size 20000 "Increase comint buffer size.")
+  (comint-prompt-read-only t "Make the prompt read only."))
+
+;; ---( environment )--------------------------------------------------------------
+
+;; Restart Emacs from inside Emacs with `M-x restart-emacs`
+(use-package restart-emacs
+  :defer t)
+
+;; use-package-ensure-system-package
+;; provides way to define system package dependencies for Emacs packages
+(use-package use-package-ensure-system-package
+  :ensure t)
 
 ;; ---( windmove )--------------------------------------------------------------
 
@@ -2125,6 +2504,10 @@ the automatic filling of the current paragraph."
 
 (use-package vterm
   :bind (("C-<F9>" . vterm)
+             ;; :straight (:post-build (cl-letf (((symbol-function #'pop-to-buffer)
+             ;;                        (lambda (buffer) (with-current-buffer buffer (message (buffer-string))))))
+             ;;               (setq vterm-always-compile-module t)
+             ;;               (require 'vterm)))
          :map vterm-mode-map
          ("C-v" . vterm-yank)
          ("S-<insert>" . vterm-yank)
@@ -2132,6 +2515,7 @@ the automatic filling of the current paragraph."
          ([kp-divide] . vterm-yank-pop)
          ([kp-multiply] . vterm-copy-mode))
   :ensure t)
+
 
 (use-package multi-vterm
   :bind (("C-S-<f9>" . multi-vterm)
@@ -2388,8 +2772,12 @@ the automatic filling of the current paragraph."
   :config
   (setq company-idle-delay 0.3)
   (global-company-mode t)  
-  (use-package helm-company
-    :disabled t))
+  ;; (use-package helm-company :disabled t)
+  :hook (
+         (text-mode . company-mode)
+         (prog-mode . company-mode)
+         )
+  )
 
 ;; @see: https://cloudnine.github.io/science/2020-07-27-emacs-company-mode/
 ;; @see: https://github.com/mswift42/.emacs.d/blob/master/init.el
@@ -2492,18 +2880,19 @@ the automatic filling of the current paragraph."
   :diminish helm-mode
   :init
   (progn
-    (require 'helm-config)
-    (message "#helm(1): '( (h7/use-helm . %s) )" (h7/use-helm)) 
-    (setq helm-candidate-number-limit 100)
-    ;; From https://gist.github.com/antifuchs/9238468
-    (setq helm-idle-delay 0.0 ; update fast sources immediately (doesn't).
-          helm-input-idle-delay 0.01  ; this actually updates things
-                                        ; reeeelatively quickly.
-          helm-yas-display-key-on-candidate t
-          helm-quick-update t
-          helm-M-x-requires-pattern nil
-          helm-ff-skip-boring-files t)
-    (helm-mode))
+  ;;   (require 'helm-config)
+  ;;   (message "#helm(1): '( (h7/use-helm . %s) )" (h7/use-helm)) 
+  ;;   (setq helm-candidate-number-limit 100)
+  ;;   ;; From https://gist.github.com/antifuchs/9238468
+  ;;   (setq helm-idle-delay 0.0 ; update fast sources immediately (doesn't).
+  ;;         helm-input-idle-delay 0.01  ; this actually updates things
+  ;;                                       ; reeeelatively quickly.
+  ;;         helm-yas-display-key-on-candidate t
+  ;;         helm-quick-update t
+  ;;         helm-M-x-requires-pattern nil
+  ;; 
+    (helm-mode)
+    )
   :bind (("C-c h" . helm-mini)
          ("C-h a" . helm-apropos)
          ("C-x C-b" . helm-buffers-list)
@@ -2841,7 +3230,10 @@ the automatic filling of the current paragraph."
       ;; Exchange the default bindings for C-j and C-m
       ("C-m" . ivy-alt-done)             ;RET, default C-j
       ("C-j" . ivy-done)                 ;Default C-m
-      ("C-S-m" . ivy-immediate-done))
+      ("C-S-m" . ivy-immediate-done)
+      ("M-m" . ivy-previous-history-element)
+      ("M-n" . ivy-next-history-element)
+      )
 
      (bind-keys
       :map ivy-occur-mode-map

@@ -1,5 +1,5 @@
 (custom-set-variables
  
- '(z-use-helm t)
+ '(z-use-helm nil)
  
 )
