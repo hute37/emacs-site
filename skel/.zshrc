@@ -9,24 +9,45 @@ export _DOT_ZSHRC_0="$(date  --rfc-3339=ns)"
 [[ $TERM == "tramp" ]] && unsetopt zle && PS1='$ ' && return                                     
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='%# '
 
+vterm_printf(){
+    if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ] ); then
+        # Tell tmux to pass the escape sequences through
+        printf "\ePtmux;\e\e]%s\007\e\\" "$1"
+    elif [ "${TERM%%-*}" = "screen" ]; then
+        # GNU screen (screen, screen-256color, screen-256color-bce)
+        printf "\eP\e]%s\007\e\\" "$1"
+    else
+        printf "\e]%s\e\\" "$1"
+    fi
+}
+
+
 if [[ -n "$EMACS" || -n "$INSIDE_EMACS" ]]; then
+   if [[ "$INSIDE_EMACS" = 'vterm' ]]; then
+       alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
+       export TERM=xterm-256color
+   else
     if infocmp eterm-color 2>&1 >/dev/null; then
         export TERM=eterm-color
     else
         export TERM=xterm-256color
     fi  
+   fi
     alias emacs="emacsclient --no-wait"
     export EDITOR="emacsclient --no-wait"
     export VISUAL="emacsclient"
 else
     if [[ -n $SSH_CONNECTION ]]; then
-        which nvim >/dev/null 2>&1 && export EDITOR='nvim' || export EDITOR='vim'    
+        which nvim >/dev/null  && export EDITOR='nvim' || export EDITOR='vim'    
     else
-        which nvim >/dev/null 2>&1 && export EDITOR='nvim' || export EDITOR='vim'    
+        which nvim >/dev/null  && export EDITOR='nvim' || export EDITOR='vim'    
     fi
 fi
 # echo "EDITOR=$EDITOR"
 # echo "VISUAL=$VISUAL"
+#
+
+
 
 # }}} ------------------------------------------------------------------------
 
@@ -42,7 +63,7 @@ case "$TERM" in
     xdumb) unsetopt zle;;
     *)
 
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
 #ZSH_THEME="avit"
 #ZSH_THEME="awesomepanda"
 #ZSH_THEME="bureau"
@@ -80,7 +101,7 @@ ZSH_THEME="robbyrussell"
 #ZSH_THEME="afowler"
 #ZSH_THEME="spaceship"
 #ZSH_THEME="agkozak"; AGKOZAK_USER_HOST_DISPLAY=0
-#ZSH_THEME="sobole"; SOBOLE_THEME_MODE=dark
+ZSH_THEME="sobole"; SOBOLE_THEME_MODE=dark
 
     ;;
 esac    
@@ -128,7 +149,7 @@ esac
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git  zsh-dircolors-solarized)
-plugins=(git)
+plugins=(git zsh-syntax-highlighting poetry)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -155,9 +176,6 @@ unsetopt	AUTO_CD
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-
-export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -215,17 +233,49 @@ export PYRC_PYENV_HOME
 if [ -d "$PYRC_PYENV_HOME" ]; then
 if [ ! "$PYRC_PYENV_ENABLE" = "0" ]; then
 
-export PATH=$PYRC_PYENV_HOME/bin:$PATH
+if [ -z "$PY_RC_PROFILE" ]; then
+export PY_RC_PROFILE=1
+    
+_py_rc_env_profile() {
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
+
+}
+_py_rc_env_profile
+
+fi        
+
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 fi
 fi
+
+: ${PYRC_POETRY_HOME:=~/.poetry}
+export PYRC_POETRY_HOME
+
+
+if [ -d "$PYRC_POETRY_HOME" ]; then
+if [ ! "$PYRC_POETRY_ENABLE" = "0" ]; then
+
+export PATH="$HOME/$PYRC_POETRY_HOME/bin:$PATH"
+
+fi
+fi
+
 fi
 # ---(pyenv:end)-----
+
+
 
 #% echo "% < ~/.zshrc"
 # ------------------------------------------------
 export _DOT_ZSHRC_1="$(date  --rfc-3339=ns)"
 # ------------------------------------------------
+
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
 

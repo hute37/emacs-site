@@ -1381,6 +1381,7 @@
 
 ;; ---( ops )--------------------------------------------------------------
 
+;; @see: https://emacs-lsp.github.io/lsp-mode/page/lsp-ansible/
 
 (use-package ansible
   :commands ansible
@@ -1399,15 +1400,15 @@
   (ansible-doc
    ansible-doc-mode))
 
-(use-package ansible-vault
-  :after ansible
-  :ensure t
-  :init
-  (with-eval-after-load 'ansible
-    (defun ansible-vault-mode-maybe ()
-      (when (ansible-vault--is-vault-file)
-        (ansible-vault-mode 1))))
-  (add-hook 'yaml-mode-hook 'ansible-vault-mode-maybe))
+;; (use-package ansible-vault
+;;   :after ansible
+;;   :ensure t
+;;   :init
+;;   (with-eval-after-load 'ansible
+;;     (defun ansible-vault-mode-maybe ()
+;;       (when (ansible-vault--is-vault-file)
+;;         (ansible-vault-mode 1))))
+;;   (add-hook 'yaml-mode-hook 'ansible-vault-mode-maybe))
 
 
 (use-package company-ansible
@@ -1420,6 +1421,10 @@
     (defun gr/setup-company-ansible ()
       (set (make-local-variable 'company-backends) '(company-ansible)))
     (add-hook 'ansible-hook 'gr/setup-company-ansible)))
+
+(use-package jinja2-mode
+  :after ansible
+  :ensure t)
 
 
 (use-package poly-ansible
@@ -1810,10 +1815,19 @@ the automatic filling of the current paragraph."
   :defer t
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture)
-         ("C-c k" . org-store-link))
+         ("C-c k" . org-store-link)
+         ([(meta up)] . nil)    ;; was 'org-metaup
+         ([(meta down)] . nil)  ;; was 'org-metadown
+         )
   :config
   (require 'ox-md)
   (unbind-key "C-c ;" org-mode-map)
+
+  ;;keymap conflicts
+  (setq org-CUA-compatible t)
+  (setq org-support-shift-select t) ;; were 'org-shiftup+dpwn+left+right
+  (setq org-replace-disputed-keys t)
+
 
   ;;file to save todo items
   (setq org-agenda-files (quote ("~/Dropbox/Local/data/org/all/todo.org")))
@@ -1864,6 +1878,11 @@ the automatic filling of the current paragraph."
 
 
   (defun my/org-mode-defaults ()
+
+    ;;keymap conflicts
+    (local-set-key [(meta up)] 'dired)
+    (local-set-key [(meta down)] 'bs-show)
+    
     ;; (turn-on-org-cdlatex)
     ;; (diminish 'org-cdlatex-mode "")
     (turn-on-auto-fill)
@@ -1922,8 +1941,8 @@ the automatic filling of the current paragraph."
            (dot . t)
            (ditaa . t)
            (python . t)
-           ;; (ruby . t)
-           ;; (R . t)           
+           (ruby . t)
+           (R . t)           
            (gnuplot . t)
            ;; (clojure . t)
            (shell . t)
@@ -1938,6 +1957,14 @@ the automatic filling of the current paragraph."
   (eval-after-load 'org-src
     '(define-key org-src-mode-map
        "\C-x\C-s" #'org-edit-src-exit)))
+
+
+;; Nice bullet points. Retires org-bullets.
+(use-package org-superstar
+  :ensure t
+  :after org
+  :hook (org-mode . org-superstar-mode))
+
 
 
 
