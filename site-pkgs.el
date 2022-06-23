@@ -1819,6 +1819,12 @@ the automatic filling of the current paragraph."
          ([(meta up)] . nil)    ;; was 'org-metaup
          ([(meta down)] . nil)  ;; was 'org-metadown
          )
+  :init 
+  ;;keymap conflicts
+  (setq org-CUA-compatible t)
+  (setq org-support-shift-select t) ;; were 'org-shiftup+dpwn+left+right
+  (setq org-replace-disputed-keys t)
+  
   :config
   (require 'ox-md)
   (unbind-key "C-c ;" org-mode-map)
