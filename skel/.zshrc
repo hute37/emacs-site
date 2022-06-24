@@ -38,9 +38,9 @@ if [[ -n "$EMACS" || -n "$INSIDE_EMACS" ]]; then
     export VISUAL="emacsclient"
 else
     if [[ -n $SSH_CONNECTION ]]; then
-        which nvim >/dev/null  && export EDITOR='nvim' || export EDITOR='vim'    
+        which nvim >/dev/null 2>&1 && export EDITOR='nvim' || export EDITOR='vim'    
     else
-        which nvim >/dev/null  && export EDITOR='nvim' || export EDITOR='vim'    
+        which nvim >/dev/null 2>&1 && export EDITOR='nvim' || export EDITOR='vim'    
     fi
 fi
 # echo "EDITOR=$EDITOR"
