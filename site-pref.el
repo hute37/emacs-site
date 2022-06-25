@@ -8,7 +8,17 @@
   :group 'convenience)
 
 (defcustom z-use-helm nil
-  "Non-nil means to activate  'helm' instead of 'ivy'."
+  "Non-nil means to activate  'helm'."
+  :type 'boolean
+  :group 'h7prefs)
+
+(defcustom z-use-ivy nil
+  "Non-nil means to activate  'ivy'."
+  :type 'boolean
+  :group 'h7prefs)
+
+(defcustom z-use-vertico nil
+  "Non-nil means to activate  'vertico'."
   :type 'boolean
   :group 'h7prefs)
 
@@ -24,7 +34,10 @@
  z-use-helm)
 
 (defun h7/use-ivy ()
- (not z-use-helm))
+ z-use-ivy)
+
+(defun h7/use-vertico ()
+ z-use-vertico)
 
 
 ;; ---( ... )--------------------------------------------------------------

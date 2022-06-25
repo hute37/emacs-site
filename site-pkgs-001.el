@@ -383,8 +383,8 @@
   :init
   (setq projectile-enable-caching t
         projectile-cache-file (emacs-d "var/projectile.cache")
-        projectile-known-projects-file (emacs-d "var/projectile-bookmarks.eld"))
-  (make-directory (emacs-d "var") t)
+        projectile-known-projects-file (emacs-d "var/projectile-bookmarks.eld")
+  (make-directory (concat emacs-d "var" :parents))
   :config
   (projectile-global-mode))
 
@@ -1758,6 +1758,58 @@ the automatic filling of the current paragraph."
 ;; ;;;////////////////////////////////////////////////////////////////
 
 
+;; ---(org-ref)------------------------------------------------------------------------
+
+(use-package org-ref
+  :after org
+  :disabled t
+;;  :ensure t
+  :init
+  (setq reftex-default-bibliography '("~/Dropbox/Local/data/org/ref/references.bib"))
+  (setq org-ref-bibliography-notes "~/Dropbox/Local/data/org/ref/notes.org"
+        org-ref-default-bibliography '("~/Dropbox/Local/data/org/ref/references.bib")
+        org-ref-pdf-directory "~/Dropbox/Local/docs/papers/")
+
+  (setq helm-bibtex-bibliography "~/Dropbox/Local/data/org/ref/references.bib")
+  (setq helm-bibtex-library-path "~/Dropbox/Local/docs/papers/")
+
+  (setq helm-bibtex-pdf-open-function
+        (lambda (fpath)
+          (start-process "open" "*open*" "open" fpath)))
+
+  (setq helm-bibtex-notes-path "~/Dropbox/Local/data/org/ref/notes.org")
+  :config
+  (key-chord-define-global "uu" 'org-ref-cite-hydra/body)
+  ;; variables that control bibtex key format for auto-generation
+  ;; I want firstauthor-year-title-words
+  ;; this usually makes a legitimate filename to store pdfs under.
+  (setq bibtex-autokey-year-length 4
+        bibtex-autokey-name-year-separator "-"
+        bibtex-autokey-year-title-separator "-"
+        bibtex-autokey-titleword-separator "-"
+        bibtex-autokey-titlewords 2
+        bibtex-autokey-titlewords-stretch 1
+        bibtex-autokey-titleword-length 5))
+
+(use-package org-autolist
+  :after org
+  :ensure t
+  :config
+  (org-autolist-mode +1))
+
+(use-package doi-utils
+  :after org
+  :disabled t
+;;  :ensure t
+  )
+
+(use-package org-ref-bibtex
+  :after org
+  :disabled t
+;;  :ensure t
+  :init
+  (setq org-ref-bibtex-hydra-key-binding "\C-cj"))
+
 ;; ---( org-mode )--------------------------------------------------------------
 
 ;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
@@ -1795,6 +1847,7 @@ the automatic filling of the current paragraph."
   (setq org-highest-priority ?A)
   (setq org-lowest-priority ?C)
   (setq org-default-priority ?A)
+
 
   ;;set colours for priorities
   (setq org-priority-faces '((?A . (:foreground "OliveDrab" :weight bold))
@@ -1854,27 +1907,6 @@ the automatic filling of the current paragraph."
 
   ;; Fontify org-mode code blocks
   (setq org-src-fontify-natively t)
-
-;; Stop the org-level headers from increasing in height relative to the other text.
-  ;;(set-face-attribute 'org-block nil :weight 'semi-bold :height 1.3)
-
-  (dolist (face '(org-level-1))
-    (set-face-attribute face nil :weight 'semi-bold :height 1.3))
-
-  (dolist (face '(org-level-2))
-    (set-face-attribute face nil :weight 'semi-bold :height 1.2))
-
-  (dolist (face '(org-level-3
-                  org-level-4
-                  org-level-5))
-    (set-face-attribute face nil :weight 'semi-bold :height 1.1))
-
-  (dolist (face '(org-block-begin-line
-                  org-block-end-line))
-    (set-face-attribute face nil :weight 'bold :height 0.9))
-
-  (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
 
   (setq org-todo-keywords
         (quote ((sequence "TODO(t)" "|" "CANCELLED(c@/!)" "DONE(d)"))))
@@ -1943,58 +1975,6 @@ the automatic filling of the current paragraph."
   :after org
   :hook (org-mode . org-superstar-mode))
 
-
-;; ---(org-ref)------------------------------------------------------------------------
-
-(use-package org-ref
-  :after org
-  :disabled t
-;;  :ensure t
-  :init
-  (setq reftex-default-bibliography '("~/Dropbox/Local/data/org/ref/references.bib"))
-  (setq org-ref-bibliography-notes "~/Dropbox/Local/data/org/ref/notes.org"
-        org-ref-default-bibliography '("~/Dropbox/Local/data/org/ref/references.bib")
-        org-ref-pdf-directory "~/Dropbox/Local/docs/papers/")
-
-  (setq helm-bibtex-bibliography "~/Dropbox/Local/data/org/ref/references.bib")
-  (setq helm-bibtex-library-path "~/Dropbox/Local/docs/papers/")
-
-  (setq helm-bibtex-pdf-open-function
-        (lambda (fpath)
-          (start-process "open" "*open*" "open" fpath)))
-
-  (setq helm-bibtex-notes-path "~/Dropbox/Local/data/org/ref/notes.org")
-  :config
-  (key-chord-define-global "uu" 'org-ref-cite-hydra/body)
-  ;; variables that control bibtex key format for auto-generation
-  ;; I want firstauthor-year-title-words
-  ;; this usually makes a legitimate filename to store pdfs under.
-  (setq bibtex-autokey-year-length 4
-        bibtex-autokey-name-year-separator "-"
-        bibtex-autokey-year-title-separator "-"
-        bibtex-autokey-titleword-separator "-"
-        bibtex-autokey-titlewords 2
-        bibtex-autokey-titlewords-stretch 1
-        bibtex-autokey-titleword-length 5))
-
-(use-package org-autolist
-  :after org
-  :ensure t
-  :config
-  (org-autolist-mode +1))
-
-(use-package doi-utils
-  :after org
-  :disabled t
-;;  :ensure t
-  )
-
-(use-package org-ref-bibtex
-  :after org
-  :disabled t
-;;  :ensure t
-  :init
-  (setq org-ref-bibtex-hydra-key-binding "\C-cj"))
 
 
 
@@ -3445,10 +3425,7 @@ the automatic filling of the current paragraph."
 
 (use-package marginalia
   :ensure t
-  :config
-  (set-face-attribute 'marginalia-documentation nil :underline nil)
-  :init
-  (marginalia-mode))
+  :init (marginalia-mode))
 
 ;; (use-package marginalia
 ;;   :general
