@@ -188,7 +188,7 @@
 ;; (define-key map [(control menu)]   'elpy-company-backend)
 ;; (global-set-key [(control menu)]   'company-complete)
 
-(global-set-key [(meta menu)]   'imenu)
+;;(global-set-key [(meta menu)]   'imenu)
 
 ;; ---( Space )---------------------------------------------
 
@@ -283,8 +283,9 @@
 
 ;; (define-key global-map "\C-@" 'set-mark-command)
 ;; (define-key global-map "\C-@" 'cua-set-mark)
-(define-key esc-map " " 'pop-global-mark)
-
+;; (define-key esc-map " " 'pop-global-mark) ;; c-x c-spc
+(define-key esc-map " " 'cua-set-mark)
+(global-set-key (kbd "C-SPC") 'company-complete)
 ;; ctrl-space set-mark-command
 ;; ctrl-y yank
 ;; ctrl-w cut
