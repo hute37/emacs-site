@@ -507,13 +507,14 @@
 ;; ---( ag )--------------------------------------------------------------
 
 (use-package wgrep
-  :defer t
+  :ensure t
   :custom
   (wgrep-enable-key "e")
   (wgrep-auto-save-buffer )
   (twgrep-change-readonly-file t))
 
 (use-package ag
+  :ensure t
   :custom
   (ag-highligh-search )
   (tag-reuse-buffers )
@@ -521,7 +522,8 @@
   :bind
   ("M-s a" . ag-project)
   :config
-  (use-package wgrep-ag))
+  (use-package wgrep-ag
+    :ensure t))
 
 
 ;; ---( grep )--------------------------------------------------------------
@@ -1924,6 +1926,15 @@ the automatic filling of the current paragraph."
 ;; Stop the org-level headers from increasing in height relative to the other text.
   ;;(set-face-attribute 'org-block nil :weight 'semi-bold :height 1.3)
 
+  (dolist (face '(org-document-info-keyword))
+    (set-face-attribute face nil :weight 'bold :height 1.1))
+
+  (dolist (face '(org-document-title))
+    (set-face-attribute face nil :weight 'bold :height 1.2))
+  (dolist (face '(org-document-info))
+    (set-face-attribute face nil :weight 'semi-bold :height 1.2))
+
+
   (dolist (face '(org-level-1))
     (set-face-attribute face nil :weight 'semi-bold :height 1.3))
 
@@ -1936,7 +1947,8 @@ the automatic filling of the current paragraph."
     (set-face-attribute face nil :weight 'semi-bold :height 1.1))
 
   (dolist (face '(org-block-begin-line
-                  org-block-end-line))
+                  org-block-end-line
+                  org-meta-line))
     (set-face-attribute face nil :weight 'bold :height 0.9))
 
   (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
@@ -2354,19 +2366,20 @@ the automatic filling of the current paragraph."
 
 ;; @see: https://sgtpeacock.com/dot-files/Emacs.html#org66117b2
 
-;; (use-package helpful
-;;   :general
-;;   (:states '(normal visual emacs)
-;;            :prefix "SPC"
+(use-package helpful
+  :ensure t
+  :general
+  (:states '(normal visual emacs)
+           :prefix "SPC"
            
-;;            "d" '(:ignore t :wk "Describe")
-;;            "d." 'helpful-symbol
-;;            "df" 'helpful-function
-;;            "dv" 'helpful-variable
-;;            "dk" 'helpful-key
-;;            "dc" 'helpful-command)
-;;   :config
-;;   (defvar read-symbol-positions-list nil))
+           "d" '(:ignore t :wk "Describe")
+           "d." 'helpful-symbol
+           "df" 'helpful-function
+           "dv" 'helpful-variable
+           "dk" 'helpful-key
+           "dc" 'helpful-command)
+  :config
+  (defvar read-symbol-positions-list nil))
 
 
 
