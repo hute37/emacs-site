@@ -10,6 +10,26 @@
 ;; @see: https://github.com/bdd/.emacs.d/blob/master/packages.el
 ;; @see: http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.html
 ;; @see: https://ladicle.com/post/config/
+;; @see: http://emacsredux.com/blog/2014/08/25/a-peek-at-emacs-24-dot-4-prettify-symbols-mode/
+;; @see: https://sgtpeacock.com/dot-files/Emacs.html#org66117b2
+;; @see: https://gitea.petton.fr/nico/emacs.d/src/commit/8ae2b902c916600c9296d967f36ed69ad50e8199/init.el?lang=sv-SE
+;; @see: https://emacs-lsp.github.io/lsp-mode/page/installation/
+;; @see: https://gitlab.com/nathanfurnal/dotemacs/-/snippets/2060535?utm_source=pocket_mylist
+;; @see: https://github.com/jidicula/dotfiles/blob/main/init.el?utm_source=pocket_mylist
+;; @see: https://elpy.readthedocs.org/en/latest/
+;; @see: https://github.com/jorgenschaefer/elpy
+;; @see: https://youtu.be/0kuCeS-mfyc
+;; @see: https://github.com/JuliaEditorSupport/julia-emacs
+;; @see: https://github.com/tpapp/julia-repl
+;; @see: https://github.com/nnicandro/emacs-jupyter
+;; @see: https://julia-users-zurich.github.io/talks/talk-2018-04/emacs.html
+;; @see: https://github.com/cgroll/dot_emacs.d/blob/master/init.el
+;; @see: https://gitlab.com/balajisi/emacs/blob/master/init.el
+;; @see: https://github.com/serras/emacs-haskell-tutorial/blob/master/tutorial.md
+;; @see: https://github.com/pdorrell/rules-editing-mode
+;; @see: https://github.com/pdorrell/rules-editing-mode/blob/master/my-drools.el
+;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
+
 
 ;; ---( Install )--------------------------------------------------------------
 
@@ -205,8 +225,6 @@
 
 ;; ---( ... )--------------------------------------------------------------
 
-;; @see: http://emacsredux.com/blog/2014/08/25/a-peek-at-emacs-24-dot-4-prettify-symbols-mode/
-
 ;; (use-package pretty-symbols
 ;;   :ensure t)
 
@@ -214,11 +232,28 @@
 ;;   :ensure t
 ;;   :init (dolist (hook '(lisp-mode-hook emacs-lisp-mode-hook)))
 ;;   :config (dolist (global-pretty-lambda-mode)))
-;; ;;(use-package pretty-lambdada)
+
 
 (use-package jumpc
   :disabled t
   :config (progn (jumpc-bind-vim-key)))
+
+(use-package rainbow-delimiters
+  :disabled t
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+(use-package undo-tree
+  :disabled t
+  :custom
+  (undo-tree-auto-save-history nil)
+  :init
+  (global-undo-tree-mode 1))
+
+
+;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;  @UI
+;; ;;;////////////////////////////////////////////////////////////////
+
 
 ;; ---( mode-line )--------------------------------------------------------------
 
@@ -243,6 +278,11 @@
 ;; (use-package hide-mode-line
 ;;   :ensure t
 ;;   :defer t)
+
+;; (use-package all-the-icons)
+;; (use-package doom-modeline
+;;   :after eshell
+;;   :init (doom-modeline-mode 1))
 
 ;; (use-package powerline
 ;;   :ensure t
@@ -282,6 +322,19 @@
 		       
 ;; 		       )
 ;; 	     )
+
+;; ---( dashboard )--------------------------------------------------------------
+
+(use-package dashboard
+  :ensure t
+  :custom
+  (dashboard-startup-banner 'logo)
+  (dashboard-items '((recents . 5)
+                     (projects . 5)
+                     (agenda . 5)))
+  (initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
+  :config
+  (dashboard-setup-startup-hook))
 
 
 
@@ -538,7 +591,6 @@
 (use-package css-mode
   :mode ("\\.css\\'" . css-mode))
 
-;; ;; @see: https://gitea.petton.fr/nico/emacs.d/src/commit/8ae2b902c916600c9296d967f36ed69ad50e8199/init.el?lang=sv-SE
 ;; (use-package rainbow-mode
 ;;   :disabled t	     
 ;;   :config
@@ -773,7 +825,6 @@
 
 ;; ---( LSP mode )------------------------------------------------------------
 
-;; @see: https://emacs-lsp.github.io/lsp-mode/page/installation/
 (use-package lsp-mode
   :init
   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
@@ -1660,6 +1711,20 @@ the automatic filling of the current paragraph."
 ;; ;;;  @FONT
 ;; ;;;////////////////////////////////////////////////////////////////
 
+;; ---( faces )--------------------------------------------------------------
+
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  '(default ((t (:family "Source Code Pro" :foundry "ADBE" :slant normal :weight semi-bold :height 135 :width normal)))))
+
+;; (custom-theme-set-faces
+;;    'user
+;;    '(variable-pitch ((t (:family "Source Sans Pro" :foundry "ADBE" :slant normal :weight semi-bold :height 135 :width normal))))
+;;    '(fixed-pitch ((t ( :family "JetBrains Mono Medium")))))
+
 
 ;; ---( ligatures )--------------------------------------------------------------
 
@@ -2282,6 +2347,28 @@ the automatic filling of the current paragraph."
   (which-key-mode)
   )
 
+
+
+;; ---( helpful )--------------------------------------------------------------
+
+;; @see: https://sgtpeacock.com/dot-files/Emacs.html#org66117b2
+
+;; (use-package helpful
+;;   :general
+;;   (:states '(normal visual emacs)
+;;            :prefix "SPC"
+           
+;;            "d" '(:ignore t :wk "Describe")
+;;            "d." 'helpful-symbol
+;;            "df" 'helpful-function
+;;            "dv" 'helpful-variable
+;;            "dk" 'helpful-key
+;;            "dc" 'helpful-command)
+;;   :config
+;;   (defvar read-symbol-positions-list nil))
+
+
+
 ;; ---( comint )--------------------------------------------------------------
 
 (use-package comint
@@ -2626,6 +2713,11 @@ the automatic filling of the current paragraph."
   ;;:bind ("C-, C-," . ranger)
   )
 
+;; (use-package ranger
+;;   :custom
+;;   (;; (ranger-override-dired mode t)
+;;    (ranger-cleanup-on-disable t)
+;;    (ranger-dont-show-binary t)))
 
 ;; ;; ---( sunrise-commander )--------------------------------------------------------------
 
