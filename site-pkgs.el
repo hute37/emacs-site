@@ -210,7 +210,8 @@
 ;;(use-package req-package)
 
 ;; @see: https://github.com/noctuid/general.el
-;;(use-package general)
+(use-package general
+  :ensure t)
 
 ;; ---( ... )--------------------------------------------------------------
 
