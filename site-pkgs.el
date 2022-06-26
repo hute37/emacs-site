@@ -3667,6 +3667,9 @@ the automatic filling of the current paragraph."
 ;;   ("M-y" 'consult-yank-from-kill-ring
 ;;    "C-x b" 'consult-buffer))
 
+
+;; @see: https://gitlab.com/to1ne/temacco/-/blob/main/README.org#L749
+
 ;; ---( orderless )--------------------------------------------------------------
 
 (use-package orderless
