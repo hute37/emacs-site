@@ -413,7 +413,7 @@
                 (flyspell-mode)))
   (add-hook 'magit-status-mode-hook #'(lambda () (magit-monitor t))))
 
-;; ---( projectile )--------------------------------------------------------------
+;; ---( git-timemachine )------------------------------------------------------------
 
 (use-package git-timemachine
   :disabled t)
@@ -421,6 +421,38 @@
 ;; (use-package git-timemachine
 ;;   :ensure t
 ;;   :bind (("s-g" . git-timemachine)))
+
+;; ---( vdiff )------------------------------------------------------------
+
+(use-package vdiff
+  :ensure t)
+
+(use-package vdiff-magit
+  :ensure t
+  :config
+  (define-key magit-mode-map "e" 'vdiff-magit-dwim)
+  (define-key magit-mode-map "E" 'vdiff-magit)
+  (transient-suffix-put 'magit-dispatch "e" :description "vdiff (dwim)")
+  (transient-suffix-put 'magit-dispatch "e" :command 'vdiff-magit-dwim)
+  (transient-suffix-put 'magit-dispatch "E" :description "vdiff")
+  (transient-suffix-put 'magit-dispatch "E" :command 'vdiff-magit)
+
+  ;; This flag will default to using ediff for merges.
+  ;; (setq vdiff-magit-use-ediff-for-merges nil)
+
+  ;; Whether vdiff-magit-dwim runs show variants on hunks.  If non-nil,
+  ;; vdiff-magit-show-staged or vdiff-magit-show-unstaged are called based on what
+  ;; section the hunk is in.  Otherwise, vdiff-magit-dwim runs vdiff-magit-stage
+  ;; when point is on an uncommitted hunk.
+  ;; (setq vdiff-magit-dwim-show-on-hunks nil)
+
+  ;; Whether vdiff-magit-show-stash shows the state of the index.
+  ;; (setq vdiff-magit-show-stash-with-index t)
+
+  ;; Only use two buffers (working file and index) for vdiff-magit-stage
+  ;; (setq vdiff-magit-stage-is-2way nil)
+
+  )
 
 
 
@@ -1832,7 +1864,8 @@ the automatic filling of the current paragraph."
 
 
 (use-package org
-  :defer t
+  :ensure t
+  ;; :defer t
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture)
          ("C-c k" . org-store-link)
@@ -2382,6 +2415,26 @@ the automatic filling of the current paragraph."
   (defvar read-symbol-positions-list nil))
 
 
+;; ---( popper )--------------------------------------------------------------
+
+(use-package popper
+  :ensure t
+  ;; :general
+  ;; (:states '(normal visual emacs)
+  ;;          :prefix "SPC"
+  ;;          "`" 'popper-toggle-latest
+  ;;          "~" 'popper-cycle)
+  :custom
+  (popper-reference-buffers '("\\*Messages\\*"
+                              "Output\\*$"
+                              "\\*Async Shell Command\\*"
+                              help-mode
+                              compilation-mode
+                              eldoc-mode))
+  (popper-window-height 30)
+  :init
+  (popper-mode +1)
+  (popper-echo-mode +1))
 
 ;; ---( comint )--------------------------------------------------------------
 
