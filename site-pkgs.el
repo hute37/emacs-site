@@ -2881,7 +2881,7 @@ the automatic filling of the current paragraph."
 ;; @see: https://raw.githubusercontent.com/noctuid/evil-guide/master/README.org
 
 (use-package evil
-  :disabled t
+  :ensure t
   :defer 30
   )
 
