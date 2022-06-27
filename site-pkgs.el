@@ -1862,6 +1862,7 @@ the automatic filling of the current paragraph."
 
 ;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
 ;; @see: https://stackoverflow.com/questions/45041399/proper-configuration-of-packages-in-gnu-emacs
+;; @see: https://hugocisneros.com/org-config/
 
 (use-package org
   :ensure t
@@ -2080,7 +2081,13 @@ the automatic filling of the current paragraph."
 (use-package org-superstar
   :ensure t
   :after org
-  :hook (org-mode . org-superstar-mode))
+  :hook (org-mode . org-superstar-mode)
+  :config
+  (setq org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
+  (setq org-superstar-item-bullet-alist
+        '((?* . ?•)
+          (?+ . ?➤)
+          (?- . ?•))))
 
 
 ;; ---(org-ref)------------------------------------------------------------------------
