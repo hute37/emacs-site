@@ -1861,7 +1861,7 @@ the automatic filling of the current paragraph."
 ;; ---( org-mode )--------------------------------------------------------------
 
 ;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
-
+;; @see: https://stackoverflow.com/questions/45041399/proper-configuration-of-packages-in-gnu-emacs
 
 (use-package org
   :ensure t
@@ -1878,6 +1878,8 @@ the automatic filling of the current paragraph."
   (setq org-support-shift-select t) ;; were 'org-shiftup+dpwn+left+right
   (setq org-replace-disputed-keys t)
   
+  :hook (org-mode . h7/org-mode-setup)
+  
   :config
   (require 'ox-md)
   (unbind-key "C-c ;" org-mode-map)
@@ -1888,76 +1890,36 @@ the automatic filling of the current paragraph."
   (setq org-replace-disputed-keys t)
 
 
-  ;;file to save todo items
-  (setq org-agenda-files (quote ("~/Dropbox/Local/data/org/all/todo.org")))
+  ;; --[org-mode options] ----------------------------------------------------------
+  
+  (setq org-ellipsis " ▾")
+  (setq org-hide-emphasis-markers t)
+  (setq org-src-tab-acts-natively t)
+  (setq org-edit-src-content-indentation 2)
+  (setq org-hide-block-startup nil)
+  (setq org-src-preserve-indentation nil)
+  (setq org-startup-folded 'content)
+  (setq org-cycle-separator-lines 2)
 
+  ;; (setq org-modules
+  ;;   '(org-crypt
+  ;;       org-habit
+  ;;       org-bookmark
+  ;;       org-eshell
+  ;;       org-irc))
+  
 
-  ;;set priority range from A to C with default A
-  (setq org-highest-priority ?A)
-  (setq org-lowest-priority ?C)
-  (setq org-default-priority ?A)
-
-  ;;set colours for priorities
-  (setq org-priority-faces '((?A . (:foreground "OliveDrab" :weight bold))
-                             (?B . (:foreground "LightSteelBlue"))
-                             (?C . (:foreground "#F0DFAF"))))
-
-
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;; org-mode agenda options                                                ;;
-  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-  ;;open agenda in current window
-  (setq org-agenda-window-setup (quote current-window))
-  ;;warn me of any deadlines in next 7 days
-  (setq org-deadline-warning-days 7)
-
-  ;;don't show tasks as scheduled if they are already shown as a deadline
-  (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
-  ;;don't give awarning colour to tasks with impending deadlines
-  ;;if they are scheduled to be done
-  (setq org-agenda-skip-deadline-prewarning-if-scheduled (quote pre-scheduled))
-  ;;don't show tasks that are scheduled or have deadlines in the
-  ;;normal todo list
-  (setq org-agenda-todo-ignore-deadlines (quote all))
-  (setq org-agenda-todo-ignore-scheduled (quote all))
-
-  ;;sort tasks in order of when they are due and then by priority
-
-  (setq org-agenda-sorting-strategy
-        (quote
-         ((agenda deadline-up priority-down)
-          (todo priority-down category-keep)
-          (tags priority-down category-keep)
-          (search category-keep))))
-
-  (setq org-capture-templates
-        '(("t" "todo" entry (file+headline "~/Dropbox/Local/data/org/all/todo.org" "Tasks")
-           "* TODO [#A] %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n")))
-
-
-  (defun my/org-mode-defaults ()
-
-    ;;keymap conflicts
-    (local-set-key [(meta up)] 'dired)
-    (local-set-key [(meta down)] 'bs-show)
-    
-    ;; (turn-on-org-cdlatex)
-    ;; (diminish 'org-cdlatex-mode "")
-    (turn-on-auto-fill)
-
-    ;; make `company-backends' local is critcal
-    ;; or else, you will have completion in every major mode, that's very annoying!
-    (make-local-variable 'company-backends)
-    ;; company-ispell is the plugin to complete words
-    (add-to-list 'company-backends 'company-ispell))
-
-  (add-hook 'org-mode-hook 'my/org-mode-defaults)
-
+  ;; --[org-mode faces] ----------------------------------------------------------
+  
   ;; Fontify org-mode code blocks
   (setq org-src-fontify-natively t)
+  (setq org-fontify-quote-and-verse-blocks t)
 
-;; Stop the org-level headers from increasing in height relative to the other text.
+  ;; Stop the org-level headers from increasing in height relative to the other text.
   ;;(set-face-attribute 'org-block nil :weight 'semi-bold :height 1.3)
+
+  (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
 
   (dolist (face '(org-document-info-keyword))
     (set-face-attribute face nil :weight 'bold :height 1.1))
@@ -1984,8 +1946,15 @@ the automatic filling of the current paragraph."
                   org-meta-line))
     (set-face-attribute face nil :weight 'bold :height 0.9))
 
-  (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
+
+
+
+
+  ;; --[org-mode todo] ----------------------------------------------------------
+  
+  (setq org-capture-templates
+        '(("t" "todo" entry (file+headline "~/Dropbox/Local/data/org/all/todo.org" "Tasks")
+           "* TODO [#A] %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n")))
 
   (setq org-todo-keywords
         (quote ((sequence "TODO(t)" "|" "CANCELLED(c@/!)" "DONE(d)"))))
@@ -2001,8 +1970,48 @@ the automatic filling of the current paragraph."
           ("CANCELLED" :foreground "forest green" :weight bold)))
 
   (setq org-enforce-todo-dependencies t)
-  (setq org-src-tab-acts-natively t)
+  ;;set priority range from A to C with default A
+  (setq org-highest-priority ?A)
+  (setq org-lowest-priority ?C)
+  (setq org-default-priority ?A)
 
+  ;;set colours for priorities
+  (setq org-priority-faces '((?A . (:foreground "OliveDrab" :weight bold))
+                             (?B . (:foreground "LightSteelBlue"))
+                             (?C . (:foreground "#F0DFAF"))))
+  
+  ;; --[org-mode agenda] ----------------------------------------------------------
+  
+  ;;file to save todo items
+  (setq org-agenda-files (quote ("~/Dropbox/Local/data/org/all/todo.org")))
+
+  ;;open agenda in current window
+  (setq org-agenda-window-setup (quote current-window))
+  ;;warn me of any deadlines in next 7 days
+  (setq org-deadline-warning-days 7)
+
+  ;;don't show tasks as scheduled if they are already shown as a deadline
+  (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
+  ;;don't give awarning colour to tasks with impending deadlines
+  ;;if they are scheduled to be done
+  (setq org-agenda-skip-deadline-prewarning-if-scheduled (quote pre-scheduled))
+  ;;don't show tasks that are scheduled or have deadlines in the
+  ;;normal todo list
+  (setq org-agenda-todo-ignore-deadlines (quote all))
+  (setq org-agenda-todo-ignore-scheduled (quote all))
+
+  ;;sort tasks in order of when they are due and then by priority
+
+  (setq org-agenda-sorting-strategy
+        (quote
+         ((agenda deadline-up priority-down)
+          (todo priority-down category-keep)
+          (tags priority-down category-keep)
+          (search category-keep))))
+
+
+  ;; --[org-mode latex] ----------------------------------------------------------
+  
   (setq org-latex-pdf-process
         (quote ("pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f"
                 "bibtex $(basename %b)"
@@ -2016,13 +2025,15 @@ the automatic filling of the current paragraph."
   (add-to-list 'org-latex-packages-alist '("" "minted"))
   (require 'ox-latex)
   (setq org-latex-listings 'minted)
-
+  
   ;; (setq org-latex-minted-options
   ;;       '(("frame" "lines") ("framesep" "6pt")
   ;;         ("mathescape" "true") ("fontsize" "\\small")))
 
+  ;; --[org-mode babel] ----------------------------------------------------------
+  
   (setq org-confirm-babel-evaluate nil)
-
+  
   ;; execute external programs.
   (org-babel-do-load-languages
    (quote org-babel-load-languages)
@@ -2042,6 +2053,23 @@ the automatic filling of the current paragraph."
            ;; (scala . t)
            (sql . t)
            (latex . t))))
+
+
+  (defun h7/org-mode-setup ()
+
+    ;;keymap conflicts
+    (local-set-key [(meta up)] 'dired)
+    (local-set-key [(meta down)] 'bs-show)
+    
+    ;; (turn-on-org-cdlatex)
+    ;; (diminish 'org-cdlatex-mode "")
+    (turn-on-auto-fill)
+
+    ;; make `company-backends' local is critcal
+    ;; or else, you will have completion in every major mode, that's very annoying!
+    (make-local-variable 'company-backends)
+    ;; company-ispell is the plugin to complete words
+    (add-to-list 'company-backends 'company-ispell))
 
   (eval-after-load 'org-src
     '(define-key org-src-mode-map
