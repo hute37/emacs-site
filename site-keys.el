@@ -285,7 +285,8 @@
 ;; (define-key global-map "\C-@" 'cua-set-mark)
 ;; (define-key esc-map " " 'pop-global-mark) ;; c-x c-spc
 (define-key esc-map " " 'cua-set-mark)
-(global-set-key (kbd "C-SPC") 'company-complete)
+(global-set-key (kbd "C-SPC") 'completion-at-point)
+;;(global-set-key (kbd "C-SPC") 'company-complete)
 ;; ctrl-space set-mark-command
 ;; ctrl-y yank
 ;; ctrl-w cut
