@@ -177,11 +177,11 @@
 
 ;; Bootstrap `use-package'
 (unless (and
-	 (package-installed-p 'bind-key)
-	 (package-installed-p 'diminish)
-	 (package-installed-p 'use-package)
-	 (package-installed-p 'req-package)
-	 )
+         (package-installed-p 'bind-key)
+         (package-installed-p 'diminish)
+         (package-installed-p 'use-package)
+         (package-installed-p 'req-package)
+         )
 (package-refresh-contents)
   (package-install 'bind-key)
   (package-install 'diminish)
@@ -318,9 +318,9 @@
 ;; 		       ;;(sml/apply-theme 'automatic)
 
 ;; 		       ;;(powerline-default-theme)
-		       
+
 ;; 		       (powerline-reset)
-		       
+
 ;; 		       )
 ;; 	     )
 
@@ -485,7 +485,7 @@
   :defer t
   :config
   (setq treemacs-no-png-images t
-	  treemacs-width 24)
+          treemacs-width 24)
   :bind ("C-c t" . treemacs))
 
 (use-package treemacs-projectile
@@ -655,7 +655,7 @@
 ;;   :init
 ;;   (defalias 'xml-mode 'nxml-mode)
 ;;   :config
-    
+
 ;;   (defun my-nxml-mode-hook ()
 ;;     (bind-key "<return>" 'newline-and-indent nxml-mode-map))
 ;;   (add-hook 'nxml-mode-hook 'my-nxml-mode-hook)
@@ -683,7 +683,7 @@
 
 ;;   (setq web-mode-css-indent-offset 2))
 
-  
+
 
 
 
@@ -702,7 +702,7 @@
   :if (version<= "25.1" emacs-version)
   :defer t
   :ensure t
-  
+
   ;;:load-path "site-lisp/ess/lisp/"
   ;;:config (ess-toggle-underscore nil)
   :init
@@ -710,15 +710,15 @@
             (lambda ()
 
               (ess-set-style 'RStudio)
-            
+
               ;; Replace \C-c with \M-c for CUA and ctrl key swap
-              
+
               ;; ;; By popular demand:
               ;;(define-key map "\C-m"             'ess-newline-and-indent); = [RETURN]
               ;;(define-key map [remap yank]       'ess-yank)
 
               (define-key ess-mode-map (kbd "M-c M-c")      'ess-eval-region-and-go)
-              
+
               (define-key ess-mode-map (kbd "M-c C-r")      'ess-eval-region)
               (define-key ess-mode-map (kbd "M-c M-r")      'ess-eval-region-and-go)
               (define-key ess-mode-map (kbd "M-c C-b")      'ess-eval-buffer)
@@ -749,32 +749,32 @@
               (define-key ess-mode-map (kbd "M-c M-v")      'ess-display-help-on-object)
               ;;(define-key ess-mode-map "\C-c5\C-d"'ess-dump-object-into-edit-buffer-other-frame)
               (define-key ess-mode-map (kbd "M-c M-s")      'ess-switch-process) ; use a
-              
+
               ;; different process for the buffer.
               ;; (define-key map "\C-c\C-t"        'ess-execute-in-tb)
               ;;(define-key ess-mode-map (kbd "M-c \t")     'ess-complete-object-name-deprecated)
               ;; (define-key ess-mode-map "\C-c\t"        'comint-dynamic-complete-filename)
-              
+
               (unless (and (featurep 'emacs) (>= emacs-major-version 24))
                 (define-key ess-mode-map (kbd "M-c <tab>")  'comint-dynamic-complete))
               (define-key ess-mode-map (kbd "M-c .")        'ess-list-object-completions)
-              
+
               ;; wrong here (define-key ess-mode-map "\C-c\C-k" 'ess-request-a-process)
               (define-key ess-mode-map (kbd "M-c M-k")      'ess-force-buffer-current)
               (define-key ess-mode-map (kbd "M-c `")        'ess-show-traceback)
               (define-key ess-mode-map (kbd "M-c \\")       'ess-show-call-stack)
-              
+
               ;;(define-key ess-mode-map (kbd "M-c .")      (lambda () (interactive) (message "ess-set-style moved to C-c C-e C-s. Sorry for the inconvenience")))
-              
+
               ;;(define-key ess-mode-map "{"                'ess-electric-brace)
               ;;(define-key ess-mode-map "}"                'ess-electric-brace)
-              
+
               (define-key ess-mode-map (kbd "M-c M-q")      'ess-indent-exp)
               (define-key ess-mode-map (kbd "<M-S-right>")  'ess-mark-function-or-para)
               (if (featurep 'xemacs) ;; work around Xemacs bug (\C-\M-h redefines M-BS):
                   (define-key ess-mode-map [(meta backspace)] 'backward-kill-word))
               ;;(define-key ess-mode-map [delete]           'backward-delete-char-untabify)
-              
+
               ;;(define-key ess-mode-map "\t"               'ess-indent-or-complete)
               (define-key ess-mode-map (kbd "M-c C-q")      'ess-quit)
               (define-key ess-mode-map (kbd "M-c M-r")      'ess-use-this-dir)
@@ -789,7 +789,7 @@
               (define-key ess-mode-map (kbd "M-c C-e")       'ess-extra-map)
               (define-key ess-mode-map (kbd "M-c C-t")       'ess-dev-map)
 
-              
+
 ;;            (ess-toggle-underscore nil))
                ;; (define-key ess-mode-map (kbd "M-c M-c") 
                ;;   'ess-eval-region-and-go)
@@ -845,7 +845,7 @@
 (use-package poly-markdown
   :ensure t
   :mode (
-	 ("\\.md" . poly-markdown-mode)
+         ("\\.md" . poly-markdown-mode)
   )
 )
 
@@ -889,10 +889,10 @@
   :defer t
   :config
   (setq lsp-ui-sideline-enable nil
-	    lsp-ui-doc-delay 2)
+            lsp-ui-doc-delay 2)
   :hook (lsp-mode . lsp-ui-mode)
   :bind (:map lsp-ui-mode-map
-	      ("C-c i" . lsp-ui-imenu)))
+              ("C-c i" . lsp-ui-imenu)))
 
 
 ;; ---( dap )--------------------------------------------------------------
@@ -964,7 +964,7 @@
   (setq pyvenv-menu t)
   ;; Restart the python process when switching environments
   (add-hook 'pyvenv-post-activate-hooks (lambda ()
-					  (pyvenv-restart-python)))
+                                          (pyvenv-restart-python)))
   :hook (python-mode . pyvenv-mode))
 
 ;; Language server for Python 
@@ -976,11 +976,11 @@
   ;;(setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
   (setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
   (setq lsp-pyright-disable-language-service nil
-	lsp-pyright-disable-organize-imports nil
-	lsp-pyright-auto-import-completions t
-	lsp-pyright-use-library-code-for-types t
-	;;lsp-pyright-venv-path "~/miniconda3/envs")
-	lsp-pyright-venv-path "~/.cache/pypoetry/virtualenvs")
+        lsp-pyright-disable-organize-imports nil
+        lsp-pyright-auto-import-completions t
+        lsp-pyright-use-library-code-for-types t
+        ;;lsp-pyright-venv-path "~/miniconda3/envs")
+        lsp-pyright-venv-path "~/.cache/pypoetry/virtualenvs")
   :hook ((python-mode . (lambda () 
                           (require 'lsp-pyright) (lsp-deferred)))))
 
@@ -1057,11 +1057,11 @@
 (use-package elpy
   :disabled t
   :preface
-  
+
   ;; @see: https://elpy.readthedocs.org/en/latest/
   ;; @see: https://github.com/jorgenschaefer/elpy
   ;; @see: https://youtu.be/0kuCeS-mfyc
-  
+
   (defvar elpy-mode-map
     (let ((map (make-sparse-keymap)))
       ;; Alphabetical order to make it easier to find free C-c C-X
@@ -1071,10 +1071,10 @@
       ;; (define-key map (kbd "<backtab>")   'python-indent-dedent-line)
 
       ;; (define-key map (kbd "C-M-x")   'python-shell-send-defun)
-      
+
       (define-key map (kbd "M-c <")   'python-indent-shift-left)
       (define-key map (kbd "M-c >")   'python-indent-shift-right)
-      
+
       (define-key map (kbd "M-c RET") 'elpy-importmagic-add-import)
       (define-key map (kbd "M-c M-b") 'elpy-nav-expand-to-indentation)
       (define-key map (kbd "M-c M-c") 'elpy-shell-send-region-or-buffer)
@@ -1109,7 +1109,7 @@
 
       ;; (define-key map (kbd "M-.")     'elpy-goto-definition)
       ;; (define-key map (kbd "M-TAB")   'elpy-company-backend)
-    
+
       (define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-below)
       ;;(define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-above)
 
@@ -1127,7 +1127,7 @@
 
       (define-key map [(meta prior)]    'elpy-goto-definition)
       (define-key map [(meta next)]     'pop-tag-mark)
-      
+
       (define-key map [(control menu)]   'elpy-company-backend)
 
       map)
@@ -1136,7 +1136,7 @@
   (elpy-enable)
   (setq python-shell-interpreter "jupyter"
         python-shell-interpreter-args "console --simple-prompt")
- 
+
   ;; (elpy-use-ipython "ipython3") 
   (defalias 'workon 'pyvenv-workon))
 
@@ -1180,7 +1180,7 @@
 ;;   (defalias 'einp 'ein:notebooklist-open)
 ;;   (defalias 'eins 'ein:jupyter-server-start)
 ;;   )
-  
+
 
 ;; (use-package pipenv
 ;;   :unless (version< emacs-version "25.1")
@@ -1424,8 +1424,8 @@
 
 (defun set-extension-mode (extension mode)
   (setq auto-mode-alist
-	(cons (cons (concat "\\" extension "\\'") mode)
-	      auto-mode-alist) ) )
+        (cons (cons (concat "\\" extension "\\'") mode)
+              auto-mode-alist) ) )
 
 (set-extension-mode ".drl" 'drools-mode)
 (set-extension-mode ".dslr" 'drools-mode)
@@ -1776,12 +1776,12 @@ the automatic filling of the current paragraph."
     (setq ligature-path (expand-file-name "local/repos/ligatures.el" user-emacs-directory))
     (let ((ligature-source (expand-file-name "ligatures.el" ligature-path)))
       (unless (file-exists-p ligature-source)
-	(progn
-	  (make-directory ligature-path t)
+        (progn
+          (make-directory ligature-path t)
           (url-copy-file "https://raw.githubusercontent.com/mickeynp/ligature.el/master/ligature.el" ligature-source t))))
-    
+
 (load-library "~/.emacs.d/local/repos/ligatures.el/ligatures")
-    
+
 (use-package ligature
 ;;  :load-path "local/repos/ligatures.el/ligature"
   :config
@@ -1809,14 +1809,14 @@ the automatic filling of the current paragraph."
   (global-ligature-mode t))
 
 
-    
+
 ;; (use-package fira-code-mode
 ;;   :ensure t
 ;; ;; :disabled t
 ;;   :custom (fira-code-mode-disabled-ligatures '("[]" "x"))  ; ligatures you don't want
 ;;   :hook prog-mode)                                         ; mode to enable fira-code-mode in
 
-    
+
     (message "SITE:font-ligatures.")
     ))
 )
@@ -1878,9 +1878,9 @@ the automatic filling of the current paragraph."
   (setq org-CUA-compatible t)
   (setq org-support-shift-select t) ;; were 'org-shiftup+dpwn+left+right
   (setq org-replace-disputed-keys t)
-  
+
   :hook (org-mode . h7/org-mode-setup)
-  
+
   :config
   (require 'ox-md)
   (unbind-key "C-c ;" org-mode-map)
@@ -1892,7 +1892,7 @@ the automatic filling of the current paragraph."
 
 
   ;; --[org-mode options] ----------------------------------------------------------
-  
+
   (setq org-ellipsis " ▾")
   (setq org-hide-emphasis-markers t)
   (setq org-src-tab-acts-natively t)
@@ -1908,10 +1908,10 @@ the automatic filling of the current paragraph."
   ;;       org-bookmark
   ;;       org-eshell
   ;;       org-irc))
-  
+
 
   ;; --[org-mode faces] ----------------------------------------------------------
-  
+
   ;; Fontify org-mode code blocks
   (setq org-src-fontify-natively t)
   (setq org-fontify-quote-and-verse-blocks t)
@@ -1952,7 +1952,7 @@ the automatic filling of the current paragraph."
 
 
   ;; --[org-mode todo] ----------------------------------------------------------
-  
+
   (setq org-capture-templates
         '(("t" "todo" entry (file+headline "~/Dropbox/Local/data/org/all/todo.org" "Tasks")
            "* TODO [#A] %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n")))
@@ -1980,9 +1980,9 @@ the automatic filling of the current paragraph."
   (setq org-priority-faces '((?A . (:foreground "OliveDrab" :weight bold))
                              (?B . (:foreground "LightSteelBlue"))
                              (?C . (:foreground "#F0DFAF"))))
-  
+
   ;; --[org-mode agenda] ----------------------------------------------------------
-  
+
   ;;file to save todo items
   (setq org-agenda-files (quote ("~/Dropbox/Local/data/org/all/todo.org")))
 
@@ -2012,7 +2012,7 @@ the automatic filling of the current paragraph."
 
 
   ;; --[org-mode latex] ----------------------------------------------------------
-  
+
   (setq org-latex-pdf-process
         (quote ("pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f"
                 "bibtex $(basename %b)"
@@ -2026,15 +2026,15 @@ the automatic filling of the current paragraph."
   (add-to-list 'org-latex-packages-alist '("" "minted"))
   (require 'ox-latex)
   (setq org-latex-listings 'minted)
-  
+
   ;; (setq org-latex-minted-options
   ;;       '(("frame" "lines") ("framesep" "6pt")
   ;;         ("mathescape" "true") ("fontsize" "\\small")))
 
   ;; --[org-mode babel] ----------------------------------------------------------
-  
+
   (setq org-confirm-babel-evaluate nil)
-  
+
   ;; execute external programs.
   (org-babel-do-load-languages
    (quote org-babel-load-languages)
@@ -2061,7 +2061,7 @@ the automatic filling of the current paragraph."
     ;;keymap conflicts
     (local-set-key [(meta up)] 'dired)
     (local-set-key [(meta down)] 'bs-show)
-    
+
     ;; (turn-on-org-cdlatex)
     ;; (diminish 'org-cdlatex-mode "")
     (turn-on-auto-fill)
@@ -2212,7 +2212,7 @@ the automatic filling of the current paragraph."
 ;;       ;; (sqlite . t)
 ;;       ))
 ;;   )
-  
+
 ;;   ;; (setq org-confirm-babel-evaluate nil
 ;;   ;;       org-export-babel-evaluate 'inline-only)
 ;;   ;; (org-babel-do-load-languages
@@ -2439,7 +2439,7 @@ the automatic filling of the current paragraph."
   :general
   (:states '(normal visual emacs)
            :prefix "SPC"
-           
+
            "d" '(:ignore t :wk "Describe")
            "d." 'helpful-symbol
            "df" 'helpful-function
@@ -2775,7 +2775,7 @@ the automatic filling of the current paragraph."
 ;;   :bind (("H-z" . vterm-toggle)
 ;;          ("H-F" . vterm-toggle-forward)
 ;;          ("H-B" . vterm-toggle-backward)))
-    
+
 (setq h7/term-vterm-enabled t)
 
     (message "SITE:term-libvterm.")
@@ -2984,7 +2984,7 @@ the automatic filling of the current paragraph."
   ;; (setq ac-show-menu-immediately-on-auto-complete t)
   ;; (setq ac-auto-show-menu 0.8)
   ;; (setq ac-delay 0.4)
-  
+
   ;; (setq-default ac-sources '(ac-source-filename
   ;;                            ac-source-functions
   ;;                            ac-source-yasnippet
@@ -2994,14 +2994,14 @@ the automatic filling of the current paragraph."
   ;;                            ac-source-abbrev
   ;;                            ac-source-words-in-same-mode-buffers
   ;;                            ac-source-dictionary))
-  
+
   ;; (defun ac-emacs-lisp-mode-setup ()
   ;;   (setq ac-sources '(ac-source-symbols ac-source-words-in-same-mode-buffers)))
   ;; (add-hook 'c++-mode (lambda () (add-to-list 'ac-sources 'ac-source-semantic)))
-  
+
   ;; (bind-key "A-M-?" 'ac-last-help)
   ;; (unbind-key "C-s" ac-completing-map)
-  
+
   )
 
 
@@ -3362,7 +3362,7 @@ the automatic filling of the current paragraph."
 
 ;; .........................................................................
 (message "#ivy(0): '( (h7/use-ivy . %s) )" (h7/use-ivy)) 
- 
+
 (use-package counsel
   :if (h7/use-ivy)
   :defer t
@@ -3397,28 +3397,28 @@ the automatic filling of the current paragraph."
   :defer t
 
   ;; (*) Error (use-package): ivy/:catch: Symbol’s value as variable is void: modi-mode-map
-  
+
   ;;  :bind (:map modi-mode-map
   ;;         ("M-u" . ivy-resume)    ;Override the default binding for `upcase-word'
   ;;         ("C-c w" . ivy-push-view) ;Push window configuration to `ivy-views'
   ;;         ("C-c W" . ivy-pop-view)) ;Remove window configuration from `ivy-views'
-  
+
   :config
   (progn
     (message "#ivy(1): '( (h7/use-ivy . %s) )" (h7/use-ivy))
-    
+
     ;; Disable ido
     (with-eval-after-load 'ido
       (ido-mode -1)
       ;; Enable ivy
       (ivy-mode 1))
-    
+
      ;; Show recently killed buffers when calling `ivy-switch-buffer'
      (setq ivy-use-virtual-buffers t)
      (setq ivy-virtual-abbreviate 'full) ;Show the full virtual file paths
- 
+
      (setq ivy-count-format "%d/%d ")
-    
+
     ;; - (setq ivy-re-builders-alist '((t . ivy--regex-plus))) ;Default
     ;; (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
 
@@ -3470,7 +3470,7 @@ the automatic filling of the current paragraph."
            ("u" ivy-occur :exit t)
            ("?" (ivy-exit-with-action    ;Default D
                  (lambda (_) (find-function #'hydra-ivy/body))) "Definition of this hydra" :exit t))
- 
+
          (bind-keys
           :map ivy-minibuffer-map
           ("C-t" . ivy-rotate-preferred-builders)
@@ -3632,9 +3632,9 @@ the automatic filling of the current paragraph."
 ;; ===( vertico )=============================================================
 
  ;; @see: https://kristofferbalintona.me/posts/202202211546/
- 
+
 (message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico)) 
- 
+
 ;; ---( marginalia )--------------------------------------------------------------
 
 (use-package marginalia
@@ -4096,7 +4096,7 @@ end tell"))))
 
             (setq rmh-elfeed-org-files (list "~/.rss/elfeed.org"))
             (elfeed-org)))
-  
+
 
 ;; @see: https://github.com/algernon/elfeed-goodies
 ;; (use-package elfeed-goodies
