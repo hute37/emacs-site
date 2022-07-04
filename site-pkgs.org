@@ -16,18 +16,25 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 :END:
 <<babel-init>>
 
-
-** Starting up
-
-#+NAME: legacy
+** Heading
+*** Log: start
+#+NAME: log-start
 #+begin_src emacs-lisp
 
   ;; ---( site.pkgs: begin )-------------------------------------------------------
   (message "SITE:PKGS - begin")
 
+#+END_SRC
+
+** References
+#+NAME: references
+#+begin_src emacs-lisp
+
   ;; ;;;////////////////////////////////////////////////////////////////
-  ;; ;;;  @PACKAGES
+  ;; {{{  @REFERENCES
   ;; ;;;////////////////////////////////////////////////////////////////
+
+  ;; ---( dotfiles )--------------------------------------------------------------
 
   ;; @see: https://github.com/jwiegley/use-package
   ;; @see: http://pages.sachachua.com/.emacs.d/Sacha.html
@@ -54,6 +61,20 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; @see: https://github.com/pdorrell/rules-editing-mode/blob/master/my-drools.el
   ;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
 
+  ;; }}}  .references
+
+
+#+END_SRC
+
+** Starting up
+*** Use-Package
+
+#+NAME: startup
+#+begin_src emacs-lisp
+
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @PACKAGES
+  ;; ;;;////////////////////////////////////////////////////////////////
 
   ;; ---( Install )--------------------------------------------------------------
 
@@ -239,9 +260,21 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
   ;; ---( ... )--------------------------------------------------------------
 
+  ;; }}}  .packages
+
+#+END_SRC
+
+** General
+*** Basic
+
+#+NAME: basic
+#+begin_src emacs-lisp
+
   ;; ;;;////////////////////////////////////////////////////////////////
   ;; ;;;  @BASIC
   ;; ;;;////////////////////////////////////////////////////////////////
+
+  ;; ---( ... )--------------------------------------------------------------
 
   ;; ---( ... )--------------------------------------------------------------
 
@@ -274,11 +307,18 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
     :init
     (global-undo-tree-mode 1))
 
+  ;; }}}  .packages
+
+#+END_SRC
+
+*** UI
+
+#+NAME: ui
+#+begin_src emacs-lisp
 
   ;; ;;;////////////////////////////////////////////////////////////////
-  ;; ;;;  @UI
+  ;; {{{  @UI
   ;; ;;;////////////////////////////////////////////////////////////////
-
 
   ;; ---( mode-line )--------------------------------------------------------------
 
@@ -362,9 +402,17 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
     (dashboard-setup-startup-hook))
 
 
+  ;; }}}  .ui
+
+#+END_SRC
+
+** Workspace
+*** Magit
+#+NAME: magit
+#+begin_src emacs-lisp
 
   ;; ;;;////////////////////////////////////////////////////////////////
-  ;; ;;;  @MAGIT
+  ;; {{{  @MAGIT
   ;; ;;;////////////////////////////////////////////////////////////////
 
 
@@ -478,6 +526,12 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
     )
 
+  ;; }}}  .magit
+
+#+END_SRC
+*** Project
+#+NAME: project
+#+begin_src emacs-lisp
 
 
   ;; ;;;////////////////////////////////////////////////////////////////
@@ -554,7 +608,21 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
     )
 
 
-  ;; ;; ---( ack )--------------------------------------------------------------
+
+  ;; }}}  .projects
+
+#+END_SRC
+
+*** Grep
+#+NAME: grep
+#+begin_src emacs-lisp
+
+
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @GREP
+  ;; ;;;////////////////////////////////////////////////////////////////
+
+  ;; ---( ack )--------------------------------------------------------------
 
   (use-package ack
     :disabled t)
@@ -616,13 +684,26 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
        '("find . -type f -print0 | xargs -P4 -0 egrep -nH " . 49))))
 
 
+  ;; }}}  .magit
+
+#+END_SRC
+
+** Text
+*** Text/begin
+#+NAME: text-begin
+#+begin_src emacs-lisp
+
   ;; ;;;////////////////////////////////////////////////////////////////
-  ;; ;;;  @TEXT
+  ;; {{{  @TEXT
   ;; ;;;////////////////////////////////////////////////////////////////
 
+#+END_SRC
+
+*** Markdown
+#+NAME: markdown
+#+begin_src emacs-lisp
 
   ;; ---( markdown )--------------------------------------------------------------
-
 
   (use-package markdown-mode
     :ensure t
@@ -644,6 +725,13 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;;         (setq markdown-command preferred-markdown-impl)))))
 
 
+  ;; }}}  .magit
+
+#+END_SRC
+
+*** Markup
+#+NAME: markup
+#+begin_src emacs-lisp
 
   ;; ---( css )--------------------------------------------------------------
 
@@ -655,14 +743,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;;   :config
   ;;   (add-hook 'css-mode-hook 'rainbow-mode)
   ;;   (add-hook 'less-mode-hook 'rainbow-mode))
-
-
-
-  ;; ---( json )--------------------------------------------------------------
-
-  (use-package json-mode
-    :mode "\\.json\\'")
-
 
   ;; ---( nxml )--------------------------------------------------------------
 
@@ -707,18 +787,99 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
   ;;   (setq web-mode-css-indent-offset 2))
 
+  ;; }}}  .markup
+
+#+END_SRC
+
+*** Text/end
+#+NAME: text-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .text
+
+#+END_SRC
 
 
 
 
-
-
-
+** Lang
+*** Lang/begin
+#+NAME: lang-begin
+#+begin_src emacs-lisp
 
   ;; ;;;////////////////////////////////////////////////////////////////
-  ;; ;;;  @LANG
+  ;; {{{  @LANG
   ;; ;;;////////////////////////////////////////////////////////////////
 
+#+END_SRC
+*** Lang: LSP
+**** Lang: LSP.mode
+#+NAME: lang-lsp.mode
+#+begin_src emacs-lisp
+
+  ;; ---( LSP mode )------------------------------------------------------------
+
+  (use-package lsp-mode
+    :init
+    ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+    (setq lsp-keymap-prefix "C-l")
+    ;;(setq lsp-keymap-prefix "C-c l")
+    :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+           (python-mode . lsp)
+           ;; if you want which-key integration
+           (lsp-mode . lsp-enable-which-key-integration))
+    :commands lsp)
+
+  ;; optionally
+  (use-package lsp-ui :commands lsp-ui-mode)
+  ;; if you are helm user
+  ;;(use-package helm-lsp :commands helm-lsp-workspace-symbol)
+  ;; if you are ivy user
+  (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+  (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+
+  ;; optionally if you want to use debugger
+
+  ;; Provides visual help in the buffer 
+  ;; For example definitions on hover. 
+  ;; The `imenu` lets me browse definitions quickly.
+  (use-package lsp-ui
+    :ensure t
+    :defer t
+    :config
+    (setq lsp-ui-sideline-enable nil
+              lsp-ui-doc-delay 2)
+    :hook (lsp-mode . lsp-ui-mode)
+    :bind (:map lsp-ui-mode-map
+                ("C-c i" . lsp-ui-imenu)))
+
+
+#+END_SRC
+
+**** Lang: LSP.dap
+#+NAME: lang-lsp.mode.dap
+#+begin_src emacs-lisp
+
+  ;; ---( dap )--------------------------------------------------------------
+
+  ;; Integration with the debug server 
+  (use-package dap-mode
+    :ensure t
+    :defer t
+    :after lsp-mode
+    :config
+    (dap-auto-configure-mode))
+
+  ;; (use-package dap-mode)
+  ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+
+
+#+END_SRC
+
+*** Lang: R
+**** Lang: R/ess
+#+NAME: lang-r.ess
+#+begin_src emacs-lisp
 
   ;; ---( R )--------------------------------------------------------------
 
@@ -843,6 +1004,11 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
     :disabled t)
 
 
+#+END_SRC
+
+**** Lang: R/polymode
+#+NAME: lang-r.ess.polymode
+#+begin_src emacs-lisp
 
   ;; ---( polymode )--------------------------------------------------------------
 
@@ -881,57 +1047,12 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 
 
+#+END_SRC
 
-  ;; ---( LSP mode )------------------------------------------------------------
-
-  (use-package lsp-mode
-    :init
-    ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-    (setq lsp-keymap-prefix "C-l")
-    ;;(setq lsp-keymap-prefix "C-c l")
-    :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-           (python-mode . lsp)
-           ;; if you want which-key integration
-           (lsp-mode . lsp-enable-which-key-integration))
-    :commands lsp)
-
-  ;; optionally
-  (use-package lsp-ui :commands lsp-ui-mode)
-  ;; if you are helm user
-  ;;(use-package helm-lsp :commands helm-lsp-workspace-symbol)
-  ;; if you are ivy user
-  (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-  (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
-
-  ;; optionally if you want to use debugger
-
-  ;; Provides visual help in the buffer 
-  ;; For example definitions on hover. 
-  ;; The `imenu` lets me browse definitions quickly.
-  (use-package lsp-ui
-    :ensure t
-    :defer t
-    :config
-    (setq lsp-ui-sideline-enable nil
-              lsp-ui-doc-delay 2)
-    :hook (lsp-mode . lsp-ui-mode)
-    :bind (:map lsp-ui-mode-map
-                ("C-c i" . lsp-ui-imenu)))
-
-
-  ;; ---( dap )--------------------------------------------------------------
-
-  ;; Integration with the debug server 
-  (use-package dap-mode
-    :ensure t
-    :defer t
-    :after lsp-mode
-    :config
-    (dap-auto-configure-mode))
-
-  ;; (use-package dap-mode)
-  ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
-
+*** Lang: Python
+**** Lang: Python/mode
+#+NAME: lang-python.mode
+#+begin_src emacs-lisp
 
 
   ;; ---( python )--------------------------------------------------------------
@@ -973,82 +1094,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 
 
-  ;; Required to easily switch virtual envs 
-  ;; via the menu bar or with `pyvenv-workon` 
-  ;; Setting the `WORKON_HOME` environment variable points 
-  ;; at where the envs are located. I use (miniconda ^H) poetry. 
-  (use-package pyvenv
-    :ensure t
-    :defer t
-    :config
-    ;; Setting work on to easily switch between environments
-    ;;(setenv "WORKON_HOME" (expand-file-name "~/miniconda3/envs/"))
-    (setenv "WORKON_HOME" (expand-file-name "~/.cache/pypoetry/virtualenvs"))
-    ;; Display virtual envs in the menu bar
-    (setq pyvenv-menu t)
-    ;; Restart the python process when switching environments
-    (add-hook 'pyvenv-post-activate-hooks (lambda ()
-                                            (pyvenv-restart-python)))
-    :hook (python-mode . pyvenv-mode))
-
-  ;; Language server for Python 
-  ;; Read the docs for the different variables set in the config.
-  (use-package lsp-pyright
-    :ensure t
-    :defer t
-    :config
-    ;;(setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
-    (setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
-    (setq lsp-pyright-disable-language-service nil
-          lsp-pyright-disable-organize-imports nil
-          lsp-pyright-auto-import-completions t
-          lsp-pyright-use-library-code-for-types t
-          ;;lsp-pyright-venv-path "~/miniconda3/envs")
-          lsp-pyright-venv-path "~/.cache/pypoetry/virtualenvs")
-    :hook ((python-mode . (lambda () 
-                            (require 'lsp-pyright) (lsp-deferred)))))
-
-  ;; Format the python buffer following YAPF rules
-  ;; There's also blacken if you like it better.
-  (use-package yapfify
-    :ensure t
-    :defer t
-    :hook (python-mode . yapf-mode))
-
-
-
-  ;; python-black
-  (use-package python-black
-    ;;:delight python-black-on-save-mode "⚫️"
-    :ensure t
-    :hook
-    (python-mode . python-black-on-save-mode)
-    :init
-    (put 'python-black-command 'safe-local-variable #'stringp)
-    (put 'python-black-extra-args 'safe-local-variable #'stringp)
-    (put 'python-black-on-save-mode 'safe-local-variable #'booleanp)
-    )
-
-  ;; poetry
-  (use-package poetry
-    :ensure t
-    ;; :init
-    ;; imperfect tracking strategy causes lags in builds
-    ;; (setq poetry-tracking-strategy 'switch-buffer)
-    :hook
-    ;; activate poetry-tracking-mode when python-mode is active
-    (python-mode . poetry-tracking-mode)
-    )
-
-  ;; (use-package poetry
-  ;;   :ensure t
-  ;;   :config
-  ;;   (add-hook 'poetry-tracking-mode-hook (lambda () (remove-hook 'post-command-hook 'poetry-track-virtualenv)))
-  ;;   (add-hook 'python-mode-hook 'poetry-track-virtualenv)
-  ;;   (add-hook 'projectile-after-switch-project-hook 'poetry-track-virtualenv))
-
-
-
   ;; (use-package python-mode
   ;;   :mode ("\\.py\\'" . python-mode)
   ;;   :interpreter ("python" . python-mode)
@@ -1077,6 +1122,129 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;;     (unbind-key "C-c c" python-mode-map))
   ;;   (add-hook 'python-mode-hook 'my-python-mode-hook))
 
+
+
+
+#+END_SRC
+**** Lang: Python/env
+#+NAME: lang-python.env
+#+begin_src emacs-lisp
+
+  ;; ---( pyvenv )--------------------------------------------------------------
+
+  ;; Required to easily switch virtual envs 
+  ;; via the menu bar or with `pyvenv-workon` 
+  ;; Setting the `WORKON_HOME` environment variable points 
+  ;; at where the envs are located. I use (miniconda ^H) poetry. 
+  (use-package pyvenv
+    :ensure t
+    :defer t
+    :config
+    ;; Setting work on to easily switch between environments
+    ;;(setenv "WORKON_HOME" (expand-file-name "~/miniconda3/envs/"))
+    (setenv "WORKON_HOME" (expand-file-name "~/.cache/pypoetry/virtualenvs"))
+    ;; Display virtual envs in the menu bar
+    (setq pyvenv-menu t)
+    ;; Restart the python process when switching environments
+    (add-hook 'pyvenv-post-activate-hooks (lambda ()
+                                            (pyvenv-restart-python)))
+    :hook (python-mode . pyvenv-mode))
+
+
+  ;; ---( poetry )-------------------------------------------------------------
+
+  (use-package poetry
+    :ensure t
+    ;; :init
+    ;; imperfect tracking strategy causes lags in builds
+    ;; (setq poetry-tracking-strategy 'switch-buffer)
+    :hook
+    ;; activate poetry-tracking-mode when python-mode is active
+    (python-mode . poetry-tracking-mode)
+    )
+
+  ;; (use-package poetry
+  ;;   :ensure t
+  ;;   :config
+  ;;   (add-hook 'poetry-tracking-mode-hook (lambda () (remove-hook 'post-command-hook 'poetry-track-virtualenv)))
+  ;;   (add-hook 'python-mode-hook 'poetry-track-virtualenv)
+  ;;   (add-hook 'projectile-after-switch-project-hook 'poetry-track-virtualenv))
+
+
+  ;; ---( pipenv )-------------------------------------------------------------
+  ;;
+  ;; (use-package pipenv
+  ;;   :unless (version< emacs-version "25.1")
+  ;;   :defer t
+  ;;   ;; :ensure t
+  ;;   :hook (python-mode . pipenv-mode)
+  ;;   :init
+  ;;   (setq
+  ;;    pipenv-projectile-after-switch-function
+  ;;    #'pipenv-projectile-after-switch-extended))
+
+
+#+END_SRC
+**** Lang: Python/lsp
+#+NAME: lang-python.lsp
+#+begin_src emacs-lisp
+
+  ;; ---( lsp-pyright )--------------------------------------------------------------
+
+  ;; Language server for Python 
+  ;; Read the docs for the different variables set in the config.
+  (use-package lsp-pyright
+    :ensure t
+    :defer t
+    :config
+    ;;(setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
+    (setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
+    (setq lsp-pyright-disable-language-service nil
+          lsp-pyright-disable-organize-imports nil
+          lsp-pyright-auto-import-completions t
+          lsp-pyright-use-library-code-for-types t
+          ;;lsp-pyright-venv-path "~/miniconda3/envs")
+          lsp-pyright-venv-path "~/.cache/pypoetry/virtualenvs")
+    :hook ((python-mode . (lambda () 
+                            (require 'lsp-pyright) (lsp-deferred)))))
+
+#+END_SRC
+**** Lang: Python/tools
+#+NAME: lang-python.tools
+#+begin_src emacs-lisp
+
+  ;; ---( yapfify )-------------------------------------------------------------
+
+  ;; Format the python buffer following YAPF rules
+  ;; There's also blacken if you like it better.
+  (use-package yapfify
+    :ensure t
+    :defer t
+    :hook (python-mode . yapf-mode))
+
+
+  ;; ---( python-black )--------------------------------------------------------------
+
+  (use-package python-black
+    ;;:delight python-black-on-save-mode "⚫️"
+    :ensure t
+    :hook
+    (python-mode . python-black-on-save-mode)
+    :init
+    (put 'python-black-command 'safe-local-variable #'stringp)
+    (put 'python-black-extra-args 'safe-local-variable #'stringp)
+    (put 'python-black-on-save-mode 'safe-local-variable #'booleanp)
+    )
+
+
+
+#+END_SRC
+**** Lang: Python/elpy
+#+NAME: lang-python.elpy
+#+begin_src emacs-lisp
+
+
+  ;; ---( python: elpy )--------------------------------------------------------------
 
   (use-package elpy
     :disabled t
@@ -1169,6 +1337,14 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   (add-to-list 'process-coding-system-alist '("elpy" . (utf-8 . utf-8)))
   (add-to-list 'process-coding-system-alist '("flake8" . (utf-8 . utf-8)))
 
+#+END_SRC
+**** Lang: Python/ein
+#+NAME: lang-python.ein
+#+begin_src emacs-lisp
+
+  ;; ---( python: ein )--------------------------------------------------------------
+
+
   (use-package ein
     :unless (version< emacs-version "25.1")
     ;; :defer t
@@ -1206,27 +1382,20 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;;   )
 
 
-  ;; (use-package pipenv
-  ;;   :unless (version< emacs-version "25.1")
-  ;;   :defer t
-  ;;   ;; :ensure t
-  ;;   :hook (python-mode . pipenv-mode)
-  ;;   :init
-  ;;   (setq
-  ;;    pipenv-projectile-after-switch-function
-  ;;    #'pipenv-projectile-after-switch-extended))
 
+#+END_SRC
 
+*** Lang: Julia
+#+NAME: lang-julia
+#+begin_src emacs-lisp
 
   ;; ---( julia )--------------------------------------------------------------
-
 
   ;; @see: https://github.com/JuliaEditorSupport/julia-emacs
   ;; @see: https://github.com/tpapp/julia-repl
   ;; @see: https://github.com/nnicandro/emacs-jupyter
   ;; @see: https://julia-users-zurich.github.io/talks/talk-2018-04/emacs.html
   ;; @see: https://github.com/cgroll/dot_emacs.d/blob/master/init.el
-
 
   (use-package julia-mode
      :ensure t
@@ -1253,9 +1422,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
        (add-to-list 'julia-mode-hook 'julia-repl-mode)
        )
      )
-
-
-
 
   ;; ;; allow julia to be loaded through call to julia-mode or
   ;; ;; ess-inferior process
@@ -1302,7 +1468,11 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; ;; open buffers - probably ess-julia.el has to be loaded again also:
   ;; ;; M-x load-file ess-julia.el
 
+#+END_SRC
 
+*** Lang: Ruby
+#+NAME: lang-ruby
+#+begin_src emacs-lisp
 
   ;; ---( ruby )--------------------------------------------------------------
 
@@ -1338,8 +1508,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
     ;; (add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
     )
 
-
-
   ;; ---( puppet )--------------------------------------------------------------
 
   (use-package puppet-mode
@@ -1351,6 +1519,11 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
     )
 
 
+#+END_SRC
+
+*** Lang: Scala
+#+NAME: lang-scala
+#+begin_src emacs-lisp
 
   ;; ---( scala )--------------------------------------------------------------
 
@@ -1405,6 +1578,12 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
         :ensure)))
 
 
+#+END_SRC
+
+*** Lang: Haskell
+#+NAME: lang-haskell
+#+begin_src emacs-lisp
+
   ;; ---( haskell )--------------------------------------------------------------
 
   ;; @see: https://gitlab.com/balajisi/emacs/blob/master/init.el
@@ -1436,6 +1615,14 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
     :ensure
     :disabled t)
 
+
+
+#+END_SRC
+
+*** Lang: Drools
+#+NAME: lang-drools
+#+begin_src emacs-lisp
+
   ;; ---( drools )--------------------------------------------------------------
 
   ;; @see: https://github.com/pdorrell/rules-editing-mode
@@ -1466,10 +1653,48 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 
 
+
+#+END_SRC
+
+*** Lang/end
+#+NAME: lang-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .lang
+
+#+END_SRC
+
+
+
+
+
+
+
+** REST
+*** REST/begin
+#+NAME: rest-begin
+#+begin_src emacs-lisp
+
   ;; ;;;////////////////////////////////////////////////////////////////
-  ;; ;;;  @VM
+  ;; {{{  @REST
   ;; ;;;////////////////////////////////////////////////////////////////
 
+#+END_SRC
+
+*** Json
+#+NAME: rest-json
+#+begin_src emacs-lisp
+
+  ;; ---( json )--------------------------------------------------------------
+
+  (use-package json-mode
+    :mode "\\.json\\'")
+
+#+END_SRC
+
+*** Yaml
+#+NAME: rest-yaml
+#+begin_src emacs-lisp
 
   ;; ---( yaml )--------------------------------------------------------------
 
@@ -1477,23 +1702,43 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
     :ensure t
     :defer t)
 
-  ;; ---( docker )--------------------------------------------------------------
+
+#+END_SRC
+
+*** TODO Request 
+#+NAME: rest-request
+#+begin_src emacs-lisp
+
+  ;; ---( request )--------------------------------------------------------------
 
 
-  (use-package docker
-    :ensure t
-    :defer t)
 
-  (use-package docker-tramp
-    :ensure t
-    :defer t)
+#+END_SRC
 
-  (use-package dockerfile-mode
-    :ensure t
-    :mode "Dockerfile\\'")
+*** REST/end
+#+NAME: rest-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .rest
+
+#+END_SRC
+
+** OP
+*** OP/begin
+#+NAME: op-begin
+#+begin_src emacs-lisp
+
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @OP
+  ;; ;;;////////////////////////////////////////////////////////////////
 
 
-  ;; ---( ops )--------------------------------------------------------------
+#+END_SRC
+
+*** Ansible
+#+NAME: vm-ansible
+#+begin_src emacs-lisp
+
 
   ;; @see: https://emacs-lsp.github.io/lsp-mode/page/lsp-ansible/
 
@@ -1569,18 +1814,97 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
                           :tail-adjust-face nil)))
 
 
+#+END_SRC
+
+*** Terraform
+#+NAME: op-terraform
+#+begin_src emacs-lisp
+
+  ;; ---( terraform )--------------------------------------------------------------
+
   (use-package company-terraform
     :ensure t
     :defer t)
 
 
 
+#+END_SRC
 
+*** OP/end
+#+NAME: op-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .op
+
+#+END_SRC
+
+** VM
+*** VM/begin
+#+NAME: vm-begin
+#+begin_src emacs-lisp
 
   ;; ;;;////////////////////////////////////////////////////////////////
-  ;; ;;;  @TEX
+  ;; {{{  @VM
   ;; ;;;////////////////////////////////////////////////////////////////
 
+
+#+END_SRC
+
+*** Docker
+#+NAME: vm-docker
+#+begin_src emacs-lisp
+
+  ;; ---( docker )--------------------------------------------------------------
+
+
+  (use-package docker
+    :ensure t
+    :defer t)
+
+  (use-package docker-tramp
+    :ensure t
+    :defer t)
+
+  (use-package dockerfile-mode
+    :ensure t
+    :mode "Dockerfile\\'")
+
+
+
+#+END_SRC
+
+*** VM/end
+#+NAME: vm-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .vm
+
+#+END_SRC
+
+
+
+
+
+
+
+
+
+
+** TeX
+*** TeX/begin
+#+NAME: tex-begin
+#+begin_src emacs-lisp
+
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @TEX
+  ;; ;;;////////////////////////////////////////////////////////////////
+
+
+#+END_SRC
+
+*** LaTeX
+#+NAME: tex-latex
+#+begin_src emacs-lisp
 
   ;; ---( LaTeX )--------------------------------------------------------------
 
@@ -1715,6 +2039,12 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;;   )
 
 
+#+END_SRC
+
+*** PDF
+#+NAME: tex-pdf
+#+begin_src emacs-lisp
+
   ;; ---( pdf )--------------------------------------------------------------
 
   (message "#pdf-tools(0): '( (h7/use-pdf-tools . %s) )" (h7/use-pdf-tools)) 
@@ -1765,10 +2095,40 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; )
 
 
+#+END_SRC
+
+*** TeX/end
+#+NAME: tex-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .tex
+
+#+END_SRC
+
+
+
+
+
+
+
+
+
+
+** Fonts
+*** Fonts/begin
+#+NAME: fonts-begin
+#+begin_src emacs-lisp
 
   ;; ;;;////////////////////////////////////////////////////////////////
-  ;; ;;;  @FONT
+  ;; {{{  @FONT
   ;; ;;;////////////////////////////////////////////////////////////////
+
+
+#+END_SRC
+
+*** Faces
+#+NAME: fonts-faces
+#+begin_src emacs-lisp
 
   ;; ---( faces )--------------------------------------------------------------
 
@@ -1784,6 +2144,12 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;;    '(variable-pitch ((t (:family "Source Sans Pro" :foundry "ADBE" :slant normal :weight semi-bold :height 135 :width normal))))
   ;;    '(fixed-pitch ((t ( :family "JetBrains Mono Medium")))))
 
+
+#+END_SRC
+
+*** Ligatures
+#+NAME: fonts-ligatures
+#+begin_src emacs-lisp
 
   ;; ---( ligatures )--------------------------------------------------------------
 
@@ -1877,10 +2243,39 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;;   (global-ligature-mode t))
 
 
+#+END_SRC
+
+*** Fonts/end
+#+NAME: fonts-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .fonts
+
+#+END_SRC
+
+
+
+
+
+
+
+
+
+
+** Org
+*** Org/begin
+#+NAME: org-begin
+#+begin_src emacs-lisp
+
   ;; ;;;////////////////////////////////////////////////////////////////
-  ;; ;;;  @ORG
+  ;; {{{  @ORG
   ;; ;;;////////////////////////////////////////////////////////////////
 
+#+END_SRC
+
+*** org-mode
+#+NAME: org-mode
+#+begin_src emacs-lisp
 
   ;; ---( org-mode )--------------------------------------------------------------
 
@@ -2101,6 +2496,16 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
          "\C-x\C-s" #'org-edit-src-exit)))
 
 
+
+
+#+END_SRC
+
+*** org extras
+#+NAME: org-extras
+#+begin_src emacs-lisp
+
+  ;; ---(org-superstar)------------------------------------------------------------------------
+
   ;; Nice bullet points. Retires org-bullets.
   (use-package org-superstar
     :ensure t
@@ -2165,6 +2570,14 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;;  :ensure t
     :init
     (setq org-ref-bibtex-hydra-key-binding "\C-cj"))
+
+
+
+#+END_SRC
+
+*** org samples
+#+NAME: org-samples
+#+begin_src emacs-lisp
 
 
 
@@ -2414,10 +2827,40 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 
 
+
+#+END_SRC
+
+*** Org/end
+#+NAME: org-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .org
+
+#+END_SRC
+
+
+
+
+
+
+
+
+
+
+** Utils
+*** Utils/begin
+#+NAME: utils-begin
+#+begin_src emacs-lisp
+
   ;; ;;;////////////////////////////////////////////////////////////////
-  ;; ;;;  @UTIL
+  ;; {{{  @UTIL
   ;; ;;;////////////////////////////////////////////////////////////////
 
+#+END_SRC
+
+*** Utils/Search
+#+NAME: util-search
+#+begin_src emacs-lisp
 
   ;; ---( regex )--------------------------------------------------------------
 
@@ -2425,6 +2868,14 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   (use-package regex-tool
     :ensure t
     :defer t)
+
+
+
+#+END_SRC
+
+*** Utils/Help
+#+NAME: util-help
+#+begin_src emacs-lisp
 
 
   ;; ---( guide-key )--------------------------------------------------------------
@@ -2472,6 +2923,16 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
              "dc" 'helpful-command)
     :config
     (defvar read-symbol-positions-list nil))
+
+
+
+
+
+#+END_SRC
+
+*** Utils/Misc
+#+NAME: util-misc
+#+begin_src emacs-lisp
 
 
   ;; ---( popper )--------------------------------------------------------------
@@ -2635,11 +3096,47 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;;   :ensure t
   ;; )
 
+  ;; ---( yasnippet )--------------------------------------------------------------
+
+  (use-package yasnippet
+    :disabled t
+    :config
+    (yas-reload-all))
+
+
+
+#+END_SRC
+
+*** Utils/end
+#+NAME: util-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .util
+
+#+END_SRC
+
+
+
+
+
+
+
+
+
+** Server
+*** Server/begin
+#+NAME: server-begin
+#+begin_src emacs-lisp
 
   ;; ;;;////////////////////////////////////////////////////////////////
-  ;; ;;;  @SERVER
+  ;; {{{  @SERVER
   ;; ;;;////////////////////////////////////////////////////////////////
 
+#+END_SRC
+
+*** Server Control
+#+NAME: server-control
+#+begin_src emacs-lisp
 
   ;; ---( server )--------------------------------------------------------------
 
@@ -2675,10 +3172,40 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
     (add-hook 'after-init-hook 'edit-server-start t))
 
 
+
+#+END_SRC
+
+*** Server/end
+#+NAME: server-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .server
+
+#+END_SRC
+
+
+
+
+
+
+
+
+
+
+** Shell
+*** Shell/begin
+#+NAME: shell-begin
+#+begin_src emacs-lisp
+
   ;; ;;;////////////////////////////////////////////////////////////////
-  ;; ;;;  @SHELL
+  ;; {{{  @SHELL
   ;; ;;;////////////////////////////////////////////////////////////////
 
+#+END_SRC
+
+*** eshell
+#+NAME: shell-eshell
+#+begin_src emacs-lisp
 
   ;; ---( eshell )--------------------------------------------------------------
 
@@ -2728,36 +3255,12 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
       :bind ("C-x C-z" . eshell-toggle)))
 
 
-  ;; ---( multi-term )--------------------------------------------------------------
+#+END_SRC
 
-  ;; (use-package multi-term
-  ;;   :disabled t
-  ;;   :bind (("C-. t" . multi-term-next)
-  ;;          ("C-. T" . multi-term))
-  ;;   :init
-  ;;   (defun screen ()
-  ;;     (interactive)
-  ;;     (let (term-buffer)
-  ;;       ;; Set buffer.
-  ;;       (setq term-buffer
-  ;;             (let ((multi-term-program (executable-find "screen"))
-  ;;                   (multi-term-program-switches "-DR"))
-  ;;               (multi-term-get-buffer)))
-  ;;       (set-buffer term-buffer)
-  ;;       ;; Internal handle for `multi-term' buffer.
-  ;;       (multi-term-internal)
-  ;;       ;; Switch buffer
-  ;;       (switch-to-buffer term-buffer)))
-  ;;   :config
-  ;;   (defalias 'my-term-send-raw-at-prompt 'term-send-raw)
-  ;;   (defun my-term-end-of-buffer ()
-  ;;     (interactive)
-  ;;     (call-interactively #'end-of-buffer)
-  ;;     (if (and (eobp) (bolp))
-  ;;         (delete-char -1)))
-  ;;   (require 'term)
-  ;;   (defadvice term-process-pager (after term-process-rebind-keys activate)
-  ;;     (define-key term-pager-break-map "\177" 'term-pager-back-page)))
+*** vterm
+#+NAME: shell-vterm
+#+begin_src emacs-lisp
+
 
   ;; ---( vterm )--------------------------------------------------------------
 
@@ -2807,7 +3310,46 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   )
 
 
+  ;; ---( multi-term )--------------------------------------------------------------
 
+  ;; (use-package multi-term
+  ;;   :disabled t
+  ;;   :bind (("C-. t" . multi-term-next)
+  ;;          ("C-. T" . multi-term))
+  ;;   :init
+  ;;   (defun screen ()
+  ;;     (interactive)
+  ;;     (let (term-buffer)
+  ;;       ;; Set buffer.
+  ;;       (setq term-buffer
+  ;;             (let ((multi-term-program (executable-find "screen"))
+  ;;                   (multi-term-program-switches "-DR"))
+  ;;               (multi-term-get-buffer)))
+  ;;       (set-buffer term-buffer)
+  ;;       ;; Internal handle for `multi-term' buffer.
+  ;;       (multi-term-internal)
+  ;;       ;; Switch buffer
+  ;;       (switch-to-buffer term-buffer)))
+  ;;   :config
+  ;;   (defalias 'my-term-send-raw-at-prompt 'term-send-raw)
+  ;;   (defun my-term-end-of-buffer ()
+  ;;     (interactive)
+  ;;     (call-interactively #'end-of-buffer)
+  ;;     (if (and (eobp) (bolp))
+  ;;         (delete-char -1)))
+  ;;   (require 'term)
+  ;;   (defadvice term-process-pager (after term-process-rebind-keys activate)
+  ;;     (define-key term-pager-break-map "\177" 'term-pager-back-page)))
+
+
+
+
+
+#+END_SRC
+
+*** Scripts
+#+NAME: shell-script
+#+begin_src emacs-lisp
 
   ;; ---( sh-script )--------------------------------------------------------------
 
@@ -2824,13 +3366,12 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
                               '(("(bash)Index")))))
     (add-hook 'shell-mode-hook 'initialize-sh-script))
 
-  ;; ---( sh-toggle )--------------------------------------------------------------
 
-  (use-package sh-toggle
-    :disabled t
-    :bind ("C-. C-z" . shell-toggle)
-    )
+#+END_SRC
 
+*** Ranger
+#+NAME: shell-ranger
+#+begin_src emacs-lisp
 
   ;; ---( ranger )--------------------------------------------------------------
 
@@ -2914,11 +3455,56 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; 	(sr-history-push default-directory)
   ;; 	(sr-beginning-of-buffer)))))
 
+#+END_SRC
+
+*** Other
+#+NAME: shell-other
+#+begin_src emacs-lisp
+
+  ;; ---( sh-toggle )--------------------------------------------------------------
+
+  (use-package sh-toggle
+    :disabled t
+    :bind ("C-. C-z" . shell-toggle)
+    )
+
+
+
+
+#+END_SRC
+
+*** Shell/end
+#+NAME: shell-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .shell
+
+#+END_SRC
+
+
+
+
+
+
+
+
+
+
+** Sec3et
+*** Sec3et/begin
+#+NAME: sec3et-begin
+#+begin_src emacs-lisp
 
   ;; ;;;////////////////////////////////////////////////////////////////
-  ;; ;;;  @SEC3ET
+  ;; {{{  @SEC3ET
   ;; ;;;////////////////////////////////////////////////////////////////
 
+
+#+END_SRC
+
+*** Pass
+#+NAME: sec3et-pass
+#+begin_src emacs-lisp
 
   ;; ---( pass )--------------------------------------------------------------
 
@@ -2929,11 +3515,31 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;;   :bind ("C-x p" . pass))
 
 
+#+END_SRC
+
+*** Sec3et/end
+#+NAME: sec3et-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .sec3et
+
+#+END_SRC
+
+** EVIL
+*** EVIL/begin
+#+NAME: evil-begin
+#+begin_src emacs-lisp
 
   ;; ;;;////////////////////////////////////////////////////////////////
-  ;; ;;;  @EVIL
+  ;; {{{  @EVIL
   ;; ;;;////////////////////////////////////////////////////////////////
 
+
+#+END_SRC
+
+*** Evil Mode
+#+NAME: evil-mode
+#+begin_src emacs-lisp
 
   ;; ---( evil )--------------------------------------------------------------
 
@@ -2945,10 +3551,31 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
     )
 
 
+
+#+END_SRC
+
+*** EVIL/end
+#+NAME: evil-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .evil
+
+#+END_SRC
+
+** Jump
+*** Jump/begin
+#+NAME: jump-begin
+#+begin_src emacs-lisp
+
   ;; ;;;////////////////////////////////////////////////////////////////
   ;; ;;;  @JUMP
   ;; ;;;////////////////////////////////////////////////////////////////
 
+#+END_SRC
+
+*** Hydra
+#+NAME: jump-hydra
+#+begin_src emacs-lisp
 
   ;; ;; ---( hydra )--------------------------------------------------------------
 
@@ -2956,7 +3583,13 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
     :ensure t)
 
 
-  ;; ;; ---( ace )--------------------------------------------------------------
+#+END_SRC
+
+*** Ace
+#+NAME: jump-ace
+#+begin_src emacs-lisp
+
+  ;; ---( ace )--------------------------------------------------------------
 
 
   (use-package ace-jump-mode
@@ -2966,17 +3599,122 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
     (bind-key "C-." 'ace-jump-mode))
 
 
+#+END_SRC
+
+*** Avy
+#+NAME: jump-avy
+#+begin_src emacs-lisp
+
+
   ;; ;; ---( avy )--------------------------------------------------------------
 
   (use-package avy
     :ensure t)
 
 
+#+END_SRC
+
+*** Jump/end
+#+NAME: jump-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .jump
+
+#+END_SRC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+** Completion "at-point"
+*** Completion/begin
+#+NAME: comp-ap-begin
+#+begin_src emacs-lisp
 
   ;; ;;;////////////////////////////////////////////////////////////////
-  ;; ;;;  @COMPLETION
+  ;; {{{  @COMPLETION "AT POINT"
   ;; ;;;////////////////////////////////////////////////////////////////
 
+
+#+END_SRC
+
+*** Company
+#+NAME: comp-ap-company
+#+begin_src emacs-lisp
+
+  ;; ---( company )--------------------------------------------------------------
+
+  (use-package company
+    :ensure t
+    :diminish company-mode
+    :commands company-mode
+    :bind ("<C-space>" . company-complete)
+    :init
+    ;; (add-hook 'clojure-mode-hook 'company-mode)
+    ;; (add-hook 'cider-repl-mode-hook 'company-mode)
+    ;; (add-hook 'lisp-mode-hook 'company-mode)
+    ;; (add-hook 'emacs-lisp-mode-hook 'company-mode)
+    ;; (add-hook 'lisp-interaction-mode-hook 'company-mode)
+    ;; (add-hook 'ielm-mode-hook 'company-mode)
+    ;; (add-hook 'json-mode-hook 'company-mode)
+    :config
+    (setq company-idle-delay 0.3)
+    (global-company-mode t)  
+    ;; (use-package helm-company :disabled t)
+    :hook (
+           (text-mode . company-mode)
+           (prog-mode . company-mode)
+           )
+    )
+
+  ;; @see: https://cloudnine.github.io/science/2020-07-27-emacs-company-mode/
+  ;; @see: https://github.com/mswift42/.emacs.d/blob/master/init.el
+  ;; @see: https://medium.com/helpshift-engineering/configuring-emacs-from-scratch-use-package-c30382297877
+  ;; (use-package company
+  ;;   :bind (:map company-active-map
+  ;;          ("C-n" . company-select-next)
+  ;;          ("C-p" . company-select-previous))
+  ;;   :config
+  ;;   (setq company-idle-delay 0.3)
+  ;;   (global-company-mode t))
+
+    ;; From https://github.com/company-mode/company-mode/issues/87
+    ;; See also https://github.com/company-mode/company-mode/issues/123
+    ;; (defadvice company-pseudo-tooltip-unless-just-one-frontend
+    ;;     (around only-show-tooltip-when-invoked activate)
+    ;;   (when (company-explicit-action-p)
+    ;;     ad-do-it))
+
+
+
+#+END_SRC
+
+*** Auto-Complete
+#+NAME: comp-ap-autocomplete
+#+begin_src emacs-lisp
 
   ;; ---( autocomplete )--------------------------------------------------------------
 
@@ -3028,59 +3766,11 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
     )
 
+#+END_SRC
 
-  ;; ---( company )--------------------------------------------------------------
-
-  (use-package company
-    :ensure t
-    :diminish company-mode
-    :commands company-mode
-    :bind ("<C-space>" . company-complete)
-    :init
-    ;; (add-hook 'clojure-mode-hook 'company-mode)
-    ;; (add-hook 'cider-repl-mode-hook 'company-mode)
-    ;; (add-hook 'lisp-mode-hook 'company-mode)
-    ;; (add-hook 'emacs-lisp-mode-hook 'company-mode)
-    ;; (add-hook 'lisp-interaction-mode-hook 'company-mode)
-    ;; (add-hook 'ielm-mode-hook 'company-mode)
-    ;; (add-hook 'json-mode-hook 'company-mode)
-    :config
-    (setq company-idle-delay 0.3)
-    (global-company-mode t)  
-    ;; (use-package helm-company :disabled t)
-    :hook (
-           (text-mode . company-mode)
-           (prog-mode . company-mode)
-           )
-    )
-
-  ;; @see: https://cloudnine.github.io/science/2020-07-27-emacs-company-mode/
-  ;; @see: https://github.com/mswift42/.emacs.d/blob/master/init.el
-  ;; @see: https://medium.com/helpshift-engineering/configuring-emacs-from-scratch-use-package-c30382297877
-  ;; (use-package company
-  ;;   :bind (:map company-active-map
-  ;;          ("C-n" . company-select-next)
-  ;;          ("C-p" . company-select-previous))
-  ;;   :config
-  ;;   (setq company-idle-delay 0.3)
-  ;;   (global-company-mode t))
-
-    ;; From https://github.com/company-mode/company-mode/issues/87
-    ;; See also https://github.com/company-mode/company-mode/issues/123
-    ;; (defadvice company-pseudo-tooltip-unless-just-one-frontend
-    ;;     (around only-show-tooltip-when-invoked activate)
-    ;;   (when (company-explicit-action-p)
-    ;;     ad-do-it))
-
-
-  ;; ---( yasnippet )--------------------------------------------------------------
-
-  (use-package yasnippet
-    :disabled t
-    :config
-    (yas-reload-all))
-
-
+*** IDO
+#+NAME: comp-ap-ido
+#+begin_src emacs-lisp
 
   ;; ---( ido )--------------------------------------------------------------
 
@@ -3145,201 +3835,326 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
                   (bind-key "<return>" 'ido-smart-select-text
                             ido-file-completion-map))))
 
-  ;; ---( helm )--------------------------------------------------------------
 
-  ;; @see: https://pages.sachachua.com/.emacs.d/Sacha.html#org04e47b9
+#+END_SRC
 
-  (message "#helm(0): '( (h7/use-helm . %s) )" (h7/use-helm)) 
-  (use-package helm
-    :if (h7/use-helm)
-    :diminish helm-mode
+*** Completion/end
+#+NAME: comp-ap-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .comp-ap
+
+#+END_SRC
+
+** Completion "prompt"
+*** Completion/begin
+#+NAME: comp-mb-begin
+#+begin_src emacs-lisp
+
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @COMPLETION "PROMPT"
+  ;; ;;;////////////////////////////////////////////////////////////////
+
+
+
+#+END_SRC
+
+*** Vertico
+#+NAME: comp-mb-helm
+#+begin_src emacs-lisp
+
+  ;; ===( vertico )=============================================================
+
+   ;; @see: https://kristofferbalintona.me/posts/202202211546/
+
+  (message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico)) 
+
+  ;; ---( marginalia )--------------------------------------------------------------
+
+  (use-package marginalia
+    :ensure t
+    :general
+    (:keymaps 'minibuffer-local-map
+              "M-A" 'marginalia-cycle)
+    :custom
+    (marginalia-max-relative-age 0)
+    ;;(marginalia-align 'right)
+    :config
+    (set-face-attribute 'marginalia-documentation nil :underline nil)
     :init
-    (progn
-    ;;   (require 'helm-config)
-    ;;   (message "#helm(1): '( (h7/use-helm . %s) )" (h7/use-helm)) 
-    ;;   (setq helm-candidate-number-limit 100)
-    ;;   ;; From https://gist.github.com/antifuchs/9238468
-    ;;   (setq helm-idle-delay 0.0 ; update fast sources immediately (doesn't).
-    ;;         helm-input-idle-delay 0.01  ; this actually updates things
-    ;;                                       ; reeeelatively quickly.
-    ;;         helm-yas-display-key-on-candidate t
-    ;;         helm-quick-update t
-    ;;         helm-M-x-requires-pattern nil
-    ;; 
-      (helm-mode)
-      )
-    :bind (("C-c h" . helm-mini)
-           ("C-h a" . helm-apropos)
-           ("C-x C-b" . helm-buffers-list)
-           ("C-x b" . helm-buffers-list)
-           ("M-y" . helm-show-kill-ring)
-           ("M-x" . helm-M-x)
-           ("C-x c o" . helm-occur)
-           ("C-x c s" . helm-swoop)
-           ("C-x c y" . helm-yas-complete)
-           ("C-x c Y" . helm-yas-create-snippet-on-region)
-           ("C-x c b" . my/helm-do-grep-book-notes)
-           ("C-x c SPC" . helm-all-mark-rings)))
-  (ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
+    (marginalia-mode))
 
-  (use-package helm-descbinds
-    :if (h7/use-helm)
-    :defer t
-    :bind (("C-h b" . helm-descbinds)
-           ("C-h w" . helm-descbinds)))
-
-
-  ;; ;; @see: https://lupan.pl/dotemacs/
-
-  ;; (use-package helm
-  ;;   :if (h7/use-helm)
-  ;;   :ensure t
-  ;;   :demand
+  ;; (use-package marginalia
+  ;;   :general
+  ;;   (:keymaps 'minibuffer-local-map
+  ;;             "M-A" 'marginalia-cycle)
+  ;;   :custom
+  ;;   (marginalia-max-relative-age 0)
+  ;;   (marginalia-align 'right)
   ;;   :init
-  ;;   (setq helm-split-window-default-side 'other
-  ;;         helm-split-window-inside-p t
-  ;;         helm-swoop-split-with-multiple-windows t        
-  ;;         helm-command-prefix-key "s-c")
+  ;;   (marginalia-mode))
+
+  ;; icon fonts: M-x all-the-icons-install-fonts
+  (use-package all-the-icons
+    :ensure t
+    )
+
+
+  (use-package all-the-icons-completion
+    :ensure t
+    :after (marginalia all-the-icons)
+    :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
+    :init
+    (all-the-icons-completion-mode))
+
+  ;; ---( vertico )--------------------------------------------------------------
+
+  (use-package vertico
+    :ensure t
+    :config
+    (vertico-mode))
+
+  ;; (use-package vertico
+  ;;   :custom
+  ;;   (vertico-count 13)                    ; Number of candidates to display
+  ;;   (vertico-resize t)
+  ;;   (vertico-cycle nil) ; Go from last to first candidate and first to last (cycle)?
+  ;;   :general
+  ;;   (:keymaps 'vertico-map
+  ;;             "<tab>" #'vertico-insert  ; Insert selected candidate into text area
+  ;;             "<escape>" #'minibuffer-keyboard-quit ; Close minibuffer
+  ;;             ;; NOTE 2022-02-05: Cycle through candidate groups
+  ;;             "C-M-n" #'vertico-next-group
+  ;;             "C-M-p" #'vertico-previous-group)
   ;;   :config
-  ;;   (require 'helm-config)              ; required to setup "s-c" keymap
-  ;;   (helm-mode 1)
-  ;;   (helm-autoresize-mode 1)
-  ;;   ;; Only rebind M-x and C-x C-f on successful load of helm to remain
-  ;;   ;; this basic operations if helm is not installed.
-  ;;   (bind-key "M-x" #'helm-M-x)
-  ;;   (bind-key "C-x C-f" #'helm-find-files)
-  ;;   :bind
-  ;;   (("M-y" . helm-show-kill-ring)
-  ;;    ("C-c o" . helm-occur)
-  ;;    ("C-x b" . helm-mini)
-  ;;    ("C-x r b" . helm-bookmarks)
-  ;;    ("C-h a" . helm-apropos)
-  ;;    ("C-h d" . helm-info-at-point)
-  ;;    ("C-c a" . helm-all-mark-rings)
-  ;;    ("C-c h e" . helm-info-emacs)
-  ;;    ("C-c h g" . helm-info-gnus)
-  ;;    ("C-c R" . helm-register)
-  ;;    ("s-P" . helm-run-external-command)
-  ;;    ;; More key bindings in "s-c" keymap
-  ;;    :map helm-find-files-map
-  ;;    ("<backtab>" . helm-select-action)
-  ;;    ("C-i" . helm-execute-persistent-action)))
+  ;;   (vertico-mode))
 
 
-  ;; (use-package helm
-  ;;   :if (h7/use-helm)
+  ;; ---( consult )--------------------------------------------------------------
+
+
+  (setq completion-ignore-case t)
+  (setq read-file-name-completion-ignore-case t)
+
+
+
+
+  ;; @see: https://github.com/minad/consult
+  ;; @see: https://gitlab.com/to1ne/temacco/-/blob/main/README.org#L749
+
+  ;; Example configuration for Consult
+  (use-package consult
+    :ensure t
+    ;; Replace bindings. Lazily loaded due by `use-package'.
+    :bind (;; C-c bindings (mode-specific-map)
+           ("C-c h" . consult-history)
+           ("C-c m" . consult-mode-command)
+           ("C-c k" . consult-kmacro)
+           ;; C-x bindings (ctl-x-map)
+           ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
+           ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
+           ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
+           ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
+           ("C-x r b" . consult-bookmark)            ;; orig. bookmark-jump
+           ("C-x p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
+           ;; Custom M-# bindings for fast register access
+           ("M-#" . consult-register-load)
+           ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
+           ("C-M-#" . consult-register)
+           ;; Other custom bindings
+           ("M-y" . consult-yank-pop)                ;; orig. yank-pop
+           ("<help> a" . consult-apropos)            ;; orig. apropos-command
+           ;; M-g bindings (goto-map)
+           ("M-g e" . consult-compile-error)
+           ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
+           ("M-g g" . consult-goto-line)             ;; orig. goto-line
+           ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
+           ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
+           ("M-g m" . consult-mark)
+           ("M-g k" . consult-global-mark)
+           ("M-g i" . consult-imenu)
+           ("M-g I" . consult-imenu-multi)
+           ;; M-s bindings (search-map)
+           ("M-s d" . consult-find)
+           ("M-s D" . consult-locate)
+           ("M-s g" . consult-grep)
+           ("M-s G" . consult-git-grep)
+           ("M-s r" . consult-ripgrep)
+           ("M-s l" . consult-line)
+           ("M-s L" . consult-line-multi)
+           ("M-s m" . consult-multi-occur)
+           ("M-s k" . consult-keep-lines)
+           ("M-s u" . consult-focus-lines)
+           ;; Isearch integration
+           ("M-s e" . consult-isearch-history)
+           :map isearch-mode-map
+           ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
+           ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
+           ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
+           ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
+           ;; Minibuffer history
+           :map minibuffer-local-map
+           ("M-s" . consult-history)                 ;; orig. next-matching-history-element
+           ("M-r" . consult-history))                ;; orig. previous-matching-history-element
+
+    ;; Enable automatic preview at point in the *Completions* buffer. This is
+    ;; relevant when you use the default completion UI.
+    :hook (completion-list-mode . consult-preview-at-point-mode)
+
+    ;; The :init configuration is always executed (Not lazy)
+    :init
+
+    ;; Optionally configure the register formatting. This improves the register
+    ;; preview for `consult-register', `consult-register-load',
+    ;; `consult-register-store' and the Emacs built-ins.
+    (setq register-preview-delay 0.5
+          register-preview-function #'consult-register-format)
+
+    ;; Optionally tweak the register preview window.
+    ;; This adds thin lines, sorting and hides the mode line of the window.
+    (advice-add #'register-preview :override #'consult-register-window)
+
+    ;; Use Consult to select xref locations with preview
+    (setq xref-show-xrefs-function #'consult-xref
+          xref-show-definitions-function #'consult-xref)
+
+    ;; Configure other variables and modes in the :config section,
+    ;; after lazily loading the package.
+    :config
+
+    ;; Optionally configure preview. The default value
+    ;; is 'any, such that any key triggers the preview.
+    ;; (setq consult-preview-key 'any)
+    ;; (setq consult-preview-key (kbd "M-."))
+    ;; (setq consult-preview-key (list (kbd "<S-down>") (kbd "<S-up>")))
+    ;; For some commands and buffer sources it is useful to configure the
+    ;; :preview-key on a per-command basis using the `consult-customize' macro.
+    (consult-customize
+     consult-theme
+     :preview-key '(:debounce 0.2 any)
+     consult-ripgrep consult-git-grep consult-grep
+     consult-bookmark consult-recent-file consult-xref
+     consult--source-bookmark consult--source-recent-file
+     consult--source-project-recent-file
+     :preview-key (kbd "M-."))
+
+    ;; Optionally configure the narrowing key.
+    ;; Both < and C-+ work reasonably well.
+    (setq consult-narrow-key "<") ;; (kbd "C-+")
+
+    ;; Optionally make narrowing help available in the minibuffer.
+    ;; You may want to use `embark-prefix-help-command' or which-key instead.
+    ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
+
+    ;; By default `consult-project-function' uses `project-root' from project.el.
+    ;; Optionally configure a different project root function.
+    ;; There are multiple reasonable alternatives to chose from.
+    ;;;; 1. project.el (the default)
+    ;; (setq consult-project-function #'consult--default-project--function)
+    ;;;; 2. projectile.el (projectile-project-root)
+    ;; (autoload 'projectile-project-root "projectile")
+    ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
+    ;;;; 3. vc.el (vc-root-dir)
+    ;; (setq consult-project-function (lambda (_) (vc-root-dir)))
+    ;;;; 4. locate-dominating-file
+    ;; (setq consult-project-function (lambda (_) (locate-dominating-file "." ".git")))
+  )
+
+
+
+  ;; ---( orderless )--------------------------------------------------------------
+
+  (use-package orderless
+    :ensure t
+    :init
+    (setq completion-styles '(orderless)))
+
+  ;; (use-package orderless
+  ;;   :custom
+  ;;   (completion-styles '(orderless))      ; Use orderless
+  ;;   (completion-category-defaults nil)    ; I want to be in control!
+  ;;   (completion-category-overrides
+  ;;    '((file (styles basic-remote ; For `tramp' hostname completion with `vertico'
+  ;;                    orderless)))))
+
+  ;; ---( embark )--------------------------------------------------------------
+
+    (use-package embark
+    :ensure t
+
+    :bind
+    (("C-." . embark-act)         ;; pick some comfortable binding
+     ("C-;" . embark-dwim)        ;; good alternative: M-.
+     ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
+
+     :init
+
+     ;; Optionally replace the key help with a completing-read interface
+     (setq prefix-help-command #'embark-prefix-help-command)
+
+     :config
+
+     ;; Hide the mode line of the Embark live/completions buffers
+     (add-to-list 'display-buffer-alist
+                  '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+                    nil
+                    (window-parameters (mode-line-format . none))))
+
+    )
+
+  ;; Consult users will also want the embark-consult package.
+  (use-package embark-consult
+    :ensure t
+    :after (embark consult)
+    :demand t ; only necessary if you have the hook below
+    ;; if you want to have consult previews as you move around an
+    ;; auto-updating embark collect buffer
+    :hook
+    (embark-collect-mode . consult-preview-at-point-mode))
+
+  ;; (use-package embark
+  ;;   :ensure t)
+
+  ;; Consult users will also want the embark-consult package.
+  ;; (use-package embark-consult
   ;;   :ensure t
-  ;; ;;  :demand t
-  ;;   :bind ("M-x" . helm-M-x)
-  ;;   :config
-  ;;   (use-package helm-descbinds
-  ;;     :config (helm-descbinds-mode))
-  ;;   (ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
-  ;;   (helm-mode 1)
-  ;;   )
-
-  ;; (use-package helm
-  ;;   :if (h7/use-helm)
-  ;;   :ensure t
-  ;;   :diminish helm-mode
-  ;;   :init
-  ;;   (progn
-  ;;     (require 'helm-config)
-  ;;     (setq helm-candidate-number-limit 100)
-  ;;     ;; From https://gist.github.com/antifuchs/9238468
-  ;;     (setq helm-idle-delay 0.0 ; update fast sources immediately (doesn't).
-  ;;           helm-input-idle-delay 0.01  ; this actually updates things
-  ;;                                         ; reeeelatively quickly.
-  ;;           helm-quick-update t
-  ;;           helm-M-x-requires-pattern nil
-  ;;           helm-ff-skip-boring-files t)
-  ;;     (helm-mode))
-  ;;   :bind (("C-c h" . helm-mini)
-  ;;          ("C-h a" . helm-apropos)
-  ;;          ("C-x C-b" . helm-buffers-list)
-  ;;          ("C-x b" . helm-buffers-list)
-  ;;          ("M-y" . helm-show-kill-ring)
-  ;;          ("M-x" . helm-M-x)
-  ;;          ("C-x c o" . helm-occur)
-  ;;          ("C-x c s" . helm-swoop)
-  ;;          ("C-x c b" . my/helm-do-grep-book-notes)
-  ;;          ("C-x c SPC" . helm-all-mark-rings)))
-
-  ;; (ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
-
-  ;; ;; ---( helm-descbinds )--------------------------------------------------------------
-
-  ;; (use-package helm-descbinds
-  ;;   :defer t
-  ;;   :bind (("C-h b" . helm-descbinds)
-  ;;          ("C-h w" . helm-descbinds)))
-
-  ;; ;; ---( helm local )--------------------------------------------------------------
-
-  ;; ;; (defvar my/book-notes-directory "~/Dropbox/books")
-  ;; ;; (defun my/helm-do-grep-book-notes ()
-  ;; ;;   "Search my book notes."
-  ;; ;;   (interactive)
-  ;; ;;   (helm-do-grep-1 (list my/book-notes-directory)))
+  ;;   :after (embark consult)
+  ;;   :demand t only necessary if you have the hook below
+  ;;   if you want to have consult previews as you move around an
+  ;;   auto-updating embark collect buffer
+  ;;   :hook
+  ;;   (embark-collect-mode . consult-preview-at-point-mode))
 
 
 
 
-  ;; ;; ---( helm - alter )--------------------------------------------------------------
 
-  ;; (use-package helm-mode
-  ;;   :defer 15
-  ;;   :commands helm--completing-read-default)
-  ;; (use-package helm-grep
-  ;;   :commands helm-do-grep-1
-  ;;   :bind (("M-s f" . my-helm-do-grep-r)
-  ;;          ("M-s g" . my-helm-do-grep))
-  ;;   :preface
-  ;;   (defun my-helm-do-grep ()
-  ;;     (interactive)
-  ;;     (helm-do-grep-1 (list default-directory)))
-  ;;   (defun my-helm-do-grep-r ()
-  ;;     (interactive)
-  ;;     (helm-do-grep-1 (list default-directory) t)))
-  ;; (use-package helm-swoop
-  ;;   :bind (("M-s o" . helm-swoop)
-  ;;          ("M-s /" . helm-multi-swoop)))
-  ;; (use-package helm-descbinds
-  ;;   :bind ("C-h b" . helm-descbinds)
-  ;;   :init
-  ;;   (fset 'describe-bindings 'helm-descbinds)
-  ;;   :config
-  ;;   (require 'helm-config))
-  ;; (use-package helm-config
-  ;;   :defer 10
-  ;;   :bind (("C-c h" . helm-command-prefix)
-  ;;          ("C-h a" . helm-apropos)
-  ;;          ("C-h e a" . my-helm-apropos)
-  ;;          ("C-x f" . helm-multi-files)
-  ;;          ;; ("C-x C-f" . helm-find-files)
-  ;;          ("M-s F" . helm-for-files)
-  ;;          ("M-s b" . helm-occur)
-  ;;          ("M-s n" . my-helm-find)
-  ;;          )
-  ;;   :preface
-  ;;   (defun my-helm-find ()
-  ;;     (interactive)
-  ;;     (helm-find nil))
-  ;;   :config
-  ;;   (use-package helm-commands)
-  ;;   (use-package helm-files)
-  ;;   (use-package helm-buffers)
-  ;;   (use-package helm-ls-git)
-  ;;   (use-package helm-match-plugin)
-  ;;   (helm-match-plugin-mode t)
-  ;;   (helm-autoresize-mode t)
-  ;;   (bind-key "<tab>" 'helm-execute-persistent-action helm-map)
-  ;;   (bind-key "C-i" 'helm-execute-persistent-action helm-map)
-  ;;   (bind-key "C-z" 'helm-select-action helm-map)
-  ;;   (bind-key "A-v" 'helm-previous-page helm-map)
-  ;;   (when (executable-find "curl")
-  ;;     (setq helm-google-suggest-use-curl-p t)))
+  ;; ---( savehist )--------------------------------------------------------------
 
+  ;; Persist history over Emacs restarts. Vertico sorts by history position.
+  (use-package savehist
+    :init
+    (savehist-mode))
+
+
+  (recentf-mode)
+
+  (setq completion-ignore-case t)
+  (setq read-file-name-completion-ignore-case t)
+
+
+
+
+  (message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico)) 
+  ;; .........................................................................
+
+
+#+END_SRC
+
+
+*** Ivy
+#+NAME: comp-mb-helm
+#+begin_src emacs-lisp
 
 
   ;; ---( ivy )--------------------------------------------------------------
@@ -3653,290 +4468,276 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; #   :after (ivy hydra))
 
 
-  ;; ===( vertico )=============================================================
+#+END_SRC
 
-   ;; @see: https://kristofferbalintona.me/posts/202202211546/
+*** Helm
+#+NAME: comp-mb-helm
+#+begin_src emacs-lisp
 
-  (message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico)) 
+  ;; ---( helm )--------------------------------------------------------------
 
-  ;; ---( marginalia )--------------------------------------------------------------
+  ;; @see: https://pages.sachachua.com/.emacs.d/Sacha.html#org04e47b9
 
-  (use-package marginalia
-    :ensure t
-    :general
-    (:keymaps 'minibuffer-local-map
-              "M-A" 'marginalia-cycle)
-    :custom
-    (marginalia-max-relative-age 0)
-    ;;(marginalia-align 'right)
-    :config
-    (set-face-attribute 'marginalia-documentation nil :underline nil)
+  (message "#helm(0): '( (h7/use-helm . %s) )" (h7/use-helm)) 
+  (use-package helm
+    :if (h7/use-helm)
+    :diminish helm-mode
     :init
-    (marginalia-mode))
+    (progn
+    ;;   (require 'helm-config)
+    ;;   (message "#helm(1): '( (h7/use-helm . %s) )" (h7/use-helm)) 
+    ;;   (setq helm-candidate-number-limit 100)
+    ;;   ;; From https://gist.github.com/antifuchs/9238468
+    ;;   (setq helm-idle-delay 0.0 ; update fast sources immediately (doesn't).
+    ;;         helm-input-idle-delay 0.01  ; this actually updates things
+    ;;                                       ; reeeelatively quickly.
+    ;;         helm-yas-display-key-on-candidate t
+    ;;         helm-quick-update t
+    ;;         helm-M-x-requires-pattern nil
+    ;; 
+      (helm-mode)
+      )
+    :bind (("C-c h" . helm-mini)
+           ("C-h a" . helm-apropos)
+           ("C-x C-b" . helm-buffers-list)
+           ("C-x b" . helm-buffers-list)
+           ("M-y" . helm-show-kill-ring)
+           ("M-x" . helm-M-x)
+           ("C-x c o" . helm-occur)
+           ("C-x c s" . helm-swoop)
+           ("C-x c y" . helm-yas-complete)
+           ("C-x c Y" . helm-yas-create-snippet-on-region)
+           ("C-x c b" . my/helm-do-grep-book-notes)
+           ("C-x c SPC" . helm-all-mark-rings)))
+  (ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
 
-  ;; (use-package marginalia
-  ;;   :general
-  ;;   (:keymaps 'minibuffer-local-map
-  ;;             "M-A" 'marginalia-cycle)
-  ;;   :custom
-  ;;   (marginalia-max-relative-age 0)
-  ;;   (marginalia-align 'right)
-  ;;   :init
-  ;;   (marginalia-mode))
-
-  ;; icon fonts: M-x all-the-icons-install-fonts
-  (use-package all-the-icons
-    :ensure t
-    )
-
-
-  (use-package all-the-icons-completion
-    :ensure t
-    :after (marginalia all-the-icons)
-    :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
-    :init
-    (all-the-icons-completion-mode))
-
-  ;; ---( vertico )--------------------------------------------------------------
-
-  (use-package vertico
-    :ensure t
-    :config
-    (vertico-mode))
-
-  ;; (use-package vertico
-  ;;   :custom
-  ;;   (vertico-count 13)                    ; Number of candidates to display
-  ;;   (vertico-resize t)
-  ;;   (vertico-cycle nil) ; Go from last to first candidate and first to last (cycle)?
-  ;;   :general
-  ;;   (:keymaps 'vertico-map
-  ;;             "<tab>" #'vertico-insert  ; Insert selected candidate into text area
-  ;;             "<escape>" #'minibuffer-keyboard-quit ; Close minibuffer
-  ;;             ;; NOTE 2022-02-05: Cycle through candidate groups
-  ;;             "C-M-n" #'vertico-next-group
-  ;;             "C-M-p" #'vertico-previous-group)
-  ;;   :config
-  ;;   (vertico-mode))
+  (use-package helm-descbinds
+    :if (h7/use-helm)
+    :defer t
+    :bind (("C-h b" . helm-descbinds)
+           ("C-h w" . helm-descbinds)))
 
 
-  ;; ---( consult )--------------------------------------------------------------
+  ;; ;; @see: https://lupan.pl/dotemacs/
 
-
-  (setq completion-ignore-case t)
-  (setq read-file-name-completion-ignore-case t)
-
-
-
-
-  ;; @see: https://github.com/minad/consult
-  ;; @see: https://gitlab.com/to1ne/temacco/-/blob/main/README.org#L749
-
-  ;; Example configuration for Consult
-  (use-package consult
-    :ensure t
-    ;; Replace bindings. Lazily loaded due by `use-package'.
-    :bind (;; C-c bindings (mode-specific-map)
-           ("C-c h" . consult-history)
-           ("C-c m" . consult-mode-command)
-           ("C-c k" . consult-kmacro)
-           ;; C-x bindings (ctl-x-map)
-           ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
-           ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
-           ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
-           ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
-           ("C-x r b" . consult-bookmark)            ;; orig. bookmark-jump
-           ("C-x p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
-           ;; Custom M-# bindings for fast register access
-           ("M-#" . consult-register-load)
-           ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
-           ("C-M-#" . consult-register)
-           ;; Other custom bindings
-           ("M-y" . consult-yank-pop)                ;; orig. yank-pop
-           ("<help> a" . consult-apropos)            ;; orig. apropos-command
-           ;; M-g bindings (goto-map)
-           ("M-g e" . consult-compile-error)
-           ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
-           ("M-g g" . consult-goto-line)             ;; orig. goto-line
-           ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
-           ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
-           ("M-g m" . consult-mark)
-           ("M-g k" . consult-global-mark)
-           ("M-g i" . consult-imenu)
-           ("M-g I" . consult-imenu-multi)
-           ;; M-s bindings (search-map)
-           ("M-s d" . consult-find)
-           ("M-s D" . consult-locate)
-           ("M-s g" . consult-grep)
-           ("M-s G" . consult-git-grep)
-           ("M-s r" . consult-ripgrep)
-           ("M-s l" . consult-line)
-           ("M-s L" . consult-line-multi)
-           ("M-s m" . consult-multi-occur)
-           ("M-s k" . consult-keep-lines)
-           ("M-s u" . consult-focus-lines)
-           ;; Isearch integration
-           ("M-s e" . consult-isearch-history)
-           :map isearch-mode-map
-           ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
-           ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
-           ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
-           ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
-           ;; Minibuffer history
-           :map minibuffer-local-map
-           ("M-s" . consult-history)                 ;; orig. next-matching-history-element
-           ("M-r" . consult-history))                ;; orig. previous-matching-history-element
-
-    ;; Enable automatic preview at point in the *Completions* buffer. This is
-    ;; relevant when you use the default completion UI.
-    :hook (completion-list-mode . consult-preview-at-point-mode)
-
-    ;; The :init configuration is always executed (Not lazy)
-    :init
-
-    ;; Optionally configure the register formatting. This improves the register
-    ;; preview for `consult-register', `consult-register-load',
-    ;; `consult-register-store' and the Emacs built-ins.
-    (setq register-preview-delay 0.5
-          register-preview-function #'consult-register-format)
-
-    ;; Optionally tweak the register preview window.
-    ;; This adds thin lines, sorting and hides the mode line of the window.
-    (advice-add #'register-preview :override #'consult-register-window)
-
-    ;; Use Consult to select xref locations with preview
-    (setq xref-show-xrefs-function #'consult-xref
-          xref-show-definitions-function #'consult-xref)
-
-    ;; Configure other variables and modes in the :config section,
-    ;; after lazily loading the package.
-    :config
-
-    ;; Optionally configure preview. The default value
-    ;; is 'any, such that any key triggers the preview.
-    ;; (setq consult-preview-key 'any)
-    ;; (setq consult-preview-key (kbd "M-."))
-    ;; (setq consult-preview-key (list (kbd "<S-down>") (kbd "<S-up>")))
-    ;; For some commands and buffer sources it is useful to configure the
-    ;; :preview-key on a per-command basis using the `consult-customize' macro.
-    (consult-customize
-     consult-theme
-     :preview-key '(:debounce 0.2 any)
-     consult-ripgrep consult-git-grep consult-grep
-     consult-bookmark consult-recent-file consult-xref
-     consult--source-bookmark consult--source-recent-file
-     consult--source-project-recent-file
-     :preview-key (kbd "M-."))
-
-    ;; Optionally configure the narrowing key.
-    ;; Both < and C-+ work reasonably well.
-    (setq consult-narrow-key "<") ;; (kbd "C-+")
-
-    ;; Optionally make narrowing help available in the minibuffer.
-    ;; You may want to use `embark-prefix-help-command' or which-key instead.
-    ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
-
-    ;; By default `consult-project-function' uses `project-root' from project.el.
-    ;; Optionally configure a different project root function.
-    ;; There are multiple reasonable alternatives to chose from.
-    ;;;; 1. project.el (the default)
-    ;; (setq consult-project-function #'consult--default-project--function)
-    ;;;; 2. projectile.el (projectile-project-root)
-    ;; (autoload 'projectile-project-root "projectile")
-    ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
-    ;;;; 3. vc.el (vc-root-dir)
-    ;; (setq consult-project-function (lambda (_) (vc-root-dir)))
-    ;;;; 4. locate-dominating-file
-    ;; (setq consult-project-function (lambda (_) (locate-dominating-file "." ".git")))
-  )
-
-
-
-  ;; ---( orderless )--------------------------------------------------------------
-
-  (use-package orderless
-    :ensure t
-    :init
-    (setq completion-styles '(orderless)))
-
-  ;; (use-package orderless
-  ;;   :custom
-  ;;   (completion-styles '(orderless))      ; Use orderless
-  ;;   (completion-category-defaults nil)    ; I want to be in control!
-  ;;   (completion-category-overrides
-  ;;    '((file (styles basic-remote ; For `tramp' hostname completion with `vertico'
-  ;;                    orderless)))))
-
-  ;; ---( embark )--------------------------------------------------------------
-
-    (use-package embark
-    :ensure t
-
-    :bind
-    (("C-." . embark-act)         ;; pick some comfortable binding
-     ("C-;" . embark-dwim)        ;; good alternative: M-.
-     ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
-
-     :init
-
-     ;; Optionally replace the key help with a completing-read interface
-     (setq prefix-help-command #'embark-prefix-help-command)
-
-     :config
-
-     ;; Hide the mode line of the Embark live/completions buffers
-     (add-to-list 'display-buffer-alist
-                  '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
-                    nil
-                    (window-parameters (mode-line-format . none))))
-
-    )
-
-  ;; Consult users will also want the embark-consult package.
-  (use-package embark-consult
-    :ensure t
-    :after (embark consult)
-    :demand t ; only necessary if you have the hook below
-    ;; if you want to have consult previews as you move around an
-    ;; auto-updating embark collect buffer
-    :hook
-    (embark-collect-mode . consult-preview-at-point-mode))
-
-  ;; (use-package embark
-  ;;   :ensure t)
-
-  ;; Consult users will also want the embark-consult package.
-  ;; (use-package embark-consult
+  ;; (use-package helm
+  ;;   :if (h7/use-helm)
   ;;   :ensure t
-  ;;   :after (embark consult)
-  ;;   :demand t only necessary if you have the hook below
-  ;;   if you want to have consult previews as you move around an
-  ;;   auto-updating embark collect buffer
-  ;;   :hook
-  ;;   (embark-collect-mode . consult-preview-at-point-mode))
+  ;;   :demand
+  ;;   :init
+  ;;   (setq helm-split-window-default-side 'other
+  ;;         helm-split-window-inside-p t
+  ;;         helm-swoop-split-with-multiple-windows t        
+  ;;         helm-command-prefix-key "s-c")
+  ;;   :config
+  ;;   (require 'helm-config)              ; required to setup "s-c" keymap
+  ;;   (helm-mode 1)
+  ;;   (helm-autoresize-mode 1)
+  ;;   ;; Only rebind M-x and C-x C-f on successful load of helm to remain
+  ;;   ;; this basic operations if helm is not installed.
+  ;;   (bind-key "M-x" #'helm-M-x)
+  ;;   (bind-key "C-x C-f" #'helm-find-files)
+  ;;   :bind
+  ;;   (("M-y" . helm-show-kill-ring)
+  ;;    ("C-c o" . helm-occur)
+  ;;    ("C-x b" . helm-mini)
+  ;;    ("C-x r b" . helm-bookmarks)
+  ;;    ("C-h a" . helm-apropos)
+  ;;    ("C-h d" . helm-info-at-point)
+  ;;    ("C-c a" . helm-all-mark-rings)
+  ;;    ("C-c h e" . helm-info-emacs)
+  ;;    ("C-c h g" . helm-info-gnus)
+  ;;    ("C-c R" . helm-register)
+  ;;    ("s-P" . helm-run-external-command)
+  ;;    ;; More key bindings in "s-c" keymap
+  ;;    :map helm-find-files-map
+  ;;    ("<backtab>" . helm-select-action)
+  ;;    ("C-i" . helm-execute-persistent-action)))
+
+
+  ;; (use-package helm
+  ;;   :if (h7/use-helm)
+  ;;   :ensure t
+  ;; ;;  :demand t
+  ;;   :bind ("M-x" . helm-M-x)
+  ;;   :config
+  ;;   (use-package helm-descbinds
+  ;;     :config (helm-descbinds-mode))
+  ;;   (ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
+  ;;   (helm-mode 1)
+  ;;   )
+
+  ;; (use-package helm
+  ;;   :if (h7/use-helm)
+  ;;   :ensure t
+  ;;   :diminish helm-mode
+  ;;   :init
+  ;;   (progn
+  ;;     (require 'helm-config)
+  ;;     (setq helm-candidate-number-limit 100)
+  ;;     ;; From https://gist.github.com/antifuchs/9238468
+  ;;     (setq helm-idle-delay 0.0 ; update fast sources immediately (doesn't).
+  ;;           helm-input-idle-delay 0.01  ; this actually updates things
+  ;;                                         ; reeeelatively quickly.
+  ;;           helm-quick-update t
+  ;;           helm-M-x-requires-pattern nil
+  ;;           helm-ff-skip-boring-files t)
+  ;;     (helm-mode))
+  ;;   :bind (("C-c h" . helm-mini)
+  ;;          ("C-h a" . helm-apropos)
+  ;;          ("C-x C-b" . helm-buffers-list)
+  ;;          ("C-x b" . helm-buffers-list)
+  ;;          ("M-y" . helm-show-kill-ring)
+  ;;          ("M-x" . helm-M-x)
+  ;;          ("C-x c o" . helm-occur)
+  ;;          ("C-x c s" . helm-swoop)
+  ;;          ("C-x c b" . my/helm-do-grep-book-notes)
+  ;;          ("C-x c SPC" . helm-all-mark-rings)))
+
+  ;; (ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
+
+  ;; ;; ---( helm-descbinds )--------------------------------------------------------------
+
+  ;; (use-package helm-descbinds
+  ;;   :defer t
+  ;;   :bind (("C-h b" . helm-descbinds)
+  ;;          ("C-h w" . helm-descbinds)))
+
+  ;; ;; ---( helm local )--------------------------------------------------------------
+
+  ;; ;; (defvar my/book-notes-directory "~/Dropbox/books")
+  ;; ;; (defun my/helm-do-grep-book-notes ()
+  ;; ;;   "Search my book notes."
+  ;; ;;   (interactive)
+  ;; ;;   (helm-do-grep-1 (list my/book-notes-directory)))
+
+
+
+
+  ;; ;; ---( helm - alter )--------------------------------------------------------------
+
+  ;; (use-package helm-mode
+  ;;   :defer 15
+  ;;   :commands helm--completing-read-default)
+  ;; (use-package helm-grep
+  ;;   :commands helm-do-grep-1
+  ;;   :bind (("M-s f" . my-helm-do-grep-r)
+  ;;          ("M-s g" . my-helm-do-grep))
+  ;;   :preface
+  ;;   (defun my-helm-do-grep ()
+  ;;     (interactive)
+  ;;     (helm-do-grep-1 (list default-directory)))
+  ;;   (defun my-helm-do-grep-r ()
+  ;;     (interactive)
+  ;;     (helm-do-grep-1 (list default-directory) t)))
+  ;; (use-package helm-swoop
+  ;;   :bind (("M-s o" . helm-swoop)
+  ;;          ("M-s /" . helm-multi-swoop)))
+  ;; (use-package helm-descbinds
+  ;;   :bind ("C-h b" . helm-descbinds)
+  ;;   :init
+  ;;   (fset 'describe-bindings 'helm-descbinds)
+  ;;   :config
+  ;;   (require 'helm-config))
+  ;; (use-package helm-config
+  ;;   :defer 10
+  ;;   :bind (("C-c h" . helm-command-prefix)
+  ;;          ("C-h a" . helm-apropos)
+  ;;          ("C-h e a" . my-helm-apropos)
+  ;;          ("C-x f" . helm-multi-files)
+  ;;          ;; ("C-x C-f" . helm-find-files)
+  ;;          ("M-s F" . helm-for-files)
+  ;;          ("M-s b" . helm-occur)
+  ;;          ("M-s n" . my-helm-find)
+  ;;          )
+  ;;   :preface
+  ;;   (defun my-helm-find ()
+  ;;     (interactive)
+  ;;     (helm-find nil))
+  ;;   :config
+  ;;   (use-package helm-commands)
+  ;;   (use-package helm-files)
+  ;;   (use-package helm-buffers)
+  ;;   (use-package helm-ls-git)
+  ;;   (use-package helm-match-plugin)
+  ;;   (helm-match-plugin-mode t)
+  ;;   (helm-autoresize-mode t)
+  ;;   (bind-key "<tab>" 'helm-execute-persistent-action helm-map)
+  ;;   (bind-key "C-i" 'helm-execute-persistent-action helm-map)
+  ;;   (bind-key "C-z" 'helm-select-action helm-map)
+  ;;   (bind-key "A-v" 'helm-previous-page helm-map)
+  ;;   (when (executable-find "curl")
+  ;;     (setq helm-google-suggest-use-curl-p t)))
+
+
+
+#+END_SRC
+
+*** Completion/end
+#+NAME: comp-mb-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .comp-mb
+
+#+END_SRC
 
 
 
 
 
-  ;; ---( savehist )--------------------------------------------------------------
-
-  ;; Persist history over Emacs restarts. Vertico sorts by history position.
-  (use-package savehist
-    :init
-    (savehist-mode))
-
-
-  (recentf-mode)
-
-  (setq completion-ignore-case t)
-  (setq read-file-name-completion-ignore-case t)
 
 
 
 
-  (message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico)) 
-  ;; .........................................................................
+
+#+NAME: comp-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .completion
+
+#+END_SRC
+
+
+
+
+
+
+
+
+
+
+
+* Legacy
+
+######################################################################
+######################################################################
+######################################################################
+######################################################################
+######################################################################
+
+
+** Import
+
+#+NAME: legacy
+#+begin_src emacs-lisp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   ;; ;;;////////////////////////////////////////////////////////////////
