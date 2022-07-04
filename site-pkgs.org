@@ -1,6 +1,6 @@
 #+TITLE: site-pkgs: load emacs packages and main config
 #+OPTIONS: toc:nil h:4
-#+STARTUP: showeverything
+#+STARTUP: show2levels
 #+PROPERTY: header-args:emacs-lisp :tangle yes :results silent :exports code :comments both
 #+LINK: emacs-site https://github.com/hute37/emacs-site
 #+LINK: dotemacs  https://sachachua.com/dotemacs#%s
@@ -9,18 +9,17 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 #+TOC: headlines 4
 
-* Configuration   :emacs:
-** About this file
+* Config: =site-pkgs=       :emacs:
+** About
 :PROPERTIES:
 :CUSTOM_ID: babel-init
 :END:
 <<babel-init>>
 
-** Heading
+** Header
 *** Log: start
 #+NAME: log-start
 #+begin_src emacs-lisp
-
   ;; ---( site.pkgs: begin )-------------------------------------------------------
   (message "SITE:PKGS - begin")
 
@@ -798,8 +797,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; }}}  .text
 
 #+END_SRC
-
-
 
 
 ** Lang
@@ -1668,9 +1665,7 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 
 
-
-
-** REST
+** Rest
 *** REST/begin
 #+NAME: rest-begin
 #+begin_src emacs-lisp
@@ -1711,11 +1706,43 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
   ;; ---( request )--------------------------------------------------------------
 
+  ;; ---( restclient )------------------------------------------------------
+
+  ;; @see: https://github.com/pashky/restclient.el
+
+  (use-package restclient
+    :ensure t
+    :defer 30
+    :init
+      (progn
+        ;; (unless restclient-use-org
+        ;;   (add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode)))
+        ;; (spacemacs/set-leader-keys-for-major-mode 'restclient-mode
+        ;;   "n" 'restclient-jump-next
+        ;;   "p" 'restclient-jump-prev
+        ;;   "s" 'restclient-http-send-current-stay-in-window
+        ;;   "S" 'restclient-http-send-current
+        ;;   "r" 'spacemacs/restclient-http-send-current-raw-stay-in-window
+        ;;   "R" 'restclient-http-send-current-raw
+        ;;   "y" 'restclient-copy-curl-command)
+        ) 
+    )
+
+
+  ;; ---( ob-http )------------------------------------------------------
+
+  ;; @see: https://github.com/zweifisch/ob-http
+  ;; @see: https://emacs.stackexchange.com/questions/2427/how-to-test-rest-api-with-emacs
+
+  ;; (use-package ob-http
+  ;;   :ensure t
+  ;;   :defer 30
+  ;;   )
 
 
 #+END_SRC
 
-*** REST/end
+*** Rest/end
 #+NAME: rest-end
 #+begin_src emacs-lisp
 
@@ -1880,10 +1907,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; }}}  .vm
 
 #+END_SRC
-
-
-
-
 
 
 
@@ -2112,8 +2135,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 
 
-
-
 ** Fonts
 *** Fonts/begin
 #+NAME: fonts-begin
@@ -2252,8 +2273,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; }}}  .fonts
 
 #+END_SRC
-
-
 
 
 
@@ -2845,8 +2864,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 
 
-
-
 ** Utils
 *** Utils/begin
 #+NAME: utils-begin
@@ -3121,8 +3138,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 
 
-
-
 ** Server
 *** Server/begin
 #+NAME: server-begin
@@ -3182,8 +3197,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; }}}  .server
 
 #+END_SRC
-
-
 
 
 
@@ -3488,8 +3501,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 
 
-
-
 ** Sec3et
 *** Sec3et/begin
 #+NAME: sec3et-begin
@@ -3525,8 +3536,8 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 #+END_SRC
 
-** EVIL
-*** EVIL/begin
+** Evil
+*** Evil/begin
 #+NAME: evil-begin
 #+begin_src emacs-lisp
 
@@ -3621,8 +3632,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; }}}  .jump
 
 #+END_SRC
-
-
 
 
 
@@ -4705,87 +4714,22 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 
 
-
-
-* Legacy
-
-######################################################################
-######################################################################
-######################################################################
-######################################################################
-######################################################################
-
-
-** Import
-
-#+NAME: legacy
+** Net
+*** Net/begin
+#+NAME: net-begin
 #+begin_src emacs-lisp
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   ;; ;;;////////////////////////////////////////////////////////////////
-  ;; ;;;  @NET
+  ;; {{{  @NET
   ;; ;;;////////////////////////////////////////////////////////////////
 
 
-  ;; ---( restclient )------------------------------------------------------
+#+END_SRC
 
-  ;; @see: https://github.com/pashky/restclient.el
-
-  (use-package restclient
-    :ensure t
-    :defer 30
-    :init
-      (progn
-        ;; (unless restclient-use-org
-        ;;   (add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode)))
-        ;; (spacemacs/set-leader-keys-for-major-mode 'restclient-mode
-        ;;   "n" 'restclient-jump-next
-        ;;   "p" 'restclient-jump-prev
-        ;;   "s" 'restclient-http-send-current-stay-in-window
-        ;;   "S" 'restclient-http-send-current
-        ;;   "r" 'spacemacs/restclient-http-send-current-raw-stay-in-window
-        ;;   "R" 'restclient-http-send-current-raw
-        ;;   "y" 'restclient-copy-curl-command)
-        ) 
-    )
-
-
-  ;; ---( ob-http )------------------------------------------------------
-
-  ;; @see: https://github.com/zweifisch/ob-http
-  ;; @see: https://emacs.stackexchange.com/questions/2427/how-to-test-rest-api-with-emacs
-
-  ;; (use-package ob-http
-  ;;   :ensure t
-  ;;   :defer 30
-  ;;   )
-
-
-
-
-
-  ;; ;;;////////////////////////////////////////////////////////////////
-  ;; ;;;  @INET
-  ;; ;;;////////////////////////////////////////////////////////////////
-
+*** Web
+**** w3m
+#+NAME: net-web-w3m
+#+begin_src emacs-lisp
 
   ;; ---( w3m )------------------------------------------------------
 
@@ -4884,11 +4828,12 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
       (bind-key "S-<return>" 'w3m-safe-view-this-url w3m-minor-mode-map)))
 
 
+#+END_SRC
 
-  ;; ;;;////////////////////////////////////////////////////////////////
-  ;; ;;;  @NEWS
-  ;; ;;;////////////////////////////////////////////////////////////////
-
+*** News
+**** elfeed
+#+NAME: net-news-elfeed
+#+begin_src emacs-lisp
 
   ;; ---( elfeed )--------------------------------------------------------------
 
@@ -4929,16 +4874,23 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;;   :defer 30
   ;;   )
 
+#+END_SRC
+
+**** GNus
+#+NAME: net-news-gnus
+#+begin_src emacs-lisp
+
   ;; ---( GNus )--------------------------------------------------------------
 
   ;; @see: https://www.emacswiki.org/emacs/GnusRss
 
 
+#+END_SRC
 
-  ;; ;;;////////////////////////////////////////////////////////////////
-  ;; ;;;  @TWITTER
-  ;; ;;;////////////////////////////////////////////////////////////////
-
+*** Twitter
+**** twittering
+#+NAME: net-twitter-twittering
+#+begin_src emacs-lisp
 
   ;; ---( twittering-mode )--------------------------------------------------------------
 
@@ -4953,6 +4905,13 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;;   (setq twittering-use-master-password t))
 
 
+#+END_SRC
+
+*** HackerNews
+**** hackernews
+#+NAME: net-hn-hackernews
+#+begin_src emacs-lisp
+
   ;; ;; ---( hackernews )------------------------------------------------------
 
   ;; (use-package hackernews
@@ -4960,9 +4919,32 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;;   )
 
 
+#+END_SRC
 
+*** Net/end
+#+NAME: net-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .net
+
+#+END_SRC
+** Footer
+*** Log: finish
+#+NAME: log-finish
+#+begin_src emacs-lisp
+
+  ;; vim: noet sw=4 ts=4 fdm=marker foldcolumn=0
 
   ;; ---( site.pkgs: end )-------------------------------------------------------
   (message "SITE:PKGS - end")
-
 #+END_SRC
+
+
+
+
+
+
+
+
+
+
