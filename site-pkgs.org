@@ -269,44 +269,51 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 #+NAME: basic
 #+begin_src emacs-lisp
 
-  ;; ;;;////////////////////////////////////////////////////////////////
-  ;; ;;;  @BASIC
-  ;; ;;;////////////////////////////////////////////////////////////////
+       ;; ;;;////////////////////////////////////////////////////////////////
+       ;; ;;;  @BASIC
+       ;; ;;;////////////////////////////////////////////////////////////////
 
-  ;; ---( ... )--------------------------------------------------------------
+       ;; ---( ... )--------------------------------------------------------------
 
-  ;; ---( ... )--------------------------------------------------------------
+       ;; ---( ... )--------------------------------------------------------------
 
-  ;;(use-package bs
-  ;;  :ensure t)
+       ;;(use-package bs
+       ;;  :ensure t)
 
-  ;; ---( ... )--------------------------------------------------------------
+       ;; ---( ... )--------------------------------------------------------------
 
-  ;; (use-package pretty-symbols
-  ;;   :ensure t)
+       ;; (use-package pretty-symbols
+       ;;   :ensure t)
 
-  ;; (use-package pretty-lambdada
-  ;;   :ensure t
-  ;;   :init (dolist (hook '(lisp-mode-hook emacs-lisp-mode-hook)))
-  ;;   :config (dolist (global-pretty-lambda-mode)))
+       ;; (use-package pretty-lambdada
+       ;;   :ensure t
+       ;;   :init (dolist (hook '(lisp-mode-hook emacs-lisp-mode-hook)))
+       ;;   :config (dolist (global-pretty-lambda-mode)))
 
 
-  (use-package jumpc
-    :disabled t
-    :config (progn (jumpc-bind-vim-key)))
+     ;; (use-package jumpc
+     ;;   :disabled t
+     ;;   :config (progn (jumpc-bind-vim-key)))
 
-  (use-package rainbow-delimiters
-    :disabled t
-    :hook (prog-mode . rainbow-delimiters-mode))
+     ;; (use-package rainbow-delimiters
+     ;;   :disabled t
+     ;;   :hook (prog-mode . rainbow-delimiters-mode))
+
+     ;; ---( undo-tree )--------------------------------------------------------------
 
   (use-package undo-tree
-    :disabled t
-    :custom
-    (undo-tree-auto-save-history nil)
-    :init
-    (global-undo-tree-mode 1))
+    :ensure t
+    :diminish
+    :bind (("C-c _" . undo-tree-visualize))
+    :config
+    (progn
+      (global-undo-tree-mode)
+      (unbind-key "M-_" undo-tree-map)
+      (setq undo-tree-visualizer-timestamps t)
+      (setq undo-tree-visualizer-diff t)))
 
-  ;; }}}  .packages
+
+    ;; }}}  .packages
 
 #+END_SRC
 
@@ -3995,7 +4002,12 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
     ;; (setq consult-project-function (lambda (_) (locate-dominating-file "." ".git")))
   )
 
-
+(use-package consult-dir
+  :ensure t
+  :bind (("C-x C-d" . consult-dir)
+         :map minibuffer-local-completion-map
+         ("C-x C-d" . consult-dir)
+         ("C-x C-j" . consult-dir-jump-file)))
 
 
 #+END_SRC
