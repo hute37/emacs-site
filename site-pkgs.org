@@ -29,38 +29,38 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 #+NAME: references
 #+begin_src emacs-lisp
 
-  ;; ;;;////////////////////////////////////////////////////////////////
-  ;; {{{  @REFERENCES
-  ;; ;;;////////////////////////////////////////////////////////////////
+    ;; ;;;////////////////////////////////////////////////////////////////
+    ;; {{{  @REFERENCES
+    ;; ;;;////////////////////////////////////////////////////////////////
 
-  ;; ---( dotfiles )--------------------------------------------------------------
+    ;; ---( dotfiles )--------------------------------------------------------------
 
-  ;; @see: https://github.com/jwiegley/use-package
-  ;; @see: http://pages.sachachua.com/.emacs.d/Sacha.html
-  ;; @see: https://github.com/bdd/.emacs.d/blob/master/packages.el
-  ;; @see: http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.html
-  ;; @see: https://ladicle.com/post/config/
-  ;; @see: http://emacsredux.com/blog/2014/08/25/a-peek-at-emacs-24-dot-4-prettify-symbols-mode/
-  ;; @see: https://sgtpeacock.com/dot-files/Emacs.html#org66117b2
-  ;; @see: https://gitea.petton.fr/nico/emacs.d/src/commit/8ae2b902c916600c9296d967f36ed69ad50e8199/init.el?lang=sv-SE
-  ;; @see: https://emacs-lsp.github.io/lsp-mode/page/installation/
-  ;; @see: https://gitlab.com/nathanfurnal/dotemacs/-/snippets/2060535?utm_source=pocket_mylist
-  ;; @see: https://github.com/jidicula/dotfiles/blob/main/init.el?utm_source=pocket_mylist
-  ;; @see: https://elpy.readthedocs.org/en/latest/
-  ;; @see: https://github.com/jorgenschaefer/elpy
-  ;; @see: https://youtu.be/0kuCeS-mfyc
-  ;; @see: https://github.com/JuliaEditorSupport/julia-emacs
-  ;; @see: https://github.com/tpapp/julia-repl
-  ;; @see: https://github.com/nnicandro/emacs-jupyter
-  ;; @see: https://julia-users-zurich.github.io/talks/talk-2018-04/emacs.html
-  ;; @see: https://github.com/cgroll/dot_emacs.d/blob/master/init.el
-  ;; @see: https://gitlab.com/balajisi/emacs/blob/master/init.el
-  ;; @see: https://github.com/serras/emacs-haskell-tutorial/blob/master/tutorial.md
-  ;; @see: https://github.com/pdorrell/rules-editing-mode
-  ;; @see: https://github.com/pdorrell/rules-editing-mode/blob/master/my-drools.el
-  ;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
+    ;; @see: https://sachachua.com/dotemacs#%s
+    ;; @see: http://emacsredux.com/blog/2014/08/25/a-peek-at-emacs-24-dot-4-prettify-symbols-mode/
+    ;; @see: https://elpy.readthedocs.org/en/latest/
+    ;; @see: https://emacs-lsp.github.io/lsp-mode/page/installation/
+    ;; @see: https://gitea.petton.fr/nico/emacs.d/src/commit/8ae2b902c916600c9296d967f36ed69ad50e8199/init.el?lang=sv-SE
+    ;; @see: https://github.com/bdd/.emacs.d/blob/master/packages.el
+    ;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
+    ;; @see: https://github.com/cgroll/dot_emacs.d/blob/master/init.el
+    ;; @see: https://github.com/jidicula/dotfiles/blob/main/init.el?utm_source=pocket_mylist
+    ;; @see: https://github.com/jorgenschaefer/elpy
+    ;; @see: https://github.com/JuliaEditorSupport/julia-emacs
+    ;; @see: https://github.com/jwiegley/use-package
+    ;; @see: https://github.com/nnicandro/emacs-jupyter
+    ;; @see: https://github.com/pdorrell/rules-editing-mode
+    ;; @see: https://github.com/pdorrell/rules-editing-mode/blob/master/my-drools.el
+    ;; @see: https://github.com/serras/emacs-haskell-tutorial/blob/master/tutorial.md
+    ;; @see: https://github.com/tpapp/julia-repl
+    ;; @see: https://gitlab.com/balajisi/emacs/blob/master/init.el
+    ;; @see: https://gitlab.com/nathanfurnal/dotemacs/-/snippets/2060535?utm_source=pocket_mylist
+    ;; @see: https://julia-users-zurich.github.io/talks/talk-2018-04/emacs.html
+    ;; @see: https://ladicle.com/post/config/
+    ;; @see: https://sgtpeacock.com/dot-files/Emacs.html#org66117b2
+    ;; @see: https://youtu.be/0kuCeS-mfyc
+    ;; @see: http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.html
 
-  ;; }}}  .references
+    ;; }}}  .references
 
 
 #+END_SRC
@@ -110,9 +110,9 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; (eval-when-compile (require 'use-package))
 
 
-  ;; ;; @see: https://ianyepan.github.io/posts/setting-up-use-package/
-  ;; ;; @see: https://www.reddit.com/r/emacs/comments/dfcyy6/how_to_install_and_use_usepackage/
-  ;; ;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
+  ;; @see: https://ianyepan.github.io/posts/setting-up-use-package/
+  ;; @see: https://www.reddit.com/r/emacs/comments/dfcyy6/how_to_install_and_use_usepackage/
+  ;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
 
   (eval-and-compile
     (require 'package)
@@ -532,9 +532,8 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 #+NAME: project
 #+begin_src emacs-lisp
 
-
   ;; ;;;////////////////////////////////////////////////////////////////
-  ;; ;;;  @PROJECT
+  ;; {{{  @PROJECT
   ;; ;;;////////////////////////////////////////////////////////////////
 
 
@@ -608,14 +607,13 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 
 
-  ;; }}}  .projects
+  ;; }}}  .project
 
 #+END_SRC
 
 *** Grep
 #+NAME: grep
 #+begin_src emacs-lisp
-
 
   ;; ;;;////////////////////////////////////////////////////////////////
   ;; {{{  @GREP
@@ -683,7 +681,7 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
        '("find . -type f -print0 | xargs -P4 -0 egrep -nH " . 49))))
 
 
-  ;; }}}  .magit
+  ;; }}}  .grep
 
 #+END_SRC
 
@@ -797,7 +795,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; }}}  .text
 
 #+END_SRC
-
 
 ** Lang
 *** Lang/begin
@@ -1660,11 +1657,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; }}}  .lang
 
 #+END_SRC
-
-
-
-
-
 ** Rest
 *** REST/begin
 #+NAME: rest-begin
@@ -1907,12 +1899,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; }}}  .vm
 
 #+END_SRC
-
-
-
-
-
-
 ** TeX
 *** TeX/begin
 #+NAME: tex-begin
@@ -2127,14 +2113,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; }}}  .tex
 
 #+END_SRC
-
-
-
-
-
-
-
-
 ** Fonts
 *** Fonts/begin
 #+NAME: fonts-begin
@@ -2273,14 +2251,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; }}}  .fonts
 
 #+END_SRC
-
-
-
-
-
-
-
-
 ** Org
 *** Org/begin
 #+NAME: org-begin
@@ -2519,7 +2489,7 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 #+END_SRC
 
-*** org extras
+*** Org extras
 #+NAME: org-extras
 #+begin_src emacs-lisp
 
@@ -2594,7 +2564,7 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 #+END_SRC
 
-*** org samples
+*** Org samples
 #+NAME: org-samples
 #+begin_src emacs-lisp
 
@@ -2856,14 +2826,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; }}}  .org
 
 #+END_SRC
-
-
-
-
-
-
-
-
 ** Utils
 *** Utils/begin
 #+NAME: utils-begin
@@ -3131,13 +3093,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; }}}  .util
 
 #+END_SRC
-
-
-
-
-
-
-
 ** Server
 *** Server/begin
 #+NAME: server-begin
@@ -3197,14 +3152,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; }}}  .server
 
 #+END_SRC
-
-
-
-
-
-
-
-
 ** Shell
 *** Shell/begin
 #+NAME: shell-begin
@@ -3493,14 +3440,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; }}}  .shell
 
 #+END_SRC
-
-
-
-
-
-
-
-
 ** Sec3et
 *** Sec3et/begin
 #+NAME: sec3et-begin
@@ -3632,32 +3571,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; }}}  .jump
 
 #+END_SRC
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ** Completion "at-point"
 *** Completion/begin
 #+NAME: comp-ap-begin
@@ -3868,15 +3781,22 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 #+END_SRC
 
-*** Vertico
-#+NAME: comp-mb-helm
+*** Vertico*
+**** Vertico*/begin
+#+NAME: comp-mb-ver-begin
 #+begin_src emacs-lisp
 
   ;; ===( vertico )=============================================================
 
    ;; @see: https://kristofferbalintona.me/posts/202202211546/
 
-  (message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico)) 
+  (message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico))
+
+#+END_SRC
+
+**** Marginalia
+#+NAME: comp-mb-ver-marginalia
+#+begin_src emacs-lisp
 
   ;; ---( marginalia )--------------------------------------------------------------
 
@@ -3916,6 +3836,12 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
     :init
     (all-the-icons-completion-mode))
 
+#+END_SRC
+
+**** Vertico
+#+NAME: comp-mb-ver-vertico
+#+begin_src emacs-lisp
+
   ;; ---( vertico )--------------------------------------------------------------
 
   (use-package vertico
@@ -3939,14 +3865,17 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;;   (vertico-mode))
 
 
+#+END_SRC
+
+**** Consult
+#+NAME: comp-mb-ver-consult
+#+begin_src emacs-lisp
+
   ;; ---( consult )--------------------------------------------------------------
 
 
   (setq completion-ignore-case t)
   (setq read-file-name-completion-ignore-case t)
-
-
-
 
   ;; @see: https://github.com/minad/consult
   ;; @see: https://gitlab.com/to1ne/temacco/-/blob/main/README.org#L749
@@ -4071,6 +4000,13 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 
 
+
+#+END_SRC
+
+**** Orderless
+#+NAME: comp-mb-ver-orderless
+#+begin_src emacs-lisp
+
   ;; ---( orderless )--------------------------------------------------------------
 
   (use-package orderless
@@ -4085,6 +4021,13 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;;   (completion-category-overrides
   ;;    '((file (styles basic-remote ; For `tramp' hostname completion with `vertico'
   ;;                    orderless)))))
+
+
+#+END_SRC
+
+**** Embark
+#+NAME: comp-mb-ver-embark
+#+begin_src emacs-lisp
 
   ;; ---( embark )--------------------------------------------------------------
 
@@ -4135,7 +4078,11 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;;   (embark-collect-mode . consult-preview-at-point-mode))
 
 
+#+END_SRC
 
+**** Savehist
+#+NAME: comp-mb-ver-savehist
+#+begin_src emacs-lisp
 
 
   ;; ---( savehist )--------------------------------------------------------------
@@ -4154,12 +4101,15 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 
 
+#+END_SRC
+**** Vertico*/end
+#+NAME: comp-mb-ver-end
+#+begin_src emacs-lisp
+
   (message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico)) 
   ;; .........................................................................
 
-
 #+END_SRC
-
 
 *** Ivy
 #+NAME: comp-mb-helm
@@ -4689,31 +4639,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; }}}  .comp-mb
 
 #+END_SRC
-
-
-
-
-
-
-
-
-
-
-#+NAME: comp-end
-#+begin_src emacs-lisp
-
-  ;; }}}  .completion
-
-#+END_SRC
-
-
-
-
-
-
-
-
-
 ** Net
 *** Net/begin
 #+NAME: net-begin
@@ -4938,6 +4863,7 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; ---( site.pkgs: end )-------------------------------------------------------
   (message "SITE:PKGS - end")
 #+END_SRC
+
 
 
 
