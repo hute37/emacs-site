@@ -965,21 +965,13 @@
 ;; [[file:site-pkgs.org::lang-r.ess.polymode][lang-r.ess.polymode]]
 ;; ---( polymode )--------------------------------------------------------------
 
+
 (use-package polymode
   :ensure t
   :commands (poly-markdown+r-mode)
-  :mode (
-         ("\\.md$" . poly-markdown-mode)
-         ("\\.Snw$" . poly-noweb+r-mode)
-         ("\\.Rnw$" . poly-noweb+r-mode)
-         ("\\.rmd$" . poly-markdown+r-mode)
-         ("\\.Rmd$" . poly-markdown+r-mode)
-         ("\\.rapport$" . poly-rapport-mode)
-         ("\\.Rhtml$" . poly-html+r-mode)
-         ("\\.Rbrew$" . poly-brew+r-mode)
-         ("\\.Rcpp$" . poly-r+c++-mode)
-         ("\\.cppR$" . poly-c++r-mode)
-         )
+  :mode (("\\.rmd\\'" . poly-markdown+r-mode)
+	 ("\\.Rmd\\'" . poly-markdown+r-mode))
+
   :init
   (autoload 'r-mode "ess-site.el" "Major mode for editing R source." t)
 )
@@ -987,12 +979,14 @@
 
 (use-package poly-markdown
   :ensure t
-;;  :pin melpa-stable
-;;  :mode (
-;;          ("\\.md" . poly-markdown-mode)
-;;   )
-;;
+  :mode (
+	 ("\\.md" . poly-markdown-mode)
   )
+)
+
+(use-package poly-R
+  :ensure t
+)
 ;; lang-r.ess.polymode ends here
 
 ;; Lang: Python/mode
