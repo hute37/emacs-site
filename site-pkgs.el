@@ -987,8 +987,8 @@
 
 (use-package poly-markdown
   :ensure t
-  :pin melpa-stable
-;;   :mode (
+;;  :pin melpa-stable
+;;  :mode (
 ;;          ("\\.md" . poly-markdown-mode)
 ;;   )
 ;;
