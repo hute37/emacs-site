@@ -117,6 +117,7 @@
   (use-package quelpa-use-package)
   (quelpa-use-package-activate-advice)
   (use-package auto-compile
+    :ensure t
     :config (auto-compile-on-load-mode))
   (setq load-prefer-newer t)
 
