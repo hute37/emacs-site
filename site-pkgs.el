@@ -38,6 +38,7 @@
 ;; @see: https://julia-users-zurich.github.io/talks/talk-2018-04/emacs.html
 ;; @see: https://ladicle.com/post/config/
 ;; @see: https://sgtpeacock.com/dot-files/Emacs.html#org66117b2
+;; @see: https://systemcrafters.net/build-a-second-brain-in-emacs/5-org-roam-hacks/
 ;; @see: https://youtu.be/0kuCeS-mfyc
 ;; @see: http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.html
 
@@ -97,12 +98,14 @@
   (add-to-list 'package-archives '("org"   . "http://orgmode.org/elpa/")) ; Org-mode's repository
   (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  (add-to-list 'package-archives '("nongnu"   . "https://elpa.nongnu.org/nongnu/"))
   ;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
   ;;(package-initialize)
   ;; i always fetch the archive contents on startup and during compilation, which is slow
   ;; (package-refresh-contents)
   (unless (package-installed-p 'use-package)
     (package-install 'use-package))
+  (setq use-package-verbose t)
   (require 'use-package)
   ;; i don't really know why this isn't the default...
   ;;(setf use-package-always-ensure t)
@@ -110,19 +113,27 @@
   ;;(use-package use-package-ensure
   ;;  :config  (setq use-package-always-ensure t))
 
-  (unless (package-installed-p 'quelpa)
-    (with-temp-buffer
-      (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
-      (eval-buffer)
-      (quelpa-self-upgrade)))
-  (quelpa
-   '(quelpa-use-package
-     :fetcher git
-     :url "https://github.com/quelpa/quelpa-use-package.git"))
-  (require 'quelpa-use-package)
- )
+  (use-package quelpa)
+  (use-package quelpa-use-package)
+  (quelpa-use-package-activate-advice)
+  (use-package auto-compile
+    :config (auto-compile-on-load-mode))
+  (setq load-prefer-newer t)
 
-;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
+  ;;   (unless (package-installed-p 'quelpa)
+  ;;     (with-temp-buffer
+  ;;       (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+  ;;       (eval-buffer)
+  ;;       (quelpa-self-upgrade)))
+  ;;   (quelpa
+  ;;    '(quelpa-use-package
+  ;;      :fetcher git
+  ;;      :url "https://github.com/quelpa/quelpa-use-package.git"))
+  ;;   (require 'quelpa-use-package)
+  ;;
+  )
+
+;; ;; @see:  https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
 
 ;; ;;; initialization
 ;; (require 'package)
@@ -145,9 +156,6 @@
 ;;    :fetcher git
 ;;    :url "https://github.com/quelpa/quelpa-use-package.git"))
 ;; (require 'quelpa-use-package)
-
-
-
 
 
 ;;(require 'package)
@@ -204,12 +212,12 @@
          (package-installed-p 'use-package)
          (package-installed-p 'req-package)
          )
-(package-refresh-contents)
+  (package-refresh-contents)
   (package-install 'bind-key)
   (package-install 'diminish)
   (package-install 'use-package)
   (package-install 'req-package)
-)
+  )
 
 ;; (straight-use-package 'bind-key)
 ;; (straight-use-package 'diminish)
@@ -287,6 +295,25 @@
     (unbind-key "M-_" undo-tree-map)
     (setq undo-tree-visualizer-timestamps t)
     (setq undo-tree-visualizer-diff t)))
+
+
+;; ---( dash )--------------------------------------------------------------
+
+;; ~dash.el~ :: A modern list API for Emacs. No 'cl required.  (See https://github.com/magnars/dash.el/)
+(use-package dash
+  :ensure t)
+
+;; ---( f )--------------------------------------------------------------
+
+;; ~f.el~ :: A modern API for working with files and directories in Emacs. (See https://github.com/rejeep/f.el/)
+(use-package f
+  :ensure t)
+
+;; ---( s )--------------------------------------------------------------
+
+;; ~s.el~ :: The long lost Emacs string manipulation library.  (See https://github.com/magnars/s.el/)
+(use-package s
+  :ensure t)
 
 
   ;; }}}  .packages
@@ -1592,7 +1619,13 @@
 ;; ---( json )--------------------------------------------------------------
 
 (use-package json-mode
+  :ensure t
   :mode "\\.json\\'")
+
+(use-package json-reformat
+  :ensure t
+  :after json-mode
+  :init (setq json-reformat:indent-width 2))
 ;; rest-json ends here
 
 ;; Yaml
@@ -2156,7 +2189,7 @@ the automatic filling of the current paragraph."
   ;; :defer t
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture)
-         ("C-c k" . org-store-link)
+         ("C-c l" . org-store-link)
          ([(meta up)] . nil)    ;; was 'org-metaup
          ([(meta down)] . nil)  ;; was 'org-metadown
          )
@@ -2435,6 +2468,93 @@ the automatic filling of the current paragraph."
   :init
   (setq org-ref-bibtex-hydra-key-binding "\C-cj"))
 ;; org-extras ends here
+
+;; Org roam
+;; #+NAME: org-roam
+
+;; [[file:site-pkgs.org::org-roam][org-roam]]
+;; ---(org-roam)------------------------------------------------------------------------
+
+;; @see: https://systemcrafters.net/build-a-second-brain-in-emacs/5-org-roam-hacks/
+(use-package org-roam
+  :ensure t
+  :init
+  (setq org-roam-v2-ack t)
+  :custom
+  (org-roam-directory (file-truename "~/Dropbox/Local/data/org/net"))
+  ;;(org-roam-completion-everywhere t)
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n c" . org-roam-capture)
+         ;; Dailies
+         ("C-c n j" . org-roam-dailies-capture-today)
+         ;; :map org-mode-map
+         ;; ("C-M-i" . completion-at-point)
+         ;; :map org-roam-dailies-map
+         ;; ("Y" . org-roam-dailies-capture-yesterday)
+         ;; ("T" . org-roam-dailies-capture-tomorrow)
+         )
+  ;; :bind-keymap
+  ;; ("C-c n d" . org-roam-dailies-map)
+  :config
+  ;; (require 'org-roam-dailies) ;; Ensure the keymap is available
+  ;; If you're using a vertical completion framework, you might want a more informative completion interface
+  (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+  (setq org-roam-capture-templates
+        '(
+          ("d" "default" plain
+           "%?"
+           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+           :unnarrowed t)
+          ("s" "system" plain
+           "* Info\n\n- Module: ${title}\n- OS: %^{os}\n- Layer: %^{layer}\n- Zone: %^{zone}\n- Version: %^{version}\n\n* Related:\n\n- \n\n* Bindings:\n\n- %?\n\n* References:\n\n- "
+           :if-new (file+head "system/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+           :unnarrowed t)
+          ("b" "book notes" plain
+           "\n* Source\n\nAuthor: %^{Author}\nTitle: ${title}\nYear: %^{Year}\n\n* Summary\n\n%?"
+           :if-new (file+head "refs/%<%Y%m%d%H%M%S>-b-${slug}.org" "#+title: ${title}\n")
+           :unnarrowed t)
+          ("l" "Online link" plain
+           "\n* Source\n\nTitle: ${title}\nURL: %^{URL}\n\n* Summary\n\n%?"
+           :if-new (file+head "refs/%<%Y%m%d%H%M%S>-l-${slug}.org" "#+title: ${title}\n")
+           :unnarrowed t)
+          ))
+  (org-roam-db-autosync-mode)
+  ;; If using org-roam-protocol
+  (require 'org-roam-protocol))
+
+
+;; ---(http server)------------------------------------------------------------------------
+
+(use-package websocket
+  :after org-roam
+  ;; :straight (:host github :repo "ahyatt/emacs-websocket" :branch "main")
+  )
+
+(use-package simple-httpd
+  :after org-roam
+  )
+
+;; ---(org-roam-ui)------------------------------------------------------------------------
+
+(use-package org-roam-ui
+  :ensure t
+  ;; :straight
+  ;;   (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
+  :quelpa (org-roam-ui :fetcher github :repo "org-roam/org-roam-ui")
+  :after org-roam
+  ;; ;; normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+  ;; ;; a hookable mode anymore, you're advised to pick something yourself
+  ;; ;; if you don't care about startup time, use
+  ;;  :hook (after-init . org-roam-ui-mode)
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
+;; org-roam ends here
 
 ;; Org samples
 ;; #+NAME: org-samples
