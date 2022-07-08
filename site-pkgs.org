@@ -1,4 +1,4 @@
-#+TITLE: site-pkgs: load emacs packages and main config
+t#+TITLE: site-pkgs: load emacs packages and main config
 #+OPTIONS: toc:nil h:4
 #+STARTUP: show2levels
 #+PROPERTY: header-args:emacs-lisp :tangle yes :results silent :exports code :comments both
