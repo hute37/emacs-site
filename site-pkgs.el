@@ -2513,6 +2513,10 @@ the automatic filling of the current paragraph."
            "* Info\n\n- Module: ${title}\n- OS: %^{os}\n- Layer: %^{layer}\n- Zone: %^{zone}\n- Version: %^{version}\n\n* Related:\n\n- \n\n* Bindings:\n\n- %?\n\n* References:\n\n- "
            :if-new (file+head "system/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
            :unnarrowed t)
+          ("v" "devel" plain
+           "* Info\n\n- Module: ${title}\n- Lang: %^{lang}\n- Frame: %^{frame}\n- Context: %^{context}\n- Version: %^{version}\n\n* Related:\n\n- \n\n* Bindings:\n\n- %?\n\n* References:\n\n- "
+           :if-new (file+head "devel/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+           :unnarrowed t)
           ("b" "book notes" plain
            "\n* Source\n\nAuthor: %^{Author}\nTitle: ${title}\nYear: %^{Year}\n\n* Summary\n\n%?"
            :if-new (file+head "refs/%<%Y%m%d%H%M%S>-b-${slug}.org" "#+title: ${title}\n")
