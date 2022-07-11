@@ -2534,11 +2534,13 @@ the automatic filling of the current paragraph."
 ;; ---(http server)------------------------------------------------------------------------
 
 (use-package websocket
+  :ensure t
   :after org-roam
   ;; :straight (:host github :repo "ahyatt/emacs-websocket" :branch "main")
   )
 
 (use-package simple-httpd
+  :ensure t
   :after org-roam
   )
 
