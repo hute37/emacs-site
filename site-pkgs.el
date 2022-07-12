@@ -538,6 +538,62 @@
 ;; }}}  .magit
 ;; magit ends here
 
+;; Dired
+;; #+NAME: dired
+
+;; [[file:site-pkgs.org::dired][dired]]
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @DIRED
+;; ;;;////////////////////////////////////////////////////////////////
+
+
+;; ---( dired )--------------------------------------------------------------
+
+
+(use-package dired
+  ;; :straight (:type built-in)
+  ;; :ensure t 
+  :hook ((dired-mode . hl-line-mode)
+         (dired-mode . dired-hide-details-mode))
+  :custom
+  ;; (require 'ls-lisp)
+  (ls-lisp-dirs-first t)
+  (ls-lisp-ignore-case nil)
+  (ls-lisp-use-insert-directory-program nil)
+
+  (dired-listing-switches "-alvhp --dired --group-directories-first")
+
+  (dired-recursive-copies 'always)
+  (dired-recursive-deletes 'always)
+  (dired-dwim-target t) ;;use to copy to the next buffer visible
+  ;; Auto refresh Dired, but be quiet about it
+  (global-auto-revert-non-file-buffers t)
+  (auto-revert-verbose t)
+  ;;(image-dired-external-viewer (executable-find "sxiv"))
+  )
+
+;; @see: https://github.com/CSRaghunandan/.emacs.d/blob/master/setup-files/setup-dired.el
+
+;; dired-x: to hide uninteresting files in dired
+(use-package dired-x
+  ;; :straight nil
+  ;; :ensure t 
+  :bind ("C-x C-j" . dired-jump)
+  :hook ((dired-mode . dired-omit-mode))
+  :config
+  (setq dired-omit-verbose nil)
+
+  ;; hide backup, autosave, *.*~ files
+  ;; omit mode can be toggled using `C-x M-o' in dired buffer.
+  ;;(setq dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$")
+  (setq dired-omit-files "^\\.?#\\|^\\.$")
+  (setq dired-omit-files
+        (concat dired-omit-files "\\|^.DS_STORE$\\|^.projectile$\\|^.git$"))
+  )
+
+;; }}}  .dired
+;; dired ends here
+
 ;; Project
 ;; #+NAME: project
 
