@@ -71,203 +71,205 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 #+NAME: startup
 #+begin_src emacs-lisp
 
-  ;; ;;;////////////////////////////////////////////////////////////////
-  ;; {{{  @PACKAGES
-  ;; ;;;////////////////////////////////////////////////////////////////
+      ;; ;;;////////////////////////////////////////////////////////////////
+      ;; {{{  @PACKAGES
+      ;; ;;;////////////////////////////////////////////////////////////////
 
-  ;; ---( Install )--------------------------------------------------------------
+      ;; ---( Install )--------------------------------------------------------------
 
-  ;;(fset 'h7/ensure 't)
-  ;;(fset h7/ensure nil)
+      ;;(fset 'h7/ensure 't)
+      ;;(fset h7/ensure nil)
 
-  ;; ---( Boot )--------------------------------------------------------------
+      ;; ---( Boot )--------------------------------------------------------------
 
-  ;; (setq debug-on-error t)
-
-
-  ;; @see: https://github.com/radian-software/straight.el
-  ;; @see: 
-  ;; @see: https://youtu.be/UmbVeqphGlc
-
-  ;; (setq straight-use-package-by-default t)
-  ;; (setq use-package-always-ensure t)
-  ;; 
-  ;; (defvar bootstrap-version)
-  ;; (let ((bootstrap-file
-  ;;        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-  ;;       (bootstrap-version 5))
-  ;;   (unless (file-exists-p bootstrap-file)
-  ;;     (with-current-buffer
-  ;;         (url-retrieve-synchronously
-  ;;          "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-  ;;          'silent 'inhibit-cookies)
-  ;;       (goto-char (point-max))
-  ;;       (eval-print-last-sexp)))
-  ;;   (load bootstrap-file nil 'nomessage))
-  ;; 
-  ;; (setq package-enable-at-startup nil)
-  ;; (straight-use-package 'use-package)
-  ;; (eval-when-compile (require 'use-package))
+      ;; (setq debug-on-error t)
 
 
-  ;; @see: https://ianyepan.github.io/posts/setting-up-use-package/
-  ;; @see: https://www.reddit.com/r/emacs/comments/dfcyy6/how_to_install_and_use_usepackage/
-  ;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
+      ;; @see: https://github.com/radian-software/straight.el
+      ;; @see: 
+      ;; @see: https://youtu.be/UmbVeqphGlc
 
-  (eval-and-compile
-    (require 'package)
-    (add-to-list 'package-archives '("org"   . "http://orgmode.org/elpa/")) ; Org-mode's repository
-    (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
-    (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-    (add-to-list 'package-archives '("nongnu"   . "https://elpa.nongnu.org/nongnu/"))
-    ;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
-    ;;(package-initialize)
-    ;; i always fetch the archive contents on startup and during compilation, which is slow
-    ;; (package-refresh-contents)
-    (unless (package-installed-p 'use-package)
-      (package-install 'use-package))
-    (setq use-package-verbose t)
-    (require 'use-package)
-    ;; i don't really know why this isn't the default...
-    ;;(setf use-package-always-ensure t)
-
-    ;;(use-package use-package-ensure
-    ;;  :config  (setq use-package-always-ensure t))
-
-    (use-package quelpa)
-    (use-package quelpa-use-package)
-    (quelpa-use-package-activate-advice)
-    (use-package auto-compile
-      :ensure t
-      :config (auto-compile-on-load-mode))
-    (setq load-prefer-newer t)
-
-    ;;   (unless (package-installed-p 'quelpa)
-    ;;     (with-temp-buffer
-    ;;       (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
-    ;;       (eval-buffer)
-    ;;       (quelpa-self-upgrade)))
-    ;;   (quelpa
-    ;;    '(quelpa-use-package
-    ;;      :fetcher git
-    ;;      :url "https://github.com/quelpa/quelpa-use-package.git"))
-    ;;   (require 'quelpa-use-package)
-    ;;
-    )
-
-  ;; ;; @see:  https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
-
-  ;; ;;; initialization
-  ;; (require 'package)
-  ;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-  ;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
-  ;; (package-initialize)
-  ;; (when (not package-archive-contents)
-  ;;   (package-refresh-contents))
-  ;; (package-install 'use-package)
-  ;; (use-package use-package-ensure
-  ;;   :config  (setq use-package-always-ensure t))
-
-  ;; (unless (package-installed-p 'quelpa)
-  ;;   (with-temp-buffer
-  ;;     (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
-  ;;     (eval-buffer)
-  ;;     (quelpa-self-upgrade)))
-  ;; (quelpa
-  ;;  '(quelpa-use-package
-  ;;    :fetcher git
-  ;;    :url "https://github.com/quelpa/quelpa-use-package.git"))
-  ;; (require 'quelpa-use-package)
+      ;; (setq straight-use-package-by-default t)
+      ;; (setq use-package-always-ensure t)
+      ;; 
+      ;; (defvar bootstrap-version)
+      ;; (let ((bootstrap-file
+      ;;        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      ;;       (bootstrap-version 5))
+      ;;   (unless (file-exists-p bootstrap-file)
+      ;;     (with-current-buffer
+      ;;         (url-retrieve-synchronously
+      ;;          "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+      ;;          'silent 'inhibit-cookies)
+      ;;       (goto-char (point-max))
+      ;;       (eval-print-last-sexp)))
+      ;;   (load bootstrap-file nil 'nomessage))
+      ;; 
+      ;; (setq package-enable-at-startup nil)
+      ;; (straight-use-package 'use-package)
+      ;; (eval-when-compile (require 'use-package))
 
 
-  ;;(require 'package)
-  ;; ;;(nconc package-archives
-  ;; ;;      '(("melpa" . "http://melpa.org/packages/")
-  ;; ;;        ("org" . "http://orgmode.org/elpa/")))
-  ;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-  ;;(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
+      ;; @see: https://ianyepan.github.io/posts/setting-up-use-package/
+      ;; @see: https://www.reddit.com/r/emacs/comments/dfcyy6/how_to_install_and_use_usepackage/
+      ;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
 
-  ;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-  ;;(add-to-list 'package-archives '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
+      (eval-and-compile
+        (require 'package)
+        (add-to-list 'package-archives '("org"   . "http://orgmode.org/elpa/")) ; Org-mode's repository
+        (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
+        (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+        (add-to-list 'package-archives '("nongnu"   . "https://elpa.nongnu.org/nongnu/"))
+        ;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+        ;;(package-initialize)
+        ;; i always fetch the archive contents on startup and during compilation, which is slow
+        ;; (package-refresh-contents)
+        (unless (package-installed-p 'use-package)
+          (package-install 'use-package))
+        (setq use-package-verbose t)
+        (require 'use-package)
+        ;; i don't really know why this isn't the default...
+        ;;(setf use-package-always-ensure t)
 
-  ;; You don't need this one if you have marmalade:
-  ;; (add-to-list 'package-archives '("geiser" . "http://download.savannah.gnu.org/releases/geiser/packages"))
+        ;;(use-package use-package-ensure
+        ;;  :config  (setq use-package-always-ensure t))
 
-  ;;(setq package-enable-at-startup nil)
+        (use-package quelpa
+          :ensure t)
+        (use-package quelpa-use-package
+          :ensure t)
+        (quelpa-use-package-activate-advice)
+        (use-package auto-compile
+          :ensure t
+          :config (auto-compile-on-load-mode))
+        (setq load-prefer-newer t)
 
-  ;; (setq 
-  ;;  load-prefer-newer t
-  ;;  package-user-dir "~/.emacs.d/elpa"
-  ;;  package--init-file-ensured t
-  ;;  package-enable-at-startup nil)
+        ;;   (unless (package-installed-p 'quelpa)
+        ;;     (with-temp-buffer
+        ;;       (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+        ;;       (eval-buffer)
+        ;;       (quelpa-self-upgrade)))
+        ;;   (quelpa
+        ;;    '(quelpa-use-package
+        ;;      :fetcher git
+        ;;      :url "https://github.com/quelpa/quelpa-use-package.git"))
+        ;;   (require 'quelpa-use-package)
+        ;;
+        )
 
-  ;; (unless (file-directory-p package-user-dir)
-  ;;   (make-directory package-user-dir t))    
+      ;; ;; @see:  https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
 
-  ;;(package-initialize)
+      ;; ;;; initialization
+      ;; (require 'package)
+      ;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+      ;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
+      ;; (package-initialize)
+      ;; (when (not package-archive-contents)
+      ;;   (package-refresh-contents))
+      ;; (package-install 'use-package)
+      ;; (use-package use-package-ensure
+      ;;   :config  (setq use-package-always-ensure t))
 
-
-  ;; (unless (package-installed-p 'use-package)
-  ;;   (progn
-  ;;     (package-refresh-contents)
-  ;;     (package-install 'use-package)))
-  ;; (eval-when-compile
-  ;;   (eval-after-load 'advice
-  ;;     '(setq ad-redefinition-action 'accept))
-  ;;   (require 'use-package))
-  ;; (require 'diminish)
-  ;; (require 'bind-key)
-
-  ;; (require 'package)
-  ;; (setq package-enable-at-startup nil)
-
-  ;; ;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-  ;; (unless (assoc-default "melpa" package-archives)
-  ;;   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t))
-
-  ;;(package-initialize)
-
-  ;; Bootstrap `use-package'
-  (unless (and
-           (package-installed-p 'bind-key)
-           (package-installed-p 'diminish)
-           (package-installed-p 'use-package)
-           (package-installed-p 'req-package)
-           )
-    (package-refresh-contents)
-    (package-install 'bind-key)
-    (package-install 'diminish)
-    (package-install 'use-package)
-    (package-install 'req-package)
-    )
-
-  ;; (straight-use-package 'bind-key)
-  ;; (straight-use-package 'diminish)
-
-  ;; @see: https://github.com/jwiegley/dot-emacs/blob/master/init.el
-
-  (eval-and-compile
-    (defvar use-package-verbose t))
+      ;; (unless (package-installed-p 'quelpa)
+      ;;   (with-temp-buffer
+      ;;     (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+      ;;     (eval-buffer)
+      ;;     (quelpa-self-upgrade)))
+      ;; (quelpa
+      ;;  '(quelpa-use-package
+      ;;    :fetcher git
+      ;;    :url "https://github.com/quelpa/quelpa-use-package.git"))
+      ;; (require 'quelpa-use-package)
 
 
-  (require 'bind-key)
-  (require 'use-package)
+      ;;(require 'package)
+      ;; ;;(nconc package-archives
+      ;; ;;      '(("melpa" . "http://melpa.org/packages/")
+      ;; ;;        ("org" . "http://orgmode.org/elpa/")))
+      ;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+      ;;(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
 
-  ;; use-package-ensure-system-package
-  ;; provides way to define system package dependencies for Emacs packages
-  (use-package use-package-ensure-system-package
-    :ensure t)
+      ;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+      ;;(add-to-list 'package-archives '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
 
-  (require 'req-package)
-  ;;(use-package req-package)
+      ;; You don't need this one if you have marmalade:
+      ;; (add-to-list 'package-archives '("geiser" . "http://download.savannah.gnu.org/releases/geiser/packages"))
 
-  ;; @see: https://github.com/noctuid/general.el
-  (use-package general
-    :ensure t)
+      ;;(setq package-enable-at-startup nil)
 
-  ;; ---( ... )--------------------------------------------------------------
+      ;; (setq 
+      ;;  load-prefer-newer t
+      ;;  package-user-dir "~/.emacs.d/elpa"
+      ;;  package--init-file-ensured t
+      ;;  package-enable-at-startup nil)
 
-  ;; }}}  .packages
+      ;; (unless (file-directory-p package-user-dir)
+      ;;   (make-directory package-user-dir t))    
+
+      ;;(package-initialize)
+
+
+      ;; (unless (package-installed-p 'use-package)
+      ;;   (progn
+      ;;     (package-refresh-contents)
+      ;;     (package-install 'use-package)))
+      ;; (eval-when-compile
+      ;;   (eval-after-load 'advice
+      ;;     '(setq ad-redefinition-action 'accept))
+      ;;   (require 'use-package))
+      ;; (require 'diminish)
+      ;; (require 'bind-key)
+
+      ;; (require 'package)
+      ;; (setq package-enable-at-startup nil)
+
+      ;; ;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+      ;; (unless (assoc-default "melpa" package-archives)
+      ;;   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t))
+
+      ;;(package-initialize)
+
+      ;; Bootstrap `use-package'
+      (unless (and
+               (package-installed-p 'bind-key)
+               (package-installed-p 'diminish)
+               (package-installed-p 'use-package)
+               (package-installed-p 'req-package)
+               )
+        (package-refresh-contents)
+        (package-install 'bind-key)
+        (package-install 'diminish)
+        (package-install 'use-package)
+        (package-install 'req-package)
+        )
+
+      ;; (straight-use-package 'bind-key)
+      ;; (straight-use-package 'diminish)
+
+      ;; @see: https://github.com/jwiegley/dot-emacs/blob/master/init.el
+
+      (eval-and-compile
+        (defvar use-package-verbose t))
+
+
+      (require 'bind-key)
+      (require 'use-package)
+
+      ;; use-package-ensure-system-package
+      ;; provides way to define system package dependencies for Emacs packages
+      (use-package use-package-ensure-system-package
+        :ensure t)
+
+      (require 'req-package)
+      ;;(use-package req-package)
+
+      ;; @see: https://github.com/noctuid/general.el
+      (use-package general
+        :ensure t)
+
+      ;; ---( ... )--------------------------------------------------------------
+
+      ;; }}}  .packages
 
 #+END_SRC
 

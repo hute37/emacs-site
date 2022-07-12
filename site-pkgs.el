@@ -113,8 +113,10 @@
   ;;(use-package use-package-ensure
   ;;  :config  (setq use-package-always-ensure t))
 
-  (use-package quelpa)
-  (use-package quelpa-use-package)
+  (use-package quelpa
+    :ensure t)
+  (use-package quelpa-use-package
+    :ensure t)
   (quelpa-use-package-activate-advice)
   (use-package auto-compile
     :ensure t
