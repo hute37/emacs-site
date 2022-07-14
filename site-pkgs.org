@@ -2442,24 +2442,65 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
     ;; --[org-mode todo] ----------------------------------------------------------
 
+    ;; @see: https://github.com/daviwil/dotfiles/blob/master/Workflow.org
+
+    (setq org-store-todo "~/Dropbox/Local/data/org/all")
+
+    (setq org-agenda-files
+          (mapcar (lambda(x) (mapconcat 'identity (list org-store-todo x) "/"))
+                  '("task.org"
+                    "milk.org"
+                    "read.org"
+                    "dots.org")))        
+
     (setq org-capture-templates
-          '(("t" "todo" entry (file+headline "~/Dropbox/Local/data/org/all/todo.org" "Tasks")
-             "* TODO [#A] %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n")))
+          `(
+            ("t" "task" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "ACTIVE")
+             "** TODO [#C] %? [/]\n   %a\n   + [ ] ...\n\n")
+            ("n" "task (next)" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "ACTIVE")
+             "** NEXT [#B] %? [/]\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n   %a\n   + [ ] ...\n\n")
+            ("b" "backlog" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "BACKLOG")
+             "* BACK [#C] %? [/]\n   %a\n   + [ ] ...\n\n")
+            ("p" "attic" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "ATTIC")
+             "* PAST [#C] %?\n")
+            ("m" "milk" entry (file+headline ,(format "%s/%s" org-store-todo "milk.org") "ACTIVE")
+             "** TODO [#B] %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n")
+            ("r" "read" entry (file+headline ,(format "%s/%s" org-store-todo "read.org") "BACKLOG")
+             "** READ [#C] %?\n\n")
+            ("e" "dots" entry (file+headline ,(format "%s/%s" org-store-todo "dots.org") "ACTIVE")
+             "** EDIT [#C] %?\n   - %a\n\n")
+            ))
 
     (setq org-todo-keywords
-          (quote ((sequence "TODO(t)" "|" "CANCELLED(c@/!)" "DONE(d)"))))
-
-    (setq org-use-fast-todo-selection t)
-    (setq org-treat-S-cursor-todo-selection-as-state-change nil)
+          '((sequence "TODO(t)" "NEXT(n)" "DOING(x)" "|" "UNDO(u)" "DONE(d)")
+            (sequence "READY(w)" "|" "BACK(b)" "WAIT(w)" "HOLD(w)" "CANCELLED(c@/!)")
+            (sequence "EDIT(e)" "|" "READ(r)" "NOP(o)" "ACK(a)" "NACK(k)")
+            (sequence "|" "PAST(p)" "LOST(l)")))
 
     (setq org-todo-keyword-faces
           '(("TODO" . (:foreground "green" :weight bold))
-            ("NEXT" :foreground "blue" :weight bold)
-            ("WAITING" :foreground "orange" :weight bold)
+            ("NEXT" :foreground "orange" :weight bold)
+            ("DOING" :foreground "yellow" :weight bold)
+            ("UNDO" :foreground "SteelBlue" :weight bold)
+            ("READY" :foreground "orange red" :weight bold)
+            ("BACK" :foreground "MediumPurple3" :weight bold)
+            ("WAIT" :foreground "orange" :weight bold)
             ("HOLD" :foreground "magenta" :weight bold)
+            ("PAST" :foreground "Silver" :weight bold)
+            ("PAST" :foreground "Dark Silver" :weight bold)
             ("CANCELLED" :foreground "forest green" :weight bold)))
 
-    (setq org-enforce-todo-dependencies t)
+    ;; Configure common tags
+    (setq org-tag-alist
+          '((:startgroup) ; Put mutually exclusive tags here
+            (:endgroup)
+            ("@home" . ?H)
+            ("@work" . ?W)
+            ("batch" . ?b)
+            ("next" . ?n)
+            ("followup" . ?f)
+            ("recurring" . ?r)))
+
     ;;set priority range from A to C with default A
     (setq org-highest-priority ?A)
     (setq org-lowest-priority ?C)
@@ -2470,10 +2511,12 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
                                (?B . (:foreground "LightSteelBlue"))
                                (?C . (:foreground "#F0DFAF"))))
 
-    ;; --[org-mode agenda] ----------------------------------------------------------
+    (setq org-use-fast-todo-selection t)
+    (setq org-treat-S-cursor-todo-selection-as-state-change nil)
 
-    ;;file to save todo items
-    (setq org-agenda-files (quote ("~/Dropbox/Local/data/org/all/todo.org")))
+    (setq org-enforce-todo-dependencies t)
+
+    ;; --[org-mode agenda] ----------------------------------------------------------
 
     ;;open agenda in current window
     (setq org-agenda-window-setup (quote current-window))
