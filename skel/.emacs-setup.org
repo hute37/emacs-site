@@ -1,0 +1,528 @@
+# ---
+#+TITLE: emacs-site initial setup
+#+SUBTITLE:  user env setup
+#+AUTHOR:
+#+DATE: <2016-08-24>
+# ---
+#+OPTIONS: toc:nil h:4
+#+STARTUP: show2levels
+#+PROPERTY: header-args:sh :tangle yes :results silent :exports code :comments both
+#+LINK: emacs-site https://github.com/hute37/emacs-site/skel/.emacs-setup.org
+
+* INITAL SETUP
+** Shell, Emacs
+:PROPERTIES:
+:CUSTOM_ID: shell-emacs
+:END:
+*** basic setup
+#+NAME: basic-setup
+#+BEGIN_SRC sh
+
+  ### ///////////////////////////////////////////////////////////////////
+  ### {{{  @BASIC SETUP
+  ### ///////////////////////////////////////////////////////////////////
+
+
+    ##
+    # emacs site setup
+    #
+
+    sudo mkdir -p /usr/local/share/emacs/emacs-share
+
+    sudo chgrp -R users /usr/local/share/emacs/emacs-share
+
+    sudo chmod -R g+w /usr/local/share/emacs/emacs-share
+
+    sudo chmod -R g+s /usr/local/share/emacs/emacs-share
+
+
+    cd /usr/local/share/emacs/emacs-share
+
+    git clone --shared --depth 1 git@github.com:hute37/emacs-site.git
+
+    #git remote add upstream git@github.com:hute37/emacs-site.git
+    #git fetch upstream
+
+    cd ./emacs-site
+
+    git config --global core.autocrlf "false"
+
+    # git config --global color.ui "auto"
+    # git config --global push.default simple
+    # git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit"
+    # git config --global alias.meld \!/usr/local/bin/git-meld.pl
+
+
+    git config  user.name "hute37"
+    git config  user.email hute37@gmail.com
+
+    git config -l
+
+
+    cd /usr/local/share/emacs/emacs-share/emacs-site/skel
+
+    cp -R .backups .emacs* ~/.
+
+    ln -s /usr/local/share/emacs/emacs-share/emacs-site ~/.emacs-site
+
+    ln -s ~/.emacs-site/site-start.el ~/.emacs-start.el
+
+## }}}  .basic-setup
+  
+#+END_SRC
+
+*** extra setup
+#+NAME: extra setup
+#+BEGIN_SRC sh
+
+  ### ///////////////////////////////////////////////////////////////////
+  ### {{{  @EXTRA SETUP
+  ### ///////////////////////////////////////////////////////////////////
+
+
+mkdir ~/bin
+
+ln -s ~/.emacs-site/system/bin ~/bin/site
+
+
+
+#cat >> ~/.bash_profile 
+echo 'if [ -r ~/.emacs-site/skel/.bash_profile-site ]; then' >> ~/.bash_profile
+echo ' source ~/.emacs-site/skel/.bash_profile-site || true' >> ~/.bash_profile
+echo 'fi' >> ~/.bash_profile
+
+
+
+#cat >> ~/.bash_aliases 
+echo 'if [ -r ~/.emacs-site/skel/.bash_aliases-site ]; then' >> ~/.bash_aliases
+echo ' source ~/.emacs-site/skel/.bash_aliases-site || true' >> ~/.bash_aliases
+echo 'fi' >> ~/.bash_aliases
+
+##
+# xwin
+#
+
+startx /usr/bin/xterm +tb -name Login -T Login -- -fullscreen -noresize -unixkill -nowinkill -keyhook
+
+startx /etc/X11/xinit/Xsession openbox         --  -nodecoration -noresize -unixkill -nowinkill
+startx /etc/X11/xinit/Xsession openbox-gnome   --  -nodecoration -noresize -unixkill -nowinkill
+startx /etc/X11/xinit/Xsession mate            --  -nodecoration -noresize -unixkill -nowinkill
+ 
+## }}}  .extra-setup
+  
+#+END_SRC
+
+*** build deps
+#+NAME: build deps
+#+BEGIN_SRC sh
+
+    ### ///////////////////////////////////////////////////////////////////
+    ### {{{  @BUILD-DEPS
+    ### ///////////////////////////////////////////////////////////////////
+
+
+  # -------
+  sudo -i
+  # -------
+
+  # {{{ (pdf-tools)------------------------------------
+
+  # apt (debian/ubuntu)
+
+
+  apt install build-essential
+  apt install dh-autoreconf pkgconf
+
+  apt install libpng-dev zlib1g-dev libpoppler-glib-dev libpoppler-private-dev
+  apt install imagemagick
+
+
+  # dnf
+
+  dnf groupinstall c-development 
+  dnf install gcc-gfortran
+  dnf install poppler poppler-utils poppler-cpp-devel poppler-glib-devel
+  dnf install libpng-devel zlib-devel
+  dnf install ImageMagick
+
+  # }}} (pdf-tools).
+ 
+  # -------
+  exit
+  # -------
+
+## }}}  .build-deps
+  
+#+END_SRC
+
+* ZSH
+** INSTALL
+#+NAME: build deps
+#+BEGIN_SRC sh
+
+  ### ///////////////////////////////////////////////////////////////////
+  ### {{{  @ZSH-INSTALL
+  ### ///////////////////////////////////////////////////////////////////
+
+  # -------
+  sudo -i
+  # -------
+
+  # apt
+
+  apt search zsh
+  apt install zsh zshdoc zshdb
+
+  # -----
+  exit
+  # -----
+
+  ## }}}  .zsh-install
+
+#+END_SRC
+
+** oh-my-zsh
+- https://github.com/robbyrussell/oh-my-zsh
+
+#+NAME: build deps
+#+BEGIN_SRC sh
+
+  ### ///////////////////////////////////////////////////////////////////
+  ### {{{  @ZSH-OH-MY
+  ### ///////////////////////////////////////////////////////////////////
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+  ## }}}  .zsh-oh-my
+
+#+END_SRC
+
+* PYTHON
+:PROPERTIES:
+:CUSTOM_ID: python
+:END:
+** PYENV/POETRY
+   * [[https://gitlab.com/ub-dems-public/ds-labs/dve-sample-py/-/raw/f/2206-org-setup/doc/setup/setup.org][dve-sample-py/doc/setup/setup.org]]
+   
+** VIRTUALENV
+:PROPERTIES:
+:CUSTOM_ID: VIRTUALENV
+:END:
+*** prepare
+#+NAME: python-venv-prepare
+#+BEGIN_SRC sh
+
+      ### ///////////////////////////////////////////////////////////////////
+      ### {{{  @PYTHON-VENV-PREPARE
+      ### ///////////////////////////////////////////////////////////////////
+
+
+  # add ~/.local/bin to PATH
+
+  mkdir -p ~/.local/bin
+
+  cat >> ~/.bash_profile <!EOF
+
+  # User specific environment and startup programs
+
+  PATH=$PATH:$HOME/.local/bin:$HOME/bin
+
+  export PATH
+
+  !EOF
+
+  source ~/.bash_profile
+  echo $PATH
+
+  ## }}}  .python-venv-prepare
+  
+#+END_SRC
+
+*** system env
+:PROPERTIES:
+:CUSTOM_ID: install-1
+:END:
+#+NAME: python-venv-system
+#+BEGIN_SRC sh
+
+  ### ///////////////////////////////////////////////////////////////////
+  ### {{{  @PYTHON-VENV-SYSTEM
+  ### ///////////////////////////////////////////////////////////////////
+
+  # -------
+  sudo -i
+  # -------
+
+  # OS - apt
+
+  ### pip3
+  apt search  python3-pip
+  apt install python3-pip
+
+  ### launchpadlib <- setuptools
+  apt search  python3-testresources
+  apt install python3-testresources
+
+  ### jupyter
+  apt search  python3-widgetsnbextension
+  apt install python3-widgetsnbextension
+
+
+  # -----
+  exit
+  # -----
+
+  ## }}}  .python-venv-system
+
+#+END_SRC
+
+*** user env
+#+NAME: python-venv-system
+#+BEGIN_SRC sh
+
+  ### ///////////////////////////////////////////////////////////////////
+  ### {{{  @PYTHON-VENV-USER
+  ### ///////////////////////////////////////////////////////////////////
+
+
+python -V
+python3 -V
+
+python3 -m site
+python3 -m site --user-base
+
+python3 -m pip -V
+
+python3 -m pip install --upgrade pip --user
+python3 -m pip install --upgrade setuptools --user
+python3 -m pip install --upgrade pipenv --user
+
+# zsh: rehash
+
+which python
+which python3
+
+which pip
+which pip3
+
+python -V
+python3 -V
+
+python3 -m pip -V
+
+which pipenv
+
+pipenv --version
+
+pipenv
+pipenv --three
+  ## }}}  .python-venv-user
+
+#+END_SRC
+
+*** env usage
+#+NAME: python-venv-usage
+#+BEGIN_SRC sh
+
+  ### ///////////////////////////////////////////////////////////////////
+  ### {{{  @PYTHON-VENV-USAGE
+  ### ///////////////////////////////////////////////////////////////////
+
+  pipenv  --three install --dev
+  pipenv graph
+  pipenv update
+  pipenv lock
+  pipenv graph
+
+  ls -l PipEnv*
+  git status PipEnv*
+
+  pipenv shell
+  pipenv -m site
+
+
+  pipenv lock -r       >requirements.txt
+
+  pipenv lock -r --dev >requirements-dev.txt
+
+  ## }}}  .python-venv-usage
+
+#+END_SRC
+
+* SESSIONS
+** Mutt
+#+NAME: session-mutt
+#+BEGIN_SRC sh
+
+  ### ///////////////////////////////////////////////////////////////////
+  ### {{{  @SESSION-MUTT
+  ### ///////////////////////////////////////////////////////////////////
+
+  # @see: http://lifehacker.com/5574557/how-to-use-the-fast-and-powerful-mutt-email-client-with-gmail
+
+  #sudo apt-get install mutt 
+
+  mkdir -p ~/.mutt/cache/headers mkdir ~/.mutt/cache/bodies touch ~/.mutt/certificates
+
+  cd; cat .ssh/id_rsa.pub # add to github ...
+
+  ## }}}  .session-mutt
+
+#+END_SRC
+
+** Xephyr
+#+NAME: session-xephyr
+#+BEGIN_SRC sh
+
+    ### ///////////////////////////////////////////////////////////////////
+    ### {{{  @SESSION-XEPHYR
+    ### ///////////////////////////////////////////////////////////////////
+
+
+  ##
+  # Xephyr
+  #
+
+  Xephyr -keybd ephyr,,,xkbmodel=evdev,xkblayout=it -listen tcp -ac -reset -output VGA1 :5
+
+
+  export DISPLAY=:5.0
+  xterm
+
+  ssh hr
+
+  export DISPLAY=hb:5.0
+
+  xrdb -merge ~/.Xresources
+
+  xterm -geometry 130x50-0+0 &
+
+
+  # {{{ (openbox)------------------------------------
+
+  dbus-launch $(which openbox-session)
+
+
+  # }}} (openbox).
+
+  # {{{ (Awesome)------------------------------------
+
+  dbus-launch $(which awesome)
+
+  dex -a -e Awesome
+
+  # }}} (Awesome).
+
+  # {{{ (i3)------------------------------------
+
+  dbus-launch $(which i3)
+
+  # }}} (i3).
+
+  ## }}}  .session-xephyr
+
+#+END_SRC
+
+* UI CUSTOM
+** FONTS
+#+NAME: fonts-mono
+#+BEGIN_SRC sh
+
+  ### ///////////////////////////////////////////////////////////////////
+  ### {{{  @FONTS_MONO
+  ### ///////////////////////////////////////////////////////////////////
+
+  ##
+  # fonts
+  #
+
+  sudo -i
+
+  cd ~/.emacs-site/system/usr/share/fonts/truetype
+
+  ls
+
+  ls mono
+
+  FT=/usr/local/share/fonts/truetype
+  # FT=~/.local/share/fonts/truetype
+
+
+  cp -rp mono                     $FT
+
+  #   cp -rp artwiz-aleczapka     $FT
+  #   cp -rp google-droid         $FT
+  #   cp -rp terminus             $FT
+  #   cp -rp ttf-inconsolata      $FT
+  #   cp -rp ubuntu               $FT
+
+  fc-cache -f -v
+
+    ## }}}  .fonts-mono
+
+#+END_SRC
+
+* GNOME
+   * [[https://wiki.archlinux.org/index.php/GNOME/Tips_and_tricks][GNOME/Tips_and_tricks]]
+** extensions
+   * [[https://extensions.gnome.org/extension/943/workspace-scroll/][Workspace Scroll]]
+   * [[https://extensions.gnome.org/extension/21/workspace-indicator/][Workspace Indicator]]
+   * [[https://extensions.gnome.org/extension/1031/topicons/][TopIcons Plus]]
+** desktop background
+   * [[https://www.w3schools.com/colors/colors_picker.asp][HTML Color Picker]]
+#+NAME: gnome-background
+#+BEGIN_SRC sh
+
+    ### ///////////////////////////////////////////////////////////////////
+    ### {{{  @GNOME-BACKGROUND
+    ### ///////////////////////////////////////////////////////////////////
+
+  gsettings set org.gnome.desktop.background primary-color "#0d1a26"
+  gsettings set org.gnome.desktop.background secondary-color "#0d1a26"
+  gsettings set org.gnome.desktop.background color-shading-type "solid"
+
+    ## }}}  .gnome-background
+
+#+END_SRC
+* THEMES
+** SOLARIZED
+- [[https://github.com/seebi/dircolors-solarized][dircolors-solarized]]
+- [[https://github.com/joel-porquet/zsh-dircolors-solarized][zsh-dircolors-solarized]]
+
+#+NAME: theme-solarized
+#+BEGIN_SRC sh
+
+  ### ///////////////////////////////////////////////////////////////////
+  ### {{{  @THEME-SOLARIZED
+  ### ///////////////////////////////////////////////////////////////////
+
+  cd $ZSH_CUSTOM/plugins
+
+  pwd
+  ls -l
+
+
+  git clone --recursive git://github.com/joel-porquet/zsh-dircolors-solarized $ZSH_CUSTOM/plugins/zsh-dircolors-solarized
+
+  cat ~/.zshrc | grep -i plugins
+
+  # add: plugins=(git zsh-dircolors-solarized)
+
+  exec zsh --login
+
+
+  lssolarized
+
+  setupsolarized
+
+  ## }}}  .theme-solarized
+
+#+END_SRC
+
+* REFERENCES
+** emacs
+*** org-mode
+   * [[https://orgmode.org/manual/][org-mode manual]]
+   * [[https://www.orgroam.com/manual.html][org-roam manual]]
+
+
