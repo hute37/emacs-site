@@ -11,9 +11,6 @@
 
 * INITAL SETUP
 ** Shell, Emacs
-:PROPERTIES:
-:CUSTOM_ID: shell-emacs
-:END:
 *** basic setup
 #+NAME: basic-setup
 #+BEGIN_SRC sh
@@ -22,53 +19,56 @@
   ### {{{  @BASIC SETUP
   ### ///////////////////////////////////////////////////////////////////
 
+  # {{{ (emacs-site)------------------------------------
 
-    ##
-    # emacs site setup
-    #
+  ##
+  # emacs site setup
+  #
 
-    sudo mkdir -p /usr/local/share/emacs/emacs-share
+  sudo mkdir -p /usr/local/share/emacs/emacs-share
+  sudo chgrp -R users /usr/local/share/emacs/emacs-share
+  sudo chmod -R g+w /usr/local/share/emacs/emacs-share
+  sudo chmod -R g+s /usr/local/share/emacs/emacs-share
 
-    sudo chgrp -R users /usr/local/share/emacs/emacs-share
+  cd /usr/local/share/emacs/emacs-share
 
-    sudo chmod -R g+w /usr/local/share/emacs/emacs-share
+  git clone --shared --depth 1 git@github.com:hute37/emacs-site.git
+  # git clone --shared git@github.com:hute37/emacs-site.git
 
-    sudo chmod -R g+s /usr/local/share/emacs/emacs-share
+  #git remote add upstream git@github.com:hute37/emacs-site.git
+  #git fetch upstream
 
+  cd ./emacs-site
 
-    cd /usr/local/share/emacs/emacs-share
+  git config --global core.autocrlf "false"
 
-    git clone --shared --depth 1 git@github.com:hute37/emacs-site.git
+  # git config --global color.ui "auto"
+  # git config --global push.default simple
+  # git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit"
+  # git config --global alias.meld \!/usr/local/bin/git-meld.pl
 
-    #git remote add upstream git@github.com:hute37/emacs-site.git
-    #git fetch upstream
+  git config  user.name "hute37"
+  git config  user.email hute37@gmail.com
 
-    cd ./emacs-site
+  git config -l
 
-    git config --global core.autocrlf "false"
+  # }}} (emacs-site).
 
-    # git config --global color.ui "auto"
-    # git config --global push.default simple
-    # git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit"
-    # git config --global alias.meld \!/usr/local/bin/git-meld.pl
+  # {{{ (user config)------------------------------------
 
+  cd /usr/local/share/emacs/emacs-share/emacs-site/skel
+  cp -Rvi .backups .emacs* ~/.
+  ln -s /usr/local/share/emacs/emacs-share/emacs-site ~/.emacs-site
+  ln -s ~/.emacs-site/site-start.el ~/.emacs-start.el
 
-    git config  user.name "hute37"
-    git config  user.email hute37@gmail.com
+  # @todo: user config Makefile
 
-    git config -l
+  mc ~/.emacs-site/skel/.config ~/.config
 
+  # }}} (user-config).
 
-    cd /usr/local/share/emacs/emacs-share/emacs-site/skel
+  ## }}}  .basic-setup
 
-    cp -R .backups .emacs* ~/.
-
-    ln -s /usr/local/share/emacs/emacs-share/emacs-site ~/.emacs-site
-
-    ln -s ~/.emacs-site/site-start.el ~/.emacs-start.el
-
-## }}}  .basic-setup
-  
 #+END_SRC
 
 *** extra setup
@@ -80,36 +80,23 @@
   ### ///////////////////////////////////////////////////////////////////
 
 
-mkdir ~/bin
+  mkdir ~/bin
 
-ln -s ~/.emacs-site/system/bin ~/bin/site
+  ln -s ~/.emacs-site/system/bin ~/bin/site
+
+  #cat >> ~/.bash_profile 
+  echo 'if [ -r ~/.emacs-site/skel/.bash_profile-site ]; then' >> ~/.bash_profile
+  echo ' source ~/.emacs-site/skel/.bash_profile-site || true' >> ~/.bash_profile
+  echo 'fi' >> ~/.bash_profile
+
+  #cat >> ~/.bash_aliases 
+  echo 'if [ -r ~/.emacs-site/skel/.bash_aliases-site ]; then' >> ~/.bash_aliases
+  echo ' source ~/.emacs-site/skel/.bash_aliases-site || true' >> ~/.bash_aliases
+  echo 'fi' >> ~/.bash_aliases
 
 
+  ## }}}  .extra-setup
 
-#cat >> ~/.bash_profile 
-echo 'if [ -r ~/.emacs-site/skel/.bash_profile-site ]; then' >> ~/.bash_profile
-echo ' source ~/.emacs-site/skel/.bash_profile-site || true' >> ~/.bash_profile
-echo 'fi' >> ~/.bash_profile
-
-
-
-#cat >> ~/.bash_aliases 
-echo 'if [ -r ~/.emacs-site/skel/.bash_aliases-site ]; then' >> ~/.bash_aliases
-echo ' source ~/.emacs-site/skel/.bash_aliases-site || true' >> ~/.bash_aliases
-echo 'fi' >> ~/.bash_aliases
-
-##
-# xwin
-#
-
-startx /usr/bin/xterm +tb -name Login -T Login -- -fullscreen -noresize -unixkill -nowinkill -keyhook
-
-startx /etc/X11/xinit/Xsession openbox         --  -nodecoration -noresize -unixkill -nowinkill
-startx /etc/X11/xinit/Xsession openbox-gnome   --  -nodecoration -noresize -unixkill -nowinkill
-startx /etc/X11/xinit/Xsession mate            --  -nodecoration -noresize -unixkill -nowinkill
- 
-## }}}  .extra-setup
-  
 #+END_SRC
 
 *** build deps
@@ -350,23 +337,48 @@ pipenv --three
 #+END_SRC
 
 * SESSIONS
-** Mutt
-#+NAME: session-mutt
+** Cygwin/X
+*** x-failsafe
+#+NAME: session-cygwin-xterm
+#+BEGIN_SRC sh
+
+### ///////////////////////////////////////////////////////////////////
+### {{{  @SESSION-CYGWIN-XTERM
+### ///////////////////////////////////////////////////////////////////
+
+##
+# xwin
+#
+
+startx /usr/bin/xterm +tb -name Login -T Login -- -fullscreen -noresize -unixkill -nowinkill -keyhook
+
+## }}}  .session-cygwin-xterm
+
+*** wm-local
+#+NAME: session-cygwin-wm-local
+#+BEGIN_SRC sh
+
+### ///////////////////////////////////////////////////////////////////
+### {{{  @SESSION-CYGWIN-WM-LOCAL
+### ///////////////////////////////////////////////////////////////////
+
+startx /etc/X11/xinit/Xsession openbox         --  -nodecoration -noresize -unixkill -nowinkill
+startx /etc/X11/xinit/Xsession openbox-gnome   --  -nodecoration -noresize -unixkill -nowinkill
+startx /etc/X11/xinit/Xsession mate            --  -nodecoration -noresize -unixkill -nowinkill
+
+## }}}  .session-cygwin-wm-local
+
+*** wsl
+#+NAME: session-cygwin-wsl
 #+BEGIN_SRC sh
 
   ### ///////////////////////////////////////////////////////////////////
-  ### {{{  @SESSION-MUTT
+  ### {{{  @SESSION-CYGWIN-WSL
   ### ///////////////////////////////////////////////////////////////////
 
-  # @see: http://lifehacker.com/5574557/how-to-use-the-fast-and-powerful-mutt-email-client-with-gmail
+# @todo: wsl start
 
-  #sudo apt-get install mutt 
-
-  mkdir -p ~/.mutt/cache/headers mkdir ~/.mutt/cache/bodies touch ~/.mutt/certificates
-
-  cd; cat .ssh/id_rsa.pub # add to github ...
-
-  ## }}}  .session-mutt
+  ## }}}  .session-cygwin-wsl
 
 #+END_SRC
 
@@ -420,6 +432,26 @@ pipenv --three
   # }}} (i3).
 
   ## }}}  .session-xephyr
+
+#+END_SRC
+
+** Mutt
+#+NAME: session-mutt
+#+BEGIN_SRC sh
+
+  ### ///////////////////////////////////////////////////////////////////
+  ### {{{  @SESSION-MUTT
+  ### ///////////////////////////////////////////////////////////////////
+
+  # @see: http://lifehacker.com/5574557/how-to-use-the-fast-and-powerful-mutt-email-client-with-gmail
+
+  #sudo apt-get install mutt 
+
+  mkdir -p ~/.mutt/cache/headers mkdir ~/.mutt/cache/bodies touch ~/.mutt/certificates
+
+  cd; cat .ssh/id_rsa.pub # add to github ...
+
+  ## }}}  .session-mutt
 
 #+END_SRC
 
