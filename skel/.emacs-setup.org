@@ -337,48 +337,178 @@ pipenv --three
 #+END_SRC
 
 * SESSIONS
+** heading
+#+NAME: session-top-header
+#+BEGIN_SRC sh
+
+### ///////////////////////////////////////////////////////////////////
+### {{{  @SESSIONS
+### ///////////////////////////////////////////////////////////////////
+
+## }}}  .session-cygwin-xterm
+
+#+END_SRC
+
+** XSessions
+*** xfce
+#+NAME: session-xsession-xfce
+#+BEGIN_SRC sh
+
+  # {{{ ---(xfce)--------------------------------------------------------------
+
+  xk=1; setxkbmap -layout "it"  -option 'caps:hyper'; xmodmap ~/.Xmodmap; xmodmap -pm
+
+  startxfce4
+
+  # ---
+
+  ~/.Xsessions  >> ~/.xsession-errors 2>&1
+
+  # }}} .xfce
+
+#+END_SRC
+
+*** openbox
+
+#+NAME: session-xsession-openbox
+#+BEGIN_SRC sh
+
+  # {{{ ---(openbox)--------------------------------------------------------------
+
+  xk=1; setxkbmap -layout "it"  -option 'caps:hyper'; xmodmap ~/.Xmodmap; xmodmap -pm
+
+  dbus-launch $(which openbox-session)
+
+  # ---
+
+  ee=1; eval $(ssh-agent); ssh-add ~/.ssh/id_rsa; ssh-add ~/.ssh/??; ssh-all -l
+
+  qterminal
+
+  # }}} .xfce
+
+#+END_SRC
+
+*** lxqt
+
+#+NAME: session-xsession-lxqt
+#+BEGIN_SRC sh
+
+  # {{{ ---(lxqt)--------------------------------------------------------------
+
+  xk=1; setxkbmap -layout "it"  -option 'caps:hyper'; xmodmap ~/.Xmodmap; xmodmap -pm
+
+  ee=1; eval $(ssh-agent); ssh-add ~/.ssh/id_rsa; ssh-add ~/.ssh/??; ssh-all -l
+
+  startlxqt
+
+  # ---
+
+  qterminal
+
+
+  # }}} .lxqt
+
+#+END_SRC
+
+*** awesome
+
+#+NAME: session-xsession-awesome
+#+BEGIN_SRC sh
+
+  # {{{ ---(awesome)--------------------------------------------------------------
+
+  xk=1; setxkbmap -layout "it"  -option 'caps:hyper'; xmodmap ~/.Xmodmap; xmodmap -pm
+
+  ee=1; eval $(ssh-agent); ssh-add ~/.ssh/id_rsa; ssh-add ~/.ssh/??; ssh-all -l
+
+  dbus-launch awesome
+
+  # ---
+
+  # }}} .awesome
+
+#+END_SRC
+
+*** i3
+
+#+NAME: session-xsession-i3
+#+BEGIN_SRC sh
+
+  # {{{ ---(i3)--------------------------------------------------------------
+
+  xk=1; setxkbmap -layout "it"  -option 'caps:hyper'; xmodmap ~/.Xmodmap; xmodmap -pm
+
+  ee=1; eval $(ssh-agent); ssh-add ~/.ssh/id_rsa; ssh-add ~/.ssh/??; ssh-all -l
+
+  dbus-launch $(which i3)
+
+  # ---
+
+
+  # }}} .i3
+
+#+END_SRC
+
 ** Cygwin/X
 *** x-failsafe
 #+NAME: session-cygwin-xterm
 #+BEGIN_SRC sh
 
-### ///////////////////////////////////////////////////////////////////
-### {{{  @SESSION-CYGWIN-XTERM
-### ///////////////////////////////////////////////////////////////////
+  # {{{ ---(session-cygwin-xterm)--------------------------------------------------------------
 
-##
-# xwin
-#
+  #startx /usr/bin/xterm +tb -name Login -T Login -- -fullscreen -noresize -unixkill -nowinkill -keyhook
+  startx /usr/bin/xterm -ls +tb +sb -name Login -T Login -fg black -bg ghostwhite -e $SHELL  -- -screen 0 @2 -nodecoration -noresize -unixkill -nowinkill -listen tcp -ac
 
-startx /usr/bin/xterm +tb -name Login -T Login -- -fullscreen -noresize -unixkill -nowinkill -keyhook
+  # ---
 
-## }}}  .session-cygwin-xterm
+  xk=1; setxkbmap -layout "it"  -option 'caps:hyper'; xmodmap ~/.Xmodmap; xmodmap -pm; \
+   xrdb -merge ~/.Xresources; \
+   eval $(ssh-agent)
+ 
+
+
+  # }}}  .session-cygwin-xterm
+
+#+END_SRC
+
 
 *** wm-local
 #+NAME: session-cygwin-wm-local
 #+BEGIN_SRC sh
 
-### ///////////////////////////////////////////////////////////////////
-### {{{  @SESSION-CYGWIN-WM-LOCAL
-### ///////////////////////////////////////////////////////////////////
+  # {{{ ---(session-cygwin-wm-local)--------------------------------------------------------------
 
-startx /etc/X11/xinit/Xsession openbox         --  -nodecoration -noresize -unixkill -nowinkill
-startx /etc/X11/xinit/Xsession openbox-gnome   --  -nodecoration -noresize -unixkill -nowinkill
-startx /etc/X11/xinit/Xsession mate            --  -nodecoration -noresize -unixkill -nowinkill
+  startx /etc/X11/xinit/Xsession openbox         --  -nodecoration -noresize -unixkill -nowinkill
+  startx /etc/X11/xinit/Xsession openbox-gnome   --  -nodecoration -noresize -unixkill -nowinkill
+  startx /etc/X11/xinit/Xsession mate            --  -nodecoration -noresize -unixkill -nowinkill
 
-## }}}  .session-cygwin-wm-local
+  # }}}  .session-cygwin-wm-local
+
+#+END_SRC
+
 
 *** wsl
 #+NAME: session-cygwin-wsl
 #+BEGIN_SRC sh
 
-  ### ///////////////////////////////////////////////////////////////////
-  ### {{{  @SESSION-CYGWIN-WSL
-  ### ///////////////////////////////////////////////////////////////////
+  # {{{ ---(session-cygwin-wsl)--------------------------------------------------------------
 
-# @todo: wsl start
+  startx /usr/bin/xterm -ls +tb +sb -name Login -T Login -fg black -bg ghostwhite -e $SHELL  -- -screen 0 @2 -nodecoration -noresize -unixkill -nowinkill -listen tcp -ac
 
-  ## }}}  .session-cygwin-wsl
+  xs=6; wsl -e zsh --login -c  "cd && xterm -display 127.0.0.1:0 -geometry 220x26+0-0 -name sv -T Session -bg '#1a1a00' -fg NavajoWhite -cr yellow -sb"  &
+
+  # ---
+
+  xc=1; ee=1; eval $(ssh-agent); ssh-add ~/.ssh/id_rsa;  ssh-add ~/.ssh/??; ssh-add -l; \
+  export PATH=~/.local/bin:$PATH; \
+  xrdb -merge ~/.Xresources; \
+  xk=1; setxkbmap -layout "it"  -option 'caps:hyper'; xmodmap ~/.Xmodmap; xmodmap -pm; \
+  sv=3; sudo mkdir -p /run/dbus; sudo dbus-daemon --system ; \
+  xs=1; dbus-launch awesome
+
+  # }}} .session-cygwin-wsl
+
 
 #+END_SRC
 
@@ -452,6 +582,14 @@ startx /etc/X11/xinit/Xsession mate            --  -nodecoration -noresize -unix
   cd; cat .ssh/id_rsa.pub # add to github ...
 
   ## }}}  .session-mutt
+
+#+END_SRC
+
+** trailing
+#+NAME: session-top-trailing
+#+BEGIN_SRC sh
+
+## }}}  .sessions
 
 #+END_SRC
 
