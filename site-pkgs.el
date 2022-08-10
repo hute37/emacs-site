@@ -336,12 +336,12 @@
 (use-package minions
   :ensure t
   :config (minions-mode 1)
-)
+  )
 
 (use-package mood-line
   :ensure t
   :config (mood-line-mode 1)
-)
+  )
 
 ;; delight
 ;; hides modeline displays
@@ -398,6 +398,30 @@
 
 ;; 		       )
 ;; 	     )
+
+;; ---( highlight )--------------------------------------------------------------
+
+(use-package hl-todo
+  :ensure t
+  :config (minions-mode 1)
+  )
+
+(use-package hl-todo
+  :ensure t
+  :hook (prog-mode . hl-todo-mode)
+  :config
+  ;; (define-key hl-todo-mode-map (kbd "C-c p") #'hl-todo-previous)
+  ;; (define-key hl-todo-mode-map (kbd "C-c n") #'hl-todo-next)
+  ;; (define-key hl-todo-mode-map (kbd "C-c o") #'hl-todo-occur)
+  ;; (define-key hl-todo-mode-map (kbd "C-c i") #'hl-todo-insert  
+  (setq hl-todo-highlight-punctuation ":"
+        hl-todo-keyword-faces
+        `(("TODO"       warning bold)
+          ("FIXME"      error bold)
+          ("HACK"       font-lock-constant-face bold)
+          ("REVIEW"     font-lock-keyword-face bold)
+          ("NOTE"       success bold)
+          ("DEPRECATED" font-lock-doc-face bold))))
 
 ;; ---( dashboard )--------------------------------------------------------------
 
