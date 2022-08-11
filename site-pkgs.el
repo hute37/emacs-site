@@ -3336,6 +3336,7 @@ the automatic filling of the current paragraph."
          :map vterm-mode-map
          ("C-v" . vterm-yank)
          ("S-<insert>" . vterm-yank)
+         ([kp-insert] . vterm-yank-primary)
          ([kp-enter] . vterm-yank)
          ([kp-divide] . vterm-yank-pop)
          ([kp-multiply] . vterm-copy-mode))
