@@ -576,8 +576,10 @@ When `universal-argument' is called first, cut whole buffer (but respect `narrow
 ;;(keyboard-translate 176 ?{ ) ;; -es
 (define-key key-translation-map (kbd "<kp-delete>") (kbd "<delete>"))
 
-(define-key global-map [(meta kp-insert)]   'repeat-complex-command) ;; ctrl-x esc esc
-(define-key global-map [(meta kp-delete)]   'undo) ;; ctrl-x esc esc
+;;(define-key global-map [(meta kp-insert)]   'repeat-complex-command) ;; ctrl-x esc esc
+;;q(define-key global-map [(meta kp-delete)]   'undo) ;; ctrl-x esc esc 
+(define-key global-map [(meta kp-multiply)]   'repeat-complex-command) ;; ctrl-x esc esc
+(define-key global-map [(meta kp-divide)]   'undo) ;; ctrl-x esc esc
 ;; requires redo, redo+ or undo-tree
 ;;(define-key global-map [(control kp-delete)]   'redo)
 
