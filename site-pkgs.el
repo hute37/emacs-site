@@ -898,7 +898,16 @@
          (python-mode . lsp)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp)
+  :commands lsp
+  :config
+  (dolist (dir '(
+               "[/\\\\]\\.cache"
+               "[/\\\\]venv$"
+               "[/\\\\]build$"
+               "[/\\\\]dist$"
+               ))
+    (push dir lsp-file-watch-ignored-directories))
+  )
 
 ;; optionally
 (use-package lsp-ui :commands lsp-ui-mode)
