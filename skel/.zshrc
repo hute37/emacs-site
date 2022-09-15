@@ -273,6 +273,60 @@ fi
 
 
 
+
+
+# ---(pyenv:begin)-----
+
+##
+#  pyenv environment
+#
+
+if [ ! -f ~/.py-env.off ]; then
+if [ -d $HOME/.pyenv ]; then
+
+# ~/.profile
+
+if [ -z "$PY_RC_ENV" ]; then
+export PY_RC_ENV=1
+
+command -v conda >/dev/null && conda deactivate || true
+
+[ -z "$PYENV_ROOT" ] && export PYENV_ROOT="$HOME/.pyenv"
+if [ -n "$PYENV_ROOT" ] ; then
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+fi
+eval "$(pyenv init --path)"
+
+fi
+
+# ~/.(bash|zsh)rc
+
+eval "$(pyenv init -)"
+
+fi
+fi
+
+##
+#  poetry environment
+#
+
+if [ ! -f ~/.py-poetry.off ]; then
+if [ -x $HOME/.local/bin/poetry ]; then
+export PY_RC_POETRY=1
+py_rc_poetry_sh() {
+command -v poetry >/dev/null || export PATH="$HOME/.poetry/bin:$PATH"
+[ -z "$PYTHON_KEYRING_BACKEND" ] && export PYTHON_KEYRING_BACKEND="keyring.backends.null.Keyring"
+}
+py_rc_poetry_sh
+fi
+fi
+
+# ---(pyenv:end)-----
+
+
+
+
+
 #% echo "% < ~/.zshrc"
 # ------------------------------------------------
 export _DOT_ZSHRC_1="$(date  --rfc-3339=ns)"
