@@ -1,3 +1,4 @@
+-- vim: noet sw=4 ts=4 fdm=marker foldcolumn=0
 --[[
 
      Awesome WM configuration template
@@ -153,8 +154,8 @@ awful.util.taglist_buttons = mytable.join(
     awful.button({ modkey }, 3, function(t)
         if client.focus then client.focus:toggle_tag(t) end
     end),
-    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
-    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
+    awful.button({ }, 4, function(t) awful.tag.viewprev(t.screen) end),
+    awful.button({ }, 5, function(t) awful.tag.viewnext(t.screen) end)
 )
 
 awful.util.tasklist_buttons = mytable.join(
@@ -257,8 +258,8 @@ awful.screen.connect_for_each_screen(function(s) beautiful.at_screen_connect(s) 
 
 root.buttons(mytable.join(
     awful.button({ }, 3, function () awful.util.mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
+    awful.button({ }, 4, awful.tag.viewprev),
+    awful.button({ }, 5, awful.tag.viewnext)
 ))
 
 -- }}}
@@ -534,7 +535,37 @@ globalkeys = mytable.join(
     awful.key({ modkey }, "q", function () awful.spawn(browser) end,
               {description = "run browser", group = "launcher"}),
 
-    -- Default
+    -- Launchers
+    awful.key({ modkey, "Control" }, "p", function () awful.spawn.with_shell("dmenu_run") end,
+              {description = "run dmenu_run", group = "launchers"}),
+    awful.key({ altkey, "Control" }, "p", function () awful.spawn.with_shell("dmenu_run") end,
+              {description = "run dmenu_run", group = "launchers"}),
+    awful.key({ modkey }, "p", function () awful.spawn.with_shell("dmenu_run") end,
+              {description = "run dmenu_run", group = "launchers"}),
+    awful.key({ altkey }, "p", function () awful.spawn.with_shell("dmenu_run") end,
+              {description = "run dmenu_run", group = "launchers"}),
+    awful.key({ modkey }, "d", function () awful.spawn.with_shell("rofi -show combi") end,
+              {description = "run rofi combo", group = "launchers"}),
+    awful.key({ altkey }, "d", function () awful.spawn.with_shell("rofi -show combi") end,
+              {description = "run rofi combo", group = "launchers"}),
+    awful.key({ modkey, "Control" }, "d", function () awful.spawn.with_shell("rofi -show combi") end,
+              {description = "run rofi combo", group = "launchers"}),
+    awful.key({ modkey, "Control" }, "n", function () awful.spawn.with_shell("rofi -show") end,
+              {description = "run rofi", group = "launchers"}),
+    awful.key({ modkey, "Control" }, "m", function () awful.spawn.with_shell("rofi -show drun") end,
+              {description = "run rofi drun", group = "launchers"}),
+
+
+	-- # start dmenu (a program launcher)
+	-- bindsym $mod+p exec dmenu_run
+	-- bindsym $alt+p exec dmenu_run
+
+	-- bindsym $mod+d exec "rofi -show combi"
+
+	-- bindsym $mod+n exec "rofi -show"
+	-- bindsym $mod+m exec "rofi -show drun"
+
+     -- Default
     --[[ Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),

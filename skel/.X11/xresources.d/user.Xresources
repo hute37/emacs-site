@@ -9,7 +9,11 @@ Xft.rgba:       rgb
 Xft.hinting:    true
 Xft.hintstyle:  hintslight
 
+! xcursor settings ---------------------------------------------------------------
 
+!Xcursor.theme: DMZ-White
+Xcursor.theme: whiteglass
+!Xcursor.size: 16
 
 
 !!

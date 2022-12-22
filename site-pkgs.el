@@ -1,35 +1,58 @@
+;; Log: start
+;; #+NAME: log-start
+
+;; [[file:site-pkgs.org::log-start][log-start]]
 ;; ---( site.pkgs: begin )-------------------------------------------------------
 (message "SITE:PKGS - begin")
+;; log-start ends here
 
+;; References
+;; #+NAME: references
+
+;; [[file:site-pkgs.org::references][references]]
 ;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @PACKAGES
+;; {{{  @REFERENCES
 ;; ;;;////////////////////////////////////////////////////////////////
 
-;; @see: https://github.com/jwiegley/use-package
-;; @see: http://pages.sachachua.com/.emacs.d/Sacha.html
-;; @see: https://github.com/bdd/.emacs.d/blob/master/packages.el
-;; @see: http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.html
-;; @see: https://ladicle.com/post/config/
+;; ---( dotfiles )--------------------------------------------------------------
+
+;; @see: https://sachachua.com/dotemacs#%s
 ;; @see: http://emacsredux.com/blog/2014/08/25/a-peek-at-emacs-24-dot-4-prettify-symbols-mode/
-;; @see: https://sgtpeacock.com/dot-files/Emacs.html#org66117b2
-;; @see: https://gitea.petton.fr/nico/emacs.d/src/commit/8ae2b902c916600c9296d967f36ed69ad50e8199/init.el?lang=sv-SE
-;; @see: https://emacs-lsp.github.io/lsp-mode/page/installation/
-;; @see: https://gitlab.com/nathanfurnal/dotemacs/-/snippets/2060535?utm_source=pocket_mylist
-;; @see: https://github.com/jidicula/dotfiles/blob/main/init.el?utm_source=pocket_mylist
 ;; @see: https://elpy.readthedocs.org/en/latest/
-;; @see: https://github.com/jorgenschaefer/elpy
-;; @see: https://youtu.be/0kuCeS-mfyc
-;; @see: https://github.com/JuliaEditorSupport/julia-emacs
-;; @see: https://github.com/tpapp/julia-repl
-;; @see: https://github.com/nnicandro/emacs-jupyter
-;; @see: https://julia-users-zurich.github.io/talks/talk-2018-04/emacs.html
+;; @see: https://emacs-lsp.github.io/lsp-mode/page/installation/
+;; @see: https://gitea.petton.fr/nico/emacs.d/src/commit/8ae2b902c916600c9296d967f36ed69ad50e8199/init.el?lang=sv-SE
+;; @see: https://github.com/bdd/.emacs.d/blob/master/packages.el
+;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
 ;; @see: https://github.com/cgroll/dot_emacs.d/blob/master/init.el
-;; @see: https://gitlab.com/balajisi/emacs/blob/master/init.el
-;; @see: https://github.com/serras/emacs-haskell-tutorial/blob/master/tutorial.md
+;; @see: https://github.com/jidicula/dotfiles/blob/main/init.el?utm_source=pocket_mylist
+;; @see: https://github.com/jorgenschaefer/elpy
+;; @see: https://github.com/JuliaEditorSupport/julia-emacs
+;; @see: https://github.com/jwiegley/use-package
+;; @see: https://github.com/nnicandro/emacs-jupyter
 ;; @see: https://github.com/pdorrell/rules-editing-mode
 ;; @see: https://github.com/pdorrell/rules-editing-mode/blob/master/my-drools.el
-;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
+;; @see: https://github.com/serras/emacs-haskell-tutorial/blob/master/tutorial.md
+;; @see: https://github.com/tpapp/julia-repl
+;; @see: https://gitlab.com/balajisi/emacs/blob/master/init.el
+;; @see: https://gitlab.com/nathanfurnal/dotemacs/-/snippets/2060535?utm_source=pocket_mylist
+;; @see: https://julia-users-zurich.github.io/talks/talk-2018-04/emacs.html
+;; @see: https://ladicle.com/post/config/
+;; @see: https://sgtpeacock.com/dot-files/Emacs.html#org66117b2
+;; @see: https://systemcrafters.net/build-a-second-brain-in-emacs/5-org-roam-hacks/
+;; @see: https://youtu.be/0kuCeS-mfyc
+;; @see: http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.html
 
+;; }}}  .references
+;; references ends here
+
+;; Use-Package
+
+;; #+NAME: startup
+
+;; [[file:site-pkgs.org::startup][startup]]
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @PACKAGES
+;; ;;;////////////////////////////////////////////////////////////////
 
 ;; ---( Install )--------------------------------------------------------------
 
@@ -66,21 +89,23 @@
 ;; (eval-when-compile (require 'use-package))
 
 
-;; ;; @see: https://ianyepan.github.io/posts/setting-up-use-package/
-;; ;; @see: https://www.reddit.com/r/emacs/comments/dfcyy6/how_to_install_and_use_usepackage/
-;; ;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
+;; @see: https://ianyepan.github.io/posts/setting-up-use-package/
+;; @see: https://www.reddit.com/r/emacs/comments/dfcyy6/how_to_install_and_use_usepackage/
+;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
 
 (eval-and-compile
   (require 'package)
   (add-to-list 'package-archives '("org"   . "http://orgmode.org/elpa/")) ; Org-mode's repository
   (add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+  (add-to-list 'package-archives '("nongnu"   . "https://elpa.nongnu.org/nongnu/"))
   ;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
   ;;(package-initialize)
   ;; i always fetch the archive contents on startup and during compilation, which is slow
   ;; (package-refresh-contents)
   (unless (package-installed-p 'use-package)
     (package-install 'use-package))
+  (setq use-package-verbose t)
   (require 'use-package)
   ;; i don't really know why this isn't the default...
   ;;(setf use-package-always-ensure t)
@@ -88,19 +113,30 @@
   ;;(use-package use-package-ensure
   ;;  :config  (setq use-package-always-ensure t))
 
-  (unless (package-installed-p 'quelpa)
-    (with-temp-buffer
-      (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
-      (eval-buffer)
-      (quelpa-self-upgrade)))
-  (quelpa
-   '(quelpa-use-package
-     :fetcher git
-     :url "https://github.com/quelpa/quelpa-use-package.git"))
-  (require 'quelpa-use-package)
- )
+  (use-package quelpa
+    :ensure t)
+  (use-package quelpa-use-package
+    :ensure t)
+  (quelpa-use-package-activate-advice)
+  (use-package auto-compile
+    :ensure t
+    :config (auto-compile-on-load-mode))
+  (setq load-prefer-newer t)
 
-;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
+  ;;   (unless (package-installed-p 'quelpa)
+  ;;     (with-temp-buffer
+  ;;       (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+  ;;       (eval-buffer)
+  ;;       (quelpa-self-upgrade)))
+  ;;   (quelpa
+  ;;    '(quelpa-use-package
+  ;;      :fetcher git
+  ;;      :url "https://github.com/quelpa/quelpa-use-package.git"))
+  ;;   (require 'quelpa-use-package)
+  ;;
+  )
+
+;; ;; @see:  https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
 
 ;; ;;; initialization
 ;; (require 'package)
@@ -123,9 +159,6 @@
 ;;    :fetcher git
 ;;    :url "https://github.com/quelpa/quelpa-use-package.git"))
 ;; (require 'quelpa-use-package)
-
-
-
 
 
 ;;(require 'package)
@@ -177,17 +210,17 @@
 
 ;; Bootstrap `use-package'
 (unless (and
-	 (package-installed-p 'bind-key)
-	 (package-installed-p 'diminish)
-	 (package-installed-p 'use-package)
-	 (package-installed-p 'req-package)
-	 )
-(package-refresh-contents)
+         (package-installed-p 'bind-key)
+         (package-installed-p 'diminish)
+         (package-installed-p 'use-package)
+         (package-installed-p 'req-package)
+         )
+  (package-refresh-contents)
   (package-install 'bind-key)
   (package-install 'diminish)
   (package-install 'use-package)
   (package-install 'req-package)
-)
+  )
 
 ;; (straight-use-package 'bind-key)
 ;; (straight-use-package 'diminish)
@@ -215,58 +248,100 @@
 
 ;; ---( ... )--------------------------------------------------------------
 
+;; }}}  .packages
+;; startup ends here
+
+;; Basic
+
+;; #+NAME: basic
+
+;; [[file:site-pkgs.org::basic][basic]]
 ;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @BASIC
-;; ;;;////////////////////////////////////////////////////////////////
+     ;; {{{  @BASIC
+     ;; ;;;////////////////////////////////////////////////////////////////
 
-;; ---( ... )--------------------------------------------------------------
+     ;; ---( ... )--------------------------------------------------------------
 
-;;(use-package bs
-;;  :ensure t)
+     ;; ---( ... )--------------------------------------------------------------
 
-;; ---( ... )--------------------------------------------------------------
+     ;;(use-package bs
+     ;;  :ensure t)
 
-;; (use-package pretty-symbols
-;;   :ensure t)
+     ;; ---( ... )--------------------------------------------------------------
 
-;; (use-package pretty-lambdada
-;;   :ensure t
-;;   :init (dolist (hook '(lisp-mode-hook emacs-lisp-mode-hook)))
-;;   :config (dolist (global-pretty-lambda-mode)))
+     ;; (use-package pretty-symbols
+     ;;   :ensure t)
+
+     ;; (use-package pretty-lambdada
+     ;;   :ensure t
+     ;;   :init (dolist (hook '(lisp-mode-hook emacs-lisp-mode-hook)))
+     ;;   :config (dolist (global-pretty-lambda-mode)))
 
 
-(use-package jumpc
-  :disabled t
-  :config (progn (jumpc-bind-vim-key)))
+   ;; (use-package jumpc
+   ;;   :disabled t
+   ;;   :config (progn (jumpc-bind-vim-key)))
 
-(use-package rainbow-delimiters
-  :disabled t
-  :hook (prog-mode . rainbow-delimiters-mode))
+   ;; (use-package rainbow-delimiters
+   ;;   :disabled t
+   ;;   :hook (prog-mode . rainbow-delimiters-mode))
+
+   ;; ---( undo-tree )--------------------------------------------------------------
 
 (use-package undo-tree
-  :disabled t
-  :custom
-  (undo-tree-auto-save-history nil)
-  :init
-  (global-undo-tree-mode 1))
+  :ensure t
+  :diminish
+  :bind (("C-c _" . undo-tree-visualize))
+  :config
+  (progn
+    (global-undo-tree-mode)
+    (unbind-key "M-_" undo-tree-map)
+    (setq undo-tree-visualizer-timestamps t)
+    (setq undo-tree-visualizer-diff t)))
 
 
+;; ---( dash )--------------------------------------------------------------
+
+;; ~dash.el~ :: A modern list API for Emacs. No 'cl required.  (See https://github.com/magnars/dash.el/)
+(use-package dash
+  :ensure t)
+
+;; ---( f )--------------------------------------------------------------
+
+;; ~f.el~ :: A modern API for working with files and directories in Emacs. (See https://github.com/rejeep/f.el/)
+(use-package f
+  :ensure t)
+
+;; ---( s )--------------------------------------------------------------
+
+;; ~s.el~ :: The long lost Emacs string manipulation library.  (See https://github.com/magnars/s.el/)
+(use-package s
+  :ensure t)
+
+
+  ;; }}}  .packages
+;; basic ends here
+
+;; UI
+
+;; #+NAME: ui
+
+;; [[file:site-pkgs.org::ui][ui]]
 ;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @UI
+;; {{{  @UI
 ;; ;;;////////////////////////////////////////////////////////////////
-
 
 ;; ---( mode-line )--------------------------------------------------------------
 
 (use-package minions
   :ensure t
   :config (minions-mode 1)
-)
+  )
 
 (use-package mood-line
   :ensure t
   :config (mood-line-mode 1)
-)
+  )
 
 ;; delight
 ;; hides modeline displays
@@ -318,11 +393,35 @@
 ;; 		       ;;(sml/apply-theme 'automatic)
 
 ;; 		       ;;(powerline-default-theme)
-		       
+
 ;; 		       (powerline-reset)
-		       
+
 ;; 		       )
 ;; 	     )
+
+;; ---( highlight )--------------------------------------------------------------
+
+(use-package hl-todo
+  :ensure t
+  :config (minions-mode 1)
+  )
+
+(use-package hl-todo
+  :ensure t
+  :hook (prog-mode . hl-todo-mode)
+  :config
+  ;; (define-key hl-todo-mode-map (kbd "C-c p") #'hl-todo-previous)
+  ;; (define-key hl-todo-mode-map (kbd "C-c n") #'hl-todo-next)
+  ;; (define-key hl-todo-mode-map (kbd "C-c o") #'hl-todo-occur)
+  ;; (define-key hl-todo-mode-map (kbd "C-c i") #'hl-todo-insert  
+  (setq hl-todo-highlight-punctuation ":"
+        hl-todo-keyword-faces
+        `(("TODO"       warning bold)
+          ("FIXME"      error bold)
+          ("HACK"       font-lock-constant-face bold)
+          ("REVIEW"     font-lock-keyword-face bold)
+          ("NOTE"       success bold)
+          ("DEPRECATED" font-lock-doc-face bold))))
 
 ;; ---( dashboard )--------------------------------------------------------------
 
@@ -338,9 +437,15 @@
   (dashboard-setup-startup-hook))
 
 
+;; }}}  .ui
+;; ui ends here
 
+;; Magit
+;; #+NAME: magit
+
+;; [[file:site-pkgs.org::magit][magit]]
 ;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @MAGIT
+;; {{{  @MAGIT
 ;; ;;;////////////////////////////////////////////////////////////////
 
 
@@ -454,10 +559,71 @@
 
   )
 
+;; }}}  .magit
+;; magit ends here
 
+;; Dired
+;; #+NAME: dired
 
+;; [[file:site-pkgs.org::dired][dired]]
 ;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @PROJECT
+;; {{{  @DIRED
+;; ;;;////////////////////////////////////////////////////////////////
+
+
+;; ---( dired )--------------------------------------------------------------
+
+
+(use-package dired
+  ;; :straight (:type built-in)
+  ;; :ensure t 
+  :hook ((dired-mode . hl-line-mode)
+         (dired-mode . dired-hide-details-mode))
+  :custom
+  ;; (require 'ls-lisp)
+  (ls-lisp-dirs-first t)
+  (ls-lisp-ignore-case nil)
+  (ls-lisp-use-insert-directory-program nil)
+
+  (dired-listing-switches "-alvhp --dired --group-directories-first")
+
+  (dired-recursive-copies 'always)
+  (dired-recursive-deletes 'always)
+  (dired-dwim-target t) ;;use to copy to the next buffer visible
+  ;; Auto refresh Dired, but be quiet about it
+  (global-auto-revert-non-file-buffers t)
+  (auto-revert-verbose t)
+  ;;(image-dired-external-viewer (executable-find "sxiv"))
+  )
+
+;; @see: https://github.com/CSRaghunandan/.emacs.d/blob/master/setup-files/setup-dired.el
+
+;; dired-x: to hide uninteresting files in dired
+(use-package dired-x
+  ;; :straight nil
+  ;; :ensure t 
+  :bind ("C-x C-j" . dired-jump)
+  :hook ((dired-mode . dired-omit-mode))
+  :config
+  (setq dired-omit-verbose nil)
+
+  ;; hide backup, autosave, *.*~ files
+  ;; omit mode can be toggled using `C-x M-o' in dired buffer.
+  ;;(setq dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$")
+  (setq dired-omit-files "^\\.?#\\|^\\.$")
+  (setq dired-omit-files
+        (concat dired-omit-files "\\|^.DS_STORE$\\|^.projectile$\\|^.git$"))
+  )
+
+;; }}}  .dired
+;; dired ends here
+
+;; Project
+;; #+NAME: project
+
+;; [[file:site-pkgs.org::project][project]]
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @PROJECT
 ;; ;;;////////////////////////////////////////////////////////////////
 
 
@@ -485,7 +651,7 @@
   :defer t
   :config
   (setq treemacs-no-png-images t
-	  treemacs-width 24)
+          treemacs-width 24)
   :bind ("C-c t" . treemacs))
 
 (use-package treemacs-projectile
@@ -530,7 +696,19 @@
   )
 
 
-;; ;; ---( ack )--------------------------------------------------------------
+
+;; }}}  .project
+;; project ends here
+
+;; Grep
+;; #+NAME: grep
+
+;; [[file:site-pkgs.org::grep][grep]]
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @GREP
+;; ;;;////////////////////////////////////////////////////////////////
+
+;; ---( ack )--------------------------------------------------------------
 
 (use-package ack
   :disabled t)
@@ -592,13 +770,23 @@
      '("find . -type f -print0 | xargs -P4 -0 egrep -nH " . 49))))
 
 
-;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @TEXT
-;; ;;;////////////////////////////////////////////////////////////////
+;; }}}  .grep
+;; grep ends here
 
+;; Text/begin
+;; #+NAME: text-begin
 
+;; [[file:site-pkgs.org::text-begin][text-begin]]
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @TEXT
+;; ;;;////////////////////////////////////////////////////////////////
+;; text-begin ends here
+
+;; Markdown
+;; #+NAME: markdown
+
+;; [[file:site-pkgs.org::markdown][markdown]]
 ;; ---( markdown )--------------------------------------------------------------
-
 
 (use-package markdown-mode
   :ensure t
@@ -618,9 +806,12 @@
 ;;     (let ((preferred-markdown-impl "peg-markdown"))
 ;;       (when (executable-find preferred-markdown-impl)
 ;;         (setq markdown-command preferred-markdown-impl)))))
+;; markdown ends here
 
+;; Markup
+;; #+NAME: markup
 
-
+;; [[file:site-pkgs.org::markup][markup]]
 ;; ---( css )--------------------------------------------------------------
 
 (use-package css-mode
@@ -631,14 +822,6 @@
 ;;   :config
 ;;   (add-hook 'css-mode-hook 'rainbow-mode)
 ;;   (add-hook 'less-mode-hook 'rainbow-mode))
-
-
-
-;; ---( json )--------------------------------------------------------------
-
-(use-package json-mode
-  :mode "\\.json\\'")
-
 
 ;; ---( nxml )--------------------------------------------------------------
 
@@ -655,7 +838,7 @@
 ;;   :init
 ;;   (defalias 'xml-mode 'nxml-mode)
 ;;   :config
-    
+
 ;;   (defun my-nxml-mode-hook ()
 ;;     (bind-key "<return>" 'newline-and-indent nxml-mode-map))
 ;;   (add-hook 'nxml-mode-hook 'my-nxml-mode-hook)
@@ -682,182 +865,28 @@
 ;;   (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 
 ;;   (setq web-mode-css-indent-offset 2))
+;; markup ends here
 
-  
+;; Text/end
+;; #+NAME: text-end
 
+;; [[file:site-pkgs.org::text-end][text-end]]
+;; }}}  .text
+;; text-end ends here
 
+;; Lang/begin
+;; #+NAME: lang-begin
 
-
-
-
-
+;; [[file:site-pkgs.org::lang-begin][lang-begin]]
 ;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @LANG
+;; {{{  @LANG
 ;; ;;;////////////////////////////////////////////////////////////////
+;; lang-begin ends here
 
+;; Lang: LSP.mode
+;; #+NAME: lang-lsp.mode
 
-;; ---( R )--------------------------------------------------------------
-
-(use-package ess
-  :if (version<= "25.1" emacs-version)
-  :defer t
-  :ensure t
-  
-  ;;:load-path "site-lisp/ess/lisp/"
-  ;;:config (ess-toggle-underscore nil)
-  :init
-  (add-hook 'ess-mode-hook
-            (lambda ()
-
-              (ess-set-style 'RStudio)
-            
-              ;; Replace \C-c with \M-c for CUA and ctrl key swap
-              
-              ;; ;; By popular demand:
-              ;;(define-key map "\C-m"             'ess-newline-and-indent); = [RETURN]
-              ;;(define-key map [remap yank]       'ess-yank)
-
-              (define-key ess-mode-map (kbd "M-c M-c")      'ess-eval-region-and-go)
-              
-              (define-key ess-mode-map (kbd "M-c C-r")      'ess-eval-region)
-              (define-key ess-mode-map (kbd "M-c M-r")      'ess-eval-region-and-go)
-              (define-key ess-mode-map (kbd "M-c C-b")      'ess-eval-buffer)
-              (define-key ess-mode-map (kbd "M-c M-b")      'ess-eval-buffer-and-go)
-              (define-key ess-mode-map (kbd "M-c C-<up>")   'ess-eval-buffer-from-beg-to-here)
-              (define-key ess-mode-map (kbd "M-c C-<down>") 'ess-eval-buffer-from-here-to-end)
-              (define-key ess-mode-map (kbd "M-c C-f")      'ess-eval-function)
-              (define-key ess-mode-map (kbd "M-c M-f")      'ess-eval-function-and-go)
-              (define-key ess-mode-map (kbd "M-c C-c")      'ess-eval-region-or-function-or-paragraph-and-step)
-              (define-key ess-mode-map (kbd "M-c C-p")      'ess-eval-paragraph-and-step)
-              (define-key ess-mode-map (kbd "M-c M-p")      'ess-eval-paragraph-and-go)
-              (define-key ess-mode-map (kbd "M-c M-x")      'ess-eval-region-or-function-or-paragraph)
-              (define-key ess-mode-map (kbd "M-c M-n")      'ess-eval-line-and-step)
-              (define-key ess-mode-map (kbd "M-c M-j")      'ess-eval-line)
-              (define-key ess-mode-map [(control return)]   'ess-eval-region-or-line-and-step)
-              (define-key ess-mode-map (kbd "M-c M-j")      'ess-eval-line-and-go)
-              ;; the next three can only work in S/R - mode {FIXME}
-              (define-key ess-mode-map (kbd "M-c M-a")      'ess-goto-beginning-of-function-or-para)
-              (define-key ess-mode-map (kbd "M-c M-e")      'ess-goto-end-of-function-or-para)
-              (define-key ess-mode-map "\C-xnd"             'ess-narrow-to-defun-or-para)
-              (define-key ess-mode-map "\C-xnf"             'ess-narrow-to-defun-or-para)
-              (define-key ess-mode-map (kbd "M-c M-y")      'ess-switch-to-ESS-deprecated)
-              (define-key ess-mode-map (kbd "M-c M-z")      'ess-switch-to-inferior-or-script-buffer)
-              (define-key ess-mode-map (kbd "M-c C-z")      'ess-switch-to-inferior-or-script-buffer)
-              (define-key ess-mode-map (kbd "C-c C-z")      'ess-switch-to-inferior-or-script-buffer)
-              (define-key ess-mode-map (kbd "C-c M-l")      'ess-load-file)
-              (define-key ess-mode-map (kbd "M-c M-l")      'ess-load-file); alias, as in 'iESS' where C-c C-l is comint-list-*
-              (define-key ess-mode-map (kbd "M-c M-v")      'ess-display-help-on-object)
-              ;;(define-key ess-mode-map "\C-c5\C-d"'ess-dump-object-into-edit-buffer-other-frame)
-              (define-key ess-mode-map (kbd "M-c M-s")      'ess-switch-process) ; use a
-              
-              ;; different process for the buffer.
-              ;; (define-key map "\C-c\C-t"        'ess-execute-in-tb)
-              ;;(define-key ess-mode-map (kbd "M-c \t")     'ess-complete-object-name-deprecated)
-              ;; (define-key ess-mode-map "\C-c\t"        'comint-dynamic-complete-filename)
-              
-              (unless (and (featurep 'emacs) (>= emacs-major-version 24))
-                (define-key ess-mode-map (kbd "M-c <tab>")  'comint-dynamic-complete))
-              (define-key ess-mode-map (kbd "M-c .")        'ess-list-object-completions)
-              
-              ;; wrong here (define-key ess-mode-map "\C-c\C-k" 'ess-request-a-process)
-              (define-key ess-mode-map (kbd "M-c M-k")      'ess-force-buffer-current)
-              (define-key ess-mode-map (kbd "M-c `")        'ess-show-traceback)
-              (define-key ess-mode-map (kbd "M-c \\")       'ess-show-call-stack)
-              
-              ;;(define-key ess-mode-map (kbd "M-c .")      (lambda () (interactive) (message "ess-set-style moved to C-c C-e C-s. Sorry for the inconvenience")))
-              
-              ;;(define-key ess-mode-map "{"                'ess-electric-brace)
-              ;;(define-key ess-mode-map "}"                'ess-electric-brace)
-              
-              (define-key ess-mode-map (kbd "M-c M-q")      'ess-indent-exp)
-              (define-key ess-mode-map (kbd "<M-S-right>")  'ess-mark-function-or-para)
-              (if (featurep 'xemacs) ;; work around Xemacs bug (\C-\M-h redefines M-BS):
-                  (define-key ess-mode-map [(meta backspace)] 'backward-kill-word))
-              ;;(define-key ess-mode-map [delete]           'backward-delete-char-untabify)
-              
-              ;;(define-key ess-mode-map "\t"               'ess-indent-or-complete)
-              (define-key ess-mode-map (kbd "M-c C-q")      'ess-quit)
-              (define-key ess-mode-map (kbd "M-c M-r")      'ess-use-this-dir)
-
-              ;; smart operators; most likely will go in the future into a separate local map
-              ;;(define-key map ","          'ess-smart-comma)
-
-              (define-key ess-mode-map (kbd "M-c M-d")       'ess-doc-map)
-              (define-key ess-mode-map (kbd "M-c M-e")       'ess-extra-map)
-              (define-key ess-mode-map (kbd "M-c M-t")       'ess-dev-map)
-              (define-key ess-mode-map (kbd "M-c C-d")       'ess-doc-map)
-              (define-key ess-mode-map (kbd "M-c C-e")       'ess-extra-map)
-              (define-key ess-mode-map (kbd "M-c C-t")       'ess-dev-map)
-
-              
-;;            (ess-toggle-underscore nil))
-               ;; (define-key ess-mode-map (kbd "M-c M-c") 
-               ;;   'ess-eval-region-and-go)
-            ))
-  (add-hook 'inferior-ess-mode-hook
-            '(lambda nil
-               (define-key inferior-ess-mode-map [\C-up]
-                 'comint-previous-matching-input-from-input)
-               (define-key inferior-ess-mode-map [\C-down]
-                 'comint-next-matching-input-from-input)
-               (define-key inferior-ess-mode-map [\C-x \t]
-                 'comint-dynamic-complete-filename)
-               )
-            )
-  :commands R)
-
-(use-package ess-R-data-view
-  :defer t)
-
-(use-package ess-R-object-popup
-  :defer t)
-
-(use-package ess-R-data-smart-equals
-  :disabled t)
-
-(use-package ess-R-data-smart-underscore
-  :disabled t)
-
-
-
-;; ---( polymode )--------------------------------------------------------------
-
-(use-package polymode
-  :ensure t
-  :commands (poly-markdown+r-mode)
-  :mode (
-         ("\\.md$" . poly-markdown-mode)
-         ("\\.Snw$" . poly-noweb+r-mode)
-         ("\\.Rnw$" . poly-noweb+r-mode)
-         ("\\.rmd$" . poly-markdown+r-mode)
-         ("\\.Rmd$" . poly-markdown+r-mode)
-         ("\\.rapport$" . poly-rapport-mode)
-         ("\\.Rhtml$" . poly-html+r-mode)
-         ("\\.Rbrew$" . poly-brew+r-mode)
-         ("\\.Rcpp$" . poly-r+c++-mode)
-         ("\\.cppR$" . poly-c++r-mode)
-         )
-  :init
-  (autoload 'r-mode "ess-site.el" "Major mode for editing R source." t)
-)
-
-
-(use-package poly-markdown
-  :ensure t
-  :mode (
-	 ("\\.md" . poly-markdown-mode)
-  )
-)
-
-(use-package poly-R
-  :if (version<= "25.1" emacs-version)
-  :defer t
-;;  :ensure t
-)
-
-
-
-
+;; [[file:site-pkgs.org::lang-lsp.mode][lang-lsp.mode]]
 ;; ---( LSP mode )------------------------------------------------------------
 
 (use-package lsp-mode
@@ -869,7 +898,16 @@
          (python-mode . lsp)
          ;; if you want which-key integration
          (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp)
+  :commands lsp
+  :config
+  (dolist (dir '(
+               "[/\\\\]\\.cache"
+               "[/\\\\]venv$"
+               "[/\\\\]build$"
+               "[/\\\\]dist$"
+               ))
+    (push dir lsp-file-watch-ignored-directories))
+  )
 
 ;; optionally
 (use-package lsp-ui :commands lsp-ui-mode)
@@ -889,12 +927,16 @@
   :defer t
   :config
   (setq lsp-ui-sideline-enable nil
-	    lsp-ui-doc-delay 2)
+            lsp-ui-doc-delay 2)
   :hook (lsp-mode . lsp-ui-mode)
   :bind (:map lsp-ui-mode-map
-	      ("C-c i" . lsp-ui-imenu)))
+              ("C-c i" . lsp-ui-imenu)))
+;; lang-lsp.mode ends here
 
+;; Lang: LSP.dap
+;; #+NAME: lang-lsp.mode.dap
 
+;; [[file:site-pkgs.org::lang-lsp.mode.dap][lang-lsp.mode.dap]]
 ;; ---( dap )--------------------------------------------------------------
 
 ;; Integration with the debug server 
@@ -907,9 +949,169 @@
 
 ;; (use-package dap-mode)
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+;; lang-lsp.mode.dap ends here
+
+;; Lang: R/ess
+;; #+NAME: lang-r.ess
+
+;; [[file:site-pkgs.org::lang-r.ess][lang-r.ess]]
+;; ---( R )--------------------------------------------------------------
+
+  (use-package ess
+;;   :if (version<= "25.1" emacs-version)
+;;  :defer t
+    :ensure t
+
+    ;;:load-path "site-lisp/ess/lisp/"
+    ;;:config (ess-toggle-underscore nil)
+    :init
+    (add-hook 'ess-mode-hook
+              (lambda ()
+
+                (ess-set-style 'RStudio)
+
+                ;; Replace \C-c with \M-c for CUA and ctrl key swap
+
+                ;; ;; By popular demand:
+                ;;(define-key map "\C-m"             'ess-newline-and-indent); = [RETURN]
+                ;;(define-key map [remap yank]       'ess-yank)
+
+                (define-key ess-mode-map (kbd "M-c M-c")      'ess-eval-region-and-go)
+
+                (define-key ess-mode-map (kbd "M-c C-r")      'ess-eval-region)
+                (define-key ess-mode-map (kbd "M-c M-r")      'ess-eval-region-and-go)
+                (define-key ess-mode-map (kbd "M-c C-b")      'ess-eval-buffer)
+                (define-key ess-mode-map (kbd "M-c M-b")      'ess-eval-buffer-and-go)
+                (define-key ess-mode-map (kbd "M-c C-<up>")   'ess-eval-buffer-from-beg-to-here)
+                (define-key ess-mode-map (kbd "M-c C-<down>") 'ess-eval-buffer-from-here-to-end)
+                (define-key ess-mode-map (kbd "M-c C-f")      'ess-eval-function)
+                (define-key ess-mode-map (kbd "M-c M-f")      'ess-eval-function-and-go)
+                (define-key ess-mode-map (kbd "M-c C-c")      'ess-eval-region-or-function-or-paragraph-and-step)
+                (define-key ess-mode-map (kbd "M-c C-p")      'ess-eval-paragraph-and-step)
+                (define-key ess-mode-map (kbd "M-c M-p")      'ess-eval-paragraph-and-go)
+                (define-key ess-mode-map (kbd "M-c M-x")      'ess-eval-region-or-function-or-paragraph)
+                (define-key ess-mode-map (kbd "M-c M-n")      'ess-eval-line-and-step)
+                (define-key ess-mode-map (kbd "M-c M-j")      'ess-eval-line)
+                (define-key ess-mode-map [(control return)]   'ess-eval-region-or-line-and-step)
+                (define-key ess-mode-map (kbd "M-c M-j")      'ess-eval-line-and-go)
+                ;; the next three can only work in S/R - mode {FIXME}
+                (define-key ess-mode-map (kbd "M-c M-a")      'ess-goto-beginning-of-function-or-para)
+                (define-key ess-mode-map (kbd "M-c M-e")      'ess-goto-end-of-function-or-para)
+                (define-key ess-mode-map "\C-xnd"             'ess-narrow-to-defun-or-para)
+                (define-key ess-mode-map "\C-xnf"             'ess-narrow-to-defun-or-para)
+                (define-key ess-mode-map (kbd "M-c M-y")      'ess-switch-to-ESS-deprecated)
+                (define-key ess-mode-map (kbd "M-c M-z")      'ess-switch-to-inferior-or-script-buffer)
+                (define-key ess-mode-map (kbd "M-c C-z")      'ess-switch-to-inferior-or-script-buffer)
+                (define-key ess-mode-map (kbd "C-c C-z")      'ess-switch-to-inferior-or-script-buffer)
+                (define-key ess-mode-map (kbd "C-c M-l")      'ess-load-file)
+                (define-key ess-mode-map (kbd "M-c M-l")      'ess-load-file); alias, as in 'iESS' where C-c C-l is comint-list-*
+                (define-key ess-mode-map (kbd "M-c M-v")      'ess-display-help-on-object)
+                ;;(define-key ess-mode-map "\C-c5\C-d"'ess-dump-object-into-edit-buffer-other-frame)
+                (define-key ess-mode-map (kbd "M-c M-s")      'ess-switch-process) ; use a
+
+                ;; different process for the buffer.
+                ;; (define-key map "\C-c\C-t"        'ess-execute-in-tb)
+                ;;(define-key ess-mode-map (kbd "M-c \t")     'ess-complete-object-name-deprecated)
+                ;; (define-key ess-mode-map "\C-c\t"        'comint-dynamic-complete-filename)
+
+                (unless (and (featurep 'emacs) (>= emacs-major-version 24))
+                  (define-key ess-mode-map (kbd "M-c <tab>")  'comint-dynamic-complete))
+                (define-key ess-mode-map (kbd "M-c .")        'ess-list-object-completions)
+
+                ;; wrong here (define-key ess-mode-map "\C-c\C-k" 'ess-request-a-process)
+                (define-key ess-mode-map (kbd "M-c M-k")      'ess-force-buffer-current)
+                (define-key ess-mode-map (kbd "M-c `")        'ess-show-traceback)
+                (define-key ess-mode-map (kbd "M-c \\")       'ess-show-call-stack)
+
+                ;;(define-key ess-mode-map (kbd "M-c .")      (lambda () (interactive) (message "ess-set-style moved to C-c C-e C-s. Sorry for the inconvenience")))
+
+                ;;(define-key ess-mode-map "{"                'ess-electric-brace)
+                ;;(define-key ess-mode-map "}"                'ess-electric-brace)
+
+                (define-key ess-mode-map (kbd "M-c M-q")      'ess-indent-exp)
+                (define-key ess-mode-map (kbd "<M-S-right>")  'ess-mark-function-or-para)
+                (if (featurep 'xemacs) ;; work around Xemacs bug (\C-\M-h redefines M-BS):
+                    (define-key ess-mode-map [(meta backspace)] 'backward-kill-word))
+                ;;(define-key ess-mode-map [delete]           'backward-delete-char-untabify)
+
+                ;;(define-key ess-mode-map "\t"               'ess-indent-or-complete)
+                (define-key ess-mode-map (kbd "M-c C-q")      'ess-quit)
+                (define-key ess-mode-map (kbd "M-c M-r")      'ess-use-this-dir)
+
+                ;; smart operators; most likely will go in the future into a separate local map
+                ;;(define-key map ","          'ess-smart-comma)
+
+                (define-key ess-mode-map (kbd "M-c M-d")       'ess-doc-map)
+                (define-key ess-mode-map (kbd "M-c M-e")       'ess-extra-map)
+                (define-key ess-mode-map (kbd "M-c M-t")       'ess-dev-map)
+                (define-key ess-mode-map (kbd "M-c C-d")       'ess-doc-map)
+                (define-key ess-mode-map (kbd "M-c C-e")       'ess-extra-map)
+                (define-key ess-mode-map (kbd "M-c C-t")       'ess-dev-map)
 
 
+  ;;            (ess-toggle-underscore nil))
+                 ;; (define-key ess-mode-map (kbd "M-c M-c") 
+                 ;;   'ess-eval-region-and-go)
+              ))
+    (add-hook 'inferior-ess-mode-hook
+              '(lambda nil
+                 (define-key inferior-ess-mode-map [\C-up]
+                   'comint-previous-matching-input-from-input)
+                 (define-key inferior-ess-mode-map [\C-down]
+                   'comint-next-matching-input-from-input)
+                 (define-key inferior-ess-mode-map [\C-x \t]
+                   'comint-dynamic-complete-filename)
+                 )
+              )
+    :commands R)
 
+  (use-package ess-R-data-view
+    :defer t)
+
+  (use-package ess-R-object-popup
+    :defer t)
+
+  (use-package ess-R-data-smart-equals
+    :disabled t)
+
+  (use-package ess-R-data-smart-underscore
+    :disabled t)
+;; lang-r.ess ends here
+
+;; Lang: R/polymode
+;; #+NAME: lang-r.ess.polymode
+
+;; [[file:site-pkgs.org::lang-r.ess.polymode][lang-r.ess.polymode]]
+;; ---( polymode )--------------------------------------------------------------
+
+
+(use-package polymode
+  :ensure t
+  :commands (poly-markdown+r-mode)
+  :mode (("\\.rmd\\'" . poly-markdown+r-mode)
+	 ("\\.Rmd\\'" . poly-markdown+r-mode))
+
+  :init
+  (autoload 'r-mode "ess-site.el" "Major mode for editing R source." t)
+)
+
+
+(use-package poly-markdown
+  :ensure t
+  :mode (
+	 ("\\.md" . poly-markdown-mode)
+  )
+)
+
+(use-package poly-R
+  :ensure t
+)
+;; lang-r.ess.polymode ends here
+
+;; Lang: Python/mode
+;; #+NAME: lang-python.mode
+
+;; [[file:site-pkgs.org::lang-python.mode][lang-python.mode]]
 ;; ---( python )--------------------------------------------------------------
 
 ;; @see: https://gitlab.com/nathanfurnal/dotemacs/-/snippets/2060535?utm_source=pocket_mylist
@@ -949,82 +1151,6 @@
 
 
 
-;; Required to easily switch virtual envs 
-;; via the menu bar or with `pyvenv-workon` 
-;; Setting the `WORKON_HOME` environment variable points 
-;; at where the envs are located. I use (miniconda ^H) poetry. 
-(use-package pyvenv
-  :ensure t
-  :defer t
-  :config
-  ;; Setting work on to easily switch between environments
-  ;;(setenv "WORKON_HOME" (expand-file-name "~/miniconda3/envs/"))
-  (setenv "WORKON_HOME" (expand-file-name "~/.cache/pypoetry/virtualenvs"))
-  ;; Display virtual envs in the menu bar
-  (setq pyvenv-menu t)
-  ;; Restart the python process when switching environments
-  (add-hook 'pyvenv-post-activate-hooks (lambda ()
-					  (pyvenv-restart-python)))
-  :hook (python-mode . pyvenv-mode))
-
-;; Language server for Python 
-;; Read the docs for the different variables set in the config.
-(use-package lsp-pyright
-  :ensure t
-  :defer t
-  :config
-  ;;(setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
-  (setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
-  (setq lsp-pyright-disable-language-service nil
-	lsp-pyright-disable-organize-imports nil
-	lsp-pyright-auto-import-completions t
-	lsp-pyright-use-library-code-for-types t
-	;;lsp-pyright-venv-path "~/miniconda3/envs")
-	lsp-pyright-venv-path "~/.cache/pypoetry/virtualenvs")
-  :hook ((python-mode . (lambda () 
-                          (require 'lsp-pyright) (lsp-deferred)))))
-
-;; Format the python buffer following YAPF rules
-;; There's also blacken if you like it better.
-(use-package yapfify
-  :ensure t
-  :defer t
-  :hook (python-mode . yapf-mode))
-
-
-
-;; python-black
-(use-package python-black
-  ;;:delight python-black-on-save-mode "⚫️"
-  :ensure t
-  :hook
-  (python-mode . python-black-on-save-mode)
-  :init
-  (put 'python-black-command 'safe-local-variable #'stringp)
-  (put 'python-black-extra-args 'safe-local-variable #'stringp)
-  (put 'python-black-on-save-mode 'safe-local-variable #'booleanp)
-  )
-
-;; poetry
-(use-package poetry
-  :ensure t
-  ;; :init
-  ;; imperfect tracking strategy causes lags in builds
-  ;; (setq poetry-tracking-strategy 'switch-buffer)
-  :hook
-  ;; activate poetry-tracking-mode when python-mode is active
-  (python-mode . poetry-tracking-mode)
-  )
-
-;; (use-package poetry
-;;   :ensure t
-;;   :config
-;;   (add-hook 'poetry-tracking-mode-hook (lambda () (remove-hook 'post-command-hook 'poetry-track-virtualenv)))
-;;   (add-hook 'python-mode-hook 'poetry-track-virtualenv)
-;;   (add-hook 'projectile-after-switch-project-hook 'poetry-track-virtualenv))
-
-
-
 ;; (use-package python-mode
 ;;   :mode ("\\.py\\'" . python-mode)
 ;;   :interpreter ("python" . python-mode)
@@ -1052,16 +1178,132 @@
 ;;     (bind-key "C-c C-z" 'python-shell python-mode-map)
 ;;     (unbind-key "C-c c" python-mode-map))
 ;;   (add-hook 'python-mode-hook 'my-python-mode-hook))
+;; lang-python.mode ends here
 
+;; Lang: Python/env
+;; #+NAME: lang-python.env
+
+;; [[file:site-pkgs.org::lang-python.env][lang-python.env]]
+;; ---( pyvenv )--------------------------------------------------------------
+
+;; Required to easily switch virtual envs 
+;; via the menu bar or with `pyvenv-workon` 
+;; Setting the `WORKON_HOME` environment variable points 
+;; at where the envs are located. I use (miniconda ^H) poetry. 
+(use-package pyvenv
+  :ensure t
+  :defer t
+  :config
+  ;; Setting work on to easily switch between environments
+  ;;(setenv "WORKON_HOME" (expand-file-name "~/miniconda3/envs/"))
+  (setenv "WORKON_HOME" (expand-file-name "~/.cache/pypoetry/virtualenvs"))
+  ;; Display virtual envs in the menu bar
+  (setq pyvenv-menu t)
+  ;; Restart the python process when switching environments
+  (add-hook 'pyvenv-post-activate-hooks (lambda ()
+                                          (pyvenv-restart-python)))
+  :hook (python-mode . pyvenv-mode))
+
+
+;; ---( poetry )-------------------------------------------------------------
+
+(use-package poetry
+  :ensure t
+  ;; :init
+  ;; imperfect tracking strategy causes lags in builds
+  ;; (setq poetry-tracking-strategy 'switch-buffer)
+  :hook
+  ;; activate poetry-tracking-mode when python-mode is active
+  (python-mode . poetry-tracking-mode)
+  )
+
+;; (use-package poetry
+;;   :ensure t
+;;   :config
+;;   (add-hook 'poetry-tracking-mode-hook (lambda () (remove-hook 'post-command-hook 'poetry-track-virtualenv)))
+;;   (add-hook 'python-mode-hook 'poetry-track-virtualenv)
+;;   (add-hook 'projectile-after-switch-project-hook 'poetry-track-virtualenv))
+
+
+;; ---( pipenv )-------------------------------------------------------------
+;;
+;; (use-package pipenv
+;;   :unless (version< emacs-version "25.1")
+;;   :defer t
+;;   ;; :ensure t
+;;   :hook (python-mode . pipenv-mode)
+;;   :init
+;;   (setq
+;;    pipenv-projectile-after-switch-function
+;;    #'pipenv-projectile-after-switch-extended))
+;; lang-python.env ends here
+
+;; Lang: Python/lsp
+;; #+NAME: lang-python.lsp
+
+;; [[file:site-pkgs.org::lang-python.lsp][lang-python.lsp]]
+;; ---( lsp-pyright )--------------------------------------------------------------
+
+;; Language server for Python 
+;; Read the docs for the different variables set in the config.
+(use-package lsp-pyright
+  :ensure t
+  :defer t
+  :config
+  ;;(setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
+  (setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
+  (setq lsp-pyright-disable-language-service nil
+        lsp-pyright-disable-organize-imports nil
+        lsp-pyright-auto-import-completions t
+        lsp-pyright-use-library-code-for-types t
+        ;;lsp-pyright-venv-path "~/miniconda3/envs")
+        lsp-pyright-venv-path "~/.cache/pypoetry/virtualenvs")
+  :hook ((python-mode . (lambda () 
+                          (require 'lsp-pyright) (lsp-deferred)))))
+;; lang-python.lsp ends here
+
+;; Lang: Python/tools
+;; #+NAME: lang-python.tools
+
+;; [[file:site-pkgs.org::lang-python.tools][lang-python.tools]]
+;; ---( yapfify )-------------------------------------------------------------
+
+;; Format the python buffer following YAPF rules
+;; There's also blacken if you like it better.
+(use-package yapfify
+  :ensure t
+  :defer t
+  :hook (python-mode . yapf-mode))
+
+
+;; ---( python-black )--------------------------------------------------------------
+
+(use-package python-black
+  ;;:delight python-black-on-save-mode "⚫️"
+  :ensure t
+  :hook
+  (python-mode . python-black-on-save-mode)
+  :init
+  (put 'python-black-command 'safe-local-variable #'stringp)
+  (put 'python-black-extra-args 'safe-local-variable #'stringp)
+  (put 'python-black-on-save-mode 'safe-local-variable #'booleanp)
+  )
+;; lang-python.tools ends here
+
+;; Lang: Python/elpy
+;; #+NAME: lang-python.elpy
+
+;; [[file:site-pkgs.org::lang-python.elpy][lang-python.elpy]]
+;; ---( python: elpy )--------------------------------------------------------------
 
 (use-package elpy
   :disabled t
   :preface
-  
+
   ;; @see: https://elpy.readthedocs.org/en/latest/
   ;; @see: https://github.com/jorgenschaefer/elpy
   ;; @see: https://youtu.be/0kuCeS-mfyc
-  
+
   (defvar elpy-mode-map
     (let ((map (make-sparse-keymap)))
       ;; Alphabetical order to make it easier to find free C-c C-X
@@ -1071,10 +1313,10 @@
       ;; (define-key map (kbd "<backtab>")   'python-indent-dedent-line)
 
       ;; (define-key map (kbd "C-M-x")   'python-shell-send-defun)
-      
+
       (define-key map (kbd "M-c <")   'python-indent-shift-left)
       (define-key map (kbd "M-c >")   'python-indent-shift-right)
-      
+
       (define-key map (kbd "M-c RET") 'elpy-importmagic-add-import)
       (define-key map (kbd "M-c M-b") 'elpy-nav-expand-to-indentation)
       (define-key map (kbd "M-c M-c") 'elpy-shell-send-region-or-buffer)
@@ -1109,7 +1351,7 @@
 
       ;; (define-key map (kbd "M-.")     'elpy-goto-definition)
       ;; (define-key map (kbd "M-TAB")   'elpy-company-backend)
-    
+
       (define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-below)
       ;;(define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-above)
 
@@ -1127,7 +1369,7 @@
 
       (define-key map [(meta prior)]    'elpy-goto-definition)
       (define-key map [(meta next)]     'pop-tag-mark)
-      
+
       (define-key map [(control menu)]   'elpy-company-backend)
 
       map)
@@ -1136,7 +1378,7 @@
   (elpy-enable)
   (setq python-shell-interpreter "jupyter"
         python-shell-interpreter-args "console --simple-prompt")
- 
+
   ;; (elpy-use-ipython "ipython3") 
   (defalias 'workon 'pyvenv-workon))
 
@@ -1144,6 +1386,14 @@
 (add-to-list 'process-coding-system-alist '("python" . (utf-8 . utf-8)))
 (add-to-list 'process-coding-system-alist '("elpy" . (utf-8 . utf-8)))
 (add-to-list 'process-coding-system-alist '("flake8" . (utf-8 . utf-8)))
+;; lang-python.elpy ends here
+
+;; Lang: Python/ein
+;; #+NAME: lang-python.ein
+
+;; [[file:site-pkgs.org::lang-python.ein][lang-python.ein]]
+;; ---( python: ein )--------------------------------------------------------------
+
 
 (use-package ein
   :unless (version< emacs-version "25.1")
@@ -1180,29 +1430,19 @@
 ;;   (defalias 'einp 'ein:notebooklist-open)
 ;;   (defalias 'eins 'ein:jupyter-server-start)
 ;;   )
-  
+;; lang-python.ein ends here
 
-;; (use-package pipenv
-;;   :unless (version< emacs-version "25.1")
-;;   :defer t
-;;   ;; :ensure t
-;;   :hook (python-mode . pipenv-mode)
-;;   :init
-;;   (setq
-;;    pipenv-projectile-after-switch-function
-;;    #'pipenv-projectile-after-switch-extended))
+;; Lang: Julia
+;; #+NAME: lang-julia
 
-
-
+;; [[file:site-pkgs.org::lang-julia][lang-julia]]
 ;; ---( julia )--------------------------------------------------------------
-
 
 ;; @see: https://github.com/JuliaEditorSupport/julia-emacs
 ;; @see: https://github.com/tpapp/julia-repl
 ;; @see: https://github.com/nnicandro/emacs-jupyter
 ;; @see: https://julia-users-zurich.github.io/talks/talk-2018-04/emacs.html
 ;; @see: https://github.com/cgroll/dot_emacs.d/blob/master/init.el
-
 
 (use-package julia-mode
    :ensure t
@@ -1229,9 +1469,6 @@
      (add-to-list 'julia-mode-hook 'julia-repl-mode)
      )
    )
-
-
-
 
 ;; ;; allow julia to be loaded through call to julia-mode or
 ;; ;; ess-inferior process
@@ -1277,9 +1514,12 @@
 ;; ;; in order to add ess-process afterward, apply julia-mode again on
 ;; ;; open buffers - probably ess-julia.el has to be loaded again also:
 ;; ;; M-x load-file ess-julia.el
+;; lang-julia ends here
 
+;; Lang: Ruby
+;; #+NAME: lang-ruby
 
-
+;; [[file:site-pkgs.org::lang-ruby][lang-ruby]]
 ;; ---( ruby )--------------------------------------------------------------
 
 (use-package ruby-mode
@@ -1314,8 +1554,6 @@
   ;; (add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
   )
 
-
-
 ;; ---( puppet )--------------------------------------------------------------
 
 (use-package puppet-mode
@@ -1325,9 +1563,12 @@
   ;; (use-package puppet-ext
   ;;   :ensure t)
   )
+;; lang-ruby ends here
 
+;; Lang: Scala
+;; #+NAME: lang-scala
 
-
+;; [[file:site-pkgs.org::lang-scala][lang-scala]]
 ;; ---( scala )--------------------------------------------------------------
 
 ;; @see: https://gitlab.com/balajisi/emacs/blob/master/init.el
@@ -1351,9 +1592,6 @@
 
 ;;(use-package ensime
 ;;  :pin melpa-stable)
-
-
-
 
 (use-package scala-mode2
   :disabled t
@@ -1379,8 +1617,12 @@
               ))
     (use-package sbt-mode
       :ensure)))
+;; lang-scala ends here
 
+;; Lang: Haskell
+;; #+NAME: lang-haskell
 
+;; [[file:site-pkgs.org::lang-haskell][lang-haskell]]
 ;; ---( haskell )--------------------------------------------------------------
 
 ;; @see: https://gitlab.com/balajisi/emacs/blob/master/init.el
@@ -1411,7 +1653,12 @@
 (use-package idris-mode
   :ensure
   :disabled t)
+;; lang-haskell ends here
 
+;; Lang: Drools
+;; #+NAME: lang-drools
+
+;; [[file:site-pkgs.org::lang-drools][lang-drools]]
 ;; ---( drools )--------------------------------------------------------------
 
 ;; @see: https://github.com/pdorrell/rules-editing-mode
@@ -1424,8 +1671,8 @@
 
 (defun set-extension-mode (extension mode)
   (setq auto-mode-alist
-	(cons (cons (concat "\\" extension "\\'") mode)
-	      auto-mode-alist) ) )
+        (cons (cons (concat "\\" extension "\\'") mode)
+              auto-mode-alist) ) )
 
 (set-extension-mode ".drl" 'drools-mode)
 (set-extension-mode ".dslr" 'drools-mode)
@@ -1439,38 +1686,111 @@
 (defun my-drools-hook ()
   (setq indent-tabs-mode nil)
 (local-set-key [?\C-m] 'drools-return-and-indent) )
+;; lang-drools ends here
 
+;; Lang/end
+;; #+NAME: lang-end
 
+;; [[file:site-pkgs.org::lang-end][lang-end]]
+;; }}}  .lang
+;; lang-end ends here
 
+;; REST/begin
+;; #+NAME: rest-begin
+
+;; [[file:site-pkgs.org::rest-begin][rest-begin]]
 ;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @VM
+;; {{{  @REST
 ;; ;;;////////////////////////////////////////////////////////////////
+;; rest-begin ends here
 
+;; Json
+;; #+NAME: rest-json
 
+;; [[file:site-pkgs.org::rest-json][rest-json]]
+;; ---( json )--------------------------------------------------------------
+
+(use-package json-mode
+  :ensure t
+  :mode "\\.json\\'")
+
+(use-package json-reformat
+  :ensure t
+  :after json-mode
+  :init (setq json-reformat:indent-width 2))
+;; rest-json ends here
+
+;; Yaml
+;; #+NAME: rest-yaml
+
+;; [[file:site-pkgs.org::rest-yaml][rest-yaml]]
 ;; ---( yaml )--------------------------------------------------------------
 
 (use-package yaml-mode
   :ensure t
   :defer t)
+;; rest-yaml ends here
 
-;; ---( docker )--------------------------------------------------------------
+;; TODO Request 
+;; #+NAME: rest-request
 
+;; [[file:site-pkgs.org::rest-request][rest-request]]
+;; ---( request )--------------------------------------------------------------
 
-(use-package docker
+;; ---( restclient )------------------------------------------------------
+
+;; @see: https://github.com/pashky/restclient.el
+
+(use-package restclient
   :ensure t
-  :defer t)
+  :defer 30
+  :init
+    (progn
+      ;; (unless restclient-use-org
+      ;;   (add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode)))
+      ;; (spacemacs/set-leader-keys-for-major-mode 'restclient-mode
+      ;;   "n" 'restclient-jump-next
+      ;;   "p" 'restclient-jump-prev
+      ;;   "s" 'restclient-http-send-current-stay-in-window
+      ;;   "S" 'restclient-http-send-current
+      ;;   "r" 'spacemacs/restclient-http-send-current-raw-stay-in-window
+      ;;   "R" 'restclient-http-send-current-raw
+      ;;   "y" 'restclient-copy-curl-command)
+      ) 
+  )
 
-(use-package docker-tramp
-  :ensure t
-  :defer t)
 
-(use-package dockerfile-mode
-  :ensure t
-  :mode "Dockerfile\\'")
+;; ---( ob-http )------------------------------------------------------
 
+;; @see: https://github.com/zweifisch/ob-http
+;; @see: https://emacs.stackexchange.com/questions/2427/how-to-test-rest-api-with-emacs
 
-;; ---( ops )--------------------------------------------------------------
+;; (use-package ob-http
+;;   :ensure t
+;;   :defer 30
+;;   )
+;; rest-request ends here
 
+;; Rest/end
+;; #+NAME: rest-end
+
+;; [[file:site-pkgs.org::rest-end][rest-end]]
+;; }}}  .rest
+;; rest-end ends here
+
+;; OP/begin
+;; #+NAME: op-begin
+
+;; [[file:site-pkgs.org::op-begin][op-begin]]
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @OP
+;; ;;;////////////////////////////////////////////////////////////////
+;; op-begin ends here
+
+;; Ansible
+;; #+NAME: vm-ansible
+
+;; [[file:site-pkgs.org::vm-ansible][vm-ansible]]
 ;; @see: https://emacs-lsp.github.io/lsp-mode/page/lsp-ansible/
 
 (use-package ansible
@@ -1543,21 +1863,75 @@
                         :tail-mode 'body
                         :head-adjust-face nil
                         :tail-adjust-face nil)))
+;; vm-ansible ends here
 
+;; Terraform
+;; #+NAME: op-terraform
+
+;; [[file:site-pkgs.org::op-terraform][op-terraform]]
+;; ---( terraform )--------------------------------------------------------------
 
 (use-package company-terraform
   :ensure t
   :defer t)
+;; op-terraform ends here
 
+;; OP/end
+;; #+NAME: op-end
 
+;; [[file:site-pkgs.org::op-end][op-end]]
+;; }}}  .op
+;; op-end ends here
 
+;; VM/begin
+;; #+NAME: vm-begin
 
-
+;; [[file:site-pkgs.org::vm-begin][vm-begin]]
 ;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @TEX
+;; {{{  @VM
 ;; ;;;////////////////////////////////////////////////////////////////
+;; vm-begin ends here
+
+;; Docker
+;; #+NAME: vm-docker
+
+;; [[file:site-pkgs.org::vm-docker][vm-docker]]
+;; ---( docker )--------------------------------------------------------------
 
 
+(use-package docker
+  :ensure t
+  :defer t)
+
+(use-package docker-tramp
+  :ensure t
+  :defer t)
+
+(use-package dockerfile-mode
+  :ensure t
+  :mode "Dockerfile\\'")
+;; vm-docker ends here
+
+;; VM/end
+;; #+NAME: vm-end
+
+;; [[file:site-pkgs.org::vm-end][vm-end]]
+;; }}}  .vm
+;; vm-end ends here
+
+;; TeX/begin
+;; #+NAME: tex-begin
+
+;; [[file:site-pkgs.org::tex-begin][tex-begin]]
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @TEX
+;; ;;;////////////////////////////////////////////////////////////////
+;; tex-begin ends here
+
+;; LaTeX
+;; #+NAME: tex-latex
+
+;; [[file:site-pkgs.org::tex-latex][tex-latex]]
 ;; ---( LaTeX )--------------------------------------------------------------
 
 ;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
@@ -1689,8 +2063,12 @@ the automatic filling of the current paragraph."
 ;;                             :doc-spec '(("(latex2e)Concept Index" )
 ;;                                         ("(latex2e)Command Index")))))
 ;;   )
+;; tex-latex ends here
 
+;; PDF
+;; #+NAME: tex-pdf
 
+;; [[file:site-pkgs.org::tex-pdf][tex-pdf]]
 ;; ---( pdf )--------------------------------------------------------------
 
 (message "#pdf-tools(0): '( (h7/use-pdf-tools . %s) )" (h7/use-pdf-tools)) 
@@ -1739,13 +2117,28 @@ the automatic filling of the current paragraph."
 ;; (use-package biblithek
 ;;   :disabled t
 ;; )
+;; tex-pdf ends here
 
+;; TeX/end
+;; #+NAME: tex-end
 
+;; [[file:site-pkgs.org::tex-end][tex-end]]
+;; }}}  .tex
+;; tex-end ends here
 
+;; Fonts/begin
+;; #+NAME: fonts-begin
+
+;; [[file:site-pkgs.org::fonts-begin][fonts-begin]]
 ;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @FONT
+;; {{{  @FONT
 ;; ;;;////////////////////////////////////////////////////////////////
+;; fonts-begin ends here
 
+;; Faces
+;; #+NAME: fonts-faces
+
+;; [[file:site-pkgs.org::fonts-faces][fonts-faces]]
 ;; ---( faces )--------------------------------------------------------------
 
 ;; (custom-set-faces
@@ -1759,8 +2152,12 @@ the automatic filling of the current paragraph."
 ;;    'user
 ;;    '(variable-pitch ((t (:family "Source Sans Pro" :foundry "ADBE" :slant normal :weight semi-bold :height 135 :width normal))))
 ;;    '(fixed-pitch ((t ( :family "JetBrains Mono Medium")))))
+;; fonts-faces ends here
 
+;; Ligatures
+;; #+NAME: fonts-ligatures
 
+;; [[file:site-pkgs.org::fonts-ligatures][fonts-ligatures]]
 ;; ---( ligatures )--------------------------------------------------------------
 
 (cond
@@ -1776,12 +2173,12 @@ the automatic filling of the current paragraph."
     (setq ligature-path (expand-file-name "local/repos/ligatures.el" user-emacs-directory))
     (let ((ligature-source (expand-file-name "ligatures.el" ligature-path)))
       (unless (file-exists-p ligature-source)
-	(progn
-	  (make-directory ligature-path t)
+        (progn
+          (make-directory ligature-path t)
           (url-copy-file "https://raw.githubusercontent.com/mickeynp/ligature.el/master/ligature.el" ligature-source t))))
-    
+
 (load-library "~/.emacs.d/local/repos/ligatures.el/ligatures")
-    
+
 (use-package ligature
 ;;  :load-path "local/repos/ligatures.el/ligature"
   :config
@@ -1809,14 +2206,14 @@ the automatic filling of the current paragraph."
   (global-ligature-mode t))
 
 
-    
+
 ;; (use-package fira-code-mode
 ;;   :ensure t
 ;; ;; :disabled t
 ;;   :custom (fira-code-mode-disabled-ligatures '("[]" "x"))  ; ligatures you don't want
 ;;   :hook prog-mode)                                         ; mode to enable fira-code-mode in
 
-    
+
     (message "SITE:font-ligatures.")
     ))
 )
@@ -1851,13 +2248,28 @@ the automatic filling of the current paragraph."
 ;;   ;; Enables ligature checks globally in all buffers. You can also do it
 ;;   ;; per mode with `ligature-mode'.
 ;;   (global-ligature-mode t))
+;; fonts-ligatures ends here
 
+;; Fonts/end
+;; #+NAME: fonts-end
 
+;; [[file:site-pkgs.org::fonts-end][fonts-end]]
+;; }}}  .fonts
+;; fonts-end ends here
+
+;; Org/begin
+;; #+NAME: org-begin
+
+;; [[file:site-pkgs.org::org-begin][org-begin]]
 ;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @ORG
+;; {{{  @ORG
 ;; ;;;////////////////////////////////////////////////////////////////
+;; org-begin ends here
 
+;; org-mode
+;; #+NAME: org-mode
 
+;; [[file:site-pkgs.org::org-mode][org-mode]]
 ;; ---( org-mode )--------------------------------------------------------------
 
 ;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
@@ -1869,7 +2281,7 @@ the automatic filling of the current paragraph."
   ;; :defer t
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture)
-         ("C-c k" . org-store-link)
+         ("C-c l" . org-store-link)
          ([(meta up)] . nil)    ;; was 'org-metaup
          ([(meta down)] . nil)  ;; was 'org-metadown
          )
@@ -1878,9 +2290,9 @@ the automatic filling of the current paragraph."
   (setq org-CUA-compatible t)
   (setq org-support-shift-select t) ;; were 'org-shiftup+dpwn+left+right
   (setq org-replace-disputed-keys t)
-  
+
   :hook (org-mode . h7/org-mode-setup)
-  
+
   :config
   (require 'ox-md)
   (unbind-key "C-c ;" org-mode-map)
@@ -1892,7 +2304,7 @@ the automatic filling of the current paragraph."
 
 
   ;; --[org-mode options] ----------------------------------------------------------
-  
+
   (setq org-ellipsis " ▾")
   (setq org-hide-emphasis-markers t)
   (setq org-src-tab-acts-natively t)
@@ -1908,10 +2320,10 @@ the automatic filling of the current paragraph."
   ;;       org-bookmark
   ;;       org-eshell
   ;;       org-irc))
-  
+
 
   ;; --[org-mode faces] ----------------------------------------------------------
-  
+
   ;; Fontify org-mode code blocks
   (setq org-src-fontify-natively t)
   (setq org-fontify-quote-and-verse-blocks t)
@@ -1952,25 +2364,66 @@ the automatic filling of the current paragraph."
 
 
   ;; --[org-mode todo] ----------------------------------------------------------
-  
+
+  ;; @see: https://github.com/daviwil/dotfiles/blob/master/Workflow.org
+
+  (setq org-store-todo "~/Dropbox/Local/data/org/all")
+
+  (setq org-agenda-files
+        (mapcar (lambda(x) (mapconcat 'identity (list org-store-todo x) "/"))
+                '("task.org"
+                  "milk.org"
+                  "read.org"
+                  "dots.org")))        
+
   (setq org-capture-templates
-        '(("t" "todo" entry (file+headline "~/Dropbox/Local/data/org/all/todo.org" "Tasks")
-           "* TODO [#A] %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n")))
+        `(
+          ("t" "task" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "ACTIVE")
+           "** TODO [#C] %? [/]\n   %a\n   + [ ] ...\n\n")
+          ("n" "task (next)" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "ACTIVE")
+           "** NEXT [#B] %? [/]\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n   %a\n   + [ ] ...\n\n")
+          ("b" "backlog" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "BACKLOG")
+           "* BACK [#C] %? [/]\n   %a\n   + [ ] ...\n\n")
+          ("p" "attic" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "ATTIC")
+           "* PAST [#C] %?\n")
+          ("m" "milk" entry (file+headline ,(format "%s/%s" org-store-todo "milk.org") "ACTIVE")
+           "** TODO [#B] %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n")
+          ("r" "read" entry (file+headline ,(format "%s/%s" org-store-todo "read.org") "BACKLOG")
+           "** READ [#C] %?\n\n")
+          ("e" "dots" entry (file+headline ,(format "%s/%s" org-store-todo "dots.org") "ACTIVE")
+           "** EDIT [#C] %?\n   - %a\n\n")
+          ))
 
   (setq org-todo-keywords
-        (quote ((sequence "TODO(t)" "|" "CANCELLED(c@/!)" "DONE(d)"))))
-
-  (setq org-use-fast-todo-selection t)
-  (setq org-treat-S-cursor-todo-selection-as-state-change nil)
+        '((sequence "TODO(t)" "NEXT(n)" "DOING(x)" "|" "UNDO(u)" "DONE(d)")
+          (sequence "READY(w)" "|" "BACK(b)" "WAIT(w)" "HOLD(w)" "CANCELLED(c@/!)")
+          (sequence "EDIT(e)" "|" "READ(r)" "NOP(o)" "ACK(a)" "NACK(k)")
+          (sequence "|" "PAST(p)" "LOST(l)")))
 
   (setq org-todo-keyword-faces
         '(("TODO" . (:foreground "green" :weight bold))
-          ("NEXT" :foreground "blue" :weight bold)
-          ("WAITING" :foreground "orange" :weight bold)
+          ("NEXT" :foreground "orange" :weight bold)
+          ("DOING" :foreground "yellow" :weight bold)
+          ("UNDO" :foreground "SteelBlue" :weight bold)
+          ("READY" :foreground "orange red" :weight bold)
+          ("BACK" :foreground "MediumPurple3" :weight bold)
+          ("WAIT" :foreground "orange" :weight bold)
           ("HOLD" :foreground "magenta" :weight bold)
+          ("PAST" :foreground "Silver" :weight bold)
+          ("PAST" :foreground "Dark Silver" :weight bold)
           ("CANCELLED" :foreground "forest green" :weight bold)))
 
-  (setq org-enforce-todo-dependencies t)
+  ;; Configure common tags
+  (setq org-tag-alist
+        '((:startgroup) ; Put mutually exclusive tags here
+          (:endgroup)
+          ("@home" . ?H)
+          ("@work" . ?W)
+          ("batch" . ?b)
+          ("next" . ?n)
+          ("followup" . ?f)
+          ("recurring" . ?r)))
+
   ;;set priority range from A to C with default A
   (setq org-highest-priority ?A)
   (setq org-lowest-priority ?C)
@@ -1980,11 +2433,13 @@ the automatic filling of the current paragraph."
   (setq org-priority-faces '((?A . (:foreground "OliveDrab" :weight bold))
                              (?B . (:foreground "LightSteelBlue"))
                              (?C . (:foreground "#F0DFAF"))))
-  
+
+  (setq org-use-fast-todo-selection t)
+  (setq org-treat-S-cursor-todo-selection-as-state-change nil)
+
+  (setq org-enforce-todo-dependencies t)
+
   ;; --[org-mode agenda] ----------------------------------------------------------
-  
-  ;;file to save todo items
-  (setq org-agenda-files (quote ("~/Dropbox/Local/data/org/all/todo.org")))
 
   ;;open agenda in current window
   (setq org-agenda-window-setup (quote current-window))
@@ -2012,7 +2467,7 @@ the automatic filling of the current paragraph."
 
 
   ;; --[org-mode latex] ----------------------------------------------------------
-  
+
   (setq org-latex-pdf-process
         (quote ("pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f"
                 "bibtex $(basename %b)"
@@ -2026,15 +2481,15 @@ the automatic filling of the current paragraph."
   (add-to-list 'org-latex-packages-alist '("" "minted"))
   (require 'ox-latex)
   (setq org-latex-listings 'minted)
-  
+
   ;; (setq org-latex-minted-options
   ;;       '(("frame" "lines") ("framesep" "6pt")
   ;;         ("mathescape" "true") ("fontsize" "\\small")))
 
   ;; --[org-mode babel] ----------------------------------------------------------
-  
+
   (setq org-confirm-babel-evaluate nil)
-  
+
   ;; execute external programs.
   (org-babel-do-load-languages
    (quote org-babel-load-languages)
@@ -2061,7 +2516,7 @@ the automatic filling of the current paragraph."
     ;;keymap conflicts
     (local-set-key [(meta up)] 'dired)
     (local-set-key [(meta down)] 'bs-show)
-    
+
     ;; (turn-on-org-cdlatex)
     ;; (diminish 'org-cdlatex-mode "")
     (turn-on-auto-fill)
@@ -2075,7 +2530,13 @@ the automatic filling of the current paragraph."
   (eval-after-load 'org-src
     '(define-key org-src-mode-map
        "\C-x\C-s" #'org-edit-src-exit)))
+;; org-mode ends here
 
+;; Org extras
+;; #+NAME: org-extras
+
+;; [[file:site-pkgs.org::org-extras][org-extras]]
+;; ---(org-superstar)------------------------------------------------------------------------
 
 ;; Nice bullet points. Retires org-bullets.
 (use-package org-superstar
@@ -2141,9 +2602,105 @@ the automatic filling of the current paragraph."
 ;;  :ensure t
   :init
   (setq org-ref-bibtex-hydra-key-binding "\C-cj"))
+;; org-extras ends here
+
+;; Org roam
+;; #+NAME: org-roam
+
+;; [[file:site-pkgs.org::org-roam][org-roam]]
+;; ---(org-roam)------------------------------------------------------------------------
+
+;; @see: https://systemcrafters.net/build-a-second-brain-in-emacs/5-org-roam-hacks/
+(use-package org-roam
+  :ensure t
+  :init
+  (setq org-roam-v2-ack t)
+  :custom
+  (org-roam-directory (file-truename "~/Dropbox/Local/data/org/net"))
+  ;;(org-roam-completion-everywhere t)
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n c" . org-roam-capture)
+         ;; Dailies
+         ("C-c n j" . org-roam-dailies-capture-today)
+         ;; :map org-mode-map
+         ;; ("C-M-i" . completion-at-point)
+         ;; :map org-roam-dailies-map
+         ;; ("Y" . org-roam-dailies-capture-yesterday)
+         ;; ("T" . org-roam-dailies-capture-tomorrow)
+         )
+  ;; :bind-keymap
+  ;; ("C-c n d" . org-roam-dailies-map)
+  :config
+  ;; (require 'org-roam-dailies) ;; Ensure the keymap is available
+  ;; If you're using a vertical completion framework, you might want a more informative completion interface
+  (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+  (setq org-roam-capture-templates
+        '(
+          ("d" "default" plain
+           "%?"
+           :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+           :unnarrowed t)
+          ("s" "system" plain
+           "* Info\n\n- Module: ${title}\n- OS: %^{os}\n- Layer: %^{layer}\n- Zone: %^{zone}\n- Version: %^{version}\n\n* Related:\n\n- \n\n* Bindings:\n\n- %?\n\n* References:\n\n- "
+           :if-new (file+head "system/%<%Y%m%d%H%M%S>-${slug}.org" "\n#+STARTUP: showeverything\n\n#+title: ${title}\n")
+           :unnarrowed t)
+          ("v" "devel" plain
+           "* Info\n\n- Module: ${title}\n- Lang: %^{lang}\n- Frame: %^{frame}\n- Context: %^{context}\n- Version: %^{version}\n\n* Related:\n\n- \n\n* Bindings:\n\n- %?\n\n* References:\n\n- "
+           :if-new (file+head "devel/%<%Y%m%d%H%M%S>-${slug}.org" "\n#+STARTUP: showeverything\n\n#+title: ${title}\n")
+           :unnarrowed t)
+          ("b" "book notes" plain
+           "\n* Source\n\nAuthor: %^{Author}\nTitle: ${title}\nYear: %^{Year}\n\n* Summary\n\n%?"
+           :if-new (file+head "refs/%<%Y%m%d%H%M%S>-b-${slug}.org" "\n#+STARTUP: showeverything\n\n#+title: ${title}\n")
+           :unnarrowed t)
+          ("l" "Online link" plain
+           "\n* Source\n\nTitle: ${title}\nURL: %^{URL}\n\n* Summary\n\n%?"
+           :if-new (file+head "refs/%<%Y%m%d%H%M%S>-l-${slug}.org" "\n#+STARTUP: showeverything\n\n#+title: ${title}\n")
+           :unnarrowed t)
+          ))
+  (org-roam-db-autosync-mode)
+  ;; If using org-roam-protocol
+  (require 'org-roam-protocol))
 
 
+;; ---(http server)------------------------------------------------------------------------
 
+(use-package websocket
+  :ensure t
+  :after org-roam
+  ;; :straight (:host github :repo "ahyatt/emacs-websocket" :branch "main")
+  )
+
+(use-package simple-httpd
+  :ensure t
+  :after org-roam
+  )
+
+;; ---(org-roam-ui)------------------------------------------------------------------------
+
+(use-package org-roam-ui
+  :ensure t
+  ;; :straight
+  ;;   (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
+  :quelpa (org-roam-ui :fetcher github :repo "org-roam/org-roam-ui")
+  :after org-roam
+  ;; ;; normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+  ;; ;; a hookable mode anymore, you're advised to pick something yourself
+  ;; ;; if you don't care about startup time, use
+  ;;  :hook (after-init . org-roam-ui-mode)
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
+;; org-roam ends here
+
+;; Org samples
+;; #+NAME: org-samples
+
+;; [[file:site-pkgs.org::org-samples][org-samples]]
 ;; ---( org-mode-v1 )--------------------------------------------------------------
 
 ;; ;; @see: https://github.com/anschwa/emacs.d
@@ -2212,7 +2769,7 @@ the automatic filling of the current paragraph."
 ;;       ;; (sqlite . t)
 ;;       ))
 ;;   )
-  
+
 ;;   ;; (setq org-confirm-babel-evaluate nil
 ;;   ;;       org-export-babel-evaluate 'inline-only)
 ;;   ;; (org-babel-do-load-languages
@@ -2386,23 +2943,40 @@ the automatic filling of the current paragraph."
 ;;     (run-with-idle-timer 300 t 'jump-to-org-agenda)
 ;;     (my-org-startup))
 ;;   (bind-key "<tab>" 'smart-tab org-mode-map))
+;; org-samples ends here
 
+;; Org/end
+;; #+NAME: org-end
 
+;; [[file:site-pkgs.org::org-end][org-end]]
+;; }}}  .org
+;; org-end ends here
 
+;; Utils/begin
+;; #+NAME: utils-begin
 
+;; [[file:site-pkgs.org::utils-begin][utils-begin]]
 ;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @UTIL
+;; {{{  @UTIL
 ;; ;;;////////////////////////////////////////////////////////////////
+;; utils-begin ends here
 
+;; Utils/Search
+;; #+NAME: util-search
 
+;; [[file:site-pkgs.org::util-search][util-search]]
 ;; ---( regex )--------------------------------------------------------------
 
 
 (use-package regex-tool
   :ensure t
   :defer t)
+;; util-search ends here
 
+;; Utils/Help
+;; #+NAME: util-help
 
+;; [[file:site-pkgs.org::util-help][util-help]]
 ;; ---( guide-key )--------------------------------------------------------------
 
 ;; (use-package guide-key
@@ -2439,7 +3013,7 @@ the automatic filling of the current paragraph."
   :general
   (:states '(normal visual emacs)
            :prefix "SPC"
-           
+
            "d" '(:ignore t :wk "Describe")
            "d." 'helpful-symbol
            "df" 'helpful-function
@@ -2448,8 +3022,12 @@ the automatic filling of the current paragraph."
            "dc" 'helpful-command)
   :config
   (defvar read-symbol-positions-list nil))
+;; util-help ends here
 
+;; Utils/Misc
+;; #+NAME: util-misc
 
+;; [[file:site-pkgs.org::util-misc][util-misc]]
 ;; ---( popper )--------------------------------------------------------------
 
 (use-package popper
@@ -2611,12 +3189,34 @@ the automatic filling of the current paragraph."
 ;;   :ensure t
 ;; )
 
+;; ---( yasnippet )--------------------------------------------------------------
 
+(use-package yasnippet
+  :disabled t
+  :config
+  (yas-reload-all))
+;; util-misc ends here
+
+;; Utils/end
+;; #+NAME: util-end
+
+;; [[file:site-pkgs.org::util-end][util-end]]
+;; }}}  .util
+;; util-end ends here
+
+;; Server/begin
+;; #+NAME: server-begin
+
+;; [[file:site-pkgs.org::server-begin][server-begin]]
 ;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @SERVER
+;; {{{  @SERVER
 ;; ;;;////////////////////////////////////////////////////////////////
+;; server-begin ends here
 
+;; Server Control
+;; #+NAME: server-control
 
+;; [[file:site-pkgs.org::server-control][server-control]]
 ;; ---( server )--------------------------------------------------------------
 
 ;;
@@ -2649,13 +3249,28 @@ the automatic filling of the current paragraph."
   :init
   (add-hook 'after-init-hook 'server-start t)
   (add-hook 'after-init-hook 'edit-server-start t))
+;; server-control ends here
 
+;; Server/end
+;; #+NAME: server-end
 
+;; [[file:site-pkgs.org::server-end][server-end]]
+;; }}}  .server
+;; server-end ends here
+
+;; Shell/begin
+;; #+NAME: shell-begin
+
+;; [[file:site-pkgs.org::shell-begin][shell-begin]]
 ;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @SHELL
+;; {{{  @SHELL
 ;; ;;;////////////////////////////////////////////////////////////////
+;; shell-begin ends here
 
+;; eshell
+;; #+NAME: shell-eshell
 
+;; [[file:site-pkgs.org::shell-eshell][shell-eshell]]
 ;; ---( eshell )--------------------------------------------------------------
 
 (use-package eshell
@@ -2702,6 +3317,59 @@ the automatic filling of the current paragraph."
   (add-hook 'eshell-first-time-mode-hook 'eshell-initialize)
   (use-package esh-toggle
     :bind ("C-x C-z" . eshell-toggle)))
+;; shell-eshell ends here
+
+;; vterm
+;; #+NAME: shell-vterm
+
+;; [[file:site-pkgs.org::shell-vterm][shell-vterm]]
+;; ---( vterm )--------------------------------------------------------------
+
+(cond
+ ((string-lessp emacs-version "27.1") ;;
+  (progn
+    (message "SITE:term-legacy, ...")
+    (setq h7/term-vterm-enabled nil)
+    (message "SITE:term-legacy.")
+    ))
+ (t
+  (progn
+    (message "SITE:term-libvterm, ...")
+
+(use-package vterm
+  :bind (("C-<F9>" . vterm)
+             ;; :straight (:post-build (cl-letf (((symbol-function #'pop-to-buffer)
+             ;;                        (lambda (buffer) (with-current-buffer buffer (message (buffer-string))))))
+             ;;               (setq vterm-always-compile-module t)
+             ;;               (require 'vterm)))
+         :map vterm-mode-map
+         ("C-v" . vterm-yank)
+         ("S-<insert>" . vterm-yank)
+         ([kp-insert] . vterm-yank-primary)
+         ([kp-enter] . vterm-yank)
+         ([kp-divide] . vterm-yank-pop)
+         ([kp-multiply] . vterm-copy-mode))
+  :ensure t)
+
+
+(use-package multi-vterm
+  :bind (("C-S-<f9>" . multi-vterm)
+         :map vterm-mode-map
+         ("C-<f7>" . multi-vterm-prev)
+         ("C-<f8>" . multi-vterm-next))
+  :ensure t)
+
+;; @see: https://lupan.pl/dotemacs/
+;; (use-package vterm-toggle
+;;   :bind (("H-z" . vterm-toggle)
+;;          ("H-F" . vterm-toggle-forward)
+;;          ("H-B" . vterm-toggle-backward)))
+
+(setq h7/term-vterm-enabled t)
+
+    (message "SITE:term-libvterm.")
+    ))
+)
 
 
 ;; ---( multi-term )--------------------------------------------------------------
@@ -2734,57 +3402,12 @@ the automatic filling of the current paragraph."
 ;;   (require 'term)
 ;;   (defadvice term-process-pager (after term-process-rebind-keys activate)
 ;;     (define-key term-pager-break-map "\177" 'term-pager-back-page)))
+;; shell-vterm ends here
 
-;; ---( vterm )--------------------------------------------------------------
+;; Scripts
+;; #+NAME: shell-script
 
-(cond
- ((string-lessp emacs-version "27.1") ;;
-  (progn
-    (message "SITE:term-legacy, ...")
-    (setq h7/term-vterm-enabled nil)
-    (message "SITE:term-legacy.")
-    ))
- (t
-  (progn
-    (message "SITE:term-libvterm, ...")
-
-(use-package vterm
-  :bind (("C-<F9>" . vterm)
-             ;; :straight (:post-build (cl-letf (((symbol-function #'pop-to-buffer)
-             ;;                        (lambda (buffer) (with-current-buffer buffer (message (buffer-string))))))
-             ;;               (setq vterm-always-compile-module t)
-             ;;               (require 'vterm)))
-         :map vterm-mode-map
-         ("C-v" . vterm-yank)
-         ("S-<insert>" . vterm-yank)
-         ([kp-enter] . vterm-yank)
-         ([kp-divide] . vterm-yank-pop)
-         ([kp-multiply] . vterm-copy-mode))
-  :ensure t)
-
-
-(use-package multi-vterm
-  :bind (("C-S-<f9>" . multi-vterm)
-         :map vterm-mode-map
-         ("C-<f7>" . multi-vterm-prev)
-         ("C-<f8>" . multi-vterm-next))
-  :ensure t)
-
-;; @see: https://lupan.pl/dotemacs/
-;; (use-package vterm-toggle
-;;   :bind (("H-z" . vterm-toggle)
-;;          ("H-F" . vterm-toggle-forward)
-;;          ("H-B" . vterm-toggle-backward)))
-    
-(setq h7/term-vterm-enabled t)
-
-    (message "SITE:term-libvterm.")
-    ))
-)
-
-
-
-
+;; [[file:site-pkgs.org::shell-script][shell-script]]
 ;; ---( sh-script )--------------------------------------------------------------
 
 (use-package sh-script
@@ -2799,15 +3422,12 @@ the automatic filling of the current paragraph."
                             :doc-spec
                             '(("(bash)Index")))))
   (add-hook 'shell-mode-hook 'initialize-sh-script))
+;; shell-script ends here
 
-;; ---( sh-toggle )--------------------------------------------------------------
+;; Ranger
+;; #+NAME: shell-ranger
 
-(use-package sh-toggle
-  :disabled t
-  :bind ("C-. C-z" . shell-toggle)
-  )
-
-
+;; [[file:site-pkgs.org::shell-ranger][shell-ranger]]
 ;; ---( ranger )--------------------------------------------------------------
 
 (use-package ranger
@@ -2889,13 +3509,40 @@ the automatic filling of the current paragraph."
 ;; 	 (sr-within dir (sr-alternate-buffer (dired dir))))
 ;; 	(sr-history-push default-directory)
 ;; 	(sr-beginning-of-buffer)))))
+;; shell-ranger ends here
 
+;; Other
+;; #+NAME: shell-other
 
+;; [[file:site-pkgs.org::shell-other][shell-other]]
+;; ---( sh-toggle )--------------------------------------------------------------
+
+(use-package sh-toggle
+  :disabled t
+  :bind ("C-. C-z" . shell-toggle)
+  )
+;; shell-other ends here
+
+;; Shell/end
+;; #+NAME: shell-end
+
+;; [[file:site-pkgs.org::shell-end][shell-end]]
+;; }}}  .shell
+;; shell-end ends here
+
+;; Sec3et/begin
+;; #+NAME: sec3et-begin
+
+;; [[file:site-pkgs.org::sec3et-begin][sec3et-begin]]
 ;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @SEC3ET
+;; {{{  @SEC3ET
 ;; ;;;////////////////////////////////////////////////////////////////
+;; sec3et-begin ends here
 
+;; Pass
+;; #+NAME: sec3et-pass
 
+;; [[file:site-pkgs.org::sec3et-pass][sec3et-pass]]
 ;; ---( pass )--------------------------------------------------------------
 
 ;; @see: https://gitea.petton.fr/nico/emacs.d/src/commit/8ae2b902c916600c9296d967f36ed69ad50e8199/init.el?lang=sv-SE
@@ -2903,14 +3550,28 @@ the automatic filling of the current paragraph."
 ;; (use-package pass
 ;;   :mode ("org/reference/password-store/" . pass-view-mode)
 ;;   :bind ("C-x p" . pass))
+;; sec3et-pass ends here
 
+;; Sec3et/end
+;; #+NAME: sec3et-end
 
+;; [[file:site-pkgs.org::sec3et-end][sec3et-end]]
+;; }}}  .sec3et
+;; sec3et-end ends here
 
+;; Evil/begin
+;; #+NAME: evil-begin
+
+;; [[file:site-pkgs.org::evil-begin][evil-begin]]
 ;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @EVIL
+;; {{{  @EVIL
 ;; ;;;////////////////////////////////////////////////////////////////
+;; evil-begin ends here
 
+;; Evil Mode
+;; #+NAME: evil-mode
 
+;; [[file:site-pkgs.org::evil-mode][evil-mode]]
 ;; ---( evil )--------------------------------------------------------------
 
 ;; @see: https://raw.githubusercontent.com/noctuid/evil-guide/master/README.org
@@ -2919,20 +3580,39 @@ the automatic filling of the current paragraph."
   :ensure t
   :defer 30
   )
+;; evil-mode ends here
 
+;; EVIL/end
+;; #+NAME: evil-end
 
+;; [[file:site-pkgs.org::evil-end][evil-end]]
+;; }}}  .evil
+;; evil-end ends here
+
+;; Jump/begin
+;; #+NAME: jump-begin
+
+;; [[file:site-pkgs.org::jump-begin][jump-begin]]
 ;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @JUMP
+;; {{{  @JUMP
 ;; ;;;////////////////////////////////////////////////////////////////
+;; jump-begin ends here
 
+;; Hydra
+;; #+NAME: jump-hydra
 
+;; [[file:site-pkgs.org::jump-hydra][jump-hydra]]
 ;; ;; ---( hydra )--------------------------------------------------------------
 
 (use-package hydra
   :ensure t)
+;; jump-hydra ends here
 
+;; Ace
+;; #+NAME: jump-ace
 
-;; ;; ---( ace )--------------------------------------------------------------
+;; [[file:site-pkgs.org::jump-ace][jump-ace]]
+;; ---( ace )--------------------------------------------------------------
 
 
 (use-package ace-jump-mode
@@ -2940,71 +3620,38 @@ the automatic filling of the current paragraph."
   :commands ace-jump-mode
   :init
   (bind-key "C-." 'ace-jump-mode))
+;; jump-ace ends here
 
+;; Avy
+;; #+NAME: jump-avy
 
+;; [[file:site-pkgs.org::jump-avy][jump-avy]]
 ;; ;; ---( avy )--------------------------------------------------------------
 
 (use-package avy
   :ensure t)
+;; jump-avy ends here
 
+;; Jump/end
+;; #+NAME: jump-end
 
+;; [[file:site-pkgs.org::jump-end][jump-end]]
+;; }}}  .jump
+;; jump-end ends here
 
+;; Completion/begin
+;; #+NAME: comp-ap-begin
+
+;; [[file:site-pkgs.org::comp-ap-begin][comp-ap-begin]]
 ;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @COMPLETION
+;; {{{  @COMPLETION "AT POINT"
 ;; ;;;////////////////////////////////////////////////////////////////
+;; comp-ap-begin ends here
 
+;; Company
+;; #+NAME: comp-ap-company
 
-;; ---( autocomplete )--------------------------------------------------------------
-
-(use-package auto-complete
-  :disabled t
-  :diminish auto-complete-mode
-  :init
-  (use-package pos-tip)
-  (require 'auto-complete-config)
-  (ac-config-default)
-  :config
-  ;; @see: http://auto-complete.org/doc/manual.html
-  ;;(ac-set-trigger-key "<backtab>")
-  ;;(ac-set-trigger-key "TAB")
-  (setq ac-ignore-case 'smart)
-  (setq ac-auto-start nil)
-  (setq ac-use-menu-map t)
-  ;;(define-key ac-mode-map (kbd "M-SPC") 'auto-complete)
-  (define-key ac-mode-map  [(control menu)] 'auto-complete)
-  (ac-set-trigger-key "TAB")
-  ;; (define-key ac-completing-map "\M-/" 'ac-stop)
-  ;; (define-key ac-completing-map "\t" 'ac-complete)
-  ;; (define-key ac-completing-map "\r" nil)
-  ;; (setq ac-use-menu-map t)
-  ;; (define-key ac-menu-map "\C-n" 'ac-next)
-  ;; (define-key ac-menu-map "\C-p" 'ac-previous)
-  ;; (setq ac-use-quick-help nil)
-  ;; (setq ac-menu-height 20)
-  ;; (setq ac-show-menu-immediately-on-auto-complete t)
-  ;; (setq ac-auto-show-menu 0.8)
-  ;; (setq ac-delay 0.4)
-  
-  ;; (setq-default ac-sources '(ac-source-filename
-  ;;                            ac-source-functions
-  ;;                            ac-source-yasnippet
-  ;;                            ac-source-variables
-  ;;                            ac-source-symbols
-  ;;                            ac-source-features
-  ;;                            ac-source-abbrev
-  ;;                            ac-source-words-in-same-mode-buffers
-  ;;                            ac-source-dictionary))
-  
-  ;; (defun ac-emacs-lisp-mode-setup ()
-  ;;   (setq ac-sources '(ac-source-symbols ac-source-words-in-same-mode-buffers)))
-  ;; (add-hook 'c++-mode (lambda () (add-to-list 'ac-sources 'ac-source-semantic)))
-  
-  ;; (bind-key "A-M-?" 'ac-last-help)
-  ;; (unbind-key "C-s" ac-completing-map)
-  
-  )
-
-
+;; [[file:site-pkgs.org::comp-ap-company][comp-ap-company]]
 ;; ---( company )--------------------------------------------------------------
 
 (use-package company
@@ -3047,17 +3694,67 @@ the automatic filling of the current paragraph."
   ;;     (around only-show-tooltip-when-invoked activate)
   ;;   (when (company-explicit-action-p)
   ;;     ad-do-it))
+;; comp-ap-company ends here
 
+;; Auto-Complete
+;; #+NAME: comp-ap-autocomplete
 
-;; ---( yasnippet )--------------------------------------------------------------
+;; [[file:site-pkgs.org::comp-ap-autocomplete][comp-ap-autocomplete]]
+;; ---( autocomplete )--------------------------------------------------------------
 
-(use-package yasnippet
+(use-package auto-complete
   :disabled t
+  :diminish auto-complete-mode
+  :init
+  (use-package pos-tip)
+  (require 'auto-complete-config)
+  (ac-config-default)
   :config
-  (yas-reload-all))
+  ;; @see: http://auto-complete.org/doc/manual.html
+  ;;(ac-set-trigger-key "<backtab>")
+  ;;(ac-set-trigger-key "TAB")
+  (setq ac-ignore-case 'smart)
+  (setq ac-auto-start nil)
+  (setq ac-use-menu-map t)
+  ;;(define-key ac-mode-map (kbd "M-SPC") 'auto-complete)
+  (define-key ac-mode-map  [(control menu)] 'auto-complete)
+  (ac-set-trigger-key "TAB")
+  ;; (define-key ac-completing-map "\M-/" 'ac-stop)
+  ;; (define-key ac-completing-map "\t" 'ac-complete)
+  ;; (define-key ac-completing-map "\r" nil)
+  ;; (setq ac-use-menu-map t)
+  ;; (define-key ac-menu-map "\C-n" 'ac-next)
+  ;; (define-key ac-menu-map "\C-p" 'ac-previous)
+  ;; (setq ac-use-quick-help nil)
+  ;; (setq ac-menu-height 20)
+  ;; (setq ac-show-menu-immediately-on-auto-complete t)
+  ;; (setq ac-auto-show-menu 0.8)
+  ;; (setq ac-delay 0.4)
 
+  ;; (setq-default ac-sources '(ac-source-filename
+  ;;                            ac-source-functions
+  ;;                            ac-source-yasnippet
+  ;;                            ac-source-variables
+  ;;                            ac-source-symbols
+  ;;                            ac-source-features
+  ;;                            ac-source-abbrev
+  ;;                            ac-source-words-in-same-mode-buffers
+  ;;                            ac-source-dictionary))
 
+  ;; (defun ac-emacs-lisp-mode-setup ()
+  ;;   (setq ac-sources '(ac-source-symbols ac-source-words-in-same-mode-buffers)))
+  ;; (add-hook 'c++-mode (lambda () (add-to-list 'ac-sources 'ac-source-semantic)))
 
+  ;; (bind-key "A-M-?" 'ac-last-help)
+  ;; (unbind-key "C-s" ac-completing-map)
+
+  )
+;; comp-ap-autocomplete ends here
+
+;; IDO
+;; #+NAME: comp-ap-ido
+
+;; [[file:site-pkgs.org::comp-ap-ido][comp-ap-ido]]
 ;; ---( ido )--------------------------------------------------------------
 
 (use-package ido
@@ -3120,521 +3817,39 @@ the automatic filling of the current paragraph."
             #'(lambda ()
                 (bind-key "<return>" 'ido-smart-select-text
                           ido-file-completion-map))))
+;; comp-ap-ido ends here
 
-;; ---( helm )--------------------------------------------------------------
+;; Completion/end
+;; #+NAME: comp-ap-end
 
-;; @see: https://pages.sachachua.com/.emacs.d/Sacha.html#org04e47b9
+;; [[file:site-pkgs.org::comp-ap-end][comp-ap-end]]
+;; }}}  .comp-ap
+;; comp-ap-end ends here
 
-(message "#helm(0): '( (h7/use-helm . %s) )" (h7/use-helm)) 
-(use-package helm
-  :if (h7/use-helm)
-  :diminish helm-mode
-  :init
-  (progn
-  ;;   (require 'helm-config)
-  ;;   (message "#helm(1): '( (h7/use-helm . %s) )" (h7/use-helm)) 
-  ;;   (setq helm-candidate-number-limit 100)
-  ;;   ;; From https://gist.github.com/antifuchs/9238468
-  ;;   (setq helm-idle-delay 0.0 ; update fast sources immediately (doesn't).
-  ;;         helm-input-idle-delay 0.01  ; this actually updates things
-  ;;                                       ; reeeelatively quickly.
-  ;;         helm-yas-display-key-on-candidate t
-  ;;         helm-quick-update t
-  ;;         helm-M-x-requires-pattern nil
-  ;; 
-    (helm-mode)
-    )
-  :bind (("C-c h" . helm-mini)
-         ("C-h a" . helm-apropos)
-         ("C-x C-b" . helm-buffers-list)
-         ("C-x b" . helm-buffers-list)
-         ("M-y" . helm-show-kill-ring)
-         ("M-x" . helm-M-x)
-         ("C-x c o" . helm-occur)
-         ("C-x c s" . helm-swoop)
-         ("C-x c y" . helm-yas-complete)
-         ("C-x c Y" . helm-yas-create-snippet-on-region)
-         ("C-x c b" . my/helm-do-grep-book-notes)
-         ("C-x c SPC" . helm-all-mark-rings)))
-(ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
+;; Completion/begin
+;; #+NAME: comp-mb-begin
 
-(use-package helm-descbinds
-  :if (h7/use-helm)
-  :defer t
-  :bind (("C-h b" . helm-descbinds)
-         ("C-h w" . helm-descbinds)))
+;; [[file:site-pkgs.org::comp-mb-begin][comp-mb-begin]]
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @COMPLETION "PROMPT"
+;; ;;;////////////////////////////////////////////////////////////////
+;; comp-mb-begin ends here
 
+;; Vertico*/begin
+;; #+NAME: comp-mb-ver-begin
 
-;; ;; @see: https://lupan.pl/dotemacs/
-
-;; (use-package helm
-;;   :if (h7/use-helm)
-;;   :ensure t
-;;   :demand
-;;   :init
-;;   (setq helm-split-window-default-side 'other
-;;         helm-split-window-inside-p t
-;;         helm-swoop-split-with-multiple-windows t        
-;;         helm-command-prefix-key "s-c")
-;;   :config
-;;   (require 'helm-config)              ; required to setup "s-c" keymap
-;;   (helm-mode 1)
-;;   (helm-autoresize-mode 1)
-;;   ;; Only rebind M-x and C-x C-f on successful load of helm to remain
-;;   ;; this basic operations if helm is not installed.
-;;   (bind-key "M-x" #'helm-M-x)
-;;   (bind-key "C-x C-f" #'helm-find-files)
-;;   :bind
-;;   (("M-y" . helm-show-kill-ring)
-;;    ("C-c o" . helm-occur)
-;;    ("C-x b" . helm-mini)
-;;    ("C-x r b" . helm-bookmarks)
-;;    ("C-h a" . helm-apropos)
-;;    ("C-h d" . helm-info-at-point)
-;;    ("C-c a" . helm-all-mark-rings)
-;;    ("C-c h e" . helm-info-emacs)
-;;    ("C-c h g" . helm-info-gnus)
-;;    ("C-c R" . helm-register)
-;;    ("s-P" . helm-run-external-command)
-;;    ;; More key bindings in "s-c" keymap
-;;    :map helm-find-files-map
-;;    ("<backtab>" . helm-select-action)
-;;    ("C-i" . helm-execute-persistent-action)))
-
-
-;; (use-package helm
-;;   :if (h7/use-helm)
-;;   :ensure t
-;; ;;  :demand t
-;;   :bind ("M-x" . helm-M-x)
-;;   :config
-;;   (use-package helm-descbinds
-;;     :config (helm-descbinds-mode))
-;;   (ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
-;;   (helm-mode 1)
-;;   )
-
-;; (use-package helm
-;;   :if (h7/use-helm)
-;;   :ensure t
-;;   :diminish helm-mode
-;;   :init
-;;   (progn
-;;     (require 'helm-config)
-;;     (setq helm-candidate-number-limit 100)
-;;     ;; From https://gist.github.com/antifuchs/9238468
-;;     (setq helm-idle-delay 0.0 ; update fast sources immediately (doesn't).
-;;           helm-input-idle-delay 0.01  ; this actually updates things
-;;                                         ; reeeelatively quickly.
-;;           helm-quick-update t
-;;           helm-M-x-requires-pattern nil
-;;           helm-ff-skip-boring-files t)
-;;     (helm-mode))
-;;   :bind (("C-c h" . helm-mini)
-;;          ("C-h a" . helm-apropos)
-;;          ("C-x C-b" . helm-buffers-list)
-;;          ("C-x b" . helm-buffers-list)
-;;          ("M-y" . helm-show-kill-ring)
-;;          ("M-x" . helm-M-x)
-;;          ("C-x c o" . helm-occur)
-;;          ("C-x c s" . helm-swoop)
-;;          ("C-x c b" . my/helm-do-grep-book-notes)
-;;          ("C-x c SPC" . helm-all-mark-rings)))
-
-;; (ido-mode -1) ;; Turn off ido mode in case I enabled it accidentally
-
-;; ;; ---( helm-descbinds )--------------------------------------------------------------
-
-;; (use-package helm-descbinds
-;;   :defer t
-;;   :bind (("C-h b" . helm-descbinds)
-;;          ("C-h w" . helm-descbinds)))
-
-;; ;; ---( helm local )--------------------------------------------------------------
-
-;; ;; (defvar my/book-notes-directory "~/Dropbox/books")
-;; ;; (defun my/helm-do-grep-book-notes ()
-;; ;;   "Search my book notes."
-;; ;;   (interactive)
-;; ;;   (helm-do-grep-1 (list my/book-notes-directory)))
-
-
-
-
-;; ;; ---( helm - alter )--------------------------------------------------------------
-
-;; (use-package helm-mode
-;;   :defer 15
-;;   :commands helm--completing-read-default)
-;; (use-package helm-grep
-;;   :commands helm-do-grep-1
-;;   :bind (("M-s f" . my-helm-do-grep-r)
-;;          ("M-s g" . my-helm-do-grep))
-;;   :preface
-;;   (defun my-helm-do-grep ()
-;;     (interactive)
-;;     (helm-do-grep-1 (list default-directory)))
-;;   (defun my-helm-do-grep-r ()
-;;     (interactive)
-;;     (helm-do-grep-1 (list default-directory) t)))
-;; (use-package helm-swoop
-;;   :bind (("M-s o" . helm-swoop)
-;;          ("M-s /" . helm-multi-swoop)))
-;; (use-package helm-descbinds
-;;   :bind ("C-h b" . helm-descbinds)
-;;   :init
-;;   (fset 'describe-bindings 'helm-descbinds)
-;;   :config
-;;   (require 'helm-config))
-;; (use-package helm-config
-;;   :defer 10
-;;   :bind (("C-c h" . helm-command-prefix)
-;;          ("C-h a" . helm-apropos)
-;;          ("C-h e a" . my-helm-apropos)
-;;          ("C-x f" . helm-multi-files)
-;;          ;; ("C-x C-f" . helm-find-files)
-;;          ("M-s F" . helm-for-files)
-;;          ("M-s b" . helm-occur)
-;;          ("M-s n" . my-helm-find)
-;;          )
-;;   :preface
-;;   (defun my-helm-find ()
-;;     (interactive)
-;;     (helm-find nil))
-;;   :config
-;;   (use-package helm-commands)
-;;   (use-package helm-files)
-;;   (use-package helm-buffers)
-;;   (use-package helm-ls-git)
-;;   (use-package helm-match-plugin)
-;;   (helm-match-plugin-mode t)
-;;   (helm-autoresize-mode t)
-;;   (bind-key "<tab>" 'helm-execute-persistent-action helm-map)
-;;   (bind-key "C-i" 'helm-execute-persistent-action helm-map)
-;;   (bind-key "C-z" 'helm-select-action helm-map)
-;;   (bind-key "A-v" 'helm-previous-page helm-map)
-;;   (when (executable-find "curl")
-;;     (setq helm-google-suggest-use-curl-p t)))
-
-
-
-;; ---( ivy )--------------------------------------------------------------
-
-;; @see: https://blog.jft.rocks/emacs/helm-to-ivy.html
-;; @see: https://truthseekers.io/lessons/how-to-use-ivy-swiper-counsel-in-emacs-for-noobs/
-;; @see: https://github.com/seagle0128/.emacs.d/blob/master/lisp/init-ivy.el
-;; @see: https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-ivy.el
-;; @see: https://www.reddit.com/r/emacs/comments/910pga/tip_how_to_use_ivy_and_its_utilities_in_your/
-
-;; .........................................................................
-
-;; :defer 0.1
-
-;; (use-package ivy
-;;   :if (h7/use-ivy)
-;;   :ensure t
-;;   :diminish
-;;   :bind (("C-c C-r" . ivy-resume)
-;;          ("C-x B" . ivy-switch-buffer-other-window))
-;;   :custom
-;;   (ivy-count-format "(%d/%d) ")
-;;   (ivy-use-virtual-buffers t)
-;;   :config (ivy-mode))
-
-;; (use-package ivy-rich
-;;   :if (h7/use-ivy)
-;;   :after ivy
-;;   :ensure t
-;;   :custom
-;;   (ivy-virtual-abbreviate 'full
-;;                           ivy-rich-switch-buffer-align-virtual-buffer t
-;;                           ivy-rich-path-style 'abbrev)
-;;   :config
-;;   (ivy-set-display-transformer 'ivy-switch-buffer
-;;                                'ivy-rich-switch-buffer-transformer))
-
-;; (use-package swiper
-;;   :if (h7/use-ivy)
-;;   :after ivy
-;;   :bind (("C-s" . swiper)
-;;          ("C-r" . swiper)))
-
-
-;; .........................................................................
-(message "#ivy(0): '( (h7/use-ivy . %s) )" (h7/use-ivy)) 
- 
-(use-package counsel
-  :if (h7/use-ivy)
-  :defer t
-  :after ivy
-  :config (counsel-mode))
-
-(use-package swiper
-  :if (h7/use-ivy)
-  :defer t
-  :after ivy
-  :bind (("C-s" . swiper))
-  )
-
-(use-package counsel-projectile
-  :if (h7/use-ivy)
-  :disabled t
-;; :ensure t
-  :after (counsel projectile))
-
-(use-package ivy-hydra
-  :if (h7/use-ivy)
-  :defer t
-  :after (ivy hydra))
-
-;; @see: https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-ivy.el
-;; Time-stamp: <2018-12-05 12:06:58 kmodi>
-
-;; Ivy (better than ido in my opinion)
-
-(use-package ivy
-  :if (h7/use-ivy)
-  :defer t
-
-  ;; (*) Error (use-package): ivy/:catch: Symbol’s value as variable is void: modi-mode-map
-  
-  ;;  :bind (:map modi-mode-map
-  ;;         ("M-u" . ivy-resume)    ;Override the default binding for `upcase-word'
-  ;;         ("C-c w" . ivy-push-view) ;Push window configuration to `ivy-views'
-  ;;         ("C-c W" . ivy-pop-view)) ;Remove window configuration from `ivy-views'
-  
-  :config
-  (progn
-    (message "#ivy(1): '( (h7/use-ivy . %s) )" (h7/use-ivy))
-    
-    ;; Disable ido
-    (with-eval-after-load 'ido
-      (ido-mode -1)
-      ;; Enable ivy
-      (ivy-mode 1))
-    
-     ;; Show recently killed buffers when calling `ivy-switch-buffer'
-     (setq ivy-use-virtual-buffers t)
-     (setq ivy-virtual-abbreviate 'full) ;Show the full virtual file paths
- 
-     (setq ivy-count-format "%d/%d ")
-    
-    ;; - (setq ivy-re-builders-alist '((t . ivy--regex-plus))) ;Default
-    ;; (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
-
-    ;; Do not show "./" and "../" in the `counsel-find-file' completion list
-    ;;(setq ivy-extra-directories nil)    ;Default value: ("../" "./")
-
-     ;; https://github.com/abo-abo/swiper/blob/master/ivy-hydra.el
-     (use-package ivy-hydra
-       :if (h7/use-ivy)
-       :ensure t
-       :config
-       (progn
-         ;; Re-define the `hydra-ivy' defined in `ivy-hydra' package.
-         (defhydra hydra-ivy (:hint nil
-                              :color pink)
-           "
-  ^ _,_ ^      _f_ollow      occ_u_r      _g_o          ^^_c_alling: %-7s(if ivy-calling \"on\" \"off\")      _w_(prev)/_s_(next)/_a_(read) action: %-14s(ivy-action-name)
-  _p_/_n_      _d_one        ^^           _i_nsert      ^^_m_atcher: %-7s(ivy--matcher-desc)^^^^^^^^^^^^      _C_ase-fold: %-10`ivy-case-fold-search
-  ^ _._ ^      _D_o it!      ^^           _q_uit        _<_/_>_ shrink/grow^^^^^^^^^^^^^^^^^^^^^^^^^^^^       _t_runcate: %-11`truncate-lines
- "
-           ;; Arrows
-           ("," ivy-beginning-of-buffer)      ;Default h
-           ("p" ivy-previous-line)            ;Default j
-           ("n" ivy-next-line)                ;Default k
-           ("." ivy-end-of-buffer)            ;Default l
-           ;; Quit ivy
-           ("q" keyboard-escape-quit :exit t) ;Default o
-           ("C-g" keyboard-escape-quit :exit t)
-           ;; Quit hydra
-           ("i" nil)
-           ("C-o" nil)
-           ;; actions
-           ("f" ivy-alt-done :exit nil)
-           ;; Exchange the default bindings for C-j and C-m
-           ("C-m" ivy-alt-done :exit nil) ;RET, default C-j
-           ("C-j" ivy-done :exit t)       ;Default C-m
-           ("d" ivy-done :exit t)
-           ("D" ivy-immediate-done :exit t)
-           ("g" ivy-call)
-           ("c" ivy-toggle-calling)
-           ("m" ivy-rotate-preferred-builders)
-           (">" ivy-minibuffer-grow)
-           ("<" ivy-minibuffer-shrink)
-           ("w" ivy-prev-action)
-           ("s" ivy-next-action)
-           ("a" ivy-read-action)
-           ("t" (setq truncate-lines (not truncate-lines)))
-           ("C" ivy-toggle-case-fold)
-           ("u" ivy-occur :exit t)
-           ("?" (ivy-exit-with-action    ;Default D
-                 (lambda (_) (find-function #'hydra-ivy/body))) "Definition of this hydra" :exit t))
- 
-         (bind-keys
-          :map ivy-minibuffer-map
-          ("C-t" . ivy-rotate-preferred-builders)
-          ("C-o" . hydra-ivy/body)
-          ("M-o" . ivy-dispatching-done-hydra))))
-
-     (bind-keys
-      :map ivy-minibuffer-map
-      ;; Exchange the default bindings for C-j and C-m
-      ("C-m" . ivy-alt-done)             ;RET, default C-j
-      ("C-j" . ivy-done)                 ;Default C-m
-      ("C-S-m" . ivy-immediate-done)
-      ("M-m" . ivy-previous-history-element)
-      ("M-n" . ivy-next-history-element)
-      )
-
-     (bind-keys
-      :map ivy-occur-mode-map
-      ("n" . ivy-occur-next-line)
-      ("p" . ivy-occur-previous-line)
-      ("b" . backward-char)
-      ("f" . forward-char)
-      ("v" . ivy-occur-press)            ;Default f
-      ("RET" . ivy-occur-press))
-
-     (with-eval-after-load 'setup-windows-buffers
-       (bind-keys
-        :map ivy-minibuffer-map
-        ("C-x k" . modi/kill-buffer-dwim) ;Aborts recursive edit
-        ("C-)" . modi/kill-buffer-dwim))) ;Aborts recursive edit
-
-     ;;(key-chord-define ivy-minibuffer-map "m," #'ivy-beginning-of-buffer)
-     ;;(key-chord-define ivy-minibuffer-map ",." #'ivy-end-of-buffer)
-
-     ;; Bind C-k to kill a buffer directly from the list shown on doing M-x ivy-switch-buffer.
-     ;; https://github.com/abo-abo/swiper/issues/164
-     (defun modi/ivy-kill-buffer ()
-       (interactive)
-       (ivy-set-action 'kill-buffer)
-       (ivy-done))
-     (bind-keys
-      :map ivy-switch-buffer-map
-      ("C-k" . modi/ivy-kill-buffer))
-  ))
-
- ;; https://github.com/Yevgnen/ivy-rich
- ;; Richer "C-x b" buffer-switching Ivy interface.
- (use-package ivy-rich
-   :if (h7/use-ivy)
-   :after ivy
-   :defer t
-   :config
-   (progn
-     (ivy-rich-mode)))
-
-
-;; --- (provide 'setup-ivy)
-
-;; Call `ivy-immediate-done' if you want to use whatever you typed in the
-;; search field, and ignore the suggestions provided by ivy in the list.
-;;
-;;  C-u <`ivy-alt-done' binding> <-- `ivy-immediate-done'
-;;
-;; This is useful especially when renaming files (and the name you want to
-;; rename to partially matches one of the existing files).
-;;
-;; |----------------------------+----------------+------------------------------------------------------|
-;; | Command                    | ivy map        | Function                                             |
-;; |                            | Bindings       |                                                      |
-;; |----------------------------+----------------+------------------------------------------------------|
-;; | ivy-done                   | C-j            | Exit the minibuffer with the selected candidate.     |
-;; |                            | (default: C-m) | Try to leave `ivy' as soon as possible.              |
-;; |----------------------------+----------------+------------------------------------------------------|
-;; | ivy-alt-done               | C-m or RET     | Exit the minibuffer with the selected candidate.     |
-;; |                            | (default: C-j) | When ARG is t, acts like `ivy-immediate-done'.       |
-;; |                            |                | Try NOT to leave `ivy' at the soonest. For           |
-;; |                            |                | instance, if a directory name completion is          |
-;; |                            |                | possible, do that and list that directory's          |
-;; |                            |                | content in `ivy' instead of opening that dir         |
-;; |                            |                | in `dired'.                                          |
-;; |----------------------------+----------------+------------------------------------------------------|
-;; | ivy-immediate-done         | C-S-m          | Exit the minibuffer with the current text,           |
-;; |                            |                | ignoring the candidates.                             |
-;; |----------------------------+----------------+------------------------------------------------------|
-;; | ivy-partial-or-done        | TAB            | Attempts partial completion, extending current line  |
-;; |                            |                | input as much as possible. "TAB TAB" is the same as  |
-;; |                            |                | `ivy-alt-done'.                                      |
-;; |----------------------------+----------------+------------------------------------------------------|
-;; | ivy-call                   | C-M-m          | Call the current action without exiting completion.  |
-;; |----------------------------+----------------+------------------------------------------------------|
-;; | ivy-next-line-and-call     | C-M-n          | Move cursor vertically down ARG candidates.          |
-;; |                            |                | Call the permanent action if possible.               |
-;; | ivy-previous-line-and-call | C-M-p          | Move cursor vertically up ARG candidates.            |
-;; |                            |                | Call the permanent action if possible.               |
-;; |----------------------------+----------------+------------------------------------------------------|
-;; | ivy-dispatching-done       | M-o            | Presents valid actions from which to choose. When    |
-;; |                            |                | only one action is available, there is no difference |
-;; |                            |                | between this and `ivy-done'.                         |
-;; |----------------------------+----------------+------------------------------------------------------|
-
-;; Switch to any of the saved `ivy-views' using `M-x ivy-switch-buffer'.
-;; When `ivy-mode' is enabled, binding for `switch-to-buffer' is remapped to
-;; `ivy-switch-buffer'.
-
-;; .........................................................................
-
-;; # (use-package counsel
-;; #   :ensure t
-;; #   :after ivy
-;; #   :config (counsel-mode))
-;; # 
-;; # (use-package ivy
-;; #   :ensure t
-;; #   :defer 0.1
-;; #   :diminish
-;; #   :bind (("C-c C-r" . ivy-resume)
-;; #          ("C-x B" . ivy-switch-buffer-other-window)
-;; #          ;; :map ivy--minibuffer-map
-;; #          ;; ("<left>" . ivy-backward-kill-work)
-;; #          ;; ("<right>" . ivy-alt-done)
-;; #          )
-;; #   :custom
-;; #   (ivy-count-format "(%d/d%)")
-;; #   (ivy-use-virtual-buffers t)
-;; #   (ivy-height 20)
-;; #   :config
-;; #   (ivy-mode)
-;; #   )
-;; # 
-;; # (use-package ivy-rich
-;; #   :ensure t
-;; #   :after ivy
-;; #  ;; :custom
-;; #  ;;   (ivy-virtual-abbreviate 'full
-;; #  ;;                           ivy-rich-switch-buffer-align-virtual-buffer t
-;; #  ;;                           ivy-rich-path-style 'abbrev)
-;; #   :config
-;; #  ;;   (ivy-set-display-transformer 'ivy-switch-buffer
-;; #  ;;                                'ivy-rich-switch-buffer-transformer)
-;; #   (ivy-rich-mode)
-;; #   )
-;; # 
-;; # (use-package swiper
-;; #   :ensure t
-;; #   :after ivy
-;; #   :bind (("C-s" . swiper))
-;; #   )
-;; # 
-;; # 
-;; # (use-package counsel-projectile
-;; #   :ensure t
-;; #   :after (counsel projectile))
-;; # 
-;; # (use-package ivy-hydra
-;; #   :ensure t
-;; #   :after (ivy hydra))
-
-
+;; [[file:site-pkgs.org::comp-mb-ver-begin][comp-mb-ver-begin]]
 ;; ===( vertico )=============================================================
 
  ;; @see: https://kristofferbalintona.me/posts/202202211546/
- 
-(message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico)) 
- 
+
+(message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico))
+;; comp-mb-ver-begin ends here
+
+;; Marginalia
+;; #+NAME: comp-mb-ver-marginalia
+
+;; [[file:site-pkgs.org::comp-mb-ver-marginalia][comp-mb-ver-marginalia]]
 ;; ---( marginalia )--------------------------------------------------------------
 
 (use-package marginalia
@@ -3672,7 +3887,12 @@ the automatic filling of the current paragraph."
   :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
   :init
   (all-the-icons-completion-mode))
+;; comp-mb-ver-marginalia ends here
 
+;; Vertico
+;; #+NAME: comp-mb-ver-vertico
+
+;; [[file:site-pkgs.org::comp-mb-ver-vertico][comp-mb-ver-vertico]]
 ;; ---( vertico )--------------------------------------------------------------
 
 (use-package vertico
@@ -3694,140 +3914,151 @@ the automatic filling of the current paragraph."
 ;;             "C-M-p" #'vertico-previous-group)
 ;;   :config
 ;;   (vertico-mode))
+;; comp-mb-ver-vertico ends here
 
+;; Consult
+;; #+NAME: comp-mb-ver-consult
 
+;; [[file:site-pkgs.org::comp-mb-ver-consult][comp-mb-ver-consult]]
 ;; ---( consult )--------------------------------------------------------------
 
 
-(setq completion-ignore-case t)
-(setq read-file-name-completion-ignore-case t)
+  (setq completion-ignore-case t)
+  (setq read-file-name-completion-ignore-case t)
 
+  ;; @see: https://github.com/minad/consult
+  ;; @see: https://gitlab.com/to1ne/temacco/-/blob/main/README.org#L749
 
+  ;; Example configuration for Consult
+  (use-package consult
+    :ensure t
+    ;; Replace bindings. Lazily loaded due by `use-package'.
+    :bind (;; C-c bindings (mode-specific-map)
+           ("C-c h" . consult-history)
+           ("C-c m" . consult-mode-command)
+           ("C-c k" . consult-kmacro)
+           ;; C-x bindings (ctl-x-map)
+           ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
+           ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
+           ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
+           ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
+           ("C-x r b" . consult-bookmark)            ;; orig. bookmark-jump
+           ("C-x p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
+           ;; Custom M-# bindings for fast register access
+           ("M-#" . consult-register-load)
+           ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
+           ("C-M-#" . consult-register)
+           ;; Other custom bindings
+           ("M-y" . consult-yank-pop)                ;; orig. yank-pop
+           ("<help> a" . consult-apropos)            ;; orig. apropos-command
+           ;; M-g bindings (goto-map)
+           ("M-g e" . consult-compile-error)
+           ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
+           ("M-g g" . consult-goto-line)             ;; orig. goto-line
+           ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
+           ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
+           ("M-g m" . consult-mark)
+           ("M-g k" . consult-global-mark)
+           ("M-g i" . consult-imenu)
+           ("M-g I" . consult-imenu-multi)
+           ;; M-s bindings (search-map)
+           ("M-s d" . consult-find)
+           ("M-s D" . consult-locate)
+           ("M-s g" . consult-grep)
+           ("M-s G" . consult-git-grep)
+           ("M-s r" . consult-ripgrep)
+           ("M-s l" . consult-line)
+           ("M-s L" . consult-line-multi)
+           ("M-s m" . consult-multi-occur)
+           ("M-s k" . consult-keep-lines)
+           ("M-s u" . consult-focus-lines)
+           ;; Isearch integration
+           ("M-s e" . consult-isearch-history)
+           :map isearch-mode-map
+           ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
+           ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
+           ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
+           ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
+           ;; Minibuffer history
+           :map minibuffer-local-map
+           ("M-s" . consult-history)                 ;; orig. next-matching-history-element
+           ("M-r" . consult-history))                ;; orig. previous-matching-history-element
 
+    ;; Enable automatic preview at point in the *Completions* buffer. This is
+    ;; relevant when you use the default completion UI.
+    :hook (completion-list-mode . consult-preview-at-point-mode)
 
-;; @see: https://github.com/minad/consult
-;; @see: https://gitlab.com/to1ne/temacco/-/blob/main/README.org#L749
+    ;; The :init configuration is always executed (Not lazy)
+    :init
 
-;; Example configuration for Consult
-(use-package consult
+    ;; Optionally configure the register formatting. This improves the register
+    ;; preview for `consult-register', `consult-register-load',
+    ;; `consult-register-store' and the Emacs built-ins.
+    (setq register-preview-delay 0.5
+          register-preview-function #'consult-register-format)
+
+    ;; Optionally tweak the register preview window.
+    ;; This adds thin lines, sorting and hides the mode line of the window.
+    (advice-add #'register-preview :override #'consult-register-window)
+
+    ;; Use Consult to select xref locations with preview
+    (setq xref-show-xrefs-function #'consult-xref
+          xref-show-definitions-function #'consult-xref)
+
+    ;; Configure other variables and modes in the :config section,
+    ;; after lazily loading the package.
+    :config
+
+    ;; Optionally configure preview. The default value
+    ;; is 'any, such that any key triggers the preview.
+    ;; (setq consult-preview-key 'any)
+    ;; (setq consult-preview-key (kbd "M-."))
+    ;; (setq consult-preview-key (list (kbd "<S-down>") (kbd "<S-up>")))
+    ;; For some commands and buffer sources it is useful to configure the
+    ;; :preview-key on a per-command basis using the `consult-customize' macro.
+    (consult-customize
+     consult-theme
+     :preview-key '(:debounce 0.2 any)
+     consult-ripgrep consult-git-grep consult-grep
+     consult-bookmark consult-recent-file consult-xref
+     consult--source-bookmark consult--source-recent-file
+     consult--source-project-recent-file
+     :preview-key (kbd "M-."))
+
+    ;; Optionally configure the narrowing key.
+    ;; Both < and C-+ work reasonably well.
+    (setq consult-narrow-key "<") ;; (kbd "C-+")
+
+    ;; Optionally make narrowing help available in the minibuffer.
+    ;; You may want to use `embark-prefix-help-command' or which-key instead.
+    ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
+
+    ;; By default `consult-project-function' uses `project-root' from project.el.
+    ;; Optionally configure a different project root function.
+    ;; There are multiple reasonable alternatives to chose from.
+    ;;;; 1. project.el (the default)
+    ;; (setq consult-project-function #'consult--default-project--function)
+    ;;;; 2. projectile.el (projectile-project-root)
+    ;; (autoload 'projectile-project-root "projectile")
+    ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
+    ;;;; 3. vc.el (vc-root-dir)
+    ;; (setq consult-project-function (lambda (_) (vc-root-dir)))
+    ;;;; 4. locate-dominating-file
+    ;; (setq consult-project-function (lambda (_) (locate-dominating-file "." ".git")))
+  )
+
+(use-package consult-dir
   :ensure t
-  ;; Replace bindings. Lazily loaded due by `use-package'.
-  :bind (;; C-c bindings (mode-specific-map)
-         ("C-c h" . consult-history)
-         ("C-c m" . consult-mode-command)
-         ("C-c k" . consult-kmacro)
-         ;; C-x bindings (ctl-x-map)
-         ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
-         ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
-         ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
-         ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
-         ("C-x r b" . consult-bookmark)            ;; orig. bookmark-jump
-         ("C-x p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
-         ;; Custom M-# bindings for fast register access
-         ("M-#" . consult-register-load)
-         ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
-         ("C-M-#" . consult-register)
-         ;; Other custom bindings
-         ("M-y" . consult-yank-pop)                ;; orig. yank-pop
-         ("<help> a" . consult-apropos)            ;; orig. apropos-command
-         ;; M-g bindings (goto-map)
-         ("M-g e" . consult-compile-error)
-         ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
-         ("M-g g" . consult-goto-line)             ;; orig. goto-line
-         ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
-         ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
-         ("M-g m" . consult-mark)
-         ("M-g k" . consult-global-mark)
-         ("M-g i" . consult-imenu)
-         ("M-g I" . consult-imenu-multi)
-         ;; M-s bindings (search-map)
-         ("M-s d" . consult-find)
-         ("M-s D" . consult-locate)
-         ("M-s g" . consult-grep)
-         ("M-s G" . consult-git-grep)
-         ("M-s r" . consult-ripgrep)
-         ("M-s l" . consult-line)
-         ("M-s L" . consult-line-multi)
-         ("M-s m" . consult-multi-occur)
-         ("M-s k" . consult-keep-lines)
-         ("M-s u" . consult-focus-lines)
-         ;; Isearch integration
-         ("M-s e" . consult-isearch-history)
-         :map isearch-mode-map
-         ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
-         ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
-         ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
-         ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
-         ;; Minibuffer history
-         :map minibuffer-local-map
-         ("M-s" . consult-history)                 ;; orig. next-matching-history-element
-         ("M-r" . consult-history))                ;; orig. previous-matching-history-element
+  :bind (("C-x C-d" . consult-dir)
+         :map minibuffer-local-completion-map
+         ("C-x C-d" . consult-dir)
+         ("C-x C-j" . consult-dir-jump-file)))
+;; comp-mb-ver-consult ends here
 
-  ;; Enable automatic preview at point in the *Completions* buffer. This is
-  ;; relevant when you use the default completion UI.
-  :hook (completion-list-mode . consult-preview-at-point-mode)
+;; Orderless
+;; #+NAME: comp-mb-ver-orderless
 
-  ;; The :init configuration is always executed (Not lazy)
-  :init
-
-  ;; Optionally configure the register formatting. This improves the register
-  ;; preview for `consult-register', `consult-register-load',
-  ;; `consult-register-store' and the Emacs built-ins.
-  (setq register-preview-delay 0.5
-        register-preview-function #'consult-register-format)
-
-  ;; Optionally tweak the register preview window.
-  ;; This adds thin lines, sorting and hides the mode line of the window.
-  (advice-add #'register-preview :override #'consult-register-window)
-
-  ;; Use Consult to select xref locations with preview
-  (setq xref-show-xrefs-function #'consult-xref
-        xref-show-definitions-function #'consult-xref)
-
-  ;; Configure other variables and modes in the :config section,
-  ;; after lazily loading the package.
-  :config
-
-  ;; Optionally configure preview. The default value
-  ;; is 'any, such that any key triggers the preview.
-  ;; (setq consult-preview-key 'any)
-  ;; (setq consult-preview-key (kbd "M-."))
-  ;; (setq consult-preview-key (list (kbd "<S-down>") (kbd "<S-up>")))
-  ;; For some commands and buffer sources it is useful to configure the
-  ;; :preview-key on a per-command basis using the `consult-customize' macro.
-  (consult-customize
-   consult-theme
-   :preview-key '(:debounce 0.2 any)
-   consult-ripgrep consult-git-grep consult-grep
-   consult-bookmark consult-recent-file consult-xref
-   consult--source-bookmark consult--source-recent-file
-   consult--source-project-recent-file
-   :preview-key (kbd "M-."))
-
-  ;; Optionally configure the narrowing key.
-  ;; Both < and C-+ work reasonably well.
-  (setq consult-narrow-key "<") ;; (kbd "C-+")
-
-  ;; Optionally make narrowing help available in the minibuffer.
-  ;; You may want to use `embark-prefix-help-command' or which-key instead.
-  ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
-
-  ;; By default `consult-project-function' uses `project-root' from project.el.
-  ;; Optionally configure a different project root function.
-  ;; There are multiple reasonable alternatives to chose from.
-  ;;;; 1. project.el (the default)
-  ;; (setq consult-project-function #'consult--default-project--function)
-  ;;;; 2. projectile.el (projectile-project-root)
-  ;; (autoload 'projectile-project-root "projectile")
-  ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
-  ;;;; 3. vc.el (vc-root-dir)
-  ;; (setq consult-project-function (lambda (_) (vc-root-dir)))
-  ;;;; 4. locate-dominating-file
-  ;; (setq consult-project-function (lambda (_) (locate-dominating-file "." ".git")))
-)
-
-
-
+;; [[file:site-pkgs.org::comp-mb-ver-orderless][comp-mb-ver-orderless]]
 ;; ---( orderless )--------------------------------------------------------------
 
 (use-package orderless
@@ -3842,7 +4073,12 @@ the automatic filling of the current paragraph."
 ;;   (completion-category-overrides
 ;;    '((file (styles basic-remote ; For `tramp' hostname completion with `vertico'
 ;;                    orderless)))))
+;; comp-mb-ver-orderless ends here
 
+;; Embark
+;; #+NAME: comp-mb-ver-embark
+
+;; [[file:site-pkgs.org::comp-mb-ver-embark][comp-mb-ver-embark]]
 ;; ---( embark )--------------------------------------------------------------
 
   (use-package embark
@@ -3890,11 +4126,12 @@ the automatic filling of the current paragraph."
 ;;   auto-updating embark collect buffer
 ;;   :hook
 ;;   (embark-collect-mode . consult-preview-at-point-mode))
+;; comp-mb-ver-embark ends here
 
+;; Savehist
+;; #+NAME: comp-mb-ver-savehist
 
-
-
-
+;; [[file:site-pkgs.org::comp-mb-ver-savehist][comp-mb-ver-savehist]]
 ;; ---( savehist )--------------------------------------------------------------
 
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
@@ -3907,61 +4144,36 @@ the automatic filling of the current paragraph."
 
 (setq completion-ignore-case t)
 (setq read-file-name-completion-ignore-case t)
+;; comp-mb-ver-savehist ends here
 
+;; Vertico*/end
+;; #+NAME: comp-mb-ver-end
 
-
-
+;; [[file:site-pkgs.org::comp-mb-ver-end][comp-mb-ver-end]]
 (message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico)) 
 ;; .........................................................................
+;; comp-mb-ver-end ends here
 
+;; Completion/end
+;; #+NAME: comp-mb-end
 
+;; [[file:site-pkgs.org::comp-mb-end][comp-mb-end]]
+;; }}}  .comp-mb
+;; comp-mb-end ends here
+
+;; Net/begin
+;; #+NAME: net-begin
+
+;; [[file:site-pkgs.org::net-begin][net-begin]]
 ;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @NET
+;; {{{  @NET
 ;; ;;;////////////////////////////////////////////////////////////////
+;; net-begin ends here
 
+;; w3m
+;; #+NAME: net-web-w3m
 
-;; ---( restclient )------------------------------------------------------
-
-;; @see: https://github.com/pashky/restclient.el
-
-(use-package restclient
-  :ensure t
-  :defer 30
-  :init
-    (progn
-      ;; (unless restclient-use-org
-      ;;   (add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode)))
-      ;; (spacemacs/set-leader-keys-for-major-mode 'restclient-mode
-      ;;   "n" 'restclient-jump-next
-      ;;   "p" 'restclient-jump-prev
-      ;;   "s" 'restclient-http-send-current-stay-in-window
-      ;;   "S" 'restclient-http-send-current
-      ;;   "r" 'spacemacs/restclient-http-send-current-raw-stay-in-window
-      ;;   "R" 'restclient-http-send-current-raw
-      ;;   "y" 'restclient-copy-curl-command)
-      ) 
-  )
-
-
-;; ---( ob-http )------------------------------------------------------
-
-;; @see: https://github.com/zweifisch/ob-http
-;; @see: https://emacs.stackexchange.com/questions/2427/how-to-test-rest-api-with-emacs
-
-;; (use-package ob-http
-;;   :ensure t
-;;   :defer 30
-;;   )
-
-
-
-
-
-;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @INET
-;; ;;;////////////////////////////////////////////////////////////////
-
-
+;; [[file:site-pkgs.org::net-web-w3m][net-web-w3m]]
 ;; ---( w3m )------------------------------------------------------
 
 (use-package w3m
@@ -4057,14 +4269,12 @@ end tell"))))
     (bind-key "<return>" 'w3m-view-url-with-external-browser
               w3m-minor-mode-map)
     (bind-key "S-<return>" 'w3m-safe-view-this-url w3m-minor-mode-map)))
+;; net-web-w3m ends here
 
+;; elfeed
+;; #+NAME: net-news-elfeed
 
-
-;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @NEWS
-;; ;;;////////////////////////////////////////////////////////////////
-
-
+;; [[file:site-pkgs.org::net-news-elfeed][net-news-elfeed]]
 ;; ---( elfeed )--------------------------------------------------------------
 
 ;; @see: https://github.com/skeeto/elfeed
@@ -4096,25 +4306,28 @@ end tell"))))
 
             (setq rmh-elfeed-org-files (list "~/.rss/elfeed.org"))
             (elfeed-org)))
-  
+
 
 ;; @see: https://github.com/algernon/elfeed-goodies
 ;; (use-package elfeed-goodies
 ;;   :ensure t
 ;;   :defer 30
 ;;   )
+;; net-news-elfeed ends here
 
+;; GNus
+;; #+NAME: net-news-gnus
+
+;; [[file:site-pkgs.org::net-news-gnus][net-news-gnus]]
 ;; ---( GNus )--------------------------------------------------------------
 
 ;; @see: https://www.emacswiki.org/emacs/GnusRss
+;; net-news-gnus ends here
 
+;; twittering
+;; #+NAME: net-twitter-twittering
 
-
-;; ;;;////////////////////////////////////////////////////////////////
-;; ;;;  @TWITTER
-;; ;;;////////////////////////////////////////////////////////////////
-
-
+;; [[file:site-pkgs.org::net-twitter-twittering][net-twitter-twittering]]
 ;; ---( twittering-mode )--------------------------------------------------------------
 
 (use-package twittering-mode
@@ -4126,16 +4339,21 @@ end tell"))))
 ;;   :commands twit
 ;;   :config
 ;;   (setq twittering-use-master-password t))
+;; net-twitter-twittering ends here
 
+;; Net/end
+;; #+NAME: net-end
 
-;; ;; ---( hackernews )------------------------------------------------------
+;; [[file:site-pkgs.org::net-end][net-end]]
+;; }}}  .net
+;; net-end ends here
 
-;; (use-package hackernews
-;;   :defer t
-;;   )
+;; Log: finish
+;; #+NAME: log-finish
 
-
-
+;; [[file:site-pkgs.org::log-finish][log-finish]]
+;; vim: noet sw=4 ts=4 fdm=marker foldcolumn=0
 
 ;; ---( site.pkgs: end )-------------------------------------------------------
 (message "SITE:PKGS - end")
+;; log-finish ends here
