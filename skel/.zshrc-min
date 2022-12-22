@@ -1,0 +1,17 @@
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/GP057788/.zshrc'
+
+autoload -Uz compinit
+compinit  -u
+# End of lines added by compinstall
+
+#History setup
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=$HISTSIZE
+setopt SHARE_HISTORY
+
+export PS1='%% '
+
+
+
