@@ -1,8 +1,269 @@
-;;;; Emacs Bookmark Format Version 1 ;;;;
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("*emacs.templates*"
+(("AZ-701.#[users]"
+ (filename . "~/work/bv/box-up/doc/up/3.AZ/xe/701/80-unleash/511-unleash-users.org")
+ (front-context-string . "* TEAM: \"USERS\" ")
+ (rear-context-string . "-----------\n\n\n\n\n")
+ (position . 782))
+(".emacs-site#user-setup.org"
+ (filename . "~/.emacs-site/skel/.emacs-setup.org")
+ (front-context-string . "# ---\n#+TITLE: e")
+ (rear-context-string)
+ (position . 1))
+(".emacs-wall#sachac"
+ (filename . "~/work/ec/sachac+.emacs.d/Sacha.org")
+ (front-context-string . "#+TITLE: Sacha C")
+ (rear-context-string)
+ (position . 1))
+(".emacs-site#site-pkgs.org"
+ (filename . "~/.emacs-site/site-pkgs.org")
+ (front-context-string . "#+TITLE: site-pk")
+ (rear-context-string)
+ (position . 1))
+(".emacs-site#site-pkgs.el:ver"
+ (filename . "~/.emacs-site/site-pkgs.el")
+ (front-context-string . ";; ===( vertico ")
+ (rear-context-string . " (ivy hydra))\n\n\n")
+ (position . 120719))
+("org-capture-last-stored"
+ (filename . "~/Dropbox/Local/data/org/all/task.org")
+ (front-context-string . "** NEXT [#B] vv-")
+ (rear-context-string . " ] project test\n")
+ (position . 413))
+(".emacs-site#site-pkgs.el:org"
+ (filename . "~/.emacs-site/site-pkgs.el")
+ (front-context-string . ";; ;;;//////////")
+ (rear-context-string . "ture-mode t))\n\n\n")
+ (position . 57939))
+("AO-901.#[sandbox]"
+ (filename . "~/work/bv/box-up/doc/up/5.AO/oz/901/91-sandbox/")
+ (front-context-string . "110-remote-stats")
+ (rear-context-string . "331 06-21 18:47 ")
+ (position . 260))
+(".emacs-site#cache/docs"
+ (filename . "~/.emacs-site/cache/docs/")
+ (front-context-string . "..\n  -rw-rw-r-- ")
+ (rear-context-string . "096 06-20 15:01 ")
+ (position . 188))
+("^{BV}::dvb-pipe-jk:@xt/"
+ (filename . "~/work/vs/dvb-pipe-jk/")
+ (front-context-string . ".git\n  -rwxrwxr-")
+ (rear-context-string . "096 05-20 12:45 ")
+ (position . 241))
+("`{WS}::bpdata:@v79/"
+ (filename . "/ssh:bn21092@v79:/home/bn21092/work/bp/bpdata/")
+ (front-context-string . "data\n  drwxrwxr-")
+ (rear-context-string . "096 05-02 16:15 ")
+ (position . 250))
+("^{BP}::dve-sample-r:@xt/"
+ (filename . "~/work/vs/dve-sample-r/")
+ (front-context-string . "data\n  drwxrwxr-")
+ (rear-context-string . "096 2021-04-20  ")
+ (position . 239)
+ (annotation . ""))
+("^IBREG"
+ (filename . "~/work/bu/org-info/")
+ (front-context-string . "dat\n  drwxrwxr-x")
+ (rear-context-string . "096 10-22 17:36 ")
+ (position . 235))
+("AZ-801"
+ (filename . "~/work/bv/box-up/doc/3.AZ/xv/801/")
+ (front-context-string . "10-create\n  drwx")
+ (rear-context-string . "096 04-23 16:51 ")
+ (position . 249))
+("^{BP}::dve-sample-r:/"
+ (filename . "/ssh:pp2:/home/gp21012/work/vs/dve-sample-r/")
+ (front-context-string . "data\n  drwxr-xr-")
+ (rear-context-string . "096 2020-12-15  ")
+ (position . 255))
+("^{PW}::vk-tools:/"
+ (filename . "/ssh:vsroot@fw1:/srv/site/vk/vk-tools/")
+ (front-context-string . "bin\n  drwxrwxr-x")
+ (rear-context-string . "096 06-29 16:16 ")
+ (position . 235))
+("^{RL}::csp-drive-rl:/"
+ (filename . "~/work/cs/csp-drive-rl/")
+ (front-context-string . "AirsimApp\n  drwx")
+ (rear-context-string . "096 06-14 00:47 ")
+ (position . 255))
+("^{PW}::bs-datasci:/docker"
+ (filename . "~/work/pw/bs-datasci/docker/datasci-site/")
+ (front-context-string . "db\n  drwxrwxr-x ")
+ (rear-context-string . "096 04-23 17:36 ")
+ (position . 257))
+("^{PW}::bc-multisite:/docker"
+ (filename . "~/work/pw/bc-multisite/docker/cefes-site/")
+ (front-context-string . "db\n  drwxrwxr-x ")
+ (rear-context-string . "096 04-23 17:36 ")
+ (position . 257))
+("^{RS}::rs-proxy:/docker"
+ (filename . "~/work/rs/rs-proxy/docker/rs-proxy/")
+ (front-context-string . "db\n  drwxrwxr-x ")
+ (rear-context-string . "096 2020-10-02  ")
+ (position . 251))
+("AZ-701.#[shiny]"
+ (filename . "~/work/bv/box-up/doc/3.AZ/xv/501/40-data/430-shiny-proxy.md")
+ (front-context-string . "---\ntitle: Shiny")
+ (rear-context-string)
+ (position . 1))
+("^{PW}::bs-cefes:/docker"
+ (filename . "/ssh:xpw1012@pv1:/home/xpw1012/work/pw/bs-cefes/docker/cefes-site/")
+ (front-context-string . "db\n  drwxr-xr-x ")
+ (rear-context-string . "096 2020-08-28  ")
+ (position . 264))
+("^{PW}::pb-cefes:/"
+ (filename . "/ssh:xpw1012@pv1:/home/xpw1012/work/pw/")
+ (front-context-string . "bs-cefes\n  drwxr")
+ (rear-context-string . "096 03-04 10:52 ")
+ (position . 237))
+("AZ-701.#[sites]"
+ (filename . "~/work/bv/box-up/doc/3.AZ/xv/501/60-docs/610-site-dslab.md")
+ (front-context-string . "# //////////////")
+ (rear-context-string . "orts }}' $DV\n\n\n\n")
+ (position . 9862))
+("^DSBOX.ext.#user"
+ (filename . "~/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/files/usr/local/bin/vs-user.sh")
+ (front-context-string . "    #!(@) u_ssh(")
+ (rear-context-string . "r: $USER, ...\"\n\n")
+ (position . 6393))
+(".ssh"
+ (filename . "~/.ssh/config")
+ (front-context-string . "#{{{ [ OPS.* ] /")
+ (rear-context-string)
+ (position . 1))
+("^DSBOX.tfz.#prod"
+ (filename . "~/work/bv/box-up/src/main/terraform/az/labs/es/es-cx670-lab/conf/main.tf")
+ (front-context-string . "################")
+ (rear-context-string)
+ (position . 1))
+("^DSBOX.tfz.#test"
+ (filename . "~/work/bv/box-up/src/main/terraform/az/labs/tz/tz-sm101-lab/conf/main.tf")
+ (front-context-string . "################")
+ (rear-context-string)
+ (position . 1))
+("^DSBOX.tfz.#conf"
+ (filename . "~/work/bv/box-up/src/main/terraform/az/modules/info/config/main.tf")
+ (front-context-string . "  #{{{ +++ (out)")
+ (rear-context-string . "\n\n\n  #}}} ...\n\n\n")
+ (position . 2650))
+("^DSBOX.tfz.#labs"
+ (filename . "~/work/bv/box-up/src/main/terraform/az/modules/labs/a/lab/main.tf")
+ (front-context-string . "#{{{ +++ (rg: Re")
+ (rear-context-string . " #}}} ...\n\n\n\n}\n\n")
+ (position . 673))
+("tf.samples"
+ (filename . "~/work/as/")
+ (front-context-string . "learn-terraform-")
+ (rear-context-string . "096 02-08 14:01 ")
+ (position . 301))
+("^DSBOX.tfz"
+ (filename . "~/work/bv/box-up/src/main/terraform/az/")
+ (front-context-string . "labs\n  drwxrwxr-")
+ (rear-context-string . "096 02-08 12:34 ")
+ (position . 255))
+("AZ-701.#define"
+ (filename . "~/work/bv/box-up/doc/3.AZ/xv/701/10-create/511-define-rc.org")
+ (front-context-string . "#+TITLE: 510-def")
+ (rear-context-string)
+ (position . 1))
+("^DSBOX.ext"
+ (filename . "~/work/bv/box-up/src/main/azure/ext/20/300/vs-init.sh")
+ (front-context-string . "#!/bin/bash\n\nset")
+ (rear-context-string)
+ (position . 1))
+(".st"
+ (filename . "~/.st/st/")
+ (front-context-string . "..\n  -rw-rw-r-- ")
+ (rear-context-string . "96 Sep 18 12:13 ")
+ (position . 178))
+("^{RL}::dqn-spaceinv-pt:/"
+ (filename . "~/work/rl/dqn-spaceinvadres-pt/")
+ (front-context-string . "..\n  -rw-rw-r-- ")
+ (rear-context-string . "96 Dec  5 14:38 ")
+ (position . 196))
+("^{RL}::dev-portfolio-rl:/"
+ (filename . "~/work/rl/dev-portfolio-rl/")
+ (front-context-string . "ChangeLog.md\n  d")
+ (rear-context-string . "71 Dec  5 14:38 ")
+ (position . 249))
+("^{BP}::dve-sample-py:/"
+ (filename . "~/work/vs/dve-sample-py/")
+ (front-context-string . "ChangeLog.md\n  d")
+ (rear-context-string . "06 Dec  5 14:40 ")
+ (position . 243))
+("^{BP}::dst-python-intro:/"
+ (filename . "~/work/bp/dst-python-intro/")
+ (front-context-string . "docker\n  -rw-rw-")
+ (rear-context-string . "96 Jun 24 15:08 ")
+ (position . 422))
+("dp.dynare"
+ (filename . "~/work/dp/dynare/")
+ (front-context-string . "Makefile\n  -rw-r")
+ (rear-context-string . "19 Sep 25 12:38 ")
+ (position . 2088))
+("AZ-701.#dynare"
+ (filename . "~/work/bv/box-up/doc/3.AZ/xv/501/50-build/410-dynare-build.md")
+ (front-context-string . "---\ntitle: Dynar")
+ (rear-context-string)
+ (position . 1))
+("pw.b-cefes[@todo]"
+ (filename . "~/work/pw/bs-cefes/todo.org")
+ (front-context-string . "-#+TITLE: DSLABS")
+ (rear-context-string)
+ (position . 1))
+("@notes"
+ (filename . "~/work/bn/@todo/doc/Note/")
+ (front-context-string . "..\n  drwxrwxr-x ")
+ (rear-context-string . "96 lug 15 16:40 ")
+ (position . 169))
+(".org-ref#manuscript.org"
+ (filename . "~/.emacs-site/docs/org/ref/manuscript.org")
+ (front-context-string . "#+TITLE: org-ref")
+ (rear-context-string)
+ (position . 1))
+("pw.b-cefes"
+ (filename . "~/work/pw/bs-cefes/doc/")
+ (front-context-string . "002-cefes2019-re")
+ (rear-context-string . "96 mag 13 09:27 ")
+ (position . 211))
+("P.dst.py-intro"
+ (filename . "~/work/bp/dst-python-intro/")
+ (front-context-string . "docker\n  -rw-rw-")
+ (rear-context-string . "96 mag  6 14:57 ")
+ (position . 218))
+("dk-user.md"
+ (filename . "~/work/bv/box-up/doc/0.VM/DOCKER/dk-user.md")
+ (front-context-string . "---\ntitle: docke")
+ (rear-context-string)
+ (position . 1))
+("^DSBOX"
+ (filename . "~/work/bv/box-up/src/main/ansible/labs/dsbox/")
+ (front-context-string . "ansible.cfg\n  -r")
+ (rear-context-string . "74 apr 16 10:57 ")
+ (position . 239))
+("AZ-701"
+ (filename . "~/work/bv/box-up/doc/up/3.AZ/xe/701/")
+ (front-context-string . "100-create\n  drw")
+ (rear-context-string . "96 apr 15 11:24 ")
+ (position . 224))
+("@todo"
+ (filename . "~/work/bn/@todo/doc/Work/UMB/dslabs/todo.org")
+ (front-context-string . "-#+TITLE: DSLABS")
+ (rear-context-string)
+ (position . 1))
+("kvm-ubuntu-server-1804.md"
+ (filename . "~/work/bn/ub_notes/doc/1.Shiny/OS-Local/kvm-ubuntu-server-1804.md")
+ (front-context-string . "#sdo apt install")
+ (rear-context-string . "sudo apt update\n")
+ (position . 888))
+("ub_notes"
+ (filename . "~/work/bn/ub_notes/")
+ (front-context-string . "doc\n  drwxr-xr-x")
+ (rear-context-string . "96 mar  4 12:41 ")
+ (position . 208))
+("*emacs.templates*"
  (filename . "~/.emacs-site/templates/")
  (front-context-string . "..\n  drwxr-sr-x ")
  (rear-context-string . "96 Mar  3 17:51 ")
@@ -17,11 +278,6 @@
  (front-context-string . ";; ---( site.pkg")
  (rear-context-string)
  (position . 1))
-("R-sources (CRAN)"
- (filename . "~/work/hq/usr/src/cran/R/packages")
- (front-context-string . "..\n  drwx------ ")
- (rear-context-string . "96 Jan 26 13:34 ")
- (position . 185))
 ("R-sources (base packages)"
  (filename . "~/work/hq/usr/src/cran/R/R-3.2.3/src/library")
  (front-context-string . "base\n  drwxr-xr-")

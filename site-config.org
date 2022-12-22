@@ -1,0 +1,66 @@
+#+TITLE: hute37's Emacs configuration
+#+OPTIONS: toc:nil h:4
+#+STARTUP: showeverything
+#+PROPERTY: header-args:emacs-lisp    :tangle yes :results silent :exports code
+#+LINK: emacs-site https://github.com/hute37/emacs-site
+#+LINK: dotemacs  https://sachachua.com/dotemacs#%s
+
+
+Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
+
+#+TOC: headlines 4
+
+* Configuration   :emacs:
+** About this file
+:PROPERTIES:
+:CUSTOM_ID: babel-init
+:END:
+<<babel-init>>
+
+
+** Starting up
+
+#+NAME: startup
+#+begin_src emacs-lisp
+  ;; This config entry point in ~/.emacs 
+
+  (load "~/.emacs-start") ;; .emacs-start.el -> ~/.emacs-site/site-start.el
+
+
+#+END_SRC
+
+
+** Boot Sequence
+
+#+NAME: startup
+#+begin_src emacs-lisp
+
+  (defun h7/init ()
+      "#H main init sequence."
+    (progn
+    
+      (h7/clear)
+    
+      (h7/load "site-pref")
+
+      (h7/local)
+    
+      (h7/load "site-pkgs")
+      (h7/load "site-func")
+      (h7/load "site-cust")
+      (h7/load "site-misc")
+      (h7/load "site-edit")
+      (h7/load "site-view")
+      (h7/load "site-keys")
+      (h7/load "site-tool")
+    
+      (h7/load "site-user")
+    
+      (h7/path "~/.emacs-site/addon")
+    
+  ;;    (h7/home "emacs-user")
+    
+      ))
+
+
+#+END_SRC
