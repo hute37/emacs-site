@@ -279,70 +279,71 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 #+NAME: basic
 #+begin_src emacs-lisp
 
-       ;; ;;;////////////////////////////////////////////////////////////////
-       ;; {{{  @BASIC
-       ;; ;;;////////////////////////////////////////////////////////////////
+         ;; ;;;////////////////////////////////////////////////////////////////
+         ;; {{{  @BASIC
+         ;; ;;;////////////////////////////////////////////////////////////////
 
-       ;; ---( ... )--------------------------------------------------------------
+         ;; ---( ... )--------------------------------------------------------------
 
-       ;; ---( ... )--------------------------------------------------------------
+         ;; ---( ... )--------------------------------------------------------------
 
-       ;;(use-package bs
-       ;;  :ensure t)
+         ;;(use-package bs
+         ;;  :ensure t)
 
-       ;; ---( ... )--------------------------------------------------------------
+         ;; ---( ... )--------------------------------------------------------------
 
-       ;; (use-package pretty-symbols
-       ;;   :ensure t)
+         ;; (use-package pretty-symbols
+         ;;   :ensure t)
 
-       ;; (use-package pretty-lambdada
-       ;;   :ensure t
-       ;;   :init (dolist (hook '(lisp-mode-hook emacs-lisp-mode-hook)))
-       ;;   :config (dolist (global-pretty-lambda-mode)))
+         ;; (use-package pretty-lambdada
+         ;;   :ensure t
+         ;;   :init (dolist (hook '(lisp-mode-hook emacs-lisp-mode-hook)))
+         ;;   :config (dolist (global-pretty-lambda-mode)))
 
 
-     ;; (use-package jumpc
-     ;;   :disabled t
-     ;;   :config (progn (jumpc-bind-vim-key)))
+       ;; (use-package jumpc
+       ;;   :disabled t
+       ;;   :config (progn (jumpc-bind-vim-key)))
 
-     ;; (use-package rainbow-delimiters
-     ;;   :disabled t
-     ;;   :hook (prog-mode . rainbow-delimiters-mode))
+       ;; (use-package rainbow-delimiters
+       ;;   :disabled t
+       ;;   :hook (prog-mode . rainbow-delimiters-mode))
 
-     ;; ---( undo-tree )--------------------------------------------------------------
+       ;; ---( undo-tree )--------------------------------------------------------------
 
   (use-package undo-tree
     :ensure t
-    :diminish
-    :bind (("C-c _" . undo-tree-visualize))
+    :diminish undo-tree-mode
+    ;; :bind (("C-c _" . undo-tree-visualize))
     :config
     (progn
       (global-undo-tree-mode)
-      (unbind-key "M-_" undo-tree-map)
+      ;; (unbind-key "M-_" undo-tree-map)
       (setq undo-tree-visualizer-timestamps t)
-      (setq undo-tree-visualizer-diff t)))
+      (setq undo-tree-visualizer-diff t)
+      (setq undo-tree-history-directory-alist '(("." . "~/.backups/emacs/undo-tree")))))
 
 
-  ;; ---( dash )--------------------------------------------------------------
+    ;; ---( dash )--------------------------------------------------------------
 
-  ;; ~dash.el~ :: A modern list API for Emacs. No 'cl required.  (See https://github.com/magnars/dash.el/)
-  (use-package dash
-    :ensure t)
+    ;; ~dash.el~ :: A modern list API for Emacs. No 'cl required.  (See https://github.com/magnars/dash.el/)
+    (use-package dash
+      :ensure t)
 
-  ;; ---( f )--------------------------------------------------------------
+    ;; ---( f )--------------------------------------------------------------
 
-  ;; ~f.el~ :: A modern API for working with files and directories in Emacs. (See https://github.com/rejeep/f.el/)
-  (use-package f
-    :ensure t)
+    ;; ~f.el~ :: A modern API for working with files and directories in Emacs. (See https://github.com/rejeep/f.el/)
+    (use-package f
+      :ensure t)
 
-  ;; ---( s )--------------------------------------------------------------
+    ;; ---( s )--------------------------------------------------------------
 
-  ;; ~s.el~ :: The long lost Emacs string manipulation library.  (See https://github.com/magnars/s.el/)
-  (use-package s
-    :ensure t)
+    ;; ~s.el~ :: The long lost Emacs string manipulation library.  (See https://github.com/magnars/s.el/)
+    (use-package s
+      :ensure t)
 
 
-    ;; }}}  .packages
+      ;; }}}  .packages
 
 #+END_SRC
 

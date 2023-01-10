@@ -63,7 +63,7 @@ case "$TERM" in
     xdumb) unsetopt zle;;
     *)
 
-#ZSH_THEME="robbyrussell"
+ZSH_THEME="robbyrussell"
 #ZSH_THEME="avit"
 #ZSH_THEME="awesomepanda"
 #ZSH_THEME="bureau"
@@ -101,7 +101,7 @@ case "$TERM" in
 #ZSH_THEME="afowler"
 #ZSH_THEME="spaceship"
 #ZSH_THEME="agkozak"; AGKOZAK_USER_HOST_DISPLAY=0
-ZSH_THEME="sobole"; SOBOLE_THEME_MODE=dark
+#ZSH_THEME="sobole"; SOBOLE_THEME_MODE=dark
 
     ;;
 esac    
@@ -200,6 +200,10 @@ fi
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases || true
 
 export ANSIBLE_VAULT_PASSWORD_FILE=~/.ans-wall.asc
+
+
+[ -f /usr/share/doc/find-the-command/ftc.zsh ] && source /usr/share/doc/find-the-command/ftc.zsh
+
 
 ### {{{ #CONDA //////////////////////////////////////////////////////////////////////////////
 if [ -f ~/.conda.on ]; then
