@@ -1,4 +1,4 @@
-alias ff 'find-file $1'
-alias fd 'find-dired $PWD ""'
-alias d 'dired $1'
-alias ll 'ls -l'
+alias ll ls -l
+alias d dired $1
+alias fd find-dired $PWD ""
+alias ff find-file $1
