@@ -3274,8 +3274,6 @@ the automatic filling of the current paragraph."
 ;; [[file:site-pkgs.org::shell-eshell][shell-eshell]]
 ;; ---( eshell )--------------------------------------------------------------
 
-(use-package xterm-color
-  :commands (xterm-color-filter))
 (use-package eshell
   :after esh-mode
   :commands (eshell eshell-command)
@@ -3315,10 +3313,24 @@ the automatic filling of the current paragraph."
     (defun ss (server)
       (interactive "sServer: ")
       (call-process "spawn" nil nil nil "ss" server))
+  (setq eshell-prompt-regexp "^[^#$\n]*[#$] "
+        eshell-prompt-function
+        (lambda nil
+          (concat
+           "[" (user-login-name) "@" (system-name) " "
+           (if (string= (eshell/pwd) (getenv "HOME"))
+               "~" (eshell/basename (eshell/pwd)))
+           "]"
+           (if (= (user-uid) 0) "# " "$ "))))
+  (setq eshell-output-filter-functions
+        (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
+  ;; (define-key eshell-hist-mode-map (kbd "M-r") #'consult-history)
+
     (eval-after-load "em-unix"
       '(progn
          (unintern 'eshell/su nil)
          (unintern 'eshell/sudo nil)))
+
     (message "eshell:initialize <"))
   (defun eshell/e (file)
       (find-file file))
@@ -3335,12 +3347,15 @@ the automatic filling of the current paragraph."
   ;; (use-package esh-toggle
   ;;   :ensure t
   ;;   :bind ("C-x C-h" . eshell-toggle))
+  (use-package xterm-color
+    :ensure t
+    :commands (xterm-color-filter))
   (message "eshell:init <")
   :config
   (message "eshell:config >")
   (setq
-   eshell-rc-script (concat user-emacs-directory "~/.emacs-site/config/eshell/aliases")
-   eshell-aliases-file (concat user-emacs-directory "~/.emacs-site/config/eshell/aliases")
+   eshell-rc-script "~/.emacs-site/config/eshell/aliases"
+   eshell-aliases-file "~/.emacs-site/config/eshell/aliases"
    eshell-history-size 5000
    eshell-buffer-maximum-lines 5000
    eshell-hist-ignoredups t
@@ -3348,19 +3363,6 @@ the automatic filling of the current paragraph."
    eshell-destroy-buffer-when-process-dies t
    eshell-visual-commands'("bash" "fish" "htop" "ssh" "top" "zsh"))
 
-  (setq eshell-prompt-regexp "^[^#$\n]*[#$] "
-        eshell-prompt-function
-        (lambda nil
-          (concat
-           "[" (user-login-name) "@" (system-name) " "
-           (if (string= (eshell/pwd) (getenv "HOME"))
-               "~" (eshell/basename (eshell/pwd)))
-           "]"
-           (if (= (user-uid) 0) "# " "$ "))))
-
-  (setq eshell-output-filter-functions
-        (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
-  ;; (define-key eshell-hist-mode-map (kbd "M-r") #'consult-history)
 
   ;; ;; We want to use xterm-256color when running interactive commands
   ;; ;; in eshell but not during other times when we might be launching
