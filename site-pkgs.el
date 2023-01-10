@@ -3274,9 +3274,13 @@ the automatic filling of the current paragraph."
 ;; [[file:site-pkgs.org::shell-eshell][shell-eshell]]
 ;; ---( eshell )--------------------------------------------------------------
 
+(use-package xterm-color
+  :commands (xterm-color-filter))
 (use-package eshell
+  :after esh-mode
   :commands (eshell eshell-command)
   :preface
+  (message "eshell:preface >")
   (defvar eshell-isearch-map
     (let ((map (copy-keymap isearch-mode-map)))
       (define-key map [(control ?m)] 'eshell-isearch-return)
@@ -3298,6 +3302,7 @@ the automatic filling of the current paragraph."
             '(lambda()
                (local-set-key (kbd "C-l") 'eshell-clear-buffer)))
   (defun eshell-initialize ()
+    (message "eshell:initialize >")
     (defun eshell-spawn-external-command (beg end)
       "Parse and expand any history references in current input."
       (save-excursion
@@ -3313,11 +3318,68 @@ the automatic filling of the current paragraph."
     (eval-after-load "em-unix"
       '(progn
          (unintern 'eshell/su nil)
-         (unintern 'eshell/sudo nil))))
+         (unintern 'eshell/sudo nil)))
+    (message "eshell:initialize <"))
+  (defun eshell/e (file)
+      (find-file file))
+  (defun eshell/e (file)
+      (find-file file))
+  (defun eshell/ee (file)
+    (find-file-other-window file))
+  (defun eshell/emacs (file)
+    (find-file-other-window file))
+  (message "eshell:preface <")
   :init
+  (message "eshell:init >")
   (add-hook 'eshell-first-time-mode-hook 'eshell-initialize)
-  (use-package esh-toggle
-    :bind ("C-x C-z" . eshell-toggle)))
+  ;; (use-package esh-toggle
+  ;;   :ensure t
+  ;;   :bind ("C-x C-h" . eshell-toggle))
+  (message "eshell:init <")
+  :config
+  (message "eshell:config >")
+  (setq
+   eshell-rc-script (concat user-emacs-directory "~/.emacs-site/config/eshell/aliases")
+   eshell-aliases-file (concat user-emacs-directory "~/.emacs-site/config/eshell/aliases")
+   eshell-history-size 5000
+   eshell-buffer-maximum-lines 5000
+   eshell-hist-ignoredups t
+   eshell-scroll-to-bottom-on-input t
+   eshell-destroy-buffer-when-process-dies t
+   eshell-visual-commands'("bash" "fish" "htop" "ssh" "top" "zsh"))
+
+  (setq eshell-prompt-regexp "^[^#$\n]*[#$] "
+        eshell-prompt-function
+        (lambda nil
+          (concat
+           "[" (user-login-name) "@" (system-name) " "
+           (if (string= (eshell/pwd) (getenv "HOME"))
+               "~" (eshell/basename (eshell/pwd)))
+           "]"
+           (if (= (user-uid) 0) "# " "$ "))))
+
+  (setq eshell-output-filter-functions
+        (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
+  ;; (define-key eshell-hist-mode-map (kbd "M-r") #'consult-history)
+
+  ;; ;; We want to use xterm-256color when running interactive commands
+  ;; ;; in eshell but not during other times when we might be launching
+  ;; ;; a shell command to gather its output.
+  ;; (add-hook 'eshell-pre-command-hook
+  ;;           (lambda () (setenv "TERM" "xterm-256color")))
+  ;; (add-hook 'eshell-post-command-hook
+  ;;           (lambda () (setenv "TERM" "dumb")))
+
+  (add-hook 'eshell-mode-hook
+            (lambda ()
+              (progn
+                (setenv "PAGER" "cat")
+                (setenv "TERM" "xterm-256color")
+                )))
+  (add-hook 'eshell-before-prompt-hook (setq xterm-color-preserve-properties t))
+  (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
+  (message "eshell:config <")
+  )
 ;; shell-eshell ends here
 
 ;; vterm
