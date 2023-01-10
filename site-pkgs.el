@@ -3317,11 +3317,17 @@ the automatic filling of the current paragraph."
         eshell-prompt-function
         (lambda nil
           (concat
-           "[" (user-login-name) "@" (system-name) " "
-           (if (string= (eshell/pwd) (getenv "HOME"))
-               "~" (eshell/basename (eshell/pwd)))
-           "]"
-           (if (= (user-uid) 0) "# " "$ "))))
+           (propertize "[" 'face `(:foreground "LightPink"))
+           (propertize (user-login-name) 'face `(:foreground "CornflowerBlue"))
+           (propertize "@" 'face `(:foreground "CornflowerBlue"))
+           (propertize (system-name) 'face `(:foreground "CornflowerBlue"))
+           (propertize " " 'face `(:foreground "gray"))
+           (propertize (if (string= (eshell/pwd) (getenv "HOME"))
+                           "~" (eshell/basename (eshell/pwd)))
+                       'face `(:foreground "DarkTurquoise"))
+           (propertize "]" 'face `(:foreground "LightPink"))
+           (propertize (if (= (user-uid) 0) "# " "$ ") 'face `(:foreground "GhostWhite"))
+           )))
   (setq eshell-output-filter-functions
         (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
   ;; (define-key eshell-hist-mode-map (kbd "M-r") #'consult-history)
