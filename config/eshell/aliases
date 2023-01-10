@@ -1,4 +1,9 @@
-alias ll ls -l
-alias d dired $1
-alias fd find-dired $PWD ""
-alias ff find-file $1
+alias gg git log --color --graph --oneline --abbrev-commit --decorate --all --date=short --pretty=format:%C(cyan)%h %C(yellow)%ad %C(bold green)%d %C(reset)%s
+alias gds magit-diff-staged
+alias gd magit-diff-unstaged
+alias d dired
+alias e find-file-other-window
+alias ff find-file
+alias la ls -AFhl --color=always
+alias ll ls -Fhl --color=always
+alias fd find-dired /home/gio/.emacs-site
