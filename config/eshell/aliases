@@ -1,9 +1,12 @@
-alias gg git log --color --graph --oneline --abbrev-commit --decorate --all --date=short --pretty=format:%C(cyan)%h %C(yellow)%ad %C(bold green)%d %C(reset)%s
-alias gds magit-diff-staged
-alias gd magit-diff-unstaged
-alias d dired
-alias e find-file-other-window
 alias ff find-file
-alias la ls -AFhl --color=always
-alias ll ls -Fhl --color=always
+alias e find-file-other-window
+alias d dired
+alias gd magit-diff-unstaged
+alias gds magit-diff-staged
+alias gg git log --color --graph --oneline --abbrev-commit --decorate --all --date=short --pretty=format:%C(cyan)%h %C(yellow)%ad %C(bold green)%d %C(reset)%s
+alias l ls -1
+alias ll ls -Fhl --group-directories-first --color=always
+alias la ls -AFhl --group-directories-first --color=always
+alias less view-file
+alias s view-file
 alias fd find-dired /home/gio/.emacs-site
