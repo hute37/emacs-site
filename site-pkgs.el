@@ -3318,7 +3318,7 @@ the automatic filling of the current paragraph."
         eshell-prompt-function
         (lambda ()
           (concat
-           (propertize "[" 'face `(:foreground "Salmon"))
+           (propertize "[" 'face `(:foreground "Salmon" :weight "bold"))
            (propertize (user-login-name) 'face `(:foreground "CornflowerBlue"))
            (propertize "@" 'face `(:foreground "CornflowerBlue"))
            (propertize (system-name) 'face `(:foreground "CornflowerBlue"))
@@ -3326,7 +3326,7 @@ the automatic filling of the current paragraph."
            (propertize (if (string= (eshell/pwd) (getenv "HOME"))
                            "~" (eshell/basename (eshell/pwd)))
                        'face `(:foreground "DarkTurquoise"))
-           (propertize "]" 'face `(:foreground "Salmon"))
+           (propertize "]" 'face `(:foreground "Salmon" :weight "bold"))
            (propertize (if (= (user-uid) 0) "# " "$") 'face `(:foreground "Salmon"))
            (propertize " " 'face 'default)
            )))
@@ -3471,6 +3471,7 @@ the automatic filling of the current paragraph."
     ;; Use completion-at-point to provide completions in eshell
     (define-key eshell-mode-map (kbd "<tab>") 'completion-at-point)      
     (define-key eshell-mode-map (kbd "<return>") 'eshell-copy-or-send-input)      
+    (define-key eshell-mode-map (kbd "C-d") 'self-insert-command)      
     ;;(define-key eshell-mode-map (kbd "C-<return>") 'eshell-send-input)      
     (message "eshell:setup-keymap <")
     )
