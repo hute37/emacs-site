@@ -67,7 +67,7 @@
 ;; ---( Rect )----------------------------------------------------
 
 (add-hook 'cua-mode-hook
-          '(lambda ()
+          #'(lambda ()
              (define-key cua--rectangle-keymap (kbd "C-'") 'cua-clear-rectangle-mark)
              (define-key cua--region-keymap    (kbd "C-'") 'cua-toggle-rectangle-mark)
              (define-key cua-global-keymap     (kbd "C-'") 'cua-set-rectangle-mark)
@@ -114,8 +114,8 @@
 ;; (global-set-key [(shift meta right)] 'forward-sexp-nomark )
 (global-set-key [(shift meta up)] 'backward-sexp-mark )
 (global-set-key [(shift meta down)] 'forward-sexp-mark )
-(global-set-key [(shift meta left)] '(lambda () (interactive) (other-frame -1)))
-(global-set-key [(shift meta right)] '(lambda () (interactive) (other-frame +1)))
+(global-set-key [(shift meta left)] #'(lambda () (interactive) (other-frame -1)))
+(global-set-key [(shift meta right)] #'(lambda () (interactive) (other-frame +1)))
 ;; (global-set-key [(meta control up)] '(lambda () (interactive) (other-frame -1)))
 ;; (global-set-key [(meta control down)] '(lambda () (interactive) (other-frame +1)))
 ;; (global-set-key [(meta control right)] 'next-multiframe-window )
@@ -310,8 +310,8 @@
 
 (global-set-key [(meta control up)] 'raise-frame)
 (global-set-key [(meta control down)] 'lower-frame)
-(global-set-key [(meta control right)] '(lambda () (interactive) (other-frame -1)))
-(global-set-key [(meta control left)] '(lambda () (interactive) (other-frame +1)))
+(global-set-key [(meta control right)] #'(lambda () (interactive) (other-frame -1)))
+(global-set-key [(meta control left)] #'(lambda () (interactive) (other-frame +1)))
 
 ;; ---( Page )----------------------------------------------------
 
@@ -369,7 +369,7 @@
 (global-set-key [(shift f2)] 'bookmark-set )
 
 (global-set-key [(control f2)]
-    '(lambda () (interactive)
+    #'(lambda () (interactive)
        (if (eq hs-minor-mode nil)
 	   (progn
 	     (hs-minor-mode t)
@@ -559,7 +559,7 @@ When `universal-argument' is called first, cut whole buffer (but respect `narrow
 ;; ---( center )--------------------------------------------------
 
 (define-key global-map [begin]	'recenter)
-(define-key global-map [(control kp-begin)] '(lambda () (interactive) (recenter 0)))
+(define-key global-map [(control kp-begin)] #'(lambda () (interactive) (recenter 0)))
 
 ;; ---( brief )--------------------------------------------------------
 
@@ -594,7 +594,7 @@ When `universal-argument' is called first, cut whole buffer (but respect `narrow
 (define-key global-map [(control kp-delete)]       'delete-rectangle)
 
 (define-key global-map [(control kp-insert)]
-   '(lambda () (interactive)
+   #'(lambda () (interactive)
       (progn
         (set-goal-column nil)
         (yank-rectangle)
@@ -775,10 +775,10 @@ When `universal-argument' is called first, cut whole buffer (but respect `narrow
 (define-key z-meta-f-map [s] 'save-buffer)
 (define-key z-meta-f-map [(meta s)] 'save-buffer)
 (define-key z-meta-f-map [v]
-  '(lambda ()
+  #'(lambda ()
      (interactive) (save-some-buffers t)) )
 (define-key z-meta-f-map [(meta v)]
-  '(lambda ()
+  #'(lambda ()
      (interactive) (save-some-buffers t)) )
 
 

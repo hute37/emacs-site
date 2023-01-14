@@ -1055,7 +1055,7 @@
                  ;;   'ess-eval-region-and-go)
               ))
     (add-hook 'inferior-ess-mode-hook
-              '(lambda nil
+              #'(lambda nil
                  (define-key inferior-ess-mode-map [\C-up]
                    'comint-previous-matching-input-from-input)
                  (define-key inferior-ess-mode-map [\C-down]
@@ -3278,7 +3278,8 @@ the automatic filling of the current paragraph."
   ;;
   ;; ```
   ;; cd /usr/share/emacs/[23]*/lisp/eshell
-  ;; ls *.gz | xargs -I{} bash -c 'echo "#>>({})#####"; zcat {}; echo "#<<({})#####"' | less -SRX
+  ;; he=4; ls *.gz | xargs -I{} bash -c 'echo "#>>({})#####"; zcat {}; echo "#<<({})#####"' | less -SRX
+  ;; he=5; ls *.gz | xargs -I{} bash -c 'zcat {} | bat -l lisp --file-name={} --color=always;' | less -SRX
   ;; ```
 
   ;; (use-package esh-toggle
@@ -3292,7 +3293,7 @@ the automatic filling of the current paragraph."
     :after (esh-mode xterm-color)
     ;;:after (xterm-color)
     :ensure t
-    ;;:commands (eshell eshell-command)
+    :commands (eshell eshell-command)
     :preface
     (message "eshell:preface >")
 
@@ -3348,6 +3349,20 @@ the automatic filling of the current paragraph."
 ;;     (define-key map (kbd "C-c C-x") #'eshell-get-next-from-history)
 ;;     map))
 
+    (defun eshell-clear-buffer ()
+      "Clear terminal"
+      (interactive)
+      (let ((inhibit-read-only t))
+        (erase-buffer)
+        (eshell-send-input)))
+
+    (defun eshell-copy-and-send-input (arg)
+      "Copy selection before sending input"
+      (interactive "P")
+      (let ((inhibit-read-only t))
+        (cua-copy-region arg)
+        (eshell-send-input)))
+
      (defun eshell-setup-keymap ()
        "Setup eshell (local) keymap"
       (interactive)
@@ -3361,20 +3376,18 @@ the automatic filling of the current paragraph."
       ;; (define-key eshell-mode-map (kbd "<down>") 'next-line)
       ;; (local-set-key (kbd "<up>") #'previous-line)
       ;; (local-set-key (kbd "<down>") #'next-line)
-      (define-key eshell-mode-map (kbd "<up>") 'previous-line)
-      (define-key eshell-mode-map (kbd "<down>") 'next-line)
-      ;; (define-key eshell-hist-mode-map (kbd "<up>") #'previous-line)
-      ;; (define-key eshell-hist-mode-map (kbd "<down>") #'next-line)
+      ;; (define-key eshell-mode-map (kbd "<up>") 'previous-line)
+      ;; (define-key eshell-mode-map (kbd "<down>") 'next-line)
+      (define-key eshell-hist-mode-map (kbd "<up>") #'previous-line)
+      (define-key eshell-hist-mode-map (kbd "<down>") #'next-line)
+      (define-key eshell-hist-mode-map (kbd "C-<up>") #'eshell-previous-matching-input-from-input)
+      (define-key eshell-hist-mode-map (kbd "C-<down>") #'eshell-next-matching-input-from-input)
       ;; Use completion-at-point to provide completions in eshell
       (define-key eshell-mode-map (kbd "<tab>") 'completion-at-point)      
+      (define-key eshell-mode-map (kbd "<return>") 'eshell-copy-and-send-input)      
+      (define-key eshell-mode-map (kbd "C-<return>") 'eshell-send-input)      
       (message "eshell:setup-keymap <")
       )
-    (defun eshell-clear-buffer ()
-      "Clear terminal"
-      (interactive)
-      (let ((inhibit-read-only t))
-        (erase-buffer)
-        (eshell-send-input)))
     (defun eshell-initialize ()
       (message "eshell:initialize >")
       (defun eshell-spawn-external-command (beg end)
