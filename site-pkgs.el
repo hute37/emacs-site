@@ -3274,260 +3274,223 @@ the automatic filling of the current paragraph."
 ;; [[file:site-pkgs.org::shell-eshell][shell-eshell]]
 ;; ---( eshell )--------------------------------------------------------------
 
-  ;; @see: https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/eshell
-  ;;
-  ;; ```
-  ;; cd /usr/share/emacs/[23]*/lisp/eshell
-  ;; he=4; ls *.gz | xargs -I{} bash -c 'echo "#>>({})#####"; zcat {}; echo "#<<({})#####"' | less -SRX
-  ;; he=5; ls *.gz | xargs -I{} bash -c 'zcat {} | bat -l lisp --file-name={} --color=always;' | less -SRX
-  ;; ```
+;; @see: https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/eshell
+;;
+;; ```
+;; cd /usr/share/emacs/[23]*/lisp/eshell
+;; he=4; ls *.gz | xargs -I{} bash -c 'echo "#>>({})#####"; zcat {}; echo "#<<({})#####"' | less -SRX
+;; he=5; ls *.gz | xargs -I{} bash -c 'zcat {} | bat -l lisp --file-name={} --color=always;' | less -SRX
+;; ```
 
-  ;; (use-package esh-toggle
-  ;;   :ensure t
-  ;;   :bind ("C-x C-h" . eshell-toggle))
-  (use-package xterm-color
-    :ensure t
-    :commands (xterm-color-filter))
+;; (use-package esh-toggle
+;;   :ensure t
+;;   :bind ("C-x C-h" . eshell-toggle))
+(use-package xterm-color
+  :ensure t
+  :commands (xterm-color-filter))
 
-  (use-package eshell
-    :after (esh-mode xterm-color)
-    ;;:after (xterm-color)
-    :ensure t
-    :commands (eshell eshell-command)
-    :preface
-    (message "eshell:preface >")
+(use-package eshell
+  :after (esh-mode)
+  ;;:after (esh-mode xterm-color)
+  ;;:after (xterm-color)
+  :ensure t
+  :commands (eshell eshell-command)
+  :preface
+  (message "eshell:preface >")
 
-    ;; (defvar eshell-isearch-map
-    ;;   (let ((map (copy-keymap isearch-mode-map)))
-    ;;     (define-key map [(control ?m)] 'eshell-isearch-return)
-    ;;     (define-key map [return] 'eshell-isearch-return)
-    ;;     (define-key map [(control ?r)] 'eshell-isearch-repeat-backward)
-    ;;     (define-key map [(control ?s)] 'eshell-isearch-repeat-forward)
-    ;;     (define-key map [(control ?g)] 'eshell-isearch-abort)
-    ;;     (define-key map [backspace] 'eshell-isearch-delete-char)
-    ;;     (define-key map [delete] 'eshell-isearch-delete-char)
-    ;;     map)
-    ;;   "Keymap used in isearch in Eshell.")
 
-;;   (defvar eshell-isearch-map
-;;   (let ((map (copy-keymap isearch-mode-map)))
-;;     (define-key map [(control ?m)] 'eshell-isearch-return)
-;;     (define-key map [(control ?r)] 'eshell-isearch-repeat-backward)
-;;     (define-key map [(control ?s)] 'eshell-isearch-repeat-forward)
-;;     (define-key map [(control ?g)] 'eshell-isearch-abort)
-;;     (define-key map [backspace] 'eshell-isearch-delete-char)
-;;     (define-key map [delete] 'eshell-isearch-delete-char)
-;;     (define-key map "\C-c\C-c" 'eshell-isearch-cancel)
-;;     map)
-;;   "Keymap used in isearch in Eshell.")
+  (defun eshell-initialize ()
+    (message "eshell:initialize >")
+    (defun eshell-spawn-external-command (beg end)
+      "Parse and expand any history references in current input."
+      (save-excursion
+        (goto-char end)
+        (when (looking-back "&!" beg)
+          (delete-region (match-beginning 0) (match-end 0))
+          (goto-char beg)
+          (insert "spawn "))))
+    (add-hook 'eshell-expand-input-functions 'eshell-spawn-external-command)
+    (defun ss (server)
+      (interactive "sServer: ")
+      (call-process "spawn" nil nil nil "ss" server))
 
-;; (defvar eshell-hist-mode-map
-;;   (let ((map (make-sparse-keymap)))
-;;     ;; (define-key map [up] #'eshell-previous-matching-input-from-input)
-;;     ;; (define-key map [down] #'eshell-next-matching-input-from-input)
-;;     ;; (define-key map [up] #'previous-line)
-;;     ;; (define-key map [down] #'next-line)
-;;     (define-key map [(control up)] #'eshell-previous-input)
-;;     (define-key map [(control down)] #'eshell-next-input)
-;;     (define-key map [(meta ?r)] #'eshell-previous-matching-input)
-;;     (define-key map [(meta ?s)] #'eshell-next-matching-input)
-;;     (define-key map (kbd "C-c M-r") #'eshell-previous-matching-input-from-input)
-;;     (define-key map (kbd "C-c M-s") #'eshell-next-matching-input-from-input)
-;;     ;; FIXME: Relies on `eshell-hist-match-partial' being set _before_
-;;     ;; em-hist is loaded and won't respect changes.
-;;     (if eshell-hist-match-partial
-;;         (progn
-;;           (define-key map [(meta ?p)] 'eshell-previous-matching-input-from-input)
-;;           (define-key map [(meta ?n)] 'eshell-next-matching-input-from-input)
-;;           (define-key map (kbd "C-c M-p") #'eshell-previous-input)
-;;           (define-key map (kbd "C-c M-n") #'eshell-next-input))
-;;       (define-key map [(meta ?p)] #'eshell-previous-input)
-;;       (define-key map [(meta ?n)] #'eshell-next-input)
-;;       (define-key map (kbd "C-c M-p") #'eshell-previous-matching-input-from-input)
-;;       (define-key map (kbd "C-c M-n") #'eshell-next-matching-input-from-input))
-;;     (define-key map (kbd "C-c C-l") #'eshell-list-history)
-;;     (define-key map (kbd "C-c C-x") #'eshell-get-next-from-history)
-;;     map))
+    (setq eshell-prompt-regexp "^[^#$\n]*[#$] "
+        eshell-prompt-function
+        (lambda ()
+          (concat
+           (propertize "[" 'face `(:foreground "Salmon"))
+           (propertize (user-login-name) 'face `(:foreground "CornflowerBlue"))
+           (propertize "@" 'face `(:foreground "CornflowerBlue"))
+           (propertize (system-name) 'face `(:foreground "CornflowerBlue"))
+           (propertize " " 'face `(:foreground "gray"))
+           (propertize (if (string= (eshell/pwd) (getenv "HOME"))
+                           "~" (eshell/basename (eshell/pwd)))
+                       'face `(:foreground "DarkTurquoise"))
+           (propertize "]" 'face `(:foreground "Salmon"))
+           (propertize (if (= (user-uid) 0) "# " "$") 'face `(:foreground "Salmon"))
+           (propertize " " 'face 'default)
+           )))
+  ;; (setq eshell-output-filter-functions
+  ;;       (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
+  ;; ;;
+
+    (eval-after-load "em-unix"
+      '(progn
+         (unintern 'eshell/su nil)
+         (unintern 'eshell/sudo nil)))
+
+
+    (message "eshell:initialize <"))
+
+  (message "eshell:builtins >")
+
+  ;; @see: https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/eshell/esh-cmd.el
+  ;; @see: https://github.com/howardabrams/hamacs/blob/main/ha-eshell.org
+
+  (defun eshell/read-file (file-path)
+    (with-temp-buffer
+      (insert-file-contents file-path)
+      (buffer-string)))
+
+  (defun eshell/do (&rest args)
+    "Execute commands over lst. do chmod -x :: *.csv(x) "
+    (seq-let (cmd lst) (-split-on "::" args)
+      (dolist (file
+               (flatten-list (append lst)))
+        (add-to-list 'cmd file)
+        (eshell-named-command
+         (car cmd) (cdr cmd)))))
+
+  (defun eshell-fn-on-files (fun1 fun2 args)
+    "Call FUN1 on the first element in list, ARGS.
+     Call FUN2 on all the rest of the elements in ARGS."
+    (unless (null args)
+      (let ((filenames (flatten-list args)))
+        (funcall fun1 (car filenames))
+        (when (cdr filenames)
+          (mapcar fun2 (cdr filenames))))
+      ;; Return an empty string, as the return value from `fun1'
+      ;; probably isn't helpful to display in the `eshell' window.
+      ""))
+
+  (defun eshell/less (&rest files)
+    "Essentially an alias to the `view-file' function."
+    (eshell-fn-on-files 'view-file 'view-file-other-window files))
+
+  (defalias 'eshell/more 'eshell/less)
+  (defalias 'eshell/s 'eshell/less)
+
+  (defun eshell/e (&rest files)
+    "Essentially an alias to the `find-file' function."
+    (eshell-fn-on-files 'find-file 'find-file-other-window files))
+
+  (defun eshell/ee (&rest files)
+    "Edit one or more files in another window."
+    (eshell-fn-on-files 'find-file-other-window 'find-file-other-window files))
+
+  (defalias 'eshell/emacs 'eshell/e)
+  (defalias 'eshell/v 'eshell/e)
+
+  (message "eshell:builtins <")
+  (message "eshell:hooks >")
+  (add-hook 'eshell-first-time-mode-hook #'eshell-initialize)
+  (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
+  (message "eshell:hooks <")
+  (message "eshell:preface <")
+  :init
+  (message "eshell:init >")
+  (message "eshell:hooks/b >")
+  (add-hook 'eshell-first-time-mode-hook #'eshell-initialize)
+  (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
+  (message "eshell:hooks/b <")
+  (message "eshell:init <")
+  :config
+  (message "eshell:config >")
+  (setq
+   eshell-rc-script "~/.emacs-site/config/eshell/profile"
+   eshell-aliases-file "~/.emacs-site/config/eshell/aliases"
+   eshell-history-size 5000
+   eshell-buffer-maximum-lines 5000
+   eshell-hist-ignoredups t
+   eshell-prefer-lisp-functions t
+   eshell-scroll-to-bottom-on-input t
+   eshell-destroy-buffer-when-process-dies t
+   eshell-visual-commands'("bash" "fish" "vim" "nvim" "mc" "ranger" "htop" "ssh" "top" "tmux" "zsh"))
+
+
+  ;; ;; We want to use xterm-256color when running interactive commands
+  ;; ;; in eshell but not during other times when we might be launching
+  ;; ;; a shell command to gather its output.
+  ;; (add-hook 'eshell-pre-command-hook
+  ;;           (lambda () (setenv "TERM" "xterm-256color")))
+  ;; (add-hook 'eshell-post-command-hook
+  ;;           (lambda () (setenv "TERM" "dumb")))
 
     (defun eshell-clear-buffer ()
-      "Clear terminal"
-      (interactive)
-      (let ((inhibit-read-only t))
-        (erase-buffer)
-        (eshell-send-input)))
+    "Clear terminal"
+    (interactive)
+    (let ((inhibit-read-only t))
+      (erase-buffer)
+      (eshell-send-input)))
 
-    (defun eshell-copy-and-send-input (arg)
-      "Copy selection before sending input"
-      (interactive "P")
-      (let ((inhibit-read-only t))
-        (cua-copy-region arg)
-        (eshell-send-input)))
+  (defun eshell-copy-or-send-input (arg)
+    "Copy selection before sending input"
+    (interactive "P")
+    (require 'em-smart)
+    (when mark-active
+      (cua-copy-region arg))
+    (if (or current-prefix-arg
+            (and (> (point) eshell-last-input-start)
+                 (< (point) eshell-last-input-end))
+            (>= (point) eshell-last-output-end))
+        (eshell-send-input)
+      (eshell-smart-goto-end)))
 
-     (defun eshell-setup-keymap ()
-       "Setup eshell (local) keymap"
-      (interactive)
-      (message "eshell:setup-keymap >")
-      (local-set-key (kbd "C-l") 'eshell-clear-buffer)
-      ;; (unbind-key (kbd "<up>") eshell-mode-map)
-      ;; (unbind-key (kbd "<down>") eshell-mode-map)
-      ;; (define-key eshell-mode-map (kbd "C-<up>") 'eshell-previous-matching-input-from-input)
-      ;; (define-key eshell-mode-map (kbd "C-<down>") 'eshell-previous-matching-input-from-input)
-      ;; (define-key eshell-mode-map (kbd "<up>") 'previous-line)
-      ;; (define-key eshell-mode-map (kbd "<down>") 'next-line)
-      ;; (local-set-key (kbd "<up>") #'previous-line)
-      ;; (local-set-key (kbd "<down>") #'next-line)
-      ;; (define-key eshell-mode-map (kbd "<up>") 'previous-line)
-      ;; (define-key eshell-mode-map (kbd "<down>") 'next-line)
-      (define-key eshell-hist-mode-map (kbd "<up>") #'previous-line)
-      (define-key eshell-hist-mode-map (kbd "<down>") #'next-line)
-      (define-key eshell-hist-mode-map (kbd "C-<up>") #'eshell-previous-matching-input-from-input)
-      (define-key eshell-hist-mode-map (kbd "C-<down>") #'eshell-next-matching-input-from-input)
-      ;; Use completion-at-point to provide completions in eshell
-      (define-key eshell-mode-map (kbd "<tab>") 'completion-at-point)      
-      (define-key eshell-mode-map (kbd "<return>") 'eshell-copy-and-send-input)      
-      (define-key eshell-mode-map (kbd "C-<return>") 'eshell-send-input)      
-      (message "eshell:setup-keymap <")
-      )
-    (defun eshell-initialize ()
-      (message "eshell:initialize >")
-      (defun eshell-spawn-external-command (beg end)
-        "Parse and expand any history references in current input."
-        (save-excursion
-          (goto-char end)
-          (when (looking-back "&!" beg)
-            (delete-region (match-beginning 0) (match-end 0))
-            (goto-char beg)
-            (insert "spawn "))))
-      (add-hook 'eshell-expand-input-functions 'eshell-spawn-external-command)
-      (defun ss (server)
-        (interactive "sServer: ")
-        (call-process "spawn" nil nil nil "ss" server))
-    (setq eshell-prompt-regexp "^[^#$\n]*[#$] "
-          eshell-prompt-function-ex
-          (lambda ()
-            (concat
-             (propertize "[" 'face `(:foreground "Salmon"))
-             (propertize (user-login-name) 'face `(:foreground "CornflowerBlue"))
-             (propertize "@" 'face `(:foreground "CornflowerBlue"))
-             (propertize (system-name) 'face `(:foreground "CornflowerBlue"))
-             (propertize " " 'face `(:foreground "gray"))
-             (propertize (if (string= (eshell/pwd) (getenv "HOME"))
-                             "~" (eshell/basename (eshell/pwd)))
-                         'face `(:foreground "DarkTurquoise"))
-             (propertize "]" 'face `(:foreground "Salmon"))
-             (propertize (if (= (user-uid) 0) "# " "$") 'face `(:foreground "Salmon"))
-             (propertize " " 'face 'default)
-             )))
-    ;; (setq eshell-output-filter-functions
-    ;;       (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
-    ;; ;;
+
+   (defun eshell-setup-keymap ()
+     "Setup eshell (local) keymap"
+    (interactive)
+    (message "eshell:setup-keymap >")
+
+    (local-set-key (kbd "C-l") 'eshell-clear-buffer)
+    ;; (unbind-key (kbd "<up>") eshell-mode-map)
+    ;; (unbind-key (kbd "<down>") eshell-mode-map)
+    ;; (define-key eshell-mode-map (kbd "C-<up>") 'eshell-previous-matching-input-from-input)
+    ;; (define-key eshell-mode-map (kbd "C-<down>") 'eshell-previous-matching-input-from-input)
+    ;; (define-key eshell-mode-map (kbd "<up>") 'previous-line)
+    ;; (define-key eshell-mode-map (kbd "<down>") 'next-line)
+    ;; (local-set-key (kbd "<up>") #'previous-line)
+    ;; (local-set-key (kbd "<down>") #'next-line)
+    ;; (define-key eshell-mode-map (kbd "<up>") 'previous-line)
+    ;; (define-key eshell-mode-map (kbd "<down>") 'next-line)
+    (define-key eshell-hist-mode-map (kbd "<up>") #'previous-line)
+    (define-key eshell-hist-mode-map (kbd "<down>") #'next-line)
+    (define-key eshell-hist-mode-map (kbd "C-<up>") #'eshell-previous-matching-input-from-input)
+    (define-key eshell-hist-mode-map (kbd "C-<down>") #'eshell-next-matching-input-from-input)
     (define-key eshell-hist-mode-map (kbd "M-r") #'consult-history)
-
-      (eval-after-load "em-unix"
-        '(progn
-           (unintern 'eshell/su nil)
-           (unintern 'eshell/sudo nil)))
-
-    (message "eshell:hooks/b >")
-    (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
-    (message "eshell:hooks/b <")
-
-      (message "eshell:initialize <"))
-
-    (message "eshell:builtins >")
-
-    ;; @see: https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/eshell/esh-cmd.el
-    ;; @see: https://github.com/howardabrams/hamacs/blob/main/ha-eshell.org
-
-    (defun eshell/read-file (file-path)
-      (with-temp-buffer
-        (insert-file-contents file-path)
-        (buffer-string)))
-
-    (defun eshell/do (&rest args)
-      "Execute commands over lst. do chmod -x :: *.csv(x) "
-      (seq-let (cmd lst) (-split-on "::" args)
-        (dolist (file
-                 (flatten-list (append lst)))
-          (add-to-list 'cmd file)
-          (eshell-named-command
-           (car cmd) (cdr cmd)))))
-
-    (defun eshell-fn-on-files (fun1 fun2 args)
-      "Call FUN1 on the first element in list, ARGS.
-       Call FUN2 on all the rest of the elements in ARGS."
-      (unless (null args)
-        (let ((filenames (flatten-list args)))
-          (funcall fun1 (car filenames))
-          (when (cdr filenames)
-            (mapcar fun2 (cdr filenames))))
-        ;; Return an empty string, as the return value from `fun1'
-        ;; probably isn't helpful to display in the `eshell' window.
-        ""))
-
-    (defun eshell/less (&rest files)
-      "Essentially an alias to the `view-file' function."
-      (eshell-fn-on-files 'view-file 'view-file-other-window files))
-
-    (defalias 'eshell/more 'eshell/less)
-    (defalias 'eshell/s 'eshell/less)
-
-    (defun eshell/e (&rest files)
-      "Essentially an alias to the `find-file' function."
-      (eshell-fn-on-files 'find-file 'find-file-other-window files))
-
-    (defun eshell/ee (&rest files)
-      "Edit one or more files in another window."
-      (eshell-fn-on-files 'find-file-other-window 'find-file-other-window files))
-
-    (defalias 'eshell/emacs 'eshell/e)
-    (defalias 'eshell/v 'eshell/e)
-
-    (message "eshell:builtins <")
-    (message "eshell:hooks >")
-    (add-hook 'eshell-first-time-mode-hook #'eshell-initialize)
-    (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
-    (message "eshell:hooks <")
-    (message "eshell:preface <")
-    :init
-    (message "eshell:init >")
-    (message "eshell:hooks >")
-    (add-hook 'eshell-first-time-mode-hook #'eshell-initialize)
-    (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
-    (message "eshell:hooks <")
-    (message "eshell:init <")
-    :config
-    (message "eshell:config >")
-    (setq
-     eshell-rc-script "~/.emacs-site/config/eshell/profile"
-     eshell-aliases-file "~/.emacs-site/config/eshell/aliases"
-     eshell-history-size 5000
-     eshell-buffer-maximum-lines 5000
-     eshell-hist-ignoredups t
-     eshell-prefer-lisp-functions t
-     eshell-scroll-to-bottom-on-input t
-     eshell-destroy-buffer-when-process-dies t
-     eshell-visual-commands'("bash" "fish" "vim" "nvim" "mc" "ranger" "htop" "ssh" "top" "tmux" "zsh"))
-
-
-    ;; ;; We want to use xterm-256color when running interactive commands
-    ;; ;; in eshell but not during other times when we might be launching
-    ;; ;; a shell command to gather its output.
-    ;; (add-hook 'eshell-pre-command-hook
-    ;;           (lambda () (setenv "TERM" "xterm-256color")))
-    ;; (add-hook 'eshell-post-command-hook
-    ;;           (lambda () (setenv "TERM" "dumb")))
-
-    (add-hook 'eshell-mode-hook
-              (lambda ()
-                (progn
-                  (setenv "PAGER" "cat")
-                  (setenv "TERM" "xterm-256color")
-                  )))
-    (add-hook 'eshell-before-prompt-hook (setq xterm-color-preserve-properties t))
-    (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
-    (message "eshell:config <")
+    ;; Use completion-at-point to provide completions in eshell
+    (define-key eshell-mode-map (kbd "<tab>") 'completion-at-point)      
+    (define-key eshell-mode-map (kbd "<return>") 'eshell-copy-or-send-input)      
+    ;;(define-key eshell-mode-map (kbd "C-<return>") 'eshell-send-input)      
+    (message "eshell:setup-keymap <")
     )
+
+  (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
+  (message "eshell:hooks/c >")
+  (add-hook 'eshell-before-prompt-hook (setq xterm-color-preserve-properties t))
+  (add-hook 'eshell-mode-hook
+            (lambda ()
+              (progn
+                (setenv "PAGER" "cat")
+                (setenv "TERM" "xterm-256color")
+                )))
+  (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
+  (add-hook 'eshell-mode-hook #'(lambda () (message "*eshell*")))
+  (message "eshell:hooks/c <")
+
+
+  (message "eshell:config <")
+  )
 ;; shell-eshell ends here
 
 ;; vterm
