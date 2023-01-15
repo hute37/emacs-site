@@ -1,5 +1,5 @@
 alias ff find-file
-alias e find-file-other-window
+alias ffd find-dired
 alias d dired
 alias gd magit-diff-unstaged
 alias gds magit-diff-staged
@@ -7,6 +7,4 @@ alias gg git log --color --graph --oneline --abbrev-commit --decorate --all --da
 alias l ls -1
 alias la ls -AFhl --group-directories-first --color=always
 alias ll ls -Fhl --group-directories-first --color=always
-alias less view-file
 alias s view-file
-alias fd find-dired
