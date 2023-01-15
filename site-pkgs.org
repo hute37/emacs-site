@@ -3564,7 +3564,15 @@ P
      eshell-prefer-lisp-functions t
      eshell-scroll-to-bottom-on-input t
      eshell-destroy-buffer-when-process-dies t
-     eshell-visual-commands'("bash" "fish" "vim" "nvim" "mc" "ranger" "htop" "ssh" "top" "tmux" "zsh"))
+     eshell-visual-commands'("bash" "fish" "vi" "vim" "nvim" "mc" "ranger" "htop" "ssh" "top" "tmux" "zsh")
+
+     )
+
+    ;; (require 'eshell)
+    (require 'em-smart)
+    (setq eshell-where-to-jump 'begin)
+    (setq eshell-review-quick-commands nil)
+    (setq eshell-smart-space-goes-to-end t)
 
 
     ;; ;; We want to use xterm-256color when running interactive commands
@@ -3623,6 +3631,8 @@ P
       (define-key eshell-mode-map (kbd "C-<return>") 'cua-rectangle-mark-mode)      
       (define-key eshell-mode-map (kbd "C-d") 'self-insert-command)      
       (message "eshell:setup-keymap <")
+    
+      (eshell-smart-initialize) 
       (message "*eshell*")
       )
 
