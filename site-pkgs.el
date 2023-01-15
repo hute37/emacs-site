@@ -3373,12 +3373,17 @@ the automatic filling of the current paragraph."
       ;; probably isn't helpful to display in the `eshell' window.
       ""))
 
-  (defun eshell/less (&rest files)
+  (defun eshell/cab (&rest args)
+    (if (bufferp (car args))
+        (with-current-buffer (car args)
+          (buffer-string))
+      (apply #'eshell/cat args)))
+
+  (defun eshell/s (&rest files)
     "Essentially an alias to the `view-file' function."
     (eshell-fn-on-files 'view-file 'view-file-other-window files))
 
-  (defalias 'eshell/more 'eshell/less)
-  (defalias 'eshell/s 'eshell/less)
+  (defalias 'eshell/more 'eshell/s)
 
   (defun eshell/e (&rest file)
     "Essentially an alias to the `find-file' function."
