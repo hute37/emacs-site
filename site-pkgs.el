@@ -3315,24 +3315,24 @@ the automatic filling of the current paragraph."
       (call-process "spawn" nil nil nil "ss" server))
 
     (setq eshell-prompt-regexp "^[^#$\n]*[#$] "
-        eshell-prompt-function
-        (lambda ()
-          (concat
-           (propertize "[" 'face `(:foreground "Salmon" :weight "bold"))
-           (propertize (user-login-name) 'face `(:foreground "CornflowerBlue"))
-           (propertize "@" 'face `(:foreground "CornflowerBlue"))
-           (propertize (system-name) 'face `(:foreground "CornflowerBlue"))
-           (propertize " " 'face `(:foreground "gray"))
-           (propertize (if (string= (eshell/pwd) (getenv "HOME"))
-                           "~" (eshell/basename (eshell/pwd)))
-                       'face `(:foreground "DarkTurquoise"))
-           (propertize "]" 'face `(:foreground "Salmon" :weight "bold"))
-           (propertize (if (= (user-uid) 0) "# " "$") 'face `(:foreground "Salmon"))
-           (propertize " " 'face 'default)
-           )))
-  ;; (setq eshell-output-filter-functions
-  ;;       (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
-  ;; ;;
+          eshell-prompt-function
+          (lambda ()
+            (concat
+             (propertize "[" 'face `(:foreground "Salmon" :weight bold))
+             (propertize (user-login-name) 'face `(:foreground "CornflowerBlue" :weight bold))
+             (propertize "@" 'face `(:foreground "CornflowerBlue" :weight bold))
+             (propertize (system-name) 'face `(:foreground "CornflowerBlue" :weight bold))
+             (propertize " " 'face `(:foreground "gray"))
+             (propertize (if (string= (eshell/pwd) (getenv "HOME"))
+                             "~" (eshell/basename (eshell/pwd)))
+                         'face `(:foreground "DarkTurquoise" :weight bold))
+             (propertize "]" 'face `(:foreground "Salmon" :weight bold))
+             (propertize (if (= (user-uid) 0) "# " "$") 'face `(:foreground "Salmon" :weight bold))
+             (propertize " " 'face 'default)
+             )))
+    ;; (setq eshell-output-filter-functions
+    ;;       (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
+    ;; ;;
 
     (eval-after-load "em-unix"
       '(progn
@@ -3363,7 +3363,7 @@ the automatic filling of the current paragraph."
 
   (defun eshell-fn-on-files (fun1 fun2 args)
     "Call FUN1 on the first element in list, ARGS.
-     Call FUN2 on all the rest of the elements in ARGS."
+       Call FUN2 on all the rest of the elements in ARGS."
     (unless (null args)
       (let ((filenames (flatten-list args)))
         (funcall fun1 (car filenames))
@@ -3380,7 +3380,7 @@ the automatic filling of the current paragraph."
   (defalias 'eshell/more 'eshell/less)
   (defalias 'eshell/s 'eshell/less)
 
-  (defun eshell/e (&rest files)
+  (defun eshell/e (&rest file)
     "Essentially an alias to the `find-file' function."
     (eshell-fn-on-files 'find-file 'find-file-other-window files))
 
@@ -3426,7 +3426,7 @@ the automatic filling of the current paragraph."
   ;; (add-hook 'eshell-post-command-hook
   ;;           (lambda () (setenv "TERM" "dumb")))
 
-    (defun eshell-clear-buffer ()
+  (defun eshell-clear-buffer ()
     "Clear terminal"
     (interactive)
     (let ((inhibit-read-only t))
@@ -3447,8 +3447,8 @@ the automatic filling of the current paragraph."
       (eshell-smart-goto-end)))
 
 
-   (defun eshell-setup-keymap ()
-     "Setup eshell (local) keymap"
+  (defun eshell-setup-keymap ()
+    "Setup eshell (local) keymap"
     (interactive)
     (message "eshell:setup-keymap >")
 
@@ -3471,8 +3471,8 @@ the automatic filling of the current paragraph."
     ;; Use completion-at-point to provide completions in eshell
     (define-key eshell-mode-map (kbd "<tab>") 'completion-at-point)      
     (define-key eshell-mode-map (kbd "<return>") 'eshell-copy-or-send-input)      
+    (define-key eshell-mode-map (kbd "C-<return>") 'cua-rectangle-mark-mode)      
     (define-key eshell-mode-map (kbd "C-d") 'self-insert-command)      
-    ;;(define-key eshell-mode-map (kbd "C-<return>") 'eshell-send-input)      
     (message "eshell:setup-keymap <")
     )
 
@@ -3491,6 +3491,24 @@ the automatic filling of the current paragraph."
 
 
   (message "eshell:config <")
+  )
+
+
+;; ---( eat )--------------------------------------------------------------
+
+;; 
+(use-package eat
+  :ensure t
+  ;;:hook (eshell-load . eat-eshell-mode)
+  :hook (eshell-load . eat-eshell-visual-command-mode)
+  :quelpa ((eat
+            :fetcher git
+            :url "https://codeberg.org/akib/emacs-eat"
+            :files ("*.el" ("term" "term/*.el") "*.texi"
+                    "*.ti" ("terminfo/e" "terminfo/e/*")
+                    ("terminfo/65" "terminfo/65/*")
+                    ("integration" "integration/*")
+                    (:exclude ".dir-locals.el" "*-tests.el"))))
   )
 ;; shell-eshell ends here
 
