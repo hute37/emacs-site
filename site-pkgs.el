@@ -3374,10 +3374,17 @@ the automatic filling of the current paragraph."
       ""))
 
   (defun eshell/cab (&rest args)
-    (if (bufferp (car args))
-        (with-current-buffer (car args)
-          (buffer-string))
-      (apply #'eshell/cat args)))
+    (if args
+        (if (bufferp (car args))
+            (with-current-buffer (car args)
+              (buffer-string))
+          (apply #'eshell/cat args))
+      (eshell/cab (eshell/o))))
+
+  (defun eshell/o (&rest args)
+    (if (stringp (car args))
+        (get-buffer-create (car args))
+      (get-buffer-create "*scratch*")))
 
   (defun eshell/s (&rest files)
     "Essentially an alias to the `view-file' function."
@@ -3498,13 +3505,13 @@ the automatic filling of the current paragraph."
   (add-hook 'eshell-mode-hook
             (lambda ()
               (progn
+                (setq O (eshell/o))
                 (setenv "PAGER" "cat")
                 (setenv "TERM" "xterm-256color")
                 )))
   (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
   (add-hook 'eshell-mode-hook #'(lambda () (message "*eshell*")))
   (message "eshell:hooks/c <")
-
 
   (message "eshell:config <")
   )
