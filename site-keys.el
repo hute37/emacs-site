@@ -725,7 +725,12 @@ When `universal-argument' is called first, cut whole buffer (but respect `narrow
 
 ;; ---( Search )------------------------------------------------------------
 
+(global-set-key "\C-t" 'forward-char)
+(global-set-key "\C-f" 'consult-line)
+
 ;;(global-set-key "\C-f" 'occur)
+;;(global-set-key "\C-s" 'isearch-forward)
+
 ;;(define-key esc-map "s" 'occur)
 
 
