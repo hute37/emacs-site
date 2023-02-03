@@ -3427,7 +3427,8 @@ the automatic filling of the current paragraph."
    eshell-prefer-lisp-functions t
    eshell-scroll-to-bottom-on-input t
    eshell-destroy-buffer-when-process-dies t
-   eshell-visual-commands'("bash" "fish" "vi" "vim" "nvim" "mc" "ranger" "htop" "ssh" "top" "tmux" "zsh")
+   ;;eshell-visual-commands'("bash" "fish" "vi" "vim" "nvim" "mc" "ranger" "htop" "ssh" "top" "tmux" "zsh")
+   eshell-visual-commands'("fish" "vi" "vim" "nvim" "mc" "ranger" "htop" "ssh" "top" "tmux")
 
    )
 
