@@ -896,9 +896,7 @@
   (setq lsp-keymap-prefix "C-l")
   ;;(setq lsp-keymap-prefix "C-c l")
   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-         (python-mode . lsp)
-         ;; if you want which-key integration
-         (lsp-mode . lsp-enable-which-key-integration))
+         (python-mode . lsp))
   :commands lsp
   :config
   (dolist (dir '(
@@ -908,6 +906,7 @@
                "[/\\\\]dist$"
                ))
     (push dir lsp-file-watch-ignored-directories))
+    (lsp-enable-which-key-integration t)
   )
 
 ;; optionally
