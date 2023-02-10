@@ -978,17 +978,37 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
   ;; ---( dap )--------------------------------------------------------------
 
-  ;; Integration with the debug server 
-  (use-package dap-mode
-    :ensure t
-    :defer t
-    :after lsp-mode
-    :config
-    (dap-auto-configure-mode))
+  ;; ;; Integration with the debug server 
+  ;; (use-package dap-mode
+  ;;   :ensure t
+  ;;   :defer t
+  ;;   :after lsp-mode
+  ;;   :config
+  ;;   (dap-auto-configure-mode))
 
   ;; (use-package dap-mode)
   ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 
+
+  (use-package dap-mode
+  :after lsp-mode
+  :commands dap-debug
+  :hook ((python-mode . dap-ui-mode) (python-mode . dap-mode))
+  :config
+  (dap-auto-configure-mode)
+  (require 'dap-python)
+  (setq dap-python-debugger 'debugpy)
+  (defun dap-python--pyenv-executable-find (command)
+    (with-venv (executable-find "python")))
+  ;; (add-hook 'dap-stopped-hook
+  ;;           (lambda (arg) (call-interactively #'dap-hydra)))
+  )
+
+  ;; (use-package dap-python
+  ;;   :ensure t
+  ;;   :defer t
+  ;;   :after dap-mode
+  ;;   )
 
 #+END_SRC
 
