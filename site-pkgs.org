@@ -929,45 +929,89 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
   (use-package lsp-mode
     :init
-    ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
     (setq lsp-keymap-prefix "C-l")
-    ;;(setq lsp-keymap-prefix "C-c l")
-    :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-           (python-mode . lsp))
+    :hook (
+           (python-mode . lsp)
+           )
     :commands lsp
     :config
     (dolist (dir '(
-                 "[/\\\\]\\.cache"
-                 "[/\\\\]venv$"
-                 "[/\\\\]build$"
-                 "[/\\\\]dist$"
-                 ))
+                   "[/\\\\]\\.cache"
+                   "[/\\\\]venv$"
+                   "[/\\\\]build$"
+                   "[/\\\\]dist$"
+                   ))
       (push dir lsp-file-watch-ignored-directories))
-      (lsp-enable-which-key-integration t)
+    (lsp-enable-which-key-integration t)
     )
 
-  ;; optionally
-  (use-package lsp-ui :commands lsp-ui-mode)
-  ;; if you are helm user
-  ;;(use-package helm-lsp :commands helm-lsp-workspace-symbol)
-  ;; if you are ivy user
-  (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-  (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
-
-  ;; optionally if you want to use debugger
-
-  ;; Provides visual help in the buffer 
-  ;; For example definitions on hover. 
-  ;; The `imenu` lets me browse definitions quickly.
   (use-package lsp-ui
     :ensure t
     :defer t
-    :config
-    (setq lsp-ui-sideline-enable nil
-              lsp-ui-doc-delay 2)
+    :after lsp
     :hook (lsp-mode . lsp-ui-mode)
     :bind (:map lsp-ui-mode-map
-                ("C-c i" . lsp-ui-imenu)))
+                ("C-c i" . lsp-ui-imenu))
+    :custom
+    (lsp-ui-doc-position 'bottom)
+    (lsp-ui-sideline-enable nil)
+    (lsp-ui-doc-delay 2)
+    )
+
+
+  ;; if you are helm user
+  ;;(use-package helm-lsp :commands helm-lsp-workspace-symbol)
+  ;; if you are ivy user
+  ;;(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+
+  (use-package consult-lsp
+    :ensure t
+    :defer t
+    :after lsp
+    :commands (consult-lsp-diagnostics consult-lsp-symbols consult-lsp-file-symbols)
+    )
+
+  (use-package lsp-treemacs
+    :ensure t
+    :defer t
+    :after lsp
+    :commands lsp-treemacs-errors-list)
+
+
+  ;; ---( virtual env )------------------------------------------------------------
+
+  (use-package with-venv
+    :ensure t)
+
+  ;; ---( LSP examples )------------------------------------------------------------
+
+  ;; (use-package company-c-headers
+  ;;   :ensure t
+  ;;   :config
+  ;;   (push 'company-c-headers company-backends)
+  ;;   (add-to-list 'company-c-headers-path-system "/usr/include/c++/7/")
+  ;;   )
+
+  ;; (use-package lsp-mode
+  ;;   :ensure t
+  ;;   :init
+  ;;   (setq lsp-keymap-prefix "C-c l")
+  ;;   :config
+  ;;   (require 'lsp-mode)
+  ;;   (require 'company-capf)
+  ;;   (setq lsp-prefer-capf t)
+  ;;   (setq lsp-completion-provider :capf)
+  ;;   (push 'company-capf company-backends)
+  ;;   ;; Recommended settings
+  ;;   (add-hook 'lsp-mode-hook (lambda ()
+  ;;                  (setq company-minimum-prefix-length 1
+  ;;                    company-idle-delay 0.0)))
+  ;;   ;; Other niceties
+  ;;   (setq lsp-enable-semantic-highlighting t)
+  ;;   (setq lsp-enable-snippet nil)  ;; Enable arguments completion
+  ;;   (setq lsp-signature-auto-activate nil)
+  ;;   )
+
 
 
 #+END_SRC
@@ -977,6 +1021,26 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 #+begin_src emacs-lisp
 
   ;; ---( dap )--------------------------------------------------------------
+
+  (use-package dap-mode
+    :after lsp-mode
+    :commands dap-debug
+    :hook ((python-mode . dap-ui-mode) (python-mode . dap-mode))
+    :config
+    (dap-auto-configure-mode)
+    (require 'dap-python)
+    (setq dap-python-debugger 'debugpy)
+    (defun dap-python--pyenv-executable-find (command)
+      (with-venv (executable-find "python")))
+    ;; (add-hook 'dap-stopped-hook
+    ;;           (lambda (arg) (call-interactively #'dap-hydra)))
+    )
+
+  ;; (use-package dap-python
+  ;;   :ensure t
+  ;;   :defer t
+  ;;   :after dap-mode
+  ;;   )
 
   ;; ;; Integration with the debug server 
   ;; (use-package dap-mode
@@ -989,26 +1053,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; (use-package dap-mode)
   ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 
-
-  (use-package dap-mode
-  :after lsp-mode
-  :commands dap-debug
-  :hook ((python-mode . dap-ui-mode) (python-mode . dap-mode))
-  :config
-  (dap-auto-configure-mode)
-  (require 'dap-python)
-  (setq dap-python-debugger 'debugpy)
-  (defun dap-python--pyenv-executable-find (command)
-    (with-venv (executable-find "python")))
-  ;; (add-hook 'dap-stopped-hook
-  ;;           (lambda (arg) (call-interactively #'dap-hydra)))
-  )
-
-  ;; (use-package dap-python
-  ;;   :ensure t
-  ;;   :defer t
-  ;;   :after dap-mode
-  ;;   )
 
 #+END_SRC
 
