@@ -441,6 +441,279 @@
 ;; }}}  .ui
 ;; ui ends here
 
+;; Utils/begin
+;; #+NAME: utils-begin
+
+;; [[file:site-pkgs.org::utils-begin][utils-begin]]
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @UTIL
+;; ;;;////////////////////////////////////////////////////////////////
+;; utils-begin ends here
+
+;; Utils/Jump
+;; #+NAME: util-jump
+
+;; [[file:site-pkgs.org::util-jump][util-jump]]
+;; ---( hydra )--------------------------------------------------------------
+
+(use-package hydra
+  :ensure t
+  :commands defhydra
+  )
+
+(use-package use-package-hydra
+  :ensure t
+  :after hydra
+  )
+
+;; ---( ace )--------------------------------------------------------------
+
+
+(use-package ace-jump-mode
+  :ensure t
+  :commands ace-jump-mode
+  :init
+  ;; (bind-key "C-." 'ace-jump-mode)
+  )
+
+;; ;; ---( avy )--------------------------------------------------------------
+
+(use-package avy
+  :ensure t)
+;; util-jump ends here
+
+;; Utils/Search
+;; #+NAME: util-search
+
+;; [[file:site-pkgs.org::util-search][util-search]]
+;; ---( regex )--------------------------------------------------------------
+
+
+(use-package regex-tool
+  :ensure t
+  :defer t)
+;; util-search ends here
+
+;; Utils/Help
+;; #+NAME: util-help
+
+;; [[file:site-pkgs.org::util-help][util-help]]
+;; ---( guide-key )--------------------------------------------------------------
+
+;; (use-package guide-key
+;;   :ensure t
+;;   :defer t
+;;   :diminish guide-key-mode
+;;   :idle
+;;   (progn
+;;     (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-c"))
+;;     (guide-key-mode 1)))
+
+;; ---( which-key )--------------------------------------------------------------
+
+(use-package which-key
+  :delight
+  :ensure t
+  :init
+  (which-key-mode)
+  :config
+  (setq which-key-idle-delay 1))
+
+
+
+;; ---( helpful )--------------------------------------------------------------
+
+;; @see: https://sgtpeacock.com/dot-files/Emacs.html#org66117b2
+
+(use-package helpful
+  :ensure t
+  :general
+  (:states '(normal visual emacs)
+           :prefix "SPC"
+
+           "d" '(:ignore t :wk "Describe")
+           "d." 'helpful-symbol
+           "df" 'helpful-function
+           "dv" 'helpful-variable
+           "dk" 'helpful-key
+           "dc" 'helpful-command)
+  :config
+  (defvar read-symbol-positions-list nil))
+;; util-help ends here
+
+;; Utils/Misc
+;; #+NAME: util-misc
+
+;; [[file:site-pkgs.org::util-misc][util-misc]]
+;; ---( popper )--------------------------------------------------------------
+
+(use-package popper
+  :ensure t
+  ;; :general
+  ;; (:states '(normal visual emacs)
+  ;;          :prefix "SPC"
+  ;;          "`" 'popper-toggle-latest
+  ;;          "~" 'popper-cycle)
+  :custom
+  (popper-reference-buffers '("\\*Messages\\*"
+                              "Output\\*$"
+                              "\\*Async Shell Command\\*"
+                              help-mode
+                              compilation-mode
+                              eldoc-mode))
+  (popper-window-height 30)
+  :init
+  (popper-mode +1)
+  (popper-echo-mode +1))
+
+;; ---( comint )--------------------------------------------------------------
+
+(use-package comint
+  :custom
+  (comint-buffer-maximum-size 20000 "Increase comint buffer size.")
+  (comint-prompt-read-only t "Make the prompt read only."))
+
+;; ---( environment )--------------------------------------------------------------
+
+;; Restart Emacs from inside Emacs with `M-x restart-emacs`
+(use-package restart-emacs
+  :defer t)
+
+;; use-package-ensure-system-package
+;; provides way to define system package dependencies for Emacs packages
+(use-package use-package-ensure-system-package
+  :ensure t)
+
+;; ---( windmove )--------------------------------------------------------------
+
+;; (use-package windmove
+;;   :ensure t
+;;   :defer t
+;;   :bind
+;;   (("<f2> <right>" . windmove-right)
+;;    ("<f2> <left>" . windmove-left)
+;;    ("<f2> <up>" . windmove-up)
+;;    ("<f2> <down>" . windmove-down)
+;;    ))
+
+
+;; ---( whitespace )--------------------------------------------------------------
+
+;; (use-package whitespace
+;;   :ensure t
+;;   :bind (("C-c T w" . whitespace-mode))
+;;   :init
+;;   (dolist (hook '(conf-mode-hook))
+;; ;;  (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
+;;     (add-hook hook #'whitespace-mode))
+;;   :config (setq whitespace-line-column nil)
+;;   :diminish whitespace-mode)
+
+;; (use-package whitespace
+;;   :diminish (global-whitespace-mode
+;;              whitespace-mode
+;;              whitespace-newline-mode)
+;;   :commands (whitespace-buffer
+;;              whitespace-cleanup
+;;              whitespace-mode)
+;;   :defines (whitespace-auto-cleanup
+;;             whitespace-rescan-timer-time
+;;             whitespace-silent)
+;;   :preface
+;;   (defun normalize-file ()
+;;     (interactive)
+;;     (save-excursion
+;;       (goto-char (point-min))
+;;       (whitespace-cleanup)
+;;       (delete-trailing-whitespace)
+;;       (goto-char (point-max))
+;;       (delete-blank-lines)
+;;       (set-buffer-file-coding-system 'unix)
+;;       (goto-char (point-min))
+;;       (while (re-search-forward "\r$" nil t)
+;;         (replace-match ""))
+;;       (set-buffer-file-coding-system 'utf-8)
+;;       (let ((require-final-newline t))
+;;         (save-buffer))))
+;;   (defun maybe-turn-on-whitespace ()
+;;     "Depending on the file, maybe clean up whitespace."
+;;     (let ((file (expand-file-name ".clean"))
+;;           parent-dir)
+;;       (while (and (not (file-exists-p file))
+;;                   (progn
+;;                     (setq parent-dir
+;;                           (file-name-directory
+;;                            (directory-file-name
+;;                             (file-name-directory file))))
+;;                     ;; Give up if we are already at the root dir.
+;;                     (not (string= (file-name-directory file)
+;;                                   parent-dir))))
+;;         ;; Move up to the parent dir and try again.
+;;         (setq file (expand-file-name ".clean" parent-dir)))
+;;       ;; If we found a change log in a parent, use that.
+;;       (when (and (file-exists-p file)
+;;                  (not (file-exists-p ".noclean"))
+;;                  (not (and buffer-file-name
+;;                            (string-match "\\.texi\\'" buffer-file-name))))
+;;         (add-hook 'write-contents-hooks
+;;                   #'(lambda () (ignore (whitespace-cleanup))) nil t)
+;;         (whitespace-cleanup))))
+;;   :init
+;;   (hook-into-modes 'whitespace-mode '(prog-mode-hook c-mode-common-hook))
+;;   (add-hook 'find-file-hooks 'maybe-turn-on-whitespace t)
+;;   :config
+;;   (remove-hook 'find-file-hooks 'whitespace-buffer)
+;;   (remove-hook 'kill-buffer-hook 'whitespace-buffer)
+;;   ;; For some reason, having these in settings.el gets ignored if whitespace
+;;   ;; loads lazily.
+;;   (setq whitespace-auto-cleanup t
+;;         whitespace-line-column 80
+;;         whitespace-rescan-timer-time nil
+;;         whitespace-silent t
+;;         whitespace-style '(face trailing lines space-before-tab empty)))
+
+;; ---( autorevert )--------------------------------------------------------------
+
+(use-package autorevert
+  :commands auto-revert-mode
+  :diminish auto-revert-mode
+  :init
+  (add-hook 'find-file-hook #'(lambda () (auto-revert-mode 1))))
+
+
+;; ---( hilit-chg )--------------------------------------------------------------
+
+;; (use-package hilit-chg
+;;   :ensure t
+;;   :bind ("M-o C" . highlight-changes-mode))
+
+
+;; ---( folding )--------------------------------------------------------------
+
+(use-package vimish-fold
+  :ensure t
+  :hook ((
+          terraform-mode
+          yaml-mode
+          text-mode
+          ) . vimish-fold-mode)
+)
+
+;;        markdown-mode
+
+
+;; (use-package folding
+;;   :ensure t
+;; )
+;; util-misc ends here
+
+;; Utils/end
+;; #+NAME: util-end
+
+;; [[file:site-pkgs.org::util-end][util-end]]
+;; }}}  .util
+;; util-end ends here
+
 ;; Magit
 ;; #+NAME: magit
 
@@ -888,24 +1161,40 @@
 ;; #+NAME: lang-lsp.mode
 
 ;; [[file:site-pkgs.org::lang-lsp.mode][lang-lsp.mode]]
+;; ---( flycheck )------------------------------------------------------------
+
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode)
+  )
+
 ;; ---( LSP mode )------------------------------------------------------------
 
 (use-package lsp-mode
+  :ensure t
   :init
   (setq lsp-keymap-prefix "C-l")
   :hook (
-         (python-mode . lsp)
+         (python-mode . lsp-deferred)
          )
-  :commands lsp
+  :commands (lsp lsp-deferred)
   :config
   (dolist (dir '(
                  "[/\\\\]\\.cache"
+                 "[/\\\\]\\.pytest_cache"
                  "[/\\\\]venv$"
                  "[/\\\\]build$"
                  "[/\\\\]dist$"
+                 "[/\\\\]docker$"
+                 "[/\\\\]notes$"
+                 "[/\\\\]data$"
+                 "[/\\\\]logs$"
+                 "[/\\\\]temp$"
                  ))
     (push dir lsp-file-watch-ignored-directories))
   (lsp-enable-which-key-integration t)
+  :custom
+  (lsp-enable-snippet nil)
   )
 
 (use-package lsp-ui
@@ -917,7 +1206,10 @@
               ("C-c i" . lsp-ui-imenu))
   :custom
   (lsp-ui-doc-position 'bottom)
-  (lsp-ui-sideline-enable nil)
+  (lsp-ui-doc-enable t)
+  (lsp-ui-sideline-enable t)
+  (lsp-ui-imenu-enable t)
+  (lsp-ui-flycheck-enable t)
   (lsp-ui-doc-delay 2)
   )
 
@@ -933,6 +1225,14 @@
   :after lsp
   :commands (consult-lsp-diagnostics consult-lsp-symbols consult-lsp-file-symbols)
   )
+
+;; (use-package company-lsp
+;;   :ensure t
+;;   :defer t
+;;   :after lsp
+;;   :commands company-lsp
+;;   )
+
 
 (use-package lsp-treemacs
   :ensure t
@@ -985,34 +1285,45 @@
 (use-package dap-mode
   :after lsp-mode
   :commands dap-debug
-  :hook ((python-mode . dap-ui-mode) (python-mode . dap-mode))
+  :hook (
+         (python-mode . dap-mode)
+         (python-mode . dap-ui-mode)
+         (dap-stopped . (lambda (arg) (call-interactively #'dap-hydra)))
+         )
+  :custom
+  (lsp-enable-dap-auto-configure t)  
+  ;; (dap-auto-configure-features '(sessions locals controls tooltip))
   :config
-  (dap-auto-configure-mode)
+  ;; (dap-auto-configure-mode)
+  (require 'dap-hydra)
   (require 'dap-python)
   (setq dap-python-debugger 'debugpy)
   (defun dap-python--pyenv-executable-find (command)
     (with-venv (executable-find "python")))
-  ;; (add-hook 'dap-stopped-hook
-  ;;           (lambda (arg) (call-interactively #'dap-hydra)))
+
+  (dap-register-debug-template
+   "Poetry run main"
+   (list :type "poetry"
+         :args "run main"
+         :cwd nil
+         :env '(("DEBUG" . "1"))
+         :request "launch"
+         :name "App:main"))
+
   )
-
-;; (use-package dap-python
-;;   :ensure t
-;;   :defer t
-;;   :after dap-mode
-;;   )
-
-;; ;; Integration with the debug server 
-;; (use-package dap-mode
-;;   :ensure t
-;;   :defer t
-;;   :after lsp-mode
-;;   :config
-;;   (dap-auto-configure-mode))
-
-;; (use-package dap-mode)
-;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 ;; lang-lsp.mode.dap ends here
+
+;; Lang: Tools.snippets
+;; #+NAME: lang-tools.snip
+
+;; [[file:site-pkgs.org::lang-tools.snip][lang-tools.snip]]
+;; ---( yasnippet )--------------------------------------------------------------
+
+(use-package yasnippet
+  :disabled t
+  :config
+  (yas-reload-all))
+;; lang-tools.snip ends here
 
 ;; Lang: R/ess
 ;; #+NAME: lang-r.ess
@@ -1309,20 +1620,28 @@
 
 ;; Language server for Python 
 ;; Read the docs for the different variables set in the config.
+
 (use-package lsp-pyright
   :ensure t
   :defer t
+  :custom
+  (lsp-pyright-disable-language-service nil)
+  (lsp-pyright-disable-organize-imports nil)
+  (lsp-pyright-auto-import-completions t)
+  (lsp-pyright-use-library-code-for-types t)
+  (lsp-pyright-venv-path "~/.cache/pypoetry/virtualenvs")
   :config
   ;;(setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
-  (setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
-  (setq lsp-pyright-disable-language-service nil
-        lsp-pyright-disable-organize-imports nil
-        lsp-pyright-auto-import-completions t
-        lsp-pyright-use-library-code-for-types t
-        ;;lsp-pyright-venv-path "~/miniconda3/envs")
-        lsp-pyright-venv-path "~/.cache/pypoetry/virtualenvs")
+  ;;(setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
+  ;; (setq lsp-pyright-disable-language-service nil
+  ;;       lsp-pyright-disable-organize-imports nil
+  ;;       lsp-pyright-auto-import-completions t
+  ;;       lsp-pyright-use-library-code-for-types t
+  ;;       ;;lsp-pyright-venv-path "~/miniconda3/envs")
+  ;;       lsp-pyright-venv-path "~/.cache/pypoetry/virtualenvs")
   :hook ((python-mode . (lambda () 
-                          (require 'lsp-pyright) (lsp-deferred)))))
+                          (require 'lsp-pyright) (lsp-deferred))))
+  )
 ;; lang-python.lsp ends here
 
 ;; Lang: Python/tools
@@ -1351,6 +1670,14 @@
   (put 'python-black-extra-args 'safe-local-variable #'stringp)
   (put 'python-black-on-save-mode 'safe-local-variable #'booleanp)
   )
+
+;; ---( pyisort )-------------------------------------------------------------
+
+(use-package py-isort
+  :ensure t
+  :after python
+  :hook ((python-mode . pyvenv-mode)
+         (before-save . py-isort-before-save)))
 ;; lang-python.tools ends here
 
 ;; Lang: Python/elpy
@@ -3015,258 +3342,6 @@ the automatic filling of the current paragraph."
 ;; }}}  .org
 ;; org-end ends here
 
-;; Utils/begin
-;; #+NAME: utils-begin
-
-;; [[file:site-pkgs.org::utils-begin][utils-begin]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @UTIL
-;; ;;;////////////////////////////////////////////////////////////////
-;; utils-begin ends here
-
-;; Utils/Search
-;; #+NAME: util-search
-
-;; [[file:site-pkgs.org::util-search][util-search]]
-;; ---( regex )--------------------------------------------------------------
-
-
-(use-package regex-tool
-  :ensure t
-  :defer t)
-;; util-search ends here
-
-;; Utils/Help
-;; #+NAME: util-help
-
-;; [[file:site-pkgs.org::util-help][util-help]]
-;; ---( guide-key )--------------------------------------------------------------
-
-;; (use-package guide-key
-;;   :ensure t
-;;   :defer t
-;;   :diminish guide-key-mode
-;;   :idle
-;;   (progn
-;;     (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-c"))
-;;     (guide-key-mode 1)))
-
-;; ---( which-key )--------------------------------------------------------------
-
-;; optional if you want which-key integration
-;; (use-package which-key
-;;     :config
-;;     (which-key-mode))
-
-(use-package which-key
-  :delight
-  :ensure t
-  :init
-  (which-key-mode)
-  )
-
-
-
-;; ---( helpful )--------------------------------------------------------------
-
-;; @see: https://sgtpeacock.com/dot-files/Emacs.html#org66117b2
-
-(use-package helpful
-  :ensure t
-  :general
-  (:states '(normal visual emacs)
-           :prefix "SPC"
-
-           "d" '(:ignore t :wk "Describe")
-           "d." 'helpful-symbol
-           "df" 'helpful-function
-           "dv" 'helpful-variable
-           "dk" 'helpful-key
-           "dc" 'helpful-command)
-  :config
-  (defvar read-symbol-positions-list nil))
-;; util-help ends here
-
-;; Utils/Misc
-;; #+NAME: util-misc
-
-;; [[file:site-pkgs.org::util-misc][util-misc]]
-;; ---( popper )--------------------------------------------------------------
-
-(use-package popper
-  :ensure t
-  ;; :general
-  ;; (:states '(normal visual emacs)
-  ;;          :prefix "SPC"
-  ;;          "`" 'popper-toggle-latest
-  ;;          "~" 'popper-cycle)
-  :custom
-  (popper-reference-buffers '("\\*Messages\\*"
-                              "Output\\*$"
-                              "\\*Async Shell Command\\*"
-                              help-mode
-                              compilation-mode
-                              eldoc-mode))
-  (popper-window-height 30)
-  :init
-  (popper-mode +1)
-  (popper-echo-mode +1))
-
-;; ---( comint )--------------------------------------------------------------
-
-(use-package comint
-  :custom
-  (comint-buffer-maximum-size 20000 "Increase comint buffer size.")
-  (comint-prompt-read-only t "Make the prompt read only."))
-
-;; ---( environment )--------------------------------------------------------------
-
-;; Restart Emacs from inside Emacs with `M-x restart-emacs`
-(use-package restart-emacs
-  :defer t)
-
-;; use-package-ensure-system-package
-;; provides way to define system package dependencies for Emacs packages
-(use-package use-package-ensure-system-package
-  :ensure t)
-
-;; ---( windmove )--------------------------------------------------------------
-
-;; (use-package windmove
-;;   :ensure t
-;;   :defer t
-;;   :bind
-;;   (("<f2> <right>" . windmove-right)
-;;    ("<f2> <left>" . windmove-left)
-;;    ("<f2> <up>" . windmove-up)
-;;    ("<f2> <down>" . windmove-down)
-;;    ))
-
-
-;; ---( whitespace )--------------------------------------------------------------
-
-;; (use-package whitespace
-;;   :ensure t
-;;   :bind (("C-c T w" . whitespace-mode))
-;;   :init
-;;   (dolist (hook '(conf-mode-hook))
-;; ;;  (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
-;;     (add-hook hook #'whitespace-mode))
-;;   :config (setq whitespace-line-column nil)
-;;   :diminish whitespace-mode)
-
-;; (use-package whitespace
-;;   :diminish (global-whitespace-mode
-;;              whitespace-mode
-;;              whitespace-newline-mode)
-;;   :commands (whitespace-buffer
-;;              whitespace-cleanup
-;;              whitespace-mode)
-;;   :defines (whitespace-auto-cleanup
-;;             whitespace-rescan-timer-time
-;;             whitespace-silent)
-;;   :preface
-;;   (defun normalize-file ()
-;;     (interactive)
-;;     (save-excursion
-;;       (goto-char (point-min))
-;;       (whitespace-cleanup)
-;;       (delete-trailing-whitespace)
-;;       (goto-char (point-max))
-;;       (delete-blank-lines)
-;;       (set-buffer-file-coding-system 'unix)
-;;       (goto-char (point-min))
-;;       (while (re-search-forward "\r$" nil t)
-;;         (replace-match ""))
-;;       (set-buffer-file-coding-system 'utf-8)
-;;       (let ((require-final-newline t))
-;;         (save-buffer))))
-;;   (defun maybe-turn-on-whitespace ()
-;;     "Depending on the file, maybe clean up whitespace."
-;;     (let ((file (expand-file-name ".clean"))
-;;           parent-dir)
-;;       (while (and (not (file-exists-p file))
-;;                   (progn
-;;                     (setq parent-dir
-;;                           (file-name-directory
-;;                            (directory-file-name
-;;                             (file-name-directory file))))
-;;                     ;; Give up if we are already at the root dir.
-;;                     (not (string= (file-name-directory file)
-;;                                   parent-dir))))
-;;         ;; Move up to the parent dir and try again.
-;;         (setq file (expand-file-name ".clean" parent-dir)))
-;;       ;; If we found a change log in a parent, use that.
-;;       (when (and (file-exists-p file)
-;;                  (not (file-exists-p ".noclean"))
-;;                  (not (and buffer-file-name
-;;                            (string-match "\\.texi\\'" buffer-file-name))))
-;;         (add-hook 'write-contents-hooks
-;;                   #'(lambda () (ignore (whitespace-cleanup))) nil t)
-;;         (whitespace-cleanup))))
-;;   :init
-;;   (hook-into-modes 'whitespace-mode '(prog-mode-hook c-mode-common-hook))
-;;   (add-hook 'find-file-hooks 'maybe-turn-on-whitespace t)
-;;   :config
-;;   (remove-hook 'find-file-hooks 'whitespace-buffer)
-;;   (remove-hook 'kill-buffer-hook 'whitespace-buffer)
-;;   ;; For some reason, having these in settings.el gets ignored if whitespace
-;;   ;; loads lazily.
-;;   (setq whitespace-auto-cleanup t
-;;         whitespace-line-column 80
-;;         whitespace-rescan-timer-time nil
-;;         whitespace-silent t
-;;         whitespace-style '(face trailing lines space-before-tab empty)))
-
-;; ---( autorevert )--------------------------------------------------------------
-
-(use-package autorevert
-  :commands auto-revert-mode
-  :diminish auto-revert-mode
-  :init
-  (add-hook 'find-file-hook #'(lambda () (auto-revert-mode 1))))
-
-
-;; ---( hilit-chg )--------------------------------------------------------------
-
-;; (use-package hilit-chg
-;;   :ensure t
-;;   :bind ("M-o C" . highlight-changes-mode))
-
-
-;; ---( folding )--------------------------------------------------------------
-
-(use-package vimish-fold
-  :ensure t
-  :hook ((
-          terraform-mode
-          yaml-mode
-          text-mode
-          ) . vimish-fold-mode)
-)
-
-;;        markdown-mode
-
-
-;; (use-package folding
-;;   :ensure t
-;; )
-
-;; ---( yasnippet )--------------------------------------------------------------
-
-(use-package yasnippet
-  :disabled t
-  :config
-  (yas-reload-all))
-;; util-misc ends here
-
-;; Utils/end
-;; #+NAME: util-end
-
-;; [[file:site-pkgs.org::util-end][util-end]]
-;; }}}  .util
-;; util-end ends here
-
 ;; Server/begin
 ;; #+NAME: server-begin
 
@@ -3868,56 +3943,6 @@ the automatic filling of the current paragraph."
 ;; }}}  .evil
 ;; evil-end ends here
 
-;; Jump/begin
-;; #+NAME: jump-begin
-
-;; [[file:site-pkgs.org::jump-begin][jump-begin]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @JUMP
-;; ;;;////////////////////////////////////////////////////////////////
-;; jump-begin ends here
-
-;; Hydra
-;; #+NAME: jump-hydra
-
-;; [[file:site-pkgs.org::jump-hydra][jump-hydra]]
-;; ;; ---( hydra )--------------------------------------------------------------
-
-(use-package hydra
-  :ensure t)
-;; jump-hydra ends here
-
-;; Ace
-;; #+NAME: jump-ace
-
-;; [[file:site-pkgs.org::jump-ace][jump-ace]]
-;; ---( ace )--------------------------------------------------------------
-
-
-(use-package ace-jump-mode
-  :ensure t
-  :commands ace-jump-mode
-  :init
-  (bind-key "C-." 'ace-jump-mode))
-;; jump-ace ends here
-
-;; Avy
-;; #+NAME: jump-avy
-
-;; [[file:site-pkgs.org::jump-avy][jump-avy]]
-;; ;; ---( avy )--------------------------------------------------------------
-
-(use-package avy
-  :ensure t)
-;; jump-avy ends here
-
-;; Jump/end
-;; #+NAME: jump-end
-
-;; [[file:site-pkgs.org::jump-end][jump-end]]
-;; }}}  .jump
-;; jump-end ends here
-
 ;; Completion/begin
 ;; #+NAME: comp-ap-begin
 
@@ -4387,7 +4412,7 @@ the automatic filling of the current paragraph."
 (use-package embark-consult
   :ensure t
   :after (embark consult)
-  :demand t ; only necessary if you have the hook below
+  ;; :demand t ; only necessary if you have the hook below
   ;; if you want to have consult previews as you move around an
   ;; auto-updating embark collect buffer
   :hook
@@ -4439,6 +4464,118 @@ the automatic filling of the current paragraph."
 ;; [[file:site-pkgs.org::comp-mb-end][comp-mb-end]]
 ;; }}}  .comp-mb
 ;; comp-mb-end ends here
+
+;; Jump/begin
+;; #+NAME: jump-begin
+
+;; [[file:site-pkgs.org::jump-begin][jump-begin]]
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @JUMP
+;; ;;;////////////////////////////////////////////////////////////////
+;; jump-begin ends here
+
+;; Hydra
+;; #+NAME: jump-hydra
+
+;; [[file:site-pkgs.org::jump-hydra][jump-hydra]]
+;; ---( hydras )--------------------------------------------------------------
+
+(defhydra hydra-misc (:exit t)
+    ;; ("j" my-helm-journal "Journal")
+    ;; ("C" my-resolve-orgzly-syncthing "Conflicts")
+    ;; ("n" my-capture-timestamped-note "Note")
+    ;; ("c" my-org-categorize-emacs-news/body "Categorize")
+    ;; ("d" my-emacs-news-check-duplicates "Dupe")
+    ("s" save-buffer "Save")
+    ;; ("f" my-file-shortcuts/body "File shortcut")
+    ;; ("G" gif-screencast-start-or-stop "GIF screencast")
+    ;; ("g" my-geeqie/body "Geeqie")
+    ;; ("r" my-record-ffmpeg-toggle-recording "Record screen")
+    ;; ("l" (my-toggle-or-create "*scratch*" (lambda () (switch-to-buffer (startup--get-buffer-create-scratch)))) "Lisp")
+    ("e" eshell-toggle "Eshell")
+    ;; ("w" my-engine-dmode-hydra/body "Search web")
+    ;; ("E" my-emacs-news/body "Emacs News")
+    )
+
+(defhydra hydra-ui (:exit nil)
+  ("+" text-scale-increase "Increase")
+  ("-" text-scale-decrease "Decrease")
+  ("<left>" windmove-left)
+  ("<right>" windmove-right)
+  ("<down>" windmove-down)
+  ("<up>" windmove-up)
+  ("y" other-window "other")
+  ("h" switch-window "switch-window")
+  ("b" consult-buffer "buffer")
+  ("f" find-file "file")
+  ("F" find-file-other-window "other file")
+  ("v" (progn (split-window-right) (windmove-right)))
+  ("o" delete-other-windows :color blue)
+  ("a" ace-window)
+  ("s" ace-swap-window)
+  ("d" delete-window "delete")
+  ("D" ace-delete-window "ace delete")
+  ("i" ace-maximize-window "maximize")
+  ("q" nil)
+  )
+
+
+(defhydra hydra-buffer-menu (:color pink
+                             :hint nil)
+  "
+^Mark^             ^Unmark^           ^Actions^          ^Search
+^^^^^^^^-----------------------------------------------------------------
+_m_: mark          _u_: unmark        _x_: execute       _R_: re-isearch
+_s_: save          _U_: unmark up     _b_: bury          _I_: isearch
+_d_: delete        ^ ^                _g_: refresh       _O_: multi-occur
+_D_: delete up     ^ ^                _T_: files only: % -28`Buffer-menu-files-only
+_~_: modified
+"
+  ("m" Buffer-menu-mark)
+  ("u" Buffer-menu-unmark)
+  ("U" Buffer-menu-backup-unmark)
+  ("d" Buffer-menu-delete)
+  ("D" Buffer-menu-delete-backwards)
+  ("s" Buffer-menu-save)
+  ("~" Buffer-menu-not-modified)
+  ("x" Buffer-menu-execute)
+  ("b" Buffer-menu-bury)
+  ("g" revert-buffer)
+  ("T" Buffer-menu-toggle-files-only)
+  ("O" Buffer-menu-multi-occur :color blue)
+  ("I" Buffer-menu-isearch-buffers :color blue)
+  ("R" Buffer-menu-isearch-buffers-regexp :color blue)
+  ("c" nil "cancel")
+  ("v" Buffer-menu-select "select" :color blue)
+  ("o" Buffer-menu-other-window "other-window" :color blue)
+  ("q" quit-window "quit" :color blue))
+
+(define-key Buffer-menu-mode-map "." 'hydra-buffer-menu/body)
+
+
+(defhydra hydra-main (:exit t :color pink :hint nil)
+  "
+^Misc^             ^Edit^           ^Lang^          ^Search
+^^^^^^^^-----------------------------------------------------------------
+_m_: misc          _b_: buffers      _d_: debug      ^ ^
+^ ^                _u_: UI           ^ ^             ^ ^
+^ ^                ^ ^               ^ ^             ^ ^
+"
+    ("m" hydra-misc/body "Misc")
+    ("b" hydra-buffer-menu/body "Buffers")
+    ("u" hydra-ui/body "UI")
+    ("d" dap-hydra/body "Debug")
+    )
+
+(global-set-key (kbd "<f8>") #'hydra-main/body)
+;; jump-hydra ends here
+
+;; Jump/end
+;; #+NAME: jump-end
+
+;; [[file:site-pkgs.org::jump-end][jump-end]]
+;; }}}  .jump
+;; jump-end ends here
 
 ;; Net/begin
 ;; #+NAME: net-begin
