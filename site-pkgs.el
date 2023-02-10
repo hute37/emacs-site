@@ -890,48 +890,83 @@
 ;; [[file:site-pkgs.org::lang-lsp.mode][lang-lsp.mode]]
 ;; ---( LSP mode )------------------------------------------------------------
 
-(use-package lsp-mode
-  :init
-  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-  (setq lsp-keymap-prefix "C-l")
-  ;;(setq lsp-keymap-prefix "C-c l")
-  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-         (python-mode . lsp)
-         ;; if you want which-key integration
-         (lsp-mode . lsp-enable-which-key-integration))
-  :commands lsp
-  :config
-  (dolist (dir '(
-               "[/\\\\]\\.cache"
-               "[/\\\\]venv$"
-               "[/\\\\]build$"
-               "[/\\\\]dist$"
-               ))
-    (push dir lsp-file-watch-ignored-directories))
-  )
+  (use-package lsp-mode
+    :init
+    ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+    (setq lsp-keymap-prefix "C-l")
+    ;;(setq lsp-keymap-prefix "C-c l")
+    :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+           (python-mode . lsp)
+           ;; if you want which-key integration
+           (lsp-mode . lsp-enable-which-key-integration))
+    :commands lsp
+    :config
+    (dolist (dir '(
+                 "[/\\\\]\\.cache"
+                 "[/\\\\]venv$"
+                 "[/\\\\]build$"
+                 "[/\\\\]dist$"
+                 ))
+      (setq lsp-enable-snippet nil)
+      (push dir lsp-file-watch-ignored-directories))
+    )
 
-;; optionally
-(use-package lsp-ui :commands lsp-ui-mode)
-;; if you are helm user
-;;(use-package helm-lsp :commands helm-lsp-workspace-symbol)
-;; if you are ivy user
-(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+  ;; optionally
+  (use-package lsp-ui :commands lsp-ui-mode)
+  ;; if you are helm user
+  ;;(use-package helm-lsp :commands helm-lsp-workspace-symbol)
+  ;; if you are ivy user
+  (use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+  (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 
-;; optionally if you want to use debugger
+  ;; optionally if you want to use debugger
 
-;; Provides visual help in the buffer 
-;; For example definitions on hover. 
-;; The `imenu` lets me browse definitions quickly.
-(use-package lsp-ui
-  :ensure t
-  :defer t
-  :config
-  (setq lsp-ui-sideline-enable nil
-            lsp-ui-doc-delay 2)
-  :hook (lsp-mode . lsp-ui-mode)
-  :bind (:map lsp-ui-mode-map
-              ("C-c i" . lsp-ui-imenu)))
+  ;; Provides visual help in the buffer 
+  ;; For example definitions on hover. 
+  ;; The `imenu` lets me browse definitions quickly.
+  (use-package lsp-ui
+    :ensure t
+    :defer t
+    :config
+    (setq lsp-ui-sideline-enable nil
+              lsp-ui-doc-delay 2)
+    :hook (lsp-mode . lsp-ui-mode)
+    :bind (:map lsp-ui-mode-map
+                ("C-c i" . lsp-ui-imenu)))
+
+  ;; ---( virtual env )------------------------------------------------------------
+
+  (use-package with-venv
+    :ensure t)
+
+  ;; ---( LSP examples )------------------------------------------------------------
+
+;; (use-package company-c-headers
+;;   :ensure t
+;;   :config
+;;   (push 'company-c-headers company-backends)
+;;   (add-to-list 'company-c-headers-path-system "/usr/include/c++/7/")
+;;   )
+
+;; (use-package lsp-mode
+;;   :ensure t
+;;   :init
+;;   (setq lsp-keymap-prefix "C-c l")
+;;   :config
+;;   (require 'lsp-mode)
+;;   (require 'company-capf)
+;;   (setq lsp-prefer-capf t)
+;;   (setq lsp-completion-provider :capf)
+;;   (push 'company-capf company-backends)
+;;   ;; Recommended settings
+;;   (add-hook 'lsp-mode-hook (lambda ()
+;;                  (setq company-minimum-prefix-length 1
+;;                    company-idle-delay 0.0)))
+;;   ;; Other niceties
+;;   (setq lsp-enable-semantic-highlighting t)
+;;   (setq lsp-enable-snippet nil)  ;; Enable arguments completion
+;;   (setq lsp-signature-auto-activate nil)
+;;   )
 ;; lang-lsp.mode ends here
 
 ;; Lang: LSP.dap
@@ -940,16 +975,37 @@
 ;; [[file:site-pkgs.org::lang-lsp.mode.dap][lang-lsp.mode.dap]]
 ;; ---( dap )--------------------------------------------------------------
 
-;; Integration with the debug server 
-(use-package dap-mode
-  :ensure t
-  :defer t
-  :after lsp-mode
-  :config
-  (dap-auto-configure-mode))
+;; ;; Integration with the debug server 
+;; (use-package dap-mode
+;;   :ensure t
+;;   :defer t
+;;   :after lsp-mode
+;;   :config
+;;   (dap-auto-configure-mode))
 
 ;; (use-package dap-mode)
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+
+
+(use-package dap-mode
+:after lsp-mode
+:commands dap-debug
+:hook ((python-mode . dap-ui-mode) (python-mode . dap-mode))
+:config
+(dap-auto-configure-mode)
+(require 'dap-python)
+(setq dap-python-debugger 'debugpy)
+(defun dap-python--pyenv-executable-find (command)
+  (with-venv (executable-find "python")))
+;; (add-hook 'dap-stopped-hook
+;;           (lambda (arg) (call-interactively #'dap-hydra)))
+)
+
+;; (use-package dap-python
+;;   :ensure t
+;;   :defer t
+;;   :after dap-mode
+;;   )
 ;; lang-lsp.mode.dap ends here
 
 ;; Lang: R/ess
