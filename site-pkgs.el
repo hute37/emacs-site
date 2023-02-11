@@ -1199,7 +1199,6 @@
 
 (use-package lsp-ui
   :ensure t
-  :defer t
   :after lsp
   :hook (lsp-mode . lsp-ui-mode)
   :bind (:map lsp-ui-mode-map
@@ -1283,6 +1282,7 @@
 ;; ---( dap )--------------------------------------------------------------
 
 (use-package dap-mode
+  :ensure t
   :after lsp-mode
   :commands dap-debug
   :hook (
@@ -1302,7 +1302,7 @@
     (with-venv (executable-find "python")))
 
   (dap-register-debug-template
-   "Poetry run main"
+   "Poetry :: Run 'main'"
    (list :type "poetry"
          :args "run main"
          :cwd nil
@@ -1310,6 +1310,14 @@
          :request "launch"
          :name "App:main"))
 
+  (dap-register-debug-template
+   "Poetry :: Run 'demo'"
+   (list :type "poetry"
+         :args "run demo"
+         :cwd nil
+         :env '(("DEBUG" . "1"))
+         :request "launch"
+         :name "App:demo"))
   )
 ;; lang-lsp.mode.dap ends here
 
@@ -2497,7 +2505,7 @@ the automatic filling of the current paragraph."
 )
 
 (use-package paperless
-  :ensure t
+  :disabled  t
 )
 
 ;; (use-package toc-mode

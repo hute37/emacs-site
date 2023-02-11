@@ -1253,7 +1253,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
   (use-package lsp-ui
     :ensure t
-    :defer t
     :after lsp
     :hook (lsp-mode . lsp-ui-mode)
     :bind (:map lsp-ui-mode-map
@@ -1340,6 +1339,7 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
     ;; ---( dap )--------------------------------------------------------------
 
     (use-package dap-mode
+      :ensure t
       :after lsp-mode
       :commands dap-debug
       :hook (
@@ -1359,7 +1359,7 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
         (with-venv (executable-find "python")))
 
       (dap-register-debug-template
-       "Poetry run main"
+       "Poetry :: Run 'main'"
        (list :type "poetry"
              :args "run main"
              :cwd nil
@@ -1367,6 +1367,14 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
              :request "launch"
              :name "App:main"))
 
+      (dap-register-debug-template
+       "Poetry :: Run 'demo'"
+       (list :type "poetry"
+             :args "run demo"
+             :cwd nil
+             :env '(("DEBUG" . "1"))
+             :request "launch"
+             :name "App:demo"))
       )
 
 #+END_SRC
@@ -2615,7 +2623,7 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   )
 
   (use-package paperless
-    :ensure t
+    :disabled  t
   )
 
   ;; (use-package toc-mode
