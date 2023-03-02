@@ -2788,7 +2788,7 @@ the automatic filling of the current paragraph."
            "** TODO [#B] %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n")
           ("r" "read" entry (file+headline ,(format "%s/%s" org-store-todo "read.org") "BACKLOG")
            "** READ [#C] %?\n\n")
-          ("e" "dots" entry (file+headline ,(format "%s/%s" org-store-todo "dots.org") "ACTIVE")
+          ("d" "dots" entry (file+headline ,(format "%s/%s" org-store-todo "dots.org") "ACTIVE")
            "** EDIT [#C] %?\n   - %a\n\n")
           ))
 
@@ -2948,6 +2948,13 @@ the automatic filling of the current paragraph."
           (?+ . ?➤)
           (?- . ?•))))
 
+;; ---(org-superstar)------------------------------------------------------------------------
+
+(use-package org-context
+  :ensure t
+  :after org
+  :hook (org-mode . org-context-mode)
+)
 
 ;; ---(org-ref)------------------------------------------------------------------------
 
