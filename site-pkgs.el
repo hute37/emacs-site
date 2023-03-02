@@ -2765,14 +2765,19 @@ the automatic filling of the current paragraph."
 
   ;; @see: https://github.com/daviwil/dotfiles/blob/master/Workflow.org
 
-  (setq org-store-todo "~/Dropbox/Local/data/org/all")
+  ;;(setq org-store-todo "~/Dropbox/Local/data/org/all")
 
-  (setq org-agenda-files
-        (mapcar (lambda(x) (mapconcat 'identity (list org-store-todo x) "/"))
-                '("task.org"
-                  "milk.org"
-                  "read.org"
-                  "dots.org")))        
+  ;; (setq org-agenda-files
+  ;;       (mapcar (lambda(x) (mapconcat 'identity (list org-store-todo x) "/"))
+  ;;               '("task.org"
+  ;;                 "milk.org"
+  ;;                 "read.org"
+  ;;                 "dots.org")))        
+
+  (setq org-store-todo (concat org-directory "/agenda"))
+  (unless (file-directory-p org-store-todo)
+    (make-directory org-store-todo t))
+  (setq org-agenda-files (directory-files-recursively org-store-todo "\\.org$"))
 
   (setq org-capture-templates
         `(
@@ -2954,7 +2959,44 @@ the automatic filling of the current paragraph."
   :ensure t
   :after org
   :hook (org-mode . org-context-mode)
-)
+  )
+
+
+;; cat | sed 's/^;; //' > .dir-local.el << EOF
+;; ((nil
+;;   (org-context-capture
+;;    ("i" "@fixme" entry
+;;     (file+headline "todo.org" "@ACTIVE")
+;;     "** TODO [#A] %? :fix:\n   %a\n" )
+;;    ("I" "@fixme (sub)" entry
+;;     (file+headline "todo.org" "@ACTIVE")
+;;     "** TODO [#A] %? [/] :fix:\n   %a\n   + [ ] ...\n\n")
+;;    ("o" "@todo" entry
+;;     (file+headline "todo.org" "@ACTIVE")
+;;     "** TODO [#B] %?\n\n" )
+;;    ("O" "@todo (sub)" entry
+;;     (file+headline "todo.org" "@ACTIVE")
+;;     "** TODO [#B] %? [/]\n   + [ ] ...\n\n")
+;;    ("u" "@back" entry
+;;     (file+headline "todo.org" "@BACKLOG")
+;;     "** BACK [#B] %? \n\n")
+;;    ("U" "@back (sub)" entry
+;;     (file+headline "todo.org" "@BACKLOG")
+;;     "** BACK [#B] %? [/]\n   + [ ] ...\n\n")
+;;    ("e" "@test" entry
+;;     (file "tests/test.org")
+;;     "** TODO [#C] %? :test:\n   %a\n")
+;;    ("E" "@test (sub)" entry
+;;     (file "tests/test.org")
+;;     "** TODO [#C] %? [/] :test:\n   %a\n   + [ ] ...\n\n")
+;;    )
+;;   (org-context-agenda
+;;    ("o" "TODO + tests" ((alltodo "" ((org-agenda-files '("todo.org"))
+;;                                      (org-agenda-overriding-header "@TODO")))
+;;                         (alltodo "" ((org-agenda-overriding-header "@TESTS")
+;;                                      (org-agenda-files '("tests/test.org")))))
+;;     ((org-agenda-buffer-name "TODO: org-context"))))))
+;;EOF
 
 ;; ---(org-ref)------------------------------------------------------------------------
 
