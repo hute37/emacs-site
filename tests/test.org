@@ -1,0 +1,10 @@
+# ---
+#+TITLE: emacs-site test todo
+# ---
+#+STARTUP: content
+## Local Variables:
+## eval: (add-to-list 'org-agenda-files (buffer-file-name) 'append)
+## End:
+:PROPERTIES:
+:END:
+
