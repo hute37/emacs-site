@@ -2774,10 +2774,20 @@ the automatic filling of the current paragraph."
   ;;                 "read.org"
   ;;                 "dots.org")))        
 
-  (setq org-store-todo (concat org-directory "/agenda"))
-  (unless (file-directory-p org-store-todo)
-    (make-directory org-store-todo t))
-  (setq org-agenda-files (directory-files-recursively org-store-todo "\\.org$"))
+  ;; (setq org-store-todo (concat org-directory "/agenda"))
+  ;; (unless (file-directory-p org-store-todo)
+  ;;   (make-directory org-store-todo t))
+  ;; (setq org-agenda-files (directory-files-recursively org-store-todo "\\.org$"))
+  ;; (setq org-agenda-files `(,org-store-todo))
+
+  (setq org-store-todo  "~/Dropbox/Local/data/org/all")
+  (setq org-agenda-names "~/.emacs-agenda.txt")
+
+  (unless (file-exists-p org-agenda-names)
+    (make-empty-file org-agenda-names))
+
+  (setq org-agenda-files org-agenda-names)
+
 
   (setq org-capture-templates
         `(
