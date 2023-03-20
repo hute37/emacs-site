@@ -2963,7 +2963,8 @@ the automatic filling of the current paragraph."
           (?+ . ?➤)
           (?- . ?•))))
 
-;; ---(org-superstar)------------------------------------------------------------------------
+
+;; ---(org-context)------------------------------------------------------------------------
 
 (use-package org-context
   :ensure t
