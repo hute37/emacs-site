@@ -1181,15 +1181,20 @@
   :config
   (dolist (dir '(
                  "[/\\\\]\\.cache"
+                 "[/\\\\]\\.mypy_cache"
                  "[/\\\\]\\.pytest_cache"
+                 "[/\\\\]\\.Rproj.user"
                  "[/\\\\]venv$"
                  "[/\\\\]build$"
                  "[/\\\\]dist$"
                  "[/\\\\]docker$"
                  "[/\\\\]notes$"
                  "[/\\\\]data$"
+                 "[/\\\\]home$"
                  "[/\\\\]logs$"
+                 "[/\\\\]renv$"
                  "[/\\\\]temp$"
+                 "[/\\\\]_targets"
                  ))
     (push dir lsp-file-watch-ignored-directories))
   (lsp-enable-which-key-integration t)
