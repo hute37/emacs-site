@@ -9,11 +9,7 @@ Xft.rgba:       rgb
 Xft.hinting:    true
 Xft.hintstyle:  hintslight
 
-! xcursor settings ---------------------------------------------------------------
 
-!Xcursor.theme: DMZ-White
-Xcursor.theme: whiteglass
-!Xcursor.size: 16
 
 
 !!
@@ -219,6 +215,9 @@ Rxvt*boldFont: -*-clean-*-*-*-*-*-130-*-*-*-60-*-*
 
 rxvt*font: xft:Noto Sans Mono:pixelsize=14:antialias=true:hinting=true
 rxvt*boldFont: xft:Noto Sans Mono SemiBold:pixelsize=14:antialias=true:hinting=true
+!rxvt*boldFont: xft:Noto Sans Mono Bold:pixelsize=14:antialias=true:hinting=true
+
+
 
 !Gutterslob Visiblue
 rxvt*background:           #000000
@@ -395,11 +394,19 @@ URxvt.letterSpace: -1
 
 ! Xft: Google Droid fonts
 
+
+
+
 URxvt*font: xft:Noto Sans Mono:pixelsize=12:antialias=true:hinting=true
-URxvt*boldFont: xft:Noto Sans Mono SemiBold:pixelsize=12:antialias=true:hinting=true
+URxvt*boldFont: xft:Noto Sans Mono Bold:pixelsize=12:antialias=true:hinting=true
+!URxvt*boldFont: xft:Noto Sans Mono SemiBold:pixelsize=12:antialias=true:hinting=true
+
 !URxvt*font: xft:Droid Sans Mono:pixelsize=12:antialias=true:hinting=true
 !URxvt*boldFont: xft:Droid Sans Mono:pixelsize=12:antialias=true:hinting=true
 !URxvt*boldFont: xft:Droid Vera Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
+
+!URxvt*font: xft:SF Mono:size=12,xft:Inconsolata Nerd Font Mono:size=11 
+!URxvt*boldFont: xft:SF Mono Semibold:size=12,xft:Inconsolata Nerd Font Mono:size=11 
 
 !---------------------------------------------------------------------------------
 !
@@ -528,6 +535,57 @@ urxvt*colorRV:  red
 urxvt*colorUL:  green
 urxvt*underlineColor:  navyblue
 urxvt*veryBoldColors: 6
+
+!!
+!! http://www.xcolors.net/dl/Visiblue
+!!
+
+!!x-terminal-emulator.background: [50]#FFFFFF
+x-terminal-emulator*background: rgba:0000/0000/0000/dddd
+
+!!Gutterslob Visiblue
+!x-terminal-emulator*background:           #000000
+
+!x-terminal-emulator*foreground:           #2AB3B6
+x-terminal-emulator*foreground:           #4ad3d6
+!!x-terminal-emulator*foreground:           #FF0000
+!
+!
+!!Visiblue
+!!!x-terminal-emulator*color0:               #333366
+!!!x-terminal-emulator*color8:               #333399
+x-terminal-emulator*color0:               #282828
+x-terminal-emulator*color8:               #333333
+!
+x-terminal-emulator*color1:               #6666CC
+x-terminal-emulator*color9:               #9999FF
+!
+x-terminal-emulator*color2:               #0099CC
+x-terminal-emulator*color10:              #00CCFF
+!
+x-terminal-emulator*color3:               #3366CC
+x-terminal-emulator*color11:              #6699FF
+!
+!!!x-terminal-emulator*color4:               #006699
+x-terminal-emulator*color4:               #002233
+x-terminal-emulator*color12:              #0099CC
+!
+x-terminal-emulator*color5:               #0066FF
+x-terminal-emulator*color13:              #0099FF
+!
+x-terminal-emulator*color6:               #669999
+x-terminal-emulator*color14:              #66CCCC
+!
+x-terminal-emulator*color7:               #99CCCC
+x-terminal-emulator*color15:              #CCFFFF
+!
+x-terminal-emulator*colorBD:  orange
+x-terminal-emulator*colorIT:  lightskyblue
+x-terminal-emulator*colorRV:  red
+x-terminal-emulator*colorUL:  green
+x-terminal-emulator*underlineColor:  navyblue
+x-terminal-emulator*veryBoldColors: 6
+
 
 
 
