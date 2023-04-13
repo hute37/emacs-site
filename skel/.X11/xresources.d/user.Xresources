@@ -395,11 +395,11 @@ URxvt.letterSpace: -1
 ! Xft: Google Droid fonts
 
 
-URxvt.font: xft:Inconsolata:size=11,xft:SF Mono:size=12,xft:Noto Sans Mono:pixelsize=12:antialias=true:hinting=true
-URxvt.boldFont:xft:Inconsolata:size=11:Bold,xft:SF Mono:size=12:Bold,xft:Noto Sans Mono:pixelsize=12:antialias=true:hinting=true
+!URxvt.font: xft:Inconsolata:size=11,xft:SF Mono:size=12,xft:Noto Sans Mono:pixelsize=12:antialias=true:hinting=true
+!URxvt.boldFont:xft:Inconsolata:size=11:Bold,xft:SF Mono:size=12:Bold,xft:Noto Sans Mono:pixelsize=12:antialias=true:hinting=true
 
-!URxvt.font: xft:Inconsolata NFM:size=11,xft:SF Mono:size=12,xft:Noto Sans Mono:pixelsize=12:antialias=true:hinting=true
-!URxvt.boldFont:xft:Inconsolata NFM:size=11:Bold,xft:SF Mono:size=12:Bold,xft:Noto Sans Mono:pixelsize=12:antialias=true:hinting=true
+URxvt.font: xft:Inconsolata NFM:size=11,xft:Noto Sans Mono:size=11:antialias=true:hinting=true
+URxvt.boldFont:xft:Inconsolata NFM:size=11:Bold,xft:Noto Sans Mono:size=11:Bold:antialias=true:hinting=true
 
 !URxvt.font: xft:Inconsolata Nerd Font Mono:size=11,xft:SF Mono:size=12,xft:Noto Sans Mono:pixelsize=12:antialias=true:hinting=true
 !URxvt.boldFont:xft:Inconsolata Nerd Font Mono:size=11:Bold,xft:SF Mono:size=12:Bold,xft:Noto Sans Mono:pixelsize=12:antialias=true:hinting=true
