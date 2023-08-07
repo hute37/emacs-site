@@ -1211,6 +1211,47 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 #+END_SRC
 *** Lang: LSP
+**** Lang: LSP.setup
+#+NAME: lang-lsp.setup
+#+begin_src emacs-lisp
+
+  ;; ---( lsp-setup )------------------------------------------------------------
+
+(defun h7/lsp-setup ()
+
+  ;;lsp server install
+
+  ;; @see
+  (message "https://emacs-lsp.github.io/lsp-mode/page/languages/")
+
+  ;; python
+  (lsp-install-server 'pyright) 
+  ;; powershell
+  (lsp-install-server 'pwsh-ls) 
+  ;; html
+  (lsp-install-server 'html-ls) 
+  ;; css
+  (lsp-install-server 'css-ls) 
+  ;; json
+  (lsp-install-server 'json-ls)
+  ;; graphql
+  (lsp-install-server 'graphql-ls) 
+  ;; dockerfile
+  (lsp-install-server 'dockerfile-ls) 
+  ;; bash
+  (lsp-install-server 'bash-ls) 
+  ;; ansible
+  (lsp-install-server 'ansible-ls) 
+  ;; yaml
+  (lsp-install-server 'yamlls) 
+
+  
+  ;; prolog
+  (message "swipl -g 'pack_install(lsp_server).")
+  )
+
+
+#+END_SRC
 **** Lang: LSP.mode
 #+NAME: lang-lsp.mode
 #+begin_src emacs-lisp
@@ -2048,6 +2089,17 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 #+END_SRC
 
+*** Lang: Prolog
+#+NAME: lang-prolog
+#+begin_src emacs-lisp
+
+  ;; ---( prolog )--------------------------------------------------------------
+
+  ;; lsp
+
+
+#+END_SRC
+
 *** Lang: Scala
 #+NAME: lang-scala
 #+begin_src emacs-lisp
@@ -2379,6 +2431,20 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   (use-package company-terraform
     :ensure t
     :defer t)
+
+
+
+#+END_SRC
+
+*** Powershell
+#+NAME: op-powershell
+#+begin_src emacs-lisp
+
+  ;; ---( powershell )--------------------------------------------------------------
+
+  ;; (use-package powershell
+  ;;   :ensure t
+  ;;   :defer t)
 
 
 
@@ -2826,6 +2892,7 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
     :config
     (require 'ox-md)
+    (require 'ox-beamer)
     (unbind-key "C-c ;" org-mode-map)
 
     ;;keymap conflicts
@@ -3031,7 +3098,7 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
     ;; (setq org-latex-minted-options
     ;;       '(("frame" "lines") ("framesep" "6pt")
     ;;         ("mathescape" "true") ("fontsize" "\\small")))
-
+    
     ;; --[org-mode babel] ----------------------------------------------------------
 
     (setq org-confirm-babel-evaluate nil)
@@ -3052,6 +3119,7 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
              (octave . t)
              (org . t)
              (plantuml . t)
+             ;; (prolog . t)
              ;; (scala . t)
              (sql . t)
              (latex . t))))
