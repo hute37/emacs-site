@@ -15,59 +15,59 @@
 #+NAME: basic-setup
 #+BEGIN_SRC sh
 
-  ### ///////////////////////////////////////////////////////////////////
-  ### {{{  @BASIC SETUP
-  ### ///////////////////////////////////////////////////////////////////
+### ///////////////////////////////////////////////////////////////////
+### {{{  @BASIC SETUP
+### ///////////////////////////////////////////////////////////////////
 
-  # {{{ (emacs-site)------------------------------------
+# {{{ (emacs-site)------------------------------------
 
-  ##
-  # emacs site setup
-  #
+##
+# emacs site setup
+#
 
-  sudo mkdir -p /usr/local/share/emacs/emacs-share
-  sudo chgrp -R users /usr/local/share/emacs/emacs-share
-  sudo chmod -R g+w /usr/local/share/emacs/emacs-share
-  sudo chmod -R g+s /usr/local/share/emacs/emacs-share
+sudo mkdir -p /usr/local/share/emacs/emacs-share
+sudo chgrp -R users /usr/local/share/emacs/emacs-share
+sudo chmod -R g+w /usr/local/share/emacs/emacs-share
+sudo chmod -R g+s /usr/local/share/emacs/emacs-share
 
-  cd /usr/local/share/emacs/emacs-share
+cd /usr/local/share/emacs/emacs-share
 
-  git clone --shared --depth 1 git@github.com:hute37/emacs-site.git
-  # git clone --shared git@github.com:hute37/emacs-site.git
+git clone --shared --depth 1 git@github.com:hute37/emacs-site.git
+# git clone --shared git@github.com:hute37/emacs-site.git
 
-  #git remote add upstream git@github.com:hute37/emacs-site.git
-  #git fetch upstream
+#git remote add upstream git@github.com:hute37/emacs-site.git
+#git fetch upstream
 
-  cd ./emacs-site
+cd ./emacs-site
 
-  git config --global core.autocrlf "false"
+git config --global core.autocrlf "false"
 
-  # git config --global color.ui "auto"
-  # git config --global push.default simple
-  # git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit"
-  # git config --global alias.meld \!/usr/local/bin/git-meld.pl
+# git config --global color.ui "auto"
+# git config --global push.default simple
+# git config --global alias.tree "log --graph --decorate --pretty=oneline --abbrev-commit"
+# git config --global alias.meld \!/usr/local/bin/git-meld.pl
 
-  git config  user.name "hute37"
-  git config  user.email hute37@gmail.com
+git config  user.name "hute37"
+git config  user.email hute37@gmail.com
 
-  git config -l
+git config -l
 
-  # }}} (emacs-site).
+# }}} (emacs-site).
 
-  # {{{ (user config)------------------------------------
+# {{{ (user config)------------------------------------
 
-  cd /usr/local/share/emacs/emacs-share/emacs-site/skel
-  cp -Rvi .backups .emacs* ~/.
-  ln -s /usr/local/share/emacs/emacs-share/emacs-site ~/.emacs-site
-  ln -s ~/.emacs-site/site-start.el ~/.emacs-start.el
+cd /usr/local/share/emacs/emacs-share/emacs-site/skel
+cp -Rvi .backups .emacs* ~/.
+ln -s /usr/local/share/emacs/emacs-share/emacs-site ~/.emacs-site
+ln -s ~/.emacs-site/site-start.el ~/.emacs-start.el
 
-  # @todo: user config Makefile
+# @todo: user config Makefile
 
-  mc ~/.emacs-site/skel/.config ~/.config
+mc ~/.emacs-site/skel/.config ~/.config
 
-  # }}} (user-config).
+# }}} (user-config).
 
-  ## }}}  .basic-setup
+## }}}  .basic-setup
 
 #+END_SRC
 
@@ -75,27 +75,27 @@
 #+NAME: extra setup
 #+BEGIN_SRC sh
 
-  ### ///////////////////////////////////////////////////////////////////
-  ### {{{  @EXTRA SETUP
-  ### ///////////////////////////////////////////////////////////////////
+### ///////////////////////////////////////////////////////////////////
+### {{{  @EXTRA SETUP
+### ///////////////////////////////////////////////////////////////////
 
 
-  mkdir ~/bin
+mkdir ~/bin
 
-  ln -s ~/.emacs-site/system/bin ~/bin/site
+ln -s ~/.emacs-site/system/bin ~/bin/site
 
-  #cat >> ~/.bash_profile 
-  echo 'if [ -r ~/.emacs-site/skel/.bash_profile-site ]; then' >> ~/.bash_profile
-  echo ' source ~/.emacs-site/skel/.bash_profile-site || true' >> ~/.bash_profile
-  echo 'fi' >> ~/.bash_profile
+#cat >> ~/.bash_profile 
+echo 'if [ -r ~/.emacs-site/skel/.bash_profile-site ]; then' >> ~/.bash_profile
+echo ' source ~/.emacs-site/skel/.bash_profile-site || true' >> ~/.bash_profile
+echo 'fi' >> ~/.bash_profile
 
-  #cat >> ~/.bash_aliases 
-  echo 'if [ -r ~/.emacs-site/skel/.bash_aliases-site ]; then' >> ~/.bash_aliases
-  echo ' source ~/.emacs-site/skel/.bash_aliases-site || true' >> ~/.bash_aliases
-  echo 'fi' >> ~/.bash_aliases
+#cat >> ~/.bash_aliases 
+echo 'if [ -r ~/.emacs-site/skel/.bash_aliases-site ]; then' >> ~/.bash_aliases
+echo ' source ~/.emacs-site/skel/.bash_aliases-site || true' >> ~/.bash_aliases
+echo 'fi' >> ~/.bash_aliases
 
 
-  ## }}}  .extra-setup
+## }}}  .extra-setup
 
 #+END_SRC
 
@@ -103,43 +103,43 @@
 #+NAME: build deps
 #+BEGIN_SRC sh
 
-    ### ///////////////////////////////////////////////////////////////////
-    ### {{{  @BUILD-DEPS
-    ### ///////////////////////////////////////////////////////////////////
+### ///////////////////////////////////////////////////////////////////
+### {{{  @BUILD-DEPS
+### ///////////////////////////////////////////////////////////////////
 
 
-  # -------
-  sudo -i
-  # -------
+# -------
+sudo -i
+# -------
 
-  # {{{ (pdf-tools)------------------------------------
+# {{{ (pdf-tools)------------------------------------
 
-  # apt (debian/ubuntu)
-
-
-  apt install build-essential
-  apt install dh-autoreconf pkgconf
-
-  apt install libpng-dev zlib1g-dev libpoppler-glib-dev libpoppler-private-dev
-  apt install imagemagick
+# apt (debian/ubuntu)
 
 
-  # dnf
+apt install build-essential
+apt install dh-autoreconf pkgconf
 
-  dnf groupinstall c-development 
-  dnf install gcc-gfortran
-  dnf install poppler poppler-utils poppler-cpp-devel poppler-glib-devel
-  dnf install libpng-devel zlib-devel
-  dnf install ImageMagick
+apt install libpng-dev zlib1g-dev libpoppler-glib-dev libpoppler-private-dev
+apt install imagemagick
 
-  # }}} (pdf-tools).
- 
-  # -------
-  exit
-  # -------
+
+# dnf
+
+dnf groupinstall c-development 
+dnf install gcc-gfortran
+dnf install poppler poppler-utils poppler-cpp-devel poppler-glib-devel
+dnf install libpng-devel zlib-devel
+dnf install ImageMagick
+
+# }}} (pdf-tools).
+
+# -------
+exit
+# -------
 
 ## }}}  .build-deps
-  
+
 #+END_SRC
 
 * ZSH
@@ -147,24 +147,24 @@
 #+NAME: build deps
 #+BEGIN_SRC sh
 
-  ### ///////////////////////////////////////////////////////////////////
-  ### {{{  @ZSH-INSTALL
-  ### ///////////////////////////////////////////////////////////////////
+### ///////////////////////////////////////////////////////////////////
+### {{{  @ZSH-INSTALL
+### ///////////////////////////////////////////////////////////////////
 
-  # -------
-  sudo -i
-  # -------
+# -------
+sudo -i
+# -------
 
-  # apt
+# apt
 
-  apt search zsh
-  apt install zsh zshdoc zshdb
+apt search zsh
+apt install zsh zshdoc zshdb
 
-  # -----
-  exit
-  # -----
+# -----
+exit
+# -----
 
-  ## }}}  .zsh-install
+## }}}  .zsh-install
 
 #+END_SRC
 
@@ -174,13 +174,13 @@
 #+NAME: build deps
 #+BEGIN_SRC sh
 
-  ### ///////////////////////////////////////////////////////////////////
-  ### {{{  @ZSH-OH-MY
-  ### ///////////////////////////////////////////////////////////////////
+### ///////////////////////////////////////////////////////////////////
+### {{{  @ZSH-OH-MY
+### ///////////////////////////////////////////////////////////////////
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-  ## }}}  .zsh-oh-my
+## }}}  .zsh-oh-my
 
 #+END_SRC
 
@@ -199,30 +199,30 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 #+NAME: python-venv-prepare
 #+BEGIN_SRC sh
 
-      ### ///////////////////////////////////////////////////////////////////
-      ### {{{  @PYTHON-VENV-PREPARE
-      ### ///////////////////////////////////////////////////////////////////
+### ///////////////////////////////////////////////////////////////////
+### {{{  @PYTHON-VENV-PREPARE
+### ///////////////////////////////////////////////////////////////////
 
 
-  # add ~/.local/bin to PATH
+# add ~/.local/bin to PATH
 
-  mkdir -p ~/.local/bin
+mkdir -p ~/.local/bin
 
-  cat >> ~/.bash_profile <!EOF
+cat >> ~/.bash_profile <!EOF
 
-  # User specific environment and startup programs
+# User specific environment and startup programs
 
-  PATH=$PATH:$HOME/.local/bin:$HOME/bin
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
 
-  export PATH
+export PATH
 
-  !EOF
+!EOF
 
-  source ~/.bash_profile
-  echo $PATH
+source ~/.bash_profile
+echo $PATH
 
-  ## }}}  .python-venv-prepare
-  
+## }}}  .python-venv-prepare
+
 #+END_SRC
 
 *** system env
@@ -232,34 +232,34 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 #+NAME: python-venv-system
 #+BEGIN_SRC sh
 
-  ### ///////////////////////////////////////////////////////////////////
-  ### {{{  @PYTHON-VENV-SYSTEM
-  ### ///////////////////////////////////////////////////////////////////
+### ///////////////////////////////////////////////////////////////////
+### {{{  @PYTHON-VENV-SYSTEM
+### ///////////////////////////////////////////////////////////////////
 
-  # -------
-  sudo -i
-  # -------
+# -------
+sudo -i
+# -------
 
-  # OS - apt
+# OS - apt
 
-  ### pip3
-  apt search  python3-pip
-  apt install python3-pip
+### pip3
+apt search  python3-pip
+apt install python3-pip
 
-  ### launchpadlib <- setuptools
-  apt search  python3-testresources
-  apt install python3-testresources
+### launchpadlib <- setuptools
+apt search  python3-testresources
+apt install python3-testresources
 
-  ### jupyter
-  apt search  python3-widgetsnbextension
-  apt install python3-widgetsnbextension
+### jupyter
+apt search  python3-widgetsnbextension
+apt install python3-widgetsnbextension
 
 
-  # -----
-  exit
-  # -----
+# -----
+exit
+# -----
 
-  ## }}}  .python-venv-system
+## }}}  .python-venv-system
 
 #+END_SRC
 
@@ -267,9 +267,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 #+NAME: python-venv-system
 #+BEGIN_SRC sh
 
-  ### ///////////////////////////////////////////////////////////////////
-  ### {{{  @PYTHON-VENV-USER
-  ### ///////////////////////////////////////////////////////////////////
+### ///////////////////////////////////////////////////////////////////
+### {{{  @PYTHON-VENV-USER
+### ///////////////////////////////////////////////////////////////////
 
 
 python -V
@@ -303,7 +303,7 @@ pipenv --version
 
 pipenv
 pipenv --three
-  ## }}}  .python-venv-user
+## }}}  .python-venv-user
 
 #+END_SRC
 
@@ -311,28 +311,28 @@ pipenv --three
 #+NAME: python-venv-usage
 #+BEGIN_SRC sh
 
-  ### ///////////////////////////////////////////////////////////////////
-  ### {{{  @PYTHON-VENV-USAGE
-  ### ///////////////////////////////////////////////////////////////////
+### ///////////////////////////////////////////////////////////////////
+### {{{  @PYTHON-VENV-USAGE
+### ///////////////////////////////////////////////////////////////////
 
-  pipenv  --three install --dev
-  pipenv graph
-  pipenv update
-  pipenv lock
-  pipenv graph
+pipenv  --three install --dev
+pipenv graph
+pipenv update
+pipenv lock
+pipenv graph
 
-  ls -l PipEnv*
-  git status PipEnv*
+ls -l PipEnv*
+git status PipEnv*
 
-  pipenv shell
-  pipenv -m site
+pipenv shell
+pipenv -m site
 
 
-  pipenv lock -r       >requirements.txt
+pipenv lock -r       >requirements.txt
 
-  pipenv lock -r --dev >requirements-dev.txt
+pipenv lock -r --dev >requirements-dev.txt
 
-  ## }}}  .python-venv-usage
+## }}}  .python-venv-usage
 
 #+END_SRC
 
@@ -455,20 +455,22 @@ pipenv --three
 #+NAME: session-cygwin-xterm
 #+BEGIN_SRC sh
 
-  # {{{ ---(session-cygwin-xterm)--------------------------------------------------------------
+# {{{ ---(session-cygwin-xterm)--------------------------------------------------------------
 
-  #startx /usr/bin/xterm +tb -name Login -T Login -- -fullscreen -noresize -unixkill -nowinkill -keyhook
-  startx /usr/bin/xterm -ls +tb +sb -name Login -T Login -fg black -bg ghostwhite -e $SHELL  -- -screen 0 @2 -nodecoration -noresize -unixkill -nowinkill -listen tcp -ac
+#startx /usr/bin/xterm +tb -name Login -T Login -- -fullscreen -noresize -unixkill -nowinkill -keyhook
+startx /usr/bin/xterm -ls +tb +sb -name Login -T Login -fg black -bg ghostwhite -e $SHELL  -- -screen 0 @2 -nodecoration -noresize -unixkill -nowinkill -listen tcp -ac
 
-  # ---
+# ---
 
-  xk=1; setxkbmap -layout "it"  -option 'caps:hyper'; xmodmap ~/.Xmodmap; xmodmap -pm; \
-   xrdb -merge ~/.Xresources; \
-   eval $(ssh-agent)
- 
+xk=2; setxkbmap -layout "it"  -option 'caps:hyper'; xmodmap ~/.Xmodmap; xmodmap -pm; \
+    xrdb -merge ~/.Xresources; \
+    eval $(ssh-agent)
 
-
-  # }}}  .session-cygwin-xterm
+# ---
+    
+xk=1; setxkbmap -layout "it"  -option 'caps:hyper'; xmodmap -e "keycode 108 = ISO_Level3_Shift NoSymbol ISO_Level3_Shift NoSymbol"; xmodmap ~/.Xmodmap; xmodmap -pm
+    
+# }}}  .session-cygwin-xterm
 
 #+END_SRC
 
@@ -477,13 +479,13 @@ pipenv --three
 #+NAME: session-cygwin-wm-local
 #+BEGIN_SRC sh
 
-  # {{{ ---(session-cygwin-wm-local)--------------------------------------------------------------
+# {{{ ---(session-cygwin-wm-local)--------------------------------------------------------------
 
-  startx /etc/X11/xinit/Xsession openbox         --  -nodecoration -noresize -unixkill -nowinkill
-  startx /etc/X11/xinit/Xsession openbox-gnome   --  -nodecoration -noresize -unixkill -nowinkill
-  startx /etc/X11/xinit/Xsession mate            --  -nodecoration -noresize -unixkill -nowinkill
+startx /etc/X11/xinit/Xsession openbox         --  -nodecoration -noresize -unixkill -nowinkill
+startx /etc/X11/xinit/Xsession openbox-gnome   --  -nodecoration -noresize -unixkill -nowinkill
+startx /etc/X11/xinit/Xsession mate            --  -nodecoration -noresize -unixkill -nowinkill
 
-  # }}}  .session-cygwin-wm-local
+# }}}  .session-cygwin-wm-local
 
 #+END_SRC
 
@@ -492,22 +494,22 @@ pipenv --three
 #+NAME: session-cygwin-wsl
 #+BEGIN_SRC sh
 
-  # {{{ ---(session-cygwin-wsl)--------------------------------------------------------------
+# {{{ ---(session-cygwin-wsl)--------------------------------------------------------------
 
-  startx /usr/bin/xterm -ls +tb +sb -name Login -T Login -fg black -bg ghostwhite -e $SHELL  -- -screen 0 @2 -nodecoration -noresize -unixkill -nowinkill -listen tcp -ac
+startx /usr/bin/xterm -ls +tb +sb -name Login -T Login -fg black -bg ghostwhite -e $SHELL  -- -screen 0 @2 -nodecoration -noresize -unixkill -nowinkill -listen tcp -ac
 
-  xs=6; wsl -e zsh --login -c  "cd && xterm -display 127.0.0.1:0 -geometry 220x26+0-0 -name sv -T Session -bg '#1a1a00' -fg NavajoWhite -cr yellow -sb"  &
+xs=6; wsl -e zsh --login -c  "cd && xterm -display 127.0.0.1:0 -geometry 220x26+0-0 -name sv -T Session -bg '#1a1a00' -fg NavajoWhite -cr yellow -sb"  &
 
-  # ---
+# ---
 
-  xc=1; ee=1; eval $(ssh-agent); ssh-add ~/.ssh/id_rsa;  ssh-add ~/.ssh/??; ssh-add -l; \
-  export PATH=~/.local/bin:$PATH; \
-  xrdb -merge ~/.Xresources; \
-  xk=1; setxkbmap -layout "it"  -option 'caps:hyper'; xmodmap ~/.Xmodmap; xmodmap -pm; \
-  sv=3; sudo mkdir -p /run/dbus; sudo dbus-daemon --system ; \
-  xs=1; dbus-launch awesome
+xc=1; ee=1; eval $(ssh-agent); ssh-add ~/.ssh/id_rsa;  ssh-add ~/.ssh/??; ssh-add -l; \
+    export PATH=~/.local/bin:$PATH; \
+    xrdb -merge ~/.Xresources; \
+    xk=1; setxkbmap -layout "it"  -option 'caps:hyper'; xmodmap ~/.Xmodmap; xmodmap -pm; \
+    sv=3; sudo mkdir -p /run/dbus; sudo dbus-daemon --system ; \
+    xs=1; dbus-launch awesome
 
-  # }}} .session-cygwin-wsl
+    # }}} .session-cygwin-wsl
 
 
 #+END_SRC
@@ -516,52 +518,52 @@ pipenv --three
 #+NAME: session-xephyr
 #+BEGIN_SRC sh
 
-    ### ///////////////////////////////////////////////////////////////////
-    ### {{{  @SESSION-XEPHYR
-    ### ///////////////////////////////////////////////////////////////////
+### ///////////////////////////////////////////////////////////////////
+### {{{  @SESSION-XEPHYR
+### ///////////////////////////////////////////////////////////////////
 
 
-  ##
-  # Xephyr
-  #
+##
+# Xephyr
+#
 
-  Xephyr -keybd ephyr,,,xkbmodel=evdev,xkblayout=it -listen tcp -ac -reset -output VGA1 :5
-
-
-  export DISPLAY=:5.0
-  xterm
-
-  ssh hr
-
-  export DISPLAY=hb:5.0
-
-  xrdb -merge ~/.Xresources
-
-  xterm -geometry 130x50-0+0 &
+Xephyr -keybd ephyr,,,xkbmodel=evdev,xkblayout=it -listen tcp -ac -reset -output VGA1 :5
 
 
-  # {{{ (openbox)------------------------------------
+export DISPLAY=:5.0
+xterm
 
-  dbus-launch $(which openbox-session)
+ssh hr
+
+export DISPLAY=hb:5.0
+
+xrdb -merge ~/.Xresources
+
+xterm -geometry 130x50-0+0 &
 
 
-  # }}} (openbox).
+# {{{ (openbox)------------------------------------
 
-  # {{{ (Awesome)------------------------------------
+dbus-launch $(which openbox-session)
 
-  dbus-launch $(which awesome)
 
-  dex -a -e Awesome
+# }}} (openbox).
 
-  # }}} (Awesome).
+# {{{ (Awesome)------------------------------------
 
-  # {{{ (i3)------------------------------------
+dbus-launch $(which awesome)
 
-  dbus-launch $(which i3)
+dex -a -e Awesome
 
-  # }}} (i3).
+# }}} (Awesome).
 
-  ## }}}  .session-xephyr
+# {{{ (i3)------------------------------------
+
+dbus-launch $(which i3)
+
+# }}} (i3).
+
+## }}}  .session-xephyr
 
 #+END_SRC
 
@@ -569,19 +571,19 @@ pipenv --three
 #+NAME: session-mutt
 #+BEGIN_SRC sh
 
-  ### ///////////////////////////////////////////////////////////////////
-  ### {{{  @SESSION-MUTT
-  ### ///////////////////////////////////////////////////////////////////
+### ///////////////////////////////////////////////////////////////////
+### {{{  @SESSION-MUTT
+### ///////////////////////////////////////////////////////////////////
 
-  # @see: http://lifehacker.com/5574557/how-to-use-the-fast-and-powerful-mutt-email-client-with-gmail
+# @see: http://lifehacker.com/5574557/how-to-use-the-fast-and-powerful-mutt-email-client-with-gmail
 
-  #sudo apt-get install mutt 
+#sudo apt-get install mutt 
 
-  mkdir -p ~/.mutt/cache/headers mkdir ~/.mutt/cache/bodies touch ~/.mutt/certificates
+mkdir -p ~/.mutt/cache/headers mkdir ~/.mutt/cache/bodies touch ~/.mutt/certificates
 
-  cd; cat .ssh/id_rsa.pub # add to github ...
+cd; cat .ssh/id_rsa.pub # add to github ...
 
-  ## }}}  .session-mutt
+## }}}  .session-mutt
 
 #+END_SRC
 
@@ -598,37 +600,37 @@ pipenv --three
 #+NAME: fonts-mono
 #+BEGIN_SRC sh
 
-  ### ///////////////////////////////////////////////////////////////////
-  ### {{{  @FONTS_MONO
-  ### ///////////////////////////////////////////////////////////////////
+### ///////////////////////////////////////////////////////////////////
+### {{{  @FONTS_MONO
+### ///////////////////////////////////////////////////////////////////
 
-  ##
-  # fonts
-  #
+##
+# fonts
+#
 
-  sudo -i
+sudo -i
 
-  cd ~/.emacs-site/system/usr/share/fonts/truetype
+cd ~/.emacs-site/system/usr/share/fonts/truetype
 
-  ls
+ls
 
-  ls mono
+ls mono
 
-  FT=/usr/local/share/fonts/truetype
-  # FT=~/.local/share/fonts/truetype
+FT=/usr/local/share/fonts/truetype
+# FT=~/.local/share/fonts/truetype
 
 
-  cp -rp mono                     $FT
+cp -rp mono                     $FT
 
-  #   cp -rp artwiz-aleczapka     $FT
-  #   cp -rp google-droid         $FT
-  #   cp -rp terminus             $FT
-  #   cp -rp ttf-inconsolata      $FT
-  #   cp -rp ubuntu               $FT
+#   cp -rp artwiz-aleczapka     $FT
+#   cp -rp google-droid         $FT
+#   cp -rp terminus             $FT
+#   cp -rp ttf-inconsolata      $FT
+#   cp -rp ubuntu               $FT
 
-  fc-cache -f -v
+fc-cache -f -v
 
-    ## }}}  .fonts-mono
+## }}}  .fonts-mono
 
 #+END_SRC
 
@@ -643,17 +645,59 @@ pipenv --three
 #+NAME: gnome-background
 #+BEGIN_SRC sh
 
-    ### ///////////////////////////////////////////////////////////////////
-    ### {{{  @GNOME-BACKGROUND
-    ### ///////////////////////////////////////////////////////////////////
+### ///////////////////////////////////////////////////////////////////
+### {{{  @GNOME-BACKGROUND
+### ///////////////////////////////////////////////////////////////////
 
-  gsettings set org.gnome.desktop.background primary-color "#0d1a26"
-  gsettings set org.gnome.desktop.background secondary-color "#0d1a26"
-  gsettings set org.gnome.desktop.background color-shading-type "solid"
+gsettings set org.gnome.desktop.background primary-color "#0d1a26"
+gsettings set org.gnome.desktop.background secondary-color "#0d1a26"
+gsettings set org.gnome.desktop.background color-shading-type "solid"
 
-    ## }}}  .gnome-background
+## }}}  .gnome-background
 
 #+END_SRC
+* SYSTEM
+   * [[https://wiki.archlinux.org/index.php/GNOME/Tips_and_tricks][GNOME/Tips_and_tricks]]
+** heading
+#+NAME: system-top-header
+#+BEGIN_SRC sh
+
+### ///////////////////////////////////////////////////////////////////
+### {{{  @SYSTEM
+### ///////////////////////////////////////////////////////////////////
+
+## }}}  .system
+
+#+END_SRC
+
+** sysctl
+*** network
+#+NAME: system-sysctl-network
+#+BEGIN_SRC conf
+
+# {{{ ---(system-sysctl-network)--------------------------------------------------------------
+
+net.ipv4.tcp_syn_retries = 2
+net.ipv4.tcp_retries2 = 3
+net.ipv4.tcp_keepalive_time = 20
+net.ipv4.tcp_keepalive_probes = 5
+net.ipv4.tcp_keepalive_intvl = 40
+net.ipv4.tcp_fin_timeout = 10
+
+# }}}  .system-sysctl-network
+
+#+END_SRC
+
+
+** trailing
+#+NAME: session-top-trailing
+#+BEGIN_SRC sh
+
+## }}}  .sessions
+
+#+END_SRC
+
+
 * THEMES
 ** SOLARIZED
 - [[https://github.com/seebi/dircolors-solarized][dircolors-solarized]]
@@ -662,30 +706,30 @@ pipenv --three
 #+NAME: theme-solarized
 #+BEGIN_SRC sh
 
-  ### ///////////////////////////////////////////////////////////////////
-  ### {{{  @THEME-SOLARIZED
-  ### ///////////////////////////////////////////////////////////////////
+### ///////////////////////////////////////////////////////////////////
+### {{{  @THEME-SOLARIZED
+### ///////////////////////////////////////////////////////////////////
 
-  cd $ZSH_CUSTOM/plugins
+cd $ZSH_CUSTOM/plugins
 
-  pwd
-  ls -l
-
-
-  git clone --recursive git://github.com/joel-porquet/zsh-dircolors-solarized $ZSH_CUSTOM/plugins/zsh-dircolors-solarized
-
-  cat ~/.zshrc | grep -i plugins
-
-  # add: plugins=(git zsh-dircolors-solarized)
-
-  exec zsh --login
+pwd
+ls -l
 
 
-  lssolarized
+git clone --recursive git://github.com/joel-porquet/zsh-dircolors-solarized $ZSH_CUSTOM/plugins/zsh-dircolors-solarized
 
-  setupsolarized
+cat ~/.zshrc | grep -i plugins
 
-  ## }}}  .theme-solarized
+# add: plugins=(git zsh-dircolors-solarized)
+
+exec zsh --login
+
+
+lssolarized
+
+setupsolarized
+
+## }}}  .theme-solarized
 
 #+END_SRC
 
@@ -694,5 +738,3 @@ pipenv --three
 *** org-mode
    * [[https://orgmode.org/manual/][org-mode manual]]
    * [[https://www.orgroam.com/manual.html][org-roam manual]]
-
-
