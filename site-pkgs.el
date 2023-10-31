@@ -2196,6 +2196,7 @@
   (use-package restclient
     :ensure t
     :defer 30
+    :mode ("\\.http\\'" . restclient-mode)
     :init
       (progn
         ;; (unless restclient-use-org
@@ -2211,6 +2212,19 @@
         ) 
     )
 
+  (use-package restclient-jq
+    :ensure t
+    :defer 30
+    :init
+      (progn
+        ) 
+    )
+
+   ;; (use-package company-restclient
+   ;;   :ensure t
+   ;;   :after (company restclient)
+   ;;   :custom-update
+   ;;   (company-backends '(company-restclient)))
 
   ;; ---( ob-http )------------------------------------------------------
 
@@ -2985,6 +2999,7 @@
              (octave . t)
              (org . t)
              (plantuml . t)
+             ;; (restclient . t)
              ;; (prolog . t)
              ;; (scala . t)
              (sql . t)
@@ -3127,6 +3142,28 @@
   ;;  :ensure t
     :init
     (setq org-ref-bibtex-hydra-key-binding "\C-cj"))
+
+  ;; ---(org-babel)------------------------------------------------------------------------
+
+  ;; (use-package ob-restclient
+  ;;   :ensure t
+  ;;   :mode (("\\.http\\'" . restclient-mode)))
+
+  (use-package ob-restclient
+    :ensure t
+    :after org restclient
+    :init
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((restclient . t))))
+
+  (use-package ob-http
+    :ensure t
+    :after org restclient
+    :init
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((http . t))))
 ;; org-extras ends here
 
 ;; Org roam
