@@ -934,6 +934,47 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
           (concat dired-omit-files "\\|^.DS_STORE$\\|^.projectile$\\|^.git$"))
     )
 
+  ;; find-dired: dired find
+  (use-package find-dired
+    ;; :straight (:type built-in)
+    ;; :ensure t 
+    :custom
+    (setq find-ls-option '("-print0 | xargs -0 ls -ld" . "-ld"))
+    )
+
+  ;; peep-dired: file preview
+  (use-package dired-preview
+    :ensure t 
+    :custom
+    (setq dired-preview-delay 0.7)
+    (setq dired-preview-max-size (expt 2 20))
+    (setq dired-preview-ignored-extensions-regexp
+          (concat "\\."
+                  "\\(mkv\\|webm\\|mp4\\|mp3\\|ogg\\|m4a"
+                  "\\|gz\\|zst\\|tar\\|xz\\|rar\\|zip"
+                  "\\|iso\\|epub\\|pdf\\)"))
+
+    (defun my-dired-preview-to-the-right ()
+      "My preferred `dired-preview-display-action-alist-function'."
+      '((display-buffer-in-side-window)
+        (side . right)
+        (width . 0.6)))
+
+    (setq dired-preview-display-action-alist-function #'my-dired-preview-to-the-right)
+    
+    
+    ;; Enable `dired-preview-mode' in a given Dired buffer or do it
+    ;; globally:
+    ;; (dired-preview-global-mode 1)
+    )
+
+  ;; ;; peep-dired: file preview
+  ;; (use-package peep-dired
+  ;;   :ensure t 
+  ;;   :bind (:map peep-dired-mode-map
+  ;;             ("SPC" . nil)
+  ;;             ("<backspace>" . nil)))
+
   ;; }}}  .dired
 
 #+END_SRC
