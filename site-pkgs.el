@@ -536,18 +536,19 @@
 (defhydra hydra-engine
   (:color amaranth)
   "Send selected text to website."
-    ("h" engine/search-github          "Github")
-    ("g" engine/search-google          "Google")
-    ("m" engine/search-pubmed          "PubMed")
-    ("p" engine/search-pdb             "PDB")
-    ("o" engine/search-stackoverflow   "StackOverflow")
-    ("r" engine/search-reddit          "Reddit")
-    ("s" engine/search-sciencedirect   "Science Direct")
-    ("k" engine/search-wikipedia       "Wikipedia")
-    ("w" engine/search-wolframalpha    "Wolfram Alpha")
-    ("y" engine/search-youtube         "YouTube")
-
-    ("q" nil "Quit" :color blue))
+  ("h" engine/search-github          "Github")
+  ("g" engine/search-google          "Google")
+  ("m" engine/search-pubmed          "PubMed")
+  ("p" engine/search-pdb             "PDB")
+  ("o" engine/search-stackoverflow   "StackOverflow")
+  ("r" engine/search-reddit          "Reddit")
+  ("s" engine/search-sciencedirect   "Science Direct")
+  ("k" engine/search-wikipedia       "Wikipedia")
+  ("w" engine/search-wolframalpha    "Wolfram Alpha")
+  ("y" engine/search-youtube         "YouTube")
+  
+  ("<tab>" hydra-master/body "back")
+  ("<ESC>" nil "quit"))
 
 (global-set-key (kbd "C-c 3") 'hydra-engine/body)
 
@@ -565,8 +566,6 @@
            ^_j_^
   --------------------------------------------------------------------------------
               "
-              ("<tab>" hydra-master/body "back")
-              ("<ESC>" nil "quit")
               ("a" joe-alternate-buffers)
               ("b" ido-switch-buffer)
               ("d" joe-kill-this-buffer)
@@ -578,7 +577,9 @@
               ("r" read-only-mode)
               ("s" helm-buffers-list)
               ("u" joe-revert-buffer)
-              ("w" save-buffer))
+              ("w" save-buffer)
+              ("<tab>" hydra-master/body "back")
+              ("<ESC>" nil "quit"))
 
 (global-set-key (kbd "C-c 2") 'hydra-buffers/body)
 
@@ -595,8 +596,6 @@
         ^^ ^^           ^^ ^^       ^^ ^^    ╰───╯^ ^        ╰───╯^ ^       
   --------------------------------------------------------------------------------
             "
-            ("<tab>" hydra-master/body "back")
-            ("<ESC>" nil "quit")
             ("n" joe-scroll-other-window :color red)
             ("p" joe-scroll-other-window-down :color red)
             ("b" balance-windows)
@@ -614,7 +613,9 @@
             ("u" winner-undo :color red)
             ("v" split-window-horizontally :color red)
             ("w" other-window)
-            ("z" delete-other-windows))
+            ("z" delete-other-windows)
+            ("<tab>" hydra-master/body "back")
+            ("<ESC>" nil "quit"))
 
 (global-set-key (kbd "C-c 1") 'hydra-window/body)
 
@@ -625,7 +626,6 @@
  ^
    ^Hydras                                      Prefix
    ^─────────------------------------------------------
-   _q_ quit
    _w_ windows            C-c 1
    _b_ buffers            C-c 2
    _e_ engine-mode        C-c 3
@@ -635,9 +635,9 @@
   ("e"   hydra-engine/body :color amaranth)
   ("b"   hydra-buffers/body :color blue)
   ("w"   hydra-window/body :color blue)
-  ("q"   nil :color blue))
+  ("<ESC>" nil "quit"))
 
-(global-set-key (kbd "C-c y") 'hydra-of-hydras/body)
+(global-set-key (kbd "C-c 0") 'hydra-of-hydras/body)
 ;; util-jump ends here
 
 ;; Utils/Search
