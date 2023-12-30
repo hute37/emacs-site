@@ -2695,9 +2695,13 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
     :ensure t
     :defer t)
 
-  (use-package docker-tramp
-    :ensure t
-    :defer t)
+  ;; (use-package docker-tramp
+  ;;   :ensure t
+  ;;   :defer t)
+
+  ;; (use-package tramp-container
+  ;;   :ensure t
+  ;;   :defer t)
 
   (use-package dockerfile-mode
     :ensure t
