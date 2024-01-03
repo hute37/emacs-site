@@ -1,0 +1,132 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "0x517f8d"
+blue = "0x7eb2dd"
+cyan = "0x00ffff"
+green = "0x9cf087"
+magenta = "0xfb94ff"
+red = "0xff5a67"
+white = "0xc7dff9"
+yellow = "0xffcc1b"
+
+[colors.cursor]
+cursor = "0xffcc1b"
+text = "0x002635"
+
+[colors.normal]
+black = "#000000"
+blue = "#2055b4"
+cyan = "#04989a"
+green = "#73d216"
+magenta = "#75507b"
+red = "#cc0000"
+white = "#d3d7cf"
+yellow = "#edd400"
+
+[colors.primary]
+background = "#060D18"
+foreground = "0xe6e6dc"
+
+[cursor]
+unfocused_hollow = true
+vi_mode_style = "Underline"
+
+[cursor.style]
+blinking = "On"
+shape = "Block"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 14.0
+
+[font.bold]
+family = "Iosevka Term Curly Slab"
+style = "Bold"
+
+[font.bold_italic]
+family = "Iosevka Term Curly Slab"
+style = "Bold Italic"
+
+[font.italic]
+family = "Iosevka Term Curly Slab"
+style = "Italic"
+
+[font.normal]
+family = "Iosevka Term Curly Slab"
+style = "Regular"
+
+[font.offset]
+x = 1
+y = 1
+
+#[schemes.Theme_Argonaut.bright]
+#black = "#6D7070"
+#blue = "#1BA6FA"
+#cyan = "#73FBF1"
+#green = "#B8E466"
+#magenta = "#A578EA"
+#red = "#FF4352"
+#white = "#FEFEF8"
+#yellow = "#FFD750"
+#
+#[schemes.Theme_Argonaut.cursor]
+#cursor = "#FF261E"
+#text = "#FF261E"
+#
+#[schemes.Theme_Argonaut.normal]
+#black = "#0d0d0d"
+#blue = "#1BA6FA"
+#cyan = "#21DEEF"
+#green = "#A0E521"
+#magenta = "#8763B8"
+#red = "#FF301B"
+#white = "#EBEBEB"
+#yellow = "#FFC620"
+#
+#[schemes.Theme_Argonaut.primary]
+#background = "#292C3E"
+#foreground = "#EBEBEB"
+#
+#[schemes.Theme_Rigelx.bright]
+#black = "0x517f8d"
+#blue = "0x7eb2dd"
+#cyan = "0x00ffff"
+#green = "0x9cf087"
+#magenta = "0xfb94ff"
+#red = "0xff5a67"
+#white = "0xc7dff9"
+#yellow = "0xffcc1b"
+#
+#[schemes.Theme_Rigelx.cursor]
+#cursor = "0xffcc1b"
+#text = "0x002635"
+#
+#[schemes.Theme_Rigelx.normal]
+#black = "#000000"
+#blue = "#2055b4"
+#cyan = "#04989a"
+#green = "#73d216"
+#magenta = "#75507b"
+#red = "#cc0000"
+#white = "#d3d7cf"
+#yellow = "#edd400"
+#
+#[schemes.Theme_Rigelx.primary]
+#background = "#060D18"
+#foreground = "0xe6e6dc"
+
+[scrolling]
+history = 10000
+
+[window]
+decorations = "none"
+dynamic_padding = true
+startup_mode = "Maximized"
+
+[window.padding]
+x = 6
+y = 6
