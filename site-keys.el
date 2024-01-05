@@ -374,10 +374,17 @@
 	   (progn
 	     (hs-minor-mode t)
 	     (hs-hide-all))
-	 (hs-minor-mode nil))))
+         (progn
+           (hs-toggle-hiding)
+	   (hs-minor-mode nil)))))
 
-(global-set-key [(meta f2)]	'hs-toggle-hiding)
-(global-set-key [(shift meta f2)] 'toggle-line-wrapping )
+(global-set-key [(meta f2)]	'dashboard-open)
+(global-set-key [(hyper f2)]	'dashboard-open)
+(global-set-key [(shift meta f2)]
+    #'(lambda () (interactive)
+        (progn
+          (toggle-line-wrapping)
+	  (linum-mode 'toggle))))
 
 
 ;; ---( F3: ISearch/Find )----------------------------------------------------
@@ -467,6 +474,7 @@
 (global-set-key [(control f10)] 'toggle-menubar )
 (global-set-key [(shift f10)] 'toggle-toolbar )
 (global-set-key [(meta f10)] 'speedbar )
+(global-set-key [(hyper f10)] 'treemacs )
 (global-set-key [(shift meta f10)] 'toggle-gutter)
 
 

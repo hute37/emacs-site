@@ -3266,7 +3266,6 @@ P
 
 #+END_SRC
 
-
 ** AI
 *** AI/begin
 #+NAME: ai-begin
@@ -3285,6 +3284,13 @@ P
 
 
   ;; ---( openai )--------------------------------------------------------------
+
+  (use-package openai
+    :ensure t
+    :defer t
+    :init
+    (setq openai-key #'openai-key-auth-source)
+    )
 
   (use-package chatgpt
     :ensure t
@@ -3320,8 +3326,6 @@ P
   ;; }}}  .ai
 
 #+END_SRC
-
-
 
 ** TeX
 *** TeX/begin
