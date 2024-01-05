@@ -3135,6 +3135,13 @@
 ;; [[file:site-pkgs.org::ai-openai][ai-openai]]
   ;; ---( openai )--------------------------------------------------------------
 
+  (use-package openai
+    :ensure t
+    :defer t
+    :init
+    (setq openai-key #'openai-key-auth-source)
+    )
+
   (use-package chatgpt
     :ensure t
     :defer t)
