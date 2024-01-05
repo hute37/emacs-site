@@ -38,9 +38,9 @@ if [[ -n "$EMACS" || -n "$INSIDE_EMACS" ]]; then
     export VISUAL="emacsclient"
 else
     if [[ -n $SSH_CONNECTION ]]; then
-        which nvim >/dev/null 2>&1 && export EDITOR='nvim' || export EDITOR='vim'    
+        which nvim >/dev/null  && export EDITOR='nvim' || export EDITOR='vim'    
     else
-        which nvim >/dev/null 2>&1 && export EDITOR='nvim' || export EDITOR='vim'    
+        which nvim >/dev/null  && export EDITOR='nvim' || export EDITOR='vim'    
     fi
 fi
 # echo "EDITOR=$EDITOR"
@@ -63,7 +63,7 @@ case "$TERM" in
     xdumb) unsetopt zle;;
     *)
 
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
 #ZSH_THEME="avit"
 #ZSH_THEME="awesomepanda"
 #ZSH_THEME="bureau"
@@ -101,7 +101,7 @@ ZSH_THEME="robbyrussell"
 #ZSH_THEME="afowler"
 #ZSH_THEME="spaceship"
 #ZSH_THEME="agkozak"; AGKOZAK_USER_HOST_DISPLAY=0
-#ZSH_THEME="sobole"; SOBOLE_THEME_MODE=dark
+ZSH_THEME="sobole"; SOBOLE_THEME_MODE=dark
 
     ;;
 esac    
@@ -177,9 +177,6 @@ unsetopt	AUTO_CD
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-
-export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -199,11 +196,29 @@ fi
 
 [ -f ~/.zsh_aliases ] && source ~/.zsh_aliases || true
 
+### {{{ #ENVIRON //////////////////////////////////////////////////////////////////////////////
+
 export ANSIBLE_VAULT_PASSWORD_FILE=~/.ans-wall.asc
 
+### }}}
 
-[ -f /usr/share/doc/find-the-command/ftc.zsh ] && source /usr/share/doc/find-the-command/ftc.zsh
 
+
+### {{{ #AUTH //////////////////////////////////////////////////////////////////////////////
+
+if [ -f ~/.authinfo ]; then
+
+  if [ -z "$OPENAI_API_KEY" ]; then
+
+    v = "$(grep -v '^#' ~/.authinfo | grep 'api.openai.com' | head -n1 | awk '{print $6}')"
+
+    [ -z "$v" ] || export OPENAI_API_KEY="$v"
+
+  fi
+
+fi
+
+### }}}
 
 ### {{{ #CONDA //////////////////////////////////////////////////////////////////////////////
 if [ -f ~/.conda.on ]; then
@@ -257,6 +272,12 @@ fi
 
 eval "$(pyenv init -)"
 
+# if [ -n "$VIRTUAL_ENV" ]; then
+#    . "$VIRTUAL_ENV/bin/activate"
+# else
+#    workon default
+# fi
+
 fi
 fi
 
@@ -274,60 +295,6 @@ fi
 
 fi
 # ---(pyenv:end)-----
-
-
-
-
-
-# ---(pyenv:begin)-----
-
-##
-#  pyenv environment
-#
-
-if [ ! -f ~/.py-env.off ]; then
-if [ -d $HOME/.pyenv ]; then
-
-# ~/.profile
-
-if [ -z "$PY_RC_ENV" ]; then
-export PY_RC_ENV=1
-
-command -v conda >/dev/null && conda deactivate || true
-
-[ -z "$PYENV_ROOT" ] && export PYENV_ROOT="$HOME/.pyenv"
-if [ -n "$PYENV_ROOT" ] ; then
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-fi
-eval "$(pyenv init --path)"
-
-fi
-
-# ~/.(bash|zsh)rc
-
-eval "$(pyenv init -)"
-
-fi
-fi
-
-##
-#  poetry environment
-#
-
-if [ ! -f ~/.py-poetry.off ]; then
-if [ -x $HOME/.local/bin/poetry ]; then
-export PY_RC_POETRY=1
-py_rc_poetry_sh() {
-command -v poetry >/dev/null || export PATH="$HOME/.poetry/bin:$PATH"
-[ -z "$PYTHON_KEYRING_BACKEND" ] && export PYTHON_KEYRING_BACKEND="keyring.backends.null.Keyring"
-}
-py_rc_poetry_sh
-fi
-fi
-
-# ---(pyenv:end)-----
-
-
 
 
 
