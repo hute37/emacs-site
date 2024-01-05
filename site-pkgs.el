@@ -1144,7 +1144,21 @@
           projectile-known-projects-file (emacs-d "var/projectile-bookmarks.eld"))
     (make-directory (emacs-d "var") t)
     :config
-    (projectile-global-mode))
+    (projectile-global-mode)
+    ;; (dolist (face '(treemacs-root-face
+    ;;                 treemacs-git-unmodified-face
+    ;;                 treemacs-git-modified-face
+    ;;                 treemacs-git-renamed-face
+    ;;                 treemacs-git-ignored-face
+    ;;                 treemacs-git-untracked-face
+    ;;                 treemacs-git-added-face
+    ;;                 treemacs-git-conflict-face
+    ;;                 treemacs-directory-face
+    ;;                 treemacs-directory-collapsed-face
+    ;;                 treemacs-file-face
+    ;;                 treemacs-tags-face))
+    ;;   (set-face-attribute face nil :family "Sans" :height 120))
+    )
 
 
   ;; ---( treemacs )--------------------------------------------------------------
@@ -1168,6 +1182,11 @@
     :after treemacs dired
     :ensure t
     :config (treemacs-icons-dired-mode))
+
+  (use-package treemacs-all-the-icons
+    :after treemacs
+    :ensure t
+    :config (treemacs-load-theme "all-the-icons"))
 
   (use-package treemacs-magit
     :after treemacs magit
