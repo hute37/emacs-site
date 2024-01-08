@@ -1145,19 +1145,6 @@
     (make-directory (emacs-d "var") t)
     :config
     (projectile-global-mode)
-    ;; (dolist (face '(treemacs-root-face
-    ;;                 treemacs-git-unmodified-face
-    ;;                 treemacs-git-modified-face
-    ;;                 treemacs-git-renamed-face
-    ;;                 treemacs-git-ignored-face
-    ;;                 treemacs-git-untracked-face
-    ;;                 treemacs-git-added-face
-    ;;                 treemacs-git-conflict-face
-    ;;                 treemacs-directory-face
-    ;;                 treemacs-directory-collapsed-face
-    ;;                 treemacs-file-face
-    ;;                 treemacs-tags-face))
-    ;;   (set-face-attribute face nil :family "Sans" :height 120))
     )
 
 
@@ -1172,6 +1159,21 @@
     :config
     (setq treemacs-no-png-images t
             treemacs-width 24)
+
+    (dolist (face '(treemacs-root-face
+                    treemacs-git-unmodified-face
+                    treemacs-git-modified-face
+                    treemacs-git-renamed-face
+                    treemacs-git-ignored-face
+                    treemacs-git-untracked-face
+                    treemacs-git-added-face
+                    treemacs-git-conflict-face
+                    treemacs-directory-face
+                    treemacs-directory-collapsed-face
+                    treemacs-file-face
+                    treemacs-tags-face))
+      (set-face-attribute face nil :family "PT Sans Narrow" :height 120))
+   
     :bind ("C-c t" . treemacs))
 
   (use-package treemacs-projectile
