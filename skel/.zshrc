@@ -63,7 +63,7 @@ case "$TERM" in
     xdumb) unsetopt zle;;
     *)
 
-#ZSH_THEME="robbyrussell"
+ZSH_THEME="robbyrussell"
 #ZSH_THEME="avit"
 #ZSH_THEME="awesomepanda"
 #ZSH_THEME="bureau"
@@ -101,7 +101,7 @@ case "$TERM" in
 #ZSH_THEME="afowler"
 #ZSH_THEME="spaceship"
 #ZSH_THEME="agkozak"; AGKOZAK_USER_HOST_DISPLAY=0
-ZSH_THEME="sobole"; SOBOLE_THEME_MODE=dark
+#ZSH_THEME="sobole"; SOBOLE_THEME_MODE=dark
 
     ;;
 esac    
@@ -210,9 +210,9 @@ if [ -f ~/.authinfo ]; then
 
   if [ -z "$OPENAI_API_KEY" ]; then
 
-    v = "$(grep -v '^#' ~/.authinfo | grep 'api.openai.com' | head -n1 | awk '{print $6}')"
+    vv="$(grep -v '^#' ~/.authinfo | grep 'api.openai.com' | head -n1 | awk '{print $6}')"
 
-    [ -z "$v" ] || export OPENAI_API_KEY="$v"
+    [ -z "$v" ] || export OPENAI_API_KEY="$vv"
 
   fi
 
