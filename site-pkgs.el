@@ -3240,11 +3240,11 @@
     ;; (add-hook 'pdf-view-mode-hook (lambda () (cua-mode 0)))    
   
     ;; tq pdf-view-resize-factor 1.1)
-    (quelpa '(pdf-continuous-scroll-mode
-	      :fetcher github
-	      :repo "dalanicolai/pdf-continuous-scroll-mode.el"))
+    ;; (quelpa '(pdf-continuous-scroll-mode
+    ;;           :fetcher github
+    ;;           :repo "dalanicolai/pdf-continuous-scroll-mode.el"))
 
-    (add-hook 'pdf-view-mode-hook 'pdf-continuous-scroll-mode)
+    ;; (add-hook 'pdf-view-mode-hook 'pdf-continuous-scroll-mode)
 
     :hook
     ((pdf-view-mode) . (lambda () (cua-mode 0)))
@@ -3859,63 +3859,90 @@
 
 ;; ---(org-noter)------------------------------------------------------------------------
 
+;; @see: https://rgoswami.me/posts/org-note-workflow/
+
 (use-package org-noter
-  :after org
-  :disabled t
-  ;; :ensure t
+  :after (:any org pdf-view)
+  :if (h7/use-pdf-tools)
+  :ensure t
+  ;; :disabled t
+  :config
+  (require 'org-noter-pdftools)
+  (setq
+   ;; The WM can handle splits
+   org-noter-notes-window-location 'other-frame
+   ;; Please stop opening frames
+   org-noter-always-create-frame nil
+   ;; I want to see the whole file
+   org-noter-hide-other nil
+   
+   ;; Everything is relative to the main notes file
+   ;;org-noter-notes-search-path (list org_notes)
+   
+   org-noter-default-notes-file-names '("notes.org")
+
+   )
+
+  ;; Configure org-mode to open PDFs with pdf-tools
+  (add-to-list 'org-file-apps '(pdf . (lambda (file link)
+                                        (org-noter file))))
+
+  ;; Keybindings for easy annotation using org-noter
+  ;; (global-set-key (kbd "C-c n") 'org-noter)
+
+  ;; Enable visual-line-mode for better readability of annotations
+  ;; (add-hook 'org-noter-mode-hook 'visual-line-mode)
+  
   )
 
-(use-package org-pdfview
-  :after org
-  :disabled t
-  ;; :ensure t  
-  :config 
-  (add-to-list 'org-file-apps
-               '("\\.pdf\\'" . (lambda (file link)
-                                 (org-pdfview-open link)))))
 
-;; @see: https://github.com/fuxialexander/org-pdftools
 
-;; (use-package org-noter
-;;   :config
-;;   ;; Your org-noter config ........
-;;   (require 'org-noter-pdftools))
 
-;; (use-package org-pdftools
-;;   :hook (org-mode . org-pdftools-setup-link))
 
-;; (use-package org-noter-pdftools
-;;   :after org-noter
-;;   :config
-;;   ;; Add a function to ensure precise note is inserted
-;;   (defun org-noter-pdftools-insert-precise-note (&optional toggle-no-questions)
-;;     (interactive "P")
-;;     (org-noter--with-valid-session
-;;      (let ((org-noter-insert-note-no-questions (if toggle-no-questions
-;;                                                    (not org-noter-insert-note-no-questions)
-;;                                                  org-noter-insert-note-no-questions))
-;;            (org-pdftools-use-isearch-link t)
-;;            (org-pdftools-use-freepointer-annot t))
-;;        (org-noter-insert-note (org-noter--get-precise-info)))))
+;;@see: https://github.com/fuxialexander/org-pdftools
 
-;;   ;; fix https://github.com/weirdNox/org-noter/pull/93/commits/f8349ae7575e599f375de1be6be2d0d5de4e6cbf
-;;   (defun org-noter-set-start-location (&optional arg)
-;;     "When opening a session with this document, go to the current location.
-;; With a prefix ARG, remove start location."
-;;     (interactive "P")
-;;     (org-noter--with-valid-session
-;;      (let ((inhibit-read-only t)
-;;            (ast (org-noter--parse-root))
-;;            (location (org-noter--doc-approx-location (when (called-interactively-p 'any) 'interactive))))
-;;        (with-current-buffer (org-noter--session-notes-buffer session)
-;;          (org-with-wide-buffer
-;;           (goto-char (org-element-property :begin ast))
-;;           (if arg
-;;               (org-entry-delete nil org-noter-property-note-location)
-;;             (org-entry-put nil org-noter-property-note-location
-;;                            (org-noter--pretty-print-location location))))))))
-;;   (with-eval-after-load 'pdf-annot
-;;     (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
+(use-package org-pdftools
+  :after (:any org pdf-view)
+  :if (h7/use-pdf-tools)
+  :ensure t
+  ;; :disabled t
+  :hook (org-mode . org-pdftools-setup-link))
+
+(use-package org-noter-pdftools
+  :after org-noter
+  :if (h7/use-pdf-tools)
+  :ensure t
+  ;; :disabled t
+  :config
+  ;; Add a function to ensure precise note is inserted
+  (defun org-noter-pdftools-insert-precise-note (&optional toggle-no-questions)
+    (interactive "P")
+    (org-noter--with-valid-session
+     (let ((org-noter-insert-note-no-questions (if toggle-no-questions
+                                                   (not org-noter-insert-note-no-questions)
+                                                 org-noter-insert-note-no-questions))
+           (org-pdftools-use-isearch-link t)
+           (org-pdftools-use-freepointer-annot t))
+       (org-noter-insert-note (org-noter--get-precise-info)))))
+
+  ;; fix https://github.com/weirdNox/org-noter/pull/93/commits/f8349ae7575e599f375de1be6be2d0d5de4e6cbf
+  (defun org-noter-set-start-location (&optional arg)
+    "When opening a session with this document, go to the current location.
+With a prefix ARG, remove start location."
+    (interactive "P")
+    (org-noter--with-valid-session
+     (let ((inhibit-read-only t)
+           (ast (org-noter--parse-root))
+           (location (org-noter--doc-approx-location (when (called-interactively-p 'any) 'interactive))))
+       (with-current-buffer (org-noter--session-notes-buffer session)
+         (org-with-wide-buffer
+          (goto-char (org-element-property :begin ast))
+          (if arg
+              (org-entry-delete nil org-noter-property-note-location)
+            (org-entry-put nil org-noter-property-note-location
+                           (org-noter--pretty-print-location location))))))))
+  (with-eval-after-load 'pdf-annot
+    (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
 
 
 ;; ---(org-babel)------------------------------------------------------------------------
