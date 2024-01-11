@@ -38,9 +38,9 @@ if [[ -n "$EMACS" || -n "$INSIDE_EMACS" ]]; then
     export VISUAL="emacsclient"
 else
     if [[ -n $SSH_CONNECTION ]]; then
-        which nvim >/dev/null  && export EDITOR='nvim' || export EDITOR='vim'    
+        which nvim >/dev/null 2>&1 && export EDITOR='nvim' || export EDITOR='vim'    
     else
-        which nvim >/dev/null  && export EDITOR='nvim' || export EDITOR='vim'    
+        which nvim >/dev/null 2>&1 && export EDITOR='nvim' || export EDITOR='vim'    
     fi
 fi
 # echo "EDITOR=$EDITOR"
@@ -53,6 +53,12 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+
+# login shell
+if [[ -o login ]]; then
+  # ~/.zlogin sourced
+  export SHELL=/usr/bin/zsh
+fi
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -91,6 +97,7 @@ ZSH_THEME="robbyrussell"
 #ZSH_THEME="garyblessington"
 #ZSH_THEME="gallois"
 #ZSH_THEME="imajes"
+#ZSH_THEME="smt"
 #ZSH_THEME="sorin"
 #ZSH_THEME="sporty_256"
 #ZSH_THEME="sunaku"
@@ -176,6 +183,9 @@ unsetopt	AUTO_CD
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+
+export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
