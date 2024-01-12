@@ -3397,7 +3397,6 @@ P
     ;; turn off cua so copy works
     ;; (add-hook 'pdf-view-mode-hook (lambda () (cua-mode 0)))    
   
-    ;; tq pdf-view-resize-factor 1.1)
     ;; (quelpa '(pdf-continuous-scroll-mode
     ;;           :fetcher github
     ;;           :repo "dalanicolai/pdf-continuous-scroll-mode.el"))
