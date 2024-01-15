@@ -2,11 +2,16 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("AZ-701.#[users]"
- (filename . "~/work/bv/box-up/doc/up/3.AZ/xe/701/80-unleash/511-unleash-users.org")
- (front-context-string . "* TEAM: \"USERS\" ")
- (rear-context-string . "-----------\n\n\n\n\n")
- (position . 782))
+(("@ref::references.bib"
+ (filename . "~/Dropbox/Local/data/org/ref/references.bib")
+ (front-context-string . "\n\n@article{ceras")
+ (rear-context-string)
+ (position . 1))
+("AZ-701.#[azcli]"
+ (filename . "~/work/bv/box-up/doc/up/3.AZ/xv/801/70-azcli/510-az-misc.org")
+ (front-context-string . "** AZ Status\n\n#+")
+ (rear-context-string . "\n* SESSION INFO\n")
+ (position . 908))
 (".emacs-site#user-setup.org"
  (filename . "~/.emacs-site/skel/.emacs-setup.org")
  (front-context-string . "# ---\n#+TITLE: e")
@@ -28,15 +33,20 @@
  (rear-context-string . " (ivy hydra))\n\n\n")
  (position . 120719))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/Local/data/org/all/task.org")
- (front-context-string . "** NEXT [#B] vv-")
- (rear-context-string . " ] project test\n")
- (position . 413))
+ (filename . "~/work/wo/wo-note/org/net/refs/20240115162653-b-az_auth.org")
+ (front-context-string . "* Source\n\nAuthor")
+ (rear-context-string . "+title: az-auth\n")
+ (position . 112))
 (".emacs-site#site-pkgs.el:org"
  (filename . "~/.emacs-site/site-pkgs.el")
  (front-context-string . ";; ;;;//////////")
  (rear-context-string . "ture-mode t))\n\n\n")
  (position . 57939))
+("AZ-701.#[users]"
+ (filename . "~/work/bv/box-up/doc/up/3.AZ/xe/701/80-unleash/511-unleash-users.org")
+ (front-context-string . "* TEAM: \"USERS\" ")
+ (rear-context-string . "-----------\n\n\n\n\n")
+ (position . 782))
 ("AO-901.#[sandbox]"
  (filename . "~/work/bv/box-up/doc/up/5.AO/oz/901/91-sandbox/")
  (front-context-string . "110-remote-stats")
