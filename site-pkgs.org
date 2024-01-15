@@ -3342,6 +3342,55 @@ P
 
 #+END_SRC
 
+*** BibTeX
+#+NAME: tex-bibtex
+#+begin_src emacs-lisp
+
+  ;; ---( BibTex )--------------------------------------------------------------
+
+  (use-package biblio
+    :disabled t
+    ;;:ensure t
+    ;;:defer t
+    )
+
+  ;; ---( Citar )--------------------------------------------------------------
+
+
+   ;; @see: https://github.com/emacs-citar/citar#installation
+
+   (use-package citar
+     ;; :disabled t
+     :ensure t
+     :defer t
+     :no-require
+     :custom
+     ;;(org-cite-global-bibliography '("~/bib/references.bib"))
+     (org-cite-global-bibliography '("~/Dropbox/Local/data/org/ref/references.bib"))
+     (citar-bibliography org-cite-global-bibliography)
+     (org-cite-insert-processor 'citar)
+     (org-cite-follow-processor 'citar)
+     (org-cite-activate-processor 'citar)
+     (citar-bibliography org-cite-global-bibliography)
+     ;; optional: org-cite-insert is also bound to C-c C-x C-@
+     :hook
+     (LaTeX-mode . citar-capf-setup)
+     (org-mode . citar-capf-setup)
+     :bind
+     (:map org-mode-map :package org ("C-c b" . #'org-cite-insert)))
+
+
+   (use-package citar-embark
+     ;; :disabled t
+     :ensure t
+     :defer t
+     :after citar embark
+     :no-require
+     :config (citar-embark-mode))
+
+
+#+END_SRC
+
 *** PDF
 #+NAME: tex-pdf
 #+begin_src emacs-lisp
@@ -3408,6 +3457,7 @@ P
   
     :bind (:map pdf-view-mode-map
         	("\\" . hydra-pdftools/body)
+        	("." . hydra-orgnoter/body)
         	;; ("<s-spc>" .  pdf-view-scroll-down-or-next-page)
         	;; ("g"  . pdf-view-first-page)
         	;; ("G"  . pdf-view-last-page)
@@ -3440,9 +3490,20 @@ P
     )
 
 
+(use-package pdf-view-restore
+  :if (h7/use-pdf-tools)
+  :ensure  t
+  ;;:disabled  t
+  :after pdf-tools
+  :config
+  (add-hook 'pdf-view-mode-hook 'pdf-view-restore-mode))
+
   (use-package saveplace-pdf-view
     :if (h7/use-pdf-tools)
+    ;;:ensure  t
     :disabled  t
+    :hook
+    ((pdf-view-mode) . (save-place-mode 1))
     )
 
   (use-package pdfgrep
@@ -3989,14 +4050,15 @@ P
         org-ref-default-bibliography '("~/Dropbox/Local/data/org/ref/references.bib")
         org-ref-pdf-directory "~/Dropbox/Local/docs/papers/")
 
-  (setq helm-bibtex-bibliography "~/Dropbox/Local/data/org/ref/references.bib")
-  (setq helm-bibtex-library-path "~/Dropbox/Local/docs/papers/")
+  ;; (setq helm-bibtex-bibliography "~/Dropbox/Local/data/org/ref/references.bib")
+  ;; (setq helm-bibtex-library-path "~/Dropbox/Local/docs/papers/")
 
-  (setq helm-bibtex-pdf-open-function
-        (lambda (fpath)
-          (start-process "open" "*open*" "open" fpath)))
+  ;; (setq helm-bibtex-pdf-open-function
+  ;;       (lambda (fpath)
+  ;;         (start-process "open" "*open*" "open" fpath)))
 
-  (setq helm-bibtex-notes-path "~/Dropbox/Local/data/org/ref/notes.org")
+  ;; (setq helm-bibtex-notes-path "~/Dropbox/Local/data/org/ref/notes.org")
+  
   :config
   (key-chord-define-global "uu" 'org-ref-cite-hydra/body)
   ;; variables that control bibtex key format for auto-generation
@@ -4047,7 +4109,10 @@ P
    org-noter-always-create-frame nil
    ;; I want to see the whole file
    org-noter-hide-other nil
-   
+
+
+   org-noter-set-auto-save-last-location t
+  
    ;; Everything is relative to the main notes file
    ;;org-noter-notes-search-path (list org_notes)
    
@@ -4066,8 +4131,6 @@ P
   ;; (add-hook 'org-noter-mode-hook 'visual-line-mode)
   
   )
-
-
 
 
 
@@ -4214,6 +4277,48 @@ With a prefix ARG, remove start location."
     :ensure t
     :after org-roam
     )
+
+  ;; ---(org-roam-bibtex)------------------------------------------------------------------------
+
+
+
+  (use-package org-roam-bibtex
+    :disabled t
+    ;;  :ensure t
+    :after org-roam
+    :config
+    (require 'org-ref)) ; optional: if using Org-ref v2 or v3 citation links
+
+
+  ;; @see: https://benswift.me/blog/2020/12/16/configuring-spacemacs-org-roam-org-noter-for-academic-writing-bliss/
+
+;; (use-package org-roam-bibtex
+;;   :after org-roam
+;;   :hook (org-roam-mode . org-roam-bibtex-mode)
+;;   :custom
+;;   (orb-preformat-keywords '("citekey" "title" "url" "author-or-editor" "keywords" "file"))
+;;   (orb-process-file-keyword t)
+;;   (orb-file-field-extensions '("pdf" "epub" "html"))
+
+;;   (orb-templates
+;;    '(("r" "ref" plain (function org-roam-capture--get-point)
+;;       ""
+;;       :file-name "${citekey}"
+;;       :head "#+TITLE: ${citekey}: ${title}
+;; #+ROAM_KEY: ${ref}
+
+;; - tags ::
+;; - keywords :: ${keywords}
+
+;; * ${title}
+;;   :PROPERTIES:
+;;   :Custom_ID: ${citekey}
+;;   :URL: ${url}
+;;   :AUTHOR: ${author-or-editor}
+;;   :NOTER_DOCUMENT: ${file}
+;;   :NOTER_PAGE:
+;;   :END:"))))
+
 
   ;; ---(org-roam-ui)------------------------------------------------------------------------
 
@@ -5327,6 +5432,32 @@ With a prefix ARG, remove start location."
 
     ;; ---( hydras )--------------------------------------------------------------
 
+
+(defhydra hydra-orgnoter (:color blue :hint nil)
+        "
+                                                                      ╭───────────┐
+       Move                          Annotations  Setup      Control  │ org-noter │
+   ╭──────────────────────────────────────────────────────────────────┴───────────╯
+         ^^_p_^^          [_i_] insert    [_K_] skeleton    [_N_] open session
+         ^^_g_^^          [_I_] insert+   [_C_] columns     [_Q_] close session
+         ^^_n_^^
+   --------------------------------------------------------------------------------
+        "
+        ("i" org-noter-insert-note)
+        ("I" org-noter-pdftools-insert-precise-note)
+        ("n" org-noter-sync-next-note)
+        ("p" org-noter-sync-prev-note)
+        ("g" org-noter-sync-current-note)
+        ("C" org-noter-pdf-set-columns :color green)
+        ("K" org-noter-pdftools-create-skeleon :color green)
+        ("Q" org-noter-kill-session :color red)
+        ("N" org-noter :color red)
+        ("\\" hydra-pdftools/body "[pdf-tools]")
+        ("<tab>" hydra-master/body "back")
+        ("<ESC>" nil "quit"))
+
+
+
 (defhydra hydra-pdftools (:color blue :hint nil)
         "
                                                                       ╭───────────┐
@@ -5373,6 +5504,7 @@ With a prefix ARG, remove start location."
         ("N" pdf-history-forward :color red)
         ("l" image-forward-hscroll :color red)
         ("h" image-backward-hscroll :color red)
+        ("." hydra-orgnoter/body "[org-noter]")
         ("\\" hydra-master/body "back")
         ("<tab>" hydra-master/body "back")
         ("<ESC>" nil "quit"))
@@ -5458,7 +5590,8 @@ With a prefix ARG, remove start location."
    ^─────────------------------------------------------
    _w_ windows            C-c 1
    _b_ buffers            C-c 2
-   _e_ engine-mode        C-c 3
+   _p_ pdf-tools          C-c 3
+   _e_ engine-mode        C-c 4
    ^────────-------------------------------------------
    "
 
