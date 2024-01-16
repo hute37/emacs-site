@@ -797,6 +797,793 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 #+END_SRC
 
+** Server
+*** Server/begin
+#+NAME: server-begin
+#+begin_src emacs-lisp
+
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @SERVER
+  ;; ;;;////////////////////////////////////////////////////////////////
+
+#+END_SRC
+
+*** Server Control
+#+NAME: server-control
+#+begin_src emacs-lisp
+
+  ;; ---( server )--------------------------------------------------------------
+
+  ;;
+  ;; @see: http://babbagefiles.blogspot.it/2017/03/take-elfeed-everywhere-mobile-rss.html
+  ;;
+  ;;  ~/.config/systemd/user/emacs.service
+  ;;
+  ;; ------------------------------------------------------------------
+  ;; [Unit]
+  ;; Description=Emacs: the extensible, self-documenting text editor
+  ;;
+  ;; [Service]
+  ;; Type=forking
+  ;; ExecStart=/usr/bin/emacs --daemon
+  ;; ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
+  ;; Restart=always
+  ;;
+  ;; [Install]
+  ;; WantedBy=default.target
+  ;; ------------------------------------------------------------------
+  ;;
+  ;; systemctl --user enable --now emacs
+  ;; loginctl enable-linger USERNAME
+  ;;
+
+  (use-package edit-server
+    :ensure t
+    :if window-system
+  ;;  :load-path "site-lisp/emacs_chrome/servers/"
+    :init
+    (add-hook 'after-init-hook 'server-start t)
+    (add-hook 'after-init-hook 'edit-server-start t))
+
+
+
+#+END_SRC
+
+*** Server/end
+#+NAME: server-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .server
+
+#+END_SRC
+** Fonts
+*** Fonts/begin
+#+NAME: fonts-begin
+#+begin_src emacs-lisp
+
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @FONT
+  ;; ;;;////////////////////////////////////////////////////////////////
+
+
+#+END_SRC
+
+*** Faces
+#+NAME: fonts-faces
+#+begin_src emacs-lisp
+
+  ;; ---( faces )--------------------------------------------------------------
+
+  ;; (custom-set-faces
+  ;;  ;; custom-set-faces was added by Custom.
+  ;;  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;;  ;; Your init file should contain only one such instance.
+  ;;  ;; If there is more than one, they won't work right.
+  ;;  '(default ((t (:family "Source Code Pro" :foundry "ADBE" :slant normal :weight semi-bold :height 135 :width normal)))))
+
+  ;; (custom-theme-set-faces
+  ;;    'user
+  ;;    '(variable-pitch ((t (:family "Source Sans Pro" :foundry "ADBE" :slant normal :weight semi-bold :height 135 :width normal))))
+  ;;    '(fixed-pitch ((t ( :family "JetBrains Mono Medium")))))
+
+
+#+END_SRC
+
+*** Ligatures
+#+NAME: fonts-ligatures
+#+begin_src emacs-lisp
+
+  ;; ---( ligatures )--------------------------------------------------------------
+
+  (cond
+   ((string-lessp emacs-version "27.1") ;;
+    (progn
+      (message "SITE:font-legacy, ...")
+      (message "SITE:font-legacy.")
+      ))
+   (t
+    (progn
+      (message "SITE:font-ligatures, ...")
+
+      (setq ligature-path (expand-file-name "local/repos/ligatures.el" user-emacs-directory))
+      (let ((ligature-source (expand-file-name "ligatures.el" ligature-path)))
+        (unless (file-exists-p ligature-source)
+          (progn
+            (make-directory ligature-path t)
+            (url-copy-file "https://raw.githubusercontent.com/mickeynp/ligature.el/master/ligature.el" ligature-source t))))
+
+  (load-library "~/.emacs.d/local/repos/ligatures.el/ligatures")
+
+  (use-package ligature
+  ;;  :load-path "local/repos/ligatures.el/ligature"
+    :config
+    ;; Enable the "www" ligature in every possible major mode
+    (ligature-set-ligatures 't '("www"))
+    ;; Enable traditional ligature support in eww-mode, if the
+    ;; `variable-pitch' face supports it
+    (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
+    ;; Enable all Cascadia Code ligatures in programming modes
+    (ligature-set-ligatures 'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
+                                         ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
+                                         "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
+                                         "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
+                                         "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
+                                         "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
+                                         "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
+                                         "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
+                                         ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
+                                         "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
+                                         "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
+                                         "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
+                                         "\\\\" "://"))
+    ;; Enables ligature checks globally in all buffers. You can also do it
+    ;; per mode with `ligature-mode'.
+    (global-ligature-mode t))
+
+
+
+  ;; (use-package fira-code-mode
+  ;;   :ensure t
+  ;; ;; :disabled t
+  ;;   :custom (fira-code-mode-disabled-ligatures '("[]" "x"))  ; ligatures you don't want
+  ;;   :hook prog-mode)                                         ; mode to enable fira-code-mode in
+
+
+      (message "SITE:font-ligatures.")
+      ))
+  )
+
+
+
+
+  ;; @see: https://github.com/tonsky/FiraCode/issues/211#issuecomment-239058632
+
+  ;; (use-package ligature
+  ;;   ;;:load-path "path-to-ligature-repo"
+  ;;   :config
+  ;;   ;; Enable the "www" ligature in every possible major mode
+  ;;   (ligature-set-ligatures 't '("www"))
+  ;;   ;; Enable traditional ligature support in eww-mode, if the
+  ;;   ;; `variable-pitch' face supports it
+  ;;   (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
+  ;;   ;; Enable all Cascadia Code ligatures in programming modes
+  ;;   (ligature-set-ligatures 'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
+  ;;                                        ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
+  ;;                                        "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
+  ;;                                        "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
+  ;;                                        "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
+  ;;                                        "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
+  ;;                                        "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
+  ;;                                        "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
+  ;;                                        ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
+  ;;                                        "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
+  ;;                                        "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
+  ;;                                        "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
+  ;;                                        "\\" "://"))
+  ;;   ;; Enables ligature checks globally in all buffers. You can also do it
+  ;;   ;; per mode with `ligature-mode'.
+  ;;   (global-ligature-mode t))
+
+
+#+END_SRC
+
+*** Fonts/end
+#+NAME: fonts-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .fonts
+
+#+END_SRC
+** Evil
+*** Evil/begin
+#+NAME: evil-begin
+#+begin_src emacs-lisp
+
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @EVIL
+  ;; ;;;////////////////////////////////////////////////////////////////
+
+
+#+END_SRC
+
+*** Evil Mode
+#+NAME: evil-mode
+#+begin_src emacs-lisp
+
+  ;; ---( evil )--------------------------------------------------------------
+
+  ;; @see: https://raw.githubusercontent.com/noctuid/evil-guide/master/README.org
+
+  (use-package evil
+    :ensure t
+    :defer 30
+    )
+
+
+
+#+END_SRC
+
+*** EVIL/end
+#+NAME: evil-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .evil
+
+#+END_SRC
+
+** Completion "at-point"
+*** Completion/begin
+#+NAME: comp-ap-begin
+#+begin_src emacs-lisp
+
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @COMPLETION "AT POINT"
+  ;; ;;;////////////////////////////////////////////////////////////////
+
+
+#+END_SRC
+
+*** Company
+#+NAME: comp-ap-company
+#+begin_src emacs-lisp
+
+  ;; ---( company )--------------------------------------------------------------
+
+  (use-package company
+    :ensure t
+    :diminish company-mode
+    :commands company-mode
+    :bind ("<C-space>" . company-complete)
+    :init
+    ;; (add-hook 'clojure-mode-hook 'company-mode)
+    ;; (add-hook 'cider-repl-mode-hook 'company-mode)
+    ;; (add-hook 'lisp-mode-hook 'company-mode)
+    ;; (add-hook 'emacs-lisp-mode-hook 'company-mode)
+    ;; (add-hook 'lisp-interaction-mode-hook 'company-mode)
+    ;; (add-hook 'ielm-mode-hook 'company-mode)
+    ;; (add-hook 'json-mode-hook 'company-mode)
+    :config
+    (setq company-idle-delay 0.3)
+    (global-company-mode t)  
+    ;; (use-package helm-company :disabled t)
+    :hook (
+           (text-mode . company-mode)
+           (prog-mode . company-mode)
+           )
+    )
+
+  ;; @see: https://cloudnine.github.io/science/2020-07-27-emacs-company-mode/
+  ;; @see: https://github.com/mswift42/.emacs.d/blob/master/init.el
+  ;; @see: https://medium.com/helpshift-engineering/configuring-emacs-from-scratch-use-package-c30382297877
+  ;; (use-package company
+  ;;   :bind (:map company-active-map
+  ;;          ("C-n" . company-select-next)
+  ;;          ("C-p" . company-select-previous))
+  ;;   :config
+  ;;   (setq company-idle-delay 0.3)
+  ;;   (global-company-mode t))
+
+    ;; From https://github.com/company-mode/company-mode/issues/87
+    ;; See also https://github.com/company-mode/company-mode/issues/123
+    ;; (defadvice company-pseudo-tooltip-unless-just-one-frontend
+    ;;     (around only-show-tooltip-when-invoked activate)
+    ;;   (when (company-explicit-action-p)
+    ;;     ad-do-it))
+
+
+
+#+END_SRC
+
+*** Auto-Complete
+#+NAME: comp-ap-autocomplete
+#+begin_src emacs-lisp
+
+  ;; ---( autocomplete )--------------------------------------------------------------
+
+  (use-package auto-complete
+    :disabled t
+    :diminish auto-complete-mode
+    :init
+    (use-package pos-tip)
+    (require 'auto-complete-config)
+    (ac-config-default)
+    :config
+    ;; @see: http://auto-complete.org/doc/manual.html
+    ;;(ac-set-trigger-key "<backtab>")
+    ;;(ac-set-trigger-key "TAB")
+    (setq ac-ignore-case 'smart)
+    (setq ac-auto-start nil)
+    (setq ac-use-menu-map t)
+    ;;(define-key ac-mode-map (kbd "M-SPC") 'auto-complete)
+    (define-key ac-mode-map  [(control menu)] 'auto-complete)
+    (ac-set-trigger-key "TAB")
+    ;; (define-key ac-completing-map "\M-/" 'ac-stop)
+    ;; (define-key ac-completing-map "\t" 'ac-complete)
+    ;; (define-key ac-completing-map "\r" nil)
+    ;; (setq ac-use-menu-map t)
+    ;; (define-key ac-menu-map "\C-n" 'ac-next)
+    ;; (define-key ac-menu-map "\C-p" 'ac-previous)
+    ;; (setq ac-use-quick-help nil)
+    ;; (setq ac-menu-height 20)
+    ;; (setq ac-show-menu-immediately-on-auto-complete t)
+    ;; (setq ac-auto-show-menu 0.8)
+    ;; (setq ac-delay 0.4)
+
+    ;; (setq-default ac-sources '(ac-source-filename
+    ;;                            ac-source-functions
+    ;;                            ac-source-yasnippet
+    ;;                            ac-source-variables
+    ;;                            ac-source-symbols
+    ;;                            ac-source-features
+    ;;                            ac-source-abbrev
+    ;;                            ac-source-words-in-same-mode-buffers
+    ;;                            ac-source-dictionary))
+
+    ;; (defun ac-emacs-lisp-mode-setup ()
+    ;;   (setq ac-sources '(ac-source-symbols ac-source-words-in-same-mode-buffers)))
+    ;; (add-hook 'c++-mode (lambda () (add-to-list 'ac-sources 'ac-source-semantic)))
+
+    ;; (bind-key "A-M-?" 'ac-last-help)
+    ;; (unbind-key "C-s" ac-completing-map)
+
+    )
+
+#+END_SRC
+
+*** IDO
+#+NAME: comp-ap-ido
+#+begin_src emacs-lisp
+
+  ;; ---( ido )--------------------------------------------------------------
+
+  (use-package ido
+    :disabled t
+    :defer 5
+    :defines (ido-cur-item
+              ido-require-match
+              ido-selected
+              ido-final-text
+              ido-show-confirm-message)
+    :bind (("C-x b" . ido-switch-buffer)
+           ("C-x B" . ido-switch-buffer-other-window)
+           ("M-x" . ido-hacks-execute-extended-command))
+    :preface
+    (eval-when-compile
+      (defvar ido-require-match)
+      (defvar ido-cur-item)
+      (defvar ido-show-confirm-message)
+      (defvar ido-selected)
+      (defvar ido-final-text))
+    (defun ido-smart-select-text ()
+      "Select the current completed item. Do NOT descend into directories."
+      (interactive)
+      (when (and (or (not ido-require-match)
+                     (if (memq ido-require-match
+                               '(confirm confirm-after-completion))
+                         (if (or (eq ido-cur-item 'dir)
+                                 (eq last-command this-command))
+                             t
+                           (setq ido-show-confirm-message t)
+                           nil))
+                     (ido-existing-item-p))
+                 (not ido-incomplete-regexp))
+        (when ido-current-directory
+          (setq ido-exit 'takeprompt)
+          (unless (and ido-text (= 0 (length ido-text)))
+            (let ((match (ido-name (car ido-matches))))
+              (throw 'ido
+                     (setq ido-selected
+                           (if match
+                               (replace-regexp-in-string "/\\'" "" match)
+                             ido-text)
+                           ido-text ido-selected
+                           ido-final-text ido-text)))))
+        (exit-minibuffer)))
+    :config
+    (ido-mode 'buffer)
+    (use-package ido-hacks
+      :config
+      (ido-hacks-mode 1))
+    (use-package ido-vertical-mode
+      :disabled t
+      :config
+      (ido-vertical-mode 1))
+    (use-package flx-ido
+      :disabled t
+      :config
+      (flx-ido-mode 1))
+    (add-hook 'ido-minibuffer-setup-hook
+              #'(lambda ()
+                  (bind-key "<return>" 'ido-smart-select-text
+                            ido-file-completion-map))))
+
+
+#+END_SRC
+
+*** Completion/end
+#+NAME: comp-ap-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .comp-ap
+
+#+END_SRC
+
+** Completion "prompt"
+*** Completion/begin
+#+NAME: comp-mb-begin
+#+begin_src emacs-lisp
+
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @COMPLETION "PROMPT"
+  ;; ;;;////////////////////////////////////////////////////////////////
+
+
+
+#+END_SRC
+
+*** Vertico*
+**** Vertico*/begin
+#+NAME: comp-mb-ver-begin
+#+begin_src emacs-lisp
+
+  ;; ===( vertico )=============================================================
+
+   ;; @see: https://kristofferbalintona.me/posts/202202211546/
+
+  (message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico))
+
+#+END_SRC
+
+**** Marginalia
+#+NAME: comp-mb-ver-marginalia
+#+begin_src emacs-lisp
+
+  ;; ---( marginalia )--------------------------------------------------------------
+
+  (use-package marginalia
+    :ensure t
+    :general
+    (:keymaps 'minibuffer-local-map
+              "M-A" 'marginalia-cycle)
+    :custom
+    (marginalia-max-relative-age 0)
+    ;;(marginalia-align 'right)
+    :config
+    (set-face-attribute 'marginalia-documentation nil :underline nil)
+    :init
+    (marginalia-mode))
+
+  ;; (use-package marginalia
+  ;;   :general
+  ;;   (:keymaps 'minibuffer-local-map
+  ;;             "M-A" 'marginalia-cycle)
+  ;;   :custom
+  ;;   (marginalia-max-relative-age 0)
+  ;;   (marginalia-align 'right)
+  ;;   :init
+  ;;   (marginalia-mode))
+
+  ;; icon fonts: M-x all-the-icons-install-fonts
+  (use-package all-the-icons
+    :ensure t
+    )
+
+
+  (use-package all-the-icons-completion
+    :ensure t
+    :after (marginalia all-the-icons)
+    :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
+    :init
+    (all-the-icons-completion-mode))
+
+#+END_SRC
+
+**** Vertico
+#+NAME: comp-mb-ver-vertico
+#+begin_src emacs-lisp
+
+  ;; ---( vertico )--------------------------------------------------------------
+
+  (use-package vertico
+    :ensure t
+    :config
+    (vertico-mode))
+
+  ;; (use-package vertico
+  ;;   :custom
+  ;;   (vertico-count 13)                    ; Number of candidates to display
+  ;;   (vertico-resize t)
+  ;;   (vertico-cycle nil) ; Go from last to first candidate and first to last (cycle)?
+  ;;   :general
+  ;;   (:keymaps 'vertico-map
+  ;;             "<tab>" #'vertico-insert  ; Insert selected candidate into text area
+  ;;             "<escape>" #'minibuffer-keyboard-quit ; Close minibuffer
+  ;;             ;; NOTE 2022-02-05: Cycle through candidate groups
+  ;;             "C-M-n" #'vertico-next-group
+  ;;             "C-M-p" #'vertico-previous-group)
+  ;;   :config
+  ;;   (vertico-mode))
+
+
+#+END_SRC
+
+**** Consult
+#+NAME: comp-mb-ver-consult
+#+begin_src emacs-lisp
+
+  ;; ---( consult )--------------------------------------------------------------
+
+
+  (setq completion-ignore-case t)
+  (setq read-file-name-completion-ignore-case t)
+
+  ;; @see: https://github.com/minad/consult
+  ;; @see: https://gitlab.com/to1ne/temacco/-/blob/main/README.org#L749
+
+  ;; Example configuration for Consult
+  (use-package consult
+    :ensure t
+    ;; Replace bindings. Lazily loaded due by `use-package'.
+    :bind (;; C-c bindings (mode-specific-map)
+           ("C-c h" . consult-history)
+           ("C-c m" . consult-mode-command)
+           ("C-c k" . consult-kmacro)
+           ;; C-x bindings (ctl-x-map)
+           ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
+           ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
+           ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
+           ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
+           ("C-x r b" . consult-bookmark)            ;; orig. bookmark-jump
+           ("C-x p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
+           ;; Custom M-# bindings for fast register access
+           ("M-#" . consult-register-load)
+           ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
+           ("C-M-#" . consult-register)
+           ;; Other custom bindings
+           ("M-y" . consult-yank-pop)                ;; orig. yank-pop
+           ("<help> a" . consult-apropos)            ;; orig. apropos-command
+           ;; M-g bindings (goto-map)
+           ("M-g e" . consult-compile-error)
+           ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
+           ("M-g g" . consult-goto-line)             ;; orig. goto-line
+           ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
+           ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
+           ("M-g m" . consult-mark)
+           ("M-g k" . consult-global-mark)
+           ("M-g i" . consult-imenu)
+           ("M-g I" . consult-imenu-multi)
+           ;; M-s bindings (search-map)
+           ("M-s d" . consult-find)
+           ("M-s D" . consult-locate)
+           ("M-s g" . consult-grep)
+           ("M-s G" . consult-git-grep)
+           ("M-s r" . consult-ripgrep)
+           ("M-s l" . consult-line)
+           ("M-s L" . consult-line-multi)
+           ("M-s m" . consult-multi-occur)
+           ("M-s k" . consult-keep-lines)
+           ("M-s u" . consult-focus-lines)
+           ;; Isearch integration
+           ("M-s e" . consult-isearch-history)
+           :map isearch-mode-map
+           ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
+           ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
+           ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
+           ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
+           ;; Minibuffer history
+           :map minibuffer-local-map
+           ("M-s" . consult-history)                 ;; orig. next-matching-history-element
+           ("M-r" . consult-history))                ;; orig. previous-matching-history-element
+
+    ;; Enable automatic preview at point in the *Completions* buffer. This is
+    ;; relevant when you use the default completion UI.
+    :hook (completion-list-mode . consult-preview-at-point-mode)
+
+    ;; The :init configuration is always executed (Not lazy)
+    :init
+
+    ;; Optionally configure the register formatting. This improves the register
+    ;; preview for `consult-register', `consult-register-load',
+    ;; `consult-register-store' and the Emacs built-ins.
+    (setq register-preview-delay 0.5
+          register-preview-function #'consult-register-format)
+
+    ;; Optionally tweak the register preview window.
+    ;; This adds thin lines, sorting and hides the mode line of the window.
+    (advice-add #'register-preview :override #'consult-register-window)
+
+    ;; Use Consult to select xref locations with preview
+    (setq xref-show-xrefs-function #'consult-xref
+          xref-show-definitions-function #'consult-xref)
+
+    ;; Configure other variables and modes in the :config section,
+    ;; after lazily loading the package.
+    :config
+
+    ;; Optionally configure preview. The default value
+    ;; is 'any, such that any key triggers the preview.
+    ;; (setq consult-preview-key 'any)
+    ;; (setq consult-preview-key (kbd "M-."))
+    ;; (setq consult-preview-key (list (kbd "<S-down>") (kbd "<S-up>")))
+    ;; For some commands and buffer sources it is useful to configure the
+    ;; :preview-key on a per-command basis using the `consult-customize' macro.
+    (consult-customize
+     consult-theme
+     :preview-key '(:debounce 0.2 any)
+     consult-ripgrep consult-git-grep consult-grep
+     consult-bookmark consult-recent-file consult-xref
+     consult--source-bookmark consult--source-recent-file
+     consult--source-project-recent-file
+     :preview-key (kbd "M-."))
+
+    ;; Optionally configure the narrowing key.
+    ;; Both < and C-+ work reasonably well.
+    (setq consult-narrow-key "<") ;; (kbd "C-+")
+
+    ;; Optionally make narrowing help available in the minibuffer.
+    ;; You may want to use `embark-prefix-help-command' or which-key instead.
+    ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
+
+    ;; By default `consult-project-function' uses `project-root' from project.el.
+    ;; Optionally configure a different project root function.
+    ;; There are multiple reasonable alternatives to chose from.
+    ;;;; 1. project.el (the default)
+    ;; (setq consult-project-function #'consult--default-project--function)
+    ;;;; 2. projectile.el (projectile-project-root)
+    ;; (autoload 'projectile-project-root "projectile")
+    ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
+    ;;;; 3. vc.el (vc-root-dir)
+    ;; (setq consult-project-function (lambda (_) (vc-root-dir)))
+    ;;;; 4. locate-dominating-file
+    ;; (setq consult-project-function (lambda (_) (locate-dominating-file "." ".git")))
+  )
+
+(use-package consult-dir
+  :ensure t
+  :bind (("C-x C-d" . consult-dir)
+         :map minibuffer-local-completion-map
+         ("C-x C-d" . consult-dir)
+         ("C-x C-j" . consult-dir-jump-file)))
+
+
+#+END_SRC
+
+**** Orderless
+#+NAME: comp-mb-ver-orderless
+#+begin_src emacs-lisp
+
+  ;; ---( orderless )--------------------------------------------------------------
+
+  (use-package orderless
+    :ensure t
+    :init
+    (setq completion-styles '(orderless)))
+
+  ;; (use-package orderless
+  ;;   :custom
+  ;;   (completion-styles '(orderless))      ; Use orderless
+  ;;   (completion-category-defaults nil)    ; I want to be in control!
+  ;;   (completion-category-overrides
+  ;;    '((file (styles basic-remote ; For `tramp' hostname completion with `vertico'
+  ;;                    orderless)))))
+
+
+#+END_SRC
+
+**** Embark
+#+NAME: comp-mb-ver-embark
+#+begin_src emacs-lisp
+
+  ;; ---( embark )--------------------------------------------------------------
+
+    (use-package embark
+    :ensure t
+
+    :bind
+    (("C-." . embark-act)         ;; pick some comfortable binding
+     ("C-;" . embark-dwim)        ;; good alternative: M-.
+     ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
+
+     :init
+
+     ;; Optionally replace the key help with a completing-read interface
+     (setq prefix-help-command #'embark-prefix-help-command)
+
+     :config
+
+     ;; Hide the mode line of the Embark live/completions buffers
+     (add-to-list 'display-buffer-alist
+                  '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+                    nil
+                    (window-parameters (mode-line-format . none))))
+
+    )
+
+  ;; Consult users will also want the embark-consult package.
+  (use-package embark-consult
+    :ensure t
+    :after (embark consult)
+    ;; :demand t ; only necessary if you have the hook below
+    ;; if you want to have consult previews as you move around an
+    ;; auto-updating embark collect buffer
+    :hook
+    (embark-collect-mode . consult-preview-at-point-mode))
+
+  ;; (use-package embark
+  ;;   :ensure t)
+
+  ;; Consult users will also want the embark-consult package.
+  ;; (use-package embark-consult
+  ;;   :ensure t
+  ;;   :after (embark consult)
+  ;;   :demand t only necessary if you have the hook below
+  ;;   if you want to have consult previews as you move around an
+  ;;   auto-updating embark collect buffer
+  ;;   :hook
+  ;;   (embark-collect-mode . consult-preview-at-point-mode))
+
+
+#+END_SRC
+
+**** Savehist
+#+NAME: comp-mb-ver-savehist
+#+begin_src emacs-lisp
+
+
+  ;; ---( savehist )--------------------------------------------------------------
+
+  ;; Persist history over Emacs restarts. Vertico sorts by history position.
+  (use-package savehist
+    :init
+    (savehist-mode))
+
+
+  (recentf-mode)
+
+  (setq completion-ignore-case t)
+  (setq read-file-name-completion-ignore-case t)
+
+
+
+
+#+END_SRC
+**** Vertico*/end
+#+NAME: comp-mb-ver-end
+#+begin_src emacs-lisp
+
+  (message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico)) 
+  ;; .........................................................................
+
+#+END_SRC
+
+*** Completion/end
+#+NAME: comp-mb-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .comp-mb
+
+#+END_SRC
+
 ** Workspace
 *** Magit
 #+NAME: magit
@@ -3130,6 +3917,206 @@ P
 
 #+END_SRC
 
+** Net
+*** Net/begin
+#+NAME: net-begin
+#+begin_src emacs-lisp
+
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @NET
+  ;; ;;;////////////////////////////////////////////////////////////////
+
+
+#+END_SRC
+
+*** Web
+**** w3m
+#+NAME: net-web-w3m
+#+begin_src emacs-lisp
+
+  ;; ---( w3m )------------------------------------------------------
+
+  (use-package w3m
+    :disabled t
+    :commands (w3m-search w3m-find-file)
+    :bind (("C-. u" . w3m-browse-url)
+           ("C-. U" . w3m-browse-url-new-session)
+           ("C-. A-u" . w3m-browse-chrome-url-new-session)
+           ("C-. w" . show-browser)
+           ("A-M-e" . goto-emacswiki)
+           ("A-M-g" . w3m-search)
+           ("A-M-w" . wikipedia-query))
+    :init
+    (setq w3m-command "w3m")
+    (setq w3m-coding-system 'utf-8
+          w3m-file-coding-system 'utf-8
+          w3m-file-name-coding-system 'utf-8
+          w3m-input-coding-system 'utf-8
+          w3m-output-coding-system 'utf-8
+          w3m-terminal-coding-system 'utf-8)
+    (add-hook 'w3m-mode-hook 'w3m-link-numbering-mode)
+    (autoload 'w3m-session-crash-recovery-remove "w3m-session")
+    (defun show-browser ()
+      (interactive)
+      (let ((w3m-buf
+             (catch 'found
+               (dolist (buf (buffer-list))
+                 (if (string-match "\\*w3m" (buffer-name buf))
+                     (throw 'found buf))))))
+        (if w3m-buf
+            (switch-to-buffer-other-window w3m-buf)
+          (call-interactively 'w3m-find-file))))
+    (defun wikipedia-query (term)
+      (interactive (list (read-string "Wikipedia search: " (word-at-point))))
+      (require 'w3m-search)
+      (w3m-search "en.wikipedia" term))
+    (eval-when-compile
+      (autoload 'w3m-search-escape-query-string "w3m-search"))
+    (defun wolfram-alpha-query (term)
+      (interactive (list (read-string "Ask Wolfram Alpha: " (word-at-point))))
+      (require 'w3m-search)
+      (w3m-browse-url (concat "http://m.wolframalpha.com/input/?i="
+                              (w3m-search-escape-query-string term))))
+    (defun goto-emacswiki ()
+      (interactive)
+      (w3m-browse-url "http://www.emacswiki.org"))
+    (defun w3m-browse-url-new-session (url)
+      (interactive (progn
+                     (require 'browse-url)
+                     (browse-url-interactive-arg "Emacs-w3m URL: ")))
+      (w3m-browse-url url t))
+    (defun w3m-browse-chrome-url-new-session ()
+      (interactive)
+      (let ((url (do-applescript
+                  (string-to-multibyte "tell application \"Google Chrome\"
+  URL of active tab of front window
+  end tell"))))
+        (w3m-browse-url (substring url 1 (1- (length url))) t)))
+    :config
+    (let (proxy-host proxy-port)
+      (with-temp-buffer
+        (shell-command "scutil --proxy" (current-buffer))
+        (when (re-search-forward "HTTPPort : \\([0-9]+\\)" nil t)
+          (setq proxy-port (match-string 1)))
+        (when (re-search-forward "HTTPProxy : \\(\\S-+\\)" nil t)
+          (setq proxy-host (match-string 1))))
+      (if (and proxy-host proxy-port)
+          (setq w3m-command-arguments
+                (nconc w3m-command-arguments
+                       (list "-o" (format "http_proxy=http://%s:%s/"
+                                          proxy-host proxy-port)))))
+      (use-package w3m-type-ahead
+        :requires w3m
+        :init
+        (add-hook 'w3m-mode-hook 'w3m-type-ahead-mode))
+      (add-hook 'w3m-display-hook
+                (lambda (url)
+                  (let ((buffer-read-only nil))
+                    (delete-trailing-whitespace))))
+      (defun my-w3m-linknum-follow ()
+        (interactive)
+        (w3m-linknum-follow))
+      (bind-key "k" 'w3m-delete-buffer w3m-mode-map)
+      (bind-key "i" 'w3m-view-previous-page w3m-mode-map)
+      (bind-key "p" 'w3m-previous-anchor w3m-mode-map)
+      (bind-key "n" 'w3m-next-anchor w3m-mode-map)
+      (defun dka-w3m-textarea-hook()
+        (save-excursion
+          (while (re-search-forward "\r\n" nil t)
+            (replace-match "\n" nil nil))
+          (delete-other-windows)))
+      (add-hook 'w3m-form-input-textarea-mode-hook 'dka-w3m-textarea-hook)
+      (bind-key "<return>" 'w3m-view-url-with-external-browser
+                w3m-minor-mode-map)
+      (bind-key "S-<return>" 'w3m-safe-view-this-url w3m-minor-mode-map)))
+
+
+#+END_SRC
+
+*** News
+**** elfeed
+#+NAME: net-news-elfeed
+#+begin_src emacs-lisp
+
+  ;; ---( elfeed )--------------------------------------------------------------
+
+  ;; @see: https://github.com/skeeto/elfeed
+
+  ;; (use-package elfeed
+  ;;   :ensure t
+  ;;   :defer 30
+  ;;   )
+
+  ;; @see: http://pragmaticemacs.com/emacs/read-your-rss-feeds-in-emacs-with-elfeed/
+  ;; @see: https://github.com/danlamanna/.emacs.d/blob/master/init.el
+  ;; @see: http://feedly.com/i/opml
+
+  (use-package elfeed-org
+    :disabled t
+  ;;:ensure t
+    :config (progn
+              (use-package elfeed
+                :ensure t
+                :config (progn
+                          (custom-set-variables
+                           ;; oldest articles should be at the top
+                           '(elfeed-sort-order 'ascending))))
+
+              (use-package elfeed-goodies
+                :ensure t
+                :config (progn
+                          (elfeed-goodies/setup)))
+
+              (setq rmh-elfeed-org-files (list "~/.rss/elfeed.org"))
+              (elfeed-org)))
+
+
+  ;; @see: https://github.com/algernon/elfeed-goodies
+  ;; (use-package elfeed-goodies
+  ;;   :ensure t
+  ;;   :defer 30
+  ;;   )
+
+#+END_SRC
+
+**** GNus
+#+NAME: net-news-gnus
+#+begin_src emacs-lisp
+
+  ;; ---( GNus )--------------------------------------------------------------
+
+  ;; @see: https://www.emacswiki.org/emacs/GnusRss
+
+
+#+END_SRC
+
+*** Twitter
+**** twittering
+#+NAME: net-twitter-twittering
+#+begin_src emacs-lisp
+
+  ;; ---( twittering-mode )--------------------------------------------------------------
+
+  (use-package twittering-mode
+    :disabled t
+    :defer 30
+    )
+  ;; (use-package twittering-mode
+  ;;   :disabled t
+  ;;   :commands twit
+  ;;   :config
+  ;;   (setq twittering-use-master-password t))
+
+
+#+END_SRC
+
+*** Net/end
+#+NAME: net-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .net
+
+#+END_SRC
 ** AI
 *** AI/begin
 #+NAME: ai-begin
@@ -3346,16 +4333,7 @@ P
 #+NAME: tex-bibtex
 #+begin_src emacs-lisp
 
-  ;; ---( BibTex )--------------------------------------------------------------
-
-  (use-package biblio
-    :disabled t
-    ;;:ensure t
-    ;;:defer t
-    )
-
   ;; ---( Citar )--------------------------------------------------------------
-
 
    ;; @see: https://github.com/emacs-citar/citar#installation
 
@@ -3366,7 +4344,7 @@ P
      :no-require
      :custom
      ;;(org-cite-global-bibliography '("~/bib/references.bib"))
-     (org-cite-global-bibliography '("~/Dropbox/Local/data/org/ref/references.bib"))
+     (org-cite-global-bibliography (h7/var-global-bibliography))
      (citar-bibliography org-cite-global-bibliography)
      (org-cite-insert-processor 'citar)
      (org-cite-follow-processor 'citar)
@@ -3387,6 +4365,15 @@ P
      :after citar embark
      :no-require
      :config (citar-embark-mode))
+
+  ;; ---( BibTex )--------------------------------------------------------------
+
+  (use-package biblio
+    :ensure t
+    :defer t
+    ;;:disabled t
+    ;;:completion vertico
+    )
 
 
 #+END_SRC
@@ -3530,144 +4517,6 @@ P
 #+begin_src emacs-lisp
 
   ;; }}}  .tex
-
-#+END_SRC
-** Fonts
-*** Fonts/begin
-#+NAME: fonts-begin
-#+begin_src emacs-lisp
-
-  ;; ;;;////////////////////////////////////////////////////////////////
-  ;; {{{  @FONT
-  ;; ;;;////////////////////////////////////////////////////////////////
-
-
-#+END_SRC
-
-*** Faces
-#+NAME: fonts-faces
-#+begin_src emacs-lisp
-
-  ;; ---( faces )--------------------------------------------------------------
-
-  ;; (custom-set-faces
-  ;;  ;; custom-set-faces was added by Custom.
-  ;;  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;;  ;; Your init file should contain only one such instance.
-  ;;  ;; If there is more than one, they won't work right.
-  ;;  '(default ((t (:family "Source Code Pro" :foundry "ADBE" :slant normal :weight semi-bold :height 135 :width normal)))))
-
-  ;; (custom-theme-set-faces
-  ;;    'user
-  ;;    '(variable-pitch ((t (:family "Source Sans Pro" :foundry "ADBE" :slant normal :weight semi-bold :height 135 :width normal))))
-  ;;    '(fixed-pitch ((t ( :family "JetBrains Mono Medium")))))
-
-
-#+END_SRC
-
-*** Ligatures
-#+NAME: fonts-ligatures
-#+begin_src emacs-lisp
-
-  ;; ---( ligatures )--------------------------------------------------------------
-
-  (cond
-   ((string-lessp emacs-version "27.1") ;;
-    (progn
-      (message "SITE:font-legacy, ...")
-      (message "SITE:font-legacy.")
-      ))
-   (t
-    (progn
-      (message "SITE:font-ligatures, ...")
-
-      (setq ligature-path (expand-file-name "local/repos/ligatures.el" user-emacs-directory))
-      (let ((ligature-source (expand-file-name "ligatures.el" ligature-path)))
-        (unless (file-exists-p ligature-source)
-          (progn
-            (make-directory ligature-path t)
-            (url-copy-file "https://raw.githubusercontent.com/mickeynp/ligature.el/master/ligature.el" ligature-source t))))
-
-  (load-library "~/.emacs.d/local/repos/ligatures.el/ligatures")
-
-  (use-package ligature
-  ;;  :load-path "local/repos/ligatures.el/ligature"
-    :config
-    ;; Enable the "www" ligature in every possible major mode
-    (ligature-set-ligatures 't '("www"))
-    ;; Enable traditional ligature support in eww-mode, if the
-    ;; `variable-pitch' face supports it
-    (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
-    ;; Enable all Cascadia Code ligatures in programming modes
-    (ligature-set-ligatures 'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
-                                         ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
-                                         "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
-                                         "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
-                                         "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
-                                         "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
-                                         "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
-                                         "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
-                                         ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
-                                         "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
-                                         "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
-                                         "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
-                                         "\\\\" "://"))
-    ;; Enables ligature checks globally in all buffers. You can also do it
-    ;; per mode with `ligature-mode'.
-    (global-ligature-mode t))
-
-
-
-  ;; (use-package fira-code-mode
-  ;;   :ensure t
-  ;; ;; :disabled t
-  ;;   :custom (fira-code-mode-disabled-ligatures '("[]" "x"))  ; ligatures you don't want
-  ;;   :hook prog-mode)                                         ; mode to enable fira-code-mode in
-
-
-      (message "SITE:font-ligatures.")
-      ))
-  )
-
-
-
-
-  ;; @see: https://github.com/tonsky/FiraCode/issues/211#issuecomment-239058632
-
-  ;; (use-package ligature
-  ;;   ;;:load-path "path-to-ligature-repo"
-  ;;   :config
-  ;;   ;; Enable the "www" ligature in every possible major mode
-  ;;   (ligature-set-ligatures 't '("www"))
-  ;;   ;; Enable traditional ligature support in eww-mode, if the
-  ;;   ;; `variable-pitch' face supports it
-  ;;   (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
-  ;;   ;; Enable all Cascadia Code ligatures in programming modes
-  ;;   (ligature-set-ligatures 'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
-  ;;                                        ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
-  ;;                                        "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
-  ;;                                        "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
-  ;;                                        "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
-  ;;                                        "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
-  ;;                                        "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
-  ;;                                        "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
-  ;;                                        ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
-  ;;                                        "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
-  ;;                                        "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
-  ;;                                        "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
-  ;;                                        "\\" "://"))
-  ;;   ;; Enables ligature checks globally in all buffers. You can also do it
-  ;;   ;; per mode with `ligature-mode'.
-  ;;   (global-ligature-mode t))
-
-
-#+END_SRC
-
-*** Fonts/end
-#+NAME: fonts-end
-#+begin_src emacs-lisp
-
-  ;; }}}  .fonts
 
 #+END_SRC
 ** Org
@@ -4045,9 +4894,9 @@ P
   :disabled t
   ;;  :ensure t
   :init
-  (setq reftex-default-bibliography '("~/Dropbox/Local/data/org/ref/references.bib"))
+  (setq reftex-default-bibliography (h7/var-global-bibliography))
   (setq org-ref-bibliography-notes "~/Dropbox/Local/data/org/ref/notes.org"
-        org-ref-default-bibliography '("~/Dropbox/Local/data/org/ref/references.bib")
+        org-ref-default-bibliography (h7/var-global-bibliography)
         org-ref-pdf-directory "~/Dropbox/Local/docs/papers/")
 
   ;; (setq helm-bibtex-bibliography "~/Dropbox/Local/data/org/ref/references.bib")
@@ -4326,7 +5175,7 @@ With a prefix ARG, remove start location."
     :ensure t
     ;; :straight
     ;;   (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
-    :quelpa (org-roam-ui :fetcher github :repo "org-roam/org-roam-ui")
+    ;; :quelpa (org-roam-ui :fetcher github :repo "org-roam/org-roam-ui")
     :after org-roam
     ;; ;; normally we'd recommend hooking orui after org-roam, but since org-roam does not have
     ;; ;; a hookable mode anymore, you're advised to pick something yourself
@@ -4338,6 +5187,12 @@ With a prefix ARG, remove start location."
           org-roam-ui-update-on-save t
           org-roam-ui-open-on-start t))
 
+  ;; ---(org-roam-citar)------------------------------------------------------------------------
+
+  (use-package citar-org-roam
+    :ensure t
+    :after (citar org-roam)
+    :config (citar-org-roam-mode))
 
 
 #+END_SRC
@@ -4604,655 +5459,6 @@ With a prefix ARG, remove start location."
   ;; }}}  .org
 
 #+END_SRC
-** Server
-*** Server/begin
-#+NAME: server-begin
-#+begin_src emacs-lisp
-
-  ;; ;;;////////////////////////////////////////////////////////////////
-  ;; {{{  @SERVER
-  ;; ;;;////////////////////////////////////////////////////////////////
-
-#+END_SRC
-
-*** Server Control
-#+NAME: server-control
-#+begin_src emacs-lisp
-
-  ;; ---( server )--------------------------------------------------------------
-
-  ;;
-  ;; @see: http://babbagefiles.blogspot.it/2017/03/take-elfeed-everywhere-mobile-rss.html
-  ;;
-  ;;  ~/.config/systemd/user/emacs.service
-  ;;
-  ;; ------------------------------------------------------------------
-  ;; [Unit]
-  ;; Description=Emacs: the extensible, self-documenting text editor
-  ;;
-  ;; [Service]
-  ;; Type=forking
-  ;; ExecStart=/usr/bin/emacs --daemon
-  ;; ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
-  ;; Restart=always
-  ;;
-  ;; [Install]
-  ;; WantedBy=default.target
-  ;; ------------------------------------------------------------------
-  ;;
-  ;; systemctl --user enable --now emacs
-  ;; loginctl enable-linger USERNAME
-  ;;
-
-  (use-package edit-server
-    :ensure t
-    :if window-system
-  ;;  :load-path "site-lisp/emacs_chrome/servers/"
-    :init
-    (add-hook 'after-init-hook 'server-start t)
-    (add-hook 'after-init-hook 'edit-server-start t))
-
-
-
-#+END_SRC
-
-*** Server/end
-#+NAME: server-end
-#+begin_src emacs-lisp
-
-  ;; }}}  .server
-
-#+END_SRC
-** Evil
-*** Evil/begin
-#+NAME: evil-begin
-#+begin_src emacs-lisp
-
-  ;; ;;;////////////////////////////////////////////////////////////////
-  ;; {{{  @EVIL
-  ;; ;;;////////////////////////////////////////////////////////////////
-
-
-#+END_SRC
-
-*** Evil Mode
-#+NAME: evil-mode
-#+begin_src emacs-lisp
-
-  ;; ---( evil )--------------------------------------------------------------
-
-  ;; @see: https://raw.githubusercontent.com/noctuid/evil-guide/master/README.org
-
-  (use-package evil
-    :ensure t
-    :defer 30
-    )
-
-
-
-#+END_SRC
-
-*** EVIL/end
-#+NAME: evil-end
-#+begin_src emacs-lisp
-
-  ;; }}}  .evil
-
-#+END_SRC
-
-** Completion "at-point"
-*** Completion/begin
-#+NAME: comp-ap-begin
-#+begin_src emacs-lisp
-
-  ;; ;;;////////////////////////////////////////////////////////////////
-  ;; {{{  @COMPLETION "AT POINT"
-  ;; ;;;////////////////////////////////////////////////////////////////
-
-
-#+END_SRC
-
-*** Company
-#+NAME: comp-ap-company
-#+begin_src emacs-lisp
-
-  ;; ---( company )--------------------------------------------------------------
-
-  (use-package company
-    :ensure t
-    :diminish company-mode
-    :commands company-mode
-    :bind ("<C-space>" . company-complete)
-    :init
-    ;; (add-hook 'clojure-mode-hook 'company-mode)
-    ;; (add-hook 'cider-repl-mode-hook 'company-mode)
-    ;; (add-hook 'lisp-mode-hook 'company-mode)
-    ;; (add-hook 'emacs-lisp-mode-hook 'company-mode)
-    ;; (add-hook 'lisp-interaction-mode-hook 'company-mode)
-    ;; (add-hook 'ielm-mode-hook 'company-mode)
-    ;; (add-hook 'json-mode-hook 'company-mode)
-    :config
-    (setq company-idle-delay 0.3)
-    (global-company-mode t)  
-    ;; (use-package helm-company :disabled t)
-    :hook (
-           (text-mode . company-mode)
-           (prog-mode . company-mode)
-           )
-    )
-
-  ;; @see: https://cloudnine.github.io/science/2020-07-27-emacs-company-mode/
-  ;; @see: https://github.com/mswift42/.emacs.d/blob/master/init.el
-  ;; @see: https://medium.com/helpshift-engineering/configuring-emacs-from-scratch-use-package-c30382297877
-  ;; (use-package company
-  ;;   :bind (:map company-active-map
-  ;;          ("C-n" . company-select-next)
-  ;;          ("C-p" . company-select-previous))
-  ;;   :config
-  ;;   (setq company-idle-delay 0.3)
-  ;;   (global-company-mode t))
-
-    ;; From https://github.com/company-mode/company-mode/issues/87
-    ;; See also https://github.com/company-mode/company-mode/issues/123
-    ;; (defadvice company-pseudo-tooltip-unless-just-one-frontend
-    ;;     (around only-show-tooltip-when-invoked activate)
-    ;;   (when (company-explicit-action-p)
-    ;;     ad-do-it))
-
-
-
-#+END_SRC
-
-*** Auto-Complete
-#+NAME: comp-ap-autocomplete
-#+begin_src emacs-lisp
-
-  ;; ---( autocomplete )--------------------------------------------------------------
-
-  (use-package auto-complete
-    :disabled t
-    :diminish auto-complete-mode
-    :init
-    (use-package pos-tip)
-    (require 'auto-complete-config)
-    (ac-config-default)
-    :config
-    ;; @see: http://auto-complete.org/doc/manual.html
-    ;;(ac-set-trigger-key "<backtab>")
-    ;;(ac-set-trigger-key "TAB")
-    (setq ac-ignore-case 'smart)
-    (setq ac-auto-start nil)
-    (setq ac-use-menu-map t)
-    ;;(define-key ac-mode-map (kbd "M-SPC") 'auto-complete)
-    (define-key ac-mode-map  [(control menu)] 'auto-complete)
-    (ac-set-trigger-key "TAB")
-    ;; (define-key ac-completing-map "\M-/" 'ac-stop)
-    ;; (define-key ac-completing-map "\t" 'ac-complete)
-    ;; (define-key ac-completing-map "\r" nil)
-    ;; (setq ac-use-menu-map t)
-    ;; (define-key ac-menu-map "\C-n" 'ac-next)
-    ;; (define-key ac-menu-map "\C-p" 'ac-previous)
-    ;; (setq ac-use-quick-help nil)
-    ;; (setq ac-menu-height 20)
-    ;; (setq ac-show-menu-immediately-on-auto-complete t)
-    ;; (setq ac-auto-show-menu 0.8)
-    ;; (setq ac-delay 0.4)
-
-    ;; (setq-default ac-sources '(ac-source-filename
-    ;;                            ac-source-functions
-    ;;                            ac-source-yasnippet
-    ;;                            ac-source-variables
-    ;;                            ac-source-symbols
-    ;;                            ac-source-features
-    ;;                            ac-source-abbrev
-    ;;                            ac-source-words-in-same-mode-buffers
-    ;;                            ac-source-dictionary))
-
-    ;; (defun ac-emacs-lisp-mode-setup ()
-    ;;   (setq ac-sources '(ac-source-symbols ac-source-words-in-same-mode-buffers)))
-    ;; (add-hook 'c++-mode (lambda () (add-to-list 'ac-sources 'ac-source-semantic)))
-
-    ;; (bind-key "A-M-?" 'ac-last-help)
-    ;; (unbind-key "C-s" ac-completing-map)
-
-    )
-
-#+END_SRC
-
-*** IDO
-#+NAME: comp-ap-ido
-#+begin_src emacs-lisp
-
-  ;; ---( ido )--------------------------------------------------------------
-
-  (use-package ido
-    :disabled t
-    :defer 5
-    :defines (ido-cur-item
-              ido-require-match
-              ido-selected
-              ido-final-text
-              ido-show-confirm-message)
-    :bind (("C-x b" . ido-switch-buffer)
-           ("C-x B" . ido-switch-buffer-other-window)
-           ("M-x" . ido-hacks-execute-extended-command))
-    :preface
-    (eval-when-compile
-      (defvar ido-require-match)
-      (defvar ido-cur-item)
-      (defvar ido-show-confirm-message)
-      (defvar ido-selected)
-      (defvar ido-final-text))
-    (defun ido-smart-select-text ()
-      "Select the current completed item. Do NOT descend into directories."
-      (interactive)
-      (when (and (or (not ido-require-match)
-                     (if (memq ido-require-match
-                               '(confirm confirm-after-completion))
-                         (if (or (eq ido-cur-item 'dir)
-                                 (eq last-command this-command))
-                             t
-                           (setq ido-show-confirm-message t)
-                           nil))
-                     (ido-existing-item-p))
-                 (not ido-incomplete-regexp))
-        (when ido-current-directory
-          (setq ido-exit 'takeprompt)
-          (unless (and ido-text (= 0 (length ido-text)))
-            (let ((match (ido-name (car ido-matches))))
-              (throw 'ido
-                     (setq ido-selected
-                           (if match
-                               (replace-regexp-in-string "/\\'" "" match)
-                             ido-text)
-                           ido-text ido-selected
-                           ido-final-text ido-text)))))
-        (exit-minibuffer)))
-    :config
-    (ido-mode 'buffer)
-    (use-package ido-hacks
-      :config
-      (ido-hacks-mode 1))
-    (use-package ido-vertical-mode
-      :disabled t
-      :config
-      (ido-vertical-mode 1))
-    (use-package flx-ido
-      :disabled t
-      :config
-      (flx-ido-mode 1))
-    (add-hook 'ido-minibuffer-setup-hook
-              #'(lambda ()
-                  (bind-key "<return>" 'ido-smart-select-text
-                            ido-file-completion-map))))
-
-
-#+END_SRC
-
-*** Completion/end
-#+NAME: comp-ap-end
-#+begin_src emacs-lisp
-
-  ;; }}}  .comp-ap
-
-#+END_SRC
-
-** Completion "prompt"
-*** Completion/begin
-#+NAME: comp-mb-begin
-#+begin_src emacs-lisp
-
-  ;; ;;;////////////////////////////////////////////////////////////////
-  ;; {{{  @COMPLETION "PROMPT"
-  ;; ;;;////////////////////////////////////////////////////////////////
-
-
-
-#+END_SRC
-
-*** Vertico*
-**** Vertico*/begin
-#+NAME: comp-mb-ver-begin
-#+begin_src emacs-lisp
-
-  ;; ===( vertico )=============================================================
-
-   ;; @see: https://kristofferbalintona.me/posts/202202211546/
-
-  (message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico))
-
-#+END_SRC
-
-**** Marginalia
-#+NAME: comp-mb-ver-marginalia
-#+begin_src emacs-lisp
-
-  ;; ---( marginalia )--------------------------------------------------------------
-
-  (use-package marginalia
-    :ensure t
-    :general
-    (:keymaps 'minibuffer-local-map
-              "M-A" 'marginalia-cycle)
-    :custom
-    (marginalia-max-relative-age 0)
-    ;;(marginalia-align 'right)
-    :config
-    (set-face-attribute 'marginalia-documentation nil :underline nil)
-    :init
-    (marginalia-mode))
-
-  ;; (use-package marginalia
-  ;;   :general
-  ;;   (:keymaps 'minibuffer-local-map
-  ;;             "M-A" 'marginalia-cycle)
-  ;;   :custom
-  ;;   (marginalia-max-relative-age 0)
-  ;;   (marginalia-align 'right)
-  ;;   :init
-  ;;   (marginalia-mode))
-
-  ;; icon fonts: M-x all-the-icons-install-fonts
-  (use-package all-the-icons
-    :ensure t
-    )
-
-
-  (use-package all-the-icons-completion
-    :ensure t
-    :after (marginalia all-the-icons)
-    :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
-    :init
-    (all-the-icons-completion-mode))
-
-#+END_SRC
-
-**** Vertico
-#+NAME: comp-mb-ver-vertico
-#+begin_src emacs-lisp
-
-  ;; ---( vertico )--------------------------------------------------------------
-
-  (use-package vertico
-    :ensure t
-    :config
-    (vertico-mode))
-
-  ;; (use-package vertico
-  ;;   :custom
-  ;;   (vertico-count 13)                    ; Number of candidates to display
-  ;;   (vertico-resize t)
-  ;;   (vertico-cycle nil) ; Go from last to first candidate and first to last (cycle)?
-  ;;   :general
-  ;;   (:keymaps 'vertico-map
-  ;;             "<tab>" #'vertico-insert  ; Insert selected candidate into text area
-  ;;             "<escape>" #'minibuffer-keyboard-quit ; Close minibuffer
-  ;;             ;; NOTE 2022-02-05: Cycle through candidate groups
-  ;;             "C-M-n" #'vertico-next-group
-  ;;             "C-M-p" #'vertico-previous-group)
-  ;;   :config
-  ;;   (vertico-mode))
-
-
-#+END_SRC
-
-**** Consult
-#+NAME: comp-mb-ver-consult
-#+begin_src emacs-lisp
-
-  ;; ---( consult )--------------------------------------------------------------
-
-
-  (setq completion-ignore-case t)
-  (setq read-file-name-completion-ignore-case t)
-
-  ;; @see: https://github.com/minad/consult
-  ;; @see: https://gitlab.com/to1ne/temacco/-/blob/main/README.org#L749
-
-  ;; Example configuration for Consult
-  (use-package consult
-    :ensure t
-    ;; Replace bindings. Lazily loaded due by `use-package'.
-    :bind (;; C-c bindings (mode-specific-map)
-           ("C-c h" . consult-history)
-           ("C-c m" . consult-mode-command)
-           ("C-c k" . consult-kmacro)
-           ;; C-x bindings (ctl-x-map)
-           ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
-           ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
-           ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
-           ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
-           ("C-x r b" . consult-bookmark)            ;; orig. bookmark-jump
-           ("C-x p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
-           ;; Custom M-# bindings for fast register access
-           ("M-#" . consult-register-load)
-           ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
-           ("C-M-#" . consult-register)
-           ;; Other custom bindings
-           ("M-y" . consult-yank-pop)                ;; orig. yank-pop
-           ("<help> a" . consult-apropos)            ;; orig. apropos-command
-           ;; M-g bindings (goto-map)
-           ("M-g e" . consult-compile-error)
-           ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
-           ("M-g g" . consult-goto-line)             ;; orig. goto-line
-           ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
-           ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
-           ("M-g m" . consult-mark)
-           ("M-g k" . consult-global-mark)
-           ("M-g i" . consult-imenu)
-           ("M-g I" . consult-imenu-multi)
-           ;; M-s bindings (search-map)
-           ("M-s d" . consult-find)
-           ("M-s D" . consult-locate)
-           ("M-s g" . consult-grep)
-           ("M-s G" . consult-git-grep)
-           ("M-s r" . consult-ripgrep)
-           ("M-s l" . consult-line)
-           ("M-s L" . consult-line-multi)
-           ("M-s m" . consult-multi-occur)
-           ("M-s k" . consult-keep-lines)
-           ("M-s u" . consult-focus-lines)
-           ;; Isearch integration
-           ("M-s e" . consult-isearch-history)
-           :map isearch-mode-map
-           ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
-           ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
-           ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
-           ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
-           ;; Minibuffer history
-           :map minibuffer-local-map
-           ("M-s" . consult-history)                 ;; orig. next-matching-history-element
-           ("M-r" . consult-history))                ;; orig. previous-matching-history-element
-
-    ;; Enable automatic preview at point in the *Completions* buffer. This is
-    ;; relevant when you use the default completion UI.
-    :hook (completion-list-mode . consult-preview-at-point-mode)
-
-    ;; The :init configuration is always executed (Not lazy)
-    :init
-
-    ;; Optionally configure the register formatting. This improves the register
-    ;; preview for `consult-register', `consult-register-load',
-    ;; `consult-register-store' and the Emacs built-ins.
-    (setq register-preview-delay 0.5
-          register-preview-function #'consult-register-format)
-
-    ;; Optionally tweak the register preview window.
-    ;; This adds thin lines, sorting and hides the mode line of the window.
-    (advice-add #'register-preview :override #'consult-register-window)
-
-    ;; Use Consult to select xref locations with preview
-    (setq xref-show-xrefs-function #'consult-xref
-          xref-show-definitions-function #'consult-xref)
-
-    ;; Configure other variables and modes in the :config section,
-    ;; after lazily loading the package.
-    :config
-
-    ;; Optionally configure preview. The default value
-    ;; is 'any, such that any key triggers the preview.
-    ;; (setq consult-preview-key 'any)
-    ;; (setq consult-preview-key (kbd "M-."))
-    ;; (setq consult-preview-key (list (kbd "<S-down>") (kbd "<S-up>")))
-    ;; For some commands and buffer sources it is useful to configure the
-    ;; :preview-key on a per-command basis using the `consult-customize' macro.
-    (consult-customize
-     consult-theme
-     :preview-key '(:debounce 0.2 any)
-     consult-ripgrep consult-git-grep consult-grep
-     consult-bookmark consult-recent-file consult-xref
-     consult--source-bookmark consult--source-recent-file
-     consult--source-project-recent-file
-     :preview-key (kbd "M-."))
-
-    ;; Optionally configure the narrowing key.
-    ;; Both < and C-+ work reasonably well.
-    (setq consult-narrow-key "<") ;; (kbd "C-+")
-
-    ;; Optionally make narrowing help available in the minibuffer.
-    ;; You may want to use `embark-prefix-help-command' or which-key instead.
-    ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
-
-    ;; By default `consult-project-function' uses `project-root' from project.el.
-    ;; Optionally configure a different project root function.
-    ;; There are multiple reasonable alternatives to chose from.
-    ;;;; 1. project.el (the default)
-    ;; (setq consult-project-function #'consult--default-project--function)
-    ;;;; 2. projectile.el (projectile-project-root)
-    ;; (autoload 'projectile-project-root "projectile")
-    ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
-    ;;;; 3. vc.el (vc-root-dir)
-    ;; (setq consult-project-function (lambda (_) (vc-root-dir)))
-    ;;;; 4. locate-dominating-file
-    ;; (setq consult-project-function (lambda (_) (locate-dominating-file "." ".git")))
-  )
-
-(use-package consult-dir
-  :ensure t
-  :bind (("C-x C-d" . consult-dir)
-         :map minibuffer-local-completion-map
-         ("C-x C-d" . consult-dir)
-         ("C-x C-j" . consult-dir-jump-file)))
-
-
-#+END_SRC
-
-**** Orderless
-#+NAME: comp-mb-ver-orderless
-#+begin_src emacs-lisp
-
-  ;; ---( orderless )--------------------------------------------------------------
-
-  (use-package orderless
-    :ensure t
-    :init
-    (setq completion-styles '(orderless)))
-
-  ;; (use-package orderless
-  ;;   :custom
-  ;;   (completion-styles '(orderless))      ; Use orderless
-  ;;   (completion-category-defaults nil)    ; I want to be in control!
-  ;;   (completion-category-overrides
-  ;;    '((file (styles basic-remote ; For `tramp' hostname completion with `vertico'
-  ;;                    orderless)))))
-
-
-#+END_SRC
-
-**** Embark
-#+NAME: comp-mb-ver-embark
-#+begin_src emacs-lisp
-
-  ;; ---( embark )--------------------------------------------------------------
-
-    (use-package embark
-    :ensure t
-
-    :bind
-    (("C-." . embark-act)         ;; pick some comfortable binding
-     ("C-;" . embark-dwim)        ;; good alternative: M-.
-     ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
-
-     :init
-
-     ;; Optionally replace the key help with a completing-read interface
-     (setq prefix-help-command #'embark-prefix-help-command)
-
-     :config
-
-     ;; Hide the mode line of the Embark live/completions buffers
-     (add-to-list 'display-buffer-alist
-                  '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
-                    nil
-                    (window-parameters (mode-line-format . none))))
-
-    )
-
-  ;; Consult users will also want the embark-consult package.
-  (use-package embark-consult
-    :ensure t
-    :after (embark consult)
-    ;; :demand t ; only necessary if you have the hook below
-    ;; if you want to have consult previews as you move around an
-    ;; auto-updating embark collect buffer
-    :hook
-    (embark-collect-mode . consult-preview-at-point-mode))
-
-  ;; (use-package embark
-  ;;   :ensure t)
-
-  ;; Consult users will also want the embark-consult package.
-  ;; (use-package embark-consult
-  ;;   :ensure t
-  ;;   :after (embark consult)
-  ;;   :demand t only necessary if you have the hook below
-  ;;   if you want to have consult previews as you move around an
-  ;;   auto-updating embark collect buffer
-  ;;   :hook
-  ;;   (embark-collect-mode . consult-preview-at-point-mode))
-
-
-#+END_SRC
-
-**** Savehist
-#+NAME: comp-mb-ver-savehist
-#+begin_src emacs-lisp
-
-
-  ;; ---( savehist )--------------------------------------------------------------
-
-  ;; Persist history over Emacs restarts. Vertico sorts by history position.
-  (use-package savehist
-    :init
-    (savehist-mode))
-
-
-  (recentf-mode)
-
-  (setq completion-ignore-case t)
-  (setq read-file-name-completion-ignore-case t)
-
-
-
-
-#+END_SRC
-**** Vertico*/end
-#+NAME: comp-mb-ver-end
-#+begin_src emacs-lisp
-
-  (message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico)) 
-  ;; .........................................................................
-
-#+END_SRC
-
-*** Completion/end
-#+NAME: comp-mb-end
-#+begin_src emacs-lisp
-
-  ;; }}}  .comp-mb
-
-#+END_SRC
-
 ** Jump
 *** Jump/begin
 #+NAME: jump-begin
@@ -5616,206 +5822,6 @@ With a prefix ARG, remove start location."
 
 #+END_SRC
 
-** Net
-*** Net/begin
-#+NAME: net-begin
-#+begin_src emacs-lisp
-
-  ;; ;;;////////////////////////////////////////////////////////////////
-  ;; {{{  @NET
-  ;; ;;;////////////////////////////////////////////////////////////////
-
-
-#+END_SRC
-
-*** Web
-**** w3m
-#+NAME: net-web-w3m
-#+begin_src emacs-lisp
-
-  ;; ---( w3m )------------------------------------------------------
-
-  (use-package w3m
-    :disabled t
-    :commands (w3m-search w3m-find-file)
-    :bind (("C-. u" . w3m-browse-url)
-           ("C-. U" . w3m-browse-url-new-session)
-           ("C-. A-u" . w3m-browse-chrome-url-new-session)
-           ("C-. w" . show-browser)
-           ("A-M-e" . goto-emacswiki)
-           ("A-M-g" . w3m-search)
-           ("A-M-w" . wikipedia-query))
-    :init
-    (setq w3m-command "w3m")
-    (setq w3m-coding-system 'utf-8
-          w3m-file-coding-system 'utf-8
-          w3m-file-name-coding-system 'utf-8
-          w3m-input-coding-system 'utf-8
-          w3m-output-coding-system 'utf-8
-          w3m-terminal-coding-system 'utf-8)
-    (add-hook 'w3m-mode-hook 'w3m-link-numbering-mode)
-    (autoload 'w3m-session-crash-recovery-remove "w3m-session")
-    (defun show-browser ()
-      (interactive)
-      (let ((w3m-buf
-             (catch 'found
-               (dolist (buf (buffer-list))
-                 (if (string-match "\\*w3m" (buffer-name buf))
-                     (throw 'found buf))))))
-        (if w3m-buf
-            (switch-to-buffer-other-window w3m-buf)
-          (call-interactively 'w3m-find-file))))
-    (defun wikipedia-query (term)
-      (interactive (list (read-string "Wikipedia search: " (word-at-point))))
-      (require 'w3m-search)
-      (w3m-search "en.wikipedia" term))
-    (eval-when-compile
-      (autoload 'w3m-search-escape-query-string "w3m-search"))
-    (defun wolfram-alpha-query (term)
-      (interactive (list (read-string "Ask Wolfram Alpha: " (word-at-point))))
-      (require 'w3m-search)
-      (w3m-browse-url (concat "http://m.wolframalpha.com/input/?i="
-                              (w3m-search-escape-query-string term))))
-    (defun goto-emacswiki ()
-      (interactive)
-      (w3m-browse-url "http://www.emacswiki.org"))
-    (defun w3m-browse-url-new-session (url)
-      (interactive (progn
-                     (require 'browse-url)
-                     (browse-url-interactive-arg "Emacs-w3m URL: ")))
-      (w3m-browse-url url t))
-    (defun w3m-browse-chrome-url-new-session ()
-      (interactive)
-      (let ((url (do-applescript
-                  (string-to-multibyte "tell application \"Google Chrome\"
-  URL of active tab of front window
-  end tell"))))
-        (w3m-browse-url (substring url 1 (1- (length url))) t)))
-    :config
-    (let (proxy-host proxy-port)
-      (with-temp-buffer
-        (shell-command "scutil --proxy" (current-buffer))
-        (when (re-search-forward "HTTPPort : \\([0-9]+\\)" nil t)
-          (setq proxy-port (match-string 1)))
-        (when (re-search-forward "HTTPProxy : \\(\\S-+\\)" nil t)
-          (setq proxy-host (match-string 1))))
-      (if (and proxy-host proxy-port)
-          (setq w3m-command-arguments
-                (nconc w3m-command-arguments
-                       (list "-o" (format "http_proxy=http://%s:%s/"
-                                          proxy-host proxy-port)))))
-      (use-package w3m-type-ahead
-        :requires w3m
-        :init
-        (add-hook 'w3m-mode-hook 'w3m-type-ahead-mode))
-      (add-hook 'w3m-display-hook
-                (lambda (url)
-                  (let ((buffer-read-only nil))
-                    (delete-trailing-whitespace))))
-      (defun my-w3m-linknum-follow ()
-        (interactive)
-        (w3m-linknum-follow))
-      (bind-key "k" 'w3m-delete-buffer w3m-mode-map)
-      (bind-key "i" 'w3m-view-previous-page w3m-mode-map)
-      (bind-key "p" 'w3m-previous-anchor w3m-mode-map)
-      (bind-key "n" 'w3m-next-anchor w3m-mode-map)
-      (defun dka-w3m-textarea-hook()
-        (save-excursion
-          (while (re-search-forward "\r\n" nil t)
-            (replace-match "\n" nil nil))
-          (delete-other-windows)))
-      (add-hook 'w3m-form-input-textarea-mode-hook 'dka-w3m-textarea-hook)
-      (bind-key "<return>" 'w3m-view-url-with-external-browser
-                w3m-minor-mode-map)
-      (bind-key "S-<return>" 'w3m-safe-view-this-url w3m-minor-mode-map)))
-
-
-#+END_SRC
-
-*** News
-**** elfeed
-#+NAME: net-news-elfeed
-#+begin_src emacs-lisp
-
-  ;; ---( elfeed )--------------------------------------------------------------
-
-  ;; @see: https://github.com/skeeto/elfeed
-
-  ;; (use-package elfeed
-  ;;   :ensure t
-  ;;   :defer 30
-  ;;   )
-
-  ;; @see: http://pragmaticemacs.com/emacs/read-your-rss-feeds-in-emacs-with-elfeed/
-  ;; @see: https://github.com/danlamanna/.emacs.d/blob/master/init.el
-  ;; @see: http://feedly.com/i/opml
-
-  (use-package elfeed-org
-    :disabled t
-  ;;:ensure t
-    :config (progn
-              (use-package elfeed
-                :ensure t
-                :config (progn
-                          (custom-set-variables
-                           ;; oldest articles should be at the top
-                           '(elfeed-sort-order 'ascending))))
-
-              (use-package elfeed-goodies
-                :ensure t
-                :config (progn
-                          (elfeed-goodies/setup)))
-
-              (setq rmh-elfeed-org-files (list "~/.rss/elfeed.org"))
-              (elfeed-org)))
-
-
-  ;; @see: https://github.com/algernon/elfeed-goodies
-  ;; (use-package elfeed-goodies
-  ;;   :ensure t
-  ;;   :defer 30
-  ;;   )
-
-#+END_SRC
-
-**** GNus
-#+NAME: net-news-gnus
-#+begin_src emacs-lisp
-
-  ;; ---( GNus )--------------------------------------------------------------
-
-  ;; @see: https://www.emacswiki.org/emacs/GnusRss
-
-
-#+END_SRC
-
-*** Twitter
-**** twittering
-#+NAME: net-twitter-twittering
-#+begin_src emacs-lisp
-
-  ;; ---( twittering-mode )--------------------------------------------------------------
-
-  (use-package twittering-mode
-    :disabled t
-    :defer 30
-    )
-  ;; (use-package twittering-mode
-  ;;   :disabled t
-  ;;   :commands twit
-  ;;   :config
-  ;;   (setq twittering-use-master-password t))
-
-
-#+END_SRC
-
-*** Net/end
-#+NAME: net-end
-#+begin_src emacs-lisp
-
-  ;; }}}  .net
-
-#+END_SRC
 ** Footer
 *** Log: finish
 #+NAME: log-finish

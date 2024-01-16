@@ -72,6 +72,7 @@
     (h7/clear)
     
     (h7/load "site-pref")
+    (h7/load "site-conf")
 
     (h7/local)
     
