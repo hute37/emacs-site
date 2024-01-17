@@ -2,47 +2,47 @@
 ;; #+NAME: log-start
 
 ;; [[file:site-pkgs.org::log-start][log-start]]
-;; ---( site.pkgs: begin )-------------------------------------------------------
-(message "SITE:PKGS - begin")
+  ;; ---( site.pkgs: begin )-------------------------------------------------------
+  (message "SITE:PKGS - begin")
 ;; log-start ends here
 
 ;; References
 ;; #+NAME: references
 
 ;; [[file:site-pkgs.org::references][references]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @REFERENCES
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @REFERENCES
+  ;; ;;;////////////////////////////////////////////////////////////////
 
-;; ---( dotfiles )--------------------------------------------------------------
+  ;; ---( dotfiles )--------------------------------------------------------------
 
-;; @see: https://sachachua.com/dotemacs#%s
-;; @see: http://emacsredux.com/blog/2014/08/25/a-peek-at-emacs-24-dot-4-prettify-symbols-mode/
-;; @see: https://elpy.readthedocs.org/en/latest/
-;; @see: https://emacs-lsp.github.io/lsp-mode/page/installation/
-;; @see: https://gitea.petton.fr/nico/emacs.d/src/commit/8ae2b902c916600c9296d967f36ed69ad50e8199/init.el?lang=sv-SE
-;; @see: https://github.com/bdd/.emacs.d/blob/master/packages.el
-;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
-;; @see: https://github.com/cgroll/dot_emacs.d/blob/master/init.el
-;; @see: https://github.com/jidicula/dotfiles/blob/main/init.el?utm_source=pocket_mylist
-;; @see: https://github.com/jorgenschaefer/elpy
-;; @see: https://github.com/JuliaEditorSupport/julia-emacs
-;; @see: https://github.com/jwiegley/use-package
-;; @see: https://github.com/nnicandro/emacs-jupyter
-;; @see: https://github.com/pdorrell/rules-editing-mode
-;; @see: https://github.com/pdorrell/rules-editing-mode/blob/master/my-drools.el
-;; @see: https://github.com/serras/emacs-haskell-tutorial/blob/master/tutorial.md
-;; @see: https://github.com/tpapp/julia-repl
-;; @see: https://gitlab.com/balajisi/emacs/blob/master/init.el
-;; @see: https://gitlab.com/nathanfurnal/dotemacs/-/snippets/2060535?utm_source=pocket_mylist
-;; @see: https://julia-users-zurich.github.io/talks/talk-2018-04/emacs.html
-;; @see: https://ladicle.com/post/config/
-;; @see: https://sgtpeacock.com/dot-files/Emacs.html#org66117b2
-;; @see: https://systemcrafters.net/build-a-second-brain-in-emacs/5-org-roam-hacks/
-;; @see: https://youtu.be/0kuCeS-mfyc
-;; @see: http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.html
+  ;; @see: https://sachachua.com/dotemacs#%s
+  ;; @see: http://emacsredux.com/blog/2014/08/25/a-peek-at-emacs-24-dot-4-prettify-symbols-mode/
+  ;; @see: https://elpy.readthedocs.org/en/latest/
+  ;; @see: https://emacs-lsp.github.io/lsp-mode/page/installation/
+  ;; @see: https://gitea.petton.fr/nico/emacs.d/src/commit/8ae2b902c916600c9296d967f36ed69ad50e8199/init.el?lang=sv-SE
+  ;; @see: https://github.com/bdd/.emacs.d/blob/master/packages.el
+  ;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
+  ;; @see: https://github.com/cgroll/dot_emacs.d/blob/master/init.el
+  ;; @see: https://github.com/jidicula/dotfiles/blob/main/init.el?utm_source=pocket_mylist
+  ;; @see: https://github.com/jorgenschaefer/elpy
+  ;; @see: https://github.com/JuliaEditorSupport/julia-emacs
+  ;; @see: https://github.com/jwiegley/use-package
+  ;; @see: https://github.com/nnicandro/emacs-jupyter
+  ;; @see: https://github.com/pdorrell/rules-editing-mode
+  ;; @see: https://github.com/pdorrell/rules-editing-mode/blob/master/my-drools.el
+  ;; @see: https://github.com/serras/emacs-haskell-tutorial/blob/master/tutorial.md
+  ;; @see: https://github.com/tpapp/julia-repl
+  ;; @see: https://gitlab.com/balajisi/emacs/blob/master/init.el
+  ;; @see: https://gitlab.com/nathanfurnal/dotemacs/-/snippets/2060535?utm_source=pocket_mylist
+  ;; @see: https://julia-users-zurich.github.io/talks/talk-2018-04/emacs.html
+  ;; @see: https://ladicle.com/post/config/
+  ;; @see: https://sgtpeacock.com/dot-files/Emacs.html#org66117b2
+  ;; @see: https://systemcrafters.net/build-a-second-brain-in-emacs/5-org-roam-hacks/
+  ;; @see: https://youtu.be/0kuCeS-mfyc
+  ;; @see: http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.html
 
-;; }}}  .references
+  ;; }}}  .references
 ;; references ends here
 
 ;; Use-Package
@@ -50,209 +50,209 @@
 ;; #+NAME: startup
 
 ;; [[file:site-pkgs.org::startup][startup]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @PACKAGES
-;; ;;;////////////////////////////////////////////////////////////////
+      ;; ;;;////////////////////////////////////////////////////////////////
+      ;; {{{  @PACKAGES
+      ;; ;;;////////////////////////////////////////////////////////////////
 
-;; ---( Install )--------------------------------------------------------------
+      ;; ---( Install )--------------------------------------------------------------
 
-;;(fset 'h7/ensure 't)
-;;(fset h7/ensure nil)
+      ;;(fset 'h7/ensure 't)
+      ;;(fset h7/ensure nil)
 
-;; ---( Boot )--------------------------------------------------------------
+      ;; ---( Boot )--------------------------------------------------------------
 
-;; (setq debug-on-error t)
-
-
-;; @see: https://github.com/radian-software/straight.el
-;; @see: 
-;; @see: https://youtu.be/UmbVeqphGlc
-
-;; (setq straight-use-package-by-default t)
-;; (setq use-package-always-ensure t)
-;; 
-;; (defvar bootstrap-version)
-;; (let ((bootstrap-file
-;;        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-;;       (bootstrap-version 5))
-;;   (unless (file-exists-p bootstrap-file)
-;;     (with-current-buffer
-;;         (url-retrieve-synchronously
-;;          "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-;;          'silent 'inhibit-cookies)
-;;       (goto-char (point-max))
-;;       (eval-print-last-sexp)))
-;;   (load bootstrap-file nil 'nomessage))
-;; 
-;; (setq package-enable-at-startup nil)
-;; (straight-use-package 'use-package)
-;; (eval-when-compile (require 'use-package))
+      ;; (setq debug-on-error t)
 
 
-;; @see: https://ianyepan.github.io/posts/setting-up-use-package/
-;; @see: https://www.reddit.com/r/emacs/comments/dfcyy6/how_to_install_and_use_usepackage/
-;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
+      ;; @see: https://github.com/radian-software/straight.el
+      ;; @see: 
+      ;; @see: https://youtu.be/UmbVeqphGlc
 
-(eval-and-compile
-  (require 'package)
-  (add-to-list 'package-archives '("org"       . "http://orgmode.org/elpa/")) ; Org-mode's repository
-  (add-to-list 'package-archives '("gnu"       . "https://elpa.gnu.org/packages/"))
-  (add-to-list 'package-archives '("melpa"     . "https://melpa.org/packages/"))
-  (add-to-list 'package-archives '("nongnu"    . "https://elpa.nongnu.org/nongnu/"))
-  (add-to-list 'package-archives '("jcs-elpa"  . "https://jcs-emacs.github.io/jcs-elpa/packages/") t)
-
-  (setq package-archive-priorities '(("melpa"    . 5)
-                                     ("jcs-elpa" . 0)))
-  ;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
-  ;;(package-initialize)
-  ;; i always fetch the archive contents on startup and during compilation, which is slow
-  ;; (package-refresh-contents)
-  (unless (package-installed-p 'use-package)
-    (package-install 'use-package))
-  (setq use-package-verbose t)
-  (require 'use-package)
-  ;; i don't really know why this isn't the default...
-  ;;(setf use-package-always-ensure t)
-
-  ;;(use-package use-package-ensure
-  ;;  :config  (setq use-package-always-ensure t))
-
-  (use-package quelpa
-    :ensure t)
-  (use-package quelpa-use-package
-    :ensure t)
-  (quelpa-use-package-activate-advice)
-  (use-package auto-compile
-    :ensure t
-    :config (auto-compile-on-load-mode))
-  (setq load-prefer-newer t)
-
-  ;;   (unless (package-installed-p 'quelpa)
-  ;;     (with-temp-buffer
-  ;;       (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
-  ;;       (eval-buffer)
-  ;;       (quelpa-self-upgrade)))
-  ;;   (quelpa
-  ;;    '(quelpa-use-package
-  ;;      :fetcher git
-  ;;      :url "https://github.com/quelpa/quelpa-use-package.git"))
-  ;;   (require 'quelpa-use-package)
-  ;;
-  )
-
-;; ;; @see:  https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
-
-;; ;;; initialization
-;; (require 'package)
-;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
-;; (package-initialize)
-;; (when (not package-archive-contents)
-;;   (package-refresh-contents))
-;; (package-install 'use-package)
-;; (use-package use-package-ensure
-;;   :config  (setq use-package-always-ensure t))
-
-;; (unless (package-installed-p 'quelpa)
-;;   (with-temp-buffer
-;;     (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
-;;     (eval-buffer)
-;;     (quelpa-self-upgrade)))
-;; (quelpa
-;;  '(quelpa-use-package
-;;    :fetcher git
-;;    :url "https://github.com/quelpa/quelpa-use-package.git"))
-;; (require 'quelpa-use-package)
+      ;; (setq straight-use-package-by-default t)
+      ;; (setq use-package-always-ensure t)
+      ;; 
+      ;; (defvar bootstrap-version)
+      ;; (let ((bootstrap-file
+      ;;        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      ;;       (bootstrap-version 5))
+      ;;   (unless (file-exists-p bootstrap-file)
+      ;;     (with-current-buffer
+      ;;         (url-retrieve-synchronously
+      ;;          "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+      ;;          'silent 'inhibit-cookies)
+      ;;       (goto-char (point-max))
+      ;;       (eval-print-last-sexp)))
+      ;;   (load bootstrap-file nil 'nomessage))
+      ;; 
+      ;; (setq package-enable-at-startup nil)
+      ;; (straight-use-package 'use-package)
+      ;; (eval-when-compile (require 'use-package))
 
 
-;;(require 'package)
-;; ;;(nconc package-archives
-;; ;;      '(("melpa" . "http://melpa.org/packages/")
-;; ;;        ("org" . "http://orgmode.org/elpa/")))
-;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-;;(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
+      ;; @see: https://ianyepan.github.io/posts/setting-up-use-package/
+      ;; @see: https://www.reddit.com/r/emacs/comments/dfcyy6/how_to_install_and_use_usepackage/
+      ;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
 
-;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-;;(add-to-list 'package-archives '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
+      (eval-and-compile
+        (require 'package)
+        (add-to-list 'package-archives '("org"       . "http://orgmode.org/elpa/")) ; Org-mode's repository
+        (add-to-list 'package-archives '("gnu"       . "https://elpa.gnu.org/packages/"))
+        (add-to-list 'package-archives '("melpa"     . "https://melpa.org/packages/"))
+        (add-to-list 'package-archives '("nongnu"    . "https://elpa.nongnu.org/nongnu/"))
+        (add-to-list 'package-archives '("jcs-elpa"  . "https://jcs-emacs.github.io/jcs-elpa/packages/") t)
 
-;; You don't need this one if you have marmalade:
-;; (add-to-list 'package-archives '("geiser" . "http://download.savannah.gnu.org/releases/geiser/packages"))
+        (setq package-archive-priorities '(("melpa"    . 5)
+                                           ("jcs-elpa" . 0)))
+        ;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+        ;;(package-initialize)
+        ;; i always fetch the archive contents on startup and during compilation, which is slow
+        ;; (package-refresh-contents)
+        (unless (package-installed-p 'use-package)
+          (package-install 'use-package))
+        (setq use-package-verbose t)
+        (require 'use-package)
+        ;; i don't really know why this isn't the default...
+        ;;(setf use-package-always-ensure t)
 
-;;(setq package-enable-at-startup nil)
+        ;;(use-package use-package-ensure
+        ;;  :config  (setq use-package-always-ensure t))
 
-;; (setq 
-;;  load-prefer-newer t
-;;  package-user-dir "~/.emacs.d/elpa"
-;;  package--init-file-ensured t
-;;  package-enable-at-startup nil)
+        (use-package quelpa
+          :ensure t)
+        (use-package quelpa-use-package
+          :ensure t)
+        (quelpa-use-package-activate-advice)
+        (use-package auto-compile
+          :ensure t
+          :config (auto-compile-on-load-mode))
+        (setq load-prefer-newer t)
 
-;; (unless (file-directory-p package-user-dir)
-;;   (make-directory package-user-dir t))    
+        ;;   (unless (package-installed-p 'quelpa)
+        ;;     (with-temp-buffer
+        ;;       (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+        ;;       (eval-buffer)
+        ;;       (quelpa-self-upgrade)))
+        ;;   (quelpa
+        ;;    '(quelpa-use-package
+        ;;      :fetcher git
+        ;;      :url "https://github.com/quelpa/quelpa-use-package.git"))
+        ;;   (require 'quelpa-use-package)
+        ;;
+        )
 
-;;(package-initialize)
+      ;; ;; @see:  https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
 
+      ;; ;;; initialization
+      ;; (require 'package)
+      ;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+      ;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
+      ;; (package-initialize)
+      ;; (when (not package-archive-contents)
+      ;;   (package-refresh-contents))
+      ;; (package-install 'use-package)
+      ;; (use-package use-package-ensure
+      ;;   :config  (setq use-package-always-ensure t))
 
-;; (unless (package-installed-p 'use-package)
-;;   (progn
-;;     (package-refresh-contents)
-;;     (package-install 'use-package)))
-;; (eval-when-compile
-;;   (eval-after-load 'advice
-;;     '(setq ad-redefinition-action 'accept))
-;;   (require 'use-package))
-;; (require 'diminish)
-;; (require 'bind-key)
-
-;; (require 'package)
-;; (setq package-enable-at-startup nil)
-
-;; ;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-;; (unless (assoc-default "melpa" package-archives)
-;;   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t))
-
-;;(package-initialize)
-
-;; Bootstrap `use-package'
-(unless (and
-         (package-installed-p 'bind-key)
-         (package-installed-p 'diminish)
-         (package-installed-p 'use-package)
-         (package-installed-p 'req-package)
-         )
-  (package-refresh-contents)
-  (package-install 'bind-key)
-  (package-install 'diminish)
-  (package-install 'use-package)
-  (package-install 'req-package)
-  )
-
-;; (straight-use-package 'bind-key)
-;; (straight-use-package 'diminish)
-
-;; @see: https://github.com/jwiegley/dot-emacs/blob/master/init.el
-
-(eval-and-compile
-  (defvar use-package-verbose t))
+      ;; (unless (package-installed-p 'quelpa)
+      ;;   (with-temp-buffer
+      ;;     (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+      ;;     (eval-buffer)
+      ;;     (quelpa-self-upgrade)))
+      ;; (quelpa
+      ;;  '(quelpa-use-package
+      ;;    :fetcher git
+      ;;    :url "https://github.com/quelpa/quelpa-use-package.git"))
+      ;; (require 'quelpa-use-package)
 
 
-(require 'bind-key)
-(require 'use-package)
+      ;;(require 'package)
+      ;; ;;(nconc package-archives
+      ;; ;;      '(("melpa" . "http://melpa.org/packages/")
+      ;; ;;        ("org" . "http://orgmode.org/elpa/")))
+      ;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+      ;;(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
 
-;; use-package-ensure-system-package
-;; provides way to define system package dependencies for Emacs packages
-(use-package use-package-ensure-system-package
-  :ensure t)
+      ;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+      ;;(add-to-list 'package-archives '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
 
-(require 'req-package)
-;;(use-package req-package)
+      ;; You don't need this one if you have marmalade:
+      ;; (add-to-list 'package-archives '("geiser" . "http://download.savannah.gnu.org/releases/geiser/packages"))
 
-;; @see: https://github.com/noctuid/general.el
-(use-package general
-  :ensure t)
+      ;;(setq package-enable-at-startup nil)
 
-;; ---( ... )--------------------------------------------------------------
+      ;; (setq 
+      ;;  load-prefer-newer t
+      ;;  package-user-dir "~/.emacs.d/elpa"
+      ;;  package--init-file-ensured t
+      ;;  package-enable-at-startup nil)
 
-;; }}}  .packages
+      ;; (unless (file-directory-p package-user-dir)
+      ;;   (make-directory package-user-dir t))    
+
+      ;;(package-initialize)
+
+
+      ;; (unless (package-installed-p 'use-package)
+      ;;   (progn
+      ;;     (package-refresh-contents)
+      ;;     (package-install 'use-package)))
+      ;; (eval-when-compile
+      ;;   (eval-after-load 'advice
+      ;;     '(setq ad-redefinition-action 'accept))
+      ;;   (require 'use-package))
+      ;; (require 'diminish)
+      ;; (require 'bind-key)
+
+      ;; (require 'package)
+      ;; (setq package-enable-at-startup nil)
+
+      ;; ;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+      ;; (unless (assoc-default "melpa" package-archives)
+      ;;   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t))
+
+      ;;(package-initialize)
+
+      ;; Bootstrap `use-package'
+      (unless (and
+               (package-installed-p 'bind-key)
+               (package-installed-p 'diminish)
+               (package-installed-p 'use-package)
+               (package-installed-p 'req-package)
+               )
+        (package-refresh-contents)
+        (package-install 'bind-key)
+        (package-install 'diminish)
+        (package-install 'use-package)
+        (package-install 'req-package)
+        )
+
+      ;; (straight-use-package 'bind-key)
+      ;; (straight-use-package 'diminish)
+
+      ;; @see: https://github.com/jwiegley/dot-emacs/blob/master/init.el
+
+      (eval-and-compile
+        (defvar use-package-verbose t))
+
+
+      (require 'bind-key)
+      (require 'use-package)
+
+      ;; use-package-ensure-system-package
+      ;; provides way to define system package dependencies for Emacs packages
+      (use-package use-package-ensure-system-package
+        :ensure t)
+
+      (require 'req-package)
+      ;;(use-package req-package)
+
+      ;; @see: https://github.com/noctuid/general.el
+      (use-package general
+        :ensure t)
+
+      ;; ---( ... )--------------------------------------------------------------
+
+      ;; }}}  .packages
 ;; startup ends here
 
 ;; Basic
@@ -260,990 +260,1010 @@
 ;; #+NAME: basic
 
 ;; [[file:site-pkgs.org::basic][basic]]
-;; ;;;////////////////////////////////////////////////////////////////
-       ;; {{{  @BASIC
-       ;; ;;;////////////////////////////////////////////////////////////////
+         ;; ;;;////////////////////////////////////////////////////////////////
+         ;; {{{  @BASIC
+         ;; ;;;////////////////////////////////////////////////////////////////
 
-       ;; ---( ... )--------------------------------------------------------------
+         ;; ---( ... )--------------------------------------------------------------
 
-       ;; ---( ... )--------------------------------------------------------------
+         ;; ---( ... )--------------------------------------------------------------
 
-       ;;(use-package bs
-       ;;  :ensure t)
+         ;;(use-package bs
+         ;;  :ensure t)
 
-       ;; ---( ... )--------------------------------------------------------------
+         ;; ---( ... )--------------------------------------------------------------
 
-       ;; (use-package pretty-symbols
-       ;;   :ensure t)
+         ;; (use-package pretty-symbols
+         ;;   :ensure t)
 
-       ;; (use-package pretty-lambdada
-       ;;   :ensure t
-       ;;   :init (dolist (hook '(lisp-mode-hook emacs-lisp-mode-hook)))
-       ;;   :config (dolist (global-pretty-lambda-mode)))
-
-
-     ;; (use-package jumpc
-     ;;   :disabled t
-     ;;   :config (progn (jumpc-bind-vim-key)))
-
-     ;; (use-package rainbow-delimiters
-     ;;   :disabled t
-     ;;   :hook (prog-mode . rainbow-delimiters-mode))
-
-     ;; ---( undo-tree )--------------------------------------------------------------
-
-(use-package undo-tree
-  :ensure t
-  :diminish undo-tree-mode
-  ;; :bind (("C-c _" . undo-tree-visualize))
-  :config
-  (progn
-    (global-undo-tree-mode)
-    ;; (unbind-key "M-_" undo-tree-map)
-    (setq undo-tree-visualizer-timestamps t)
-    (setq undo-tree-visualizer-diff t)
-    (setq undo-tree-history-directory-alist '(("." . "~/.backups/emacs/undo-tree")))))
+         ;; (use-package pretty-lambdada
+         ;;   :ensure t
+         ;;   :init (dolist (hook '(lisp-mode-hook emacs-lisp-mode-hook)))
+         ;;   :config (dolist (global-pretty-lambda-mode)))
 
 
-  ;; ---( dash )--------------------------------------------------------------
+       ;; (use-package jumpc
+       ;;   :disabled t
+       ;;   :config (progn (jumpc-bind-vim-key)))
 
-  ;; ~dash.el~ :: A modern list API for Emacs. No 'cl required.  (See https://github.com/magnars/dash.el/)
-  (use-package dash
-    :ensure t)
+       ;; (use-package rainbow-delimiters
+       ;;   :disabled t
+       ;;   :hook (prog-mode . rainbow-delimiters-mode))
 
-  ;; ---( f )--------------------------------------------------------------
+       ;; ---( undo-tree )--------------------------------------------------------------
 
-  ;; ~f.el~ :: A modern API for working with files and directories in Emacs. (See https://github.com/rejeep/f.el/)
-  (use-package f
-    :ensure t)
+  (use-package undo-tree
+    :ensure t
+    :diminish undo-tree-mode
+    ;; :bind (("C-c _" . undo-tree-visualize))
+    :config
+    (progn
+      (global-undo-tree-mode)
+      ;; (unbind-key "M-_" undo-tree-map)
+      (setq undo-tree-visualizer-timestamps t)
+      (setq undo-tree-visualizer-diff t)
+      (setq undo-tree-history-directory-alist '(("." . "~/.backups/emacs/undo-tree")))))
 
-  ;; ---( s )--------------------------------------------------------------
 
-  ;; ~s.el~ :: The long lost Emacs string manipulation library.  (See https://github.com/magnars/s.el/)
-  (use-package s
-    :ensure t)
+    ;; ---( dash )--------------------------------------------------------------
+
+    ;; ~dash.el~ :: A modern list API for Emacs. No 'cl required.  (See https://github.com/magnars/dash.el/)
+    (use-package dash
+      :ensure t)
+
+    ;; ---( f )--------------------------------------------------------------
+
+    ;; ~f.el~ :: A modern API for working with files and directories in Emacs. (See https://github.com/rejeep/f.el/)
+    (use-package f
+      :ensure t)
+
+    ;; ---( s )--------------------------------------------------------------
+
+    ;; ~s.el~ :: The long lost Emacs string manipulation library.  (See https://github.com/magnars/s.el/)
+    (use-package s
+      :ensure t)
 
 
-    ;; }}}  .packages
+      ;; }}}  .packages
 ;; basic ends here
+
+;; Config
+
+;; #+NAME: config
+
+;; [[file:site-pkgs.org::config][config]]
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @CONFIG
+;; ;;;////////////////////////////////////////////////////////////////
+
+;; ---( ... )--------------------------------------------------------------
+
+;; Enable local variables
+(setq-default enable-local-variables t)
+
+;; ---( ... )--------------------------------------------------------------
+
+
+;; }}}  .packages
+;; config ends here
 
 ;; UI
 
 ;; #+NAME: ui
 
 ;; [[file:site-pkgs.org::ui][ui]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @UI
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @UI
+  ;; ;;;////////////////////////////////////////////////////////////////
 
-;; ---( mode-line )--------------------------------------------------------------
+  ;; ---( mode-line )--------------------------------------------------------------
 
-(use-package minions
-  :ensure t
-  :config (minions-mode 1)
-  )
+  (use-package minions
+    :ensure t
+    :config (minions-mode 1)
+    )
 
-(use-package mood-line
-  :ensure t
-  :config (mood-line-mode 1)
-  )
+  (use-package mood-line
+    :ensure t
+    :config (mood-line-mode 1)
+    )
 
-;; delight
-;; hides modeline displays
-(use-package delight
-  :ensure t)
-(require 'delight)                ;; if you use :delight
-(require 'bind-key)                ;; if you use any :bind variant
+  ;; delight
+  ;; hides modeline displays
+  (use-package delight
+    :ensure t)
+  (require 'delight)                ;; if you use :delight
+  (require 'bind-key)                ;; if you use any :bind variant
 
-;; ;; Required to hide the modeline 
-;; (use-package hide-mode-line
-;;   :ensure t
-;;   :defer t)
+  ;; ;; Required to hide the modeline 
+  ;; (use-package hide-mode-line
+  ;;   :ensure t
+  ;;   :defer t)
 
-;; (use-package all-the-icons)
-;; (use-package doom-modeline
-;;   :after eshell
-;;   :init (doom-modeline-mode 1))
+  ;; (use-package all-the-icons)
+  ;; (use-package doom-modeline
+  ;;   :after eshell
+  ;;   :init (doom-modeline-mode 1))
 
-;; (use-package powerline
-;;   :ensure t
-;;   :init (powerline-default-theme)
-;; )
-
-
-;; (use-package powerline
-;; 	     :init (dolist
-
-;; 			 ;; powerine
-;; 			 ;; smart-mode-line
-;; 			 ;; smart-mode-line-powerline-theme
-;; 			 ;;(require 'powerline)
-
-;; 		       (set-face-attribute 'mode-line nil
-;; 					   :foreground "Black"
-;; 					   :background "DarkOrange"
-;; 					   :box nil)
-
-;; 		       (powerline-default-theme)
-
-;; 		       ;;    (require 'smart-mode-line)
-;; 		       ;;    (setq sml/theme 'powerline)
-;; 		       ;;    (load-theme 'smart-mode-line-powerline t)
-;; 		       ;;    (sml/setup)
-
-;; 		       ;;(sml/apply-theme 'powerline)
-;; 		       ;;(sml/apply-theme 'dark)
-;; 		       ;;(sml/apply-theme 'light)
-;; 		       ;;(sml/apply-theme 'respectful)
-;; 		       ;;(sml/apply-theme 'automatic)
-
-;; 		       ;;(powerline-default-theme)
-
-;; 		       (powerline-reset)
-
-;; 		       )
-;; 	     )
-
-;; ---( highlight )--------------------------------------------------------------
-
-(use-package hl-todo
-  :ensure t
-  :config (minions-mode 1)
-  )
-
-(use-package hl-todo
-  :ensure t
-  :hook (prog-mode . hl-todo-mode)
-  :config
-  ;; (define-key hl-todo-mode-map (kbd "C-c p") #'hl-todo-previous)
-  ;; (define-key hl-todo-mode-map (kbd "C-c n") #'hl-todo-next)
-  ;; (define-key hl-todo-mode-map (kbd "C-c o") #'hl-todo-occur)
-  ;; (define-key hl-todo-mode-map (kbd "C-c i") #'hl-todo-insert  
-  (setq hl-todo-highlight-punctuation ":"
-        hl-todo-keyword-faces
-        `(("TODO"       warning bold)
-          ("FIXME"      error bold)
-          ("HACK"       font-lock-constant-face bold)
-          ("REVIEW"     font-lock-keyword-face bold)
-          ("NOTE"       success bold)
-          ("DEPRECATED" font-lock-doc-face bold))))
-
-;; ---( dashboard )--------------------------------------------------------------
-
-(use-package dashboard
-  :ensure t
-  :custom
-  (dashboard-startup-banner 'logo)
-  (dashboard-items '((recents . 5)
-                     (projects . 5)
-                     (agenda . 5)))
-  (initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
-  :config
-  (dashboard-setup-startup-hook))
+  ;; (use-package powerline
+  ;;   :ensure t
+  ;;   :init (powerline-default-theme)
+  ;; )
 
 
-;; }}}  .ui
+  ;; (use-package powerline
+  ;; 	     :init (dolist
+
+  ;; 			 ;; powerine
+  ;; 			 ;; smart-mode-line
+  ;; 			 ;; smart-mode-line-powerline-theme
+  ;; 			 ;;(require 'powerline)
+
+  ;; 		       (set-face-attribute 'mode-line nil
+  ;; 					   :foreground "Black"
+  ;; 					   :background "DarkOrange"
+  ;; 					   :box nil)
+
+  ;; 		       (powerline-default-theme)
+
+  ;; 		       ;;    (require 'smart-mode-line)
+  ;; 		       ;;    (setq sml/theme 'powerline)
+  ;; 		       ;;    (load-theme 'smart-mode-line-powerline t)
+  ;; 		       ;;    (sml/setup)
+
+  ;; 		       ;;(sml/apply-theme 'powerline)
+  ;; 		       ;;(sml/apply-theme 'dark)
+  ;; 		       ;;(sml/apply-theme 'light)
+  ;; 		       ;;(sml/apply-theme 'respectful)
+  ;; 		       ;;(sml/apply-theme 'automatic)
+
+  ;; 		       ;;(powerline-default-theme)
+
+  ;; 		       (powerline-reset)
+
+  ;; 		       )
+  ;; 	     )
+
+  ;; ---( highlight )--------------------------------------------------------------
+
+  (use-package hl-todo
+    :ensure t
+    :config (minions-mode 1)
+    )
+
+  (use-package hl-todo
+    :ensure t
+    :hook (prog-mode . hl-todo-mode)
+    :config
+    ;; (define-key hl-todo-mode-map (kbd "C-c p") #'hl-todo-previous)
+    ;; (define-key hl-todo-mode-map (kbd "C-c n") #'hl-todo-next)
+    ;; (define-key hl-todo-mode-map (kbd "C-c o") #'hl-todo-occur)
+    ;; (define-key hl-todo-mode-map (kbd "C-c i") #'hl-todo-insert  
+    (setq hl-todo-highlight-punctuation ":"
+          hl-todo-keyword-faces
+          `(("TODO"       warning bold)
+            ("FIXME"      error bold)
+            ("HACK"       font-lock-constant-face bold)
+            ("REVIEW"     font-lock-keyword-face bold)
+            ("NOTE"       success bold)
+            ("DEPRECATED" font-lock-doc-face bold))))
+
+  ;; ---( dashboard )--------------------------------------------------------------
+
+  (use-package dashboard
+    :ensure t
+    :custom
+    (dashboard-startup-banner 'logo)
+    (dashboard-items '((recents . 5)
+                       (projects . 5)
+                       (agenda . 5)))
+    (initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
+    :config
+    (dashboard-setup-startup-hook))
+
+
+  ;; }}}  .ui
 ;; ui ends here
 
 ;; Utils/begin
 ;; #+NAME: utils-begin
 
 ;; [[file:site-pkgs.org::utils-begin][utils-begin]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @UTIL
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @UTIL
+  ;; ;;;////////////////////////////////////////////////////////////////
 ;; utils-begin ends here
 
 ;; Utils/Jump
 ;; #+NAME: util-jump
 
 ;; [[file:site-pkgs.org::util-jump][util-jump]]
-;; ---( hydra )--------------------------------------------------------------
+    ;; ---( hydra )--------------------------------------------------------------
 
-(use-package hydra
-  :ensure t
-  :commands defhydra
-  )
+    (use-package hydra
+      :ensure t
+      :commands defhydra
+      )
 
-(use-package use-package-hydra
-  :ensure t
-  :after hydra
-  )
+    (use-package use-package-hydra
+      :ensure t
+      :after hydra
+      )
 
-;; ---( ace )--------------------------------------------------------------
+    ;; ---( ace )--------------------------------------------------------------
 
 
-(use-package ace-jump-mode
-  :ensure t
-  :commands ace-jump-mode
-  :init
-  ;; (bind-key "C-." 'ace-jump-mode)
-  )
+    (use-package ace-jump-mode
+      :ensure t
+      :commands ace-jump-mode
+      :init
+      ;; (bind-key "C-." 'ace-jump-mode)
+      )
 
-;; ;; ---( avy )--------------------------------------------------------------
+    ;; ;; ---( avy )--------------------------------------------------------------
 
-(use-package avy
-  :ensure t)
+    (use-package avy
+      :ensure t)
 ;; util-jump ends here
 
 ;; Utils/Search
 ;; #+NAME: util-search
 
 ;; [[file:site-pkgs.org::util-search][util-search]]
-;; ---( regex )--------------------------------------------------------------
+  ;; ---( regex )--------------------------------------------------------------
 
 
-(use-package regex-tool
-  :ensure t
-  :defer t)
+  (use-package regex-tool
+    :ensure t
+    :defer t)
 ;; util-search ends here
 
 ;; Utils/Help
 ;; #+NAME: util-help
 
 ;; [[file:site-pkgs.org::util-help][util-help]]
-;; ---( guide-key )--------------------------------------------------------------
+  ;; ---( guide-key )--------------------------------------------------------------
 
-;; (use-package guide-key
-;;   :ensure t
-;;   :defer t
-;;   :diminish guide-key-mode
-;;   :idle
-;;   (progn
-;;     (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-c"))
-;;     (guide-key-mode 1)))
+  ;; (use-package guide-key
+  ;;   :ensure t
+  ;;   :defer t
+  ;;   :diminish guide-key-mode
+  ;;   :idle
+  ;;   (progn
+  ;;     (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-c"))
+  ;;     (guide-key-mode 1)))
 
-;; ---( which-key )--------------------------------------------------------------
+  ;; ---( which-key )--------------------------------------------------------------
 
-(use-package which-key
-  :delight
-  :ensure t
-  :init
-  (which-key-mode)
-  :config
-  (setq which-key-idle-delay 1))
+  (use-package which-key
+    :delight
+    :ensure t
+    :init
+    (which-key-mode)
+    :config
+    (setq which-key-idle-delay 1))
 
 
 
-;; ---( helpful )--------------------------------------------------------------
+  ;; ---( helpful )--------------------------------------------------------------
 
-;; @see: https://sgtpeacock.com/dot-files/Emacs.html#org66117b2
+  ;; @see: https://sgtpeacock.com/dot-files/Emacs.html#org66117b2
 
-(use-package helpful
-  :ensure t
-  :general
-  (:states '(normal visual emacs)
-           :prefix "SPC"
+  (use-package helpful
+    :ensure t
+    :general
+    (:states '(normal visual emacs)
+             :prefix "SPC"
 
-           "d" '(:ignore t :wk "Describe")
-           "d." 'helpful-symbol
-           "df" 'helpful-function
-           "dv" 'helpful-variable
-           "dk" 'helpful-key
-           "dc" 'helpful-command)
-  :config
-  (defvar read-symbol-positions-list nil))
+             "d" '(:ignore t :wk "Describe")
+             "d." 'helpful-symbol
+             "df" 'helpful-function
+             "dv" 'helpful-variable
+             "dk" 'helpful-key
+             "dc" 'helpful-command)
+    :config
+    (defvar read-symbol-positions-list nil))
 ;; util-help ends here
 
 ;; Utils/Misc
 ;; #+NAME: util-misc
 
 ;; [[file:site-pkgs.org::util-misc][util-misc]]
-;; ---( popper )--------------------------------------------------------------
+  ;; ---( popper )--------------------------------------------------------------
 
-(use-package popper
-  :ensure t
-  ;; :general
-  ;; (:states '(normal visual emacs)
-  ;;          :prefix "SPC"
-  ;;          "`" 'popper-toggle-latest
-  ;;          "~" 'popper-cycle)
-  :custom
-  (popper-reference-buffers '("\\*Messages\\*"
-                              "Output\\*$"
-                              "\\*Async Shell Command\\*"
-                              help-mode
-                              compilation-mode
-                              eldoc-mode))
-  (popper-window-height 30)
-  :init
-  (popper-mode +1)
-  (popper-echo-mode +1))
+  (use-package popper
+    :ensure t
+    ;; :general
+    ;; (:states '(normal visual emacs)
+    ;;          :prefix "SPC"
+    ;;          "`" 'popper-toggle-latest
+    ;;          "~" 'popper-cycle)
+    :custom
+    (popper-reference-buffers '("\\*Messages\\*"
+                                "Output\\*$"
+                                "\\*Async Shell Command\\*"
+                                help-mode
+                                compilation-mode
+                                eldoc-mode))
+    (popper-window-height 30)
+    :init
+    (popper-mode +1)
+    (popper-echo-mode +1))
 
-;; ---( comint )--------------------------------------------------------------
+  ;; ---( comint )--------------------------------------------------------------
 
-(use-package comint
-  :custom
-  (comint-buffer-maximum-size 20000 "Increase comint buffer size.")
-  (comint-prompt-read-only t "Make the prompt read only."))
+  (use-package comint
+    :custom
+    (comint-buffer-maximum-size 20000 "Increase comint buffer size.")
+    (comint-prompt-read-only t "Make the prompt read only."))
 
-;; ---( environment )--------------------------------------------------------------
+  ;; ---( environment )--------------------------------------------------------------
 
-;; Restart Emacs from inside Emacs with `M-x restart-emacs`
-(use-package restart-emacs
-  :defer t)
+  ;; Restart Emacs from inside Emacs with `M-x restart-emacs`
+  (use-package restart-emacs
+    :defer t)
 
-;; use-package-ensure-system-package
-;; provides way to define system package dependencies for Emacs packages
-(use-package use-package-ensure-system-package
-  :ensure t)
+  ;; use-package-ensure-system-package
+  ;; provides way to define system package dependencies for Emacs packages
+  (use-package use-package-ensure-system-package
+    :ensure t)
 
-;; ---( windmove )--------------------------------------------------------------
+  ;; ---( windmove )--------------------------------------------------------------
 
-;; (use-package windmove
-;;   :ensure t
-;;   :defer t
-;;   :bind
-;;   (("<f2> <right>" . windmove-right)
-;;    ("<f2> <left>" . windmove-left)
-;;    ("<f2> <up>" . windmove-up)
-;;    ("<f2> <down>" . windmove-down)
-;;    ))
-
-
-;; ---( whitespace )--------------------------------------------------------------
-
-;; (use-package whitespace
-;;   :ensure t
-;;   :bind (("C-c T w" . whitespace-mode))
-;;   :init
-;;   (dolist (hook '(conf-mode-hook))
-;; ;;  (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
-;;     (add-hook hook #'whitespace-mode))
-;;   :config (setq whitespace-line-column nil)
-;;   :diminish whitespace-mode)
-
-;; (use-package whitespace
-;;   :diminish (global-whitespace-mode
-;;              whitespace-mode
-;;              whitespace-newline-mode)
-;;   :commands (whitespace-buffer
-;;              whitespace-cleanup
-;;              whitespace-mode)
-;;   :defines (whitespace-auto-cleanup
-;;             whitespace-rescan-timer-time
-;;             whitespace-silent)
-;;   :preface
-;;   (defun normalize-file ()
-;;     (interactive)
-;;     (save-excursion
-;;       (goto-char (point-min))
-;;       (whitespace-cleanup)
-;;       (delete-trailing-whitespace)
-;;       (goto-char (point-max))
-;;       (delete-blank-lines)
-;;       (set-buffer-file-coding-system 'unix)
-;;       (goto-char (point-min))
-;;       (while (re-search-forward "\r$" nil t)
-;;         (replace-match ""))
-;;       (set-buffer-file-coding-system 'utf-8)
-;;       (let ((require-final-newline t))
-;;         (save-buffer))))
-;;   (defun maybe-turn-on-whitespace ()
-;;     "Depending on the file, maybe clean up whitespace."
-;;     (let ((file (expand-file-name ".clean"))
-;;           parent-dir)
-;;       (while (and (not (file-exists-p file))
-;;                   (progn
-;;                     (setq parent-dir
-;;                           (file-name-directory
-;;                            (directory-file-name
-;;                             (file-name-directory file))))
-;;                     ;; Give up if we are already at the root dir.
-;;                     (not (string= (file-name-directory file)
-;;                                   parent-dir))))
-;;         ;; Move up to the parent dir and try again.
-;;         (setq file (expand-file-name ".clean" parent-dir)))
-;;       ;; If we found a change log in a parent, use that.
-;;       (when (and (file-exists-p file)
-;;                  (not (file-exists-p ".noclean"))
-;;                  (not (and buffer-file-name
-;;                            (string-match "\\.texi\\'" buffer-file-name))))
-;;         (add-hook 'write-contents-hooks
-;;                   #'(lambda () (ignore (whitespace-cleanup))) nil t)
-;;         (whitespace-cleanup))))
-;;   :init
-;;   (hook-into-modes 'whitespace-mode '(prog-mode-hook c-mode-common-hook))
-;;   (add-hook 'find-file-hooks 'maybe-turn-on-whitespace t)
-;;   :config
-;;   (remove-hook 'find-file-hooks 'whitespace-buffer)
-;;   (remove-hook 'kill-buffer-hook 'whitespace-buffer)
-;;   ;; For some reason, having these in settings.el gets ignored if whitespace
-;;   ;; loads lazily.
-;;   (setq whitespace-auto-cleanup t
-;;         whitespace-line-column 80
-;;         whitespace-rescan-timer-time nil
-;;         whitespace-silent t
-;;         whitespace-style '(face trailing lines space-before-tab empty)))
-
-;; ---( autorevert )--------------------------------------------------------------
-
-(use-package autorevert
-  :commands auto-revert-mode
-  :diminish auto-revert-mode
-  :init
-  (add-hook 'find-file-hook #'(lambda () (auto-revert-mode 1))))
+  ;; (use-package windmove
+  ;;   :ensure t
+  ;;   :defer t
+  ;;   :bind
+  ;;   (("<f2> <right>" . windmove-right)
+  ;;    ("<f2> <left>" . windmove-left)
+  ;;    ("<f2> <up>" . windmove-up)
+  ;;    ("<f2> <down>" . windmove-down)
+  ;;    ))
 
 
-;; ---( hilit-chg )--------------------------------------------------------------
+  ;; ---( whitespace )--------------------------------------------------------------
 
-;; (use-package hilit-chg
-;;   :ensure t
-;;   :bind ("M-o C" . highlight-changes-mode))
+  ;; (use-package whitespace
+  ;;   :ensure t
+  ;;   :bind (("C-c T w" . whitespace-mode))
+  ;;   :init
+  ;;   (dolist (hook '(conf-mode-hook))
+  ;; ;;  (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
+  ;;     (add-hook hook #'whitespace-mode))
+  ;;   :config (setq whitespace-line-column nil)
+  ;;   :diminish whitespace-mode)
+
+  ;; (use-package whitespace
+  ;;   :diminish (global-whitespace-mode
+  ;;              whitespace-mode
+  ;;              whitespace-newline-mode)
+  ;;   :commands (whitespace-buffer
+  ;;              whitespace-cleanup
+  ;;              whitespace-mode)
+  ;;   :defines (whitespace-auto-cleanup
+  ;;             whitespace-rescan-timer-time
+  ;;             whitespace-silent)
+  ;;   :preface
+  ;;   (defun normalize-file ()
+  ;;     (interactive)
+  ;;     (save-excursion
+  ;;       (goto-char (point-min))
+  ;;       (whitespace-cleanup)
+  ;;       (delete-trailing-whitespace)
+  ;;       (goto-char (point-max))
+  ;;       (delete-blank-lines)
+  ;;       (set-buffer-file-coding-system 'unix)
+  ;;       (goto-char (point-min))
+  ;;       (while (re-search-forward "\r$" nil t)
+  ;;         (replace-match ""))
+  ;;       (set-buffer-file-coding-system 'utf-8)
+  ;;       (let ((require-final-newline t))
+  ;;         (save-buffer))))
+  ;;   (defun maybe-turn-on-whitespace ()
+  ;;     "Depending on the file, maybe clean up whitespace."
+  ;;     (let ((file (expand-file-name ".clean"))
+  ;;           parent-dir)
+  ;;       (while (and (not (file-exists-p file))
+  ;;                   (progn
+  ;;                     (setq parent-dir
+  ;;                           (file-name-directory
+  ;;                            (directory-file-name
+  ;;                             (file-name-directory file))))
+  ;;                     ;; Give up if we are already at the root dir.
+  ;;                     (not (string= (file-name-directory file)
+  ;;                                   parent-dir))))
+  ;;         ;; Move up to the parent dir and try again.
+  ;;         (setq file (expand-file-name ".clean" parent-dir)))
+  ;;       ;; If we found a change log in a parent, use that.
+  ;;       (when (and (file-exists-p file)
+  ;;                  (not (file-exists-p ".noclean"))
+  ;;                  (not (and buffer-file-name
+  ;;                            (string-match "\\.texi\\'" buffer-file-name))))
+  ;;         (add-hook 'write-contents-hooks
+  ;;                   #'(lambda () (ignore (whitespace-cleanup))) nil t)
+  ;;         (whitespace-cleanup))))
+  ;;   :init
+  ;;   (hook-into-modes 'whitespace-mode '(prog-mode-hook c-mode-common-hook))
+  ;;   (add-hook 'find-file-hooks 'maybe-turn-on-whitespace t)
+  ;;   :config
+  ;;   (remove-hook 'find-file-hooks 'whitespace-buffer)
+  ;;   (remove-hook 'kill-buffer-hook 'whitespace-buffer)
+  ;;   ;; For some reason, having these in settings.el gets ignored if whitespace
+  ;;   ;; loads lazily.
+  ;;   (setq whitespace-auto-cleanup t
+  ;;         whitespace-line-column 80
+  ;;         whitespace-rescan-timer-time nil
+  ;;         whitespace-silent t
+  ;;         whitespace-style '(face trailing lines space-before-tab empty)))
+
+  ;; ---( autorevert )--------------------------------------------------------------
+
+  (use-package autorevert
+    :commands auto-revert-mode
+    :diminish auto-revert-mode
+    :init
+    (add-hook 'find-file-hook #'(lambda () (auto-revert-mode 1))))
 
 
-;; ---( folding )--------------------------------------------------------------
+  ;; ---( hilit-chg )--------------------------------------------------------------
 
-(use-package vimish-fold
-  :ensure t
-  :hook ((
-          terraform-mode
-          yaml-mode
-          text-mode
-          ) . vimish-fold-mode)
-)
-
-;;        markdown-mode
+  ;; (use-package hilit-chg
+  ;;   :ensure t
+  ;;   :bind ("M-o C" . highlight-changes-mode))
 
 
-;; (use-package folding
-;;   :ensure t
-;; )
+  ;; ---( folding )--------------------------------------------------------------
+
+  (use-package vimish-fold
+    :ensure t
+    :hook ((
+            terraform-mode
+            yaml-mode
+            text-mode
+            ) . vimish-fold-mode)
+  )
+
+  ;;        markdown-mode
+
+
+  ;; (use-package folding
+  ;;   :ensure t
+  ;; )
 ;; util-misc ends here
 
 ;; Utils/end
 ;; #+NAME: util-end
 
 ;; [[file:site-pkgs.org::util-end][util-end]]
-;; }}}  .util
+  ;; }}}  .util
 ;; util-end ends here
 
 ;; Sec3et/begin
 ;; #+NAME: sec3et-begin
 
 ;; [[file:site-pkgs.org::sec3et-begin][sec3et-begin]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @SEC3ET
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @SEC3ET
+  ;; ;;;////////////////////////////////////////////////////////////////
 ;; sec3et-begin ends here
 
 ;; Pass
 ;; #+NAME: sec3et-pass
 
 ;; [[file:site-pkgs.org::sec3et-pass][sec3et-pass]]
-;; ---( pass )--------------------------------------------------------------
+  ;; ---( pass )--------------------------------------------------------------
 
-;; @see: https://gitea.petton.fr/nico/emacs.d/src/commit/8ae2b902c916600c9296d967f36ed69ad50e8199/init.el?lang=sv-SE
+  ;; @see: https://gitea.petton.fr/nico/emacs.d/src/commit/8ae2b902c916600c9296d967f36ed69ad50e8199/init.el?lang=sv-SE
 
-;; (use-package pass
-;;   :mode ("org/reference/password-store/" . pass-view-mode)
-;;   :bind ("C-x p" . pass))
+  ;; (use-package pass
+  ;;   :mode ("org/reference/password-store/" . pass-view-mode)
+  ;;   :bind ("C-x p" . pass))
 ;; sec3et-pass ends here
 
 ;; Sec3et/end
 ;; #+NAME: sec3et-end
 
 ;; [[file:site-pkgs.org::sec3et-end][sec3et-end]]
-;; }}}  .sec3et
+  ;; }}}  .sec3et
 ;; sec3et-end ends here
 
 ;; Server/begin
 ;; #+NAME: server-begin
 
 ;; [[file:site-pkgs.org::server-begin][server-begin]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @SERVER
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @SERVER
+  ;; ;;;////////////////////////////////////////////////////////////////
 ;; server-begin ends here
 
 ;; Server Control
 ;; #+NAME: server-control
 
 ;; [[file:site-pkgs.org::server-control][server-control]]
-;; ---( server )--------------------------------------------------------------
+  ;; ---( server )--------------------------------------------------------------
 
-;;
-;; @see: http://babbagefiles.blogspot.it/2017/03/take-elfeed-everywhere-mobile-rss.html
-;;
-;;  ~/.config/systemd/user/emacs.service
-;;
-;; ------------------------------------------------------------------
-;; [Unit]
-;; Description=Emacs: the extensible, self-documenting text editor
-;;
-;; [Service]
-;; Type=forking
-;; ExecStart=/usr/bin/emacs --daemon
-;; ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
-;; Restart=always
-;;
-;; [Install]
-;; WantedBy=default.target
-;; ------------------------------------------------------------------
-;;
-;; systemctl --user enable --now emacs
-;; loginctl enable-linger USERNAME
-;;
+  ;;
+  ;; @see: http://babbagefiles.blogspot.it/2017/03/take-elfeed-everywhere-mobile-rss.html
+  ;;
+  ;;  ~/.config/systemd/user/emacs.service
+  ;;
+  ;; ------------------------------------------------------------------
+  ;; [Unit]
+  ;; Description=Emacs: the extensible, self-documenting text editor
+  ;;
+  ;; [Service]
+  ;; Type=forking
+  ;; ExecStart=/usr/bin/emacs --daemon
+  ;; ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
+  ;; Restart=always
+  ;;
+  ;; [Install]
+  ;; WantedBy=default.target
+  ;; ------------------------------------------------------------------
+  ;;
+  ;; systemctl --user enable --now emacs
+  ;; loginctl enable-linger USERNAME
+  ;;
 
-(use-package edit-server
-  :ensure t
-  :if window-system
-;;  :load-path "site-lisp/emacs_chrome/servers/"
-  :init
-  (add-hook 'after-init-hook 'server-start t)
-  (add-hook 'after-init-hook 'edit-server-start t))
+  (use-package edit-server
+    :ensure t
+    :if window-system
+  ;;  :load-path "site-lisp/emacs_chrome/servers/"
+    :init
+    (add-hook 'after-init-hook 'server-start t)
+    (add-hook 'after-init-hook 'edit-server-start t))
 ;; server-control ends here
 
 ;; Server/end
 ;; #+NAME: server-end
 
 ;; [[file:site-pkgs.org::server-end][server-end]]
-;; }}}  .server
+  ;; }}}  .server
 ;; server-end ends here
 
 ;; Fonts/begin
 ;; #+NAME: fonts-begin
 
 ;; [[file:site-pkgs.org::fonts-begin][fonts-begin]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @FONT
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @FONT
+  ;; ;;;////////////////////////////////////////////////////////////////
 ;; fonts-begin ends here
 
 ;; Faces
 ;; #+NAME: fonts-faces
 
 ;; [[file:site-pkgs.org::fonts-faces][fonts-faces]]
-;; ---( faces )--------------------------------------------------------------
+  ;; ---( faces )--------------------------------------------------------------
 
-;; (custom-set-faces
-;;  ;; custom-set-faces was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(default ((t (:family "Source Code Pro" :foundry "ADBE" :slant normal :weight semi-bold :height 135 :width normal)))))
+  ;; (custom-set-faces
+  ;;  ;; custom-set-faces was added by Custom.
+  ;;  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;;  ;; Your init file should contain only one such instance.
+  ;;  ;; If there is more than one, they won't work right.
+  ;;  '(default ((t (:family "Source Code Pro" :foundry "ADBE" :slant normal :weight semi-bold :height 135 :width normal)))))
 
-;; (custom-theme-set-faces
-;;    'user
-;;    '(variable-pitch ((t (:family "Source Sans Pro" :foundry "ADBE" :slant normal :weight semi-bold :height 135 :width normal))))
-;;    '(fixed-pitch ((t ( :family "JetBrains Mono Medium")))))
+  ;; (custom-theme-set-faces
+  ;;    'user
+  ;;    '(variable-pitch ((t (:family "Source Sans Pro" :foundry "ADBE" :slant normal :weight semi-bold :height 135 :width normal))))
+  ;;    '(fixed-pitch ((t ( :family "JetBrains Mono Medium")))))
 ;; fonts-faces ends here
 
 ;; Ligatures
 ;; #+NAME: fonts-ligatures
 
 ;; [[file:site-pkgs.org::fonts-ligatures][fonts-ligatures]]
-;; ---( ligatures )--------------------------------------------------------------
+  ;; ---( ligatures )--------------------------------------------------------------
 
-(cond
- ((string-lessp emacs-version "27.1") ;;
-  (progn
-    (message "SITE:font-legacy, ...")
-    (message "SITE:font-legacy.")
-    ))
- (t
-  (progn
-    (message "SITE:font-ligatures, ...")
+  (cond
+   ((string-lessp emacs-version "27.1") ;;
+    (progn
+      (message "SITE:font-legacy, ...")
+      (message "SITE:font-legacy.")
+      ))
+   (t
+    (progn
+      (message "SITE:font-ligatures, ...")
 
-    (setq ligature-path (expand-file-name "local/repos/ligatures.el" user-emacs-directory))
-    (let ((ligature-source (expand-file-name "ligatures.el" ligature-path)))
-      (unless (file-exists-p ligature-source)
-        (progn
-          (make-directory ligature-path t)
-          (url-copy-file "https://raw.githubusercontent.com/mickeynp/ligature.el/master/ligature.el" ligature-source t))))
+      (setq ligature-path (expand-file-name "local/repos/ligatures.el" user-emacs-directory))
+      (let ((ligature-source (expand-file-name "ligatures.el" ligature-path)))
+        (unless (file-exists-p ligature-source)
+          (progn
+            (make-directory ligature-path t)
+            (url-copy-file "https://raw.githubusercontent.com/mickeynp/ligature.el/master/ligature.el" ligature-source t))))
 
-(load-library "~/.emacs.d/local/repos/ligatures.el/ligatures")
+  (load-library "~/.emacs.d/local/repos/ligatures.el/ligatures")
 
-(use-package ligature
-;;  :load-path "local/repos/ligatures.el/ligature"
-  :config
-  ;; Enable the "www" ligature in every possible major mode
-  (ligature-set-ligatures 't '("www"))
-  ;; Enable traditional ligature support in eww-mode, if the
-  ;; `variable-pitch' face supports it
-  (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
-  ;; Enable all Cascadia Code ligatures in programming modes
-  (ligature-set-ligatures 'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
-                                       ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
-                                       "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
-                                       "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
-                                       "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
-                                       "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
-                                       "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
-                                       "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
-                                       ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
-                                       "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
-                                       "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
-                                       "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
-                                       "\\\\" "://"))
-  ;; Enables ligature checks globally in all buffers. You can also do it
-  ;; per mode with `ligature-mode'.
-  (global-ligature-mode t))
-
-
-
-;; (use-package fira-code-mode
-;;   :ensure t
-;; ;; :disabled t
-;;   :custom (fira-code-mode-disabled-ligatures '("[]" "x"))  ; ligatures you don't want
-;;   :hook prog-mode)                                         ; mode to enable fira-code-mode in
-
-
-    (message "SITE:font-ligatures.")
-    ))
-)
+  (use-package ligature
+  ;;  :load-path "local/repos/ligatures.el/ligature"
+    :config
+    ;; Enable the "www" ligature in every possible major mode
+    (ligature-set-ligatures 't '("www"))
+    ;; Enable traditional ligature support in eww-mode, if the
+    ;; `variable-pitch' face supports it
+    (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
+    ;; Enable all Cascadia Code ligatures in programming modes
+    (ligature-set-ligatures 'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
+                                         ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
+                                         "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
+                                         "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
+                                         "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
+                                         "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
+                                         "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
+                                         "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
+                                         ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
+                                         "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
+                                         "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
+                                         "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
+                                         "\\\\" "://"))
+    ;; Enables ligature checks globally in all buffers. You can also do it
+    ;; per mode with `ligature-mode'.
+    (global-ligature-mode t))
 
 
 
+  ;; (use-package fira-code-mode
+  ;;   :ensure t
+  ;; ;; :disabled t
+  ;;   :custom (fira-code-mode-disabled-ligatures '("[]" "x"))  ; ligatures you don't want
+  ;;   :hook prog-mode)                                         ; mode to enable fira-code-mode in
 
-;; @see: https://github.com/tonsky/FiraCode/issues/211#issuecomment-239058632
 
-;; (use-package ligature
-;;   ;;:load-path "path-to-ligature-repo"
-;;   :config
-;;   ;; Enable the "www" ligature in every possible major mode
-;;   (ligature-set-ligatures 't '("www"))
-;;   ;; Enable traditional ligature support in eww-mode, if the
-;;   ;; `variable-pitch' face supports it
-;;   (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
-;;   ;; Enable all Cascadia Code ligatures in programming modes
-;;   (ligature-set-ligatures 'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
-;;                                        ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
-;;                                        "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
-;;                                        "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
-;;                                        "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
-;;                                        "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
-;;                                        "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
-;;                                        "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
-;;                                        ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
-;;                                        "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
-;;                                        "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
-;;                                        "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
-;;                                        "\\" "://"))
-;;   ;; Enables ligature checks globally in all buffers. You can also do it
-;;   ;; per mode with `ligature-mode'.
-;;   (global-ligature-mode t))
+      (message "SITE:font-ligatures.")
+      ))
+  )
+
+
+
+
+  ;; @see: https://github.com/tonsky/FiraCode/issues/211#issuecomment-239058632
+
+  ;; (use-package ligature
+  ;;   ;;:load-path "path-to-ligature-repo"
+  ;;   :config
+  ;;   ;; Enable the "www" ligature in every possible major mode
+  ;;   (ligature-set-ligatures 't '("www"))
+  ;;   ;; Enable traditional ligature support in eww-mode, if the
+  ;;   ;; `variable-pitch' face supports it
+  ;;   (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
+  ;;   ;; Enable all Cascadia Code ligatures in programming modes
+  ;;   (ligature-set-ligatures 'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
+  ;;                                        ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
+  ;;                                        "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
+  ;;                                        "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
+  ;;                                        "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
+  ;;                                        "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
+  ;;                                        "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
+  ;;                                        "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
+  ;;                                        ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
+  ;;                                        "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
+  ;;                                        "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
+  ;;                                        "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
+  ;;                                        "\\" "://"))
+  ;;   ;; Enables ligature checks globally in all buffers. You can also do it
+  ;;   ;; per mode with `ligature-mode'.
+  ;;   (global-ligature-mode t))
 ;; fonts-ligatures ends here
 
 ;; Fonts/end
 ;; #+NAME: fonts-end
 
 ;; [[file:site-pkgs.org::fonts-end][fonts-end]]
-;; }}}  .fonts
+  ;; }}}  .fonts
 ;; fonts-end ends here
 
 ;; Evil/begin
 ;; #+NAME: evil-begin
 
 ;; [[file:site-pkgs.org::evil-begin][evil-begin]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @EVIL
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @EVIL
+  ;; ;;;////////////////////////////////////////////////////////////////
 ;; evil-begin ends here
 
 ;; Evil Mode
 ;; #+NAME: evil-mode
 
 ;; [[file:site-pkgs.org::evil-mode][evil-mode]]
-;; ---( evil )--------------------------------------------------------------
+  ;; ---( evil )--------------------------------------------------------------
 
-;; @see: https://raw.githubusercontent.com/noctuid/evil-guide/master/README.org
+  ;; @see: https://raw.githubusercontent.com/noctuid/evil-guide/master/README.org
 
-(use-package evil
-  :ensure t
-  :defer 30
-  )
+  (use-package evil
+    :ensure t
+    :defer 30
+    )
 ;; evil-mode ends here
 
 ;; EVIL/end
 ;; #+NAME: evil-end
 
 ;; [[file:site-pkgs.org::evil-end][evil-end]]
-;; }}}  .evil
+  ;; }}}  .evil
 ;; evil-end ends here
 
 ;; Completion/begin
 ;; #+NAME: comp-ap-begin
 
 ;; [[file:site-pkgs.org::comp-ap-begin][comp-ap-begin]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @COMPLETION "AT POINT"
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @COMPLETION "AT POINT"
+  ;; ;;;////////////////////////////////////////////////////////////////
 ;; comp-ap-begin ends here
 
 ;; Company
 ;; #+NAME: comp-ap-company
 
 ;; [[file:site-pkgs.org::comp-ap-company][comp-ap-company]]
-;; ---( company )--------------------------------------------------------------
+  ;; ---( company )--------------------------------------------------------------
 
-(use-package company
-  :ensure t
-  :diminish company-mode
-  :commands company-mode
-  :bind ("<C-space>" . company-complete)
-  :init
-  ;; (add-hook 'clojure-mode-hook 'company-mode)
-  ;; (add-hook 'cider-repl-mode-hook 'company-mode)
-  ;; (add-hook 'lisp-mode-hook 'company-mode)
-  ;; (add-hook 'emacs-lisp-mode-hook 'company-mode)
-  ;; (add-hook 'lisp-interaction-mode-hook 'company-mode)
-  ;; (add-hook 'ielm-mode-hook 'company-mode)
-  ;; (add-hook 'json-mode-hook 'company-mode)
-  :config
-  (setq company-idle-delay 0.3)
-  (global-company-mode t)  
-  ;; (use-package helm-company :disabled t)
-  :hook (
-         (text-mode . company-mode)
-         (prog-mode . company-mode)
-         )
-  )
+  (use-package company
+    :ensure t
+    :diminish company-mode
+    :commands company-mode
+    :bind ("<C-space>" . company-complete)
+    :init
+    ;; (add-hook 'clojure-mode-hook 'company-mode)
+    ;; (add-hook 'cider-repl-mode-hook 'company-mode)
+    ;; (add-hook 'lisp-mode-hook 'company-mode)
+    ;; (add-hook 'emacs-lisp-mode-hook 'company-mode)
+    ;; (add-hook 'lisp-interaction-mode-hook 'company-mode)
+    ;; (add-hook 'ielm-mode-hook 'company-mode)
+    ;; (add-hook 'json-mode-hook 'company-mode)
+    :config
+    (setq company-idle-delay 0.3)
+    (global-company-mode t)  
+    ;; (use-package helm-company :disabled t)
+    :hook (
+           (text-mode . company-mode)
+           (prog-mode . company-mode)
+           )
+    )
 
-;; @see: https://cloudnine.github.io/science/2020-07-27-emacs-company-mode/
-;; @see: https://github.com/mswift42/.emacs.d/blob/master/init.el
-;; @see: https://medium.com/helpshift-engineering/configuring-emacs-from-scratch-use-package-c30382297877
-;; (use-package company
-;;   :bind (:map company-active-map
-;;          ("C-n" . company-select-next)
-;;          ("C-p" . company-select-previous))
-;;   :config
-;;   (setq company-idle-delay 0.3)
-;;   (global-company-mode t))
+  ;; @see: https://cloudnine.github.io/science/2020-07-27-emacs-company-mode/
+  ;; @see: https://github.com/mswift42/.emacs.d/blob/master/init.el
+  ;; @see: https://medium.com/helpshift-engineering/configuring-emacs-from-scratch-use-package-c30382297877
+  ;; (use-package company
+  ;;   :bind (:map company-active-map
+  ;;          ("C-n" . company-select-next)
+  ;;          ("C-p" . company-select-previous))
+  ;;   :config
+  ;;   (setq company-idle-delay 0.3)
+  ;;   (global-company-mode t))
 
-  ;; From https://github.com/company-mode/company-mode/issues/87
-  ;; See also https://github.com/company-mode/company-mode/issues/123
-  ;; (defadvice company-pseudo-tooltip-unless-just-one-frontend
-  ;;     (around only-show-tooltip-when-invoked activate)
-  ;;   (when (company-explicit-action-p)
-  ;;     ad-do-it))
+    ;; From https://github.com/company-mode/company-mode/issues/87
+    ;; See also https://github.com/company-mode/company-mode/issues/123
+    ;; (defadvice company-pseudo-tooltip-unless-just-one-frontend
+    ;;     (around only-show-tooltip-when-invoked activate)
+    ;;   (when (company-explicit-action-p)
+    ;;     ad-do-it))
 ;; comp-ap-company ends here
 
 ;; Auto-Complete
 ;; #+NAME: comp-ap-autocomplete
 
 ;; [[file:site-pkgs.org::comp-ap-autocomplete][comp-ap-autocomplete]]
-;; ---( autocomplete )--------------------------------------------------------------
+  ;; ---( autocomplete )--------------------------------------------------------------
 
-(use-package auto-complete
-  :disabled t
-  :diminish auto-complete-mode
-  :init
-  (use-package pos-tip)
-  (require 'auto-complete-config)
-  (ac-config-default)
-  :config
-  ;; @see: http://auto-complete.org/doc/manual.html
-  ;;(ac-set-trigger-key "<backtab>")
-  ;;(ac-set-trigger-key "TAB")
-  (setq ac-ignore-case 'smart)
-  (setq ac-auto-start nil)
-  (setq ac-use-menu-map t)
-  ;;(define-key ac-mode-map (kbd "M-SPC") 'auto-complete)
-  (define-key ac-mode-map  [(control menu)] 'auto-complete)
-  (ac-set-trigger-key "TAB")
-  ;; (define-key ac-completing-map "\M-/" 'ac-stop)
-  ;; (define-key ac-completing-map "\t" 'ac-complete)
-  ;; (define-key ac-completing-map "\r" nil)
-  ;; (setq ac-use-menu-map t)
-  ;; (define-key ac-menu-map "\C-n" 'ac-next)
-  ;; (define-key ac-menu-map "\C-p" 'ac-previous)
-  ;; (setq ac-use-quick-help nil)
-  ;; (setq ac-menu-height 20)
-  ;; (setq ac-show-menu-immediately-on-auto-complete t)
-  ;; (setq ac-auto-show-menu 0.8)
-  ;; (setq ac-delay 0.4)
+  (use-package auto-complete
+    :disabled t
+    :diminish auto-complete-mode
+    :init
+    (use-package pos-tip)
+    (require 'auto-complete-config)
+    (ac-config-default)
+    :config
+    ;; @see: http://auto-complete.org/doc/manual.html
+    ;;(ac-set-trigger-key "<backtab>")
+    ;;(ac-set-trigger-key "TAB")
+    (setq ac-ignore-case 'smart)
+    (setq ac-auto-start nil)
+    (setq ac-use-menu-map t)
+    ;;(define-key ac-mode-map (kbd "M-SPC") 'auto-complete)
+    (define-key ac-mode-map  [(control menu)] 'auto-complete)
+    (ac-set-trigger-key "TAB")
+    ;; (define-key ac-completing-map "\M-/" 'ac-stop)
+    ;; (define-key ac-completing-map "\t" 'ac-complete)
+    ;; (define-key ac-completing-map "\r" nil)
+    ;; (setq ac-use-menu-map t)
+    ;; (define-key ac-menu-map "\C-n" 'ac-next)
+    ;; (define-key ac-menu-map "\C-p" 'ac-previous)
+    ;; (setq ac-use-quick-help nil)
+    ;; (setq ac-menu-height 20)
+    ;; (setq ac-show-menu-immediately-on-auto-complete t)
+    ;; (setq ac-auto-show-menu 0.8)
+    ;; (setq ac-delay 0.4)
 
-  ;; (setq-default ac-sources '(ac-source-filename
-  ;;                            ac-source-functions
-  ;;                            ac-source-yasnippet
-  ;;                            ac-source-variables
-  ;;                            ac-source-symbols
-  ;;                            ac-source-features
-  ;;                            ac-source-abbrev
-  ;;                            ac-source-words-in-same-mode-buffers
-  ;;                            ac-source-dictionary))
+    ;; (setq-default ac-sources '(ac-source-filename
+    ;;                            ac-source-functions
+    ;;                            ac-source-yasnippet
+    ;;                            ac-source-variables
+    ;;                            ac-source-symbols
+    ;;                            ac-source-features
+    ;;                            ac-source-abbrev
+    ;;                            ac-source-words-in-same-mode-buffers
+    ;;                            ac-source-dictionary))
 
-  ;; (defun ac-emacs-lisp-mode-setup ()
-  ;;   (setq ac-sources '(ac-source-symbols ac-source-words-in-same-mode-buffers)))
-  ;; (add-hook 'c++-mode (lambda () (add-to-list 'ac-sources 'ac-source-semantic)))
+    ;; (defun ac-emacs-lisp-mode-setup ()
+    ;;   (setq ac-sources '(ac-source-symbols ac-source-words-in-same-mode-buffers)))
+    ;; (add-hook 'c++-mode (lambda () (add-to-list 'ac-sources 'ac-source-semantic)))
 
-  ;; (bind-key "A-M-?" 'ac-last-help)
-  ;; (unbind-key "C-s" ac-completing-map)
+    ;; (bind-key "A-M-?" 'ac-last-help)
+    ;; (unbind-key "C-s" ac-completing-map)
 
-  )
+    )
 ;; comp-ap-autocomplete ends here
 
 ;; IDO
 ;; #+NAME: comp-ap-ido
 
 ;; [[file:site-pkgs.org::comp-ap-ido][comp-ap-ido]]
-;; ---( ido )--------------------------------------------------------------
+  ;; ---( ido )--------------------------------------------------------------
 
-(use-package ido
-  :disabled t
-  :defer 5
-  :defines (ido-cur-item
-            ido-require-match
-            ido-selected
-            ido-final-text
-            ido-show-confirm-message)
-  :bind (("C-x b" . ido-switch-buffer)
-         ("C-x B" . ido-switch-buffer-other-window)
-         ("M-x" . ido-hacks-execute-extended-command))
-  :preface
-  (eval-when-compile
-    (defvar ido-require-match)
-    (defvar ido-cur-item)
-    (defvar ido-show-confirm-message)
-    (defvar ido-selected)
-    (defvar ido-final-text))
-  (defun ido-smart-select-text ()
-    "Select the current completed item. Do NOT descend into directories."
-    (interactive)
-    (when (and (or (not ido-require-match)
-                   (if (memq ido-require-match
-                             '(confirm confirm-after-completion))
-                       (if (or (eq ido-cur-item 'dir)
-                               (eq last-command this-command))
-                           t
-                         (setq ido-show-confirm-message t)
-                         nil))
-                   (ido-existing-item-p))
-               (not ido-incomplete-regexp))
-      (when ido-current-directory
-        (setq ido-exit 'takeprompt)
-        (unless (and ido-text (= 0 (length ido-text)))
-          (let ((match (ido-name (car ido-matches))))
-            (throw 'ido
-                   (setq ido-selected
-                         (if match
-                             (replace-regexp-in-string "/\\'" "" match)
-                           ido-text)
-                         ido-text ido-selected
-                         ido-final-text ido-text)))))
-      (exit-minibuffer)))
-  :config
-  (ido-mode 'buffer)
-  (use-package ido-hacks
-    :config
-    (ido-hacks-mode 1))
-  (use-package ido-vertical-mode
+  (use-package ido
     :disabled t
+    :defer 5
+    :defines (ido-cur-item
+              ido-require-match
+              ido-selected
+              ido-final-text
+              ido-show-confirm-message)
+    :bind (("C-x b" . ido-switch-buffer)
+           ("C-x B" . ido-switch-buffer-other-window)
+           ("M-x" . ido-hacks-execute-extended-command))
+    :preface
+    (eval-when-compile
+      (defvar ido-require-match)
+      (defvar ido-cur-item)
+      (defvar ido-show-confirm-message)
+      (defvar ido-selected)
+      (defvar ido-final-text))
+    (defun ido-smart-select-text ()
+      "Select the current completed item. Do NOT descend into directories."
+      (interactive)
+      (when (and (or (not ido-require-match)
+                     (if (memq ido-require-match
+                               '(confirm confirm-after-completion))
+                         (if (or (eq ido-cur-item 'dir)
+                                 (eq last-command this-command))
+                             t
+                           (setq ido-show-confirm-message t)
+                           nil))
+                     (ido-existing-item-p))
+                 (not ido-incomplete-regexp))
+        (when ido-current-directory
+          (setq ido-exit 'takeprompt)
+          (unless (and ido-text (= 0 (length ido-text)))
+            (let ((match (ido-name (car ido-matches))))
+              (throw 'ido
+                     (setq ido-selected
+                           (if match
+                               (replace-regexp-in-string "/\\'" "" match)
+                             ido-text)
+                           ido-text ido-selected
+                           ido-final-text ido-text)))))
+        (exit-minibuffer)))
     :config
-    (ido-vertical-mode 1))
-  (use-package flx-ido
-    :disabled t
-    :config
-    (flx-ido-mode 1))
-  (add-hook 'ido-minibuffer-setup-hook
-            #'(lambda ()
-                (bind-key "<return>" 'ido-smart-select-text
-                          ido-file-completion-map))))
+    (ido-mode 'buffer)
+    (use-package ido-hacks
+      :config
+      (ido-hacks-mode 1))
+    (use-package ido-vertical-mode
+      :disabled t
+      :config
+      (ido-vertical-mode 1))
+    (use-package flx-ido
+      :disabled t
+      :config
+      (flx-ido-mode 1))
+    (add-hook 'ido-minibuffer-setup-hook
+              #'(lambda ()
+                  (bind-key "<return>" 'ido-smart-select-text
+                            ido-file-completion-map))))
 ;; comp-ap-ido ends here
 
 ;; Completion/end
 ;; #+NAME: comp-ap-end
 
 ;; [[file:site-pkgs.org::comp-ap-end][comp-ap-end]]
-;; }}}  .comp-ap
+  ;; }}}  .comp-ap
 ;; comp-ap-end ends here
 
 ;; Completion/begin
 ;; #+NAME: comp-mb-begin
 
 ;; [[file:site-pkgs.org::comp-mb-begin][comp-mb-begin]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @COMPLETION "PROMPT"
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @COMPLETION "PROMPT"
+  ;; ;;;////////////////////////////////////////////////////////////////
 ;; comp-mb-begin ends here
 
 ;; Vertico*/begin
 ;; #+NAME: comp-mb-ver-begin
 
 ;; [[file:site-pkgs.org::comp-mb-ver-begin][comp-mb-ver-begin]]
-;; ===( vertico )=============================================================
+  ;; ===( vertico )=============================================================
 
- ;; @see: https://kristofferbalintona.me/posts/202202211546/
+   ;; @see: https://kristofferbalintona.me/posts/202202211546/
 
-(message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico))
+  (message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico))
 ;; comp-mb-ver-begin ends here
 
 ;; Marginalia
 ;; #+NAME: comp-mb-ver-marginalia
 
 ;; [[file:site-pkgs.org::comp-mb-ver-marginalia][comp-mb-ver-marginalia]]
-;; ---( marginalia )--------------------------------------------------------------
+  ;; ---( marginalia )--------------------------------------------------------------
 
-(use-package marginalia
-  :ensure t
-  :general
-  (:keymaps 'minibuffer-local-map
-            "M-A" 'marginalia-cycle)
-  :custom
-  (marginalia-max-relative-age 0)
-  ;;(marginalia-align 'right)
-  :config
-  (set-face-attribute 'marginalia-documentation nil :underline nil)
-  :init
-  (marginalia-mode))
+  (use-package marginalia
+    :ensure t
+    :general
+    (:keymaps 'minibuffer-local-map
+              "M-A" 'marginalia-cycle)
+    :custom
+    (marginalia-max-relative-age 0)
+    ;;(marginalia-align 'right)
+    :config
+    (set-face-attribute 'marginalia-documentation nil :underline nil)
+    :init
+    (marginalia-mode))
 
-;; (use-package marginalia
-;;   :general
-;;   (:keymaps 'minibuffer-local-map
-;;             "M-A" 'marginalia-cycle)
-;;   :custom
-;;   (marginalia-max-relative-age 0)
-;;   (marginalia-align 'right)
-;;   :init
-;;   (marginalia-mode))
+  ;; (use-package marginalia
+  ;;   :general
+  ;;   (:keymaps 'minibuffer-local-map
+  ;;             "M-A" 'marginalia-cycle)
+  ;;   :custom
+  ;;   (marginalia-max-relative-age 0)
+  ;;   (marginalia-align 'right)
+  ;;   :init
+  ;;   (marginalia-mode))
 
-;; icon fonts: M-x all-the-icons-install-fonts
-(use-package all-the-icons
-  :ensure t
-  )
+  ;; icon fonts: M-x all-the-icons-install-fonts
+  (use-package all-the-icons
+    :ensure t
+    )
 
 
-(use-package all-the-icons-completion
-  :ensure t
-  :after (marginalia all-the-icons)
-  :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
-  :init
-  (all-the-icons-completion-mode))
+  (use-package all-the-icons-completion
+    :ensure t
+    :after (marginalia all-the-icons)
+    :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
+    :init
+    (all-the-icons-completion-mode))
 ;; comp-mb-ver-marginalia ends here
 
 ;; Vertico
 ;; #+NAME: comp-mb-ver-vertico
 
 ;; [[file:site-pkgs.org::comp-mb-ver-vertico][comp-mb-ver-vertico]]
-;; ---( vertico )--------------------------------------------------------------
+  ;; ---( vertico )--------------------------------------------------------------
 
-(use-package vertico
-  :ensure t
-  :config
-  (vertico-mode))
+  (use-package vertico
+    :ensure t
+    :config
+    (vertico-mode))
 
-;; (use-package vertico
-;;   :custom
-;;   (vertico-count 13)                    ; Number of candidates to display
-;;   (vertico-resize t)
-;;   (vertico-cycle nil) ; Go from last to first candidate and first to last (cycle)?
-;;   :general
-;;   (:keymaps 'vertico-map
-;;             "<tab>" #'vertico-insert  ; Insert selected candidate into text area
-;;             "<escape>" #'minibuffer-keyboard-quit ; Close minibuffer
-;;             ;; NOTE 2022-02-05: Cycle through candidate groups
-;;             "C-M-n" #'vertico-next-group
-;;             "C-M-p" #'vertico-previous-group)
-;;   :config
-;;   (vertico-mode))
+  ;; (use-package vertico
+  ;;   :custom
+  ;;   (vertico-count 13)                    ; Number of candidates to display
+  ;;   (vertico-resize t)
+  ;;   (vertico-cycle nil) ; Go from last to first candidate and first to last (cycle)?
+  ;;   :general
+  ;;   (:keymaps 'vertico-map
+  ;;             "<tab>" #'vertico-insert  ; Insert selected candidate into text area
+  ;;             "<escape>" #'minibuffer-keyboard-quit ; Close minibuffer
+  ;;             ;; NOTE 2022-02-05: Cycle through candidate groups
+  ;;             "C-M-n" #'vertico-next-group
+  ;;             "C-M-p" #'vertico-previous-group)
+  ;;   :config
+  ;;   (vertico-mode))
 ;; comp-mb-ver-vertico ends here
 
 ;; Consult
 ;; #+NAME: comp-mb-ver-consult
 
 ;; [[file:site-pkgs.org::comp-mb-ver-consult][comp-mb-ver-consult]]
-;; ---( consult )--------------------------------------------------------------
+  ;; ---( consult )--------------------------------------------------------------
 
 
   (setq completion-ignore-case t)
@@ -1382,1106 +1402,1106 @@
 ;; #+NAME: comp-mb-ver-orderless
 
 ;; [[file:site-pkgs.org::comp-mb-ver-orderless][comp-mb-ver-orderless]]
-;; ---( orderless )--------------------------------------------------------------
+  ;; ---( orderless )--------------------------------------------------------------
 
-(use-package orderless
-  :ensure t
-  :init
-  (setq completion-styles '(orderless)))
+  (use-package orderless
+    :ensure t
+    :init
+    (setq completion-styles '(orderless)))
 
-;; (use-package orderless
-;;   :custom
-;;   (completion-styles '(orderless))      ; Use orderless
-;;   (completion-category-defaults nil)    ; I want to be in control!
-;;   (completion-category-overrides
-;;    '((file (styles basic-remote ; For `tramp' hostname completion with `vertico'
-;;                    orderless)))))
+  ;; (use-package orderless
+  ;;   :custom
+  ;;   (completion-styles '(orderless))      ; Use orderless
+  ;;   (completion-category-defaults nil)    ; I want to be in control!
+  ;;   (completion-category-overrides
+  ;;    '((file (styles basic-remote ; For `tramp' hostname completion with `vertico'
+  ;;                    orderless)))))
 ;; comp-mb-ver-orderless ends here
 
 ;; Embark
 ;; #+NAME: comp-mb-ver-embark
 
 ;; [[file:site-pkgs.org::comp-mb-ver-embark][comp-mb-ver-embark]]
-;; ---( embark )--------------------------------------------------------------
+  ;; ---( embark )--------------------------------------------------------------
 
-  (use-package embark
-  :ensure t
+    (use-package embark
+    :ensure t
 
-  :bind
-  (("C-." . embark-act)         ;; pick some comfortable binding
-   ("C-;" . embark-dwim)        ;; good alternative: M-.
-   ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
+    :bind
+    (("C-." . embark-act)         ;; pick some comfortable binding
+     ("C-;" . embark-dwim)        ;; good alternative: M-.
+     ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
 
-   :init
+     :init
 
-   ;; Optionally replace the key help with a completing-read interface
-   (setq prefix-help-command #'embark-prefix-help-command)
+     ;; Optionally replace the key help with a completing-read interface
+     (setq prefix-help-command #'embark-prefix-help-command)
 
-   :config
+     :config
 
-   ;; Hide the mode line of the Embark live/completions buffers
-   (add-to-list 'display-buffer-alist
-                '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
-                  nil
-                  (window-parameters (mode-line-format . none))))
+     ;; Hide the mode line of the Embark live/completions buffers
+     (add-to-list 'display-buffer-alist
+                  '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+                    nil
+                    (window-parameters (mode-line-format . none))))
 
-  )
+    )
 
-;; Consult users will also want the embark-consult package.
-(use-package embark-consult
-  :ensure t
-  :after (embark consult)
-  ;; :demand t ; only necessary if you have the hook below
-  ;; if you want to have consult previews as you move around an
-  ;; auto-updating embark collect buffer
-  :hook
-  (embark-collect-mode . consult-preview-at-point-mode))
+  ;; Consult users will also want the embark-consult package.
+  (use-package embark-consult
+    :ensure t
+    :after (embark consult)
+    ;; :demand t ; only necessary if you have the hook below
+    ;; if you want to have consult previews as you move around an
+    ;; auto-updating embark collect buffer
+    :hook
+    (embark-collect-mode . consult-preview-at-point-mode))
 
-;; (use-package embark
-;;   :ensure t)
+  ;; (use-package embark
+  ;;   :ensure t)
 
-;; Consult users will also want the embark-consult package.
-;; (use-package embark-consult
-;;   :ensure t
-;;   :after (embark consult)
-;;   :demand t only necessary if you have the hook below
-;;   if you want to have consult previews as you move around an
-;;   auto-updating embark collect buffer
-;;   :hook
-;;   (embark-collect-mode . consult-preview-at-point-mode))
+  ;; Consult users will also want the embark-consult package.
+  ;; (use-package embark-consult
+  ;;   :ensure t
+  ;;   :after (embark consult)
+  ;;   :demand t only necessary if you have the hook below
+  ;;   if you want to have consult previews as you move around an
+  ;;   auto-updating embark collect buffer
+  ;;   :hook
+  ;;   (embark-collect-mode . consult-preview-at-point-mode))
 ;; comp-mb-ver-embark ends here
 
 ;; Savehist
 ;; #+NAME: comp-mb-ver-savehist
 
 ;; [[file:site-pkgs.org::comp-mb-ver-savehist][comp-mb-ver-savehist]]
-;; ---( savehist )--------------------------------------------------------------
+  ;; ---( savehist )--------------------------------------------------------------
 
-;; Persist history over Emacs restarts. Vertico sorts by history position.
-(use-package savehist
-  :init
-  (savehist-mode))
+  ;; Persist history over Emacs restarts. Vertico sorts by history position.
+  (use-package savehist
+    :init
+    (savehist-mode))
 
 
-(recentf-mode)
+  (recentf-mode)
 
-(setq completion-ignore-case t)
-(setq read-file-name-completion-ignore-case t)
+  (setq completion-ignore-case t)
+  (setq read-file-name-completion-ignore-case t)
 ;; comp-mb-ver-savehist ends here
 
 ;; Vertico*/end
 ;; #+NAME: comp-mb-ver-end
 
 ;; [[file:site-pkgs.org::comp-mb-ver-end][comp-mb-ver-end]]
-(message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico)) 
-;; .........................................................................
+  (message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico)) 
+  ;; .........................................................................
 ;; comp-mb-ver-end ends here
 
 ;; Completion/end
 ;; #+NAME: comp-mb-end
 
 ;; [[file:site-pkgs.org::comp-mb-end][comp-mb-end]]
-;; }}}  .comp-mb
+  ;; }}}  .comp-mb
 ;; comp-mb-end ends here
 
 ;; Magit
 ;; #+NAME: magit
 
 ;; [[file:site-pkgs.org::magit][magit]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @MAGIT
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @MAGIT
+  ;; ;;;////////////////////////////////////////////////////////////////
 
 
-;; ;; ---( magit )--------------------------------------------------------------
+  ;; ;; ---( magit )--------------------------------------------------------------
 
-(use-package magit
-  :ensure t
-  :config
-  (setenv "EDITOR" "emacsclient")
-  (setenv "GIT_EDITOR" "emacsclient"))
+  (use-package magit
+    :ensure t
+    :config
+    (setenv "EDITOR" "emacsclient")
+    (setenv "GIT_EDITOR" "emacsclient"))
 
-;; git config --global core.editor "`which emacsclient` -t -s $EMACS_SERVER_FILE"
+  ;; git config --global core.editor "`which emacsclient` -t -s $EMACS_SERVER_FILE"
 
-(use-package magit-zzz
-  :disabled t
-  :bind (("C-x g" . magit-status)
-         ("C-x G" . magit-status-with-prefix))
-  :preface
-  (defun magit-monitor (&optional no-display)
-    "Start git-monitor in the current directory."
-    (interactive)
-    (when (string-match "\\*magit: \\(.+?\\)\\*" (buffer-name))
-      (let ((name (format "*git-monitor: %s*"
-                          (match-string 1 (buffer-name)))))
-        (or (get-buffer name)
-            (let ((buf (get-buffer-create name)))
-              (ignore-errors
-                (start-process "*git-monitor*" buf "git-monitor"
-                               "-d" (expand-file-name default-directory)))
-              buf)))))
-  (defun magit-status-with-prefix ()
-    (interactive)
-    (let ((current-prefix-arg '(4)))
-      (call-interactively 'magit-status)))
-  (defun lusty-magit-status (dir &optional switch-function)
-    (interactive (list (if current-prefix-arg
-                           (lusty-read-directory)
-                         (or (magit-get-top-dir)
-                             (lusty-read-directory)))))
-    (magit-status-internal dir switch-function))
-  (defun eshell/git (&rest args)
-    (cond
-     ((or (null args)
-          (and (string= (car args) "status") (null (cdr args))))
-      (magit-status-internal default-directory))
-     ((and (string= (car args) "log") (null (cdr args)))
-      (magit-log "HEAD"))
-     (t (throw 'eshell-replace-command
-               (eshell-parse-command
-                "*git"
-                (eshell-stringify-list (eshell-flatten-list args)))))))
-  :init
-  (add-hook 'magit-mode-hook 'hl-line-mode)
-  :config
-  (setenv "GIT_PAGER" "")
-  (use-package magit-backup
-    :diminish magit-backup-mode)
-  (use-package magit-review
+  (use-package magit-zzz
     :disabled t
-    :commands magit-review
-    :config (require 'json))
-  (unbind-key "M-h" magit-mode-map)
-  (unbind-key "M-s" magit-mode-map)
-  (unbind-key "M-m" magit-mode-map)
-  (bind-key "M-H" #'magit-show-level-2-all magit-mode-map)
-  (bind-key "M-S" #'magit-show-level-4-all magit-mode-map)
-  (add-hook 'magit-log-edit-mode-hook
-            #'(lambda ()
-                (set-fill-column 72)
-                (flyspell-mode)))
-  (add-hook 'magit-status-mode-hook #'(lambda () (magit-monitor t))))
+    :bind (("C-x g" . magit-status)
+           ("C-x G" . magit-status-with-prefix))
+    :preface
+    (defun magit-monitor (&optional no-display)
+      "Start git-monitor in the current directory."
+      (interactive)
+      (when (string-match "\\*magit: \\(.+?\\)\\*" (buffer-name))
+        (let ((name (format "*git-monitor: %s*"
+                            (match-string 1 (buffer-name)))))
+          (or (get-buffer name)
+              (let ((buf (get-buffer-create name)))
+                (ignore-errors
+                  (start-process "*git-monitor*" buf "git-monitor"
+                                 "-d" (expand-file-name default-directory)))
+                buf)))))
+    (defun magit-status-with-prefix ()
+      (interactive)
+      (let ((current-prefix-arg '(4)))
+        (call-interactively 'magit-status)))
+    (defun lusty-magit-status (dir &optional switch-function)
+      (interactive (list (if current-prefix-arg
+                             (lusty-read-directory)
+                           (or (magit-get-top-dir)
+                               (lusty-read-directory)))))
+      (magit-status-internal dir switch-function))
+    (defun eshell/git (&rest args)
+      (cond
+       ((or (null args)
+            (and (string= (car args) "status") (null (cdr args))))
+        (magit-status-internal default-directory))
+       ((and (string= (car args) "log") (null (cdr args)))
+        (magit-log "HEAD"))
+       (t (throw 'eshell-replace-command
+                 (eshell-parse-command
+                  "*git"
+                  (eshell-stringify-list (eshell-flatten-list args)))))))
+    :init
+    (add-hook 'magit-mode-hook 'hl-line-mode)
+    :config
+    (setenv "GIT_PAGER" "")
+    (use-package magit-backup
+      :diminish magit-backup-mode)
+    (use-package magit-review
+      :disabled t
+      :commands magit-review
+      :config (require 'json))
+    (unbind-key "M-h" magit-mode-map)
+    (unbind-key "M-s" magit-mode-map)
+    (unbind-key "M-m" magit-mode-map)
+    (bind-key "M-H" #'magit-show-level-2-all magit-mode-map)
+    (bind-key "M-S" #'magit-show-level-4-all magit-mode-map)
+    (add-hook 'magit-log-edit-mode-hook
+              #'(lambda ()
+                  (set-fill-column 72)
+                  (flyspell-mode)))
+    (add-hook 'magit-status-mode-hook #'(lambda () (magit-monitor t))))
 
-;; ---( git-timemachine )------------------------------------------------------------
+  ;; ---( git-timemachine )------------------------------------------------------------
 
-(use-package git-timemachine
-  :disabled t)
+  (use-package git-timemachine
+    :disabled t)
 
-;; (use-package git-timemachine
-;;   :ensure t
-;;   :bind (("s-g" . git-timemachine)))
+  ;; (use-package git-timemachine
+  ;;   :ensure t
+  ;;   :bind (("s-g" . git-timemachine)))
 
-;; ---( vdiff )------------------------------------------------------------
+  ;; ---( vdiff )------------------------------------------------------------
 
-(use-package vdiff
-  :ensure t)
+  (use-package vdiff
+    :ensure t)
 
-(use-package vdiff-magit
-  :ensure t
-  :config
-  (define-key magit-mode-map "e" 'vdiff-magit-dwim)
-  (define-key magit-mode-map "E" 'vdiff-magit)
-  (transient-suffix-put 'magit-dispatch "e" :description "vdiff (dwim)")
-  (transient-suffix-put 'magit-dispatch "e" :command 'vdiff-magit-dwim)
-  (transient-suffix-put 'magit-dispatch "E" :description "vdiff")
-  (transient-suffix-put 'magit-dispatch "E" :command 'vdiff-magit)
+  (use-package vdiff-magit
+    :ensure t
+    :config
+    (define-key magit-mode-map "e" 'vdiff-magit-dwim)
+    (define-key magit-mode-map "E" 'vdiff-magit)
+    (transient-suffix-put 'magit-dispatch "e" :description "vdiff (dwim)")
+    (transient-suffix-put 'magit-dispatch "e" :command 'vdiff-magit-dwim)
+    (transient-suffix-put 'magit-dispatch "E" :description "vdiff")
+    (transient-suffix-put 'magit-dispatch "E" :command 'vdiff-magit)
 
-  ;; This flag will default to using ediff for merges.
-  ;; (setq vdiff-magit-use-ediff-for-merges nil)
+    ;; This flag will default to using ediff for merges.
+    ;; (setq vdiff-magit-use-ediff-for-merges nil)
 
-  ;; Whether vdiff-magit-dwim runs show variants on hunks.  If non-nil,
-  ;; vdiff-magit-show-staged or vdiff-magit-show-unstaged are called based on what
-  ;; section the hunk is in.  Otherwise, vdiff-magit-dwim runs vdiff-magit-stage
-  ;; when point is on an uncommitted hunk.
-  ;; (setq vdiff-magit-dwim-show-on-hunks nil)
+    ;; Whether vdiff-magit-dwim runs show variants on hunks.  If non-nil,
+    ;; vdiff-magit-show-staged or vdiff-magit-show-unstaged are called based on what
+    ;; section the hunk is in.  Otherwise, vdiff-magit-dwim runs vdiff-magit-stage
+    ;; when point is on an uncommitted hunk.
+    ;; (setq vdiff-magit-dwim-show-on-hunks nil)
 
-  ;; Whether vdiff-magit-show-stash shows the state of the index.
-  ;; (setq vdiff-magit-show-stash-with-index t)
+    ;; Whether vdiff-magit-show-stash shows the state of the index.
+    ;; (setq vdiff-magit-show-stash-with-index t)
 
-  ;; Only use two buffers (working file and index) for vdiff-magit-stage
-  ;; (setq vdiff-magit-stage-is-2way nil)
+    ;; Only use two buffers (working file and index) for vdiff-magit-stage
+    ;; (setq vdiff-magit-stage-is-2way nil)
 
-  )
+    )
 
-;; }}}  .magit
+  ;; }}}  .magit
 ;; magit ends here
 
 ;; Dired
 ;; #+NAME: dired
 
 ;; [[file:site-pkgs.org::dired][dired]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @DIRED
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @DIRED
+  ;; ;;;////////////////////////////////////////////////////////////////
 
 
-;; ---( dired )--------------------------------------------------------------
+  ;; ---( dired )--------------------------------------------------------------
 
 
-(use-package dired
-  ;; :straight (:type built-in)
-  ;; :ensure t 
-  :hook ((dired-mode . hl-line-mode)
-         (dired-mode . dired-hide-details-mode))
-  :custom
-  ;; (require 'ls-lisp)
-  (ls-lisp-dirs-first t)
-  (ls-lisp-ignore-case nil)
-  (ls-lisp-use-insert-directory-program nil)
+  (use-package dired
+    ;; :straight (:type built-in)
+    ;; :ensure t 
+    :hook ((dired-mode . hl-line-mode)
+           (dired-mode . dired-hide-details-mode))
+    :custom
+    ;; (require 'ls-lisp)
+    (ls-lisp-dirs-first t)
+    (ls-lisp-ignore-case nil)
+    (ls-lisp-use-insert-directory-program nil)
 
-  (dired-listing-switches "-alvhp --dired --group-directories-first")
+    (dired-listing-switches "-alvhp --dired --group-directories-first")
 
-  (dired-recursive-copies 'always)
-  (dired-recursive-deletes 'always)
-  (dired-dwim-target t) ;;use to copy to the next buffer visible
-  ;; Auto refresh Dired, but be quiet about it
-  (global-auto-revert-non-file-buffers t)
-  (auto-revert-verbose t)
-  ;;(image-dired-external-viewer (executable-find "sxiv"))
-  )
+    (dired-recursive-copies 'always)
+    (dired-recursive-deletes 'always)
+    (dired-dwim-target t) ;;use to copy to the next buffer visible
+    ;; Auto refresh Dired, but be quiet about it
+    (global-auto-revert-non-file-buffers t)
+    (auto-revert-verbose t)
+    ;;(image-dired-external-viewer (executable-find "sxiv"))
+    )
 
-;; @see: https://github.com/CSRaghunandan/.emacs.d/blob/master/setup-files/setup-dired.el
+  ;; @see: https://github.com/CSRaghunandan/.emacs.d/blob/master/setup-files/setup-dired.el
 
-;; dired-x: to hide uninteresting files in dired
-(use-package dired-x
-  ;; :straight nil
-  ;; :ensure t 
-  :bind ("C-x C-j" . dired-jump)
-  :hook ((dired-mode . dired-omit-mode))
-  :config
-  (setq dired-omit-verbose nil)
+  ;; dired-x: to hide uninteresting files in dired
+  (use-package dired-x
+    ;; :straight nil
+    ;; :ensure t 
+    :bind ("C-x C-j" . dired-jump)
+    :hook ((dired-mode . dired-omit-mode))
+    :config
+    (setq dired-omit-verbose nil)
+  
+    ;; hide backup, autosave, *.*~ files
+    ;; omit mode can be toggled using `C-x M-o' in dired buffer.
+    ;;(setq dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$")
+    (setq dired-omit-files "^\\.?#\\|^\\.$")
+    (setq dired-omit-files
+          (concat dired-omit-files "\\|^.DS_STORE$\\|^.projectile$\\|^.git$"))
+    )
 
-  ;; hide backup, autosave, *.*~ files
-  ;; omit mode can be toggled using `C-x M-o' in dired buffer.
-  ;;(setq dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$")
-  (setq dired-omit-files "^\\.?#\\|^\\.$")
-  (setq dired-omit-files
-        (concat dired-omit-files "\\|^.DS_STORE$\\|^.projectile$\\|^.git$"))
-  )
+  ;; find-dired: dired find
+  (use-package find-dired
+    ;; :straight (:type built-in)
+    ;; :ensure t 
+    :custom
+    (setq find-ls-option '("-print0 | xargs -0 ls -ld" . "-ld"))
+    )
 
-;; find-dired: dired find
-(use-package find-dired
-  ;; :straight (:type built-in)
-  ;; :ensure t 
-  :custom
-  (setq find-ls-option '("-print0 | xargs -0 ls -ld" . "-ld"))
-  )
+  ;; peep-dired: file preview
+  (use-package dired-preview
+    :ensure t 
+    :custom
+    (setq dired-preview-delay 0.7)
+    (setq dired-preview-max-size (expt 2 20))
+    (setq dired-preview-ignored-extensions-regexp
+          (concat "\\."
+                  "\\(mkv\\|webm\\|mp4\\|mp3\\|ogg\\|m4a"
+                  "\\|gz\\|zst\\|tar\\|xz\\|rar\\|zip"
+                  "\\|iso\\|epub\\|pdf\\)"))
 
-;; peep-dired: file preview
-(use-package dired-preview
-  :ensure t 
-  :custom
-  (setq dired-preview-delay 0.7)
-  (setq dired-preview-max-size (expt 2 20))
-  (setq dired-preview-ignored-extensions-regexp
-        (concat "\\."
-                "\\(mkv\\|webm\\|mp4\\|mp3\\|ogg\\|m4a"
-                "\\|gz\\|zst\\|tar\\|xz\\|rar\\|zip"
-                "\\|iso\\|epub\\|pdf\\)"))
+    (defun my-dired-preview-to-the-right ()
+      "My preferred `dired-preview-display-action-alist-function'."
+      '((display-buffer-in-side-window)
+        (side . right)
+        (width . 0.6)))
 
-  (defun my-dired-preview-to-the-right ()
-    "My preferred `dired-preview-display-action-alist-function'."
-    '((display-buffer-in-side-window)
-      (side . right)
-      (width . 0.6)))
+    (setq dired-preview-display-action-alist-function #'my-dired-preview-to-the-right)
+    
+    
+    ;; Enable `dired-preview-mode' in a given Dired buffer or do it
+    ;; globally:
+    ;; (dired-preview-global-mode 1)
+    )
 
-  (setq dired-preview-display-action-alist-function #'my-dired-preview-to-the-right)
+  ;; ;; peep-dired: file preview
+  ;; (use-package peep-dired
+  ;;   :ensure t 
+  ;;   :bind (:map peep-dired-mode-map
+  ;;             ("SPC" . nil)
+  ;;             ("<backspace>" . nil)))
 
-
-  ;; Enable `dired-preview-mode' in a given Dired buffer or do it
-  ;; globally:
-  ;; (dired-preview-global-mode 1)
-  )
-
-;; ;; peep-dired: file preview
-;; (use-package peep-dired
-;;   :ensure t 
-;;   :bind (:map peep-dired-mode-map
-;;             ("SPC" . nil)
-;;             ("<backspace>" . nil)))
-
-;; }}}  .dired
+  ;; }}}  .dired
 ;; dired ends here
 
 ;; Project
 ;; #+NAME: project
 
 ;; [[file:site-pkgs.org::project][project]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @PROJECT
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @PROJECT
+  ;; ;;;////////////////////////////////////////////////////////////////
 
 
-;; ---( projectile )--------------------------------------------------------------
+  ;; ---( projectile )--------------------------------------------------------------
 
-(use-package projectile
-  :ensure t
-  :diminish projectile-mode
-  :init
-  (setq projectile-enable-caching t
-        projectile-cache-file (emacs-d "var/projectile.cache")
-        projectile-known-projects-file (emacs-d "var/projectile-bookmarks.eld"))
-  (make-directory (emacs-d "var") t)
-  :config
-  (projectile-global-mode)
-  )
-
-
-;; ---( treemacs )--------------------------------------------------------------
-
-;; Provides workspaces with file browsing (tree file viewer)
-;; and project management when coupled with `projectile`.
-
-(use-package treemacs
-  :ensure t
-  :defer t
-  :config
-  (setq treemacs-no-png-images t
-          treemacs-width 24)
-
-  (dolist (face '(treemacs-root-face
-                  treemacs-git-unmodified-face
-                  treemacs-git-modified-face
-                  treemacs-git-renamed-face
-                  treemacs-git-ignored-face
-                  treemacs-git-untracked-face
-                  treemacs-git-added-face
-                  treemacs-git-conflict-face
-                  treemacs-directory-face
-                  treemacs-directory-collapsed-face
-                  treemacs-file-face
-                  treemacs-tags-face))
-    (set-face-attribute face nil :family "PT Sans Narrow" :height 120))
-
-  :bind ("C-c t" . treemacs))
-
-(use-package treemacs-projectile
-  :after treemacs projectile
-  :ensure t)
-
-(use-package treemacs-icons-dired
-  :after treemacs dired
-  :ensure t
-  :config (treemacs-icons-dired-mode))
-
-(use-package treemacs-all-the-icons
-  :after treemacs
-  :ensure t
-  :config (treemacs-load-theme "all-the-icons"))
-
-(use-package treemacs-magit
-  :after treemacs magit
-  :ensure t)
-
-
-;; ---( etags )--------------------------------------------------------------
-
-(use-package etags
-  :bind ("M-T" . tags-search))
-
-;; ---( gtags )--------------------------------------------------------------
-
-(use-package gtags
-  :disabled t
-  :commands gtags-mode
-  :diminish gtags-mode
-  :config
-  (bind-key "C-c t ." 'gtags-find-rtag)
-  (bind-key "C-c t f" 'gtags-find-file)
-  (bind-key "C-c t p" 'gtags-parse-file)
-  (bind-key "C-c t g" 'gtags-find-with-grep)
-  (bind-key "C-c t i" 'gtags-find-with-idutils)
-  (bind-key "C-c t s" 'gtags-find-symbol)
-  (bind-key "C-c t r" 'gtags-find-rtag)
-  (bind-key "C-c t v" 'gtags-visit-rootdir)
-  (bind-key "<mouse-2>" 'gtags-find-tag-from-here gtags-mode-map)
-  (use-package helm-gtags
-    :bind ("M-T" . helm-gtags-select)
+  (use-package projectile
+    :ensure t
+    :diminish projectile-mode
+    :init
+    (setq projectile-enable-caching t
+          projectile-cache-file (emacs-d "var/projectile.cache")
+          projectile-known-projects-file (emacs-d "var/projectile-bookmarks.eld"))
+    (make-directory (emacs-d "var") t)
     :config
-    (bind-key "M-," 'helm-gtags-resume gtags-mode-map))
-  )
+    (projectile-global-mode)
+    )
+
+
+  ;; ---( treemacs )--------------------------------------------------------------
+
+  ;; Provides workspaces with file browsing (tree file viewer)
+  ;; and project management when coupled with `projectile`.
+
+  (use-package treemacs
+    :ensure t
+    :defer t
+    :config
+    (setq treemacs-no-png-images t
+            treemacs-width 24)
+
+    (dolist (face '(treemacs-root-face
+                    treemacs-git-unmodified-face
+                    treemacs-git-modified-face
+                    treemacs-git-renamed-face
+                    treemacs-git-ignored-face
+                    treemacs-git-untracked-face
+                    treemacs-git-added-face
+                    treemacs-git-conflict-face
+                    treemacs-directory-face
+                    treemacs-directory-collapsed-face
+                    treemacs-file-face
+                    treemacs-tags-face))
+      (set-face-attribute face nil :family "PT Sans Narrow" :height 120))
+   
+    :bind ("C-c t" . treemacs))
+
+  (use-package treemacs-projectile
+    :after treemacs projectile
+    :ensure t)
+
+  (use-package treemacs-icons-dired
+    :after treemacs dired
+    :ensure t
+    :config (treemacs-icons-dired-mode))
+
+  (use-package treemacs-all-the-icons
+    :after treemacs
+    :ensure t
+    :config (treemacs-load-theme "all-the-icons"))
+
+  (use-package treemacs-magit
+    :after treemacs magit
+    :ensure t)
+
+
+  ;; ---( etags )--------------------------------------------------------------
+
+  (use-package etags
+    :bind ("M-T" . tags-search))
+
+  ;; ---( gtags )--------------------------------------------------------------
+
+  (use-package gtags
+    :disabled t
+    :commands gtags-mode
+    :diminish gtags-mode
+    :config
+    (bind-key "C-c t ." 'gtags-find-rtag)
+    (bind-key "C-c t f" 'gtags-find-file)
+    (bind-key "C-c t p" 'gtags-parse-file)
+    (bind-key "C-c t g" 'gtags-find-with-grep)
+    (bind-key "C-c t i" 'gtags-find-with-idutils)
+    (bind-key "C-c t s" 'gtags-find-symbol)
+    (bind-key "C-c t r" 'gtags-find-rtag)
+    (bind-key "C-c t v" 'gtags-visit-rootdir)
+    (bind-key "<mouse-2>" 'gtags-find-tag-from-here gtags-mode-map)
+    (use-package helm-gtags
+      :bind ("M-T" . helm-gtags-select)
+      :config
+      (bind-key "M-," 'helm-gtags-resume gtags-mode-map))
+    )
 
 
 
-;; }}}  .project
+  ;; }}}  .project
 ;; project ends here
 
 ;; Grep
 ;; #+NAME: grep
 
 ;; [[file:site-pkgs.org::grep][grep]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @GREP
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @GREP
+  ;; ;;;////////////////////////////////////////////////////////////////
 
-;; ---( ack )--------------------------------------------------------------
+  ;; ---( ack )--------------------------------------------------------------
 
-(use-package ack
-  :disabled t)
-;;(use-package ack-and-a-half)
+  (use-package ack
+    :disabled t)
+  ;;(use-package ack-and-a-half)
 
-;; ---( ag )--------------------------------------------------------------
+  ;; ---( ag )--------------------------------------------------------------
 
-(use-package wgrep
-  :ensure t
-  :custom
-  (wgrep-enable-key "e")
-  (wgrep-auto-save-buffer )
-  (twgrep-change-readonly-file t))
+  (use-package wgrep
+    :ensure t
+    :custom
+    (wgrep-enable-key "e")
+    (wgrep-auto-save-buffer )
+    (twgrep-change-readonly-file t))
 
-(use-package ag
-  :ensure t
-  :custom
-  (ag-highligh-search )
-  (tag-reuse-buffers )
-  (tag-reuse-window t)
-  :bind
-  ("M-s a" . ag-project)
-  :config
-  (use-package wgrep-ag
-    :ensure t))
-
-
-;; ---( grep )--------------------------------------------------------------
-
-(use-package grep
-  :bind (("M-s d" . find-grep-dired)
-         ("M-s F" . find-grep)
-         ("M-s G" . grep)
-         ("M-s p" . find-grep-in-project))
-  :init
-  (defun find-grep-in-project (command-args)
-    (interactive
-     (let ((default (thing-at-point 'symbol)))
-       (list (read-shell-command "Run find (like this): "
-                                 (cons (concat "git --no-pager grep -n "
-                                               default)
-                                       (+ 24 (length default)))
-                                 'grep-find-history))))
-    (if command-args
-        (let ((null-device nil)) ; see grep
-          (grep command-args))))
-  :config
-  (add-hook 'grep-mode-hook #'(lambda () (use-package grep-ed)))
-  (grep-apply-setting 'grep-command "egrep -nH -e ")
-  (if nil
-      (progn
-        (setq-default grep-first-column 1)
-        (grep-apply-setting
-         'grep-find-command
-         '("ag --noheading --nocolor --smart-case --nogroup --column -- "
-           . 61)))
-    (grep-apply-setting
-     'grep-find-command
-     '("find . -type f -print0 | xargs -P4 -0 egrep -nH " . 49))))
+  (use-package ag
+    :ensure t
+    :custom
+    (ag-highligh-search )
+    (tag-reuse-buffers )
+    (tag-reuse-window t)
+    :bind
+    ("M-s a" . ag-project)
+    :config
+    (use-package wgrep-ag
+      :ensure t))
 
 
-;; }}}  .grep
+  ;; ---( grep )--------------------------------------------------------------
+
+  (use-package grep
+    :bind (("M-s d" . find-grep-dired)
+           ("M-s F" . find-grep)
+           ("M-s G" . grep)
+           ("M-s p" . find-grep-in-project))
+    :init
+    (defun find-grep-in-project (command-args)
+      (interactive
+       (let ((default (thing-at-point 'symbol)))
+         (list (read-shell-command "Run find (like this): "
+                                   (cons (concat "git --no-pager grep -n "
+                                                 default)
+                                         (+ 24 (length default)))
+                                   'grep-find-history))))
+      (if command-args
+          (let ((null-device nil)) ; see grep
+            (grep command-args))))
+    :config
+    (add-hook 'grep-mode-hook #'(lambda () (use-package grep-ed)))
+    (grep-apply-setting 'grep-command "egrep -nH -e ")
+    (if nil
+        (progn
+          (setq-default grep-first-column 1)
+          (grep-apply-setting
+           'grep-find-command
+           '("ag --noheading --nocolor --smart-case --nogroup --column -- "
+             . 61)))
+      (grep-apply-setting
+       'grep-find-command
+       '("find . -type f -print0 | xargs -P4 -0 egrep -nH " . 49))))
+
+
+  ;; }}}  .grep
 ;; grep ends here
 
 ;; Shell/begin
 ;; #+NAME: shell-begin
 
 ;; [[file:site-pkgs.org::shell-begin][shell-begin]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @SHELL
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @SHELL
+  ;; ;;;////////////////////////////////////////////////////////////////
 ;; shell-begin ends here
 
 ;; eshell
 ;; #+NAME: shell-eshell
 
 ;; [[file:site-pkgs.org::shell-eshell][shell-eshell]]
-;; ---( eshell )--------------------------------------------------------------
+  ;; ---( eshell )--------------------------------------------------------------
 
-;; @see: https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/eshell
-;;
-;; ```
-;; cd /usr/share/emacs/[23]*/lisp/eshell
-;; he=4; ls *.gz | xargs -I{} bash -c 'echo "#>>({})#####"; zcat {}; echo "#<<({})#####"' | less -SRX
-;; he=5; ls *.gz | xargs -I{} bash -c 'zcat {} | bat -l lisp --file-name={} --color=always;' | less -SRX
-;; ```
+  ;; @see: https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/eshell
+  ;;
+  ;; ```
+  ;; cd /usr/share/emacs/[23]*/lisp/eshell
+  ;; he=4; ls *.gz | xargs -I{} bash -c 'echo "#>>({})#####"; zcat {}; echo "#<<({})#####"' | less -SRX
+  ;; he=5; ls *.gz | xargs -I{} bash -c 'zcat {} | bat -l lisp --file-name={} --color=always;' | less -SRX
+  ;; ```
 
-;; (use-package esh-toggle
-;;   :ensure t
-;;   :bind ("C-x C-h" . eshell-toggle))
-(use-package xterm-color
-  :ensure t
-  :commands (xterm-color-filter))
+  ;; (use-package esh-toggle
+  ;;   :ensure t
+  ;;   :bind ("C-x C-h" . eshell-toggle))
+  (use-package xterm-color
+    :ensure t
+    :commands (xterm-color-filter))
 
-(use-package eshell
-  :after (esh-mode)
-  ;;:after (esh-mode xterm-color)
-  ;;:after (xterm-color)
-  :ensure t
-  :commands (eshell eshell-command)
-  :preface
-  (message "eshell:preface >")
-
-
-  (defun eshell-initialize ()
-    (message "eshell:initialize >")
-    (defun eshell-spawn-external-command (beg end)
-      "Parse and expand any history references in current input."
-      (save-excursion
-        (goto-char end)
-        (when (looking-back "&!" beg)
-          (delete-region (match-beginning 0) (match-end 0))
-          (goto-char beg)
-          (insert "spawn "))))
-    (add-hook 'eshell-expand-input-functions 'eshell-spawn-external-command)
-    (defun ss (server)
-      (interactive "sServer: ")
-      (call-process "spawn" nil nil nil "ss" server))
-
-    (setq eshell-prompt-regexp "^[^#$\n]*[#$] "
-          eshell-prompt-function
-          (lambda ()
-            (concat
-             (propertize "[" 'face `(:foreground "Salmon" :weight bold))
-             (propertize (user-login-name) 'face `(:foreground "CornflowerBlue" :weight bold))
-             (propertize "@" 'face `(:foreground "CornflowerBlue" :weight bold))
-             (propertize (system-name) 'face `(:foreground "CornflowerBlue" :weight bold))
-             (propertize " " 'face `(:foreground "gray"))
-             (propertize (if (string= (eshell/pwd) (getenv "HOME"))
-                             "~" (eshell/basename (eshell/pwd)))
-                         'face `(:foreground "DarkTurquoise" :weight bold))
-             (propertize "]" 'face `(:foreground "Salmon" :weight bold))
-             (propertize (if (= (user-uid) 0) "# " "$") 'face `(:foreground "Salmon" :weight bold))
-             (propertize " " 'face 'default)
-             )))
-    ;; (setq eshell-output-filter-functions
-    ;;       (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
-    ;; ;;
-
-    (eval-after-load "em-unix"
-      '(progn
-         (unintern 'eshell/su nil)
-         (unintern 'eshell/sudo nil)))
+  (use-package eshell
+    :after (esh-mode)
+    ;;:after (esh-mode xterm-color)
+    ;;:after (xterm-color)
+    :ensure t
+    :commands (eshell eshell-command)
+    :preface
+    (message "eshell:preface >")
 
 
-    (message "eshell:initialize <"))
+    (defun eshell-initialize ()
+      (message "eshell:initialize >")
+      (defun eshell-spawn-external-command (beg end)
+        "Parse and expand any history references in current input."
+        (save-excursion
+          (goto-char end)
+          (when (looking-back "&!" beg)
+            (delete-region (match-beginning 0) (match-end 0))
+            (goto-char beg)
+            (insert "spawn "))))
+      (add-hook 'eshell-expand-input-functions 'eshell-spawn-external-command)
+      (defun ss (server)
+        (interactive "sServer: ")
+        (call-process "spawn" nil nil nil "ss" server))
 
-  (message "eshell:builtins >")
+      (setq eshell-prompt-regexp "^[^#$\n]*[#$] "
+            eshell-prompt-function
+            (lambda ()
+              (concat
+               (propertize "[" 'face `(:foreground "Salmon" :weight bold))
+               (propertize (user-login-name) 'face `(:foreground "CornflowerBlue" :weight bold))
+               (propertize "@" 'face `(:foreground "CornflowerBlue" :weight bold))
+               (propertize (system-name) 'face `(:foreground "CornflowerBlue" :weight bold))
+               (propertize " " 'face `(:foreground "gray"))
+               (propertize (if (string= (eshell/pwd) (getenv "HOME"))
+                               "~" (eshell/basename (eshell/pwd)))
+                           'face `(:foreground "DarkTurquoise" :weight bold))
+               (propertize "]" 'face `(:foreground "Salmon" :weight bold))
+               (propertize (if (= (user-uid) 0) "# " "$") 'face `(:foreground "Salmon" :weight bold))
+               (propertize " " 'face 'default)
+               )))
+      ;; (setq eshell-output-filter-functions
+      ;;       (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
+      ;; ;;
 
-  ;; @see: https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/eshell/esh-cmd.el
-  ;; @see: https://github.com/howardabrams/hamacs/blob/main/ha-eshell.org
-
-  (defun eshell/read-file (file-path)
-    (with-temp-buffer
-      (insert-file-contents file-path)
-      (buffer-string)))
-
-  (defun eshell/do (&rest args)
-    "Execute commands over lst. do chmod -x :: *.csv(x) "
-    (seq-let (cmd lst) (-split-on "::" args)
-      (dolist (file
-               (flatten-list (append lst)))
-        (add-to-list 'cmd file)
-        (eshell-named-command
-         (car cmd) (cdr cmd)))))
-
-  (defun eshell-fn-on-files (fun1 fun2 args)
-    "Call FUN1 on the first element in list, ARGS.
-       Call FUN2 on all the rest of the elements in ARGS."
-    (unless (null args)
-      (let ((filenames (flatten-list args)))
-        (funcall fun1 (car filenames))
-        (when (cdr filenames)
-          (mapcar fun2 (cdr filenames))))
-      ;; Return an empty string, as the return value from `fun1'
-      ;; probably isn't helpful to display in the `eshell' window.
-      ""))
-
-  (defun eshell/cab (&rest args)
-    (if args
-        (if (bufferp (car args))
-            (with-current-buffer (car args)
-              (buffer-string))
-          (apply #'eshell/cat args))
-      (eshell/cab (eshell/o))))
-
-  (defun eshell/o (&rest args)
-    (if (stringp (car args))
-        (get-buffer-create (car args))
-      (get-buffer-create "*scratch*")))
-
-  (defun eshell/s (&rest files)
-    "Essentially an alias to the `view-file' function."
-    (eshell-fn-on-files 'view-file 'view-file-other-window files))
-
-  (defalias 'eshell/more 'eshell/s)
-
-  (defun eshell/e (&rest file)
-    "Essentially an alias to the `find-file' function."
-    (eshell-fn-on-files 'find-file 'find-file-other-window files))
-
-  (defun eshell/ee (&rest files)
-    "Edit one or more files in another window."
-    (eshell-fn-on-files 'find-file-other-window 'find-file-other-window files))
-
-  (defalias 'eshell/emacs 'eshell/e)
-  (defalias 'eshell/v 'eshell/e)
-
-  (message "eshell:builtins <")
-  (message "eshell:hooks >")
-  (add-hook 'eshell-first-time-mode-hook #'eshell-initialize)
-  (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
-  (message "eshell:hooks <")
-  (message "eshell:preface <")
-  :init
-  (message "eshell:init >")
-  (message "eshell:hooks/b >")
-  (add-hook 'eshell-first-time-mode-hook #'eshell-initialize)
-  (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
-  (message "eshell:hooks/b <")
-  (message "eshell:init <")
-  :config
-  (message "eshell:config >")
-  (setq
-   eshell-rc-script "~/.emacs-site/config/eshell/profile"
-   eshell-aliases-file "~/.emacs-site/config/eshell/aliases"
-   eshell-history-size 5000
-   eshell-buffer-maximum-lines 5000
-   eshell-hist-ignoredups t
-   eshell-prefer-lisp-functions t
-   eshell-scroll-to-bottom-on-input t
-   eshell-destroy-buffer-when-process-dies t
-   ;;eshell-visual-commands'("bash" "fish" "vi" "vim" "nvim" "mc" "ranger" "htop" "ssh" "top" "tmux" "zsh")
-   eshell-visual-commands'("fish" "vi" "vim" "nvim" "mc" "ranger" "htop" "ssh" "top" "tmux")
-
-   )
-
-  ;; (require 'eshell)
-  (require 'em-smart)
-  (setq eshell-where-to-jump 'begin)
-  (setq eshell-review-quick-commands nil)
-  (setq eshell-smart-space-goes-to-end t)
+      (eval-after-load "em-unix"
+        '(progn
+           (unintern 'eshell/su nil)
+           (unintern 'eshell/sudo nil)))
 
 
-  ;; ;; We want to use xterm-256color when running interactive commands
-  ;; ;; in eshell but not during other times when we might be launching
-  ;; ;; a shell command to gather its output.
-  ;; (add-hook 'eshell-pre-command-hook
-  ;;           (lambda () (setenv "TERM" "xterm-256color")))
-  ;; (add-hook 'eshell-post-command-hook
-  ;;           (lambda () (setenv "TERM" "dumb")))
+      (message "eshell:initialize <"))
 
-  (defun eshell-clear-buffer ()
-    "Clear terminal"
-    (interactive)
-    (let ((inhibit-read-only t))
-      (erase-buffer)
-      (eshell-send-input)))
+    (message "eshell:builtins >")
 
-  (defun eshell-copy-or-send-input (arg)
-    "Copy selection before sending input"
-    (interactive "P")
+    ;; @see: https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/eshell/esh-cmd.el
+    ;; @see: https://github.com/howardabrams/hamacs/blob/main/ha-eshell.org
+
+    (defun eshell/read-file (file-path)
+      (with-temp-buffer
+        (insert-file-contents file-path)
+        (buffer-string)))
+
+    (defun eshell/do (&rest args)
+      "Execute commands over lst. do chmod -x :: *.csv(x) "
+      (seq-let (cmd lst) (-split-on "::" args)
+        (dolist (file
+                 (flatten-list (append lst)))
+          (add-to-list 'cmd file)
+          (eshell-named-command
+           (car cmd) (cdr cmd)))))
+
+    (defun eshell-fn-on-files (fun1 fun2 args)
+      "Call FUN1 on the first element in list, ARGS.
+         Call FUN2 on all the rest of the elements in ARGS."
+      (unless (null args)
+        (let ((filenames (flatten-list args)))
+          (funcall fun1 (car filenames))
+          (when (cdr filenames)
+            (mapcar fun2 (cdr filenames))))
+        ;; Return an empty string, as the return value from `fun1'
+        ;; probably isn't helpful to display in the `eshell' window.
+        ""))
+
+    (defun eshell/cab (&rest args)
+      (if args
+          (if (bufferp (car args))
+              (with-current-buffer (car args)
+                (buffer-string))
+            (apply #'eshell/cat args))
+        (eshell/cab (eshell/o))))
+
+    (defun eshell/o (&rest args)
+      (if (stringp (car args))
+          (get-buffer-create (car args))
+        (get-buffer-create "*scratch*")))
+
+    (defun eshell/s (&rest files)
+      "Essentially an alias to the `view-file' function."
+      (eshell-fn-on-files 'view-file 'view-file-other-window files))
+
+    (defalias 'eshell/more 'eshell/s)
+
+    (defun eshell/e (&rest file)
+      "Essentially an alias to the `find-file' function."
+      (eshell-fn-on-files 'find-file 'find-file-other-window files))
+
+    (defun eshell/ee (&rest files)
+      "Edit one or more files in another window."
+      (eshell-fn-on-files 'find-file-other-window 'find-file-other-window files))
+
+    (defalias 'eshell/emacs 'eshell/e)
+    (defalias 'eshell/v 'eshell/e)
+
+    (message "eshell:builtins <")
+    (message "eshell:hooks >")
+    (add-hook 'eshell-first-time-mode-hook #'eshell-initialize)
+    (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
+    (message "eshell:hooks <")
+    (message "eshell:preface <")
+    :init
+    (message "eshell:init >")
+    (message "eshell:hooks/b >")
+    (add-hook 'eshell-first-time-mode-hook #'eshell-initialize)
+    (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
+    (message "eshell:hooks/b <")
+    (message "eshell:init <")
+    :config
+    (message "eshell:config >")
+    (setq
+     eshell-rc-script "~/.emacs-site/config/eshell/profile"
+     eshell-aliases-file "~/.emacs-site/config/eshell/aliases"
+     eshell-history-size 5000
+     eshell-buffer-maximum-lines 5000
+     eshell-hist-ignoredups t
+     eshell-prefer-lisp-functions t
+     eshell-scroll-to-bottom-on-input t
+     eshell-destroy-buffer-when-process-dies t
+     ;;eshell-visual-commands'("bash" "fish" "vi" "vim" "nvim" "mc" "ranger" "htop" "ssh" "top" "tmux" "zsh")
+     eshell-visual-commands'("fish" "vi" "vim" "nvim" "mc" "ranger" "htop" "ssh" "top" "tmux")
+
+     )
+
+    ;; (require 'eshell)
     (require 'em-smart)
-    (when mark-active
-      (cua-copy-region arg))
-    (if (or current-prefix-arg
-            (and (> (point) eshell-last-input-start)
-                 (< (point) eshell-last-input-end))
-            (>= (point) eshell-last-output-end))
-        (eshell-send-input)
-      (eshell-smart-goto-end)))
+    (setq eshell-where-to-jump 'begin)
+    (setq eshell-review-quick-commands nil)
+    (setq eshell-smart-space-goes-to-end t)
 
 
-  (defun eshell-setup-keymap ()
-    "Setup eshell (local) keymap"
-    (interactive)
-    (message "eshell:setup-keymap >")
+    ;; ;; We want to use xterm-256color when running interactive commands
+    ;; ;; in eshell but not during other times when we might be launching
+    ;; ;; a shell command to gather its output.
+    ;; (add-hook 'eshell-pre-command-hook
+    ;;           (lambda () (setenv "TERM" "xterm-256color")))
+    ;; (add-hook 'eshell-post-command-hook
+    ;;           (lambda () (setenv "TERM" "dumb")))
 
-    (local-set-key (kbd "C-l") 'eshell-clear-buffer)
-    ;; (unbind-key (kbd "<up>") eshell-mode-map)
-    ;; (unbind-key (kbd "<down>") eshell-mode-map)
-    ;; (define-key eshell-mode-map (kbd "C-<up>") 'eshell-previous-matching-input-from-input)
-    ;; (define-key eshell-mode-map (kbd "C-<down>") 'eshell-previous-matching-input-from-input)
-    ;; (define-key eshell-mode-map (kbd "<up>") 'previous-line)
-    ;; (define-key eshell-mode-map (kbd "<down>") 'next-line)
-    ;; (local-set-key (kbd "<up>") #'previous-line)
-    ;; (local-set-key (kbd "<down>") #'next-line)
-    ;; (define-key eshell-mode-map (kbd "<up>") 'previous-line)
-    ;; (define-key eshell-mode-map (kbd "<down>") 'next-line)
-    (define-key eshell-hist-mode-map (kbd "<up>") #'previous-line)
-    (define-key eshell-hist-mode-map (kbd "<down>") #'next-line)
-    (define-key eshell-hist-mode-map (kbd "C-<up>") #'eshell-previous-matching-input-from-input)
-    (define-key eshell-hist-mode-map (kbd "C-<down>") #'eshell-next-matching-input-from-input)
-    (define-key eshell-hist-mode-map (kbd "M-r") #'consult-history)
-    ;; Use completion-at-point to provide completions in eshell
-    (define-key eshell-mode-map (kbd "<tab>") 'completion-at-point)      
-    (define-key eshell-mode-map (kbd "<return>") 'eshell-copy-or-send-input)      
-    (define-key eshell-mode-map (kbd "C-<return>") 'cua-rectangle-mark-mode)      
-    (define-key eshell-mode-map (kbd "C-d") 'self-insert-command)      
-    (message "eshell:setup-keymap <")
+    (defun eshell-clear-buffer ()
+      "Clear terminal"
+      (interactive)
+      (let ((inhibit-read-only t))
+        (erase-buffer)
+        (eshell-send-input)))
 
-    (eshell-smart-initialize) 
-    (message "*eshell*")
+    (defun eshell-copy-or-send-input (arg)
+      "Copy selection before sending input"
+      (interactive "P")
+      (require 'em-smart)
+      (when mark-active
+        (cua-copy-region arg))
+      (if (or current-prefix-arg
+              (and (> (point) eshell-last-input-start)
+                   (< (point) eshell-last-input-end))
+              (>= (point) eshell-last-output-end))
+          (eshell-send-input)
+        (eshell-smart-goto-end)))
+
+
+    (defun eshell-setup-keymap ()
+      "Setup eshell (local) keymap"
+      (interactive)
+      (message "eshell:setup-keymap >")
+
+      (local-set-key (kbd "C-l") 'eshell-clear-buffer)
+      ;; (unbind-key (kbd "<up>") eshell-mode-map)
+      ;; (unbind-key (kbd "<down>") eshell-mode-map)
+      ;; (define-key eshell-mode-map (kbd "C-<up>") 'eshell-previous-matching-input-from-input)
+      ;; (define-key eshell-mode-map (kbd "C-<down>") 'eshell-previous-matching-input-from-input)
+      ;; (define-key eshell-mode-map (kbd "<up>") 'previous-line)
+      ;; (define-key eshell-mode-map (kbd "<down>") 'next-line)
+      ;; (local-set-key (kbd "<up>") #'previous-line)
+      ;; (local-set-key (kbd "<down>") #'next-line)
+      ;; (define-key eshell-mode-map (kbd "<up>") 'previous-line)
+      ;; (define-key eshell-mode-map (kbd "<down>") 'next-line)
+      (define-key eshell-hist-mode-map (kbd "<up>") #'previous-line)
+      (define-key eshell-hist-mode-map (kbd "<down>") #'next-line)
+      (define-key eshell-hist-mode-map (kbd "C-<up>") #'eshell-previous-matching-input-from-input)
+      (define-key eshell-hist-mode-map (kbd "C-<down>") #'eshell-next-matching-input-from-input)
+      (define-key eshell-hist-mode-map (kbd "M-r") #'consult-history)
+      ;; Use completion-at-point to provide completions in eshell
+      (define-key eshell-mode-map (kbd "<tab>") 'completion-at-point)      
+      (define-key eshell-mode-map (kbd "<return>") 'eshell-copy-or-send-input)      
+      (define-key eshell-mode-map (kbd "C-<return>") 'cua-rectangle-mark-mode)      
+      (define-key eshell-mode-map (kbd "C-d") 'self-insert-command)      
+      (message "eshell:setup-keymap <")
+
+      (eshell-smart-initialize) 
+      (message "*eshell*")
+      )
+
+    (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
+    (message "eshell:hooks/c >")
+    (add-hook 'eshell-before-prompt-hook (setq xterm-color-preserve-properties t))
+    (add-hook 'eshell-mode-hook
+              (lambda ()
+                (progn
+                  (setq O (eshell/o))
+                  (setenv "PAGER" "cat")
+                  (setenv "TERM" "xterm-256color")
+                  )))
+    (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
+    (add-hook 'eshell-mode-hook #'(lambda () (message "*eshell*")))
+    (message "eshell:hooks/c <")
+
+    (message "eshell:config <")
     )
 
-  (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
-  (message "eshell:hooks/c >")
-  (add-hook 'eshell-before-prompt-hook (setq xterm-color-preserve-properties t))
-  (add-hook 'eshell-mode-hook
-            (lambda ()
-              (progn
-                (setq O (eshell/o))
-                (setenv "PAGER" "cat")
-                (setenv "TERM" "xterm-256color")
-                )))
-  (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
-  (add-hook 'eshell-mode-hook #'(lambda () (message "*eshell*")))
-  (message "eshell:hooks/c <")
 
-  (message "eshell:config <")
-  )
+  ;; ---( eat )--------------------------------------------------------------
 
-
-;; ---( eat )--------------------------------------------------------------
-
-;; 
-(use-package eat
-  :ensure t
-  ;;:hook (eshell-load . eat-eshell-mode)
-  :hook (eshell-load . eat-eshell-visual-command-mode)
-  :quelpa ((eat
-            :fetcher git
-            :url "https://codeberg.org/akib/emacs-eat"
-            :files ("*.el" ("term" "term/*.el") "*.texi"
-                    "*.ti" ("terminfo/e" "terminfo/e/*")
-                    ("terminfo/65" "terminfo/65/*")
-                    ("integration" "integration/*")
-                    (:exclude ".dir-locals.el" "*-tests.el"))))
-  )
+  ;; 
+  (use-package eat
+    :ensure t
+    ;;:hook (eshell-load . eat-eshell-mode)
+    :hook (eshell-load . eat-eshell-visual-command-mode)
+    :quelpa ((eat
+              :fetcher git
+              :url "https://codeberg.org/akib/emacs-eat"
+              :files ("*.el" ("term" "term/*.el") "*.texi"
+                      "*.ti" ("terminfo/e" "terminfo/e/*")
+                      ("terminfo/65" "terminfo/65/*")
+                      ("integration" "integration/*")
+                      (:exclude ".dir-locals.el" "*-tests.el"))))
+    )
 ;; shell-eshell ends here
 
 ;; vterm
 ;; #+NAME: shell-vterm
 
 ;; [[file:site-pkgs.org::shell-vterm][shell-vterm]]
-;; ---( vterm )--------------------------------------------------------------
+  ;; ---( vterm )--------------------------------------------------------------
 
-(cond
- ((string-lessp emacs-version "27.1") ;;
-  (progn
-    (message "SITE:term-legacy, ...")
-    (setq h7/term-vterm-enabled nil)
-    (message "SITE:term-legacy.")
-    ))
- (t
-  (progn
-    (message "SITE:term-libvterm, ...")
+  (cond
+   ((string-lessp emacs-version "27.1") ;;
+    (progn
+      (message "SITE:term-legacy, ...")
+      (setq h7/term-vterm-enabled nil)
+      (message "SITE:term-legacy.")
+      ))
+   (t
+    (progn
+      (message "SITE:term-libvterm, ...")
 
-(use-package vterm
-  :bind (("C-<F9>" . vterm)
-             ;; :straight (:post-build (cl-letf (((symbol-function #'pop-to-buffer)
-             ;;                        (lambda (buffer) (with-current-buffer buffer (message (buffer-string))))))
-             ;;               (setq vterm-always-compile-module t)
-             ;;               (require 'vterm)))
-         :map vterm-mode-map
-         ("C-v" . vterm-yank)
-         ("S-<insert>" . vterm-yank)
-         ([kp-insert] . vterm-yank-primary)
-         ([kp-enter] . vterm-yank)
-         ([kp-divide] . vterm-yank-pop)
-         ([kp-multiply] . vterm-copy-mode))
-  :ensure t)
-
-
-(use-package multi-vterm
-  :bind (("C-S-<f9>" . multi-vterm)
-         :map vterm-mode-map
-         ("C-<f7>" . multi-vterm-prev)
-         ("C-<f8>" . multi-vterm-next))
-  :ensure t)
-
-;; @see: https://lupan.pl/dotemacs/
-;; (use-package vterm-toggle
-;;   :bind (("H-z" . vterm-toggle)
-;;          ("H-F" . vterm-toggle-forward)
-;;          ("H-B" . vterm-toggle-backward)))
-
-(setq h7/term-vterm-enabled t)
-
-    (message "SITE:term-libvterm.")
-    ))
-)
+  (use-package vterm
+    :bind (("C-<F9>" . vterm)
+               ;; :straight (:post-build (cl-letf (((symbol-function #'pop-to-buffer)
+               ;;                        (lambda (buffer) (with-current-buffer buffer (message (buffer-string))))))
+               ;;               (setq vterm-always-compile-module t)
+               ;;               (require 'vterm)))
+           :map vterm-mode-map
+           ("C-v" . vterm-yank)
+           ("S-<insert>" . vterm-yank)
+           ([kp-insert] . vterm-yank-primary)
+           ([kp-enter] . vterm-yank)
+           ([kp-divide] . vterm-yank-pop)
+           ([kp-multiply] . vterm-copy-mode))
+    :ensure t)
 
 
-;; ---( multi-term )--------------------------------------------------------------
+  (use-package multi-vterm
+    :bind (("C-S-<f9>" . multi-vterm)
+           :map vterm-mode-map
+           ("C-<f7>" . multi-vterm-prev)
+           ("C-<f8>" . multi-vterm-next))
+    :ensure t)
 
-;; (use-package multi-term
-;;   :disabled t
-;;   :bind (("C-. t" . multi-term-next)
-;;          ("C-. T" . multi-term))
-;;   :init
-;;   (defun screen ()
-;;     (interactive)
-;;     (let (term-buffer)
-;;       ;; Set buffer.
-;;       (setq term-buffer
-;;             (let ((multi-term-program (executable-find "screen"))
-;;                   (multi-term-program-switches "-DR"))
-;;               (multi-term-get-buffer)))
-;;       (set-buffer term-buffer)
-;;       ;; Internal handle for `multi-term' buffer.
-;;       (multi-term-internal)
-;;       ;; Switch buffer
-;;       (switch-to-buffer term-buffer)))
-;;   :config
-;;   (defalias 'my-term-send-raw-at-prompt 'term-send-raw)
-;;   (defun my-term-end-of-buffer ()
-;;     (interactive)
-;;     (call-interactively #'end-of-buffer)
-;;     (if (and (eobp) (bolp))
-;;         (delete-char -1)))
-;;   (require 'term)
-;;   (defadvice term-process-pager (after term-process-rebind-keys activate)
-;;     (define-key term-pager-break-map "\177" 'term-pager-back-page)))
+  ;; @see: https://lupan.pl/dotemacs/
+  ;; (use-package vterm-toggle
+  ;;   :bind (("H-z" . vterm-toggle)
+  ;;          ("H-F" . vterm-toggle-forward)
+  ;;          ("H-B" . vterm-toggle-backward)))
+
+  (setq h7/term-vterm-enabled t)
+
+      (message "SITE:term-libvterm.")
+      ))
+  )
+
+
+  ;; ---( multi-term )--------------------------------------------------------------
+
+  ;; (use-package multi-term
+  ;;   :disabled t
+  ;;   :bind (("C-. t" . multi-term-next)
+  ;;          ("C-. T" . multi-term))
+  ;;   :init
+  ;;   (defun screen ()
+  ;;     (interactive)
+  ;;     (let (term-buffer)
+  ;;       ;; Set buffer.
+  ;;       (setq term-buffer
+  ;;             (let ((multi-term-program (executable-find "screen"))
+  ;;                   (multi-term-program-switches "-DR"))
+  ;;               (multi-term-get-buffer)))
+  ;;       (set-buffer term-buffer)
+  ;;       ;; Internal handle for `multi-term' buffer.
+  ;;       (multi-term-internal)
+  ;;       ;; Switch buffer
+  ;;       (switch-to-buffer term-buffer)))
+  ;;   :config
+  ;;   (defalias 'my-term-send-raw-at-prompt 'term-send-raw)
+  ;;   (defun my-term-end-of-buffer ()
+  ;;     (interactive)
+  ;;     (call-interactively #'end-of-buffer)
+  ;;     (if (and (eobp) (bolp))
+  ;;         (delete-char -1)))
+  ;;   (require 'term)
+  ;;   (defadvice term-process-pager (after term-process-rebind-keys activate)
+  ;;     (define-key term-pager-break-map "\177" 'term-pager-back-page)))
 ;; shell-vterm ends here
 
 ;; Scripts
 ;; #+NAME: shell-script
 
 ;; [[file:site-pkgs.org::shell-script][shell-script]]
-;; ---( sh-script )--------------------------------------------------------------
+  ;; ---( sh-script )--------------------------------------------------------------
 
-(use-package sh-script
-  :defer t
-  :init
-  (defvar sh-script-initialized nil)
-  (defun initialize-sh-script ()
-    (unless sh-script-initialized
-      (setq sh-script-initialized t)
-      (info-lookup-add-help :mode 'shell-script-mode
-                            :regexp ".*"
-                            :doc-spec
-                            '(("(bash)Index")))))
-  (add-hook 'shell-mode-hook 'initialize-sh-script))
+  (use-package sh-script
+    :defer t
+    :init
+    (defvar sh-script-initialized nil)
+    (defun initialize-sh-script ()
+      (unless sh-script-initialized
+        (setq sh-script-initialized t)
+        (info-lookup-add-help :mode 'shell-script-mode
+                              :regexp ".*"
+                              :doc-spec
+                              '(("(bash)Index")))))
+    (add-hook 'shell-mode-hook 'initialize-sh-script))
 ;; shell-script ends here
 
 ;; Ranger
 ;; #+NAME: shell-ranger
 
 ;; [[file:site-pkgs.org::shell-ranger][shell-ranger]]
-;; ---( ranger )--------------------------------------------------------------
+  ;; ---( ranger )--------------------------------------------------------------
 
-(use-package ranger
-  :ensure t
-  ;;:bind ("C-, C-," . ranger)
-  )
+  (use-package ranger
+    :ensure t
+    ;;:bind ("C-, C-," . ranger)
+    )
 
-;; (use-package ranger
-;;   :custom
-;;   (;; (ranger-override-dired mode t)
-;;    (ranger-cleanup-on-disable t)
-;;    (ranger-dont-show-binary t)))
+  ;; (use-package ranger
+  ;;   :custom
+  ;;   (;; (ranger-override-dired mode t)
+  ;;    (ranger-cleanup-on-disable t)
+  ;;    (ranger-dont-show-binary t)))
 
-;; ;; ---( sunrise-commander )--------------------------------------------------------------
+  ;; ;; ---( sunrise-commander )--------------------------------------------------------------
 
 
-;; (use-package sunrise-commander
-;;   :bind (("C-c j" . my-activate-sunrise)
-;; 	 ("C-c C-j" . sunrise-cd))
-;;   :commands sunrise
-;;   :defines sr-tabs-mode-map
-;;   :preface
-;;   (defun my-activate-sunrise ()
-;;     (interactive)
-;;     (let ((sunrise-exists
-;; 	   (loop for buf in (buffer-list)
-;; 		 when (string-match " (Sunrise)$" (buffer-name buf))
-;; 		 return buf)))
-;;       (if sunrise-exists
-;; 	  (call-interactively 'sunrise)
-;; 	(sunrise "~/dl/" "~/Archives/"))))
-;;   :config
-;;   (require 'sunrise-x-modeline)
-;;   (require 'sunrise-x-tree)
-;;   (require 'sunrise-x-tabs)
-;;   (bind-key "/" 'sr-sticky-isearch-forward sr-mode-map)
-;;   (bind-key "<backspace>" 'sr-scroll-quick-view-down sr-mode-map)
-;;   (bind-key "C-x t" 'sr-toggle-truncate-lines sr-mode-map)
-;;   (bind-key "q" 'sr-history-prev sr-mode-map)
-;;   (bind-key "z" 'sr-quit sr-mode-map)
-;;   (unbind-key "C-e" sr-mode-map)
-;;   (unbind-key "C-p" sr-tabs-mode-map)
-;;   (unbind-key "C-n" sr-tabs-mode-map)
-;;   (unbind-key "M-<backspace>" sr-term-line-minor-mode-map)
-;;   (bind-key "M-[" 'sr-tabs-prev sr-tabs-mode-map)
-;;   (bind-key "M-]" 'sr-tabs-next sr-tabs-mode-map)
-;;   (defun sr-browse-file (&optional file)
-;;     "Display the selected file with the default appication."
-;;     (interactive)
-;;     (setq file (or file (dired-get-filename)))
-;;     (save-selected-window
-;;       (sr-select-viewer-window)
-;;       (let ((buff (current-buffer))
-;; 	    (fname (if (file-directory-p file)
-;; 		       file
-;; 		     (file-name-nondirectory file)))
-;; 	    (app (cond
-;; 		  ((eq system-type 'darwin) "open %s")
-;; 		  ((eq system-type 'windows-nt) "open %s")
-;; 		  (t "xdg-open %s"))))
-;; 	(start-process-shell-command "open" nil (format app file))
-;; 	(unless (eq buff (current-buffer))
-;; 	  (sr-scrollable-viewer (current-buffer)))
-;; 	(message "Opening \"%s\" ..." fname))))
-;;   (defun sr-goto-dir (dir)
-;;     "Change the current directory in the active pane to the given one."
-;;     (interactive (list (progn
-;; 			 (require 'lusty-explorer)
-;; 			 (lusty-read-directory))))
-;;     (if sr-goto-dir-function
-;; 	(funcall sr-goto-dir-function dir)
-;;       (unless (and (eq major-mode 'sr-mode)
-;; 		   (sr-equal-dirs dir default-directory))
-;; 	(if (and sr-avfs-root
-;; 		 (null (posix-string-match "#" dir)))
-;; 	    (setq dir (replace-regexp-in-string
-;; 		       (expand-file-name sr-avfs-root) "" dir)))
-;; 	(sr-save-aspect
-;; 	 (sr-within dir (sr-alternate-buffer (dired dir))))
-;; 	(sr-history-push default-directory)
-;; 	(sr-beginning-of-buffer)))))
+  ;; (use-package sunrise-commander
+  ;;   :bind (("C-c j" . my-activate-sunrise)
+  ;; 	 ("C-c C-j" . sunrise-cd))
+  ;;   :commands sunrise
+  ;;   :defines sr-tabs-mode-map
+  ;;   :preface
+  ;;   (defun my-activate-sunrise ()
+  ;;     (interactive)
+  ;;     (let ((sunrise-exists
+  ;; 	   (loop for buf in (buffer-list)
+  ;; 		 when (string-match " (Sunrise)$" (buffer-name buf))
+  ;; 		 return buf)))
+  ;;       (if sunrise-exists
+  ;; 	  (call-interactively 'sunrise)
+  ;; 	(sunrise "~/dl/" "~/Archives/"))))
+  ;;   :config
+  ;;   (require 'sunrise-x-modeline)
+  ;;   (require 'sunrise-x-tree)
+  ;;   (require 'sunrise-x-tabs)
+  ;;   (bind-key "/" 'sr-sticky-isearch-forward sr-mode-map)
+  ;;   (bind-key "<backspace>" 'sr-scroll-quick-view-down sr-mode-map)
+  ;;   (bind-key "C-x t" 'sr-toggle-truncate-lines sr-mode-map)
+  ;;   (bind-key "q" 'sr-history-prev sr-mode-map)
+  ;;   (bind-key "z" 'sr-quit sr-mode-map)
+  ;;   (unbind-key "C-e" sr-mode-map)
+  ;;   (unbind-key "C-p" sr-tabs-mode-map)
+  ;;   (unbind-key "C-n" sr-tabs-mode-map)
+  ;;   (unbind-key "M-<backspace>" sr-term-line-minor-mode-map)
+  ;;   (bind-key "M-[" 'sr-tabs-prev sr-tabs-mode-map)
+  ;;   (bind-key "M-]" 'sr-tabs-next sr-tabs-mode-map)
+  ;;   (defun sr-browse-file (&optional file)
+  ;;     "Display the selected file with the default appication."
+  ;;     (interactive)
+  ;;     (setq file (or file (dired-get-filename)))
+  ;;     (save-selected-window
+  ;;       (sr-select-viewer-window)
+  ;;       (let ((buff (current-buffer))
+  ;; 	    (fname (if (file-directory-p file)
+  ;; 		       file
+  ;; 		     (file-name-nondirectory file)))
+  ;; 	    (app (cond
+  ;; 		  ((eq system-type 'darwin) "open %s")
+  ;; 		  ((eq system-type 'windows-nt) "open %s")
+  ;; 		  (t "xdg-open %s"))))
+  ;; 	(start-process-shell-command "open" nil (format app file))
+  ;; 	(unless (eq buff (current-buffer))
+  ;; 	  (sr-scrollable-viewer (current-buffer)))
+  ;; 	(message "Opening \"%s\" ..." fname))))
+  ;;   (defun sr-goto-dir (dir)
+  ;;     "Change the current directory in the active pane to the given one."
+  ;;     (interactive (list (progn
+  ;; 			 (require 'lusty-explorer)
+  ;; 			 (lusty-read-directory))))
+  ;;     (if sr-goto-dir-function
+  ;; 	(funcall sr-goto-dir-function dir)
+  ;;       (unless (and (eq major-mode 'sr-mode)
+  ;; 		   (sr-equal-dirs dir default-directory))
+  ;; 	(if (and sr-avfs-root
+  ;; 		 (null (posix-string-match "#" dir)))
+  ;; 	    (setq dir (replace-regexp-in-string
+  ;; 		       (expand-file-name sr-avfs-root) "" dir)))
+  ;; 	(sr-save-aspect
+  ;; 	 (sr-within dir (sr-alternate-buffer (dired dir))))
+  ;; 	(sr-history-push default-directory)
+  ;; 	(sr-beginning-of-buffer)))))
 ;; shell-ranger ends here
 
 ;; Other
 ;; #+NAME: shell-other
 
 ;; [[file:site-pkgs.org::shell-other][shell-other]]
-;; ---( sh-toggle )--------------------------------------------------------------
+  ;; ---( sh-toggle )--------------------------------------------------------------
 
-(use-package sh-toggle
-  :disabled t
-  :bind ("C-. C-z" . shell-toggle)
-  )
+  (use-package sh-toggle
+    :disabled t
+    :bind ("C-. C-z" . shell-toggle)
+    )
 ;; shell-other ends here
 
 ;; Shell/end
 ;; #+NAME: shell-end
 
 ;; [[file:site-pkgs.org::shell-end][shell-end]]
-;; }}}  .shell
+  ;; }}}  .shell
 ;; shell-end ends here
 
 ;; Text/begin
 ;; #+NAME: text-begin
 
 ;; [[file:site-pkgs.org::text-begin][text-begin]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @TEXT
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @TEXT
+  ;; ;;;////////////////////////////////////////////////////////////////
 ;; text-begin ends here
 
 ;; Markdown
 ;; #+NAME: markdown
 
 ;; [[file:site-pkgs.org::markdown][markdown]]
-;; ---( markdown )--------------------------------------------------------------
+  ;; ---( markdown )--------------------------------------------------------------
 
-(use-package markdown-mode
-  :ensure t
-  :commands (markdown-mode gfm-mode)
-  :mode (("README\\.md\\'" . gfm-mode)
-         ("\\.md\\'" . markdown-mode)
-         ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
+  (use-package markdown-mode
+    :ensure t
+    :commands (markdown-mode gfm-mode)
+    :mode (("README\\.md\\'" . gfm-mode)
+           ("\\.md\\'" . markdown-mode)
+           ("\\.markdown\\'" . markdown-mode))
+    :init (setq markdown-command "multimarkdown"))
 
-;; (use-package markdown-mode
-;;   :ensure t
-;;   :mode ("\\.\\(m\\(ark\\)?down\\|md\\)$" . markdown-mode)
-;;   :init
-;;   (add-hook 'markdown-mode-hook 'spell-check-and-wrap-at-80)
-;;   :config
-;;   (progn
-;;     (let ((preferred-markdown-impl "peg-markdown"))
-;;       (when (executable-find preferred-markdown-impl)
-;;         (setq markdown-command preferred-markdown-impl)))))
+  ;; (use-package markdown-mode
+  ;;   :ensure t
+  ;;   :mode ("\\.\\(m\\(ark\\)?down\\|md\\)$" . markdown-mode)
+  ;;   :init
+  ;;   (add-hook 'markdown-mode-hook 'spell-check-and-wrap-at-80)
+  ;;   :config
+  ;;   (progn
+  ;;     (let ((preferred-markdown-impl "peg-markdown"))
+  ;;       (when (executable-find preferred-markdown-impl)
+  ;;         (setq markdown-command preferred-markdown-impl)))))
 ;; markdown ends here
 
 ;; Markup
 ;; #+NAME: markup
 
 ;; [[file:site-pkgs.org::markup][markup]]
-;; ---( css )--------------------------------------------------------------
+  ;; ---( css )--------------------------------------------------------------
 
-(use-package css-mode
-  :mode ("\\.css\\'" . css-mode))
+  (use-package css-mode
+    :mode ("\\.css\\'" . css-mode))
 
-;; (use-package rainbow-mode
-;;   :disabled t	     
-;;   :config
-;;   (add-hook 'css-mode-hook 'rainbow-mode)
-;;   (add-hook 'less-mode-hook 'rainbow-mode))
+  ;; (use-package rainbow-mode
+  ;;   :disabled t	     
+  ;;   :config
+  ;;   (add-hook 'css-mode-hook 'rainbow-mode)
+  ;;   (add-hook 'less-mode-hook 'rainbow-mode))
 
-;; ---( nxml )--------------------------------------------------------------
+  ;; ---( nxml )--------------------------------------------------------------
 
-(use-package nxml-mode
-  :commands nxml-mode
-  :init
-  (defalias 'xml-mode 'nxml-mode)
-  :config
-)
-
-
-;; (use-package nxml-mode
-;;   :commands nxml-mode
-;;   :init
-;;   (defalias 'xml-mode 'nxml-mode)
-;;   :config
-
-;;   (defun my-nxml-mode-hook ()
-;;     (bind-key "<return>" 'newline-and-indent nxml-mode-map))
-;;   (add-hook 'nxml-mode-hook 'my-nxml-mode-hook)
-;;   (defun tidy-xml-buffer ()
-;;     (interactive)
-;;     (save-excursion
-;;       (call-process-region (point-min) (point-max) "tidy" t t nil
-;;                            "-xml" "-i" "-wrap" "0" "-omit" "-q" "-utf8")))
-;;   (bind-key "C-c M-h" 'tidy-xml-buffer nxml-mode-map)
-;;   (setq ac-sources '(ac-source-symbols ac-source-words-in-same-mode-buffers)))
+  (use-package nxml-mode
+    :commands nxml-mode
+    :init
+    (defalias 'xml-mode 'nxml-mode)
+    :config
+  )
 
 
-;; (use-package web-mode
-;;   :disabled t	     
-;;   :config
-;;   (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
-;;   (add-to-list 'auto-mode-alist '("\\.htm\\'" . web-mode))
-;;   (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-;;   (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-;;   (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-;;   (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-;;   (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-;;   (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-;;   (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+  ;; (use-package nxml-mode
+  ;;   :commands nxml-mode
+  ;;   :init
+  ;;   (defalias 'xml-mode 'nxml-mode)
+  ;;   :config
 
-;;   (setq web-mode-css-indent-offset 2))
+  ;;   (defun my-nxml-mode-hook ()
+  ;;     (bind-key "<return>" 'newline-and-indent nxml-mode-map))
+  ;;   (add-hook 'nxml-mode-hook 'my-nxml-mode-hook)
+  ;;   (defun tidy-xml-buffer ()
+  ;;     (interactive)
+  ;;     (save-excursion
+  ;;       (call-process-region (point-min) (point-max) "tidy" t t nil
+  ;;                            "-xml" "-i" "-wrap" "0" "-omit" "-q" "-utf8")))
+  ;;   (bind-key "C-c M-h" 'tidy-xml-buffer nxml-mode-map)
+  ;;   (setq ac-sources '(ac-source-symbols ac-source-words-in-same-mode-buffers)))
+
+
+  ;; (use-package web-mode
+  ;;   :disabled t	     
+  ;;   :config
+  ;;   (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+  ;;   (add-to-list 'auto-mode-alist '("\\.htm\\'" . web-mode))
+  ;;   (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+  ;;   (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+  ;;   (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+  ;;   (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+  ;;   (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+  ;;   (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+  ;;   (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+
+  ;;   (setq web-mode-css-indent-offset 2))
 ;; markup ends here
 
 ;; Text/end
 ;; #+NAME: text-end
 
 ;; [[file:site-pkgs.org::text-end][text-end]]
-;; }}}  .text
+  ;; }}}  .text
 ;; text-end ends here
 
 ;; Lang/begin
 ;; #+NAME: lang-begin
 
 ;; [[file:site-pkgs.org::lang-begin][lang-begin]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @LANG
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @LANG
+  ;; ;;;////////////////////////////////////////////////////////////////
 ;; lang-begin ends here
 
 ;; Lang: LSP.setup
 ;; #+NAME: lang-lsp.setup
 
 ;; [[file:site-pkgs.org::lang-lsp.setup][lang-lsp.setup]]
-;; ---( lsp-setup )------------------------------------------------------------
+  ;; ---( lsp-setup )------------------------------------------------------------
 
 (defun h7/lsp-setup ()
 
@@ -2521,188 +2541,188 @@
 ;; #+NAME: lang-lsp.mode
 
 ;; [[file:site-pkgs.org::lang-lsp.mode][lang-lsp.mode]]
-;; ---( flycheck )------------------------------------------------------------
+  ;; ---( flycheck )------------------------------------------------------------
 
-(use-package flycheck
-  :ensure t
-  :init (global-flycheck-mode)
-  )
+  (use-package flycheck
+    :ensure t
+    :init (global-flycheck-mode)
+    )
 
-;; ---( LSP mode )------------------------------------------------------------
+  ;; ---( LSP mode )------------------------------------------------------------
 
-(use-package lsp-mode
-  :ensure t
-  :init
-  (setq lsp-keymap-prefix "C-l")
-  :hook (
-         (python-mode . lsp-deferred)
-         )
-  :commands (lsp lsp-deferred)
-  :config
-  (dolist (dir '(
-                 "[/\\\\]\\.cache"
-                 "[/\\\\]\\.mypy_cache"
-                 "[/\\\\]\\.pytest_cache"
-                 "[/\\\\]\\.Rproj.user"
-                 "[/\\\\]venv$"
-                 "[/\\\\]build$"
-                 "[/\\\\]dist$"
-                 "[/\\\\]docker$"
-                 "[/\\\\]notes$"
-                 "[/\\\\]data$"
-                 "[/\\\\]home$"
-                 "[/\\\\]logs$"
-                 "[/\\\\]renv$"
-                 "[/\\\\]temp$"
-                 "[/\\\\]_targets"
-                 ))
-    (push dir lsp-file-watch-ignored-directories))
-  (lsp-enable-which-key-integration t)
-  :custom
-  (lsp-enable-snippet nil)
-  )
+  (use-package lsp-mode
+    :ensure t
+    :init
+    (setq lsp-keymap-prefix "C-l")
+    :hook (
+           (python-mode . lsp-deferred)
+           )
+    :commands (lsp lsp-deferred)
+    :config
+    (dolist (dir '(
+                   "[/\\\\]\\.cache"
+                   "[/\\\\]\\.mypy_cache"
+                   "[/\\\\]\\.pytest_cache"
+                   "[/\\\\]\\.Rproj.user"
+                   "[/\\\\]venv$"
+                   "[/\\\\]build$"
+                   "[/\\\\]dist$"
+                   "[/\\\\]docker$"
+                   "[/\\\\]notes$"
+                   "[/\\\\]data$"
+                   "[/\\\\]home$"
+                   "[/\\\\]logs$"
+                   "[/\\\\]renv$"
+                   "[/\\\\]temp$"
+                   "[/\\\\]_targets"
+                   ))
+      (push dir lsp-file-watch-ignored-directories))
+    (lsp-enable-which-key-integration t)
+    :custom
+    (lsp-enable-snippet nil)
+    )
 
-(use-package lsp-ui
-  :ensure t
-  :after lsp
-  :hook (lsp-mode . lsp-ui-mode)
-  :bind (:map lsp-ui-mode-map
-              ("C-c i" . lsp-ui-imenu))
-  :custom
-  (lsp-ui-doc-position 'bottom)
-  (lsp-ui-doc-enable t)
-  (lsp-ui-sideline-enable t)
-  (lsp-ui-imenu-enable t)
-  (lsp-ui-flycheck-enable t)
-  (lsp-ui-doc-delay 2)
-  )
-
-
-;; if you are helm user
-;;(use-package helm-lsp :commands helm-lsp-workspace-symbol)
-;; if you are ivy user
-;;(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-
-(use-package consult-lsp
-  :ensure t
-  :defer t
-  :after lsp
-  :commands (consult-lsp-diagnostics consult-lsp-symbols consult-lsp-file-symbols)
-  )
-
-;; (use-package company-lsp
-;;   :ensure t
-;;   :defer t
-;;   :after lsp
-;;   :commands company-lsp
-;;   )
+  (use-package lsp-ui
+    :ensure t
+    :after lsp
+    :hook (lsp-mode . lsp-ui-mode)
+    :bind (:map lsp-ui-mode-map
+                ("C-c i" . lsp-ui-imenu))
+    :custom
+    (lsp-ui-doc-position 'bottom)
+    (lsp-ui-doc-enable t)
+    (lsp-ui-sideline-enable t)
+    (lsp-ui-imenu-enable t)
+    (lsp-ui-flycheck-enable t)
+    (lsp-ui-doc-delay 2)
+    )
 
 
-(use-package lsp-treemacs
-  :ensure t
-  :defer t
-  :after lsp
-  :commands lsp-treemacs-errors-list)
+  ;; if you are helm user
+  ;;(use-package helm-lsp :commands helm-lsp-workspace-symbol)
+  ;; if you are ivy user
+  ;;(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+
+  (use-package consult-lsp
+    :ensure t
+    :defer t
+    :after lsp
+    :commands (consult-lsp-diagnostics consult-lsp-symbols consult-lsp-file-symbols)
+    )
+
+  ;; (use-package company-lsp
+  ;;   :ensure t
+  ;;   :defer t
+  ;;   :after lsp
+  ;;   :commands company-lsp
+  ;;   )
 
 
-;; ---( virtual env )------------------------------------------------------------
+  (use-package lsp-treemacs
+    :ensure t
+    :defer t
+    :after lsp
+    :commands lsp-treemacs-errors-list)
 
-(use-package with-venv
-  :ensure t)
 
-;; ---( LSP examples )------------------------------------------------------------
+  ;; ---( virtual env )------------------------------------------------------------
 
-;; (use-package company-c-headers
-;;   :ensure t
-;;   :config
-;;   (push 'company-c-headers company-backends)
-;;   (add-to-list 'company-c-headers-path-system "/usr/include/c++/7/")
-;;   )
+  (use-package with-venv
+    :ensure t)
 
-;; (use-package lsp-mode
-;;   :ensure t
-;;   :init
-;;   (setq lsp-keymap-prefix "C-c l")
-;;   :config
-;;   (require 'lsp-mode)
-;;   (require 'company-capf)
-;;   (setq lsp-prefer-capf t)
-;;   (setq lsp-completion-provider :capf)
-;;   (push 'company-capf company-backends)
-;;   ;; Recommended settings
-;;   (add-hook 'lsp-mode-hook (lambda ()
-;;                  (setq company-minimum-prefix-length 1
-;;                    company-idle-delay 0.0)))
-;;   ;; Other niceties
-;;   (setq lsp-enable-semantic-highlighting t)
-;;   (setq lsp-enable-snippet nil)  ;; Enable arguments completion
-;;   (setq lsp-signature-auto-activate nil)
-;;   )
+  ;; ---( LSP examples )------------------------------------------------------------
+
+  ;; (use-package company-c-headers
+  ;;   :ensure t
+  ;;   :config
+  ;;   (push 'company-c-headers company-backends)
+  ;;   (add-to-list 'company-c-headers-path-system "/usr/include/c++/7/")
+  ;;   )
+
+  ;; (use-package lsp-mode
+  ;;   :ensure t
+  ;;   :init
+  ;;   (setq lsp-keymap-prefix "C-c l")
+  ;;   :config
+  ;;   (require 'lsp-mode)
+  ;;   (require 'company-capf)
+  ;;   (setq lsp-prefer-capf t)
+  ;;   (setq lsp-completion-provider :capf)
+  ;;   (push 'company-capf company-backends)
+  ;;   ;; Recommended settings
+  ;;   (add-hook 'lsp-mode-hook (lambda ()
+  ;;                  (setq company-minimum-prefix-length 1
+  ;;                    company-idle-delay 0.0)))
+  ;;   ;; Other niceties
+  ;;   (setq lsp-enable-semantic-highlighting t)
+  ;;   (setq lsp-enable-snippet nil)  ;; Enable arguments completion
+  ;;   (setq lsp-signature-auto-activate nil)
+  ;;   )
 ;; lang-lsp.mode ends here
 
 ;; Lang: LSP.dap
 ;; #+NAME: lang-lsp.mode.dap
 
 ;; [[file:site-pkgs.org::lang-lsp.mode.dap][lang-lsp.mode.dap]]
-;; ---( dap )--------------------------------------------------------------
+    ;; ---( dap )--------------------------------------------------------------
 
-(use-package dap-mode
-  :ensure t
-  :after lsp-mode
-  :commands dap-debug
-  :hook (
-         (python-mode . dap-mode)
-         (python-mode . dap-ui-mode)
-         (dap-stopped . (lambda (arg) (call-interactively #'dap-hydra)))
-         )
-  :custom
-  (lsp-enable-dap-auto-configure t)  
-  ;; (dap-auto-configure-features '(sessions locals controls tooltip))
-  :config
-  ;; (dap-auto-configure-mode)
-  (require 'dap-hydra)
-  (require 'dap-python)
-  (setq dap-python-debugger 'debugpy)
-  (defun dap-python--pyenv-executable-find (command)
-    (with-venv (executable-find "python")))
+    (use-package dap-mode
+      :ensure t
+      :after lsp-mode
+      :commands dap-debug
+      :hook (
+             (python-mode . dap-mode)
+             (python-mode . dap-ui-mode)
+             (dap-stopped . (lambda (arg) (call-interactively #'dap-hydra)))
+             )
+      :custom
+      (lsp-enable-dap-auto-configure t)  
+      ;; (dap-auto-configure-features '(sessions locals controls tooltip))
+      :config
+      ;; (dap-auto-configure-mode)
+      (require 'dap-hydra)
+      (require 'dap-python)
+      (setq dap-python-debugger 'debugpy)
+      (defun dap-python--pyenv-executable-find (command)
+        (with-venv (executable-find "python")))
 
-  (dap-register-debug-template
-   "Poetry :: Run 'main'"
-   (list :type "poetry"
-         :args "run main"
-         :cwd nil
-         :env '(("DEBUG" . "1"))
-         :request "launch"
-         :name "App:main"))
+      (dap-register-debug-template
+       "Poetry :: Run 'main'"
+       (list :type "poetry"
+             :args "run main"
+             :cwd nil
+             :env '(("DEBUG" . "1"))
+             :request "launch"
+             :name "App:main"))
 
-  (dap-register-debug-template
-   "Poetry :: Run 'demo'"
-   (list :type "poetry"
-         :args "run demo"
-         :cwd nil
-         :env '(("DEBUG" . "1"))
-         :request "launch"
-         :name "App:demo"))
-  )
+      (dap-register-debug-template
+       "Poetry :: Run 'demo'"
+       (list :type "poetry"
+             :args "run demo"
+             :cwd nil
+             :env '(("DEBUG" . "1"))
+             :request "launch"
+             :name "App:demo"))
+      )
 ;; lang-lsp.mode.dap ends here
 
 ;; Lang: Tools.snippets
 ;; #+NAME: lang-tools.snip
 
 ;; [[file:site-pkgs.org::lang-tools.snip][lang-tools.snip]]
-;; ---( yasnippet )--------------------------------------------------------------
+  ;; ---( yasnippet )--------------------------------------------------------------
 
-(use-package yasnippet
-  :disabled t
-  :config
-  (yas-reload-all))
+  (use-package yasnippet
+    :disabled t
+    :config
+    (yas-reload-all))
 ;; lang-tools.snip ends here
 
 ;; Lang: R/ess
 ;; #+NAME: lang-r.ess
 
 ;; [[file:site-pkgs.org::lang-r.ess][lang-r.ess]]
-;; ---( R )--------------------------------------------------------------
+  ;; ---( R )--------------------------------------------------------------
 
   (use-package ess
 ;;   :if (version<= "25.1" emacs-version)
@@ -2829,7 +2849,7 @@
 ;; #+NAME: lang-r.ess.polymode
 
 ;; [[file:site-pkgs.org::lang-r.ess.polymode][lang-r.ess.polymode]]
-;; ---( polymode )--------------------------------------------------------------
+  ;; ---( polymode )--------------------------------------------------------------
 
 
 (use-package polymode
@@ -2859,1307 +2879,1306 @@
 ;; #+NAME: lang-python.mode
 
 ;; [[file:site-pkgs.org::lang-python.mode][lang-python.mode]]
-;; ---( python )--------------------------------------------------------------
+  ;; ---( python )--------------------------------------------------------------
 
-;; @see: https://gitlab.com/nathanfurnal/dotemacs/-/snippets/2060535?utm_source=pocket_mylist
-;; @see: https://github.com/jidicula/dotfiles/blob/main/init.el?utm_source=pocket_mylist
-
-
-;; Built-in Python utilities
-(use-package python
-  :ensure t
-  :config
-  ;; Remove guess indent python message
-  (setq python-indent-guess-indent-offset-verbose nil)
-  ;; Use IPython when available or fall back to regular Python 
-  (cond
-   ((executable-find "ipython")
-    (progn
-      (setq python-shell-buffer-name "IPython")
-      (setq python-shell-interpreter "ipython")
-      (setq python-shell-interpreter-args "-i --simple-prompt")))
-   ((executable-find "python3")
-    (setq python-shell-interpreter "python3"))
-   ((executable-find "python2")
-    (setq python-shell-interpreter "python2"))
-   (t
-    (setq python-shell-interpreter "python"))))
+  ;; @see: https://gitlab.com/nathanfurnal/dotemacs/-/snippets/2060535?utm_source=pocket_mylist
+  ;; @see: https://github.com/jidicula/dotfiles/blob/main/init.el?utm_source=pocket_mylist
 
 
-;; Hide the modeline for inferior python processes
-(use-package inferior-python-mode
-  :ensure nil
-  :hook (inferior-python-mode . hide-mode-line-mode))
+  ;; Built-in Python utilities
+  (use-package python
+    :ensure t
+    :config
+    ;; Remove guess indent python message
+    (setq python-indent-guess-indent-offset-verbose nil)
+    ;; Use IPython when available or fall back to regular Python 
+    (cond
+     ((executable-find "ipython")
+      (progn
+        (setq python-shell-buffer-name "IPython")
+        (setq python-shell-interpreter "ipython")
+        (setq python-shell-interpreter-args "-i --simple-prompt")))
+     ((executable-find "python3")
+      (setq python-shell-interpreter "python3"))
+     ((executable-find "python2")
+      (setq python-shell-interpreter "python2"))
+     (t
+      (setq python-shell-interpreter "python"))))
 
-;; Required to hide the modeline 
-(use-package hide-mode-line
-  :ensure t
-  :defer t)
+
+  ;; Hide the modeline for inferior python processes
+  (use-package inferior-python-mode
+    :ensure nil
+    :hook (inferior-python-mode . hide-mode-line-mode))
+
+  ;; Required to hide the modeline 
+  (use-package hide-mode-line
+    :ensure t
+    :defer t)
 
 
 
-;; (use-package python-mode
-;;   :mode ("\\.py\\'" . python-mode)
-;;   :interpreter ("python" . python-mode)
-;;   :config
-;;   (defvar python-mode-initialized nil)
-;;   (defun my-python-mode-hook ()
-;;     (unless python-mode-initialized
-;;       (setq python-mode-initialized t)
-;;       (info-lookup-add-help
-;;        :mode 'python-mode
-;;        :regexp "[a-zA-Z_0-9.]+"
-;;        :doc-spec
-;;        '(("(python)Python Module Index" )
-;;          ("(python)Index"
-;;           (lambda
-;;             (item)
-;;             (cond
-;;              ((string-match
-;;                "\\([A-Za-z0-9_]+\\)() (in module \\([A-Za-z0-9_.]+\\))" item)
-;;               (format "%s.%s" (match-string 2 item)
-;;                       (match-string 1 item)))))))))
-;;     (setq indicate-empty-lines t)
-;;     (set (make-local-variable 'parens-require-spaces) nil)
-;;     (setq indent-tabs-mode nil)
-;;     (bind-key "C-c C-z" 'python-shell python-mode-map)
-;;     (unbind-key "C-c c" python-mode-map))
-;;   (add-hook 'python-mode-hook 'my-python-mode-hook))
+  ;; (use-package python-mode
+  ;;   :mode ("\\.py\\'" . python-mode)
+  ;;   :interpreter ("python" . python-mode)
+  ;;   :config
+  ;;   (defvar python-mode-initialized nil)
+  ;;   (defun my-python-mode-hook ()
+  ;;     (unless python-mode-initialized
+  ;;       (setq python-mode-initialized t)
+  ;;       (info-lookup-add-help
+  ;;        :mode 'python-mode
+  ;;        :regexp "[a-zA-Z_0-9.]+"
+  ;;        :doc-spec
+  ;;        '(("(python)Python Module Index" )
+  ;;          ("(python)Index"
+  ;;           (lambda
+  ;;             (item)
+  ;;             (cond
+  ;;              ((string-match
+  ;;                "\\([A-Za-z0-9_]+\\)() (in module \\([A-Za-z0-9_.]+\\))" item)
+  ;;               (format "%s.%s" (match-string 2 item)
+  ;;                       (match-string 1 item)))))))))
+  ;;     (setq indicate-empty-lines t)
+  ;;     (set (make-local-variable 'parens-require-spaces) nil)
+  ;;     (setq indent-tabs-mode nil)
+  ;;     (bind-key "C-c C-z" 'python-shell python-mode-map)
+  ;;     (unbind-key "C-c c" python-mode-map))
+  ;;   (add-hook 'python-mode-hook 'my-python-mode-hook))
 ;; lang-python.mode ends here
 
 ;; Lang: Python/env
 ;; #+NAME: lang-python.env
 
 ;; [[file:site-pkgs.org::lang-python.env][lang-python.env]]
-;; ---( pyvenv )--------------------------------------------------------------
+  ;; ---( pyvenv )--------------------------------------------------------------
 
-;; Required to easily switch virtual envs 
-;; via the menu bar or with `pyvenv-workon` 
-;; Setting the `WORKON_HOME` environment variable points 
-;; at where the envs are located. I use (miniconda ^H) poetry. 
-(use-package pyvenv
-  :ensure t
-  :defer t
-  :config
-  ;; Setting work on to easily switch between environments
-  ;;(setenv "WORKON_HOME" (expand-file-name "~/miniconda3/envs/"))
-  (setenv "WORKON_HOME" (expand-file-name "~/.cache/pypoetry/virtualenvs"))
-  ;; Display virtual envs in the menu bar
-  (setq pyvenv-menu t)
-  ;; Restart the python process when switching environments
-  (add-hook 'pyvenv-post-activate-hooks (lambda ()
-                                          (pyvenv-restart-python)))
-  :hook (python-mode . pyvenv-mode))
-
-
-;; ---( poetry )-------------------------------------------------------------
-
-(use-package poetry
-  :ensure t
-  ;; :init
-  ;; imperfect tracking strategy causes lags in builds
-  ;; (setq poetry-tracking-strategy 'switch-buffer)
-  :hook
-  ;; activate poetry-tracking-mode when python-mode is active
-  (python-mode . poetry-tracking-mode)
-  )
-
-;; (use-package poetry
-;;   :ensure t
-;;   :config
-;;   (add-hook 'poetry-tracking-mode-hook (lambda () (remove-hook 'post-command-hook 'poetry-track-virtualenv)))
-;;   (add-hook 'python-mode-hook 'poetry-track-virtualenv)
-;;   (add-hook 'projectile-after-switch-project-hook 'poetry-track-virtualenv))
+  ;; Required to easily switch virtual envs 
+  ;; via the menu bar or with `pyvenv-workon` 
+  ;; Setting the `WORKON_HOME` environment variable points 
+  ;; at where the envs are located. I use (miniconda ^H) poetry. 
+  (use-package pyvenv
+    :ensure t
+    :defer t
+    :config
+    ;; Setting work on to easily switch between environments
+    ;;(setenv "WORKON_HOME" (expand-file-name "~/miniconda3/envs/"))
+    (setenv "WORKON_HOME" (expand-file-name "~/.cache/pypoetry/virtualenvs"))
+    ;; Display virtual envs in the menu bar
+    (setq pyvenv-menu t)
+    ;; Restart the python process when switching environments
+    (add-hook 'pyvenv-post-activate-hooks (lambda ()
+                                            (pyvenv-restart-python)))
+    :hook (python-mode . pyvenv-mode))
 
 
-;; ---( pipenv )-------------------------------------------------------------
-;;
-;; (use-package pipenv
-;;   :unless (version< emacs-version "25.1")
-;;   :defer t
-;;   ;; :ensure t
-;;   :hook (python-mode . pipenv-mode)
-;;   :init
-;;   (setq
-;;    pipenv-projectile-after-switch-function
-;;    #'pipenv-projectile-after-switch-extended))
+  ;; ---( poetry )-------------------------------------------------------------
+
+  (use-package poetry
+    :ensure t
+    ;; :init
+    ;; imperfect tracking strategy causes lags in builds
+    ;; (setq poetry-tracking-strategy 'switch-buffer)
+    :hook
+    ;; activate poetry-tracking-mode when python-mode is active
+    (python-mode . poetry-tracking-mode)
+    )
+
+  ;; (use-package poetry
+  ;;   :ensure t
+  ;;   :config
+  ;;   (add-hook 'poetry-tracking-mode-hook (lambda () (remove-hook 'post-command-hook 'poetry-track-virtualenv)))
+  ;;   (add-hook 'python-mode-hook 'poetry-track-virtualenv)
+  ;;   (add-hook 'projectile-after-switch-project-hook 'poetry-track-virtualenv))
+
+
+  ;; ---( pipenv )-------------------------------------------------------------
+  ;;
+  ;; (use-package pipenv
+  ;;   :unless (version< emacs-version "25.1")
+  ;;   :defer t
+  ;;   ;; :ensure t
+  ;;   :hook (python-mode . pipenv-mode)
+  ;;   :init
+  ;;   (setq
+  ;;    pipenv-projectile-after-switch-function
+  ;;    #'pipenv-projectile-after-switch-extended))
 ;; lang-python.env ends here
 
 ;; Lang: Python/lsp
 ;; #+NAME: lang-python.lsp
 
 ;; [[file:site-pkgs.org::lang-python.lsp][lang-python.lsp]]
-;; ---( lsp-pyright )--------------------------------------------------------------
+  ;; ---( lsp-pyright )--------------------------------------------------------------
 
-;; Language server for Python 
-;; Read the docs for the different variables set in the config.
+  ;; Language server for Python 
+  ;; Read the docs for the different variables set in the config.
 
-(use-package lsp-pyright
-  :ensure t
-  :defer t
-  :custom
-  (lsp-pyright-disable-language-service nil)
-  (lsp-pyright-disable-organize-imports nil)
-  (lsp-pyright-auto-import-completions t)
-  (lsp-pyright-use-library-code-for-types t)
-  (lsp-pyright-venv-path "~/.cache/pypoetry/virtualenvs")
-  :config
-  ;;(setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
-  ;;(setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
-  ;; (setq lsp-pyright-disable-language-service nil
-  ;;       lsp-pyright-disable-organize-imports nil
-  ;;       lsp-pyright-auto-import-completions t
-  ;;       lsp-pyright-use-library-code-for-types t
-  ;;       ;;lsp-pyright-venv-path "~/miniconda3/envs")
-  ;;       lsp-pyright-venv-path "~/.cache/pypoetry/virtualenvs")
-  :hook ((python-mode . (lambda () 
-                          (require 'lsp-pyright) (lsp-deferred))))
-  )
+  (use-package lsp-pyright
+    :ensure t
+    :defer t
+    :custom
+    (lsp-pyright-disable-language-service nil)
+    (lsp-pyright-disable-organize-imports nil)
+    (lsp-pyright-auto-import-completions t)
+    (lsp-pyright-use-library-code-for-types t)
+    (lsp-pyright-venv-path "~/.cache/pypoetry/virtualenvs")
+    :config
+    ;;(setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
+    ;;(setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
+    ;; (setq lsp-pyright-disable-language-service nil
+    ;;       lsp-pyright-disable-organize-imports nil
+    ;;       lsp-pyright-auto-import-completions t
+    ;;       lsp-pyright-use-library-code-for-types t
+    ;;       ;;lsp-pyright-venv-path "~/miniconda3/envs")
+    ;;       lsp-pyright-venv-path "~/.cache/pypoetry/virtualenvs")
+    :hook ((python-mode . (lambda () 
+                            (require 'lsp-pyright) (lsp-deferred))))
+    )
 ;; lang-python.lsp ends here
 
 ;; Lang: Python/tools
 ;; #+NAME: lang-python.tools
 
 ;; [[file:site-pkgs.org::lang-python.tools][lang-python.tools]]
-;; ---( yapfify )-------------------------------------------------------------
+  ;; ---( yapfify )-------------------------------------------------------------
 
-;; Format the python buffer following YAPF rules
-;; There's also blacken if you like it better.
-(use-package yapfify
-  :ensure t
-  :defer t
-  :hook (python-mode . yapf-mode))
+  ;; Format the python buffer following YAPF rules
+  ;; There's also blacken if you like it better.
+  (use-package yapfify
+    :ensure t
+    :defer t
+    :hook (python-mode . yapf-mode))
 
 
-;; ---( python-black )--------------------------------------------------------------
+  ;; ---( python-black )--------------------------------------------------------------
 
-(use-package python-black
-  ;;:delight python-black-on-save-mode "⚫️"
-  :ensure t
-  :hook
-  (python-mode . python-black-on-save-mode)
-  :init
-  (put 'python-black-command 'safe-local-variable #'stringp)
-  (put 'python-black-extra-args 'safe-local-variable #'stringp)
-  (put 'python-black-on-save-mode 'safe-local-variable #'booleanp)
-  )
+  (use-package python-black
+    ;;:delight python-black-on-save-mode "⚫️"
+    :ensure t
+    :hook
+    (python-mode . python-black-on-save-mode)
+    :init
+    (put 'python-black-command 'safe-local-variable #'stringp)
+    (put 'python-black-extra-args 'safe-local-variable #'stringp)
+    (put 'python-black-on-save-mode 'safe-local-variable #'booleanp)
+    )
 
-;; ---( pyisort )-------------------------------------------------------------
+  ;; ---( pyisort )-------------------------------------------------------------
 
-(use-package py-isort
-  :ensure t
-  :after python
-  :hook ((python-mode . pyvenv-mode)
-         (before-save . py-isort-before-save)))
+  (use-package py-isort
+    :ensure t
+    :after python
+    :hook ((python-mode . pyvenv-mode)
+           (before-save . py-isort-before-save)))
 ;; lang-python.tools ends here
 
 ;; Lang: Python/elpy
 ;; #+NAME: lang-python.elpy
 
 ;; [[file:site-pkgs.org::lang-python.elpy][lang-python.elpy]]
-;; ---( python: elpy )--------------------------------------------------------------
+  ;; ---( python: elpy )--------------------------------------------------------------
 
-(use-package elpy
-  :disabled t
-  :preface
+  (use-package elpy
+    :disabled t
+    :preface
 
-  ;; @see: https://elpy.readthedocs.org/en/latest/
-  ;; @see: https://github.com/jorgenschaefer/elpy
-  ;; @see: https://youtu.be/0kuCeS-mfyc
+    ;; @see: https://elpy.readthedocs.org/en/latest/
+    ;; @see: https://github.com/jorgenschaefer/elpy
+    ;; @see: https://youtu.be/0kuCeS-mfyc
 
-  (defvar elpy-mode-map
-    (let ((map (make-sparse-keymap)))
-      ;; Alphabetical order to make it easier to find free C-c C-X
-      ;; bindings in the future. Heh.
+    (defvar elpy-mode-map
+      (let ((map (make-sparse-keymap)))
+        ;; Alphabetical order to make it easier to find free C-c C-X
+        ;; bindings in the future. Heh.
 
-      ;; (define-key map (kbd "<backspace>") 'python-indent-dedent-line-backspace)
-      ;; (define-key map (kbd "<backtab>")   'python-indent-dedent-line)
+        ;; (define-key map (kbd "<backspace>") 'python-indent-dedent-line-backspace)
+        ;; (define-key map (kbd "<backtab>")   'python-indent-dedent-line)
 
-      ;; (define-key map (kbd "C-M-x")   'python-shell-send-defun)
+        ;; (define-key map (kbd "C-M-x")   'python-shell-send-defun)
 
-      (define-key map (kbd "M-c <")   'python-indent-shift-left)
-      (define-key map (kbd "M-c >")   'python-indent-shift-right)
+        (define-key map (kbd "M-c <")   'python-indent-shift-left)
+        (define-key map (kbd "M-c >")   'python-indent-shift-right)
 
-      (define-key map (kbd "M-c RET") 'elpy-importmagic-add-import)
-      (define-key map (kbd "M-c M-b") 'elpy-nav-expand-to-indentation)
-      (define-key map (kbd "M-c M-c") 'elpy-shell-send-region-or-buffer)
-      (define-key map (kbd "M-c M-d") 'elpy-doc)
-      (define-key map (kbd "M-c M-e") 'elpy-multiedit-python-symbol-at-point)
-      (define-key map (kbd "M-c M-f") 'elpy-find-file)
-      (define-key map (kbd "M-c M-n") 'elpy-flymake-next-error)
-      (define-key map (kbd "M-c M-o") 'elpy-occur-definitions)
-      (define-key map (kbd "M-c M-p") 'elpy-flymake-previous-error)
-      (define-key map (kbd "M-c M-s") 'elpy-rgrep-symbol)
-      (define-key map (kbd "M-c M-t") 'elpy-test)
-      (define-key map (kbd "M-c M-v") 'elpy-check)
-      (define-key map (kbd "M-c M-z") 'elpy-shell-switch-to-shell)
-      (define-key map (kbd "M-c M-r i") 'elpy-importmagic-fixup)
-      (define-key map (kbd "M-c M-r p") 'elpy-autopep8-fix-code)
-      (define-key map (kbd "M-c M-r r") 'elpy-refactor)
+        (define-key map (kbd "M-c RET") 'elpy-importmagic-add-import)
+        (define-key map (kbd "M-c M-b") 'elpy-nav-expand-to-indentation)
+        (define-key map (kbd "M-c M-c") 'elpy-shell-send-region-or-buffer)
+        (define-key map (kbd "M-c M-d") 'elpy-doc)
+        (define-key map (kbd "M-c M-e") 'elpy-multiedit-python-symbol-at-point)
+        (define-key map (kbd "M-c M-f") 'elpy-find-file)
+        (define-key map (kbd "M-c M-n") 'elpy-flymake-next-error)
+        (define-key map (kbd "M-c M-o") 'elpy-occur-definitions)
+        (define-key map (kbd "M-c M-p") 'elpy-flymake-previous-error)
+        (define-key map (kbd "M-c M-s") 'elpy-rgrep-symbol)
+        (define-key map (kbd "M-c M-t") 'elpy-test)
+        (define-key map (kbd "M-c M-v") 'elpy-check)
+        (define-key map (kbd "M-c M-z") 'elpy-shell-switch-to-shell)
+        (define-key map (kbd "M-c M-r i") 'elpy-importmagic-fixup)
+        (define-key map (kbd "M-c M-r p") 'elpy-autopep8-fix-code)
+        (define-key map (kbd "M-c M-r r") 'elpy-refactor)
 
-      ;; (define-key map (kbd "<S-return>") 'elpy-open-and-indent-line-below)
-      ;; (define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-above)
+        ;; (define-key map (kbd "<S-return>") 'elpy-open-and-indent-line-below)
+        ;; (define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-above)
 
-      ;; (define-key map (kbd "<C-return>") 'elpy-shell-send-current-statement)
+        ;; (define-key map (kbd "<C-return>") 'elpy-shell-send-current-statement)
 
-      ;; (define-key map (kbd "<C-down>") 'elpy-nav-forward-block)
-      ;; (define-key map (kbd "<C-up>") 'elpy-nav-backward-block)
-      ;; (define-key map (kbd "<C-left>") 'elpy-nav-backward-indent)
-      ;; (define-key map (kbd "<C-right>") 'elpy-nav-forward-indent)
+        ;; (define-key map (kbd "<C-down>") 'elpy-nav-forward-block)
+        ;; (define-key map (kbd "<C-up>") 'elpy-nav-backward-block)
+        ;; (define-key map (kbd "<C-left>") 'elpy-nav-backward-indent)
+        ;; (define-key map (kbd "<C-right>") 'elpy-nav-forward-indent)
 
-      ;; (define-key map (kbd "<M-down>") 'elpy-nav-move-line-or-region-down)
-      ;; (define-key map (kbd "<M-up>") 'elpy-nav-move-line-or-region-up)
-      ;; (define-key map (kbd "<M-left>") 'elpy-nav-indent-shift-left)
-      ;; (define-key map (kbd "<M-right>") 'elpy-nav-indent-shift-right)
+        ;; (define-key map (kbd "<M-down>") 'elpy-nav-move-line-or-region-down)
+        ;; (define-key map (kbd "<M-up>") 'elpy-nav-move-line-or-region-up)
+        ;; (define-key map (kbd "<M-left>") 'elpy-nav-indent-shift-left)
+        ;; (define-key map (kbd "<M-right>") 'elpy-nav-indent-shift-right)
 
-      ;; (define-key map (kbd "M-.")     'elpy-goto-definition)
-      ;; (define-key map (kbd "M-TAB")   'elpy-company-backend)
+        ;; (define-key map (kbd "M-.")     'elpy-goto-definition)
+        ;; (define-key map (kbd "M-TAB")   'elpy-company-backend)
 
-      (define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-below)
-      ;;(define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-above)
+        (define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-below)
+        ;;(define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-above)
 
-      ;;(define-key map (kbd "<C-return>") 'elpy-shell-send-current-statement)
+        ;;(define-key map (kbd "<C-return>") 'elpy-shell-send-current-statement)
 
-      (define-key map (kbd "<M-right>") 'elpy-nav-forward-block)
-      (define-key map (kbd "<M-left>") 'elpy-nav-backward-block)
-      ;; (define-key map (kbd "<C-S-left>") 'elpy-nav-backward-indent)
-      ;; (define-key map (kbd "<C-S-right>") 'elpy-nav-forward-indent)
+        (define-key map (kbd "<M-right>") 'elpy-nav-forward-block)
+        (define-key map (kbd "<M-left>") 'elpy-nav-backward-block)
+        ;; (define-key map (kbd "<C-S-left>") 'elpy-nav-backward-indent)
+        ;; (define-key map (kbd "<C-S-right>") 'elpy-nav-forward-indent)
 
-      ;; (define-key map (kbd "<M-S-down>") 'elpy-nav-move-line-or-region-down)
-      ;; (define-key map (kbd "<M-S-up>") 'elpy-nav-move-line-or-region-up)
-      (define-key map (kbd "<M-S-left>") 'elpy-nav-indent-shift-left)
-      (define-key map (kbd "<M-S-right>") 'elpy-nav-indent-shift-right)
+        ;; (define-key map (kbd "<M-S-down>") 'elpy-nav-move-line-or-region-down)
+        ;; (define-key map (kbd "<M-S-up>") 'elpy-nav-move-line-or-region-up)
+        (define-key map (kbd "<M-S-left>") 'elpy-nav-indent-shift-left)
+        (define-key map (kbd "<M-S-right>") 'elpy-nav-indent-shift-right)
 
-      (define-key map [(meta prior)]    'elpy-goto-definition)
-      (define-key map [(meta next)]     'pop-tag-mark)
+        (define-key map [(meta prior)]    'elpy-goto-definition)
+        (define-key map [(meta next)]     'pop-tag-mark)
 
-      (define-key map [(control menu)]   'elpy-company-backend)
+        (define-key map [(control menu)]   'elpy-company-backend)
 
-      map)
-    "Key map for the Emacs Lisp Python Environment.")
-  :config
-  (elpy-enable)
-  (setq python-shell-interpreter "jupyter"
-        python-shell-interpreter-args "console --simple-prompt")
+        map)
+      "Key map for the Emacs Lisp Python Environment.")
+    :config
+    (elpy-enable)
+    (setq python-shell-interpreter "jupyter"
+          python-shell-interpreter-args "console --simple-prompt")
 
-  ;; (elpy-use-ipython "ipython3") 
-  (defalias 'workon 'pyvenv-workon))
+    ;; (elpy-use-ipython "ipython3") 
+    (defalias 'workon 'pyvenv-workon))
 
-(setenv "PYTHONIOENCODING" "utf-8")
-(add-to-list 'process-coding-system-alist '("python" . (utf-8 . utf-8)))
-(add-to-list 'process-coding-system-alist '("elpy" . (utf-8 . utf-8)))
-(add-to-list 'process-coding-system-alist '("flake8" . (utf-8 . utf-8)))
+  (setenv "PYTHONIOENCODING" "utf-8")
+  (add-to-list 'process-coding-system-alist '("python" . (utf-8 . utf-8)))
+  (add-to-list 'process-coding-system-alist '("elpy" . (utf-8 . utf-8)))
+  (add-to-list 'process-coding-system-alist '("flake8" . (utf-8 . utf-8)))
 ;; lang-python.elpy ends here
 
 ;; Lang: Python/ein
 ;; #+NAME: lang-python.ein
 
 ;; [[file:site-pkgs.org::lang-python.ein][lang-python.ein]]
-;; ---( python: ein )--------------------------------------------------------------
+  ;; ---( python: ein )--------------------------------------------------------------
 
 
-(use-package ein
-  :unless (version< emacs-version "25.1")
-  ;; :defer t
-  :ensure t
-  :init
-  (progn
-    (with-eval-after-load 'ein-notebooklist
-      (define-key ein:notebooklist-mode-map (kbd "<S-return>") 'ein:worksheet-execute-cell-and-goto-next-km)
-      (define-key ein:notebooklist-mode-map (kbd "<C-return>") 'ein:worksheet-execute-cell)
-      ))
-  :config
-  (defalias 'eip 'ein:notebooklist-open))
+  (use-package ein
+    :unless (version< emacs-version "25.1")
+    ;; :defer t
+    :ensure t
+    :init
+    (progn
+      (with-eval-after-load 'ein-notebooklist
+        (define-key ein:notebooklist-mode-map (kbd "<S-return>") 'ein:worksheet-execute-cell-and-goto-next-km)
+        (define-key ein:notebooklist-mode-map (kbd "<C-return>") 'ein:worksheet-execute-cell)
+        ))
+    :config
+    (defalias 'eip 'ein:notebooklist-open))
 
 
 
-;; (use-package ein
-;;   :unless (version< emacs-version "25.1")
-;;   :ensure t
-;;   :defer t
-;;   :commands ein:notebooklist-open
-;;   :init
-;;   ;; (progn
-;;   ;;   (with-eval-after-load 'ein-notebooklist
-;;   ;;     ;; removing keybindings
-;;   ;;     (define-key ein:notebook-mode-map (kbd "M-p") nil)
-;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-up>") nil)
-;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-down>") nil)
-;;   ;;     ;; changing keybinding
-;;   ;;     (define-key ein:notebook-mode-map (kbd "C-s") 'ein:notebook-save-notebook-command)
-;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-S-up>") 'ein:worksheet-move-cell-up)
-;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-S-down>") 'ein:worksheet-move-cell-down)))
-;;   :config
-;;   (defalias 'einp 'ein:notebooklist-open)
-;;   (defalias 'eins 'ein:jupyter-server-start)
-;;   )
+  ;; (use-package ein
+  ;;   :unless (version< emacs-version "25.1")
+  ;;   :ensure t
+  ;;   :defer t
+  ;;   :commands ein:notebooklist-open
+  ;;   :init
+  ;;   ;; (progn
+  ;;   ;;   (with-eval-after-load 'ein-notebooklist
+  ;;   ;;     ;; removing keybindings
+  ;;   ;;     (define-key ein:notebook-mode-map (kbd "M-p") nil)
+  ;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-up>") nil)
+  ;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-down>") nil)
+  ;;   ;;     ;; changing keybinding
+  ;;   ;;     (define-key ein:notebook-mode-map (kbd "C-s") 'ein:notebook-save-notebook-command)
+  ;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-S-up>") 'ein:worksheet-move-cell-up)
+  ;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-S-down>") 'ein:worksheet-move-cell-down)))
+  ;;   :config
+  ;;   (defalias 'einp 'ein:notebooklist-open)
+  ;;   (defalias 'eins 'ein:jupyter-server-start)
+  ;;   )
 ;; lang-python.ein ends here
 
 ;; Lang: Julia
 ;; #+NAME: lang-julia
 
 ;; [[file:site-pkgs.org::lang-julia][lang-julia]]
-;; ---( julia )--------------------------------------------------------------
+  ;; ---( julia )--------------------------------------------------------------
 
-;; @see: https://github.com/JuliaEditorSupport/julia-emacs
-;; @see: https://github.com/tpapp/julia-repl
-;; @see: https://github.com/nnicandro/emacs-jupyter
-;; @see: https://julia-users-zurich.github.io/talks/talk-2018-04/emacs.html
-;; @see: https://github.com/cgroll/dot_emacs.d/blob/master/init.el
+  ;; @see: https://github.com/JuliaEditorSupport/julia-emacs
+  ;; @see: https://github.com/tpapp/julia-repl
+  ;; @see: https://github.com/nnicandro/emacs-jupyter
+  ;; @see: https://julia-users-zurich.github.io/talks/talk-2018-04/emacs.html
+  ;; @see: https://github.com/cgroll/dot_emacs.d/blob/master/init.el
 
-(use-package julia-mode
-   :ensure t
-   :defer t
-   :commands julia-mode
-   :mode ("\\.jl$" . julia-mode)
-   :init
-   (progn
-      (autoload 'julia-mode "julia-mode" nil t)
-      (setq inferior-julia-program-name "julia")
-      )
-   :config
-   (progn
-      (setq inferior-julia-program-name "julia")
-      )
-   )
-
-
-(use-package julia-repl
-   :ensure t
-   :defer t
-   :config
-   (progn
-     (add-to-list 'julia-mode-hook 'julia-repl-mode)
+  (use-package julia-mode
+     :ensure t
+     :defer t
+     :commands julia-mode
+     :mode ("\\.jl$" . julia-mode)
+     :init
+     (progn
+        (autoload 'julia-mode "julia-mode" nil t)
+        (setq inferior-julia-program-name "julia")
+        )
+     :config
+     (progn
+        (setq inferior-julia-program-name "julia")
+        )
      )
-   )
 
-;; ;; allow julia to be loaded through call to julia-mode or
-;; ;; ess-inferior process
-;; ;; follow-ups: etags?
-;; (use-package julia-mode
-;;    :defer t
-;;    :commands julia-mode
-;;    :mode ("\\.jl$" . julia-mode)
-;;    :init
-;;    (progn
-;;       (autoload 'julia-mode "julia-mode" nil t)
-;;       (setq inferior-julia-program-name "/usr/bin/julia")
-;;       )
-;;    :config
-;;    (progn
-;;       (add-to-list 'julia-mode-hook 'cg/modify-current-syntax-table)
-;;       (setq inferior-julia-program-name "/usr/bin/julia")
-;;       (add-to-list 'julia-mode-hook 'cg/command-line-keybindings)
-;;       ;; (add-to-list 'inferior-ess-mode-hook 'cg/command-line-keybindings)      
-;;       )
-;;    )
 
-;; (use-package ess-julia.el
-;;    :defer t
-;;    :commands julia
-;;    :init                                ; run before actual loading
-;;    (progn
-;;       (autoload 'julia "ess-julia.el" nil t)
-;;       (setq inferior-julia-program-name "/usr/bin/julia")
-;;       )
-;;    :config
-;;    (progn
-;;       (require 'ess-site)
-;;       (setq inferior-julia-program-name "/usr/bin/julia")
-;;       (setq ess-tracebug-prefix "\M-c")   ; define debug-mode starting key
-;;       (setq ess-use-tracebug t)           ; tracebug is called for R
-;;                                         ; AND JULIA!!
-;;       (setq ess-tracebug-inject-source-p t)
-;;       (add-to-list 'julia-mode-hook 'cg/command-line-keybindings)
-;;       ;; (add-to-list 'inferior-ess-mode-hook 'cg/command-line-keybindings)            
-;;       )
-;;    )
-;; ;; in order to add ess-process afterward, apply julia-mode again on
-;; ;; open buffers - probably ess-julia.el has to be loaded again also:
-;; ;; M-x load-file ess-julia.el
+  (use-package julia-repl
+     :ensure t
+     :defer t
+     :config
+     (progn
+       (add-to-list 'julia-mode-hook 'julia-repl-mode)
+       )
+     )
+
+  ;; ;; allow julia to be loaded through call to julia-mode or
+  ;; ;; ess-inferior process
+  ;; ;; follow-ups: etags?
+  ;; (use-package julia-mode
+  ;;    :defer t
+  ;;    :commands julia-mode
+  ;;    :mode ("\\.jl$" . julia-mode)
+  ;;    :init
+  ;;    (progn
+  ;;       (autoload 'julia-mode "julia-mode" nil t)
+  ;;       (setq inferior-julia-program-name "/usr/bin/julia")
+  ;;       )
+  ;;    :config
+  ;;    (progn
+  ;;       (add-to-list 'julia-mode-hook 'cg/modify-current-syntax-table)
+  ;;       (setq inferior-julia-program-name "/usr/bin/julia")
+  ;;       (add-to-list 'julia-mode-hook 'cg/command-line-keybindings)
+  ;;       ;; (add-to-list 'inferior-ess-mode-hook 'cg/command-line-keybindings)      
+  ;;       )
+  ;;    )
+
+  ;; (use-package ess-julia.el
+  ;;    :defer t
+  ;;    :commands julia
+  ;;    :init                                ; run before actual loading
+  ;;    (progn
+  ;;       (autoload 'julia "ess-julia.el" nil t)
+  ;;       (setq inferior-julia-program-name "/usr/bin/julia")
+  ;;       )
+  ;;    :config
+  ;;    (progn
+  ;;       (require 'ess-site)
+  ;;       (setq inferior-julia-program-name "/usr/bin/julia")
+  ;;       (setq ess-tracebug-prefix "\M-c")   ; define debug-mode starting key
+  ;;       (setq ess-use-tracebug t)           ; tracebug is called for R
+  ;;                                         ; AND JULIA!!
+  ;;       (setq ess-tracebug-inject-source-p t)
+  ;;       (add-to-list 'julia-mode-hook 'cg/command-line-keybindings)
+  ;;       ;; (add-to-list 'inferior-ess-mode-hook 'cg/command-line-keybindings)            
+  ;;       )
+  ;;    )
+  ;; ;; in order to add ess-process afterward, apply julia-mode again on
+  ;; ;; open buffers - probably ess-julia.el has to be loaded again also:
+  ;; ;; M-x load-file ess-julia.el
 ;; lang-julia ends here
 
 ;; Lang: Ruby
 ;; #+NAME: lang-ruby
 
 ;; [[file:site-pkgs.org::lang-ruby][lang-ruby]]
-;; ---( ruby )--------------------------------------------------------------
+  ;; ---( ruby )--------------------------------------------------------------
 
-(use-package ruby-mode
-  :mode ("\\.rb\\'" . ruby-mode)
-  :interpreter ("ruby" . ruby-mode)
-  ;; :functions inf-ruby-keys
-  ;; :config
-  ;; (use-package yari
-  ;;   :init
-  ;;   (progn
-  ;;     (defvar yari-helm-source-ri-pages
-  ;;       '((name . "RI documentation")
-  ;;         (candidates . (lambda () (yari-ruby-obarray)))
-  ;;         (action ("Show with Yari" . yari))
-  ;;         (candidate-number-limit . 300)
-  ;;         (requires-pattern . 2)
-  ;;         "Source for completing RI documentation."))
-  ;;     (defun helm-yari (&optional rehash)
-  ;;       (interactive (list current-prefix-arg))
-  ;;       (when current-prefix-arg (yari-ruby-obarray rehash))
-  ;;       (helm 'yari-helm-source-ri-pages (yari-symbol-at-point)))))
-  ;; (defun my-ruby-smart-return ()
-  ;;   (interactive)
-  ;;   (when (memq (char-after) '(?\| ?\" ?\'))
-  ;;     (forward-char))
-  ;;   (call-interactively 'newline-and-indent))
-  ;; (defun my-ruby-mode-hook ()
-  ;;   (require 'inf-ruby)
-  ;;   (inf-ruby-keys)
-  ;;   (bind-key "<return>" 'my-ruby-smart-return ruby-mode-map)
-  ;;   (bind-key "C-h C-i" 'helm-yari ruby-mode-map))
-  ;; (add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
-  )
+  (use-package ruby-mode
+    :mode ("\\.rb\\'" . ruby-mode)
+    :interpreter ("ruby" . ruby-mode)
+    ;; :functions inf-ruby-keys
+    ;; :config
+    ;; (use-package yari
+    ;;   :init
+    ;;   (progn
+    ;;     (defvar yari-helm-source-ri-pages
+    ;;       '((name . "RI documentation")
+    ;;         (candidates . (lambda () (yari-ruby-obarray)))
+    ;;         (action ("Show with Yari" . yari))
+    ;;         (candidate-number-limit . 300)
+    ;;         (requires-pattern . 2)
+    ;;         "Source for completing RI documentation."))
+    ;;     (defun helm-yari (&optional rehash)
+    ;;       (interactive (list current-prefix-arg))
+    ;;       (when current-prefix-arg (yari-ruby-obarray rehash))
+    ;;       (helm 'yari-helm-source-ri-pages (yari-symbol-at-point)))))
+    ;; (defun my-ruby-smart-return ()
+    ;;   (interactive)
+    ;;   (when (memq (char-after) '(?\| ?\" ?\'))
+    ;;     (forward-char))
+    ;;   (call-interactively 'newline-and-indent))
+    ;; (defun my-ruby-mode-hook ()
+    ;;   (require 'inf-ruby)
+    ;;   (inf-ruby-keys)
+    ;;   (bind-key "<return>" 'my-ruby-smart-return ruby-mode-map)
+    ;;   (bind-key "C-h C-i" 'helm-yari ruby-mode-map))
+    ;; (add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
+    )
 
-;; ---( puppet )--------------------------------------------------------------
+  ;; ---( puppet )--------------------------------------------------------------
 
-(use-package puppet-mode
-  :ensure t
-  :mode ("\\.pp$" . puppet-mode)
-  ;; :config
-  ;; (use-package puppet-ext
-  ;;   :ensure t)
-  )
+  (use-package puppet-mode
+    :ensure t
+    :mode ("\\.pp$" . puppet-mode)
+    ;; :config
+    ;; (use-package puppet-ext
+    ;;   :ensure t)
+    )
 ;; lang-ruby ends here
 
 ;; Lang: Prolog
 ;; #+NAME: lang-prolog
 
 ;; [[file:site-pkgs.org::lang-prolog][lang-prolog]]
-;; ---( prolog )--------------------------------------------------------------
+  ;; ---( prolog )--------------------------------------------------------------
 
-;; lsp
+  ;; lsp
 ;; lang-prolog ends here
 
 ;; Lang: Scala
 ;; #+NAME: lang-scala
 
 ;; [[file:site-pkgs.org::lang-scala][lang-scala]]
-;; ---( scala )--------------------------------------------------------------
+  ;; ---( scala )--------------------------------------------------------------
 
-;; @see: https://gitlab.com/balajisi/emacs/blob/master/init.el
+  ;; @see: https://gitlab.com/balajisi/emacs/blob/master/init.el
 
 
-;; requires: sbt-plugin
-;;
-;; cat > ~/.sbt/0.13/plugins/plugin.sbt <<EOF
-;;
-;; resolvers += Resolver.sonatypeRepo("snapshots")
-;; addSbtPlugin("org.ensime" % "ensime-sbt" % "0.1.5-SNAPSHOT")
-;;
-;; EOF
-;;
-;; and sbt gen-ensime to generate .ensime config in project root
-;;
+  ;; requires: sbt-plugin
+  ;;
+  ;; cat > ~/.sbt/0.13/plugins/plugin.sbt <<EOF
+  ;;
+  ;; resolvers += Resolver.sonatypeRepo("snapshots")
+  ;; addSbtPlugin("org.ensime" % "ensime-sbt" % "0.1.5-SNAPSHOT")
+  ;;
+  ;; EOF
+  ;;
+  ;; and sbt gen-ensime to generate .ensime config in project root
+  ;;
 
-(use-package ensime
-  :disabled t
-  :pin melpa)
+  (use-package ensime
+    :disabled t
+    :pin melpa)
 
-;;(use-package ensime
-;;  :pin melpa-stable)
+  ;;(use-package ensime
+  ;;  :pin melpa-stable)
 
-(use-package scala-mode2
-  :disabled t
-  :defer t
-  :init
-  (progn
-    (use-package ensime
-      :ensure
-      :commands ensime-scala-mode-hook     
-      ;;(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-      :init
-      (progn
-        (add-hook 'scala-mode-hook
-                  (lambda ()
-                    (ensime)
-                    (ensime-scala-mode)
-                    ))
-        )
-      :config
-            (progn
-              (define-key ensime-mode-map (kbd "M-c M-c")    'ensime-inf-eval-region)
-              (define-key ensime-mode-map (kbd "<C-return>") 'ensime-inf-eval-region)
-              ))
-    (use-package sbt-mode
-      :ensure)))
+  (use-package scala-mode2
+    :disabled t
+    :defer t
+    :init
+    (progn
+      (use-package ensime
+        :ensure
+        :commands ensime-scala-mode-hook     
+        ;;(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+        :init
+        (progn
+          (add-hook 'scala-mode-hook
+                    (lambda ()
+                      (ensime)
+                      (ensime-scala-mode)
+                      ))
+          )
+        :config
+              (progn
+                (define-key ensime-mode-map (kbd "M-c M-c")    'ensime-inf-eval-region)
+                (define-key ensime-mode-map (kbd "<C-return>") 'ensime-inf-eval-region)
+                ))
+      (use-package sbt-mode
+        :ensure)))
 ;; lang-scala ends here
 
 ;; Lang: Haskell
 ;; #+NAME: lang-haskell
 
 ;; [[file:site-pkgs.org::lang-haskell][lang-haskell]]
-;; ---( haskell )--------------------------------------------------------------
+  ;; ---( haskell )--------------------------------------------------------------
 
-;; @see: https://gitlab.com/balajisi/emacs/blob/master/init.el
-;; @see: https://github.com/serras/emacs-haskell-tutorial/blob/master/tutorial.md
+  ;; @see: https://gitlab.com/balajisi/emacs/blob/master/init.el
+  ;; @see: https://github.com/serras/emacs-haskell-tutorial/blob/master/tutorial.md
 
-;;;; Haskell Modes - Haskell, GHC, SHM, Idris etc.
-(use-package haskell-mode
-  :ensure
+  ;;;; Haskell Modes - Haskell, GHC, SHM, Idris etc.
+  (use-package haskell-mode
+    :ensure
 
-  :mode (("\\.hs\\(c\\|-boot\\)?\\'" . haskell-mode)
-         ("\\.lhs\\'" . literate-haskell-mode))
+    :mode (("\\.hs\\(c\\|-boot\\)?\\'" . haskell-mode)
+           ("\\.lhs\\'" . literate-haskell-mode))
 
-  :config
-  ;; (use-package ghc
-  ;;   :ensure)
-  (use-package flycheck-haskell
-    :ensure)
-  )
+    :config
+    ;; (use-package ghc
+    ;;   :ensure)
+    (use-package flycheck-haskell
+      :ensure)
+    )
 
-;; (defun balaji/haskell-mode-hook ()
-;;   (turn-on-haskell-indentation)
-;;   ;; (ghc-init)
-;;   (lambda () (add-to-list 'ac-sources 'ac-source-ghc))
-;;   )
+  ;; (defun balaji/haskell-mode-hook ()
+  ;;   (turn-on-haskell-indentation)
+  ;;   ;; (ghc-init)
+  ;;   (lambda () (add-to-list 'ac-sources 'ac-source-ghc))
+  ;;   )
 
-;; (add-hook 'haskell-mode-hook 'balaji/haskell-mode-hook)
+  ;; (add-hook 'haskell-mode-hook 'balaji/haskell-mode-hook)
 
-(use-package idris-mode
-  :ensure
-  :disabled t)
+  (use-package idris-mode
+    :ensure
+    :disabled t)
 ;; lang-haskell ends here
 
 ;; Lang: Drools
 ;; #+NAME: lang-drools
 
 ;; [[file:site-pkgs.org::lang-drools][lang-drools]]
-;; ---( drools )--------------------------------------------------------------
+  ;; ---( drools )--------------------------------------------------------------
 
-;; @see: https://github.com/pdorrell/rules-editing-mode
-;; @see: https://github.com/pdorrell/rules-editing-mode/blob/master/my-drools.el
+  ;; @see: https://github.com/pdorrell/rules-editing-mode
+  ;; @see: https://github.com/pdorrell/rules-editing-mode/blob/master/my-drools.el
 
-;;;; Drools Mode
+  ;;;; Drools Mode
 
 
-(autoload 'drools-mode "drools-mode")
+  (autoload 'drools-mode "drools-mode")
 
-(defun set-extension-mode (extension mode)
-  (setq auto-mode-alist
-        (cons (cons (concat "\\" extension "\\'") mode)
-              auto-mode-alist) ) )
+  (defun set-extension-mode (extension mode)
+    (setq auto-mode-alist
+          (cons (cons (concat "\\" extension "\\'") mode)
+                auto-mode-alist) ) )
 
-(set-extension-mode ".drl" 'drools-mode)
-(set-extension-mode ".dslr" 'drools-mode)
+  (set-extension-mode ".drl" 'drools-mode)
+  (set-extension-mode ".dslr" 'drools-mode)
 
-(add-hook 'drools-mode-hook 'my-drools-hook)
+  (add-hook 'drools-mode-hook 'my-drools-hook)
 
-(defun drools-return-and-indent()
-  (interactive)
-  (newline) (indent-for-tab-command) )
+  (defun drools-return-and-indent()
+    (interactive)
+    (newline) (indent-for-tab-command) )
 
-(defun my-drools-hook ()
-  (setq indent-tabs-mode nil)
-(local-set-key [?\C-m] 'drools-return-and-indent) )
+  (defun my-drools-hook ()
+    (setq indent-tabs-mode nil)
+  (local-set-key [?\C-m] 'drools-return-and-indent) )
 ;; lang-drools ends here
 
 ;; Lang/end
 ;; #+NAME: lang-end
 
 ;; [[file:site-pkgs.org::lang-end][lang-end]]
-;; }}}  .lang
+  ;; }}}  .lang
 ;; lang-end ends here
 
 ;; REST/begin
 ;; #+NAME: rest-begin
 
 ;; [[file:site-pkgs.org::rest-begin][rest-begin]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @REST
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @REST
+  ;; ;;;////////////////////////////////////////////////////////////////
 ;; rest-begin ends here
 
 ;; Json
 ;; #+NAME: rest-json
 
 ;; [[file:site-pkgs.org::rest-json][rest-json]]
-;; ---( json )--------------------------------------------------------------
+  ;; ---( json )--------------------------------------------------------------
 
-(use-package json-mode
-  :ensure t
-  :mode "\\.json\\'")
+  (use-package json-mode
+    :ensure t
+    :mode "\\.json\\'")
 
-(use-package json-reformat
-  :ensure t
-  :after json-mode
-  :init (setq json-reformat:indent-width 2))
+  (use-package json-reformat
+    :ensure t
+    :after json-mode
+    :init (setq json-reformat:indent-width 2))
 ;; rest-json ends here
 
 ;; Yaml
 ;; #+NAME: rest-yaml
 
 ;; [[file:site-pkgs.org::rest-yaml][rest-yaml]]
-;; ---( yaml )--------------------------------------------------------------
+  ;; ---( yaml )--------------------------------------------------------------
 
-(use-package yaml-mode
-  :ensure t
-  :defer t)
+  (use-package yaml-mode
+    :ensure t
+    :defer t)
 ;; rest-yaml ends here
 
 ;; TODO Request 
 ;; #+NAME: rest-request
 
 ;; [[file:site-pkgs.org::rest-request][rest-request]]
-;; ---( request )--------------------------------------------------------------
+  ;; ---( request )--------------------------------------------------------------
 
-;; ---( restclient )------------------------------------------------------
+  ;; ---( restclient )------------------------------------------------------
 
-;; @see: https://github.com/pashky/restclient.el
+  ;; @see: https://github.com/pashky/restclient.el
 
-(use-package restclient
-  :ensure t
-  :defer 30
-  :mode ("\\.http\\'" . restclient-mode)
-  :init
-    (progn
-      ;; (unless restclient-use-org
-      ;;   (add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode)))
-      ;; (spacemacs/set-leader-keys-for-major-mode 'restclient-mode
-      ;;   "n" 'restclient-jump-next
-      ;;   "p" 'restclient-jump-prev
-      ;;   "s" 'restclient-http-send-current-stay-in-window
-      ;;   "S" 'restclient-http-send-current
-      ;;   "r" 'spacemacs/restclient-http-send-current-raw-stay-in-window
-      ;;   "R" 'restclient-http-send-current-raw
-      ;;   "y" 'restclient-copy-curl-command)
-      ) 
-  )
+  (use-package restclient
+    :ensure t
+    :defer 30
+    :mode ("\\.http\\'" . restclient-mode)
+    :init
+      (progn
+        ;; (unless restclient-use-org
+        ;;   (add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode)))
+        ;; (spacemacs/set-leader-keys-for-major-mode 'restclient-mode
+        ;;   "n" 'restclient-jump-next
+        ;;   "p" 'restclient-jump-prev
+        ;;   "s" 'restclient-http-send-current-stay-in-window
+        ;;   "S" 'restclient-http-send-current
+        ;;   "r" 'spacemacs/restclient-http-send-current-raw-stay-in-window
+        ;;   "R" 'restclient-http-send-current-raw
+        ;;   "y" 'restclient-copy-curl-command)
+        ) 
+    )
 
-(use-package restclient-jq
-  :ensure t
-  :defer 30
-  :init
-    (progn
-      ) 
-  )
+  (use-package restclient-jq
+    :ensure t
+    :defer 30
+    :init
+      (progn
+        ) 
+    )
 
- ;; (use-package company-restclient
- ;;   :ensure t
- ;;   :after (company restclient)
- ;;   :custom-update
- ;;   (company-backends '(company-restclient)))
+   ;; (use-package company-restclient
+   ;;   :ensure t
+   ;;   :after (company restclient)
+   ;;   :custom-update
+   ;;   (company-backends '(company-restclient)))
 
-;; ---( ob-http )------------------------------------------------------
+  ;; ---( ob-http )------------------------------------------------------
 
-;; @see: https://github.com/zweifisch/ob-http
-;; @see: https://emacs.stackexchange.com/questions/2427/how-to-test-rest-api-with-emacs
+  ;; @see: https://github.com/zweifisch/ob-http
+  ;; @see: https://emacs.stackexchange.com/questions/2427/how-to-test-rest-api-with-emacs
 
-;; (use-package ob-http
-;;   :ensure t
-;;   :defer 30
-;;   )
+  ;; (use-package ob-http
+  ;;   :ensure t
+  ;;   :defer 30
+  ;;   )
 ;; rest-request ends here
 
 ;; Rest/end
 ;; #+NAME: rest-end
 
 ;; [[file:site-pkgs.org::rest-end][rest-end]]
-;; }}}  .rest
+  ;; }}}  .rest
 ;; rest-end ends here
 
 ;; OP/begin
 ;; #+NAME: op-begin
 
 ;; [[file:site-pkgs.org::op-begin][op-begin]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @OP
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @OP
+  ;; ;;;////////////////////////////////////////////////////////////////
 ;; op-begin ends here
 
 ;; Ansible
 ;; #+NAME: vm-ansible
 
 ;; [[file:site-pkgs.org::vm-ansible][vm-ansible]]
-;; @see: https://emacs-lsp.github.io/lsp-mode/page/lsp-ansible/
+  ;; @see: https://emacs-lsp.github.io/lsp-mode/page/lsp-ansible/
 
-(use-package ansible
-  :commands ansible
-  :ensure t
-  :custom
-  (ansible-vault-password-file "~/.ans-wall.asc")
-  )
-
-
-(use-package ansible-doc
-  :after ansible
-  :diminish ansible-doc-mode
-  :ensure t
-
-  :commands
-  (ansible-doc
-   ansible-doc-mode))
-
-;; (use-package ansible-vault
-;;   :after ansible
-;;   :ensure t
-;;   :init
-;;   (with-eval-after-load 'ansible
-;;     (defun ansible-vault-mode-maybe ()
-;;       (when (ansible-vault--is-vault-file)
-;;         (ansible-vault-mode 1))))
-;;   (add-hook 'yaml-mode-hook 'ansible-vault-mode-maybe))
+  (use-package ansible
+    :commands ansible
+    :ensure t
+    :custom
+    (ansible-vault-password-file "~/.ans-wall.asc")
+    )
 
 
-(use-package company-ansible
-  :after ansible
-  :commands company-ansible
-  :ensure t
+  (use-package ansible-doc
+    :after ansible
+    :diminish ansible-doc-mode
+    :ensure t
 
-  :init
-  (with-eval-after-load 'company
-    (defun gr/setup-company-ansible ()
-      (set (make-local-variable 'company-backends) '(company-ansible)))
-    (add-hook 'ansible-hook 'gr/setup-company-ansible)))
+    :commands
+    (ansible-doc
+     ansible-doc-mode))
 
-(use-package jinja2-mode
-  :after ansible
-  :ensure t)
+  ;; (use-package ansible-vault
+  ;;   :after ansible
+  ;;   :ensure t
+  ;;   :init
+  ;;   (with-eval-after-load 'ansible
+  ;;     (defun ansible-vault-mode-maybe ()
+  ;;       (when (ansible-vault--is-vault-file)
+  ;;         (ansible-vault-mode 1))))
+  ;;   (add-hook 'yaml-mode-hook 'ansible-vault-mode-maybe))
 
 
-(use-package poly-ansible
-  :after polymode
-  :ensure t
+  (use-package company-ansible
+    :after ansible
+    :commands company-ansible
+    :ensure t
 
-  :preface
-  (eval-when-compile
-    (defvar pm-inner/jinja2 nil))
+    :init
+    (with-eval-after-load 'company
+      (defun gr/setup-company-ansible ()
+        (set (make-local-variable 'company-backends) '(company-ansible)))
+      (add-hook 'ansible-hook 'gr/setup-company-ansible)))
 
-  :mode
-  ("playbook\\.ya?ml\\'" . poly-ansible-mode)
-  ("/ansible/.*\\.ya?ml\\'" . poly-ansible-mode)
-  ("/\\(?:group\\|host\\)_vars/" . poly-ansible-mode)
+  (use-package jinja2-mode
+    :after ansible
+    :ensure t)
 
-  :init
-  (with-eval-after-load 'fill-column-indicator
-    (add-hook 'ansible-hook 'fci-mode))
 
-  :config
-  (setq pm-inner/jinja2
-    (pm-inner-chunkmode :mode #'jinja2-mode
-                        :head-matcher "{[%{#][+-]?"
-                        :tail-matcher "[+-]?[%}#]}"
-                        :head-mode 'body
-                        :tail-mode 'body
-                        :head-adjust-face nil
-                        :tail-adjust-face nil)))
+  (use-package poly-ansible
+    :after polymode
+    :ensure t
+
+    :preface
+    (eval-when-compile
+      (defvar pm-inner/jinja2 nil))
+
+    :mode
+    ("playbook\\.ya?ml\\'" . poly-ansible-mode)
+    ("/ansible/.*\\.ya?ml\\'" . poly-ansible-mode)
+    ("/\\(?:group\\|host\\)_vars/" . poly-ansible-mode)
+
+    :init
+    (with-eval-after-load 'fill-column-indicator
+      (add-hook 'ansible-hook 'fci-mode))
+
+    :config
+    (setq pm-inner/jinja2
+      (pm-inner-chunkmode :mode #'jinja2-mode
+                          :head-matcher "{[%{#][+-]?"
+                          :tail-matcher "[+-]?[%}#]}"
+                          :head-mode 'body
+                          :tail-mode 'body
+                          :head-adjust-face nil
+                          :tail-adjust-face nil)))
 ;; vm-ansible ends here
 
 ;; Terraform
 ;; #+NAME: op-terraform
 
 ;; [[file:site-pkgs.org::op-terraform][op-terraform]]
-;; ---( terraform )--------------------------------------------------------------
+  ;; ---( terraform )--------------------------------------------------------------
 
-(use-package company-terraform
-  :ensure t
-  :defer t)
+  (use-package company-terraform
+    :ensure t
+    :defer t)
 ;; op-terraform ends here
 
 ;; Powershell
 ;; #+NAME: op-powershell
 
 ;; [[file:site-pkgs.org::op-powershell][op-powershell]]
-;; ---( powershell )--------------------------------------------------------------
+  ;; ---( powershell )--------------------------------------------------------------
 
-;; (use-package powershell
-;;   :ensure t
-;;   :defer t)
+  ;; (use-package powershell
+  ;;   :ensure t
+  ;;   :defer t)
 ;; op-powershell ends here
 
 ;; OP/end
 ;; #+NAME: op-end
 
 ;; [[file:site-pkgs.org::op-end][op-end]]
-;; }}}  .op
+  ;; }}}  .op
 ;; op-end ends here
 
 ;; VM/begin
 ;; #+NAME: vm-begin
 
 ;; [[file:site-pkgs.org::vm-begin][vm-begin]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @VM
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @VM
+  ;; ;;;////////////////////////////////////////////////////////////////
 ;; vm-begin ends here
 
 ;; Docker
 ;; #+NAME: vm-docker
 
 ;; [[file:site-pkgs.org::vm-docker][vm-docker]]
-;; ---( docker )--------------------------------------------------------------
+  ;; ---( docker )--------------------------------------------------------------
 
 
-(use-package docker
-  :ensure t
-  :defer t)
+  (use-package docker
+    :ensure t
+    :defer t)
 
-;; (use-package docker-tramp
-;;   :ensure t
-;;   :defer t)
+  ;; (use-package docker-tramp
+  ;;   :ensure t
+  ;;   :defer t)
 
-;; (use-package tramp-container
-;;   :ensure t
-;;   :defer t)
+  ;; (use-package tramp-container
+  ;;   :ensure t
+  ;;   :defer t)
 
-(use-package dockerfile-mode
-  :ensure t
-  :mode "Dockerfile\\'")
+  (use-package dockerfile-mode
+    :ensure t
+    :mode "Dockerfile\\'")
 ;; vm-docker ends here
 
 ;; VM/end
 ;; #+NAME: vm-end
 
 ;; [[file:site-pkgs.org::vm-end][vm-end]]
-;; }}}  .vm
+  ;; }}}  .vm
 ;; vm-end ends here
 
 ;; Net/begin
 ;; #+NAME: net-begin
 
 ;; [[file:site-pkgs.org::net-begin][net-begin]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @NET
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @NET
+  ;; ;;;////////////////////////////////////////////////////////////////
 ;; net-begin ends here
 
 ;; w3m
 ;; #+NAME: net-web-w3m
 
 ;; [[file:site-pkgs.org::net-web-w3m][net-web-w3m]]
-;; ---( w3m )------------------------------------------------------
+  ;; ---( w3m )------------------------------------------------------
 
-(use-package w3m
-  :disabled t
-  :commands (w3m-search w3m-find-file)
-  :bind (("C-. u" . w3m-browse-url)
-         ("C-. U" . w3m-browse-url-new-session)
-         ("C-. A-u" . w3m-browse-chrome-url-new-session)
-         ("C-. w" . show-browser)
-         ("A-M-e" . goto-emacswiki)
-         ("A-M-g" . w3m-search)
-         ("A-M-w" . wikipedia-query))
-  :init
-  (setq w3m-command "w3m")
-  (setq w3m-coding-system 'utf-8
-        w3m-file-coding-system 'utf-8
-        w3m-file-name-coding-system 'utf-8
-        w3m-input-coding-system 'utf-8
-        w3m-output-coding-system 'utf-8
-        w3m-terminal-coding-system 'utf-8)
-  (add-hook 'w3m-mode-hook 'w3m-link-numbering-mode)
-  (autoload 'w3m-session-crash-recovery-remove "w3m-session")
-  (defun show-browser ()
-    (interactive)
-    (let ((w3m-buf
-           (catch 'found
-             (dolist (buf (buffer-list))
-               (if (string-match "\\*w3m" (buffer-name buf))
-                   (throw 'found buf))))))
-      (if w3m-buf
-          (switch-to-buffer-other-window w3m-buf)
-        (call-interactively 'w3m-find-file))))
-  (defun wikipedia-query (term)
-    (interactive (list (read-string "Wikipedia search: " (word-at-point))))
-    (require 'w3m-search)
-    (w3m-search "en.wikipedia" term))
-  (eval-when-compile
-    (autoload 'w3m-search-escape-query-string "w3m-search"))
-  (defun wolfram-alpha-query (term)
-    (interactive (list (read-string "Ask Wolfram Alpha: " (word-at-point))))
-    (require 'w3m-search)
-    (w3m-browse-url (concat "http://m.wolframalpha.com/input/?i="
-                            (w3m-search-escape-query-string term))))
-  (defun goto-emacswiki ()
-    (interactive)
-    (w3m-browse-url "http://www.emacswiki.org"))
-  (defun w3m-browse-url-new-session (url)
-    (interactive (progn
-                   (require 'browse-url)
-                   (browse-url-interactive-arg "Emacs-w3m URL: ")))
-    (w3m-browse-url url t))
-  (defun w3m-browse-chrome-url-new-session ()
-    (interactive)
-    (let ((url (do-applescript
-                (string-to-multibyte "tell application \"Google Chrome\"
-URL of active tab of front window
-end tell"))))
-      (w3m-browse-url (substring url 1 (1- (length url))) t)))
-  :config
-  (let (proxy-host proxy-port)
-    (with-temp-buffer
-      (shell-command "scutil --proxy" (current-buffer))
-      (when (re-search-forward "HTTPPort : \\([0-9]+\\)" nil t)
-        (setq proxy-port (match-string 1)))
-      (when (re-search-forward "HTTPProxy : \\(\\S-+\\)" nil t)
-        (setq proxy-host (match-string 1))))
-    (if (and proxy-host proxy-port)
-        (setq w3m-command-arguments
-              (nconc w3m-command-arguments
-                     (list "-o" (format "http_proxy=http://%s:%s/"
-                                        proxy-host proxy-port)))))
-    (use-package w3m-type-ahead
-      :requires w3m
-      :init
-      (add-hook 'w3m-mode-hook 'w3m-type-ahead-mode))
-    (add-hook 'w3m-display-hook
-              (lambda (url)
-                (let ((buffer-read-only nil))
-                  (delete-trailing-whitespace))))
-    (defun my-w3m-linknum-follow ()
+  (use-package w3m
+    :disabled t
+    :commands (w3m-search w3m-find-file)
+    :bind (("C-. u" . w3m-browse-url)
+           ("C-. U" . w3m-browse-url-new-session)
+           ("C-. A-u" . w3m-browse-chrome-url-new-session)
+           ("C-. w" . show-browser)
+           ("A-M-e" . goto-emacswiki)
+           ("A-M-g" . w3m-search)
+           ("A-M-w" . wikipedia-query))
+    :init
+    (setq w3m-command "w3m")
+    (setq w3m-coding-system 'utf-8
+          w3m-file-coding-system 'utf-8
+          w3m-file-name-coding-system 'utf-8
+          w3m-input-coding-system 'utf-8
+          w3m-output-coding-system 'utf-8
+          w3m-terminal-coding-system 'utf-8)
+    (add-hook 'w3m-mode-hook 'w3m-link-numbering-mode)
+    (autoload 'w3m-session-crash-recovery-remove "w3m-session")
+    (defun show-browser ()
       (interactive)
-      (w3m-linknum-follow))
-    (bind-key "k" 'w3m-delete-buffer w3m-mode-map)
-    (bind-key "i" 'w3m-view-previous-page w3m-mode-map)
-    (bind-key "p" 'w3m-previous-anchor w3m-mode-map)
-    (bind-key "n" 'w3m-next-anchor w3m-mode-map)
-    (defun dka-w3m-textarea-hook()
-      (save-excursion
-        (while (re-search-forward "\r\n" nil t)
-          (replace-match "\n" nil nil))
-        (delete-other-windows)))
-    (add-hook 'w3m-form-input-textarea-mode-hook 'dka-w3m-textarea-hook)
-    (bind-key "<return>" 'w3m-view-url-with-external-browser
-              w3m-minor-mode-map)
-    (bind-key "S-<return>" 'w3m-safe-view-this-url w3m-minor-mode-map)))
+      (let ((w3m-buf
+             (catch 'found
+               (dolist (buf (buffer-list))
+                 (if (string-match "\\*w3m" (buffer-name buf))
+                     (throw 'found buf))))))
+        (if w3m-buf
+            (switch-to-buffer-other-window w3m-buf)
+          (call-interactively 'w3m-find-file))))
+    (defun wikipedia-query (term)
+      (interactive (list (read-string "Wikipedia search: " (word-at-point))))
+      (require 'w3m-search)
+      (w3m-search "en.wikipedia" term))
+    (eval-when-compile
+      (autoload 'w3m-search-escape-query-string "w3m-search"))
+    (defun wolfram-alpha-query (term)
+      (interactive (list (read-string "Ask Wolfram Alpha: " (word-at-point))))
+      (require 'w3m-search)
+      (w3m-browse-url (concat "http://m.wolframalpha.com/input/?i="
+                              (w3m-search-escape-query-string term))))
+    (defun goto-emacswiki ()
+      (interactive)
+      (w3m-browse-url "http://www.emacswiki.org"))
+    (defun w3m-browse-url-new-session (url)
+      (interactive (progn
+                     (require 'browse-url)
+                     (browse-url-interactive-arg "Emacs-w3m URL: ")))
+      (w3m-browse-url url t))
+    (defun w3m-browse-chrome-url-new-session ()
+      (interactive)
+      (let ((url (do-applescript
+                  (string-to-multibyte "tell application \"Google Chrome\"
+  URL of active tab of front window
+  end tell"))))
+        (w3m-browse-url (substring url 1 (1- (length url))) t)))
+    :config
+    (let (proxy-host proxy-port)
+      (with-temp-buffer
+        (shell-command "scutil --proxy" (current-buffer))
+        (when (re-search-forward "HTTPPort : \\([0-9]+\\)" nil t)
+          (setq proxy-port (match-string 1)))
+        (when (re-search-forward "HTTPProxy : \\(\\S-+\\)" nil t)
+          (setq proxy-host (match-string 1))))
+      (if (and proxy-host proxy-port)
+          (setq w3m-command-arguments
+                (nconc w3m-command-arguments
+                       (list "-o" (format "http_proxy=http://%s:%s/"
+                                          proxy-host proxy-port)))))
+      (use-package w3m-type-ahead
+        :requires w3m
+        :init
+        (add-hook 'w3m-mode-hook 'w3m-type-ahead-mode))
+      (add-hook 'w3m-display-hook
+                (lambda (url)
+                  (let ((buffer-read-only nil))
+                    (delete-trailing-whitespace))))
+      (defun my-w3m-linknum-follow ()
+        (interactive)
+        (w3m-linknum-follow))
+      (bind-key "k" 'w3m-delete-buffer w3m-mode-map)
+      (bind-key "i" 'w3m-view-previous-page w3m-mode-map)
+      (bind-key "p" 'w3m-previous-anchor w3m-mode-map)
+      (bind-key "n" 'w3m-next-anchor w3m-mode-map)
+      (defun dka-w3m-textarea-hook()
+        (save-excursion
+          (while (re-search-forward "\r\n" nil t)
+            (replace-match "\n" nil nil))
+          (delete-other-windows)))
+      (add-hook 'w3m-form-input-textarea-mode-hook 'dka-w3m-textarea-hook)
+      (bind-key "<return>" 'w3m-view-url-with-external-browser
+                w3m-minor-mode-map)
+      (bind-key "S-<return>" 'w3m-safe-view-this-url w3m-minor-mode-map)))
 ;; net-web-w3m ends here
 
 ;; elfeed
 ;; #+NAME: net-news-elfeed
 
 ;; [[file:site-pkgs.org::net-news-elfeed][net-news-elfeed]]
-;; ---( elfeed )--------------------------------------------------------------
+  ;; ---( elfeed )--------------------------------------------------------------
 
-;; @see: https://github.com/skeeto/elfeed
+  ;; @see: https://github.com/skeeto/elfeed
 
-;; (use-package elfeed
-;;   :ensure t
-;;   :defer 30
-;;   )
+  ;; (use-package elfeed
+  ;;   :ensure t
+  ;;   :defer 30
+  ;;   )
 
-;; @see: http://pragmaticemacs.com/emacs/read-your-rss-feeds-in-emacs-with-elfeed/
-;; @see: https://github.com/danlamanna/.emacs.d/blob/master/init.el
-;; @see: http://feedly.com/i/opml
+  ;; @see: http://pragmaticemacs.com/emacs/read-your-rss-feeds-in-emacs-with-elfeed/
+  ;; @see: https://github.com/danlamanna/.emacs.d/blob/master/init.el
+  ;; @see: http://feedly.com/i/opml
 
-(use-package elfeed-org
-  :disabled t
-;;:ensure t
-  :config (progn
-            (use-package elfeed
-              :ensure t
-              :config (progn
-                        (custom-set-variables
-                         ;; oldest articles should be at the top
-                         '(elfeed-sort-order 'ascending))))
+  (use-package elfeed-org
+    :disabled t
+  ;;:ensure t
+    :config (progn
+              (use-package elfeed
+                :ensure t
+                :config (progn
+                          (custom-set-variables
+                           ;; oldest articles should be at the top
+                           '(elfeed-sort-order 'ascending))))
 
-            (use-package elfeed-goodies
-              :ensure t
-              :config (progn
-                        (elfeed-goodies/setup)))
+              (use-package elfeed-goodies
+                :ensure t
+                :config (progn
+                          (elfeed-goodies/setup)))
 
-            (setq rmh-elfeed-org-files (list "~/.rss/elfeed.org"))
-            (elfeed-org)))
+              (setq rmh-elfeed-org-files (list "~/.rss/elfeed.org"))
+              (elfeed-org)))
 
 
-;; @see: https://github.com/algernon/elfeed-goodies
-;; (use-package elfeed-goodies
-;;   :ensure t
-;;   :defer 30
-;;   )
+  ;; @see: https://github.com/algernon/elfeed-goodies
+  ;; (use-package elfeed-goodies
+  ;;   :ensure t
+  ;;   :defer 30
+  ;;   )
 ;; net-news-elfeed ends here
 
 ;; GNus
 ;; #+NAME: net-news-gnus
 
 ;; [[file:site-pkgs.org::net-news-gnus][net-news-gnus]]
-;; ---( GNus )--------------------------------------------------------------
+  ;; ---( GNus )--------------------------------------------------------------
 
-;; @see: https://www.emacswiki.org/emacs/GnusRss
+  ;; @see: https://www.emacswiki.org/emacs/GnusRss
 ;; net-news-gnus ends here
 
 ;; twittering
 ;; #+NAME: net-twitter-twittering
 
 ;; [[file:site-pkgs.org::net-twitter-twittering][net-twitter-twittering]]
-;; ---( twittering-mode )--------------------------------------------------------------
+  ;; ---( twittering-mode )--------------------------------------------------------------
 
-(use-package twittering-mode
-  :disabled t
-  :defer 30
-  )
-;; (use-package twittering-mode
-;;   :disabled t
-;;   :commands twit
-;;   :config
-;;   (setq twittering-use-master-password t))
+  (use-package twittering-mode
+    :disabled t
+    :defer 30
+    )
+  ;; (use-package twittering-mode
+  ;;   :disabled t
+  ;;   :commands twit
+  ;;   :config
+  ;;   (setq twittering-use-master-password t))
 ;; net-twitter-twittering ends here
 
 ;; Net/end
 ;; #+NAME: net-end
 
 ;; [[file:site-pkgs.org::net-end][net-end]]
-;; }}}  .net
+  ;; }}}  .net
 ;; net-end ends here
 
 ;; AI/begin
 ;; #+NAME: ai-begin
 
 ;; [[file:site-pkgs.org::ai-begin][ai-begin]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @AI
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @AI
+  ;; ;;;////////////////////////////////////////////////////////////////
 ;; ai-begin ends here
 
 ;; OpenAI
 ;; #+NAME: ai-openai
 
 ;; [[file:site-pkgs.org::ai-openai][ai-openai]]
-;; ---( openai )--------------------------------------------------------------
+  ;; ---( openai )--------------------------------------------------------------
 
-(use-package openai
-  :ensure t
-  :defer t
-  :init
-  (setq openai-key #'openai-key-auth-source)
-  )
+  (use-package openai
+    :ensure t
+    :defer t
+    :init
+    (setq openai-key #'openai-key-auth-source)
+    )
 
-(use-package chatgpt
-  :ensure t
-  :defer t)
+  (use-package chatgpt
+    :ensure t
+    :defer t)
 
-(use-package codegpt
-  :ensure t
-  :defer t)
+  (use-package codegpt
+    :ensure t
+    :defer t)
 
-(use-package dall-e
-  :ensure t
-  :defer t)
+  (use-package dall-e
+    :ensure t
+    :defer t)
 
-;; ---( chatgpt-shell )--------------------------------------------------------------
+  ;; ---( chatgpt-shell )--------------------------------------------------------------
 
-(use-package chatgpt-shell
-  :ensure t
-  :custom
-  ((chatgpt-shell-openai-key
-    (lambda ()
-      (auth-source-pick-first-password :host "api.openai.com")))))
+  (use-package chatgpt-shell
+    :ensure t
+    :custom
+    ((chatgpt-shell-openai-key
+      (lambda ()
+        (auth-source-pick-first-password :host "api.openai.com")))))
 
-(use-package ob-chatgpt-shell
-  :ensure t
-  :defer t)
+  (use-package ob-chatgpt-shell
+    :ensure t
+    :defer t)
 ;; ai-openai ends here
 
 ;; AI/end
 ;; #+NAME: ai-end
 
 ;; [[file:site-pkgs.org::ai-end][ai-end]]
-;; }}}  .ai
+  ;; }}}  .ai
 ;; ai-end ends here
 
 ;; TeX/begin
 ;; #+NAME: tex-begin
 
 ;; [[file:site-pkgs.org::tex-begin][tex-begin]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @TEX
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @TEX
+  ;; ;;;////////////////////////////////////////////////////////////////
 ;; tex-begin ends here
 
 ;; LaTeX
 ;; #+NAME: tex-latex
 
 ;; [[file:site-pkgs.org::tex-latex][tex-latex]]
-;; ---( LaTeX )--------------------------------------------------------------
+  ;; ---( LaTeX )--------------------------------------------------------------
 
-;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
+  ;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
 
-;;   :ensure t
+  ;;   :ensure t
 
-(use-package auctex
-  :defer t)
+  (use-package auctex
+    :defer t)
 
-(use-package auctex-latexmk
-  :defer t
-  :init
-  (add-hook 'LaTeX-mode-hook 'auctex-latexmk-setup))
+  (use-package auctex-latexmk
+    :defer t
+    :init
+    (add-hook 'LaTeX-mode-hook 'auctex-latexmk-setup))
 
-(use-package cdlatex
-  :ensure t
-  :defer t)
+  (use-package cdlatex
+    :ensure t
+    :defer t)
 
-(use-package company-auctex
-  :defer t
-  :init
-  (add-hook 'LaTeX-mode-hook 'company-auctex-init))
+  (use-package company-auctex
+    :defer t
+    :init
+    (add-hook 'LaTeX-mode-hook 'company-auctex-init))
 
-(use-package tex
-  :defer t
-  :init
-  (setq TeX-auto-save t
-        TeX-parse-self t
-        TeX-syntactic-comment t
-        TeX-PDF-mode t
-        ;; Synctex support
-        TeX-source-correlate-mode t
-        TeX-source-correlate-start-server nil
-        ;; Setup reftex style (RefTeX is supported through extension)
-        reftex-use-fonts t
-        ;; Don't insert line-break at inline math
-        LaTeX-fill-break-at-separators nil)
-  (defvar latex-nofill-env '("equation"
-                             "equation*"
-                             "align"
-                             "align*"
-                             "tabular"
-                             "tikzpicture")
-    "List of environment names in which `auto-fill-mode' will be inhibited.")
-  (add-hook 'LaTeX-mode-hook 'latex/auto-fill-mode)
-  (add-hook 'LaTeX-mode-hook 'latex-math-mode)
-  (add-hook 'LaTeX-mode-hook 'flyspell-mode)
-  ;; (add-hook 'LaTeX-mode-hook 'my/latex-mode-defaults)
+  (use-package tex
+    :defer t
+    :init
+    (setq TeX-auto-save t
+          TeX-parse-self t
+          TeX-syntactic-comment t
+          TeX-PDF-mode t
+          ;; Synctex support
+          TeX-source-correlate-mode t
+          TeX-source-correlate-start-server nil
+          ;; Setup reftex style (RefTeX is supported through extension)
+          reftex-use-fonts t
+          ;; Don't insert line-break at inline math
+          LaTeX-fill-break-at-separators nil)
+    (defvar latex-nofill-env '("equation"
+                               "equation*"
+                               "align"
+                               "align*"
+                               "tabular"
+                               "tikzpicture")
+      "List of environment names in which `auto-fill-mode' will be inhibited.")
+    (add-hook 'LaTeX-mode-hook 'latex/auto-fill-mode)
+    (add-hook 'LaTeX-mode-hook 'latex-math-mode)
+    (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+    ;; (add-hook 'LaTeX-mode-hook 'my/latex-mode-defaults)
 
-  :config
-  ;; (defun my/latex-mode-defaults ()
-  ;;   (visual-line-mode +1)
-  ;;   (yas-minor-mode -1))
+    :config
+    ;; (defun my/latex-mode-defaults ()
+    ;;   (visual-line-mode +1)
+    ;;   (yas-minor-mode -1))
 
-  (defun latex//autofill ()
-    "Check whether the pointer is ucrrently inside on the
-environments described in `latex-nofill-env' and if so, inhibits
-the automatic filling of the current paragraph."
-    (let ((do-auto-fill t)
-          (current-environment "")
-          (level 0))
-      (while (and do-auto-fill (not (string= current-environment "document")))
-        (setq level (1+ level)
-              current-environment (LaTeX-current-environment level)
-              do-auto-fill (not (member current-environment latex-nofill-env))))
-      (when do-auto-fill
-        (do-auto-fill))))
+    (defun latex//autofill ()
+      "Check whether the pointer is ucrrently inside on the
+  environments described in `latex-nofill-env' and if so, inhibits
+  the automatic filling of the current paragraph."
+      (let ((do-auto-fill t)
+            (current-environment "")
+            (level 0))
+        (while (and do-auto-fill (not (string= current-environment "document")))
+          (setq level (1+ level)
+                current-environment (LaTeX-current-environment level)
+                do-auto-fill (not (member current-environment latex-nofill-env))))
+        (when do-auto-fill
+          (do-auto-fill))))
 
-  (defun latex/auto-fill-mode ()
-    "Toggle uato-fill-mode using the custom auto-fill function."
-    (interactive)
-    (auto-fill-mode)
-    (setq auto-fill-function 'latex//autofill))
+    (defun latex/auto-fill-mode ()
+      "Toggle uato-fill-mode using the custom auto-fill function."
+      (interactive)
+      (auto-fill-mode)
+      (setq auto-fill-function 'latex//autofill))
 
-  ;; (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
-  ;; (add-to-list 'auto-mode-alist '("\\.l[gh]s\\'" . tex-mode))
+    ;; (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
+    ;; (add-to-list 'auto-mode-alist '("\\.l[gh]s\\'" . tex-mode))
 
-  (when (eq system-type 'darwin)
-    (setq TeX-view-program-selection
-          '((output-dvi "DVI Viewer")
-            (output-pdf "PDF Viewer")
-            (output-html "HTML Viewer")))
+    (when (eq system-type 'darwin)
+      (setq TeX-view-program-selection
+            '((output-dvi "DVI Viewer")
+              (output-pdf "PDF Viewer")
+              (output-html "HTML Viewer")))
 
-    (setq TeX-view-program-list
-          '(("DVI Viewer" "open %o")
-            ("PDF Viewer" "open %o")
-            ("HTML Viewer" "open %o")))))
-
-
-
-;; (use-package tex-site
-;;   :disabled t
-;;   :load-path "site-lisp/auctex/preview/"
-;;   :defines (latex-help-cmd-alist latex-help-file)
-;;   :mode ("\\.tex\\'" . TeX-latex-mode)
-;;   :config
-;;   (defun latex-help-get-cmd-alist () ;corrected version:
-;;     "Scoop up the commands in the index of the latex info manual.
-;; The values are saved in `latex-help-cmd-alist' for speed."
-;;     ;; mm, does it contain any cached entries
-;;     (if (not (assoc "\\begin" latex-help-cmd-alist))
-;;         (save-window-excursion
-;;           (setq latex-help-cmd-alist nil)
-;;           (Info-goto-node (concat latex-help-file "Command Index"))
-;;           (goto-char (point-max))
-;;           (while (re-search-backward "^\\* \\(.+\\): *\\(.+\\)\\." nil t)
-;;             (let ((key (buffer-substring (match-beginning 1) (match-end 1)))
-;;                   (value (buffer-substring (match-beginning 2)
-;;                                            (match-end 2))))
-;;               (add-to-list 'latex-help-cmd-alist (cons key value))))))
-;;     latex-help-cmd-alist)
+      (setq TeX-view-program-list
+            '(("DVI Viewer" "open %o")
+              ("PDF Viewer" "open %o")
+              ("HTML Viewer" "open %o")))))
 
 
-;;   (use-package latex-mode
-;;     :defer t
-;;     :config
-;;     (progn
-;;       (use-package preview)
-;;       (use-package ac-math)
-;;       (defun ac-latex-mode-setup ()
-;;         (nconc ac-sources
-;;                '(ac-source-math-unicode ac-source-math-latex
-;;                                         ac-source-latex-commands)))
-;;       (add-to-list 'ac-modes 'latex-mode)
-;;       (add-hook 'latex-mode-hook 'ac-latex-mode-setup)
-;;       (info-lookup-add-help :mode 'latex-mode
-;;                             :regexp ".*"
-;;                             :parse-rule "\\\\?[a-zA-Z]+\\|\\\\[^a-zA-Z]"
-;;                             :doc-spec '(("(latex2e)Concept Index" )
-;;                                         ("(latex2e)Command Index")))))
-;;   )
+
+  ;; (use-package tex-site
+  ;;   :disabled t
+  ;;   :load-path "site-lisp/auctex/preview/"
+  ;;   :defines (latex-help-cmd-alist latex-help-file)
+  ;;   :mode ("\\.tex\\'" . TeX-latex-mode)
+  ;;   :config
+  ;;   (defun latex-help-get-cmd-alist () ;corrected version:
+  ;;     "Scoop up the commands in the index of the latex info manual.
+  ;; The values are saved in `latex-help-cmd-alist' for speed."
+  ;;     ;; mm, does it contain any cached entries
+  ;;     (if (not (assoc "\\begin" latex-help-cmd-alist))
+  ;;         (save-window-excursion
+  ;;           (setq latex-help-cmd-alist nil)
+  ;;           (Info-goto-node (concat latex-help-file "Command Index"))
+  ;;           (goto-char (point-max))
+  ;;           (while (re-search-backward "^\\* \\(.+\\): *\\(.+\\)\\." nil t)
+  ;;             (let ((key (buffer-substring (match-beginning 1) (match-end 1)))
+  ;;                   (value (buffer-substring (match-beginning 2)
+  ;;                                            (match-end 2))))
+  ;;               (add-to-list 'latex-help-cmd-alist (cons key value))))))
+  ;;     latex-help-cmd-alist)
+
+
+  ;;   (use-package latex-mode
+  ;;     :defer t
+  ;;     :config
+  ;;     (progn
+  ;;       (use-package preview)
+  ;;       (use-package ac-math)
+  ;;       (defun ac-latex-mode-setup ()
+  ;;         (nconc ac-sources
+  ;;                '(ac-source-math-unicode ac-source-math-latex
+  ;;                                         ac-source-latex-commands)))
+  ;;       (add-to-list 'ac-modes 'latex-mode)
+  ;;       (add-hook 'latex-mode-hook 'ac-latex-mode-setup)
+  ;;       (info-lookup-add-help :mode 'latex-mode
+  ;;                             :regexp ".*"
+  ;;                             :parse-rule "\\\\?[a-zA-Z]+\\|\\\\[^a-zA-Z]"
+  ;;                             :doc-spec '(("(latex2e)Concept Index" )
+  ;;                                         ("(latex2e)Command Index")))))
+  ;;   )
 ;; tex-latex ends here
 
 ;; BibTeX
 ;; #+NAME: tex-bibtex
 
 ;; [[file:site-pkgs.org::tex-bibtex][tex-bibtex]]
-;; ---( Citar )--------------------------------------------------------------
+  ;; ---( Citar )--------------------------------------------------------------
 
- ;; @see: https://github.com/emacs-citar/citar#installation
+   ;; @see: https://github.com/emacs-citar/citar#installation
 
- (use-package citar
-   ;; :disabled t
-   :ensure t
-   :defer t
-   :no-require
-   :custom
-   ;;(org-cite-global-bibliography '("~/bib/references.bib"))
-   (org-cite-global-bibliography (h7/var-global-bibliography))
-   (citar-bibliography org-cite-global-bibliography)
-   (org-cite-insert-processor 'citar)
-   (org-cite-follow-processor 'citar)
-   (org-cite-activate-processor 'citar)
-   (citar-bibliography org-cite-global-bibliography)
-   ;; optional: org-cite-insert is also bound to C-c C-x C-@
-   :hook
-   (LaTeX-mode . citar-capf-setup)
-   (org-mode . citar-capf-setup)
-   :bind
-   (:map org-mode-map :package org ("C-c b" . #'org-cite-insert)))
+   (use-package citar
+     ;; :disabled t
+     :ensure t
+     ;; :defer t
+     :no-require
+     :custom
+     ;;(org-cite-global-bibliography '("~/bib/references.bib"))
+     (org-cite-global-bibliography (h7/var-global-bibliography))
+     (citar-bibliography org-cite-global-bibliography)
+     (org-cite-insert-processor 'citar)
+     (org-cite-follow-processor 'citar)
+     (org-cite-activate-processor 'citar)
+     :hook
+     (LaTeX-mode . citar-capf-setup)
+     (org-mode . citar-capf-setup)
+     :bind
+     ;; optional: org-cite-insert is also bound to C-c C-x C-@
+     (:map org-mode-map :package org ("C-c b" . #'org-cite-insert)))
 
 
- (use-package citar-embark
-   ;; :disabled t
-   :ensure t
-   :defer t
-   :after citar embark
-   :no-require
-   :config (citar-embark-mode))
+   (use-package citar-embark
+     ;; :disabled t
+     :ensure t
+     ;; :defer t
+     :after citar embark
+     :no-require
+     :config (citar-embark-mode))
 
-;; ---( BibTex )--------------------------------------------------------------
+  ;; ---( BibTex )--------------------------------------------------------------
 
-(use-package biblio
-  :ensure t
-  :defer t
-  ;;:disabled t
-  ;;:completion vertico
-  )
+  (use-package biblio
+    :ensure t
+    :defer t
+    ;;:disabled t
+    ;;:completion vertico
+    )
 ;; tex-bibtex ends here
 
 ;; PDF
 ;; #+NAME: tex-pdf
 
 ;; [[file:site-pkgs.org::tex-pdf][tex-pdf]]
-;; ---( pdf )--------------------------------------------------------------
+  ;; ---( pdf )--------------------------------------------------------------
 
   (message "#pdf-tools(0): '( (h7/use-pdf-tools . %s) )" (h7/use-pdf-tools)) 
 
@@ -4291,305 +4310,305 @@ the automatic filling of the current paragraph."
 ;; #+NAME: tex-end
 
 ;; [[file:site-pkgs.org::tex-end][tex-end]]
-;; }}}  .tex
+  ;; }}}  .tex
 ;; tex-end ends here
 
 ;; Org/begin
 ;; #+NAME: org-begin
 
 ;; [[file:site-pkgs.org::org-begin][org-begin]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @ORG
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @ORG
+  ;; ;;;////////////////////////////////////////////////////////////////
 ;; org-begin ends here
 
 ;; org-mode
 ;; #+NAME: org-mode
 
 ;; [[file:site-pkgs.org::org-mode][org-mode]]
-;; ---( org-mode )--------------------------------------------------------------
+  ;; ---( org-mode )--------------------------------------------------------------
 
-;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
-;; @see: https://stackoverflow.com/questions/45041399/proper-configuration-of-packages-in-gnu-emacs
-;; @see: https://hugocisneros.com/org-config/
+  ;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
+  ;; @see: https://stackoverflow.com/questions/45041399/proper-configuration-of-packages-in-gnu-emacs
+  ;; @see: https://hugocisneros.com/org-config/
 
-(use-package org
-  :ensure t
-  ;; :defer t
-  :bind (("C-c a" . org-agenda)
-         ("C-c c" . org-capture)
-         ("C-c l" . org-store-link)
-         ([(meta up)] . nil)    ;; was 'org-metaup
-         ([(meta down)] . nil)  ;; was 'org-metadown
-         )
-  :init 
-  ;;keymap conflicts
-  (setq org-CUA-compatible t)
-  (setq org-support-shift-select t) ;; were 'org-shiftup+dpwn+left+right
-  (setq org-replace-disputed-keys t)
+  (use-package org
+    :ensure t
+    ;; :defer t
+    :bind (("C-c a" . org-agenda)
+           ("C-c c" . org-capture)
+           ("C-c l" . org-store-link)
+           ([(meta up)] . nil)    ;; was 'org-metaup
+           ([(meta down)] . nil)  ;; was 'org-metadown
+           )
+    :init 
+    ;;keymap conflicts
+    (setq org-CUA-compatible t)
+    (setq org-support-shift-select t) ;; were 'org-shiftup+dpwn+left+right
+    (setq org-replace-disputed-keys t)
 
-  :hook (org-mode . h7/org-mode-setup)
+    :hook (org-mode . h7/org-mode-setup)
 
-  :config
-  (require 'ox-md)
-  (require 'ox-beamer)
-  (unbind-key "C-c ;" org-mode-map)
-
-  ;;keymap conflicts
-  (setq org-CUA-compatible t)
-  (setq org-support-shift-select t) ;; were 'org-shiftup+dpwn+left+right
-  (setq org-replace-disputed-keys t)
-
-
-  ;; --[org-mode options] ----------------------------------------------------------
-
-  (setq org-ellipsis " ▾")
-  (setq org-hide-emphasis-markers t)
-  (setq org-src-tab-acts-natively t)
-  (setq org-edit-src-content-indentation 0)
-  (setq org-src-preserve-indentation t)
-  (setq org-hide-block-startup nil)
-  (setq org-startup-folded 'content)
-  (setq org-cycle-separator-lines 2)
-
-  ;; (setq org-modules
-  ;;   '(org-crypt
-  ;;       org-habit
-  ;;       org-bookmark
-  ;;       org-eshell
-  ;;       org-irc))
-
-
-  ;; --[org-mode faces] ----------------------------------------------------------
-
-  ;; Fontify org-mode code blocks
-  (setq org-src-fontify-natively t)
-  (setq org-fontify-quote-and-verse-blocks t)
-
-  ;; Stop the org-level headers from increasing in height relative to the other text.
-  ;;(set-face-attribute 'org-block nil :weight 'semi-bold :height 1.3)
-
-  (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
-
-  (dolist (face '(org-document-info-keyword))
-    (set-face-attribute face nil :weight 'bold :height 1.1))
-
-  (dolist (face '(org-document-title))
-    (set-face-attribute face nil :weight 'bold :height 1.2))
-  (dolist (face '(org-document-info))
-    (set-face-attribute face nil :weight 'semi-bold :height 1.2))
-
-
-  (dolist (face '(org-level-1))
-    (set-face-attribute face nil :weight 'semi-bold :height 1.3))
-
-  (dolist (face '(org-level-2))
-    (set-face-attribute face nil :weight 'semi-bold :height 1.2))
-
-  (dolist (face '(org-level-3
-                  org-level-4
-                  org-level-5))
-    (set-face-attribute face nil :weight 'semi-bold :height 1.1))
-
-  (dolist (face '(org-block-begin-line
-                  org-block-end-line
-                  org-meta-line))
-    (set-face-attribute face nil :weight 'bold :height 0.9))
-
-
-
-
-
-  ;; --[org-mode todo] ----------------------------------------------------------
-
-  ;; @see: https://github.com/daviwil/dotfiles/blob/master/Workflow.org
-
-  ;;(setq org-store-todo "~/Dropbox/Local/data/org/all")
-
-  ;; (setq org-agenda-files
-  ;;       (mapcar (lambda(x) (mapconcat 'identity (list org-store-todo x) "/"))
-  ;;               '("task.org"
-  ;;                 "milk.org"
-  ;;                 "read.org"
-  ;;                 "dots.org")))        
-
-  ;; (setq org-store-todo (concat org-directory "/agenda"))
-  ;; (unless (file-directory-p org-store-todo)
-  ;;   (make-directory org-store-todo t))
-  ;; (setq org-agenda-files (directory-files-recursively org-store-todo "\\.org$"))
-  ;; (setq org-agenda-files `(,org-store-todo))
-
-  (setq org-store-todo  "~/Dropbox/Local/data/org/all")
-  (setq org-agenda-names "~/.emacs-agenda.txt")
-
-  (unless (file-exists-p org-agenda-names)
-    (make-empty-file org-agenda-names))
-
-  (setq org-agenda-files org-agenda-names)
-
-
-  (setq org-capture-templates
-        `(
-          ("t" "task" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "ACTIVE")
-           "** TODO [#C] %? [/]\n   %a\n   + [ ] ...\n\n")
-          ("n" "task (next)" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "ACTIVE")
-           "** NEXT [#B] %? [/]\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n   %a\n   + [ ] ...\n\n")
-          ("b" "backlog" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "BACKLOG")
-           "* BACK [#C] %? [/]\n   %a\n   + [ ] ...\n\n")
-          ("p" "attic" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "ATTIC")
-           "* PAST [#C] %?\n")
-          ("m" "milk" entry (file+headline ,(format "%s/%s" org-store-todo "milk.org") "ACTIVE")
-           "** TODO [#B] %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n")
-          ("r" "read" entry (file+headline ,(format "%s/%s" org-store-todo "read.org") "BACKLOG")
-           "** READ [#C] %?\n\n")
-          ("d" "dots" entry (file+headline ,(format "%s/%s" org-store-todo "dots.org") "ACTIVE")
-           "** EDIT [#C] %?\n   - %a\n\n")
-          ))
-
-  (setq org-todo-keywords
-        '((sequence "TODO(t)" "NEXT(n)" "DOING(x)" "|" "UNDO(u)" "DONE(d)")
-          (sequence "READY(w)" "|" "BACK(b)" "WAIT(w)" "HOLD(w)" "CANCELLED(c@/!)")
-          (sequence "EDIT(e)" "|" "READ(r)" "NOP(o)" "ACK(a)" "NACK(k)")
-          (sequence "|" "PAST(p)" "LOST(l)")))
-
-  (setq org-todo-keyword-faces
-        '(("TODO" . (:foreground "green" :weight bold))
-          ("NEXT" :foreground "orange" :weight bold)
-          ("DOING" :foreground "yellow" :weight bold)
-          ("UNDO" :foreground "SteelBlue" :weight bold)
-          ("READY" :foreground "orange red" :weight bold)
-          ("BACK" :foreground "MediumPurple3" :weight bold)
-          ("WAIT" :foreground "orange" :weight bold)
-          ("HOLD" :foreground "magenta" :weight bold)
-          ("PAST" :foreground "Silver" :weight bold)
-          ("PAST" :foreground "Dark Silver" :weight bold)
-          ("CANCELLED" :foreground "forest green" :weight bold)))
-
-  ;; Configure common tags
-  (setq org-tag-alist
-        '((:startgroup) ; Put mutually exclusive tags here
-          (:endgroup)
-          ("@home" . ?H)
-          ("@work" . ?W)
-          ("batch" . ?b)
-          ("next" . ?n)
-          ("followup" . ?f)
-          ("recurring" . ?r)))
-
-  ;;set priority range from A to C with default A
-  (setq org-highest-priority ?A)
-  (setq org-lowest-priority ?C)
-  (setq org-default-priority ?A)
-
-  ;;set colours for priorities
-  (setq org-priority-faces '((?A . (:foreground "OliveDrab" :weight bold))
-                             (?B . (:foreground "LightSteelBlue"))
-                             (?C . (:foreground "#F0DFAF"))))
-
-  (setq org-use-fast-todo-selection t)
-  (setq org-treat-S-cursor-todo-selection-as-state-change nil)
-
-  (setq org-enforce-todo-dependencies t)
-
-  ;; --[org-mode agenda] ----------------------------------------------------------
-
-  ;;open agenda in current window
-  (setq org-agenda-window-setup (quote current-window))
-  ;;warn me of any deadlines in next 7 days
-  (setq org-deadline-warning-days 7)
-
-  ;;don't show tasks as scheduled if they are already shown as a deadline
-  (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
-  ;;don't give awarning colour to tasks with impending deadlines
-  ;;if they are scheduled to be done
-  (setq org-agenda-skip-deadline-prewarning-if-scheduled (quote pre-scheduled))
-  ;;don't show tasks that are scheduled or have deadlines in the
-  ;;normal todo list
-  (setq org-agenda-todo-ignore-deadlines (quote all))
-  (setq org-agenda-todo-ignore-scheduled (quote all))
-
-  ;;sort tasks in order of when they are due and then by priority
-
-  (setq org-agenda-sorting-strategy
-        (quote
-         ((agenda deadline-up priority-down)
-          (todo priority-down category-keep)
-          (tags priority-down category-keep)
-          (search category-keep))))
-
-
-  ;; --[org-mode latex] ----------------------------------------------------------
-
-  (setq org-latex-pdf-process
-        (quote ("pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f"
-                "bibtex $(basename %b)"
-                "pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f"
-                "pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f")))
-
-  (setq org-latex-create-formula-image-program 'imagemagick)
-
-  ;; Tell the latex export to use the minted package for source
-  ;; code coloration.
-  (add-to-list 'org-latex-packages-alist '("" "minted"))
-  (require 'ox-latex)
-  (setq org-latex-listings 'minted)
-
-  ;; (setq org-latex-minted-options
-  ;;       '(("frame" "lines") ("framesep" "6pt")
-  ;;         ("mathescape" "true") ("fontsize" "\\small")))
-
-  ;; --[org-mode babel] ----------------------------------------------------------
-
-  (setq org-confirm-babel-evaluate nil)
-
-  ;; execute external programs.
-  (org-babel-do-load-languages
-   (quote org-babel-load-languages)
-   (quote ((emacs-lisp . t)
-           (dot . t)
-           (ditaa . t)
-           (python . t)
-           (ruby . t)
-           (R . t)           
-           (gnuplot . t)
-           ;; (clojure . t)
-           (shell . t)
-           ;; (haskell . t)
-           (octave . t)
-           (org . t)
-           (plantuml . t)
-           ;; (restclient . t)
-           ;; (prolog . t)
-           ;; (scala . t)
-           (sql . t)
-           (latex . t))))
-
-  ;; chatgpt-shell support
-  ;; @see: https://github.com/xenodium/chatgpt-shell/tree/main
-  (require 'ob-chatgpt-shell)
-  (ob-chatgpt-shell-setup)
-
-
-  (defun h7/org-mode-setup ()
+    :config
+    (require 'ox-md)
+    (require 'ox-beamer)
+    (unbind-key "C-c ;" org-mode-map)
 
     ;;keymap conflicts
-    (local-set-key [(meta up)] 'dired)
-    (local-set-key [(meta down)] 'bs-show)
+    (setq org-CUA-compatible t)
+    (setq org-support-shift-select t) ;; were 'org-shiftup+dpwn+left+right
+    (setq org-replace-disputed-keys t)
 
-    ;; (turn-on-org-cdlatex)
-    ;; (diminish 'org-cdlatex-mode "")
-    (turn-on-auto-fill)
 
-    ;; make `company-backends' local is critcal
-    ;; or else, you will have completion in every major mode, that's very annoying!
-    (make-local-variable 'company-backends)
-    ;; company-ispell is the plugin to complete words
-    (add-to-list 'company-backends 'company-ispell))
+    ;; --[org-mode options] ----------------------------------------------------------
 
-  (eval-after-load 'org-src
-    '(define-key org-src-mode-map
-       "\C-x\C-s" #'org-edit-src-exit)))
+    (setq org-ellipsis " ▾")
+    (setq org-hide-emphasis-markers t)
+    (setq org-src-tab-acts-natively t)
+    (setq org-edit-src-content-indentation 0)
+    (setq org-src-preserve-indentation t)
+    (setq org-hide-block-startup nil)
+    (setq org-startup-folded 'content)
+    (setq org-cycle-separator-lines 2)
+
+    ;; (setq org-modules
+    ;;   '(org-crypt
+    ;;       org-habit
+    ;;       org-bookmark
+    ;;       org-eshell
+    ;;       org-irc))
+
+
+    ;; --[org-mode faces] ----------------------------------------------------------
+
+    ;; Fontify org-mode code blocks
+    (setq org-src-fontify-natively t)
+    (setq org-fontify-quote-and-verse-blocks t)
+
+    ;; Stop the org-level headers from increasing in height relative to the other text.
+    ;;(set-face-attribute 'org-block nil :weight 'semi-bold :height 1.3)
+
+    (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
+    (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
+
+    (dolist (face '(org-document-info-keyword))
+      (set-face-attribute face nil :weight 'bold :height 1.1))
+
+    (dolist (face '(org-document-title))
+      (set-face-attribute face nil :weight 'bold :height 1.2))
+    (dolist (face '(org-document-info))
+      (set-face-attribute face nil :weight 'semi-bold :height 1.2))
+
+
+    (dolist (face '(org-level-1))
+      (set-face-attribute face nil :weight 'semi-bold :height 1.3))
+
+    (dolist (face '(org-level-2))
+      (set-face-attribute face nil :weight 'semi-bold :height 1.2))
+
+    (dolist (face '(org-level-3
+                    org-level-4
+                    org-level-5))
+      (set-face-attribute face nil :weight 'semi-bold :height 1.1))
+
+    (dolist (face '(org-block-begin-line
+                    org-block-end-line
+                    org-meta-line))
+      (set-face-attribute face nil :weight 'bold :height 0.9))
+
+
+
+
+
+    ;; --[org-mode todo] ----------------------------------------------------------
+
+    ;; @see: https://github.com/daviwil/dotfiles/blob/master/Workflow.org
+
+    ;;(setq org-store-todo "~/Dropbox/Local/data/org/all")
+
+    ;; (setq org-agenda-files
+    ;;       (mapcar (lambda(x) (mapconcat 'identity (list org-store-todo x) "/"))
+    ;;               '("task.org"
+    ;;                 "milk.org"
+    ;;                 "read.org"
+    ;;                 "dots.org")))        
+
+    ;; (setq org-store-todo (concat org-directory "/agenda"))
+    ;; (unless (file-directory-p org-store-todo)
+    ;;   (make-directory org-store-todo t))
+    ;; (setq org-agenda-files (directory-files-recursively org-store-todo "\\.org$"))
+    ;; (setq org-agenda-files `(,org-store-todo))
+
+    (setq org-store-todo  "~/Dropbox/Local/data/org/all")
+    (setq org-agenda-names "~/.emacs-agenda.txt")
+
+    (unless (file-exists-p org-agenda-names)
+      (make-empty-file org-agenda-names))
+
+    (setq org-agenda-files org-agenda-names)
+  
+
+    (setq org-capture-templates
+          `(
+            ("t" "task" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "ACTIVE")
+             "** TODO [#C] %? [/]\n   %a\n   + [ ] ...\n\n")
+            ("n" "task (next)" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "ACTIVE")
+             "** NEXT [#B] %? [/]\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n   %a\n   + [ ] ...\n\n")
+            ("b" "backlog" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "BACKLOG")
+             "* BACK [#C] %? [/]\n   %a\n   + [ ] ...\n\n")
+            ("p" "attic" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "ATTIC")
+             "* PAST [#C] %?\n")
+            ("m" "milk" entry (file+headline ,(format "%s/%s" org-store-todo "milk.org") "ACTIVE")
+             "** TODO [#B] %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n")
+            ("r" "read" entry (file+headline ,(format "%s/%s" org-store-todo "read.org") "BACKLOG")
+             "** READ [#C] %?\n\n")
+            ("d" "dots" entry (file+headline ,(format "%s/%s" org-store-todo "dots.org") "ACTIVE")
+             "** EDIT [#C] %?\n   - %a\n\n")
+            ))
+
+    (setq org-todo-keywords
+          '((sequence "TODO(t)" "NEXT(n)" "DOING(x)" "|" "UNDO(u)" "DONE(d)")
+            (sequence "READY(w)" "|" "BACK(b)" "WAIT(w)" "HOLD(w)" "CANCELLED(c@/!)")
+            (sequence "EDIT(e)" "|" "READ(r)" "NOP(o)" "ACK(a)" "NACK(k)")
+            (sequence "|" "PAST(p)" "LOST(l)")))
+
+    (setq org-todo-keyword-faces
+          '(("TODO" . (:foreground "green" :weight bold))
+            ("NEXT" :foreground "orange" :weight bold)
+            ("DOING" :foreground "yellow" :weight bold)
+            ("UNDO" :foreground "SteelBlue" :weight bold)
+            ("READY" :foreground "orange red" :weight bold)
+            ("BACK" :foreground "MediumPurple3" :weight bold)
+            ("WAIT" :foreground "orange" :weight bold)
+            ("HOLD" :foreground "magenta" :weight bold)
+            ("PAST" :foreground "Silver" :weight bold)
+            ("PAST" :foreground "Dark Silver" :weight bold)
+            ("CANCELLED" :foreground "forest green" :weight bold)))
+
+    ;; Configure common tags
+    (setq org-tag-alist
+          '((:startgroup) ; Put mutually exclusive tags here
+            (:endgroup)
+            ("@home" . ?H)
+            ("@work" . ?W)
+            ("batch" . ?b)
+            ("next" . ?n)
+            ("followup" . ?f)
+            ("recurring" . ?r)))
+
+    ;;set priority range from A to C with default A
+    (setq org-highest-priority ?A)
+    (setq org-lowest-priority ?C)
+    (setq org-default-priority ?A)
+
+    ;;set colours for priorities
+    (setq org-priority-faces '((?A . (:foreground "OliveDrab" :weight bold))
+                               (?B . (:foreground "LightSteelBlue"))
+                               (?C . (:foreground "#F0DFAF"))))
+
+    (setq org-use-fast-todo-selection t)
+    (setq org-treat-S-cursor-todo-selection-as-state-change nil)
+
+    (setq org-enforce-todo-dependencies t)
+
+    ;; --[org-mode agenda] ----------------------------------------------------------
+
+    ;;open agenda in current window
+    (setq org-agenda-window-setup (quote current-window))
+    ;;warn me of any deadlines in next 7 days
+    (setq org-deadline-warning-days 7)
+
+    ;;don't show tasks as scheduled if they are already shown as a deadline
+    (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
+    ;;don't give awarning colour to tasks with impending deadlines
+    ;;if they are scheduled to be done
+    (setq org-agenda-skip-deadline-prewarning-if-scheduled (quote pre-scheduled))
+    ;;don't show tasks that are scheduled or have deadlines in the
+    ;;normal todo list
+    (setq org-agenda-todo-ignore-deadlines (quote all))
+    (setq org-agenda-todo-ignore-scheduled (quote all))
+
+    ;;sort tasks in order of when they are due and then by priority
+
+    (setq org-agenda-sorting-strategy
+          (quote
+           ((agenda deadline-up priority-down)
+            (todo priority-down category-keep)
+            (tags priority-down category-keep)
+            (search category-keep))))
+
+
+    ;; --[org-mode latex] ----------------------------------------------------------
+
+    (setq org-latex-pdf-process
+          (quote ("pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f"
+                  "bibtex $(basename %b)"
+                  "pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f"
+                  "pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f")))
+
+    (setq org-latex-create-formula-image-program 'imagemagick)
+
+    ;; Tell the latex export to use the minted package for source
+    ;; code coloration.
+    (add-to-list 'org-latex-packages-alist '("" "minted"))
+    (require 'ox-latex)
+    (setq org-latex-listings 'minted)
+
+    ;; (setq org-latex-minted-options
+    ;;       '(("frame" "lines") ("framesep" "6pt")
+    ;;         ("mathescape" "true") ("fontsize" "\\small")))
+    
+    ;; --[org-mode babel] ----------------------------------------------------------
+
+    (setq org-confirm-babel-evaluate nil)
+
+    ;; execute external programs.
+    (org-babel-do-load-languages
+     (quote org-babel-load-languages)
+     (quote ((emacs-lisp . t)
+             (dot . t)
+             (ditaa . t)
+             (python . t)
+             (ruby . t)
+             (R . t)           
+             (gnuplot . t)
+             ;; (clojure . t)
+             (shell . t)
+             ;; (haskell . t)
+             (octave . t)
+             (org . t)
+             (plantuml . t)
+             ;; (restclient . t)
+             ;; (prolog . t)
+             ;; (scala . t)
+             (sql . t)
+             (latex . t))))
+
+    ;; chatgpt-shell support
+    ;; @see: https://github.com/xenodium/chatgpt-shell/tree/main
+    (require 'ob-chatgpt-shell)
+    (ob-chatgpt-shell-setup)
+
+
+    (defun h7/org-mode-setup ()
+
+      ;;keymap conflicts
+      (local-set-key [(meta up)] 'dired)
+      (local-set-key [(meta down)] 'bs-show)
+
+      ;; (turn-on-org-cdlatex)
+      ;; (diminish 'org-cdlatex-mode "")
+      (turn-on-auto-fill)
+
+      ;; make `company-backends' local is critcal
+      ;; or else, you will have completion in every major mode, that's very annoying!
+      (make-local-variable 'company-backends)
+      ;; company-ispell is the plugin to complete words
+      (add-to-list 'company-backends 'company-ispell))
+
+    (eval-after-load 'org-src
+      '(define-key org-src-mode-map
+         "\C-x\C-s" #'org-edit-src-exit)))
 ;; org-mode ends here
 
 ;; Org extras
@@ -4825,7 +4844,7 @@ With a prefix ARG, remove start location."
 ;; #+NAME: org-roam
 
 ;; [[file:site-pkgs.org::org-roam][org-roam]]
-;; ---(org-roam)------------------------------------------------------------------------
+  ;; ---(org-roam)------------------------------------------------------------------------
 
   ;; @see: https://systemcrafters.net/build-a-second-brain-in-emacs/5-org-roam-hacks/
   (use-package org-roam
@@ -4833,7 +4852,7 @@ With a prefix ARG, remove start location."
     :init
     (setq org-roam-v2-ack t)
     :custom
-    (org-roam-directory (file-truename "~/Dropbox/Local/data/org/net"))
+    (org-roam-directory (file-truename (h7/var-roam-directory)))
     ;;(org-roam-completion-everywhere t)
     :bind (("C-c n l" . org-roam-buffer-toggle)
            ("C-c n f" . org-roam-node-find)
@@ -4960,278 +4979,283 @@ With a prefix ARG, remove start location."
   (use-package citar-org-roam
     :ensure t
     :after (citar org-roam)
-    :config (citar-org-roam-mode))
+    :config (citar-org-roam-mode)
+    :custom
+    (citar-notes-paths (list org-roam-directory)) ; List of directories for reference nodes
+    (citar-open-note-function 'orb-citar-edit-note) ; Open notes in `org-roam'
+    (citar-at-point-function 'embark-act)           ; Use `embark'    
+    )
 ;; org-roam ends here
 
 ;; Org samples
 ;; #+NAME: org-samples
 
 ;; [[file:site-pkgs.org::org-samples][org-samples]]
-;; ---( org-mode-v1 )--------------------------------------------------------------
+  ;; ---( org-mode-v1 )--------------------------------------------------------------
 
-;; ;; @see: https://github.com/anschwa/emacs.d
+  ;; ;; @see: https://github.com/anschwa/emacs.d
 
-;; ;; (use-package async
-;; ;;   :ensure t
-;; ;;   :demand
-;; ;;   :init (setq async-bytecomp-allowed-packages '(all))
-;; ;;   :config (async-bytecomp-package-mode 1))
-
-
-;; (use-package org
-;;   :defer
-;;   :ensure org-plus-contrib
-;;   :mode ("\\.\\(org\\|org_archive\\)$" . org-mode)
-;;   :config
-;;   (require 'ob)
-;;   ;; (require 'ob-async)
-;;   (require 'ob-python)
-;;   ;; (require 'ob-clojure)
-;;   ;; (require 'ob-perl)
-;;   ;; (require 'ob-dot)
-;;   ;; (require 'ob-R)
-;;   ;; (require 'ob-gnuplot)
-;;   ;; (require 'ob-lisp)
-;;   (require 'ob-org)
-;;   ;; (require 'ob-screen)
-;;   ;; (require 'ob-calc)
-;;   ;; (require 'ob-js)
-;;   ;; (require 'ob-latex)
-;;   ;; (require 'ob-plantuml)
-;;   (require 'ob-shell)
-;;   ;; (require 'ob-ditaa)
-;;   ;; (require 'ob-awk)
-;;   ;; (require 'ob-octave)
-;;   ;; (require 'ob-sed)
-;;   ;; (require 'ob-sql)
-;;   ;; (require 'ob-sqlite)
-
-;;   (org-babel-do-load-languages
-;;    'org-babel-load-languages
-;;    '(
-;;       ;; (perl . t)
-;;       ;; (dot . t)
-;;       ;; (R . t)
-;;       ;; (gnuplot . t)
-;;       ;; (clojure . t)
-;;       ;; (graphviz . t)
-;;       ;; (lisp . t)
-;;       ;; (stan . t)
-;;       (org . t)
-;;       ;; (screen . t)
-;;       ;; (calc . t)
-;;       ;; (js . t)
-;;       ;; (latex . t)
-;;       ;; (plantuml . t)
-;;       ;; (ruby . t)
-;;       (shell . t)
-;;       (python . t)
-;;       (emacs-lisp . t)
-;;       ;; (ditaa . t)
-;;       ;; (awk . t)
-;;       ;; (octave . t)
-;;       ;; (sed . t)
-;;       ;; (sql . t)
-;;       ;; (sqlite . t)
-;;       ))
-;;   )
-
-;;   ;; (setq org-confirm-babel-evaluate nil
-;;   ;;       org-export-babel-evaluate 'inline-only)
-;;   ;; (org-babel-do-load-languages
-;;   ;;  'org-babel-load-languages
-;;   ;;  '((emacs-lisp . t)
-;;   ;;    (org . t)
-;;   ;;    (shell . t)
-;;   ;;    (makefile . t)
-;;   ;;    (latex . t)
-;;   ;;    (fortran . t)
-;;   ;;    (gnuplot . t)
-;;   ;;    (python . t))))
-
-;; (use-package ob-http
-;;   :after org
-;;   :ensure t
-;;   :config
-;;   (add-to-list 'org-babel-load-languages '(http . t))
-;;   (org-babel-do-load-languages
-;;    'org-babel-load-languages org-babel-load-languages))
+  ;; ;; (use-package async
+  ;; ;;   :ensure t
+  ;; ;;   :demand
+  ;; ;;   :init (setq async-bytecomp-allowed-packages '(all))
+  ;; ;;   :config (async-bytecomp-package-mode 1))
 
 
+  ;; (use-package org
+  ;;   :defer
+  ;;   :ensure org-plus-contrib
+  ;;   :mode ("\\.\\(org\\|org_archive\\)$" . org-mode)
+  ;;   :config
+  ;;   (require 'ob)
+  ;;   ;; (require 'ob-async)
+  ;;   (require 'ob-python)
+  ;;   ;; (require 'ob-clojure)
+  ;;   ;; (require 'ob-perl)
+  ;;   ;; (require 'ob-dot)
+  ;;   ;; (require 'ob-R)
+  ;;   ;; (require 'ob-gnuplot)
+  ;;   ;; (require 'ob-lisp)
+  ;;   (require 'ob-org)
+  ;;   ;; (require 'ob-screen)
+  ;;   ;; (require 'ob-calc)
+  ;;   ;; (require 'ob-js)
+  ;;   ;; (require 'ob-latex)
+  ;;   ;; (require 'ob-plantuml)
+  ;;   (require 'ob-shell)
+  ;;   ;; (require 'ob-ditaa)
+  ;;   ;; (require 'ob-awk)
+  ;;   ;; (require 'ob-octave)
+  ;;   ;; (require 'ob-sed)
+  ;;   ;; (require 'ob-sql)
+  ;;   ;; (require 'ob-sqlite)
 
-;; ---(org-misc)------------------------------------------------------------------------
+  ;;   (org-babel-do-load-languages
+  ;;    'org-babel-load-languages
+  ;;    '(
+  ;;       ;; (perl . t)
+  ;;       ;; (dot . t)
+  ;;       ;; (R . t)
+  ;;       ;; (gnuplot . t)
+  ;;       ;; (clojure . t)
+  ;;       ;; (graphviz . t)
+  ;;       ;; (lisp . t)
+  ;;       ;; (stan . t)
+  ;;       (org . t)
+  ;;       ;; (screen . t)
+  ;;       ;; (calc . t)
+  ;;       ;; (js . t)
+  ;;       ;; (latex . t)
+  ;;       ;; (plantuml . t)
+  ;;       ;; (ruby . t)
+  ;;       (shell . t)
+  ;;       (python . t)
+  ;;       (emacs-lisp . t)
+  ;;       ;; (ditaa . t)
+  ;;       ;; (awk . t)
+  ;;       ;; (octave . t)
+  ;;       ;; (sed . t)
+  ;;       ;; (sql . t)
+  ;;       ;; (sqlite . t)
+  ;;       ))
+  ;;   )
 
-;; @see: https://github.com/anschwa/emacs.d
+  ;;   ;; (setq org-confirm-babel-evaluate nil
+  ;;   ;;       org-export-babel-evaluate 'inline-only)
+  ;;   ;; (org-babel-do-load-languages
+  ;;   ;;  'org-babel-load-languages
+  ;;   ;;  '((emacs-lisp . t)
+  ;;   ;;    (org . t)
+  ;;   ;;    (shell . t)
+  ;;   ;;    (makefile . t)
+  ;;   ;;    (latex . t)
+  ;;   ;;    (fortran . t)
+  ;;   ;;    (gnuplot . t)
+  ;;   ;;    (python . t))))
 
-;; (use-package ob-core)
-;; ;;(use-package ob-R)
-;; ;;(use-package ob-http)
-;; ;;(use-package ob-restclient)
-;; (use-package ox-md)
-;; (use-package ox-man)
-;; (use-package ox-latex)
-;; (use-package ox-beamer)
-
-
-;; (use-package org
-;;   :ensure t
-;;   :defer 30
-;;   :init
-;;   (progn
-;;     ;; Fontify org-mode code blocks
-;;     (setq org-src-fontify-natively t)
-
-;;     ;; Essential Settings
-;;     (setq org-log-done 'time)
-;;     (setq org-html-doctype "html5")
-;;     (setq org-export-headline-levels 6)
-;;     (setq org-export-with-smart-quotes t)
-
-;;     ;; Configure Mobile Org
-;;     ;; Set to the location of your Org files on your local system
-;;     ; (setq org-directory "~/Dropbox/Development/Org")
-;;     ;; Set to <your Dropbox root directory>/MobileOrg.
-;;     ; (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
-;;     ;; Set to the name of the file where new notes will be stored
-;;     ; (setq org-mobile-inbox-for-pull "~/Dropbox/Development/Org/inbox.org")
-
-;;     ;; Custom TODO keywords
-;;     (setq org-todo-keywords
-;;           '((sequence "TODO(t)" "NOW(n@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
-
-;;     ;; Set up latex
-;;     (setq org-export-with-LaTeX-fragments t)
-;;     (setq org-latex-create-formula-image-program 'imagemagick)
-
-;;     ;; Tell the latex export to use the minted package for source
-;;     ;; code coloration.
-;;     ; (setq org-latex-listings 'minted)
-
-;;     ;; Add minted to the defaults packages to include when exporting.
-;;     ; (add-to-list 'org-latex-packages-alist '("" "minted"))
-
-;;     ;; local variable for keeping track of pdf-process options
-;;     (setq pdf-processp nil))
-;;   :config
-;;   (progn
-;;     ;; Unbind from org-mode only
-;;     (unbind-key "<C-S-up>" org-mode-map)
-;;     (unbind-key "<C-S-down>" org-mode-map)
-;;     ;; Bind new keys to org-mode only
-;;     (bind-key "<s-up>" 'org-metaup org-mode-map)
-;;     (bind-key "<s-down>" 'org-metadown org-mode-map)
-;;     (bind-key "<s-left>" 'org-promote-subtree org-mode-map)
-;;     (bind-key "<s-right>" 'org-demote-subtree org-mode-map)
-
-;;     ;; Let the exporter use the -shell-escape option to let latex
-;;     ;; execute external programs.
-;;     (defun toggle-org-latex-pdf-process ()
-;;       "Change org-latex-pdf-process variable.
-
-;;       Toggle from using latexmk or pdflatex. LaTeX-Mk handles BibTeX,
-;;       but opens a new PDF every-time."
-;;       (interactive)
-;;       (if pdf-processp
-;;           ;; LaTeX-Mk for BibTex
-;;           (progn
-;;             (setq pdf-processp nil)
-;;             (setq org-latex-pdf-process
-;;                   '("latexmk -pdflatex='pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f' -gg -pdf -bibtex-cond -f %f"))
-;;             (message "org-latex-pdf-process: latexmk"))
-;;         ;; Plain LaTeX export
-;;         (progn
-;;           (setq pdf-processp t)
-;;           (setq org-latex-pdf-process
-;;                 '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
-;;           (message "org-latex-pdf-process: xelatex"))))
-
-;;     ;; Call toggle-org-latex-pdf-process
-;;     (toggle-org-latex-pdf-process)
-
-;;     ;; Set up babel source-block execution
-;;     (org-babel-do-load-languages
-;;      'org-babel-load-languages
-;;      '((emacs-lisp . t)
-;; ;;     (R . t)
-;;        (python . t)
-;;        (haskell . t)
-;;        (sh . t)
-;;        (scheme . t)
-;;        (ledger . t)                     ; for finances
-;;        (C . t)
-;; ;;     (http . t)
-;;        ))
-
-;;     ;; Prevent Weird LaTeX class issue
-;;     (unless (boundp 'org-latex-classes)
-;;       (setq org-latex-classes nil))
-;;     (add-to-list 'org-latex-classes
-;;                  '("per-file-class"
-;;                    "\\documentclass{article}
-;;                         [NO-DEFAULT-PACKAGES]
-;;                         [EXTRA]"))
-
-;;     (defun myorg-update-parent-cookie ()
-;;       (when (equal major-mode 'org-mode)
-;;         (save-excursion
-;;           (ignore-errors
-;;             (org-back-to-heading)
-;;             (org-update-parent-todo-statistics)))))
-
-;;     (defadvice org-kill-line (after fix-cookies activate)
-;;       (myorg-update-parent-cookie))
-
-;;     (defadvice kill-whole-line (after fix-cookies activate)
-;;       (myorg-update-parent-cookie))))
-
-;; (use-package org
-;;   :ensure t
-;;   :defer 30
-;;   )
+  ;; (use-package ob-http
+  ;;   :after org
+  ;;   :ensure t
+  ;;   :config
+  ;;   (add-to-list 'org-babel-load-languages '(http . t))
+  ;;   (org-babel-do-load-languages
+  ;;    'org-babel-load-languages org-babel-load-languages))
 
 
-;;(use-package dot-org
-;;  :ensure t
-;;  :defer 30)
 
-;; (use-package dot-org
-;;   :commands my-org-startup
-;;   :bind (("M-C" . jump-to-org-agenda)
-;;          ("M-m" . org-smart-capture)
-;;          ("M-M" . org-inline-note)
-;;          ("C-c a" . org-agenda)
-;;          ("C-c S" . org-store-link)
-;;          ("C-c l" . org-insert-link)
-;;          ("C-. n" . org-velocity-read))
-;;   :defer 30
-;;   :config
-;;   (when (not running-alternate-emacs)
-;;     (run-with-idle-timer 300 t 'jump-to-org-agenda)
-;;     (my-org-startup))
-;;   (bind-key "<tab>" 'smart-tab org-mode-map))
+  ;; ---(org-misc)------------------------------------------------------------------------
+
+  ;; @see: https://github.com/anschwa/emacs.d
+
+  ;; (use-package ob-core)
+  ;; ;;(use-package ob-R)
+  ;; ;;(use-package ob-http)
+  ;; ;;(use-package ob-restclient)
+  ;; (use-package ox-md)
+  ;; (use-package ox-man)
+  ;; (use-package ox-latex)
+  ;; (use-package ox-beamer)
+
+
+  ;; (use-package org
+  ;;   :ensure t
+  ;;   :defer 30
+  ;;   :init
+  ;;   (progn
+  ;;     ;; Fontify org-mode code blocks
+  ;;     (setq org-src-fontify-natively t)
+
+  ;;     ;; Essential Settings
+  ;;     (setq org-log-done 'time)
+  ;;     (setq org-html-doctype "html5")
+  ;;     (setq org-export-headline-levels 6)
+  ;;     (setq org-export-with-smart-quotes t)
+
+  ;;     ;; Configure Mobile Org
+  ;;     ;; Set to the location of your Org files on your local system
+  ;;     ; (setq org-directory "~/Dropbox/Development/Org")
+  ;;     ;; Set to <your Dropbox root directory>/MobileOrg.
+  ;;     ; (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
+  ;;     ;; Set to the name of the file where new notes will be stored
+  ;;     ; (setq org-mobile-inbox-for-pull "~/Dropbox/Development/Org/inbox.org")
+
+  ;;     ;; Custom TODO keywords
+  ;;     (setq org-todo-keywords
+  ;;           '((sequence "TODO(t)" "NOW(n@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
+
+  ;;     ;; Set up latex
+  ;;     (setq org-export-with-LaTeX-fragments t)
+  ;;     (setq org-latex-create-formula-image-program 'imagemagick)
+
+  ;;     ;; Tell the latex export to use the minted package for source
+  ;;     ;; code coloration.
+  ;;     ; (setq org-latex-listings 'minted)
+
+  ;;     ;; Add minted to the defaults packages to include when exporting.
+  ;;     ; (add-to-list 'org-latex-packages-alist '("" "minted"))
+
+  ;;     ;; local variable for keeping track of pdf-process options
+  ;;     (setq pdf-processp nil))
+  ;;   :config
+  ;;   (progn
+  ;;     ;; Unbind from org-mode only
+  ;;     (unbind-key "<C-S-up>" org-mode-map)
+  ;;     (unbind-key "<C-S-down>" org-mode-map)
+  ;;     ;; Bind new keys to org-mode only
+  ;;     (bind-key "<s-up>" 'org-metaup org-mode-map)
+  ;;     (bind-key "<s-down>" 'org-metadown org-mode-map)
+  ;;     (bind-key "<s-left>" 'org-promote-subtree org-mode-map)
+  ;;     (bind-key "<s-right>" 'org-demote-subtree org-mode-map)
+
+  ;;     ;; Let the exporter use the -shell-escape option to let latex
+  ;;     ;; execute external programs.
+  ;;     (defun toggle-org-latex-pdf-process ()
+  ;;       "Change org-latex-pdf-process variable.
+
+  ;;       Toggle from using latexmk or pdflatex. LaTeX-Mk handles BibTeX,
+  ;;       but opens a new PDF every-time."
+  ;;       (interactive)
+  ;;       (if pdf-processp
+  ;;           ;; LaTeX-Mk for BibTex
+  ;;           (progn
+  ;;             (setq pdf-processp nil)
+  ;;             (setq org-latex-pdf-process
+  ;;                   '("latexmk -pdflatex='pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f' -gg -pdf -bibtex-cond -f %f"))
+  ;;             (message "org-latex-pdf-process: latexmk"))
+  ;;         ;; Plain LaTeX export
+  ;;         (progn
+  ;;           (setq pdf-processp t)
+  ;;           (setq org-latex-pdf-process
+  ;;                 '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+  ;;           (message "org-latex-pdf-process: xelatex"))))
+
+  ;;     ;; Call toggle-org-latex-pdf-process
+  ;;     (toggle-org-latex-pdf-process)
+
+  ;;     ;; Set up babel source-block execution
+  ;;     (org-babel-do-load-languages
+  ;;      'org-babel-load-languages
+  ;;      '((emacs-lisp . t)
+  ;; ;;     (R . t)
+  ;;        (python . t)
+  ;;        (haskell . t)
+  ;;        (sh . t)
+  ;;        (scheme . t)
+  ;;        (ledger . t)                     ; for finances
+  ;;        (C . t)
+  ;; ;;     (http . t)
+  ;;        ))
+
+  ;;     ;; Prevent Weird LaTeX class issue
+  ;;     (unless (boundp 'org-latex-classes)
+  ;;       (setq org-latex-classes nil))
+  ;;     (add-to-list 'org-latex-classes
+  ;;                  '("per-file-class"
+  ;;                    "\\documentclass{article}
+  ;;                         [NO-DEFAULT-PACKAGES]
+  ;;                         [EXTRA]"))
+
+  ;;     (defun myorg-update-parent-cookie ()
+  ;;       (when (equal major-mode 'org-mode)
+  ;;         (save-excursion
+  ;;           (ignore-errors
+  ;;             (org-back-to-heading)
+  ;;             (org-update-parent-todo-statistics)))))
+
+  ;;     (defadvice org-kill-line (after fix-cookies activate)
+  ;;       (myorg-update-parent-cookie))
+
+  ;;     (defadvice kill-whole-line (after fix-cookies activate)
+  ;;       (myorg-update-parent-cookie))))
+
+  ;; (use-package org
+  ;;   :ensure t
+  ;;   :defer 30
+  ;;   )
+
+
+  ;;(use-package dot-org
+  ;;  :ensure t
+  ;;  :defer 30)
+
+  ;; (use-package dot-org
+  ;;   :commands my-org-startup
+  ;;   :bind (("M-C" . jump-to-org-agenda)
+  ;;          ("M-m" . org-smart-capture)
+  ;;          ("M-M" . org-inline-note)
+  ;;          ("C-c a" . org-agenda)
+  ;;          ("C-c S" . org-store-link)
+  ;;          ("C-c l" . org-insert-link)
+  ;;          ("C-. n" . org-velocity-read))
+  ;;   :defer 30
+  ;;   :config
+  ;;   (when (not running-alternate-emacs)
+  ;;     (run-with-idle-timer 300 t 'jump-to-org-agenda)
+  ;;     (my-org-startup))
+  ;;   (bind-key "<tab>" 'smart-tab org-mode-map))
 ;; org-samples ends here
 
 ;; Org/end
 ;; #+NAME: org-end
 
 ;; [[file:site-pkgs.org::org-end][org-end]]
-;; }}}  .org
+  ;; }}}  .org
 ;; org-end ends here
 
 ;; Jump/begin
 ;; #+NAME: jump-begin
 
 ;; [[file:site-pkgs.org::jump-begin][jump-begin]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @JUMP
-;; ;;;////////////////////////////////////////////////////////////////
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @JUMP
+  ;; ;;;////////////////////////////////////////////////////////////////
 ;; jump-begin ends here
 
 ;; Hydra
 ;; #+NAME: jump-hydra
 
 ;; [[file:site-pkgs.org::jump-hydra][jump-hydra]]
-;; ---( hydras )--------------------------------------------------------------
+    ;; ---( hydras )--------------------------------------------------------------
 
     ;; (defhydra hydra-misc (:exit t)
     ;;     ;; ("j" my-helm-journal "Journal")
@@ -5571,15 +5595,15 @@ With a prefix ARG, remove start location."
 ;; #+NAME: jump-end
 
 ;; [[file:site-pkgs.org::jump-end][jump-end]]
-;; }}}  .jump
+  ;; }}}  .jump
 ;; jump-end ends here
 
 ;; Log: finish
 ;; #+NAME: log-finish
 
 ;; [[file:site-pkgs.org::log-finish][log-finish]]
-;; vim: noet sw=4 ts=4 fdm=marker foldcolumn=0
+  ;; vim: noet sw=4 ts=4 fdm=marker foldcolumn=0
 
-;; ---( site.pkgs: end )-------------------------------------------------------
-(message "SITE:PKGS - end")
+  ;; ---( site.pkgs: end )-------------------------------------------------------
+  (message "SITE:PKGS - end")
 ;; log-finish ends here

@@ -353,6 +353,27 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 #+END_SRC
 
+*** Config
+
+#+NAME: config
+#+begin_src emacs-lisp
+
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @CONFIG
+;; ;;;////////////////////////////////////////////////////////////////
+
+;; ---( ... )--------------------------------------------------------------
+
+;; Enable local variables
+(setq-default enable-local-variables t)
+
+;; ---( ... )--------------------------------------------------------------
+
+
+;; }}}  .packages
+
+#+END_SRC
+
 *** UI
 
 #+NAME: ui
@@ -4340,7 +4361,7 @@ P
    (use-package citar
      ;; :disabled t
      :ensure t
-     :defer t
+     ;; :defer t
      :no-require
      :custom
      ;;(org-cite-global-bibliography '("~/bib/references.bib"))
@@ -4349,19 +4370,18 @@ P
      (org-cite-insert-processor 'citar)
      (org-cite-follow-processor 'citar)
      (org-cite-activate-processor 'citar)
-     (citar-bibliography org-cite-global-bibliography)
-     ;; optional: org-cite-insert is also bound to C-c C-x C-@
      :hook
      (LaTeX-mode . citar-capf-setup)
      (org-mode . citar-capf-setup)
      :bind
+     ;; optional: org-cite-insert is also bound to C-c C-x C-@
      (:map org-mode-map :package org ("C-c b" . #'org-cite-insert)))
 
 
    (use-package citar-embark
      ;; :disabled t
      :ensure t
-     :defer t
+     ;; :defer t
      :after citar embark
      :no-require
      :config (citar-embark-mode))
@@ -5065,7 +5085,7 @@ With a prefix ARG, remove start location."
     :init
     (setq org-roam-v2-ack t)
     :custom
-    (org-roam-directory (file-truename "~/Dropbox/Local/data/org/net"))
+    (org-roam-directory (file-truename (h7/var-roam-directory)))
     ;;(org-roam-completion-everywhere t)
     :bind (("C-c n l" . org-roam-buffer-toggle)
            ("C-c n f" . org-roam-node-find)
@@ -5192,7 +5212,12 @@ With a prefix ARG, remove start location."
   (use-package citar-org-roam
     :ensure t
     :after (citar org-roam)
-    :config (citar-org-roam-mode))
+    :config (citar-org-roam-mode)
+    :custom
+    (citar-notes-paths (list org-roam-directory)) ; List of directories for reference nodes
+    (citar-open-note-function 'orb-citar-edit-note) ; Open notes in `org-roam'
+    (citar-at-point-function 'embark-act)           ; Use `embark'    
+    )
 
 
 #+END_SRC
