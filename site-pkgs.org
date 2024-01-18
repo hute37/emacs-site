@@ -4911,7 +4911,7 @@ P
 
 (use-package org-ref
   :after org
-  :disabled t
+  :disabled t ;; deps: helm
   ;;  :ensure t
   :init
   (setq reftex-default-bibliography (h7/var-global-bibliography))
@@ -4941,24 +4941,25 @@ P
         bibtex-autokey-titlewords-stretch 1
         bibtex-autokey-titleword-length 5))
 
-(use-package org-autolist
-  :after org
-  :ensure t
-  :config
-  (org-autolist-mode +1))
-
-(use-package doi-utils
-  :after org
-  :disabled t
-  ;;  :ensure t
-  )
-
 (use-package org-ref-bibtex
   :after org
   :disabled t
   ;;  :ensure t
   :init
   (setq org-ref-bibtex-hydra-key-binding "\C-cj"))
+
+(use-package org-autolist
+  :after org
+  :ensure t
+  :config
+  (org-autolist-mode +1))
+
+
+(use-package doi-utils
+  :after org
+  :disabled t
+  ;;  :ensure t
+  )
 
 ;; ---(org-noter)------------------------------------------------------------------------
 
