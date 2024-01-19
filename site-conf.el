@@ -20,6 +20,12 @@
   :type 'string
   :group 'h7config)
 
+;; ~/work/wo/wo-note/org/nat
+(defcustom z-var-denote-directory "~/Dropbox/Local/data/org/nat"
+  "Roan default file."
+  :type 'string
+  :group 'h7config)
+
 
 
 ;; ---( ... )--------------------------------------------------------------
@@ -30,6 +36,9 @@
 
 (defun h7/var-roam-directory ()
  z-var-roam-directory)
+
+(defun h7/var-denote-directory ()
+ z-var-denote-directory)
 
 
 
