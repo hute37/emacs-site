@@ -3523,7 +3523,7 @@
     :defer t)
 ;; rest-yaml ends here
 
-;; TODO Request 
+;; Request 
 ;; #+NAME: rest-request
 
 ;; [[file:site-pkgs.org::rest-request][rest-request]]
@@ -4143,8 +4143,8 @@
      :no-require
      :custom
      ;;(org-cite-global-bibliography '("~/bib/references.bib"))
+     ;;(citar-bibliography (h7/var-global-bibliography))
      (org-cite-global-bibliography (h7/var-global-bibliography))
-     (citar-bibliography org-cite-global-bibliography)
      (org-cite-insert-processor 'citar)
      (org-cite-follow-processor 'citar)
      (org-cite-activate-processor 'citar)
@@ -4153,7 +4153,11 @@
      (org-mode . citar-capf-setup)
      :bind
      ;; optional: org-cite-insert is also bound to C-c C-x C-@
-     (:map org-mode-map :package org ("C-c b" . #'org-cite-insert)))
+     (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
+     :config
+     (setq citar-bibliography (h7/var-global-bibliography))
+
+     )
 
 
    (use-package citar-embark
@@ -4679,7 +4683,7 @@
 
 (use-package org-ref
   :after org
-  :disabled t
+  :disabled t ;; deps: helm
   ;;  :ensure t
   :init
   (setq reftex-default-bibliography (h7/var-global-bibliography))
@@ -4709,24 +4713,25 @@
         bibtex-autokey-titlewords-stretch 1
         bibtex-autokey-titleword-length 5))
 
-(use-package org-autolist
-  :after org
-  :ensure t
-  :config
-  (org-autolist-mode +1))
-
-(use-package doi-utils
-  :after org
-  :disabled t
-  ;;  :ensure t
-  )
-
 (use-package org-ref-bibtex
   :after org
   :disabled t
   ;;  :ensure t
   :init
   (setq org-ref-bibtex-hydra-key-binding "\C-cj"))
+
+(use-package org-autolist
+  :after org
+  :ensure t
+  :config
+  (org-autolist-mode +1))
+
+
+(use-package doi-utils
+  :after org
+  :disabled t
+  ;;  :ensure t
+  )
 
 ;; ---(org-noter)------------------------------------------------------------------------
 
@@ -4840,6 +4845,116 @@ With a prefix ARG, remove start location."
    '((http . t))))
 ;; org-extras ends here
 
+;; Org denote
+;; #+NAME: org-denote
+
+;; [[file:site-pkgs.org::org-denote][org-denote]]
+  ;; ---(org-denote)------------------------------------------------------------------------
+
+  ;; @see: https://gitlab.com/protesilaos/dotfiles/-/blob/master/emacs/.emacs.d/prot-emacs.org?ref_type=heads
+  ;; @see: https://github.com/whhone/whhone.github.io/blob/3289ba83472ecabf09b06bb124097d5a100f7618/content/emacs-config.md
+  (use-package denote
+    :ensure t
+    :init
+    (setq denote-directory (expand-file-name (h7/var-denote-directory)))
+    ;;:custom
+    ;;
+    ;;
+    :hook
+    (dired-mode . denote-dired-mode)
+    :bind
+    ("C-c n n" . 'denote)
+    ("C-c n f" . 'denote-open-or-create)
+    ("C-c n i" . 'denote-link)
+    ("C-c n k" . 'denote-keywords-add)    ;; update file name automatically
+    ("C-c n K" . 'denote-keywords-remove) ;; update file name automatically
+    ("C-c n u" . 'denote-rename-file-using-front-matter)
+    ("C-c n l" . 'denote-link-find-backlink)
+    ;; :bind-keymap
+    ;; ("C-c n d" . org-roam-dailies-map)
+    :config
+    (setq denote-known-keywords '("<meta>"))
+    ;; (setq denote-prompts '(subdirectory title))
+    ;; (setq denote-excluded-directories-regexp ".attachment")
+
+    ;; ;; Makes the denote links different from usual link.
+    ;; (set-face-attribute 'denote-faces-link
+    ;;                     nil :foreground "magenta" :inherit 'link)
+
+    ;; ;; Remove the date and the identifier. They are duplicated with the file name.
+    ;; ;; I want to remove filetags too but denote-keyword-* need that.
+    ;; (setq denote-org-front-matter "#+title: %1$s\n#+filetags: %3$s\n")
+    
+    )
+
+
+
+  ;; ---(org-denote-menu)------------------------------------------------------------------------
+
+   (use-package denote-menu
+    :ensure t
+    :after (denote)
+     ;; Bind all available commands
+     :bind (("C-c N z" . list-denotes)
+            ("C-c N c" . denote-menu-clear-filters)
+            ("C-c N r" . denote-menu-filter)
+            ("C-c N k" . denote-menu-filter-by-keyword)
+            ("C-c N o" . denote-menu-filter-out-keyword)
+            ("C-c N e" . denote-menu-export-to-dired))
+     )
+
+     
+  ;; ---(org-denote-refs)------------------------------------------------------------------------
+
+  (use-package denote-refs
+    :ensure t
+    :after (denote)
+    ;; :straight
+    ;;   (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
+    :quelpa (denote-refs :fetcher git :url "https://codeberg.org/akib/emacs-denote-refs.git")
+    ;; ;; normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+    ;; ;; a hookable mode anymore, you're advised to pick something yourself
+    ;; ;; if you don't care about startup time, use
+    
+    ;; :hook
+    ;; (denote-mode . denote-refs-mode))
+  )
+
+  ;; ---(org-denote-citar)------------------------------------------------------------------------
+
+   (use-package citar-denote
+    :ensure t
+    :after (citar denote)
+    :custom
+    ;; Allow multiple notes per bibliographic entry
+    (citar-open-always-create-notes nil)
+    ;; Use package defaults
+    (citar-denote-file-type 'org)
+    (citar-denote-subdir nil)
+    (citar-denote-signature nil)
+    (citar-denote-template nil)
+    (citar-denote-keyword "bib")
+    (citar-denote-use-bib-keywords nil)
+    (citar-denote-title-format "title")
+    (citar-denote-title-format-authors 1)
+    (citar-denote-title-format-andstr "and")
+    :init
+    (citar-denote-mode)
+    ;; Bind all available commands
+    :bind (("C-c w c" . citar-create-note)
+           ("C-c w n" . citar-denote-open-note)
+           ("C-c w d" . citar-denote-dwim)
+           ("C-c w e" . citar-denote-open-reference-entry)
+           ("C-c w a" . citar-denote-add-citekey)
+           ("C-c w k" . citar-denote-remove-citekey)
+           ("C-c w r" . citar-denote-find-reference)
+           ("C-c w l" . citar-denote-link-reference)
+           ("C-c w f" . citar-denote-find-citation)
+           ("C-c w x" . citar-denote-nocite)
+           ("C-c w y" . citar-denote-cite-nocite))
+    )
+;; org-denote ends here
+
 ;; Org roam
 ;; #+NAME: org-roam
 
@@ -4848,7 +4963,8 @@ With a prefix ARG, remove start location."
 
   ;; @see: https://systemcrafters.net/build-a-second-brain-in-emacs/5-org-roam-hacks/
   (use-package org-roam
-    :ensure t
+    :disabled t
+    ;;  :ensure t
     :init
     (setq org-roam-v2-ack t)
     :custom
@@ -4901,19 +5017,6 @@ With a prefix ARG, remove start location."
     (require 'org-roam-protocol))
 
 
-  ;; ---(http server)------------------------------------------------------------------------
-
-  (use-package websocket
-    :ensure t
-    :after org-roam
-    ;; :straight (:host github :repo "ahyatt/emacs-websocket" :branch "main")
-    )
-
-  (use-package simple-httpd
-    :ensure t
-    :after org-roam
-    )
-
   ;; ---(org-roam-bibtex)------------------------------------------------------------------------
 
 
@@ -4959,7 +5062,8 @@ With a prefix ARG, remove start location."
   ;; ---(org-roam-ui)------------------------------------------------------------------------
 
   (use-package org-roam-ui
-    :ensure t
+    :disabled t
+    ;;  :ensure t
     ;; :straight
     ;;   (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
     ;; :quelpa (org-roam-ui :fetcher github :repo "org-roam/org-roam-ui")
@@ -4977,7 +5081,8 @@ With a prefix ARG, remove start location."
   ;; ---(org-roam-citar)------------------------------------------------------------------------
 
   (use-package citar-org-roam
-    :ensure t
+    :disabled t
+    ;;  :ensure t
     :after (citar org-roam)
     :config (citar-org-roam-mode)
     :custom
