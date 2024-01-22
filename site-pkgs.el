@@ -4132,42 +4132,6 @@
 ;; #+NAME: tex-bibtex
 
 ;; [[file:site-pkgs.org::tex-bibtex][tex-bibtex]]
-  ;; ---( Citar )--------------------------------------------------------------
-
-   ;; @see: https://github.com/emacs-citar/citar#installation
-
-   (use-package citar
-     ;; :disabled t
-     :ensure t
-     ;; :defer t
-     :no-require
-     :custom
-     ;;(org-cite-global-bibliography '("~/bib/references.bib"))
-     ;;(citar-bibliography (h7/var-global-bibliography))
-     (org-cite-global-bibliography (h7/var-global-bibliography))
-     (org-cite-insert-processor 'citar)
-     (org-cite-follow-processor 'citar)
-     (org-cite-activate-processor 'citar)
-     :hook
-     (LaTeX-mode . citar-capf-setup)
-     (org-mode . citar-capf-setup)
-     :bind
-     ;; optional: org-cite-insert is also bound to C-c C-x C-@
-     (:map org-mode-map :package org ("C-c b" . #'org-cite-insert))
-     :config
-     (setq citar-bibliography (h7/var-global-bibliography))
-
-     )
-
-
-   (use-package citar-embark
-     ;; :disabled t
-     :ensure t
-     ;; :defer t
-     :after citar embark
-     :no-require
-     :config (citar-embark-mode))
-
   ;; ---( BibTex )--------------------------------------------------------------
 
   (use-package biblio
@@ -4633,6 +4597,14 @@
           (?+ . ?➤)
           (?- . ?•))))
 
+;; ---(org-autolist)------------------------------------------------------------------------
+
+(use-package org-autolist
+  :after org
+  :ensure t
+  :config
+  (org-autolist-mode +1))
+
 
 ;; ---(org-context)------------------------------------------------------------------------
 
@@ -4678,61 +4650,115 @@
 ;;                                      (org-agenda-files '("tests/test.org")))))
 ;;     ((org-agenda-buffer-name "TODO: org-context"))))))
 ;;EOF
+;; org-extras ends here
 
-;; ---(org-ref)------------------------------------------------------------------------
+;; Org babel
+;; #+NAME: org-babel
 
-(use-package org-ref
-  :after org
-  :disabled t ;; deps: helm
-  ;;  :ensure t
-  :init
-  (setq reftex-default-bibliography (h7/var-global-bibliography))
-  (setq org-ref-bibliography-notes "~/Dropbox/Local/data/org/ref/notes.org"
-        org-ref-default-bibliography (h7/var-global-bibliography)
-        org-ref-pdf-directory "~/Dropbox/Local/docs/papers/")
+;; [[file:site-pkgs.org::org-babel][org-babel]]
+;; ---(org-babel)------------------------------------------------------------------------
 
-  ;; (setq helm-bibtex-bibliography "~/Dropbox/Local/data/org/ref/references.bib")
-  ;; (setq helm-bibtex-library-path "~/Dropbox/Local/docs/papers/")
+;; (use-package ob-restclient
+;;   :ensure t
+;;   :mode (("\\.http\\'" . restclient-mode)))
 
-  ;; (setq helm-bibtex-pdf-open-function
-  ;;       (lambda (fpath)
-  ;;         (start-process "open" "*open*" "open" fpath)))
-
-  ;; (setq helm-bibtex-notes-path "~/Dropbox/Local/data/org/ref/notes.org")
-  
-  :config
-  (key-chord-define-global "uu" 'org-ref-cite-hydra/body)
-  ;; variables that control bibtex key format for auto-generation
-  ;; I want firstauthor-year-title-words
-  ;; this usually makes a legitimate filename to store pdfs under.
-  (setq bibtex-autokey-year-length 4
-        bibtex-autokey-name-year-separator "-"
-        bibtex-autokey-year-title-separator "-"
-        bibtex-autokey-titleword-separator "-"
-        bibtex-autokey-titlewords 2
-        bibtex-autokey-titlewords-stretch 1
-        bibtex-autokey-titleword-length 5))
-
-(use-package org-ref-bibtex
-  :after org
-  :disabled t
-  ;;  :ensure t
-  :init
-  (setq org-ref-bibtex-hydra-key-binding "\C-cj"))
-
-(use-package org-autolist
-  :after org
+(use-package ob-restclient
   :ensure t
-  :config
-  (org-autolist-mode +1))
+  :after org restclient
+  :init
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((restclient . t))))
+
+(use-package ob-http
+  :ensure t
+  :after org restclient
+  :init
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((http . t))))
+;; org-babel ends here
+
+;; Org denote
+;; #+NAME: org-denote
+
+;; [[file:site-pkgs.org::org-denote][org-denote]]
+  ;; ---(org-denote)------------------------------------------------------------------------
+
+  ;; @see: https://gitlab.com/protesilaos/dotfiles/-/blob/master/emacs/.emacs.d/prot-emacs.org?ref_type=heads
+  ;; @see: https://github.com/whhone/whhone.github.io/blob/3289ba83472ecabf09b06bb124097d5a100f7618/content/emacs-config.md
+  (use-package denote
+    :ensure t
+    :init
+    (setq denote-directory (expand-file-name (h7/var-denote-directory)))
+    ;;:custom
+    ;;
+    ;;
+    :hook
+    (dired-mode . denote-dired-mode)
+    :bind
+    ("C-c n n" . 'denote)
+    ("C-c n f" . 'denote-open-or-create)
+    ("C-c n i" . 'denote-link)
+    ("C-c n k" . 'denote-keywords-add)    ;; update file name automatically
+    ("C-c n K" . 'denote-keywords-remove) ;; update file name automatically
+    ("C-c n u" . 'denote-rename-file-using-front-matter)
+    ("C-c n l" . 'denote-link-find-backlink)
+    ;; :bind-keymap
+    ;; ("C-c n d" . org-roam-dailies-map)
+    :config
+    (setq denote-known-keywords '("<meta>"))
+    ;; (setq denote-prompts '(subdirectory title))
+    (setq denote-excluded-directories-regexp ".attachment")
+
+    ;; ;; Makes the denote links different from usual link.
+    (set-face-attribute 'denote-faces-link
+                        nil :foreground "magenta" :inherit 'link)
+
+    ;; ;; Remove the date and the identifier. They are duplicated with the file name.
+    ;; ;; I want to remove filetags too but denote-keyword-* need that.
+    ;; (setq denote-org-front-matter "#+title: %1$s\n#+filetags: %3$s\n")
+    
+    )
 
 
-(use-package doi-utils
-  :after org
-  :disabled t
-  ;;  :ensure t
+
+  ;; ---(org-denote-menu)------------------------------------------------------------------------
+
+   (use-package denote-menu
+    :ensure t
+    :after (denote)
+     ;; Bind all available commands
+     :bind (("C-c N z" . list-denotes)
+            ("C-c N c" . denote-menu-clear-filters)
+            ("C-c N r" . denote-menu-filter)
+            ("C-c N k" . denote-menu-filter-by-keyword)
+            ("C-c N o" . denote-menu-filter-out-keyword)
+            ("C-c N e" . denote-menu-export-to-dired))
+     )
+
+     
+  ;; ---(org-denote-refs)------------------------------------------------------------------------
+
+  (use-package denote-refs
+    :ensure t
+    :after (denote)
+    ;; :straight
+    ;;   (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
+    :quelpa (denote-refs :fetcher git :url "https://codeberg.org/akib/emacs-denote-refs.git")
+    ;; ;; normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+    ;; ;; a hookable mode anymore, you're advised to pick something yourself
+    ;; ;; if you don't care about startup time, use
+    
+    ;; :hook
+    ;; (denote-mode . denote-refs-mode))
   )
+;; org-denote ends here
 
+;; Org noter
+;; #+NAME: org-noter
+
+;; [[file:site-pkgs.org::org-noter][org-noter]]
 ;; ---(org-noter)------------------------------------------------------------------------
 
 ;; @see: https://rgoswami.me/posts/org-note-workflow/
@@ -4773,7 +4799,6 @@
   ;; (add-hook 'org-noter-mode-hook 'visual-line-mode)
   
   )
-
 
 
 ;;@see: https://github.com/fuxialexander/org-pdftools
@@ -4820,107 +4845,61 @@ With a prefix ARG, remove start location."
                            (org-noter--pretty-print-location location))))))))
   (with-eval-after-load 'pdf-annot
     (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
+;; org-noter ends here
 
+;; Org citar
+;; #+NAME: org-citar
 
-;; ---(org-babel)------------------------------------------------------------------------
+;; [[file:site-pkgs.org::org-citar][org-citar]]
+  ;; ---( Citar )--------------------------------------------------------------
 
-;; (use-package ob-restclient
-;;   :ensure t
-;;   :mode (("\\.http\\'" . restclient-mode)))
+   ;; @see: https://github.com/emacs-citar/citar#installation
 
-(use-package ob-restclient
-  :ensure t
-  :after org restclient
-  :init
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((restclient . t))))
-
-(use-package ob-http
-  :ensure t
-  :after org restclient
-  :init
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((http . t))))
-;; org-extras ends here
-
-;; Org denote
-;; #+NAME: org-denote
-
-;; [[file:site-pkgs.org::org-denote][org-denote]]
-  ;; ---(org-denote)------------------------------------------------------------------------
-
-  ;; @see: https://gitlab.com/protesilaos/dotfiles/-/blob/master/emacs/.emacs.d/prot-emacs.org?ref_type=heads
-  ;; @see: https://github.com/whhone/whhone.github.io/blob/3289ba83472ecabf09b06bb124097d5a100f7618/content/emacs-config.md
-  (use-package denote
-    :ensure t
-    :init
-    (setq denote-directory (expand-file-name (h7/var-denote-directory)))
-    ;;:custom
-    ;;
-    ;;
-    :hook
-    (dired-mode . denote-dired-mode)
-    :bind
-    ("C-c n n" . 'denote)
-    ("C-c n f" . 'denote-open-or-create)
-    ("C-c n i" . 'denote-link)
-    ("C-c n k" . 'denote-keywords-add)    ;; update file name automatically
-    ("C-c n K" . 'denote-keywords-remove) ;; update file name automatically
-    ("C-c n u" . 'denote-rename-file-using-front-matter)
-    ("C-c n l" . 'denote-link-find-backlink)
-    ;; :bind-keymap
-    ;; ("C-c n d" . org-roam-dailies-map)
-    :config
-    (setq denote-known-keywords '("<meta>"))
-    ;; (setq denote-prompts '(subdirectory title))
-    ;; (setq denote-excluded-directories-regexp ".attachment")
-
-    ;; ;; Makes the denote links different from usual link.
-    ;; (set-face-attribute 'denote-faces-link
-    ;;                     nil :foreground "magenta" :inherit 'link)
-
-    ;; ;; Remove the date and the identifier. They are duplicated with the file name.
-    ;; ;; I want to remove filetags too but denote-keyword-* need that.
-    ;; (setq denote-org-front-matter "#+title: %1$s\n#+filetags: %3$s\n")
-    
-    )
-
-
-
-  ;; ---(org-denote-menu)------------------------------------------------------------------------
-
-   (use-package denote-menu
-    :ensure t
-    :after (denote)
-     ;; Bind all available commands
-     :bind (("C-c N z" . list-denotes)
-            ("C-c N c" . denote-menu-clear-filters)
-            ("C-c N r" . denote-menu-filter)
-            ("C-c N k" . denote-menu-filter-by-keyword)
-            ("C-c N o" . denote-menu-filter-out-keyword)
-            ("C-c N e" . denote-menu-export-to-dired))
+   (use-package citar
+     ;; :disabled t
+     :ensure t
+     ;; :defer t
+     :no-require
+     :custom
+     ;;(org-cite-global-bibliography '("~/bib/references.bib"))
+     ;;(citar-bibliography (h7/var-global-bibliography))
+     (citar-bibliography (h7/var-global-bibliography))
+     (org-cite-global-bibliography (h7/var-global-bibliography))
+     (org-cite-insert-processor 'citar)
+     (org-cite-follow-processor 'citar)
+     (org-cite-activate-processor 'citar)
+     :hook
+     (LaTeX-mode . citar-capf-setup)
+     (org-mode . citar-capf-setup)
+     :bind
+     ;; optional: org-cite-insert is also bound to C-c C-x C-@
+     (:map org-mode-map :package org ("C-c b b" . #'org-cite-insert))
+     (:map org-mode-map :package org ("C-c b c" . #'citar-insert-citation))
+     (:map org-mode-map :package org ("C-c b r" . #'citar-insert-reference))
+     (:map org-mode-map :package org ("C-c b o" . #'citar-open-notes))
+     :config
+     (defvar citar-indicator-notes-icons
+       (citar-indicator-create
+        :symbol (all-the-icons-material
+                 "speaker_notes"
+                 :face 'all-the-icons-blue
+                 :v-adjust -0.3)
+        :function #'citar-has-notes
+        :padding "  "
+        :tag "has:notes"))     
      )
 
-     
-  ;; ---(org-denote-refs)------------------------------------------------------------------------
 
-  (use-package denote-refs
-    :ensure t
-    :after (denote)
-    ;; :straight
-    ;;   (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
-    :quelpa (denote-refs :fetcher git :url "https://codeberg.org/akib/emacs-denote-refs.git")
-    ;; ;; normally we'd recommend hooking orui after org-roam, but since org-roam does not have
-    ;; ;; a hookable mode anymore, you're advised to pick something yourself
-    ;; ;; if you don't care about startup time, use
-    
-    ;; :hook
-    ;; (denote-mode . denote-refs-mode))
-  )
-
-  ;; ---(org-denote-citar)------------------------------------------------------------------------
+   (use-package citar-embark
+     ;; :disabled t
+     :ensure t
+     ;; :defer t
+     :after citar embark
+     :no-require
+     :config
+     (setq citar-at-point-function 'embark-act)
+     (citar-embark-mode)
+     )
 
    (use-package citar-denote
     :ensure t
@@ -4953,7 +4932,59 @@ With a prefix ARG, remove start location."
            ("C-c w x" . citar-denote-nocite)
            ("C-c w y" . citar-denote-cite-nocite))
     )
-;; org-denote ends here
+;; org-citar ends here
+
+;; Org ref
+;; #+NAME: org-ref
+
+;; [[file:site-pkgs.org::org-ref][org-ref]]
+;; ---(org-ref)------------------------------------------------------------------------
+
+(use-package org-ref
+  :after org
+  :disabled t ;; deps: helm
+  ;;  :ensure t
+  :init
+  (setq reftex-default-bibliography (h7/var-global-bibliography))
+  (setq org-ref-bibliography-notes "~/Dropbox/Local/data/org/ref/notes.org"
+        org-ref-default-bibliography (h7/var-global-bibliography)
+        org-ref-pdf-directory "~/Dropbox/Local/docs/papers/")
+
+  ;; (setq helm-bibtex-bibliography "~/Dropbox/Local/data/org/ref/references.bib")
+  ;; (setq helm-bibtex-library-path "~/Dropbox/Local/docs/papers/")
+
+  ;; (setq helm-bibtex-pdf-open-function
+  ;;       (lambda (fpath)
+  ;;         (start-process "open" "*open*" "open" fpath)))
+
+  ;; (setq helm-bibtex-notes-path "~/Dropbox/Local/data/org/ref/notes.org")
+  
+  :config
+  (key-chord-define-global "uu" 'org-ref-cite-hydra/body)
+  ;; variables that control bibtex key format for auto-generation
+  ;; I want firstauthor-year-title-words
+  ;; this usually makes a legitimate filename to store pdfs under.
+  (setq bibtex-autokey-year-length 4
+        bibtex-autokey-name-year-separator "-"
+        bibtex-autokey-year-title-separator "-"
+        bibtex-autokey-titleword-separator "-"
+        bibtex-autokey-titlewords 2
+        bibtex-autokey-titlewords-stretch 1
+        bibtex-autokey-titleword-length 5))
+
+(use-package org-ref-bibtex
+  :after org
+  :disabled t
+  ;;  :ensure t
+  :init
+  (setq org-ref-bibtex-hydra-key-binding "\C-cj"))
+
+(use-package doi-utils
+  :after org
+  :disabled t
+  ;;  :ensure t
+  )
+;; org-ref ends here
 
 ;; Org roam
 ;; #+NAME: org-roam
@@ -5522,7 +5553,7 @@ With a prefix ARG, remove start location."
 
 (global-set-key (kbd "C-c 4") 'hydra-engine/body)
 
-    ;; ---( hydras )--------------------------------------------------------------
+    ;; ---( hydra-orgnoter )--------------------------------------------------------------
 
 
 (defhydra hydra-orgnoter (:color blue :hint nil)
@@ -5549,6 +5580,7 @@ With a prefix ARG, remove start location."
         ("<ESC>" nil "quit"))
 
 
+    ;; ---( hydra-orgnoter )--------------------------------------------------------------
 
 (defhydra hydra-pdftools (:color blue :hint nil)
         "
@@ -5604,6 +5636,70 @@ With a prefix ARG, remove start location."
 (global-set-key (kbd "C-c 3") 'hydra-pdftools/body)
 
 
+    ;; ---( hydra-denote )--------------------------------------------------------------
+
+    (defhydra hydra-denote (:color blue :hint nil)
+              "
+                                                                       ╭─────────┐
+         Denote           List              Citar         Refs         │ Denote  │
+  ╭────────────────────────────────────────────────────────────────────┴─────────╯
+       [_nn_] createe   [_NN_] list       [_bb_] org    [_wc_] note
+       [_nf_] open      [_Nc_] clear      [_bc_] cite   [_wn_] open    
+       [_ni_] linke     [_Nr_] filter     [_br_] ref    [_wd_] dwim
+       [_nk_] key add   [_Nk_] in by key  [_bo_] note   [_we_] ref-entry
+       [_nK_] key del   [_No_] out by key               [_wa_] add cite
+       [_nu_] rename    [_Ne_] to dired                 [_wk_] del cite
+       [_nl_] rev-find                                  [_wr_] find ref
+                                                        [_wl_] link ref
+                                                        [_wf_] find cite
+                                                        [_wx_] nocite
+                                                        [_wy_] cite-nocite
+  --------------------------------------------------------------------------------
+              "
+              ("nn" denote)
+              ("nf" denote-open-or-create)
+              ("ni" denote-link)
+              ("nk" denote-keywords-add)
+              ("nK" denote-keywords-remove)
+              ("nu" denote-rename-file-using-front-matter)
+              ("nl" denote-link-find-backlink)
+
+              ("NN" list-denotes                   :color green)
+              ("Nc" denote-menu-clear-filters      :color green)
+              ("Nr" denote-menu-filter             :color green)
+              ("Nk" denote-menu-filter-by-keyword  :color green)
+              ("No" denote-menu-filter-out-keyword :color green)
+              ("Ne" denote-menu-export-to-dired    :color green)
+
+              ("bb" org-cite-insert)
+              ("bc" citar-insert-citation)
+              ("br" citar-insert-reference)
+              ("bo" citar-open-notes)
+
+              ("wc" citar-create-note)
+              ("wn" citar-denote-open-note)
+              ("wd" citar-denote-dwim)
+              ("we" citar-denote-open-reference-entry)
+              ("wa" citar-denote-add-citekey)
+              ("wk" citar-denote-remove-citekey)
+              ("wr" citar-denote-find-reference)
+              ("wl" citar-denote-link-reference)
+              ("wf" citar-denote-find-citation)
+              ("wx" citar-denote-nocite)
+              ("wy" citar-denote-cite-nocite)
+              
+              ("p"   hydra-pdftools/body "[pdf-tools]" :color red)
+              ("."   hydra-orgnoter/body "[org-noter]" :color red)
+
+              ("\\" hydra-master/body "back")
+              ("<tab>" hydra-master/body "back")
+              ("<ESC>" nil "quit"))
+
+(global-set-key (kbd "C-c 5") 'hydra-denote/body)
+
+
+    ;; ---( hydra-buffers )--------------------------------------------------------------
+
     (defhydra hydra-buffers (:color blue :hint nil)
               "
                                                                        ╭─────────┐
@@ -5633,6 +5729,8 @@ With a prefix ARG, remove start location."
               ("<ESC>" nil "quit"))
 
 (global-set-key (kbd "C-c 2") 'hydra-buffers/body)
+
+    ;; ---( hydra-window )--------------------------------------------------------------
 
     (defhydra hydra-window (:color blue :hint nil)
             "
@@ -5673,6 +5771,7 @@ With a prefix ARG, remove start location."
 
 
 
+    ;; ---( hydras )--------------------------------------------------------------
 
 
 (defhydra hydra-of-hydras (:hint nil)
@@ -5684,6 +5783,7 @@ With a prefix ARG, remove start location."
    _b_ buffers            C-c 2
    _p_ pdf-tools          C-c 3
    _e_ engine-mode        C-c 4
+   _n_ denote             C-c 5
    ^────────-------------------------------------------
    "
 
@@ -5691,6 +5791,7 @@ With a prefix ARG, remove start location."
   ("p"   hydra-pdftools/body :color blue)
   ("b"   hydra-buffers/body :color blue)
   ("w"   hydra-window/body :color blue)
+  ("n"   hydra-denote/body :color green)
   ("<ESC>" nil "quit"))
 
 (global-set-key (kbd "C-c 0") 'hydra-of-hydras/body)
