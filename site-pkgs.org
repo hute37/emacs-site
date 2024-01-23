@@ -5921,26 +5921,28 @@ With a prefix ARG, remove start location."
                                                                        ╭─────────┐
          Denote           List              Citar         Refs         │ Denote  │
   ╭────────────────────────────────────────────────────────────────────┴─────────╯
-       [_nn_] createe   [_NN_] list       [_bb_] org    [_wc_] note
+       [_nn_] create    [_NN_] list       [_bb_] org    [_wc_] note
        [_nf_] open      [_Nc_] clear      [_bc_] cite   [_wn_] open    
-       [_ni_] linke     [_Nr_] filter     [_br_] ref    [_wd_] dwim
-       [_nk_] key add   [_Nk_] in by key  [_bo_] note   [_we_] ref-entry
-       [_nK_] key del   [_No_] out by key               [_wa_] add cite
-       [_nu_] rename    [_Ne_] to dired                 [_wk_] del cite
-       [_nl_] rev-find                                  [_wr_] find ref
-                                                        [_wl_] link ref
-                                                        [_wf_] find cite
-                                                        [_wx_] nocite
-                                                        [_wy_] cite-nocite
+       [_ni_] link      [_Nr_] filter     [_br_] ref    [_wd_] dwim
+       [_nI_] links     [_Nk_] in by key  [_bo_] note   [_we_] ref-entry
+       [_nk_] key add   [_No_] out by key             [_wa_] add cite
+       [_nK_] key del   [_Ne_] to dired               [_wk_] del cite
+       [_nu_] rename                                [_wr_] find ref
+       [_nl_] rev-find                              [_wl_] link ref
+       [_nb_] rev-list                              [_wf_] find cite
+                                                  [_wx_] nocite
+                                                  [_wy_] cite-nocite
   --------------------------------------------------------------------------------
               "
               ("nn" denote)
               ("nf" denote-open-or-create)
               ("ni" denote-link)
+              ("nI" denote-add-links)
               ("nk" denote-keywords-add)
               ("nK" denote-keywords-remove)
               ("nu" denote-rename-file-using-front-matter)
               ("nl" denote-link-find-backlink)
+              ("nb" denote-backlinks)
 
               ("NN" list-denotes                   :color green)
               ("Nc" denote-menu-clear-filters      :color green)
