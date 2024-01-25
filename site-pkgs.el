@@ -4291,8 +4291,8 @@
 
     ;; (add-hook 'pdf-view-mode-hook 'pdf-continuous-scroll-mode)
 
-    :hook
-    ((pdf-view-mode) . (lambda () (cua-mode 0)))
+    ;; :hook
+    ;; ((pdf-view-mode) . (lambda () (cua-mode 0)))
   
     :bind (:map pdf-view-mode-map
         	("\\" . hydra-pdftools/body)
