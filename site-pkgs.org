@@ -516,49 +516,59 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
   ;; ---( dashboard )--------------------------------------------------------------
 
-  ;; (use-package dashboard
-  ;;   :ensure t
-  ;;   :custom
-  ;;   (dashboard-startup-banner 'logo)
-  ;;   (dashboard-items '((recents . 5)
-  ;;                      (projects . 5)
-  ;;                      (agenda . 5)))
-  ;;   (initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
-  ;;   :config
-  ;;   (dashboard-setup-startup-hook))
-
-  ;; @see: https://gitlab.com/jdm204/dotfiles/-/blob/master/config.org
   (use-package dashboard
     :ensure t
-    :config
-    (setq
-     dashboard-set-footer nil
-     dashboard-set-heading-icons nil
-     dashboard-set-file-icons t
-     dashboard-icon-type 'nerd-icons
-     dashboard-set-navigator t
-     dashboard-set-init-info t
-     dashboard-center-content t
-     dashboard-startup-banner 'logo
-     dashboard-image-banner-max-width 80
-     ;; dashboard-projects-backend 'project-el
-     dashboard-items '((recents  . 10)
-                       (bookmarks . 10)
-                       (projects . 10)
-                       (agenda . 10))
-     dashboard-navigator-buttons `((
-      ("🗒️" "scratch" "show scratch buffer" (lambda (&rest _) (scratch-buffer)))
-      ("📕" "manual" "show emacs manual" (lambda (&rest _) (info-emacs-manual)))
-      ("♻️" "restart" "restart emacs" (lambda (&rest _) (restart-emacs)))
-      ("⏩" "pkgupdate" "update packages with elpaca" (lambda (&rest _) (elpaca-merge-all t t)))
-      ("📁" "files" "start dirvish" (lambda (&rest _) (dirvish)))
-      ("✉️" "mail" "start mu4e" (lambda (&rest _) (mu4e)))
-      ("📃" "feed" "start elfeed" (lambda (&rest _) (elfeed)))
-      )))
     :after all-the-icons
-    :hook (emacs-startup-hook . dashboard-open)
-    :bind ("<C-i> i" . dashboard-open))
+    :custom
+    (dashboard-set-file-icons t)
+    (dashboard-set-navigator t)
+    (dashboard-set-init-info t)
+    (dashboard-startup-banner 'logo)
+    (dashboard-image-banner-max-width 80)
+    (dashboard-items '((recents . 5)
+                       (projects . 5)
+                       (bookmarks . 5)
+                       (agenda . 5)))
+    (initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
+    :config
+    (dashboard-setup-startup-hook)
+    )
 
+  ;; ;; @see: https://gitlab.com/jdm204/dotfiles/-/blob/master/config.org
+  ;; (use-package dashboard
+  ;;   :ensure t
+  ;;   :config
+  ;;   (dashboard-setup-startup-hook)
+  ;;   (setq
+  ;;    dashboard-set-footer nil
+  ;;    dashboard-set-heading-icons nil
+  ;;    dashboard-set-file-icons t
+  ;;    ;;dashboard-icon-type 'nerd-icons
+  ;;    dashboard-set-navigator t
+  ;;    dashboard-set-init-info t
+  ;;    dashboard-center-content t
+  ;;    dashboard-startup-banner 'logo
+  ;;    dashboard-image-banner-max-width 80
+  ;;    ;; dashboard-projects-backend 'project-el
+  ;;    dashboard-items '((recents  . 5)
+  ;;                      (bookmarks . 5)
+  ;;                      (projects . 5)
+  ;;                      (agenda . 5))
+  ;;    ;; dashboard-navigator-buttons `((
+  ;;    ;;  ("🗒️" "scratch" "show scratch buffer" (lambda (&rest _) (scratch-buffer)))
+  ;;    ;;  ("📕" "manual" "show emacs manual" (lambda (&rest _) (info-emacs-manual)))
+  ;;    ;;  ("♻️" "restart" "restart emacs" (lambda (&rest _) (restart-emacs)))
+  ;;    ;;  ("⏩" "pkgupdate" "update packages with elpaca" (lambda (&rest _) (elpaca-merge-all t t)))
+  ;;    ;;  ("📁" "files" "start dirvish" (lambda (&rest _) (dirvish)))
+  ;;    ;;  ("✉️" "mail" "start mu4e" (lambda (&rest _) (mu4e)))
+  ;;    ;;  ("📃" "feed" "start elfeed" (lambda (&rest _) (elfeed)))
+  ;;    ;;  ))
+  ;;    )
+  ;;   :after all-the-icons
+  ;;   :hook (emacs-startup-hook . dashboard-open)
+  ;;   ;; :bind
+  ;;   ;; ("<C-i> i" . dashboard-open)
+  ;;   )
 
 
   ;; }}}  .ui
@@ -865,7 +875,7 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 #+END_SRC
 
-*** Utils/Tools//TT
+*** Utils/Tools
 #+NAME: util-tools
 #+begin_src emacs-lisp
 
@@ -1863,8 +1873,9 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   (use-package olivetti
     :ensure t
     :custom (olivetti-body-width 92)
-    :hook (org-mode . olivetti-mode)
-    :bind ("C-c M-o" . olivetti-mode))
+    ;;:hook (org-mode . olivetti-mode)
+    :bind ("C-c M-o" . olivetti-mode)
+    )
 
 #+END_SRC
 
@@ -2334,7 +2345,7 @@ P
         (interactive "sServer: ")
         (call-process "spawn" nil nil nil "ss" server))
 
-      (setq eshell-prompt-regexp "^[^#$\n]*[#$] "
+      (setq eshell-prompt-regexp "^[^#$γλ\n]*[#$γλ] "
             eshell-prompt-function
             (lambda ()
               (concat
@@ -2347,7 +2358,7 @@ P
                                "~" (eshell/basename (eshell/pwd)))
                            'face `(:foreground "DarkTurquoise" :weight bold))
                (propertize "]" 'face `(:foreground "Salmon" :weight bold))
-               (propertize (if (= (user-uid) 0) "# " "$ ") 'face `(:foreground "Salmon" :weight bold))
+               (propertize (if (= (user-uid) 0) "γ " "λ ") 'face `(:foreground "Salmon" :weight bold))
                (propertize " " 'face 'default)
                )))
 
@@ -4346,6 +4357,8 @@ P
     ;; :bind
     ;; ("<C-x> g" . google-this)
     )
+
+#+END_SRC
   
 **** bookmarks
 #+NAME: net-web-bookmarks
@@ -4358,7 +4371,9 @@ P
     ;; :bind
     ;; ("<C-i> r" . pocket-reader)
     )
-    
+
+#+END_SRC
+
 *** News
 **** elfeed
 #+NAME: net-news-elfeed

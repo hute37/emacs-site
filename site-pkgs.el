@@ -1,3 +1,35 @@
+;; License
+;; #+NAME: lic-head
+
+;; [[file:site-pkgs.org::lic-head][lic-head]]
+;;; site-pkgs.el --- literal emacs package configuration module in ~/.emacs config
+
+;; Author: Giovanni Pelosi <hute37@gmail.com>
+;; URL: https://github.com/hute37/emacs-site
+
+;; This file is NOT part of GNU Emacs.
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; included  by site-boot.el
+;; tangled from site-pkgs.org
+
+;;; Code:
+;; lic-head ends here
+
 ;; Log: start
 ;; #+NAME: log-start
 
@@ -256,7 +288,6 @@
 ;; startup ends here
 
 ;; Basic
-
 ;; #+NAME: basic
 
 ;; [[file:site-pkgs.org::basic][basic]]
@@ -303,6 +334,14 @@
       (setq undo-tree-visualizer-timestamps t)
       (setq undo-tree-visualizer-diff t)
       (setq undo-tree-history-directory-alist '(("." . "~/.backups/emacs/undo-tree")))))
+
+  ;; =C-x u= to browse the tree with =f=, =b=, =n=, =p=, =RET=.
+  ;; (use-package vundo
+  ;;   :ensure t
+  ;;   :config
+  ;;   (setq vundo-glyph-alist vundo-unicode-symbols)
+  ;;   :bind
+  ;;   ("C-x u" . vundo))
 
 
     ;; ---( dash )--------------------------------------------------------------
@@ -452,14 +491,57 @@
 
   (use-package dashboard
     :ensure t
+    :after all-the-icons
     :custom
+    (dashboard-set-file-icons t)
+    (dashboard-set-navigator t)
+    (dashboard-set-init-info t)
     (dashboard-startup-banner 'logo)
+    (dashboard-image-banner-max-width 80)
     (dashboard-items '((recents . 5)
                        (projects . 5)
+                       (bookmarks . 5)
                        (agenda . 5)))
     (initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
     :config
-    (dashboard-setup-startup-hook))
+    (dashboard-setup-startup-hook)
+    )
+
+  ;; ;; @see: https://gitlab.com/jdm204/dotfiles/-/blob/master/config.org
+  ;; (use-package dashboard
+  ;;   :ensure t
+  ;;   :config
+  ;;   (dashboard-setup-startup-hook)
+  ;;   (setq
+  ;;    dashboard-set-footer nil
+  ;;    dashboard-set-heading-icons nil
+  ;;    dashboard-set-file-icons t
+  ;;    ;;dashboard-icon-type 'nerd-icons
+  ;;    dashboard-set-navigator t
+  ;;    dashboard-set-init-info t
+  ;;    dashboard-center-content t
+  ;;    dashboard-startup-banner 'logo
+  ;;    dashboard-image-banner-max-width 80
+  ;;    ;; dashboard-projects-backend 'project-el
+  ;;    dashboard-items '((recents  . 5)
+  ;;                      (bookmarks . 5)
+  ;;                      (projects . 5)
+  ;;                      (agenda . 5))
+  ;;    ;; dashboard-navigator-buttons `((
+  ;;    ;;  ("🗒️" "scratch" "show scratch buffer" (lambda (&rest _) (scratch-buffer)))
+  ;;    ;;  ("📕" "manual" "show emacs manual" (lambda (&rest _) (info-emacs-manual)))
+  ;;    ;;  ("♻️" "restart" "restart emacs" (lambda (&rest _) (restart-emacs)))
+  ;;    ;;  ("⏩" "pkgupdate" "update packages with elpaca" (lambda (&rest _) (elpaca-merge-all t t)))
+  ;;    ;;  ("📁" "files" "start dirvish" (lambda (&rest _) (dirvish)))
+  ;;    ;;  ("✉️" "mail" "start mu4e" (lambda (&rest _) (mu4e)))
+  ;;    ;;  ("📃" "feed" "start elfeed" (lambda (&rest _) (elfeed)))
+  ;;    ;;  ))
+  ;;    )
+  ;;   :after all-the-icons
+  ;;   :hook (emacs-startup-hook . dashboard-open)
+  ;;   ;; :bind
+  ;;   ;; ("<C-i> i" . dashboard-open)
+  ;;   )
 
 
   ;; }}}  .ui
@@ -705,11 +787,28 @@
     (add-hook 'find-file-hook #'(lambda () (auto-revert-mode 1))))
 
 
-  ;; ---( hilit-chg )--------------------------------------------------------------
+  ;; ---( visible-mark )--------------------------------------------------------------
 
-  ;; (use-package hilit-chg
-  ;;   :ensure t
-  ;;   :bind ("M-o C" . highlight-changes-mode))
+  (use-package visible-mark
+    :ensure t
+    :init
+    (global-visible-mark-mode)
+    :custom
+    (visible-mark-faces '(visible-mark-face1 visible-mark-face2))
+    (visible-mark-forward-faces '(visible-mark-face1 visible-mark-face2))
+    (visible-mark-max 2))
+
+  ;; ---( changes )--------------------------------------------------------------
+
+  (use-package hilit-chg
+    :ensure t
+    :bind
+    ("C-x M-u" . highlight-changes-mode))
+
+  (use-package goto-chg
+    :ensure t
+    :bind
+    ("C-x M-u" . goto-last-change))
 
 
   ;; ---( folding )--------------------------------------------------------------
@@ -730,6 +829,44 @@
   ;;   :ensure t
   ;; )
 ;; util-misc ends here
+
+;; Utils/Tools
+;; #+NAME: util-tools
+
+;; [[file:site-pkgs.org::util-tools][util-tools]]
+  ;; ---( calc )--------------------------------------------------------------
+
+  (use-package calc
+    :ensure t
+    :custom
+    (calc-highlight-selections-with-faces t)
+    ;; :bind
+    ;; ("C-M-=" . #'calc)
+    ;; ("M-#" . #'quick-calc)
+    ;; ("M-~" . #'calc-embedded)
+    )
+
+
+  ;; ---( crux )--------------------------------------------------------------
+
+  (use-package crux
+    :ensure t
+    ;; :bind
+    ;; (("C-a" . crux-move-beginning-of-line)
+    ;;  ("C-x 4 t" . crux-transpose-windows)
+    ;;  ("C-x K" . crux-kill-other-buffers)
+    ;;  ("C-k" . crux-smart-kill-line)
+    ;;  ("M-o" . crux-other-window-or-switch-buffer)
+    ;;  ("C-<backspace>" . crux-kill-line-backwards)
+    ;;  ("C-c d" . crux-duplicate-current-line-or-region)
+    ;;  ("C-c e" . crux-eval-and-replace)
+    ;;  ("C-c M-r" . crux-rename-file-and-buffer)
+    ;;  ("C-c I" . crux-find-user-init-file))
+    :config
+    (crux-with-region-or-buffer indent-region)
+    (crux-with-region-or-buffer untabify)
+    (crux-with-region-or-point-to-eol kill-ring-save))
+;; util-tools ends here
 
 ;; Utils/end
 ;; #+NAME: util-end
@@ -1592,6 +1729,36 @@
   ;; }}}  .comp-mb
 ;; comp-mb-end ends here
 
+;; Edit/begin
+;; #+NAME: edit-begin
+
+;; [[file:site-pkgs.org::edit-begin][edit-begin]]
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @EDIT
+  ;; ;;;////////////////////////////////////////////////////////////////
+;; edit-begin ends here
+
+;; Writer
+;; #+NAME: writer
+
+;; [[file:site-pkgs.org::writer][writer]]
+  ;; ---( olivetti )--------------------------------------------------------------
+
+  (use-package olivetti
+    :ensure t
+    :custom (olivetti-body-width 92)
+    ;;:hook (org-mode . olivetti-mode)
+    :bind ("C-c M-o" . olivetti-mode)
+    )
+;; writer ends here
+
+;; Edit/end
+;; #+NAME: edit-end
+
+;; [[file:site-pkgs.org::edit-end][edit-end]]
+  ;; }}}  .edit
+;; edit-end ends here
+
 ;; Magit
 ;; #+NAME: magit
 
@@ -1673,7 +1840,9 @@
   ;; ---( git-timemachine )------------------------------------------------------------
 
   (use-package git-timemachine
-    :disabled t)
+    :defer t
+    :bind
+    ("<C-i> h" . git-timemachine))
 
   ;; (use-package git-timemachine
   ;;   :ensure t
@@ -2042,7 +2211,7 @@
         (interactive "sServer: ")
         (call-process "spawn" nil nil nil "ss" server))
 
-      (setq eshell-prompt-regexp "^[^#$\n]*[#$] "
+      (setq eshell-prompt-regexp "^[^#$γλ\n]*[#$γλ] "
             eshell-prompt-function
             (lambda ()
               (concat
@@ -2055,9 +2224,11 @@
                                "~" (eshell/basename (eshell/pwd)))
                            'face `(:foreground "DarkTurquoise" :weight bold))
                (propertize "]" 'face `(:foreground "Salmon" :weight bold))
-               (propertize (if (= (user-uid) 0) "# " "$") 'face `(:foreground "Salmon" :weight bold))
+               (propertize (if (= (user-uid) 0) "γ " "λ ") 'face `(:foreground "Salmon" :weight bold))
                (propertize " " 'face 'default)
                )))
+
+      
       ;; (setq eshell-output-filter-functions
       ;;       (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
       ;; ;;
@@ -2166,6 +2337,7 @@
     (setq eshell-review-quick-commands nil)
     (setq eshell-smart-space-goes-to-end t)
 
+    
 
     ;; ;; We want to use xterm-256color when running interactive commands
     ;; ;; in eshell but not during other times when we might be launching
@@ -2508,6 +2680,12 @@
   ;;     (let ((preferred-markdown-impl "peg-markdown"))
   ;;       (when (executable-find preferred-markdown-impl)
   ;;         (setq markdown-command preferred-markdown-impl)))))
+
+
+  (use-package pandoc-mode
+    :ensure t
+    :hook (markdown-mode . pandoc-mode)
+    )
 ;; markdown ends here
 
 ;; Markup
@@ -3938,6 +4116,32 @@
       (bind-key "S-<return>" 'w3m-safe-view-this-url w3m-minor-mode-map)))
 ;; net-web-w3m ends here
 
+;; search
+;; #+NAME: net-web-search
+
+;; [[file:site-pkgs.org::net-web-search][net-web-search]]
+  ;; ---( google )--------------------------------------------------------------
+
+  (use-package google-this
+    :ensure t
+    ;; :bind
+    ;; ("<C-x> g" . google-this)
+    )
+;; net-web-search ends here
+
+;; bookmarks
+;; #+NAME: net-web-bookmarks
+
+;; [[file:site-pkgs.org::net-web-bookmarks][net-web-bookmarks]]
+  ;; ---( pocket )--------------------------------------------------------------
+
+  (use-package pocket-reader
+    :ensure t
+    ;; :bind
+    ;; ("<C-i> r" . pocket-reader)
+    )
+;; net-web-bookmarks ends here
+
 ;; elfeed
 ;; #+NAME: net-news-elfeed
 
@@ -3974,6 +4178,25 @@
               (setq rmh-elfeed-org-files (list "~/.rss/elfeed.org"))
               (elfeed-org)))
 
+  ;; @see: https://gitlab.com/jdm204/dotfiles/-/raw/master/config.org
+  ;; (use-package elfeed
+  ;;   :config
+  ;;   (setq elfeed-feeds
+  ;;         '(("https://pubmed.ncbi.nlm.nih.gov/rss/search/1luR_fr_DOPOrUgd0SwfZa5OcNPAYBgU6eFmkHpBlEWGaA2kRX/?limit=50&utm_campaign=pubmed-2&fc=20220213090334" burkitt)
+  ;;           ("https://pubmed.ncbi.nlm.nih.gov/rss/search/181raCNN1P9YKA5Ksp5T-ppklvBYkJ0KGEv1no8RiVPoobtAoJ/?limit=50&utm_campaign=pubmed-2&fc=20220213141341" alcl)
+  ;;           ("https://pubmed.ncbi.nlm.nih.gov/rss/search/10ykRO9og5pEdqhr5lZEH9VOdy8V-cT_uke2kjg3JIO17wJEsW/?limit=50&utm_campaign=pubmed-2&fc=20220213141743" relapse-resistance)
+  ;;           ("https://pubmed.ncbi.nlm.nih.gov/rss/search/1jGcmCWm6MscNOQm4bUti4ntfYZO5twJzekwruxcvBOyo6tQAU/?limit=15&utm_campaign=pubmed-2&fc=20230101093540" ITH)
+  ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=bioinformatics" bioinformatics)
+  ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=cancer_biology" cancer)
+  ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=cell_biology" cell)
+  ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=genetics" genetics)
+  ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=genomics" genomics)
+  ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=immunology" immunology)
+  ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=pathology" pathology)
+  ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=molecular_biology" molecular)
+  ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=systems_biology" systems)))
+  ;;   :bind
+  ;;   ("<C-i> f" . elfeed))
 
   ;; @see: https://github.com/algernon/elfeed-goodies
   ;; (use-package elfeed-goodies
@@ -4682,6 +4905,14 @@
   (org-autolist-mode +1))
 
 
+;; ---(org-tree-slide)------------------------------------------------------------------------
+
+(use-package org-tree-slide
+  :after org
+  :ensure t
+  :bind (:map org-mode-map
+         ("C-c P" . org-tree-slide-mode)))
+
 ;; ---(org-context)------------------------------------------------------------------------
 
 (use-package org-context
@@ -4732,19 +4963,57 @@
 ;; #+NAME: org-style
 
 ;; [[file:site-pkgs.org::org-style][org-style]]
-;; ---(org-superstar)------------------------------------------------------------------------
+;; ---(org-modern)------------------------------------------------------------------------
 
-;; Nice bullet points. Retires org-bullets.
-(use-package org-superstar
+;; @see: https://gitlab.com/jdm204/dotfiles/-/blob/master/config.org
+(use-package org-modern
   :ensure t
   :after org
-  :hook (org-mode . org-superstar-mode)
-  :config
-  (setq org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
-  (setq org-superstar-item-bullet-alist
-        '((?* . ?•)
-          (?+ . ?➤)
-          (?- . ?•))))
+  :hook (org-mode . org-modern-mode)
+  ;; :config
+  ;; (setq org-modern-star '["⚹" "⚹⚹" "⚹⚹⚹" "⚹⚹⚹⚹" "⚹⚹⚹⚹⚹" "⚹⚹⚹⚹⚹⚹" "⚹⚹⚹⚹⚹⚹⚹" "⚹⚹⚹⚹⚹⚹⚹⚹"])
+  ;; (setq org-modern-keyword
+  ;;       '((t . t)
+  ;;       ("bibliography" . "")
+  ;;       ("cite_export" . "⮭")
+  ;;       ("include" . "⇤")
+  ;;       ("setupfile" . "⇚")
+  ;;       ("html_head" . "🅷")
+  ;;       ("html" . "🅗")
+  ;;       ("latex_class" . "🄻")
+  ;;       ("latex_header" . "🅻")
+  ;;       ("latex_header_extra" . "🅻⁺")
+  ;;       ("latex" . "🅛")
+  ;;       ("beamer_theme" . "🄱")
+  ;;       ("beamer_header" . "🅱")
+  ;;       ("beamer" . "🅑")
+  ;;       ("attr_latex" . "🄛")
+  ;;       ("attr_html" . "🄗")
+  ;;       ("attr_org" . "⒪")
+  ;;       ("header" . "›")
+  ;;       ("caption" . "☰")
+  ;;       ("name" . "⁝")
+  ;;       ("results" . "∴")))
+  ;;  (setq org-modern-block-name
+  ;;     '((t . t)
+  ;;       ("src" "»" "∥")
+  ;;       ("example" "»–" "∥")
+  ;;       ("quote" "❝" "❞")))
+   )
+
+;; ---(org-superstar)------------------------------------------------------------------------
+
+;; ;; Nice bullet points. Retires org-bullets.
+;; (use-package org-superstar
+;;   :ensure t
+;;   :after org
+;;   :hook (org-mode . org-superstar-mode)
+;;   :config
+;;   (setq org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
+;;   (setq org-superstar-item-bullet-alist
+;;         '((?* . ?•)
+;;           (?+ . ?➤)
+;;           (?- . ?•))))
 ;; org-style ends here
 
 ;; Org babel
