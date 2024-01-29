@@ -5319,7 +5319,9 @@ With a prefix ARG, remove start location."
   ;; Set org-roam integration, denote integration, or org-heading integration e.g.:
   ;; (setq consult-notes-org-headings-files '("~/path/to/file1.org"
   ;;                                         "~/path/to/file2.org"))
-  (consult-notes-org-headings-mode)
+  
+  ;;(consult-notes-org-headings-mode)
+  
   (when (locate-library "denote")
     (consult-notes-denote-mode))
   ;; search only for text files in denote dir
@@ -6060,7 +6062,7 @@ With a prefix ARG, remove start location."
        [_nk_] key add   [_No_] out by key             [_wa_] add cite
        [_nK_] key del   [_Ne_] to dired               [_wk_] del cite
        [_nu_] rename                                [_wr_] find ref
-       [_nl_] rev-find                              [_wl_] link ref
+       [_nl_] rev-find  [_ll_] consult                [_wl_] link ref
        [_nb_] rev-list                              [_wf_] find cite
                                                   [_wx_] nocite
                                                   [_wy_] cite-nocite
@@ -6076,12 +6078,14 @@ With a prefix ARG, remove start location."
               ("nl" denote-link-find-backlink)
               ("nb" denote-backlinks)
 
-              ("NN" list-denotes                   :color green)
-              ("Nc" denote-menu-clear-filters      :color green)
-              ("Nr" denote-menu-filter             :color green)
-              ("Nk" denote-menu-filter-by-keyword  :color green)
-              ("No" denote-menu-filter-out-keyword :color green)
-              ("Ne" denote-menu-export-to-dired    :color green)
+              ("NN" list-denotes)
+              ("Nc" denote-menu-clear-filters)
+              ("Nr" denote-menu-filter)
+              ("Nk" denote-menu-filter-by-keyword)
+              ("No" denote-menu-filter-out-keyword)
+              ("Ne" denote-menu-export-to-dired)
+              
+              ("ll" consult-notes)
 
               ("bb" org-cite-insert)
               ("bc" citar-insert-citation)
