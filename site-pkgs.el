@@ -419,7 +419,11 @@
   ;;   :ensure t
   ;;   :defer t)
 
-  ;; (use-package all-the-icons)
+  ;; icon fonts: M-x all-the-icons-install-fonts
+  (use-package all-the-icons
+    :ensure t
+    )
+
   ;; (use-package doom-modeline
   ;;   :after eshell
   ;;   :init (doom-modeline-mode 1))
@@ -494,7 +498,8 @@
     :after all-the-icons
     :custom
     (dashboard-set-file-icons t)
-    (dashboard-set-navigator t)
+    (dashboard-set-heading-icons t)
+    (dashboard-icon-type 'all-the-icons)
     (dashboard-set-init-info t)
     (dashboard-startup-banner 'logo)
     (dashboard-image-banner-max-width 80)
@@ -504,7 +509,20 @@
                        (agenda . 5)))
     (initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
     :config
+    (setq dashboard-set-navigator t)
+    (setq  dashboard-navigator-buttons `((
+      ("🗒️" "scratch" "show scratch buffer" (lambda (&rest _) (scratch-buffer)))
+      ("📕" "manual" "show emacs manual" (lambda (&rest _) (info-emacs-manual)))
+      ("♻️" "restart" "restart emacs" (lambda (&rest _) (restart-emacs)))
+      ("⏩" "pkgupdate" "update packages with elpaca" (lambda (&rest _) (elpaca-merge-all t t)))
+      ("📁" "files" "start dirvish" (lambda (&rest _) (dirvish)))
+      ("✉️" "mail" "start mu4e" (lambda (&rest _) (mu4e)))
+      ("📃" "feed" "start elfeed" (lambda (&rest _) (elfeed)))
+      )))
     (dashboard-setup-startup-hook)
+    ;; :hook (emacs-startup-hook . dashboard-open)
+    ;; :bind
+    ;;  ("<C-i> i" . dashboard-open)
     )
 
   ;; ;; @see: https://gitlab.com/jdm204/dotfiles/-/blob/master/config.org
@@ -527,21 +545,6 @@
   ;;                      (bookmarks . 5)
   ;;                      (projects . 5)
   ;;                      (agenda . 5))
-  ;;    ;; dashboard-navigator-buttons `((
-  ;;    ;;  ("🗒️" "scratch" "show scratch buffer" (lambda (&rest _) (scratch-buffer)))
-  ;;    ;;  ("📕" "manual" "show emacs manual" (lambda (&rest _) (info-emacs-manual)))
-  ;;    ;;  ("♻️" "restart" "restart emacs" (lambda (&rest _) (restart-emacs)))
-  ;;    ;;  ("⏩" "pkgupdate" "update packages with elpaca" (lambda (&rest _) (elpaca-merge-all t t)))
-  ;;    ;;  ("📁" "files" "start dirvish" (lambda (&rest _) (dirvish)))
-  ;;    ;;  ("✉️" "mail" "start mu4e" (lambda (&rest _) (mu4e)))
-  ;;    ;;  ("📃" "feed" "start elfeed" (lambda (&rest _) (elfeed)))
-  ;;    ;;  ))
-  ;;    )
-  ;;   :after all-the-icons
-  ;;   :hook (emacs-startup-hook . dashboard-open)
-  ;;   ;; :bind
-  ;;   ;; ("<C-i> i" . dashboard-open)
-  ;;   )
 
 
   ;; }}}  .ui
@@ -1442,11 +1445,6 @@
   ;;   (marginalia-align 'right)
   ;;   :init
   ;;   (marginalia-mode))
-
-  ;; icon fonts: M-x all-the-icons-install-fonts
-  (use-package all-the-icons
-    :ensure t
-    )
 
 
   (use-package all-the-icons-completion
@@ -5298,6 +5296,54 @@ With a prefix ARG, remove start location."
     )
 ;; org-citar ends here
 
+;; Org consult
+;; #+NAME: org-consult
+
+;; [[file:site-pkgs.org::org-consult][org-consult]]
+  ;; ---( consul-notes )--------------------------------------------------------------
+
+   ;; @see: https://github.com/mclear-tools/consult-notes
+
+(use-package consult-notes
+  ;; :disabled t
+  :ensure t
+  ;; :straight (:type git :host github :repo "mclear-tools/consult-notes")
+  :commands (consult-notes
+             consult-notes-search-in-all-notes
+             ;; if using org-roam 
+             ;; consult-notes-org-roam-find-node
+             ;; consult-notes-org-roam-find-node-relation
+             )
+  :config
+  ;; (setq consult-notes-file-dir-sources '(("Name"  ?key  "path/to/dir"))) ;; Set notes dir(s), see below
+  ;; Set org-roam integration, denote integration, or org-heading integration e.g.:
+  ;; (setq consult-notes-org-headings-files '("~/path/to/file1.org"
+  ;;                                         "~/path/to/file2.org"))
+  (consult-notes-org-headings-mode)
+  (when (locate-library "denote")
+    (consult-notes-denote-mode))
+  ;; search only for text files in denote dir
+  (setq consult-notes-denote-files-function (function denote-directory-text-only-files))
+
+  ;; (defun consult-notes-my-embark-function (cand)
+  ;;   "Do something with CAND"
+  ;;   (interactive "fNote: ")
+  ;;   (my-function))
+
+  ;; (defvar-keymap consult-notes-map
+  ;;   :doc "Keymap for Embark notes actions."
+  ;;   :parent embark-file-map
+  ;;   "m" #'consult-notes-my-embark-function)
+
+  ;; (add-to-list 'embark-keymap-alist `(,consult-notes-category . consult-notes-map))
+
+  ;; ;; make embark-export use dired for notes
+  ;; (setf (alist-get consult-notes-category embark-exporters-alist) #'embark-export-dired)
+
+
+  )
+;; org-consult ends here
+
 ;; Org ref
 ;; #+NAME: org-ref
 
@@ -6094,7 +6140,32 @@ With a prefix ARG, remove start location."
               ("<tab>" hydra-master/body "back")
               ("<ESC>" nil "quit"))
 
-(global-set-key (kbd "C-c 2") 'hydra-buffers/body)
+(global-set-key (kbd "C-c 3") 'hydra-buffers/body)
+
+    ;; ---( hydra-projects )--------------------------------------------------------------
+
+    (defhydra hydra-projects (:color blue :hint nil)
+              "
+                                                                      ╭──-───────┐
+         Projects         Session                 Bookmarks           │ Projects │
+  ╭───────────────────────────────────────────────────────────────────┴─-────────╯
+       [_pD_] dired       [_ss_] save-session     [_b_] bookmarks
+       [_pf_] find-file   [_sr_] read-session     [_d_] dashboard
+       [_pg_] grep-file
+  --------------------------------------------------------------------------------
+              "
+              ("pD" project-dired)
+              ("pf" project-find-file)
+              ("pg" project-find-regexp)
+              ("ss" desktop-save)
+              ("sr" desktop-read)
+              ("b"  bookmark-bmenu-list)
+              ("d"  dashboard-open)
+              ("\\" hydra-master/body "back")
+              ("<tab>" hydra-master/body "back")
+              ("<ESC>" nil "quit"))
+
+(global-set-key (kbd "C-c 2") 'hydra-projects/body)
 
     ;; ---( hydra-window )--------------------------------------------------------------
 
@@ -6146,15 +6217,17 @@ With a prefix ARG, remove start location."
    ^Hydras                                      Prefix
    ^─────────------------------------------------------
    _w_ windows            C-c 1
-   _b_ buffers            C-c 2
-   _p_ pdf-tools          C-c 3
-   _e_ engine-mode        C-c 4
+   _p_ projects           C-c 2
+   _b_ buffers            C-c 3
+   _d_ pdf-tools          C-c 4
    _n_ denote             C-c 5
+   _e_ engine-mode        C-c 6
    ^────────-------------------------------------------
    "
 
   ("e"   hydra-engine/body :color amaranth)
-  ("p"   hydra-pdftools/body :color blue)
+  ("d"   hydra-pdftools/body :color blue)
+  ("p"   hydra-projects/body :color blue)
   ("b"   hydra-buffers/body :color blue)
   ("w"   hydra-window/body :color blue)
   ("n"   hydra-denote/body :color green)
