@@ -514,7 +514,7 @@
       ("★" "scratch" "show scratch buffer" (lambda (&rest _) (switch-to-buffer "*scratch*")))
       ("★" "restore" "desktop" (lambda (&rest _) (desktop-read)))
       ("★" "files" "recent files" (lambda (&rest _) (recentf-open-files)))
-      ("★" "view" "view url" (lambda (&rest _) (crux-view-url))
+      ("★" "view" "view url" (lambda (&rest _) (crux-view-url)))
       ("★" "packages" "list packages" (lambda (&rest _) (list-packages)))
       ("★" "restart" "restart emacs" (lambda (&rest _) (restart-emacs)))
       ("★" "mail" "start mu4e" (lambda (&rest _) (mu4e)))
