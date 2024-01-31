@@ -2,7 +2,7 @@
 
 firefox &
 #LG=2=; xfce4-terminal  --geometry 224x32+32-72 --hide-borders -e "less +F $HOME/.xsession-errors" &
-LG=2=; xfce4-terminal  --geometry 195x32+34-72 --hide-borders -e "less +F $HOME/.xsession-errors" &
+LG=2=; xfce4-terminal  --geometry 195x32+34-72 --hide-borders -e "tmux new-session 'less +F $HOME/.xsession-errors' ; split-window 'sudo journalctl -f'" &
 
 es=140; emacs --eval="(set-face-attribute 'mode-line nil  :height $es)" --eval="(set-face-attribute 'default (selected-frame) :height $es)" &
 
@@ -17,7 +17,7 @@ TILIX_RUN=~/.config/tilix/tilix-run.sh
 
 #urxvt &
 urxvt -fn 'xft:Droid Sans Mono:pixelsize=13' \
-    -e zsh -c "ee=0; ssh-add ~/.ssh/id_rsa; ssh-add ~/.ssh/uh; cat  ~/.rup/* ; ssh-add ~/.ssh/un; exec zsh --login" &
+    -e zsh -c "ee=0; ssh-add ~/.ssh/id_rsa; ssh-add ~/.ssh/uh; cat  ~/.rup/* ; ssh-add ~/.ssh/un; ssh-add ~/.ssh/id_e35; exec zsh --login" &
 #urxvt -fn 'xft:Droid Sans Mono:pixelsize=13' \
 #    -e zsh -c "ee=4; ssh-add; ssh-add -l; cat  ~/.rup/* ; exec zsh --login" &
 

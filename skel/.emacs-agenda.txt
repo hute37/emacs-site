@@ -1,0 +1,2 @@
+~/work/bu/org-info/todo.org
+~/work/bv/box-up/todo.org

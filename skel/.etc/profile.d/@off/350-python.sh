@@ -5,7 +5,6 @@
 #  virtualenv (wrapper) python environment
 #
 
-venv_wrap_sh() {
 
 SYS_PYTHON=`which python`
 VIRTUALENVWRAPPER_PYTHON="$SYS_PYTHON"
@@ -25,4 +24,3 @@ set -a
 [ -r $VENV_CONFIG ] && . $VENV_CONFIG || true
 set +a
 
-}

@@ -1,0 +1,5 @@
+[roxterm profile]
+hide_menubar=1
+disable_menu_access=1
+disable_menu_shortcuts=1
+disable_tab_menu_shortcuts=1

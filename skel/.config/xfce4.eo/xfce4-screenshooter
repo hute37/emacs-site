@@ -1,0 +1,11 @@
+app=eom
+last_user=
+screenshot_dir=file:///home/gp21012/Pictures
+action=2
+delay=0
+region=1
+show_mouse=1
+last_extension=png
+enable_imgur_upload=true
+show_border=1
+
