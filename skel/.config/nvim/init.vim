@@ -262,6 +262,9 @@ Plug 'mbbill/undotree'
 "[[ Search ]]
 Plug 'jremmen/vim-ripgrep'
 
+"[[ Lang ]]
+Plug 'hashivim/vim-terraform'
+
 "[[ Coding ]]
 ""Plug 'lyuts/vim-rtags'
 

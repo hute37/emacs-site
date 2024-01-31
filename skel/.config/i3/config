@@ -80,13 +80,9 @@ workspace_auto_back_and_forth yes
 
 #exec --no-startup-id localectl --options caps:hyper,alt_win:menu
 #exec --no-startup-id setxkbmap it
-#exec --no-startup-id xmodmap ~/.Xmodmap
-
-exec_always --no-startup-id _xmodmap-def.sh
-exec_always --no-startup-id _xrandr-def.sh
+#exec --no-startup-id xmodmapA ~/.Xmodmap
 
 # Autostarts
-
 
 # lxappearance &; gtk-chtheme &; q4-qtconfig &
 # gnome daemon aus

@@ -4,7 +4,6 @@
 #  virtualenv (wrapper) python environment
 #
 
-venv_wrap_zsh() {
 
 export SYS_PYTHON=`which python`
 export VIRTUALENVWRAPPER_PYTHON="$SYS_PYTHON"
@@ -25,5 +24,3 @@ mkdir -p $WORKON_HOME
 if [ -n "$VENV_NAME" ] ; then
     workon "$VENV_NAME"
 fi
-
-}

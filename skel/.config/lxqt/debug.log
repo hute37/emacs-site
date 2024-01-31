@@ -1,0 +1,46 @@
+2021-12-15 11:42:51.783 (0x7ffee352d980) Warning: QXcbConnection: XCB error: 1 (BadRequest), sequence: 168, resource id: 313, major code: 130 (Unknown), minor code: 47
+2021-12-15 11:43:43.197 (0x7ffd682ee670) Debug: New PolkitAgentListener  0x561d5ebf9400
+2021-12-15 11:43:43.197 (0x7ffd682ee670) Debug: Adding new listener  PolkitQt1::Agent::Listener(0x7ffd682ee680) for  0x561d5ebf9400
+2021-12-15 11:43:43.213 (0x7ffc56925290) Warning: QXcbConnection: XCB error: 1 (BadRequest), sequence: 168, resource id: 313, major code: 130 (Unknown), minor code: 47
+2021-12-15 11:43:43.277 (0x7ffd682ee670) Warning: QXcbConnection: XCB error: 1 (BadRequest), sequence: 168, resource id: 313, major code: 130 (Unknown), minor code: 47
+2021-12-15 11:43:43.589 (0x7ffd93be9740) Debug: XdgDesktopFile "/usr/share/applications/featherpad.desktop" is not valid
+2021-12-15 11:43:43.695 (0x7ffd93be9740) Debug: ()
+2021-12-15 11:43:43.716 (0x7fff07fee560) Debug: systemd: "CanHibernate" = "na"
+2021-12-15 11:43:43.717 (0x7fff07fee560) Warning: ** Dbus error **************************
+2021-12-15 11:43:43.717 (0x7fff07fee560) Warning: Error name  "org.freedesktop.DBus.Error.InvalidArgs"
+2021-12-15 11:43:43.717 (0x7fff07fee560) Warning: Error msg   "No such interface “org.freedesktop.DBus.Properties”"
+2021-12-15 11:43:43.718 (0x7fff07fee560) Warning: ****************************************
+2021-12-15 11:43:43.719 (0x7fff07fee560) Warning: dbusCall: QDBusInterface is invalid "org.freedesktop.ConsoleKit" "/org/freedesktop/ConsoleKit/Manager" "org.freedesktop.ConsoleKit.Manager" "CanHibernate"
+2021-12-15 11:43:43.727 (0x7fff07fee560) Debug: systemd: "CanSuspend" = "challenge"
+2021-12-15 11:43:43.749 (0x7ffee352d980) Debug: systemd: "CanReboot" = "challenge"
+2021-12-15 11:43:43.759 (0x7ffee352d980) Debug: systemd: "CanPowerOff" = "challenge"
+2021-12-15 11:43:44.017 (0x7fff07fee560) Warning: QXcbConnection: XCB error: 1 (BadRequest), sequence: 168, resource id: 313, major code: 130 (Unknown), minor code: 47
+2021-12-15 11:43:44.061 (0x7ffeb8b51620) Warning: QXcbConnection: XCB error: 1 (BadRequest), sequence: 168, resource id: 313, major code: 130 (Unknown), minor code: 47
+2021-12-15 11:44:13.780 (0x7ffd93be9740) Warning: "Connection failure: Timeout"
+2021-12-15 11:44:13.924 (0x7ffd93be9740) Debug: WinIdChange c00008 handle QWidgetWindow(0x55723c190110, name="LXQtPanel panel1Window") QScreen(0x55723bfeb9b0, name="NX1")
+2021-12-15 11:44:14.012 (0x7ffd93be9740) Debug: Systray started
+2021-12-15 11:44:33.736 (0x7fff56170850) Debug: Starting idlenesswatcher
+2021-12-15 11:44:33.740 (0x7fff56170850) Warning: QXcbConnection: XCB error: 1 (BadRequest), sequence: 168, resource id: 313, major code: 130 (Unknown), minor code: 47
+2021-12-15 11:44:45.546 (0x7ffd93be9740) Warning: "Connection failure: Timeout"
+2021-12-15 11:44:45.546 (0x7ffd93be9740) Warning: QXcbConnection: XCB error: 1 (BadRequest), sequence: 168, resource id: 313, major code: 130 (Unknown), minor code: 47
+2021-12-15 11:45:16.764 (0x7ffd93be9740) Warning: "Connection failure: Timeout"
+2021-12-15 11:45:16.773 (0x7ffd93be9740) Debug: execAction "/usr/share/applications/pcmanfm-qt.desktop"
+2021-12-15 11:45:16.784 (0x7ffd93be9740) Debug: execAction "/usr/share/applications/qterminal.desktop"
+2021-12-15 11:45:47.218 (0x7ffd93be9740) Warning: "Connection failure: Timeout"
+2021-12-15 11:46:17.341 (0x7ffd93be9740) Warning: "Connection failure: Timeout"
+2021-12-15 11:46:47.463 (0x7ffd93be9740) Warning: "Connection failure: Timeout"
+2021-12-15 11:47:17.588 (0x7ffd93be9740) Warning: "Connection failure: Timeout"
+2021-12-15 11:47:47.723 (0x7ffd93be9740) Warning: "Connection failure: Timeout"
+2021-12-15 11:48:17.850 (0x7ffd93be9740) Warning: "Connection failure: Timeout"
+2021-12-15 11:48:47.971 (0x7ffd93be9740) Warning: "Connection failure: Timeout"
+2021-12-15 11:49:18.112 (0x7ffd93be9740) Warning: "Connection failure: Timeout"
+2021-12-15 11:49:43.187 (0x7ffee352d980) Warning: The X11 connection broke (error 1). Did the X11 server die?
+2021-12-15 11:49:43.191 (0x7ffeb8b51620) Warning: The X11 connection broke (error 1). Did the X11 server die?
+2021-12-15 11:49:43.193 (0x7fff07fee560) Warning: The X11 connection broke (error 1). Did the X11 server die?
+2021-12-15 11:49:43.193 (0x7ffd682ee670) Warning: The X11 connection broke (error 1). Did the X11 server die?
+2021-12-15 11:49:43.197 (0x7ffc56925290) Warning: The X11 connection broke (error 1). Did the X11 server die?
+2021-12-15 11:49:43.200 (0x7fff56170850) Warning: The X11 connection broke (error 1). Did the X11 server die?
+2021-12-15 11:49:43.915 (0x7ffd93be9740) Warning: "Connection failure: Connection terminated"
+2021-12-15 11:49:43.916 (0x7ffd93be9740) Warning: The X11 connection broke (error 1). Did the X11 server die?
+2021-12-15 23:32:24.360 (0x7ffd93be9740) Critical: unable to write into socketpair: Bad file descriptor
+2021-12-15 23:32:24.365 (0x7ffd93be9740) Critical: unable to write into socketpair: Bad file descriptor

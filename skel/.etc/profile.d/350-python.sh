@@ -2,25 +2,6 @@
 # -*- mode: shell-script;-*-
 export PY_RC_PROFILE=1
 
-if [ -n "$ZSH_VERSION" ]; then
-    export PY_RC_MODE=1
-elif [ -n "$BASH_VERSION" ]; then
-    export PY_RC_MODE=2
-else
-    export PY_RC_MODE=0
-fi
-
-unset PY_RC_ENV
-unset PY_RC_POETRY
-unset PY_RC_VENV
-
-
-
-# {{{ [PYENV] ---------------------------------------------------------------
-case "$PY_RC_MODE" in
-    1)
-# ...............
-
 ##
 #  pyenv environment
 #
@@ -32,7 +13,7 @@ if [ -d $HOME/.pyenv ]; then
 py_rc_env_sh() {
 
 export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
 
@@ -43,17 +24,6 @@ py_rc_env_sh
 fi
 fi
 
-# ...............
-        ;;
-    *)  ;;
-esac
-# ]]] ---
-
-
-# {{{ [POETRY] ---------------------------------------------------------------
-case "$PY_RC_MODE" in
-    1)
-# ...............
 
 ##
 #  poetry environment
@@ -74,20 +44,8 @@ py_rc_poetry_sh
 fi
 fi
 
-# ...............
-        ;;
-    *)  ;;
-esac
-# ]]] ---
 
 
-
-
-
-# {{{ [POETRY] ---------------------------------------------------------------
-case "$PY_RC_MODE" in
-    1)
-# ...............
 
 ##
 #  virtualenv (wrapper) python environment
@@ -121,13 +79,5 @@ set +a
 py_rc_venv_wrap_sh
 
 fi
-
-
-# ...............
-        ;;
-    *)  ;;
-esac
-# ]]] ---
-
 
 

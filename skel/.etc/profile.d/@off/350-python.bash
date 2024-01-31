@@ -4,8 +4,6 @@
 #  virtualenv (wrapper) python environment
 #
 
-venv_wrap_bash() {
-
 export SYS_PYTHON=`which python`
 export VIRTUALENVWRAPPER_PYTHON="$SYS_PYTHON"
 export VIRTUALENVWRAPPER_SCRIPT=`which virtualenvwrapper.sh`
@@ -23,5 +21,3 @@ set +a
 if [ -n "$VENV_NAME" ] ; then 
     workon "$VENV_NAME"
 fi
-
-}
