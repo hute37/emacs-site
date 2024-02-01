@@ -513,12 +513,15 @@
     (setq  dashboard-navigator-buttons `((
       ("★" "scratch" "show scratch buffer" (lambda (&rest _) (switch-to-buffer "*scratch*")))
       ("★" "restore" "desktop" (lambda (&rest _) (desktop-read)))
+      ("★" "project" "project files" (lambda (&rest _) (project-dired)))
       ("★" "files" "recent files" (lambda (&rest _) (recentf-open-files)))
       ("★" "view" "view url" (lambda (&rest _) (crux-view-url)))
-      ("★" "packages" "list packages" (lambda (&rest _) (list-packages)))
-      ("★" "restart" "restart emacs" (lambda (&rest _) (restart-emacs)))
-      ("★" "mail" "start mu4e" (lambda (&rest _) (mu4e)))
+      ;;("★" "packages" "list packages" (lambda (&rest _) (list-packages)))
+      ;;("★" "mail" "start mu4e" (lambda (&rest _) (mu4e)))
+      ("★" "term" "project vterm" (lambda (&rest _) (projectile-run-vterm)))
+      ("★" "shell" "project eshell" (lambda (&rest _) (project-eshell)))
       ("★" "feed" "start elfeed" (lambda (&rest _) (elfeed)))
+      ("★" "restart" "restart emacs" (lambda (&rest _) (restart-emacs)))
       ("★" "manual" "emacs manual" (lambda (&rest _) (info-emacs-manual)))
       )))
     (dashboard-setup-startup-hook)
@@ -5962,10 +5965,11 @@ With a prefix ARG, remove start location."
   ("w" engine/search-wolframalpha    "Wolfram Alpha")
   ("y" engine/search-youtube         "YouTube")
   
-  ("<tab>" hydra-master/body "back")
+  ("\\" hydra-of-hydras/body "back")
+  ("<tab>" hydra-of-hydras/body "back")
   ("<ESC>" nil "quit"))
 
-(global-set-key (kbd "C-c 4") 'hydra-engine/body)
+(global-set-key (kbd "C-c 6") 'hydra-engine/body)
 
     ;; ---( hydra-orgnoter )--------------------------------------------------------------
 
@@ -5990,7 +5994,7 @@ With a prefix ARG, remove start location."
         ("Q" org-noter-kill-session :color red)
         ("N" org-noter :color red)
         ("\\" hydra-pdftools/body "[pdf-tools]")
-        ("<tab>" hydra-master/body "back")
+        ("<tab>" hydra-pdftools/body "back")
         ("<ESC>" nil "quit"))
 
 
@@ -6043,11 +6047,11 @@ With a prefix ARG, remove start location."
         ("l" image-forward-hscroll :color red)
         ("h" image-backward-hscroll :color red)
         ("." hydra-orgnoter/body "[org-noter]")
-        ("\\" hydra-master/body "back")
-        ("<tab>" hydra-master/body "back")
+        ("\\" hydra-of-hydras/body "back")
+        ("<tab>" hydra-of-hydras/body "back")
         ("<ESC>" nil "quit"))
 
-(global-set-key (kbd "C-c 3") 'hydra-pdftools/body)
+(global-set-key (kbd "C-c 4") 'hydra-pdftools/body)
 
 
     ;; ---( hydra-denote )--------------------------------------------------------------
@@ -6109,8 +6113,8 @@ With a prefix ARG, remove start location."
               ("p"   hydra-pdftools/body "[pdf-tools]" :color red)
               ("."   hydra-orgnoter/body "[org-noter]" :color red)
 
-              ("\\" hydra-master/body "back")
-              ("<tab>" hydra-master/body "back")
+              ("\\" hydra-of-hydras/body "back")
+              ("<tab>" hydra-of-hydras/body "back")
               ("<ESC>" nil "quit"))
 
 (global-set-key (kbd "C-c 5") 'hydra-denote/body)
@@ -6142,8 +6146,8 @@ With a prefix ARG, remove start location."
               ("s" helm-buffers-list)
               ("u" joe-revert-buffer)
               ("w" save-buffer)
-              ("\\" hydra-master/body "back")
-              ("<tab>" hydra-master/body "back")
+              ("\\" hydra-of-hydras/body "back")
+              ("<tab>" hydra-of-hydras/body "back")
               ("<ESC>" nil "quit"))
 
 (global-set-key (kbd "C-c 3") 'hydra-buffers/body)
@@ -6167,8 +6171,8 @@ With a prefix ARG, remove start location."
               ("sr" desktop-read)
               ("b"  bookmark-bmenu-list)
               ("d"  dashboard-open)
-              ("\\" hydra-master/body "back")
-              ("<tab>" hydra-master/body "back")
+              ("\\" hydra-of-hydras/body "back")
+              ("<tab>" hydra-of-hydras/body "back")
               ("<ESC>" nil "quit"))
 
 (global-set-key (kbd "C-c 2") 'hydra-projects/body)
@@ -6206,8 +6210,8 @@ With a prefix ARG, remove start location."
             ("v" split-window-horizontally :color red)
             ("w" other-window)
             ("z" delete-other-windows)
-            ("\\" hydra-master/body "back")
-            ("<tab>" hydra-master/body "back")
+            ("\\" hydra-of-hydras/body "back")
+            ("<tab>" hydra-of-hydras/body "back")
             ("<ESC>" nil "quit"))
 
 (global-set-key (kbd "C-c 1") 'hydra-window/body)
@@ -6232,11 +6236,11 @@ With a prefix ARG, remove start location."
    "
 
   ("e"   hydra-engine/body :color amaranth)
-  ("d"   hydra-pdftools/body :color blue)
-  ("p"   hydra-projects/body :color blue)
-  ("b"   hydra-buffers/body :color blue)
-  ("w"   hydra-window/body :color blue)
   ("n"   hydra-denote/body :color green)
+  ("d"   hydra-pdftools/body :color blue)
+  ("b"   hydra-buffers/body :color blue)
+  ("p"   hydra-projects/body :color blue)
+  ("w"   hydra-window/body :color blue)
   ("<ESC>" nil "quit"))
 
 (global-set-key (kbd "C-c 0") 'hydra-of-hydras/body)
