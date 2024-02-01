@@ -392,7 +392,7 @@
 
 ;; ---( F2: Bookmarks/Breakpoints )-------------------------------------
 
-(global-set-key [f2] ' bookmark-bmenu-list)
+(global-set-key [f2] 'dashboard-open)
 (global-set-key [(shift f2)] 'bookmark-set )
 
 (global-set-key [(control f2)]
@@ -405,8 +405,8 @@
            (hs-toggle-hiding)
 	   (hs-minor-mode nil)))))
 
-(global-set-key [(meta f2)]	'dashboard-open)
-(global-set-key [(hyper f2)]	'dashboard-open)
+(global-set-key [(meta f2)]	'bookmark-bmenu-list)
+(global-set-key [(hyper f2)]	'bookmark-bmenu-list)
 (global-set-key [(shift meta f2)]
     #'(lambda () (interactive)
         (progn
