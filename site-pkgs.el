@@ -513,6 +513,7 @@
     (setq  dashboard-navigator-buttons `((
       ("★" "scratch" "show scratch buffer" (lambda (&rest _) (switch-to-buffer "*scratch*")))
       ("★" "restore" "desktop" (lambda (&rest _) (desktop-read)))
+      ("★" "marks" "bookmrks" (lambda (&rest _) (bookmark-bmenu-list)))
       ("★" "project" "project files" (lambda (&rest _) (project-dired)))
       ("★" "files" "recent files" (lambda (&rest _) (recentf-open-files)))
       ("★" "view" "view url" (lambda (&rest _) (crux-view-url)))
