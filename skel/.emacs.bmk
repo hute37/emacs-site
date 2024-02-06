@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("^DSBOX.doc.#meta"
+((".emacs-conf#elfeed.org"
+ (filename . "~/.rss/elfeed.org")
+ (front-context-string . "** emacs        ")
+ (rear-context-string . "       :elfeed:\n")
+ (position . 79))
+("^DSBOX.doc.#meta"
  (filename . "~/work/bv/box-up/notes/nat/")
  (front-context-string . "..\n  -rw-rw-r-- ")
  (rear-context-string . "01-19 13:22 		")
@@ -293,11 +298,6 @@
  (front-context-string . "doc\n  drwxr-xr-x")
  (rear-context-string . "96 mar  4 12:41 ")
  (position . 208))
-("*emacs.templates*"
- (filename . "~/.emacs-site/templates/")
- (front-context-string . "..\n  drwxr-sr-x ")
- (rear-context-string . "96 Mar  3 17:51 ")
- (position . 172))
 ("todo.txt"
  (filename . "~/Dropbox/Todo/todo.txt")
  (front-context-string . "(A) todo.txt ini")
