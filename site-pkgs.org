@@ -540,7 +540,11 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
     (setq  dashboard-navigator-buttons `((
       ("★" "scratch" "show scratch buffer" (lambda (&rest _) (switch-to-buffer "*scratch*")))
       ("★" "restore" "desktop" (lambda (&rest _) (desktop-read)))
-      ("★" "marks" "bookmrks" (lambda (&rest _) (bookmark-bmenu-list)))
+      ("★" "marks" "bookmrks" (lambda (&rest _)
+                                (require 'bookmark)                  
+                                (bookmark-bmenu-list)                
+                                (switch-to-buffer "*Bookmark List*")
+                                ))
       ("★" "project" "project files" (lambda (&rest _) (project-dired)))
       ("★" "files" "recent files" (lambda (&rest _) (recentf-open-files)))
       ("★" "view" "view url" (lambda (&rest _) (crux-view-url)))
@@ -4397,8 +4401,8 @@ P
   ;; @see: http://feedly.com/i/opml
 
   (use-package elfeed-org
-    :disabled t
-  ;;:ensure t
+  ;;:disabled t
+    :ensure t
     :config (progn
               (use-package elfeed
                 :ensure t

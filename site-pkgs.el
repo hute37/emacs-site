@@ -513,7 +513,11 @@
     (setq  dashboard-navigator-buttons `((
       ("★" "scratch" "show scratch buffer" (lambda (&rest _) (switch-to-buffer "*scratch*")))
       ("★" "restore" "desktop" (lambda (&rest _) (desktop-read)))
-      ("★" "marks" "bookmrks" (lambda (&rest _) (bookmark-bmenu-list)))
+      ("★" "marks" "bookmrks" (lambda (&rest _)
+                                (require 'bookmark)                  
+                                (bookmark-bmenu-list)                
+                                (switch-to-buffer "*Bookmark List*")
+                                ))
       ("★" "project" "project files" (lambda (&rest _) (project-dired)))
       ("★" "files" "recent files" (lambda (&rest _) (recentf-open-files)))
       ("★" "view" "view url" (lambda (&rest _) (crux-view-url)))
@@ -4164,8 +4168,8 @@
   ;; @see: http://feedly.com/i/opml
 
   (use-package elfeed-org
-    :disabled t
-  ;;:ensure t
+  ;;:disabled t
+    :ensure t
     :config (progn
               (use-package elfeed
                 :ensure t
@@ -4506,7 +4510,7 @@
     ;; (setq-default pdf-view-display-size 'fit-page)
 
     ;; automatically annotate highlights
-    ;; (setq pdf-annot-activate-created-annotations t)
+    (setq pdf-annot-activate-created-annotations nil)
 
 
     ;; turn off cua so copy works
@@ -4548,7 +4552,8 @@
         	;; ("y"  . pdf-view-kill-ring-save)
         	;; ("i"  . pdf-misc-display-metadata)
         	("s"  . pdf-occur)
-        	("o"  . pdf-outline)
+        	("s"  . pdf-occur)
+        	("N"  . org-noter)
         	;; ("b"  . pdf-view-set-slice-from-bounding-box)
         	;; ("r"  . pdf-view-reset-slice)
         	)
