@@ -48,7 +48,7 @@ y = 1
 [window]
 decorations = "None"
 dynamic_padding = true
-#startup_mode = "Maximized"
+startup_mode = "Maximized"
 
 [window.padding]
 x = 6
