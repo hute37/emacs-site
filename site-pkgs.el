@@ -4170,6 +4170,21 @@
   (use-package elfeed-org
   ;;:disabled t
     :ensure t
+    :init
+    (defun h7/elfeed-load-db-and-open ()
+      "Wrapper to load the elfeed db from disk before opening"
+      (interactive)
+      (elfeed-org)
+      (elfeed-db-load)
+      (elfeed)
+      (elfeed-search-update--force))
+
+    ;;write to disk when quiting
+    (defun h7/elfeed-save-db-and-bury ()
+      "Wrapper to save the elfeed db to disk before burying buffer"
+      (interactive)
+      (elfeed-db-save)
+      (quit-window))    
     :config (progn
               (use-package elfeed
                 :ensure t
