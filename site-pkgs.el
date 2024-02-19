@@ -1422,6 +1422,7 @@
 ;; [[file:site-pkgs.org::comp-mb-ver-begin][comp-mb-ver-begin]]
   ;; ===( vertico )=============================================================
 
+   ;; @see: https://protesilaos.com/codelog/2024-02-17-emacs-modern-minibuffer-packages/
    ;; @see: https://kristofferbalintona.me/posts/202202211546/
 
   (message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico))
@@ -1438,13 +1439,13 @@
     :general
     (:keymaps 'minibuffer-local-map
               "M-A" 'marginalia-cycle)
-    :custom
-    (marginalia-max-relative-age 0)
+    ;;:custom
+    ;;(marginalia-max-relative-age 0)
     ;;(marginalia-align 'right)
     :config
     (set-face-attribute 'marginalia-documentation nil :underline nil)
-    :init
-    (marginalia-mode))
+    (marginalia-mode 1)
+    )
 
   ;; (use-package marginalia
   ;;   :general
@@ -1474,7 +1475,7 @@
   (use-package vertico
     :ensure t
     :config
-    (vertico-mode))
+    (vertico-mode 1))
 
   ;; (use-package vertico
   ;;   :custom
@@ -2107,8 +2108,19 @@
 
   ;; ---( ag )--------------------------------------------------------------
 
+
+;; The `wgrep' packages lets us edit the results of a grep search
+;; while inside a `grep-mode' buffer.  All we need is to toggle the
+;; editable mode, make the changes, and then type C-c C-c to confirm
+;; or C-c C-k to abort.
+;;
+;; Further reading: https://protesilaos.com/emacs/dotemacs#h:9a3581df-ab18-4266-815e-2edd7f7e4852
   (use-package wgrep
     :ensure t
+    :bind ( :map grep-mode-map
+          ("e" . wgrep-change-to-wgrep-mode)
+          ("C-x C-q" . wgrep-change-to-wgrep-mode)
+          ("C-c C-c" . wgrep-finish-edit))
     :custom
     (wgrep-enable-key "e")
     (wgrep-auto-save-buffer )
