@@ -1903,6 +1903,7 @@
 
   ;; ---( dired )--------------------------------------------------------------
 
+  ;; @see: https://protesilaos.com/codelog/2023-06-26-emacs-file-dired-basics/
 
   (use-package dired
     ;; :straight (:type built-in)
@@ -1917,6 +1918,7 @@
 
     (dired-listing-switches "-alvhp --dired --group-directories-first")
 
+    (dired-by-moving-to-trash t)
     (dired-recursive-copies 'always)
     (dired-recursive-deletes 'always)
     (dired-dwim-target t) ;;use to copy to the next buffer visible
@@ -1943,6 +1945,18 @@
     (setq dired-omit-files "^\\.?#\\|^\\.$")
     (setq dired-omit-files
           (concat dired-omit-files "\\|^.DS_STORE$\\|^.projectile$\\|^.git$"))
+    
+    ;; Teach Dired to use a specific external program with either the
+    ;; `dired-do-shell-command' or `dired-do-async-shell-command' command
+    ;; (with the default keys, those are bound to `!' `&', respectively).
+    ;; The first string is a pattern match against file names.  The
+    ;; remaining strings are external programs that Dired will provide as
+    ;; suggestions.  Of course, you can always type an arbitrary program
+    ;; despite these defaults.
+    (setq dired-guess-shell-alist-user
+          '(("\\.\\(png\\|jpe?g\\|tiff\\)" "feh" "xdg-open")
+            ("\\.\\(mp[34]\\|m4a\\|ogg\\|flac\\|webm\\|mkv\\)" "mpv" "xdg-open")
+	    (".*" "xdg-open")))
     )
 
   ;; find-dired: dired find
