@@ -7,8 +7,8 @@
     deparse.max.lines = 2,
     help_type = 'text', width = 80,
     github.user = 'hute37',
-    devtools.name = 'Giovanni Pelosi',
-    devtools.desc.author = 'Giovanni Pelosi <hute37@gmail.com>',
+    devtools.name = 'ht37',
+    devtools.desc.author = 'ht37 <hute37@gmail.com>',
     devtools.desc.license = 'GPL-3',
     warnPartialMatchAttr = TRUE,
     warnPartialMatchDollar = TRUE

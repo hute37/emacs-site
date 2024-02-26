@@ -6,7 +6,7 @@ set imap_pass = "PASSWORD"
 set smtp_url = "smtp://hute37@smtp.gmail.com:587/"
 set smtp_pass = "PASSWORD"
 set from = "hute37@gmail.com"
-set realname = "Giovanni Pelosi"
+set realname = "ht37"
 
 # Change the following line to a different editor you prefer.
 set editor = "nano"

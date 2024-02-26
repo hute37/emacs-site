@@ -3,7 +3,7 @@
 
 ;; ---( ... )--------------------------------------------------------------
 
-(setq user-full-name "Giovanni Pelosi"
+(setq user-full-name "ht37"
       user-mail-address "hute37@gmail.com")
 
 ;; ---( site.user: end )-------------------------------------------------------
