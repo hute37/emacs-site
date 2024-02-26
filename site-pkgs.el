@@ -4,7 +4,7 @@
 ;; [[file:site-pkgs.org::lic-head][lic-head]]
 ;;; site-pkgs.el --- literal emacs package configuration module in ~/.emacs config
 
-;; Author: Giovanni Pelosi <hute37@gmail.com>
+;; Author: ht37 <hute37@gmail.com>
 ;; URL: https://github.com/hute37/emacs-site
 
 ;; This file is NOT part of GNU Emacs.

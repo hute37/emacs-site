@@ -1,6 +1,6 @@
 ;;; site-keys.el --- keymap module in ~/.emacs config
 
-;; Author: Giovanni Pelosi <hute37@gmail.com>
+;; Author: ht37 <hute37@gmail.com>
 ;; URL: https://github.com/hute37/emacs-site
 
 ;; This file is NOT part of GNU Emacs.

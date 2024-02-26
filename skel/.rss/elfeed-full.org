@@ -142,7 +142,7 @@
 *** [[http://use.perl.org/index.rss][use Perl]]
 *** [[http://jobs.perl.org/rss/standard.rss][jobs.perl.org]]
 ** *Public
-*** [[http://hute37.wordpress.com/feed/][Giovanni Pelosi]]
+*** [[http://hute37.wordpress.com/feed/][ht37]]
 ** Bloggers
 *** [[http://www.azarask.in/blog/feed/][Aza on Design]]
 *** [[http://tech.puredanger.com/feed/rss/][Pure Danger Tech]]
@@ -160,7 +160,7 @@
 *** [[http://blogs.sun.com/enterprisetechtips/feed/entries/atom][Enterprise Tech Tips]]
 *** [[http://www.javaworld.com/news-reviews/index.xml][News & Views]]
 *** [[http://feeds.delicious.com/v2/rss/OracleTechnologyNetwork/java?count=15][Delicious/OracleTechnologyNetwork/java]]
-*** [[http://www.infoq.com/rss/rss.action?token=uLo0Kh6HRv7C0ok673cdtvOv3jWI0uv4][InfoQ Personalized Feed for Giovanni Pelosi]]
+*** [[http://www.infoq.com/rss/rss.action?token=uLo0Kh6HRv7C0ok673cdtvOv3jWI0uv4][InfoQ Personalized Feed for ht37]]
 *** [[http://www.ebaytechblog.com/feed/][eBay Tech Blog]]
 *** [[http://blogs.sun.com/CoreJavaTechTips/feed/entries/atom][Core Java Technologies Tech Tips]]
 *** [[http://feeds.dzone.com/javalobby/frontpage][Javalobby - The heart of the Java developer community]]
@@ -663,6 +663,6 @@
 *** [[http://blog.higher-order.com/atom.xml][Higher Order]]
 *** [[http://www.artima.com/articles/feeds/articles.rss][Artima Articles]]
 *** [[http://feeds.dzone.com/zones/refcardz?format=xml][Refcardz - Tech Facts at Your Fingertips]]
-*** [[http://www.infoq.com/rss/rss.action?token=uLo0Kh6HRv7C0ok673cdtvOv3jWI0uv4][InfoQ Personalized Feed for Giovanni Pelosi]]
+*** [[http://www.infoq.com/rss/rss.action?token=uLo0Kh6HRv7C0ok673cdtvOv3jWI0uv4][InfoQ Personalized Feed for ht37]]
 ** comp.ai
 *** [[http://hplusmagazine.com/taxonomy/term/2/0/feed][h+ Magazine - AI]]
