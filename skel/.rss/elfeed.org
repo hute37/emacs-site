@@ -5,8 +5,14 @@
 *** http://planet.emacsen.org/atom.xml
 *** http://feeds.feedburner.com/XahsEmacsBlog
 *** http://pragmaticemacs.com/feed/
-* Top posts by Month   :elfeed:
+
+
+* Top posts by Year                                   :elfeed:
+** [[https://sachachua.com/blog/category/yearly/feed/index.xml][emacs - yearly]]                                       :emacs:emacsy:
+
+* Top posts by Month                                                 :elfeed:
 ** [[https://www.reddit.com/r/emacs/top.rss?t=month][emacs - monthly]]  :emacs:
+
 * Top posts by Week   :elfeed:
 ** [[https://www.reddit.com/r/emacs/top.rss?t=week][emacs - weekly]] :emacs:
 ** [[https://www.reddit.com/r/golang/top.rss?t=week][golang - weekly]] :golang: 
