@@ -4180,78 +4180,144 @@
 ;; #+NAME: net-news-elfeed
 
 ;; [[file:site-pkgs.org::net-news-elfeed][net-news-elfeed]]
-  ;; ---( elfeed )--------------------------------------------------------------
+    ;; ---( elfeed )--------------------------------------------------------------
 
-  ;; @see: https://github.com/skeeto/elfeed
+    ;; @see: https://github.com/skeeto/elfeed
 
-  ;; (use-package elfeed
-  ;;   :ensure t
-  ;;   :defer 30
-  ;;   )
+    ;; (use-package elfeed
+    ;;   :ensure t
+    ;;   :defer 30
+    ;;   )
 
-  ;; @see: http://pragmaticemacs.com/emacs/read-your-rss-feeds-in-emacs-with-elfeed/
-  ;; @see: https://github.com/danlamanna/.emacs.d/blob/master/init.el
-  ;; @see: http://feedly.com/i/opml
+    ;; @see: http://pragmaticemacs.com/emacs/read-your-rss-feeds-in-emacs-with-elfeed/
+    ;; @see: https://protesilaos.com/emacs/dotemacs#h:adc258d3-f444-4bb5-8a8d-43025a689167
+    ;; @see: https://github.com/danlamanna/.emacs.d/blob/master/init.el
+    ;; @see: https://karthinks.com/software/lazy-elfeed/
+    ;; @see: http://feedly.com/i/opml
 
-  (use-package elfeed-org
-  ;;:disabled t
-    :ensure t
-    :init
-    (defun h7/elfeed-load-db-and-open ()
-      "Wrapper to load the elfeed db from disk before opening"
-      (interactive)
-      (elfeed-org)
-      (elfeed-db-load)
-      (elfeed)
-      (elfeed-search-update--force))
+    (use-package elfeed-org
+    ;;:disabled t
+      :ensure t
+      :init
+      (defun h7/elfeed-load-db-and-open ()
+	"Wrapper to load the elfeed db from disk before opening"
+	(interactive)
+	(elfeed-org)
+	(elfeed-db-load)
+	(elfeed)
+	(elfeed-search-update--force))
 
-    ;;write to disk when quiting
-    (defun h7/elfeed-save-db-and-bury ()
-      "Wrapper to save the elfeed db to disk before burying buffer"
-      (interactive)
-      (elfeed-db-save)
-      (quit-window))    
-    :config (progn
-              (use-package elfeed
-                :ensure t
-                :config (progn
-                          (custom-set-variables
-                           ;; oldest articles should be at the top
-                           '(elfeed-sort-order 'ascending))))
+      ;;write to disk when quiting
+      (defun h7/elfeed-save-db-and-bury ()
+	"Wrapper to save the elfeed db to disk before burying buffer"
+	(interactive)
+	(elfeed-db-save)
+	(quit-window))
 
-              (use-package elfeed-goodies
-                :ensure t
-                :config (progn
-                          (elfeed-goodies/setup)))
+      (defun h7/elfeed-display-buffer (buf &optional act)
+	(pop-to-buffer buf)
+	(set-window-text-height (get-buffer-window) (round (* 0.7 (frame-height)))))
 
-              (setq rmh-elfeed-org-files (list "~/.rss/elfeed.org"))
-              (elfeed-org)))
+      (defun h7/elfeed-scroll-up-command (&optional arg)
+	"Scroll up or go to next feed item in Elfeed"
+	(interactive "^P")
+	(let ((scroll-error-top-bottom nil))
+	  (condition-case-unless-debug nil
+	      (scroll-up-command arg)
+	    (error (elfeed-show-next)))))
 
-  ;; @see: https://gitlab.com/jdm204/dotfiles/-/raw/master/config.org
-  ;; (use-package elfeed
-  ;;   :config
-  ;;   (setq elfeed-feeds
-  ;;         '(("https://pubmed.ncbi.nlm.nih.gov/rss/search/1luR_fr_DOPOrUgd0SwfZa5OcNPAYBgU6eFmkHpBlEWGaA2kRX/?limit=50&utm_campaign=pubmed-2&fc=20220213090334" burkitt)
-  ;;           ("https://pubmed.ncbi.nlm.nih.gov/rss/search/181raCNN1P9YKA5Ksp5T-ppklvBYkJ0KGEv1no8RiVPoobtAoJ/?limit=50&utm_campaign=pubmed-2&fc=20220213141341" alcl)
-  ;;           ("https://pubmed.ncbi.nlm.nih.gov/rss/search/10ykRO9og5pEdqhr5lZEH9VOdy8V-cT_uke2kjg3JIO17wJEsW/?limit=50&utm_campaign=pubmed-2&fc=20220213141743" relapse-resistance)
-  ;;           ("https://pubmed.ncbi.nlm.nih.gov/rss/search/1jGcmCWm6MscNOQm4bUti4ntfYZO5twJzekwruxcvBOyo6tQAU/?limit=15&utm_campaign=pubmed-2&fc=20230101093540" ITH)
-  ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=bioinformatics" bioinformatics)
-  ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=cancer_biology" cancer)
-  ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=cell_biology" cell)
-  ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=genetics" genetics)
-  ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=genomics" genomics)
-  ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=immunology" immunology)
-  ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=pathology" pathology)
-  ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=molecular_biology" molecular)
-  ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=systems_biology" systems)))
-  ;;   :bind
-  ;;   ("<C-i> f" . elfeed))
+      (defun h7/elfeed-scroll-down-command (&optional arg)
+	"Scroll up or go to next feed item in Elfeed"
+	(interactive "^P")
+	(let ((scroll-error-top-bottom nil))
+	  (condition-case-unless-debug nil
+	      (scroll-down-command arg)
+	    (error (elfeed-show-prev)))))
 
-  ;; @see: https://github.com/algernon/elfeed-goodies
-  ;; (use-package elfeed-goodies
-  ;;   :ensure t
-  ;;   :defer 30
-  ;;   )
+      (defun h7/elfeed-show-eww-open (&optional use-generic-p)
+	"open with eww"
+	(interactive "P")
+	(let ((browse-url-browser-function #'eww-browse-url))
+	  (elfeed-show-visit use-generic-p)))
+
+      (defun h7/elfeed-search-eww-open (&optional use-generic-p)
+	"open with eww"
+	(interactive "P")
+	(let ((browse-url-browser-function #'eww-browse-url))
+	  (elfeed-search-browse-url use-generic-p)))    
+    
+      :config (progn
+		(use-package elfeed
+		  :ensure t
+		  :config (progn
+			    (custom-set-variables
+			     ;; oldest articles should be at the top
+			     '(elfeed-sort-order 'ascending))))
+
+		(use-package elfeed-goodies
+		  :ensure t
+		  ;; :config (progn
+		  ;;           (elfeed-goodies/setup)
+		  ;;          )
+		  )
+
+		(setq rmh-elfeed-org-files (list "~/.rss/elfeed.org"))
+		(elfeed-org)
+		)
+
+
+    
+      (setq elfeed-search-filter "@9-months-ago +unread")
+      (setq elfeed-sort-order 'descending)
+
+      (setq elfeed-search-clipboard-type 'CLIPBOARD)
+      (setq elfeed-search-title-max-width 100)
+      (setq elfeed-search-title-min-width 30)
+      (setq elfeed-search-trailing-width 25)
+      (setq elfeed-show-truncate-long-urls t)
+      (setq elfeed-show-unique-buffers t)
+      (setq elfeed-search-date-format '("%F %R" 16 :left))
+
+      ;; Make sure to also check the section on shr and eww for how I handle
+      ;; `shr-width' there.
+      (add-hook 'elfeed-show-mode-hook
+		(lambda () (setq-local shr-width (current-fill-column))))
+
+    
+      (setq elfeed-show-entry-switch #'h7/elfeed-display-buffer)
+    
+      ;; (define-key elfeed-show-mode-map (kbd "SPC") 'h7/elfeed-scroll-up-command)
+      ;; (define-key elfeed-show-mode-map (kbd "S-SPC") 'h7/elfeed-scroll-down-command)
+      (define-key elfeed-show-mode-map (kbd "B") 'h7/efleed-show-eww-open)
+      (define-key elfeed-search-mode-map (kbd "B") 'h7/efleed-search-eww-open)
+    
+      )
+
+    ;; @see: https://gitlab.com/jdm204/dotfiles/-/raw/master/config.org
+    ;; (use-package elfeed
+    ;;   :config
+    ;;   (setq elfeed-feeds
+    ;;         '(("https://pubmed.ncbi.nlm.nih.gov/rss/search/1luR_fr_DOPOrUgd0SwfZa5OcNPAYBgU6eFmkHpBlEWGaA2kRX/?limit=50&utm_campaign=pubmed-2&fc=20220213090334" burkitt)
+    ;;           ("https://pubmed.ncbi.nlm.nih.gov/rss/search/181raCNN1P9YKA5Ksp5T-ppklvBYkJ0KGEv1no8RiVPoobtAoJ/?limit=50&utm_campaign=pubmed-2&fc=20220213141341" alcl)
+    ;;           ("https://pubmed.ncbi.nlm.nih.gov/rss/search/10ykRO9og5pEdqhr5lZEH9VOdy8V-cT_uke2kjg3JIO17wJEsW/?limit=50&utm_campaign=pubmed-2&fc=20220213141743" relapse-resistance)
+    ;;           ("https://pubmed.ncbi.nlm.nih.gov/rss/search/1jGcmCWm6MscNOQm4bUti4ntfYZO5twJzekwruxcvBOyo6tQAU/?limit=15&utm_campaign=pubmed-2&fc=20230101093540" ITH)
+    ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=bioinformatics" bioinformatics)
+    ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=cancer_biology" cancer)
+    ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=cell_biology" cell)
+    ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=genetics" genetics)
+    ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=genomics" genomics)
+    ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=immunology" immunology)
+    ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=pathology" pathology)
+    ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=molecular_biology" molecular)
+    ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=systems_biology" systems)))
+    ;;   :bind
+    ;;   ("<C-i> f" . elfeed))
+
+    ;; @see: https://github.com/algernon/elfeed-goodies
+    ;; (use-package elfeed-goodies
+    ;;   :ensure t
+    ;;   :defer 30
+    ;;   )
 ;; net-news-elfeed ends here
 
 ;; GNus
