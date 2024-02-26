@@ -1,12 +1,6 @@
 [user]
-        name = GC.Pelosi
-        email = giovanni.pelosi@unimib.it
-[user.h37]
         name = hute37
         email = hute37@gmail.com
-[user.ub]
-        name = GC.Pelosi
-        email = giovanni.pelosi@unimib.it
 [core]
 	autocrlf = false
 	longpaths = true
