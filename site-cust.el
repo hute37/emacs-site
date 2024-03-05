@@ -59,3 +59,6 @@
 
 ;; ---( site.func: end )-------------------------------------------------------
 (message "SITE:CUST - end")
+
+(provide 'site-cust)
+;;; site-cust.el ends here

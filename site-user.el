@@ -8,3 +8,6 @@
 
 ;; ---( site.user: end )-------------------------------------------------------
 (message "SITE:USER - end")
+
+(provide 'site-user)
+;;; site-user.el ends here

@@ -134,3 +134,6 @@ determine this.")
 
 ;; ---( site.init: end )-------------------------------------------------------
 (message "SITE:local - end")
+
+(provide 'site-local)
+;;; site-local.el ends here

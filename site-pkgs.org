@@ -6669,10 +6669,14 @@ With a prefix ARG, remove start location."
 #+NAME: log-finish
 #+begin_src emacs-lisp
 
-  ;; vim: noet sw=4 ts=4 fdm=marker foldcolumn=0
+;; vim: noet sw=4 ts=4 fdm=marker foldcolumn=0
 
-  ;; ---( site.pkgs: end )-------------------------------------------------------
-  (message "SITE:PKGS - end")
+;; ---( site.pkgs: end )-------------------------------------------------------
+(message "SITE:PKGS - end")
+
+(provide 'site-pkgs)
+;;; site-pkgs.el ends here
+
 #+END_SRC
 
 

@@ -51,3 +51,6 @@
 
 ;; ---( site.func: end )-------------------------------------------------------
 (message "SITE:PREF - end")
+
+(provide 'site-pref)
+;;; site-pref.el ends here

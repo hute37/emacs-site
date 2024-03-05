@@ -835,3 +835,6 @@ When `universal-argument' is called first, cut whole buffer (but respect `narrow
 
 ;; ---( site.func: end )-------------------------------------------------------
 (message "SITE:KEYS - end")
+
+(provide 'site-keys)
+;;; site-keys.el ends here
