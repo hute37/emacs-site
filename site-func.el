@@ -1,3 +1,29 @@
+;;; site-func.el --- utility functions definition in ~/.emacs config
+
+;; Author: ht37 <hute37@gmail.com>
+;; URL: https://github.com/hute37/emacs-site
+
+;; This file is NOT part of GNU Emacs.
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; h7 prefix
+
+;;; Code:
+
 ;; ---( site.func: begin )-------------------------------------------------------
 (message "SITE:FUNC - begin")
 
@@ -52,7 +78,7 @@
 
 ;; Toggles between line wrapping in the current buffer.
 (defun toggle-line-wrapping ()
-  "Toggles between line wrapping in the current buffer."
+  "Toggle between line wrapping in the current buffer."
   (interactive)
   (if (eq truncate-lines nil)
       (progn
@@ -93,9 +119,10 @@ Version 2017-08-19"
           (replace-match "\n" ))))))
 
 (defun xah-newline-to-space () ;; xah-space-to-newline-2022-06-08
-  "Replace space sequence to a newline char in current block or selection.
+  "Replace spaces to a newline in current block or selection.
 
-If `universal-argument' is called first, ask user to enter a character to replace.
+If `universal-argument' is called first,
+ask user to enter a character to replace.
 
 URL `http://xahlee.info/emacs/emacs/emacs_space_to_newline.html'
 Version: 2017-08-19 2021-11-28"
@@ -207,3 +234,6 @@ $" nil t))
 
 ;; ---( site.func: end )-------------------------------------------------------
 (message "SITE:FUNC - end")
+
+(provide 'site-func)
+;;; site-func.el ends here

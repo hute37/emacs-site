@@ -6,3 +6,6 @@
 
 ;; ---( site.tool: end )-------------------------------------------------------
 (message "SITE:TOOL - end")
+
+(provide 'site-tool)
+;;; site-tool.el ends here

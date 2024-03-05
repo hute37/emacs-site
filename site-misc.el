@@ -17,3 +17,6 @@
 
 ;; ---( site.misc: end )-------------------------------------------------------
 (message "SITE:MISC - end")
+
+(provide 'site-misc)
+;;; site-misc.el ends here

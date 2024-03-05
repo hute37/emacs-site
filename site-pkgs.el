@@ -6370,8 +6370,11 @@ With a prefix ARG, remove start location."
 ;; #+NAME: log-finish
 
 ;; [[file:site-pkgs.org::log-finish][log-finish]]
-  ;; vim: noet sw=4 ts=4 fdm=marker foldcolumn=0
+;; vim: noet sw=4 ts=4 fdm=marker foldcolumn=0
 
-  ;; ---( site.pkgs: end )-------------------------------------------------------
-  (message "SITE:PKGS - end")
+;; ---( site.pkgs: end )-------------------------------------------------------
+(message "SITE:PKGS - end")
+
+(provide 'site-pkgs)
+;;; site-pkgs.el ends here
 ;; log-finish ends here

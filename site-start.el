@@ -42,3 +42,6 @@
 
 ;; ---( site.init: end )-------------------------------------------------------
 (message "SITE:end")
+
+(provide 'site-start)
+;;; site-start.el ends here

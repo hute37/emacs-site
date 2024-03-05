@@ -113,3 +113,6 @@
 
 ;; ---( site.boot: end )-------------------------------------------------------
 (message "SITE:BOOT - end")
+
+(provide 'site-boot)
+;;; site-boot.el ends here

@@ -4080,3 +4080,6 @@ instead."
 ;;;  #EXIT
 ;;;////////////////////////////////////////////////////////////////
 (message "SITE:#EXIT#")
+
+(provide 'site-init)
+;;; site-init.el ends here

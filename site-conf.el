@@ -58,16 +58,22 @@
 ;; ---( ... )--------------------------------------------------------------
 
 (defun h7/var-global-bibliography ()
+  "Global bibliography file."
  (list z-var-global-bibliography))
 
 
 (defun h7/var-roam-directory ()
+  "Org Roam directory."
  z-var-roam-directory)
 
 (defun h7/var-denote-directory ()
+  "Denote directory."
  z-var-denote-directory)
 
 
 
 ;; ---( site.conf: end )-------------------------------------------------------
 (message "SITE:CONF - end")
+
+(provide 'site-conf)
+;;; site-conf.el ends here
