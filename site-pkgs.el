@@ -4774,6 +4774,10 @@
     ;;       org-irc))
 
 
+    ;; --[org-mode images] ----------------------------------------------------------
+
+    (setq org-image-actual-width nil)
+    
     ;; --[org-mode faces] ----------------------------------------------------------
 
     (add-hook 'org-mode-hook 'variable-pitch-mode)    
