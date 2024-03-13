@@ -5921,6 +5921,33 @@ With a prefix ARG, remove start location."
   ;; ;;;////////////////////////////////////////////////////////////////
 ;; jump-begin ends here
 
+;; Register
+;; #+NAME: register
+
+;; [[file:site-pkgs.org::register][register]]
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @REGISTER
+  ;; ;;;////////////////////////////////////////////////////////////////
+
+  ;; ---( buffer registers )--------------------------------------------------------------
+
+  (set-register ?w '(buffer . "*Warnings*"))
+  (set-register ?m '(buffer . "*Messages*"))
+  (set-register ?d '(buffer . "*dashboard*"))
+  (set-register ?s '(buffer . "*scratch*"))
+  (set-register ?v '(buffer . "*vterm*"))
+
+  ;; ---( file registers )--------------------------------------------------------------
+
+  (set-register ?e '(file . "~/.emacs-site/site-pkgs.org"))
+  (set-register ?a '(file . "~/.emacs-agenda.txt"))
+  (set-register ?f '(file . "~/.rss/elfeed.org"))
+  (set-register ?t '(file . "~/work/bv/box-up/todo.org"))
+
+
+  ;; }}}  .register
+;; register ends here
+
 ;; Hydra
 ;; #+NAME: jump-hydra
 
