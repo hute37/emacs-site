@@ -5030,6 +5030,8 @@
 (use-package org-tree-slide
   :after org
   :ensure t
+  :custom
+  (org-image-actual-width nil)
   :bind (:map org-mode-map
          ("C-c P" . org-tree-slide-mode)))
 
