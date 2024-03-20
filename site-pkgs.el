@@ -5032,6 +5032,7 @@
   :ensure t
   :custom
   (org-image-actual-width nil)
+  (org-tree-slide-skip-outline-level 4)
   :bind (:map org-mode-map
          ("C-c P" . org-tree-slide-mode)))
 
