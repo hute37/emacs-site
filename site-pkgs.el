@@ -4554,6 +4554,40 @@
   ;;   )
 ;; tex-latex ends here
 
+;; Spell
+;; #+NAME: tex-spell
+
+;; [[file:site-pkgs.org::tex-spell][tex-spell]]
+  ;; ---( Spell )--------------------------------------------------------------
+
+(defun flyspell-italian ()
+  (interactive)
+  (ispell-change-dictionary "italiano")
+  (flyspell-buffer)
+  (flyspell-mode 1))
+
+(defun flyspell-english ()
+  (interactive)
+  (ispell-change-dictionary "default")
+  (flyspell-buffer)
+  (flyspell-mode 1))
+
+
+;; @see: https://www.tenderisthebyte.com/blog/2019/06/09/spell-checking-emacs/
+
+;; (dolist (hook '(text-mode-hook))
+;;   (add-hook hook (lambda () (flyspell-mode 1))))
+
+;; (dolist (hook '(change-log-mode-hook log-edit-mode-hook))
+;;   (add-hook hook (lambda () (flyspell-mode -1))))
+
+;; (eval-after-load "flyspell"
+  
+;;   '(progn
+;;      (define-key flyspell-mouse-map [down-mouse-3] #'flyspell-correct-word)
+;;      (define-key flyspell-mouse-map [mouse-3] #'undefined)))
+;; tex-spell ends here
+
 ;; BibTeX
 ;; #+NAME: tex-bibtex
 
