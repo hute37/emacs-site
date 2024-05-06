@@ -5059,6 +5059,14 @@ P
     (setq org-startup-folded 'content)
     (setq org-cycle-separator-lines 2)
 
+    ;; Essential Settings
+    (setq org-log-done 'time)
+    (setq org-html-doctype "html5")
+    ;;(setq org-export-headline-levels 6)
+    (setq org-export-with-smart-quotes t)
+
+    
+
     ;; (setq org-modules
     ;;   '(org-crypt
     ;;       org-habit
