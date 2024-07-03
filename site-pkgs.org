@@ -94,6 +94,7 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; @see: https://systemcrafters.net/build-a-second-brain-in-emacs/5-org-roam-hacks/
   ;; @see: https://youtu.be/0kuCeS-mfyc
   ;; @see: http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.html
+  ;; @see: https://blog.sumtypeofway.com/posts/emacs-config.html
 
   ;; }}}  .references
 
@@ -392,6 +393,7 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 #+END_SRC
 
+
 *** Config
 
 #+NAME: config
@@ -412,6 +414,29 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 ;; }}}  .packages
 
 #+END_SRC
+
+
+*** System
+
+#+NAME: system
+#+begin_src emacs-lisp
+
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @SYSTEM
+;; ;;;////////////////////////////////////////////////////////////////
+
+;; ---( ... )--------------------------------------------------------------
+
+;; tune gc
+(setq gc-cons-threshold 100000000)
+
+;; ---( ... )--------------------------------------------------------------
+
+
+;; }}}  .packages
+
+#+END_SRC
+
 
 *** UI
 
@@ -450,6 +475,11 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   (use-package all-the-icons
     :ensure t
     )
+
+   (use-package solaire-mode
+     :ensure t
+     :init (solaire-global-mode +1))
+
 
   ;; (use-package doom-modeline
   ;;   :after eshell
@@ -520,42 +550,66 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
   ;; ---( dashboard )--------------------------------------------------------------
 
+  ;; @see: https://github.com/emacs-dashboard/emacs-dashboard/
+  ;; @see: https://config.phundrak.com/emacs/packages/visual-config.html
+  ;; @see: https://unixbhaskar.wordpress.com/2023/07/26/emacss-configuration-of-mine/
+
+  
   (use-package dashboard
     :ensure t
     :after all-the-icons
     :custom
+    (dashboard-set-navigator t)
     (dashboard-set-file-icons t)
     (dashboard-set-heading-icons t)
     (dashboard-icon-type 'all-the-icons)
     (dashboard-set-init-info t)
     (dashboard-startup-banner 'logo)
     (dashboard-image-banner-max-width 80)
-    (dashboard-items '((recents . 5)
-                       (projects . 5)
-                       (bookmarks . 5)
+    (dashboard-items '((recents . 3)
+                       (projects . 3)
+                       (bookmarks . 3)
                        (agenda . 5)))
     (initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
     :config
+    (setq dashboard-projects-switch-function 'counsel-projectile-switch-project-by-name)
     (setq dashboard-set-navigator t)
-    (setq  dashboard-navigator-buttons `((
-      ("★" "scratch" "show scratch buffer" (lambda (&rest _) (switch-to-buffer "*scratch*")))
-      ("★" "restore" "desktop" (lambda (&rest _) (desktop-read)))
+    (setq dashboard-navigator-buttons `((
+      ("★" "scratch" "show scratch buffer" (lambda (&rest _) (switch-to-buffer "*scratch*")) warning "[" "]")
+      ("★" "restore" "desktop" (lambda (&rest _) (desktop-read)) warning "[" "]")
       ("★" "marks" "bookmrks" (lambda (&rest _)
                                 (require 'bookmark)                  
                                 (bookmark-bmenu-list)                
                                 (switch-to-buffer "*Bookmark List*")
-                                ))
-      ("★" "project" "project files" (lambda (&rest _) (project-dired)))
-      ("★" "files" "recent files" (lambda (&rest _) (recentf-open-files)))
-      ("★" "view" "view url" (lambda (&rest _) (crux-view-url)))
-      ;;("★" "packages" "list packages" (lambda (&rest _) (list-packages)))
-      ;;("★" "mail" "start mu4e" (lambda (&rest _) (mu4e)))
-      ("★" "term" "project vterm" (lambda (&rest _) (projectile-run-vterm)))
-      ("★" "shell" "project eshell" (lambda (&rest _) (project-eshell)))
-      ("★" "feed" "start elfeed" (lambda (&rest _) (elfeed)))
-      ("★" "restart" "restart emacs" (lambda (&rest _) (restart-emacs)))
-      ("★" "manual" "emacs manual" (lambda (&rest _) (info-emacs-manual)))
+                                ) warning "[" "]")
+      ("★" "project" "project files" (lambda (&rest _) (project-dired)) warning "[" "]")
+      ("★" "files" "recent files" (lambda (&rest _) (recentf-open-files)) warning "[" "]")
+      ("★" "view" "view url" (lambda (&rest _) (crux-view-url)) warning "[" "]")
+      ;;("★" "packages" "list packages" (lambda (&rest _) (list-packages)) warning "[" "]")
+      ;;("★" "mail" "start mu4e" (lambda (&rest _) (mu4e)) warning "[" "]")
+      ("★" "term" "project vterm" (lambda (&rest _) (projectile-run-vterm)) warning "[" "]")
+      ("★" "shell" "project eshell" (lambda (&rest _) (project-eshell)) warning "[" "]")
+      ("★" "feed" "start elfeed" (lambda (&rest _) (elfeed)) warning "[" "]")
+      ("★" "restart" "restart emacs" (lambda (&rest _) (restart-emacs)) warning "[" "]")
+      ("★" "manual" "emacs manual" (lambda (&rest _) (info-emacs-manual)) warning "[" "]")
       )))
+
+    ;; See dashboard-startupify-list for all the widgets avalaibles.
+
+    (setq dashboard-startupify-list '(dashboard-insert-banner
+                                      dashboard-insert-newline
+                                      dashboard-insert-banner-title
+                                      dashboard-insert-newline
+                                      dashboard-insert-navigator
+                                      dashboard-insert-items
+                                      ;; dashboard-insert-newline
+                                      ;; dashboard-insert-init-info
+                                      dashboard-insert-newline
+                                      dashboard-insert-footer))    
+    ;; (add-to-list 'dashboardtems '(agenda) t)
+    ;; (setq dashboard-week-agenda nil)
+    ;; (setq dashboard-org-agenda-categories '("Tasks" "Diary" "Notes"))
+    ;; (setq dashboard-filter-agenda-entry 'dashboard-no-filter-agenda)    
     (dashboard-setup-startup-hook)
     ;; :hook (emacs-startup-hook . dashboard-open)
     ;; :bind
@@ -1906,7 +1960,7 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; ;;;////////////////////////////////////////////////////////////////
 
 
-  ;; ;; ---( magit )--------------------------------------------------------------
+  ;; ---( magit )--------------------------------------------------------------
 
   (use-package magit
     :ensure t
@@ -1985,6 +2039,18 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; (use-package git-timemachine
   ;;   :ensure t
   ;;   :bind (("s-g" . git-timemachine)))
+
+  ;; ---( git-gutter-fringe )-----------------------------------------------------------
+
+  (use-package git-gutter-fringe
+    :ensure t
+    :hook ((prog-mode     . git-gutter-mode)
+           (org-mode      . git-gutter-mode)
+           (markdown-mode . git-gutter-mode)
+           (latex-mode    . git-gutter-mode)))
+
+
+
 
   ;; ---( vdiff )------------------------------------------------------------
 
@@ -2627,6 +2693,7 @@ P
       (message "SITE:term-libvterm, ...")
 
   (use-package vterm
+    :ensure t
     :bind (("C-<F9>" . vterm)
                ;; :straight (:post-build (cl-letf (((symbol-function #'pop-to-buffer)
                ;;                        (lambda (buffer) (with-current-buffer buffer (message (buffer-string))))))
@@ -2639,7 +2706,9 @@ P
            ([kp-enter] . vterm-yank)
            ([kp-divide] . vterm-yank-pop)
            ([kp-multiply] . vterm-copy-mode))
-    :ensure t)
+    :config
+    (setq vterm-max-scrollback 18000)
+    )
 
 
   (use-package multi-vterm
