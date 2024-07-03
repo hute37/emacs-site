@@ -541,7 +541,7 @@
                        (agenda . 5)))
     (initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
     :config
-    (setq dashboard-projects-switch-function 'counsel-projectile-switch-project-by-name)
+    ;;(setq dashboard-projects-switch-function 'counsel-projectile-switch-project-by-name)
     (setq dashboard-set-navigator t)
     (setq dashboard-navigator-buttons `((
       ("★" "scratch" "show scratch buffer" (lambda (&rest _) (switch-to-buffer "*scratch*")) warning "⋗" " ")
