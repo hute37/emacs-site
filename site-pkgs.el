@@ -1912,6 +1912,7 @@
   (use-package git-gutter-fringe
     :ensure t
     :hook ((prog-mode     . git-gutter-mode)
+           (yaml-mode     . git-gutter-mode)
            (org-mode      . git-gutter-mode)
            (markdown-mode . git-gutter-mode)
            (latex-mode    . git-gutter-mode)))
