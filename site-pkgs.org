@@ -3521,22 +3521,22 @@ P
 
   ;; ---( poetry )-------------------------------------------------------------
 
-  (use-package poetry
-    :ensure t
-    ;; :init
-    ;; imperfect tracking strategy causes lags in builds
-    ;; (setq poetry-tracking-strategy 'switch-buffer)
-    :hook
-    ;; activate poetry-tracking-mode when python-mode is active
-    (python-mode . poetry-tracking-mode)
-    )
-
   ;; (use-package poetry
   ;;   :ensure t
-  ;;   :config
-  ;;   (add-hook 'poetry-tracking-mode-hook (lambda () (remove-hook 'post-command-hook 'poetry-track-virtualenv)))
-  ;;   (add-hook 'python-mode-hook 'poetry-track-virtualenv)
-  ;;   (add-hook 'projectile-after-switch-project-hook 'poetry-track-virtualenv))
+  ;;   ;; :init
+  ;;   ;; imperfect tracking strategy causes lags in builds
+  ;;   ;; (setq poetry-tracking-strategy 'switch-buffer)
+  ;;   :hook
+  ;;   ;; activate poetry-tracking-mode when python-mode is active
+  ;;   (python-mode . poetry-tracking-mode)
+  ;;   )
+
+  (use-package poetry
+    :ensure t
+    :config
+    (add-hook 'poetry-tracking-mode-hook (lambda () (remove-hook 'post-command-hook 'poetry-track-virtualenv)))
+    (add-hook 'python-mode-hook 'poetry-track-virtualenv)
+    (add-hook 'projectile-after-switch-project-hook 'poetry-track-virtualenv))
 
 
   ;; ---( pipenv )-------------------------------------------------------------
@@ -5080,7 +5080,7 @@ P
 
 #+END_SRC
 
-*** org-mode
+*** Org-mode
 #+NAME: org-mode
 #+begin_src emacs-lisp
 
@@ -5195,6 +5195,7 @@ P
     ;; --[org-mode todo] ----------------------------------------------------------
 
     ;; @see: https://github.com/daviwil/dotfiles/blob/master/Workflow.org
+    ;; @see: https://youtu.be/GP8uOU6SSyk?si=jikTf7JS1vZICd2L
 
     ;;(setq org-store-todo "~/Dropbox/Local/data/org/all")
 
@@ -5211,6 +5212,16 @@ P
     ;; (setq org-agenda-files (directory-files-recursively org-store-todo "\\.org$"))
     ;; (setq org-agenda-files `(,org-store-todo))
 
+    ;; ```
+    ;; cat > ~/.emacs-agenda.txt <<EOF
+    ;; ~/work/bu/org-info/todo.org
+    ;; ~/work/bv/box-up/todo.org
+    ;; ~/work/vs/dve-sample-r/todo.org
+    ;; ~/work/vs/dve-sample-py/todo.org
+    ;; EOF
+    ;;
+    
+
     (setq org-store-todo  "~/Dropbox/Local/data/org/all")
     (setq org-agenda-names "~/.emacs-agenda.txt")
 
@@ -5223,19 +5234,19 @@ P
     (setq org-capture-templates
           `(
             ("t" "task" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "ACTIVE")
-             "** TODO [#C] %? [/]\n   %a\n   + [ ] ...\n\n")
+             "** TODO [#C] %? [/]    :@W:\n   %a\n   + [ ] ...\n\n")
             ("n" "task (next)" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "ACTIVE")
-             "** NEXT [#B] %? [/]\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n   %a\n   + [ ] ...\n\n")
+             "** NEXT [#B] %? [/]    :@W:\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n   %a\n   + [ ] ...\n\n")
             ("b" "backlog" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "BACKLOG")
-             "* BACK [#C] %? [/]\n   %a\n   + [ ] ...\n\n")
+             "* BACK [#C] %? [/]    :@W:\n   %a\n   + [ ] ...\n\n")
             ("p" "attic" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "ATTIC")
-             "* PAST [#C] %?\n")
+             "* PAST [#C] %?    :@W:\n")
             ("m" "milk" entry (file+headline ,(format "%s/%s" org-store-todo "milk.org") "ACTIVE")
-             "** TODO [#B] %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n")
+             "** TODO [#B] %?    :@H:milk:\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n")
             ("r" "read" entry (file+headline ,(format "%s/%s" org-store-todo "read.org") "BACKLOG")
-             "** READ [#C] %?\n\n")
+             "** READ [#C] %?    :@Y:read:\n\n")
             ("d" "dots" entry (file+headline ,(format "%s/%s" org-store-todo "dots.org") "ACTIVE")
-             "** EDIT [#C] %?\n   - %a\n\n")
+             "** EDIT [#C] %?    :@W:dots:\n   - %a\n\n")
             ))
 
     (setq org-todo-keywords
@@ -5258,15 +5269,73 @@ P
             ("CANCELLED" :foreground "forest green" :weight bold)))
 
     ;; Configure common tags
-    (setq org-tag-alist
-          '((:startgroup) ; Put mutually exclusive tags here
-            (:endgroup)
-            ("@home" . ?H)
-            ("@work" . ?W)
-            ("batch" . ?b)
-            ("next" . ?n)
-            ("followup" . ?f)
-            ("recurring" . ?r)))
+    (setq org-tag-alist '(
+                          (:startgroup . nil) ;; Places
+                          ("@W" . ?W) ;; @work
+                          ("@H" . ?H) ;; @home
+                          ("@Y" . ?Y) ;; @away
+                          (:endgroup . nil)
+                          (:startgroup . nil) ;; Devices
+                          ("@local" . ?L)
+                          ("@house" . ?U)
+                          ("@phone" . ?P)
+                          (:endgroup . nil)
+                          (:startgrouptag) ;; Activities
+                          ("GTD")
+                          (:grouptags)
+                          ("Meta")
+                          ("Project")
+                          ("Language")
+                          ("System")
+                          ("Personal")
+                          (:endgrouptag)
+                          (:startgrouptag)
+                          ("Meta")
+                          (:grouptags)
+                          ("backlog" . ?k)
+                          ("design" . ?d)
+                          ("sched" . ?t)
+                          (:endgrouptag)
+                          ("Project")
+                          (:grouptags)
+                          ("custom" . ?c)
+                          ("template" . ?v)
+                          ("maint" . ?n)
+                          ("dots" . ?u)
+                          ("misc" . ?s)
+                          (:endgrouptag)
+                          ("Language")
+                          (:grouptags)
+                          ("python" . ?p)
+                          ("r" . ?r)
+                          ("julia" . ?j)
+                          ("matlab" . ?l)
+                          ("shell" . ?h)
+                          ("ansible" . ?b)
+                          ("emacs" . ?e)
+                          ("undef" . ?n)
+                          (:endgrouptag)
+                          (:startgrouptag)
+                          ("System")
+                          (:grouptags)
+                          ("azlabs" . ?a)
+                          ("oplabs" . ?o)
+                          ("report" . ?r)
+                          ("unclass" . ?z)
+                          (:endgrouptag)
+                          (:startgrouptag)
+                          ("Personal")
+                          (:grouptags)
+                          ("action")
+                          ("milk" . ?+)
+                          ("money" . ?$)
+                          ("read")
+                          ("search")
+                          ("think")
+                          ("dream")
+                          (:endgrouptag)
+                          ))
+
 
     ;;set priority range from A to C with default A
     (setq org-highest-priority ?A)
