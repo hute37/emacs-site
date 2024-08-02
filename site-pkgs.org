@@ -548,95 +548,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
             ("NOTE"       success bold)
             ("DEPRECATED" font-lock-doc-face bold))))
 
-  ;; ---( dashboard )--------------------------------------------------------------
-
-  ;; @see: https://github.com/emacs-dashboard/emacs-dashboard/
-  ;; @see: https://config.phundrak.com/emacs/packages/visual-config.html
-  ;; @see: https://unixbhaskar.wordpress.com/2023/07/26/emacss-configuration-of-mine/
-
-  
-  (use-package dashboard
-    :ensure t
-    :after all-the-icons
-    :custom
-    (dashboard-set-navigator t)
-    (dashboard-set-file-icons t)
-    (dashboard-set-heading-icons t)
-    (dashboard-icon-type 'all-the-icons)
-    (dashboard-set-init-info t)
-    (dashboard-startup-banner 'logo)
-    (dashboard-image-banner-max-width 80)
-    (dashboard-items '((recents . 3)
-                       (projects . 3)
-                       (bookmarks . 3)
-                       (agenda . 5)))
-    (initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
-    :config
-    ;;(setq dashboard-projects-switch-function 'counsel-projectile-switch-project-by-name)
-    (setq dashboard-set-navigator t)
-    (setq dashboard-navigator-buttons `((
-      ("★" "scratch" "show scratch buffer" (lambda (&rest _) (switch-to-buffer "*scratch*")) warning "⋗" " ")
-      ("★" "restore" "desktop" (lambda (&rest _) (desktop-read)) warning "⋗" " ")
-      ("★" "marks" "bookmrks" (lambda (&rest _)
-                                (require 'bookmark)                  
-                                (bookmark-bmenu-list)                
-                                (switch-to-buffer "*Bookmark List*")
-                                ) warning "⋗" " ")
-      ("★" "project" "project files" (lambda (&rest _) (project-dired)) warning "⋗" " ")
-      ("★" "files" "recent files" (lambda (&rest _) (recentf-open-files)) warning "⋗" " ")
-      ("★" "view" "view url" (lambda (&rest _) (crux-view-url)) warning "⋗" " ")
-      ;;("★" "packages" "list packages" (lambda (&rest _) (list-packages)) warning "⋗" " ")
-      ;;("★" "mail" "start mu4e" (lambda (&rest _) (mu4e)) warning "⋗" " ")
-      ("★" "term" "project vterm" (lambda (&rest _) (projectile-run-vterm)) warning "⋗" " ")
-      ("★" "shell" "project eshell" (lambda (&rest _) (project-eshell)) warning "⋗" " ")
-      ("★" "feed" "start elfeed" (lambda (&rest _) (elfeed)) warning "⋗" " ")
-      ("★" "restart" "restart emacs" (lambda (&rest _) (restart-emacs)) warning "⋗" " ")
-      ("★" "manual" "emacs manual" (lambda (&rest _) (info-emacs-manual)) warning "⋗" " ")
-      )))
-
-    ;; See dashboard-startupify-list for all the widgets avalaibles.
-
-    (setq dashboard-startupify-list '(dashboard-insert-banner
-                                      dashboard-insert-newline
-                                      dashboard-insert-banner-title
-                                      dashboard-insert-newline
-                                      dashboard-insert-navigator
-                                      dashboard-insert-items
-                                      ;; dashboard-insert-newline
-                                      ;; dashboard-insert-init-info
-                                      dashboard-insert-newline
-                                      dashboard-insert-footer))    
-    ;; (add-to-list 'dashboardtems '(agenda) t)
-    ;; (setq dashboard-week-agenda nil)
-    ;; (setq dashboard-org-agenda-categories '("Tasks" "Diary" "Notes"))
-    ;; (setq dashboard-filter-agenda-entry 'dashboard-no-filter-agenda)    
-    (dashboard-setup-startup-hook)
-    ;; :hook (emacs-startup-hook . dashboard-open)
-    ;; :bind
-    ;;  ("<C-i> i" . dashboard-open)
-    )
-
-  ;; ;; @see: https://gitlab.com/jdm204/dotfiles/-/blob/master/config.org
-  ;; (use-package dashboard
-  ;;   :ensure t
-  ;;   :config
-  ;;   (dashboard-setup-startup-hook)
-  ;;   (setq
-  ;;    dashboard-set-footer nil
-  ;;    dashboard-set-heading-icons nil
-  ;;    dashboard-set-file-icons t
-  ;;    ;;dashboard-icon-type 'nerd-icons
-  ;;    dashboard-set-navigator t
-  ;;    dashboard-set-init-info t
-  ;;    dashboard-center-content t
-  ;;    dashboard-startup-banner 'logo
-  ;;    dashboard-image-banner-max-width 80
-  ;;    ;; dashboard-projects-backend 'project-el
-  ;;    dashboard-items '((recents  . 5)
-  ;;                      (bookmarks . 5)
-  ;;                      (projects . 5)
-  ;;                      (agenda . 5))
-
 
   ;; }}}  .ui
 
@@ -5287,6 +5198,8 @@ P
                           ("Project")
                           ("Language")
                           ("System")
+                          ("Profile")
+                          ("Struct")
                           ("Personal")
                           (:endgrouptag)
                           (:startgrouptag)
@@ -5301,7 +5214,6 @@ P
                           ("custom" . ?c)
                           ("template" . ?v)
                           ("maint" . ?n)
-                          ("dots" . ?u)
                           ("misc" . ?s)
                           (:endgrouptag)
                           ("Language")
@@ -5321,8 +5233,20 @@ P
                           ("dslabs" . ?l)
                           ("azlabs" . ?a)
                           ("oplabs" . ?o)
-                          ("report" . ?r)
                           ("unclass" . ?z)
+                          (:endgrouptag)
+                          ("Profile")
+                          (:grouptags)
+                          ("dots" . ?u)
+                          (:endgrouptag)
+                          ("Struct")
+                          (:grouptags)
+                          ("report")
+                          ("meeting")
+                          ("support")
+                          ("courses")
+                          ("clock")
+                          ("cart")
                           (:endgrouptag)
                           (:startgrouptag)
                           ("Personal")
@@ -5341,7 +5265,7 @@ P
     ;;set priority range from A to C with default A
     (setq org-highest-priority ?A)
     (setq org-lowest-priority ?C)
-    (setq org-default-priority ?A)
+    (setq org-default-priority ?B)
 
     ;;set colours for priorities
     (setq org-priority-faces '((?A . (:foreground "OliveDrab" :weight bold))
@@ -5358,7 +5282,7 @@ P
     ;;open agenda in current window
     (setq org-agenda-window-setup (quote current-window))
     ;;warn me of any deadlines in next 7 days
-    (setq org-deadline-warning-days 7)
+    (setq org-deadline-warning-days 15)
 
     ;;don't show tasks as scheduled if they are already shown as a deadline
     (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
@@ -5369,6 +5293,29 @@ P
     ;;normal todo list
     (setq org-agenda-todo-ignore-deadlines (quote all))
     (setq org-agenda-todo-ignore-scheduled (quote all))
+
+    ;; @see: https://orgmode.org/worg/org-tutorials/org-custom-agenda-commands.html
+
+    (setq org-agenda-custom-commands
+          '(
+            ("n" "Agenda and all TODOs"
+             ((agenda "") (alltodo "")))
+
+
+            ("w" "Weekly Review"
+             ((agenda "" ((org-agenda-span 21))); review upcoming deadlines and appointments
+                                           ; type "l" in the agenda to review logged items 
+              (stuck "") ; review stuck projects as designated by org-stuck-projects
+              (todo "DOING") ; review all projects (assuming you use todo keywords to designate projects)
+              (todo "TODO") ; review all projects (assuming you use todo keywords to designate projects)
+              (todo "NEXT") ; review someday/maybe items
+              (todo "BACK"))) ; review waiting items
+
+            ("k" "Backlog Refinement"
+             ((todo "BACK" ((org-agenda-overriding-header "Backlog Tasks:")))))
+            ("l" "Task Schedule"
+             ((todo "NEXT" ((org-agenda-overriding-header "Pending Tasks:")))))
+          ))
 
     ;;sort tasks in order of when they are due and then by priority
 
@@ -6400,6 +6347,115 @@ With a prefix ARG, remove start location."
   ;; ;;;////////////////////////////////////////////////////////////////
 
 #+END_SRC
+
+
+
+*** Dashboard
+#+NAME: dashboard
+#+begin_src emacs-lisp
+
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @DASHBOARD
+  ;; ;;;////////////////////////////////////////////////////////////////
+
+  ;; ---( dashboard )--------------------------------------------------------------
+
+  ;; @see: https://github.com/emacs-dashboard/emacs-dashboard/
+  ;; @see: https://config.phundrak.com/emacs/packages/visual-config.html
+  ;; @see: https://unixbhaskar.wordpress.com/2023/07/26/emacss-configuration-of-mine/
+
+  
+  (use-package dashboard
+    :ensure t
+    :after all-the-icons
+    :custom
+    (dashboard-set-navigator t)
+    (dashboard-set-file-icons t)
+    (dashboard-set-heading-icons t)
+    (dashboard-icon-type 'all-the-icons)
+    (dashboard-set-init-info t)
+    (dashboard-startup-banner 'logo)
+    (dashboard-image-banner-max-width 80)
+    (dashboard-items '((recents . 3)
+                       (projects . 3)
+                       (bookmarks . 3)
+                       (agenda . 5)))
+    (initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
+    :config
+    ;;(setq dashboard-projects-switch-function 'counsel-projectile-switch-project-by-name)
+    (setq dashboard-set-navigator t)
+    (setq dashboard-navigator-buttons `((
+      ("★" "scratch" "show scratch buffer" (lambda (&rest _) (switch-to-buffer "*scratch*")) warning "⋗" " ")
+      ("★" "restore" "desktop" (lambda (&rest _) (desktop-read)) warning "⋗" " ")
+      ("★" "marks" "bookmrks" (lambda (&rest _)
+                                (require 'bookmark)                  
+                                (bookmark-bmenu-list)                
+                                (switch-to-buffer "*Bookmark List*")
+                                ) warning "⋗" " ")
+      ("★" "project" "project files" (lambda (&rest _) (project-dired)) warning "⋗" " ")
+      ("★" "files" "recent files" (lambda (&rest _) (recentf-open-files)) warning "⋗" " ")
+      ("★" "view" "view url" (lambda (&rest _) (crux-view-url)) warning "⋗" " ")
+      ;;("★" "packages" "list packages" (lambda (&rest _) (list-packages)) warning "⋗" " ")
+      ;;("★" "mail" "start mu4e" (lambda (&rest _) (mu4e)) warning "⋗" " ")
+      ("★" "term" "project vterm" (lambda (&rest _) (projectile-run-vterm)) warning "⋗" " ")
+      ("★" "shell" "project eshell" (lambda (&rest _) (project-eshell)) warning "⋗" " ")
+      ("★" "feed" "start elfeed" (lambda (&rest _) (elfeed)) warning "⋗" " ")
+      ("★" "restart" "restart emacs" (lambda (&rest _) (restart-emacs)) warning "⋗" " ")
+      ("★" "manual" "emacs manual" (lambda (&rest _) (info-emacs-manual)) warning "⋗" " ")
+      )))
+
+    ;; See dashboard-startupify-list for all the widgets avalaibles.
+
+    (setq dashboard-startupify-list '(dashboard-insert-banner
+                                      dashboard-insert-newline
+                                      dashboard-insert-banner-title
+                                      dashboard-insert-newline
+                                      dashboard-insert-navigator
+                                      dashboard-insert-items
+                                      ;; dashboard-insert-newline
+                                      ;; dashboard-insert-init-info
+                                      dashboard-insert-newline
+                                      dashboard-insert-footer))    
+    ;; (add-to-list 'dashboardtems '(agenda) t)
+    (setq dashboard-week-agenda t)
+    ;; (setq dashboard-org-agenda-categories '("Tasks" "Diary" "Notes"))
+    ;; (setq dashboard-org-agenda-categories '("@M" "@W" "@H"))
+    ;; (setq dashboard-filter-agenda-entry 'dashboard-no-filter-agenda)    
+    ;; (setq dashboard-agenda-sort-strategy 'priority-up)    
+    (dashboard-setup-startup-hook)
+    ;; :hook (emacs-startup-hook . dashboard-open)
+    ;; :bind
+    ;;  ("<C-i> i" . dashboard-open)
+    )
+
+  ;; ;; @see: https://gitlab.com/jdm204/dotfiles/-/blob/master/config.org
+  ;; (use-package dashboard
+  ;;   :ensure t
+  ;;   :config
+  ;;   (dashboard-setup-startup-hook)
+  ;;   (setq
+  ;;    dashboard-set-footer nil
+  ;;    dashboard-set-heading-icons nil
+  ;;    dashboard-set-file-icons t
+  ;;    ;;dashboard-icon-type 'nerd-icons
+  ;;    dashboard-set-navigator t
+  ;;    dashboard-set-init-info t
+  ;;    dashboard-center-content t
+  ;;    dashboard-startup-banner 'logo
+  ;;    dashboard-image-banner-max-width 80
+  ;;    ;; dashboard-projects-backend 'project-el
+  ;;    dashboard-items '((recents  . 5)
+  ;;                      (bookmarks . 5)
+  ;;                      (projects . 5)
+  ;;                      (agenda . 5))
+
+
+
+  ;; }}}  .dashboard
+
+#+END_SRC
+
+
 
 *** Register
 #+NAME: register
