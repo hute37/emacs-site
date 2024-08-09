@@ -1,14 +1,14 @@
 .:
-total 152
+total 156
 -rw-r--r-- 1 gio gio  1892 Nov 26  2021 ISSUE_TEMPLATE.md
 -rw-r--r-- 1 gio gio  5791 Nov 26  2021 README.rst
 -rw-r--r-- 1 gio gio 13329 Nov 23  2021 _archmenu.lua
 -rw-r--r-- 1 gio gio 13329 Nov 23  2021 archmenu.lua
 drwxr-xr-x 1 gio gio  4096 Nov 25  2021 debian
--rw-r--r-- 1 gio gio     0 Jun  1 11:19 file-list.txt
+-rw-r--r-- 1 gio gio     0 Aug  9 11:59 file-list.txt
 drwxr-xr-x 1 gio gio  4096 Nov 26  2021 freedesktop
 drwxr-xr-x 1 gio gio  4096 Nov 26  2021 lain
--rw-r--r-- 1 gio gio 32044 Jun  1 11:13 rc-copycats.lua
+-rw-r--r-- 1 gio gio 33801 Jul  4  2022 rc-copycats.lua
 -rw-r--r-- 1 gio gio 32476 Nov 23  2021 rc-powerarrow.lua
 -rw-r--r-- 1 gio gio 23342 Feb 26  2019 rc-xloc.lua
 -rw-r--r-- 1 gio gio 20072 Nov 23  2021 rc-zenburn.lua

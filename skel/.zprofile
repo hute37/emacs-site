@@ -36,7 +36,7 @@ export ZSH_LOGIN=1
 
 if [ -f ~/.profile ] ; then
     log_zsh_profile "++ >> .profile"
-    [[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
+    . ~/.profile
     log_zsh_profile "++ << .profile"
 fi
 

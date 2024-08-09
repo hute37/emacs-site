@@ -128,7 +128,7 @@ eval "$(pyenv virtualenv-init -)"
 
 # ---(pyenv:end)-----
 
-
+if [ -f ~/.conda.on ]; then
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/data/anaconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
@@ -143,9 +143,13 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+fi
 
 if [ "$TERM" = "dumb" ]; then                                
        export PS1="$ "
 fi
    
 
+
+complete -C /usr/local/bin/terraform terraform
+. "$HOME/.cargo/env"
