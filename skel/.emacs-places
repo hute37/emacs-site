@@ -1,628 +1,624 @@
 ;;; -*- coding: utf-8; mode: lisp-data -*-
-(("/home/gp21012/work/bu/org-info/todo.org" . 330)
- ("/home/gp21012/work/bv/box-up/doc/up/8.HC/im/362/10-man/rh362-notes.org" . 1249)
- ("/home/gp21012/work/bv/box-up/notes/nat/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/notes/nat/20240124T165229--azdns__az_bib_op_oq_rhl.org"))
- ("/home/gp21012/work/bv/box-up/notes/nat/20240130T140550--rhidmconfig__bib_op_oq_rh_rhl.org" . 325)
- ("/home/gp21012/work/bv/box-up/doc/up/8.HC/im/362/10-man/rh362-7.4-student-guide.pdf" . 4356324)
- ("/home/gp21012/work/bv/box-up/notes/nat/20240130T155854--rhidmclient__bib_op_oq_rh_rhl.org" . 494)
- ("/home/gp21012/work/bv/box-up/setup.py" . 30)
- ("/home/gp21012/.emacs" . 751)
- ("/home/gp21012/.emacs-site/"
-  (dired-filename . "/home/gp21012/.emacs-site/.gitignore"))
- ("/home/gp21012/work/bv/box-up/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/.mypy_cache"))
- ("/home/gp21012/.emacs-site/site-keys.el" . 12933)
- ("/home/gp21012/.emacs-site/site-conf.el" . 1189)
- ("/tmp/"
-  (dired-filename . "/tmp/site-pkgs.org"))
- ("/home/gp21012/.emacs.d/elpa/denote-2.2.4/denote.el" . 1214)
- ("/home/gp21012/"
-  (dired-filename . "/home/gp21012/.emacs-local.el"))
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xe/701/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xe/701/.."))
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xe/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xe/.."))
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xo/501/10-create/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xo/501/10-create/.."))
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xo/501/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xo/501/.."))
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xo/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xo/.."))
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv"))
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101"))
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/10-sys"))
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/10-sys/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/10-sys/220-podman.org"))
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/10-sys/220-podman.org" . 6231)
- ("/home/gp21012/work/bv/box-up/doc/up/8.HC/im/362/10-man/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/8.HC/im/362/10-man/rh362-7.4-student-guide.org"))
- ("/home/gp21012/work/bv/box-up/doc/up/8.HC/im/362/10-man/rh362-7.4-student-guide-xref.org" . 22702)
- ("/home/gp21012/work/bv/box-up/doc/up/8.HC/im/362/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/8.HC/im/362/.."))
- ("/home/gp21012/work/bv/box-up/doc/up/8.HC/im/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/8.HC/im/.."))
- ("/home/gp21012/work/bv/box-up/doc/up/8.HC/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/8.HC/.."))
- ("/home/gp21012/work/bv/box-up/doc/up/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/.."))
- ("/home/gp21012/work/bv/box-up/doc/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/.."))
- ("/home/gp21012/work/bv/box-up/notes/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/notes/nat"))
- ("/home/gp21012/work/bv/box-up/notes/nat/20240123T121006--20rhl__<meta>_rhl.org" . 151)
- ("/home/gp21012/work/bv/box-up/notes/nat/20240123T120803--10oq__<meta>_oq.org" . 157)
- ("/home/gp21012/work/bv/box-up/notes/nat/20240123T115630--10op__<meta>_op.org" . 157)
- ("/home/gp21012/work/ec/protesilaos+.emacs.d/emacs/.emacs.d/"
-  (dired-filename . "/home/gp21012/work/ec/protesilaos+.emacs.d/emacs/.emacs.d/prot-emacs.org"))
- ("/home/gp21012/work/ec/protesilaos+.emacs.d/emacs/.emacs.d/prot-emacs.org" . 659956)
- ("/home/gp21012/work/bv/box-up/notes/nat/20240123T121253--90test__<meta>_test.org" . 119)
- ("/home/gp21012/work/bv/box-up/notes/nat/20240122T161259--00index__<meta>.org" . 257)
- ("/home/gp21012/work/bv/box-up/notes/nat/20240123T121459--test-sink__test.org" . 149)
- ("/home/gp21012/work/bv/box-up/notes/nat/20240123T121421--test-source__test.org" . 128)
- ("/home/gp21012/.emacs.d/elpa/denote-menu-1.2.0/denote-menu.el" . 3463)
- ("/home/gp21012/work/bv/box-up/.dir-locals.el" . 11)
- ("/home/gp21012/.emacs-local.el" . 44)
- ("/home/gp21012/.emacs-site/skel/"
-  (dired-filename . "/home/gp21012/.emacs-site/skel/.emacs-setup.org"))
- ("/home/gp21012/Dropbox/Local/data/org/nat/"
-  (dired-filename . "/home/gp21012/Dropbox/Local/data/org/nat/.."))
- ("/home/gp21012/Dropbox/Local/data/org/"
-  (dired-filename . "/home/gp21012/Dropbox/Local/data/org/all"))
- ("/home/gp21012/Documents/notes/20240119T173633--<index>__<meta>.org" . 114)
- ("/home/gp21012/work/wo/wo-note/README.md" . 11)
- ("/home/gp21012/Dropbox/Local/data/org/nat/20240119T160741--<index>__<meta>.org" . 131)
- ("/home/gp21012/Dropbox/Local/data/"
-  (dired-filename . "/home/gp21012/Dropbox/Local/data/.."))
- ("/home/gp21012/Dropbox/Local/"
-  (dired-filename . "/home/gp21012/Dropbox/Local/data"))
- ("/home/gp21012/work/wo/wo-note/"
-  (dired-filename . "/home/gp21012/work/wo/wo-note/org"))
- ("/home/gp21012/work/wo/wo-note/org/"
-  (dired-filename . "/home/gp21012/work/wo/wo-note/org/nat"))
- ("/home/gp21012/work/wo/wo-note/org/nat/" . 146)
- ("/home/gp21012/work/bu/org-info/notes/"
-  (dired-filename . "/home/gp21012/work/bu/org-info/notes/.."))
- ("/home/gp21012/work/bu/org-info/logs/"
-  (dired-filename . "/home/gp21012/work/bu/org-info/logs/.."))
- ("/home/gp21012/work/bu/org-info/"
-  (dired-filename . "/home/gp21012/work/bu/org-info/.."))
- ("/home/gp21012/work/bu/"
-  (dired-filename . "/home/gp21012/work/bu/.."))
- ("/home/gp21012/work/"
-  (dired-filename . "/home/gp21012/work/wo"))
- ("/home/gp21012/work/wo/"
-  (dired-filename . "/home/gp21012/work/wo/wo-note"))
- ("/home/gp21012/work/wo/wo-note/org/net/"
-  (dired-filename . "/home/gp21012/work/wo/wo-note/org/net/.."))
- ("/home/gp21012/.emacs-site/site-pkgs.el" . 140357)
- ("/home/gp21012/work/ec/whhone+.emacs.d/content/emacs-config.md" . 41063)
- ("/home/gp21012/work/ec/sachac+.emacs.d/"
-  (dired-filename . "/home/gp21012/work/ec/sachac+.emacs.d/.."))
- ("/home/gp21012/work/ec/"
-  (dired-filename . "/home/gp21012/work/ec/whhone+.emacs.d"))
- ("/home/gp21012/work/ec/whhone+.emacs.d/"
-  (dired-filename . "/home/gp21012/work/ec/whhone+.emacs.d/content"))
- ("/home/gp21012/work/ec/whhone+.emacs.d/content/"
-  (dired-filename . "/home/gp21012/work/ec/whhone+.emacs.d/content/emacs-config.md"))
- ("/home/gp21012/.emacs-site/.dir-locals.el" . 1129)
- ("/home/gp21012/work/wo/wo-note/org/net/system/20240117164426-az_labs.org" . 112)
- ("/home/gp21012/work/wo/wo-note/org/net/refs/20240115162653-b-az_auth.org" . 112)
- ("/home/gp21012/work/wo/wo-note/org/net/20220708133736-org_roam.org" . 87)
- ("/home/gp21012/work/wo/wo-note/org/net/20220708133524-org_mode.org" . 87)
- ("/home/gp21012/.emacs-site/site-cust.el" . 954)
- ("/home/gp21012/work/bv/box-up/notes/net/devel/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/notes/net/devel/.."))
- ("/home/gp21012/work/bv/box-up/notes/net/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/notes/net/.."))
- ("/home/gp21012/work/bv/box-up/notes/ref/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/notes/ref/references.bib"))
- ("/home/gp21012/work/bv/box-up/doc/up/5.AO/oe/701/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/5.AO/oe/701/.."))
- ("/home/gp21012/work/bv/box-up/doc/up/5.AO/oe/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/5.AO/oe/.."))
- ("/home/gp21012/work/bv/box-up/doc/up/5.AO/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/5.AO/ov"))
- ("/home/gp21012/work/bv/box-up/doc/up/5.AO/ov/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/5.AO/ov/101"))
- ("/home/gp21012/work/bv/box-up/doc/up/5.AO/ov/101/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/5.AO/ov/101/10-sys"))
- ("/home/gp21012/work/bv/box-up/doc/up/5.AO/ov/101/10-sys/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/5.AO/ov/101/10-sys/220-podman.org"))
- ("/home/gp21012/work/bv/box-up/notes/net/refs/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/notes/net/refs/.."))
- ("/home/gp21012/work/bv/box-up/notes/net/devel/20220711113844-lang_all.org" . 270)
- ("/home/gp21012/Dropbox/Local/data/org/ref/"
-  (dired-filename . "/home/gp21012/Dropbox/Local/data/org/ref/references.bib"))
- ("/home/gp21012/work/bv/box-up/doc/up/8.HC/im/362/10-man/rh362-9.1-student-guide-xref.org" . 92)
- ("/usr/local/share/emacs/emacs-share/emacs-site/site-pref.el" . 710)
- ("/usr/local/share/emacs/emacs-share/emacs-site/site-config.org" . 789)
- ("/usr/local/share/emacs/emacs-share/emacs-site/site-boot.el" . 1628)
- ("/usr/local/share/emacs/emacs-share/emacs-site/"
-  (dired-filename . "/usr/local/share/emacs/emacs-share/emacs-site/site-conf.el"))
- ("/usr/local/share/emacs/emacs-share/emacs-site/site-conf.el" . 404)
- ("/usr/local/share/emacs/emacs-share/emacs-site/site-cust.el" . 954)
- ("/usr/local/share/emacs/emacs-share/emacs-site/site-init.el" . 11943)
- ("/home/gp21012/.emacs.d/elpa/wgrep-ag-20230202.315/wgrep-ag-autoloads.el" . 553)
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/801/70-azcli/510-az-misc.org" . 1471)
- ("/home/gp21012/Dropbox/Local/data/org/net/refs/"
-  (dired-filename . "/home/gp21012/Dropbox/Local/data/org/net/refs/.."))
- ("/home/gp21012/Dropbox/Local/data/org/net/"
-  (dired-filename . "/home/gp21012/Dropbox/Local/data/org/net/refs"))
- ("/home/gp21012/work/bv/box-up/doc/up/5.AO/ov/501/20-steelmill/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/5.AO/ov/501/20-steelmill/.."))
- ("/home/gp21012/work/bv/box-up/doc/up/5.AO/ov/501/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/5.AO/ov/501/.."))
- ("/home/gp21012/work/bv/box-up/notebooks/sys-test/jupyter-ai-test.ipynb" . 634)
- ("/home/gp21012/work/bv/box-up/doc/ex/0.VM/DOCKER/dk-user.md" . 5)
- ("/home/gp21012/work/bv/box-up/src/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main"))
- ("/home/gp21012/work/bv/box-up/src/main/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform"))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az"))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules"))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs"))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/q"))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/q/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/q/vm"))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/q/vm/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/q/vm/providers.tf"))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-ur401-lab/vm/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-ur401-lab/vm/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-ur401-lab/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-ur401-lab/conf"))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-ur401-lab/conf/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-ur401-lab/conf/main.tf"))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/q/vm/main.tf" . 3348)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/q/vm/providers.tf" . 428)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-ur401-lab/conf/main.tf" . 542)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-ur401-lab/vm/main.tf" . 681)
- ("/home/gp21012/.emacs-site/skel/.emacs-setup.org" . 3397)
- ("/home/gp21012/work/vs/dve-sample-py/"
-  (dired-filename . "/home/gp21012/work/vs/dve-sample-py/.."))
- ("/home/gp21012/work/vs/dve-sample-py/setup.py" . 39)
- ("/home/gp21012/work/bv/box-up/src/main/tcltk/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/tcltk/oplib"))
- ("/home/gp21012/work/bv/box-up/src/main/tcltk/oplib/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/tcltk/oplib/oplib-kk"))
- ("/home/gp21012/work/bv/box-up/src/main/tcltk/oplib/oplib-kk/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/tcltk/oplib/oplib-kk/usr"))
- ("/home/gp21012/work/bv/box-up/src/main/tcltk/oplib/oplib-kk/usr/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/tcltk/oplib/oplib-kk/usr/local"))
- ("/home/gp21012/work/bv/box-up/src/main/tcltk/oplib/oplib-kk/usr/local/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/tcltk/oplib/oplib-kk/usr/local/bin"))
- ("/home/gp21012/work/bv/box-up/src/main/tcltk/oplib/oplib-kk/usr/local/bin/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/tcltk/oplib/oplib-kk/usr/local/bin/tk-samples.tcl"))
- ("/home/gp21012/work/bv/box-up/src/main/tcltk/oplib/oplib-kk/usr/local/bin/tk-samples.tcl" . 42)
- ("/home/gp21012/work/bv/box-up/src/main/tcltk/oplib/oplib-kk/usr/local/bin/op-connect.tcl" . 78)
- ("/home/gp21012/work/bv/box-up/src/test/python/box_tests/use/openai/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/test/python/box_tests/use/openai/test_chat_basic.py"))
- ("/home/gp21012/work/bv/box-up/pyproject.toml" . 2839)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/docs/az-devtestlab-rg-auth.md" . 18846)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/docs/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/docs/az-devtestlab-rg-test.md"))
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/files/usr/local/sbin/vv-user.sh" . 8515)
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/oplab/az_lab_vm_provision.yaml" . 646)
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/index.yml" . 197)
- ("/home/gp21012/work/bv/box-up/doc/up/5.AO/ov/501/20-steelmill/110-ci-setup.org" . 1318)
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/oplab/bundles/basic.yaml" . 154)
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/roles/28-toolkit/tasks/310-sys-toolkit.yml" . 3524)
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/inv/stage/hosts" . 152)
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/inv/stage/group_vars/xt_si701/vars" . 86)
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/inv/stage/group_vars/xt_si701/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/inv/stage/group_vars/xt_si701/.."))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/inv/stage/group_vars/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/inv/stage/group_vars/.."))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/inv/stage/host_vars/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/inv/stage/host_vars/.."))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/inv/stage/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/inv/stage/.."))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/inv/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/inv/.."))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/roles/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/roles/28-toolkit"))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/roles/28-toolkit/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/roles/28-toolkit/tasks"))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/roles/28-toolkit/tasks/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/roles/28-toolkit/tasks/310-sys-toolkit.yml"))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/oplab/roles/00-test/tasks/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/oplab/roles/00-test/tasks/.."))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/oplab/roles/00-test/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/oplab/roles/00-test/.."))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/oplab/roles/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/oplab/roles/.."))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys"))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/cicd.yml"))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/oplab/bundles/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/oplab/bundles/.."))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/oplab/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/oplab/az_lab_vm_provision.yaml"))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/cicd.yml" . 87)
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/oplab/az_publish_imgversion_from_vm.yaml" . 16085)
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/inv/stage/host_vars/xt-si701-v35" . 14)
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/inv/stage/host_vars/mn-si501-e32" . 14)
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/roles/28-toolkit/tasks/410-setup-az-tools.yml" . 44)
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/library/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/library/.."))
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/.."))
+(("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/320-setup-x-fonts.yml" . 621)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/510-install-s-matlab.yml" . 1847)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/340-setup-x-mon.yml" . 1792)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/350-setup-x-remote.yml" . 17790)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/390-setup-x-session.yml" . 582)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/310-setup-x-desktop.yml" . 5326)
+ ("/home/gp21012/Dropbox/Local/data/org/all/dots.org" . 238)
+ ("/home/gp21012/Dropbox/Local/data/org/all/milk.org" . 143)
+ ("/sudo:root@pp4:/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml" . 2325)
+ ("/sudo:root@pp4:/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/thunar-volman.xml" . 40)
+ ("/sudo:root@pp4:/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml" . 145)
+ ("/sudo:root@pp4:/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml" . 843)
+ ("/sudo:root@pp4:/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml" . 123)
+ ("/sudo:root@pp4:/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/"
+  (dired-filename . "/sudo:root@pp4:/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/../"))
+ ("/sudo:root@pp4:/etc/xdg/xfce4/xfconf/"
+  (dired-filename . "/sudo:root@pp4:/etc/xdg/xfce4/xfconf/../"))
+ ("/sudo:root@pp4:/etc/xdg/xfce4/xinitrc" . 2562)
+ ("/sudo:root@pp4:/etc/xdg/xfce4/panel/default.xml" . 3019)
+ ("/sudo:root@pp4:/etc/xdg/xfce4/panel/xfce4-clipman-actions.xml" . 9454)
+ ("/sudo:root@pp4:/etc/xdg/xfce4/panel/"
+  (dired-filename . "/sudo:root@pp4:/etc/xdg/xfce4/panel/../"))
+ ("/sudo:root@pp4:/etc/xdg/xfce4/whiskermenu/"
+  (dired-filename . "/sudo:root@pp4:/etc/xdg/xfce4/whiskermenu/../"))
+ ("/sudo:root@pp4:/etc/xdg/xfce4/"
+  (dired-filename . "/sudo:root@pp4:/etc/xdg/xfce4/../"))
+ ("/sudo:root@pp4:/etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/"
+  (dired-filename . "/sudo:root@pp4:/etc/xdg/xdg-xubuntu/xfce4/xfconf/xfce-perchannel-xml/../"))
+ ("/sudo:root@pp4:/etc/xdg/xdg-xubuntu/xfce4/xfconf/"
+  (dired-filename . "/sudo:root@pp4:/etc/xdg/xdg-xubuntu/xfce4/xfconf/../"))
+ ("/sudo:root@pp4:/etc/xdg/xdg-xubuntu/xfce4/"
+  (dired-filename . "/sudo:root@pp4:/etc/xdg/xdg-xubuntu/xfce4/../"))
+ ("/sudo:root@pp4:/etc/xdg/xdg-xubuntu/"
+  (dired-filename . "/sudo:root@pp4:/etc/xdg/xdg-xubuntu/../"))
+ ("/sudo:root@pp4:/etc/xdg/"
+  (dired-filename . "/sudo:root@pp4:/etc/xdg/../"))
+ ("/sudo:root@pp4:/usr/share/xfwm4/defaults" . 1680)
+ ("/sudo:root@pp4:/usr/share/xfwm4/"
+  (dired-filename . "/sudo:root@pp4:/usr/share/xfwm4/../"))
+ ("/sudo:root@pp4:/usr/share/xsessions/xubuntu.desktop" . 810)
+ ("/sudo:root@pp4:/usr/share/xsessions/"
+  (dired-filename . "/sudo:root@pp4:/usr/share/xsessions/../"))
+ ("/sudo:root@pp4:/usr/bin/startlxde" . 1005)
+ ("/sudo:root@pp4:/usr/bin/startx" . 4667)
+ ("/sudo:root@pp4:/usr/bin/"
+  (dired-filename . "/sudo:root@pp4:/usr/bin/../"))
+ ("/sudo:root@pp4:/etc/X11/Xsession.d/50x11-common_determine-startup" . 1157)
+ ("/sudo:root@pp4:/etc/X11/Xsession.d/"
+  (dired-filename . "/sudo:root@pp4:/etc/X11/Xsession.d/50x11-common_determine-startup"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/etc/"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/etc/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/etc/skel/"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/etc/skel/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/etc/skel/.Xsession"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/etc/skel/.Xsession" . 249)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/main.yml" . 1055)
  ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/.."))
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/00-common/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/00-common/.."))
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/../"))
  ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup"))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/inv/stage/group_vars/mn_si501/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/inv/stage/group_vars/mn_si501/.."))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/inv/stage/group_vars/all/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/inv/stage/group_vars/all/vars"))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/.."))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/.."))
- ("/home/gp21012/work/bv/box-up/src/main/ansible/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs"))
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox"))
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/dsbox.yml"))
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/dsbox.yml" . 766)
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/roles/00-common/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/roles/00-common/.."))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/roles/28-toolkit/handlers/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/roles/28-toolkit/handlers/.."))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/roles/28-toolkit/templates/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/roles/28-toolkit/templates/.."))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/inv/stage/group_vars/all/vars" . 134)
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/inv/stage/group_vars/mn_si501/vars" . 86)
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/40-data/tasks/210-setup-open-db.yml" . 451)
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/site.yml" . 118)
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/10-create/tasks/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/10-create/tasks/.."))
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/10-create/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/10-create/.."))
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/40-data/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/40-data/tasks"))
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/40-data/tasks/main.yml" . 251)
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/40-data/tasks/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/40-data/tasks/.."))
- ("/home/gp21012/work/bv/box-up/doc/up/5.AO/ov/101/10-sys/450-disk-lvm.org" . 2131)
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/110-setup-nox-utils.yml" . 1699)
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/110-setup-nox-utils.yml"))
- ("/home/gp21012/work/bv/box-up/doc/up/5.AO/ov/501/20-steelmill/120-ci-utils.org" . 1140)
- ("/home/gp21012/work/bv/box-up/doc/up/5.AO/ov/501/20-steelmill/130-ci-users.org" . 1935)
- ("/home/gp21012/work/bv/box-up/src/main/azure/int/20/300/vv-init.sh" . 10043)
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/docs/xo/501/10-create/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/docs/xo/501/10-create/.."))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/docs/xo/501/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/docs/xo/501/.."))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/docs/xo/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/docs/xo/.."))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/docs/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/docs/.."))
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/sys/README.md" . 187)
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/main.yml" . 1524)
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/docs/xo/501/10-create/150-rocky-init.org" . 1328)
- ("/home/gp21012/work/bv/box-up/logs/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/logs/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/.."))
- ("/home/gp21012/work/bv/box-up/doc/up/5.AO/oz/901/91-sandbox/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/5.AO/oz/901/91-sandbox/.."))
- ("/home/gp21012/work/bv/box-up/doc/up/5.AO/oz/901/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/5.AO/oz/901/.."))
- ("/home/gp21012/work/bv/box-up/doc/up/5.AO/oz/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/5.AO/oz/.."))
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xe/701/30-setup/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xe/701/30-setup/.."))
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xe/701/20-init/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xe/701/20-init/.."))
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xe/701/10-create/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xe/701/10-create/.."))
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xo/501/10-create/150-rocky-init.org" . 1393)
- ("/home/gp21012/work/bv/box-up/doc/up/5.AO/ov/501/20-steelmill/310-ci-deps.org" . 757)
- ("/home/gp21012/work/bv/box-up/doc/up/5.AO/ov/501/20-steelmill/230-ci-jenkins.org" . 1020)
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xe/701/10-create/010-create-lab.md" . 1381)
- ("/home/gp21012/work/bv/box-up/src/main/azure/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/azure/api"))
- ("/home/gp21012/work/bv/box-up/src/main/azure/api/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/azure/api/az-devtest-vm.org"))
- ("/home/gp21012/work/bv/box-up/src/main/azure/api/az-devtest-vm.org" . 8580)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/q/lab/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/q/lab/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/config/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/config/main.tf"))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/config/main.tf" . 4620)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/const/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/const/main.tf"))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/const/main.tf" . 816)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/config/outputs.tf" . 14)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/const/variables.tf" . 2941)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-ur401-lab/lab/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-ur401-lab/lab/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-ur401-lab/conf/variables.tf" . 42)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-up201-lab/conf/main.tf" . 611)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-up201-lab/conf/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-up201-lab/conf/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-up201-lab/lab/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-up201-lab/lab/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-up201-lab/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-up201-lab/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/config/variables.tf" . 755)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/q/lab/main.tf" . 905)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-up201-lab/conf/variables.tf" . 65)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-ur401-lab/lab/main.tf" . 1091)
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/40-data/tasks/370-setup-open-pg.yml" . 3049)
- ("/home/gp21012/work/bv/box-up/Makefile" . 535)
- ("/home/gp21012/work/bv/box-up/notebooks/sys-test/.ipynb_checkpoints/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/notebooks/sys-test/.ipynb_checkpoints/.."))
- ("/home/gp21012/work/bv/box-up/notebooks/sys-test/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/notebooks/sys-test/.."))
- ("/home/gp21012/work/bv/box-up/notebooks/julia-env/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/notebooks/julia-env/.."))
- ("/home/gp21012/work/bv/box-up/notebooks/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/notebooks/.."))
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xe/701/80-unleash/511-unleash-users.org" . 174)
- ("/home/gp21012/work/bv/"
-  (dired-filename . "/home/gp21012/work/bv/box-up"))
- ("/home/gp21012/work/bv/box-up/temp/" . 47)
- ("/home/gp21012/work/bv/box-up/sys-test/" . 48)
- ("/home/gp21012/work/bv/box-up/notebooks/@databricks/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/notebooks/@databricks/test"))
- ("/home/gp21012/work/bv/box-up/functions.sh" . 202)
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/25-update/310-nvidia-up.org" . 8350)
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/100-setup-os-init.yml" . 3081)
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/410-install-s-stata.yml" . 4747)
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/"))
  ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks"))
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/"))
  ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/410-install-s-stata.yml"))
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/510-install-s-matlab.yml"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/320-setup-x-fonts.yml"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/stage/"))
  ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/stage/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/stage/group_vars"))
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/stage/group_vars/"))
  ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/stage/group_vars/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/stage/group_vars/all"))
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/stage/group_vars/all/"))
  ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/stage/group_vars/all/"
   (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/stage/group_vars/all/vars"))
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/25-update/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/25-update/310-nvidia-up.org"))
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/20-init/tasks/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/20-init/tasks/.."))
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/20-init/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/20-init/.."))
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/22-config/tasks/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/22-config/tasks/.."))
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/22-config/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/22-config/.."))
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/25-upgrade/tasks/000-setup-apt-update.yml" . 480)
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/25-upgrade/tasks/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/25-upgrade/tasks/.."))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/stage/group_vars/all/vars" . 2673)
+ ("/sudo:root@pp4:/etc/X11/Xsession.d/56xubuntu-session" . 276)
+ ("/sudo:root@pp4:/usr/share/"
+  (dired-filename . "/sudo:root@pp4:/usr/share/doc/"))
+ ("/sudo:root@pp4:/usr/share/doc/"
+  (dired-filename . "/sudo:root@pp4:/usr/share/doc/lightdm/"))
+ ("/sudo:root@pp4:/usr/share/doc/lightdm/"
+  (dired-filename . "/sudo:root@pp4:/usr/share/doc/lightdm/lightdm.conf.gz"))
+ ("/sudo:root@pp4:/etc/lightdm/lightdm.conf" . 16)
+ ("/sudo:root@pp4:/usr/"
+  (dired-filename . "/sudo:root@pp4:/usr/../"))
+ ("/sudo:root@pp4:/"
+  (dired-filename . "/sudo:root@pp4:/etc/"))
+ ("/sudo:root@pp4:/usr/share/doc/lightdm/lightdm.conf.gz" . 5461)
+ ("/sudo:root@pp4:/etc/kernel/"
+  (dired-filename . "/sudo:root@pp4:/etc/kernel/../"))
+ ("/sudo:root@pp4:/etc/lightdm/lightdm.conf.d/xserver-options.conf" . 3123)
+ ("/sudo:root@pp4:/etc/lightdm/lightdm.conf.d/"
+  (dired-filename . "/sudo:root@pp4:/etc/lightdm/lightdm.conf.d/../"))
+ ("/sudo:root@pp4:/etc/lightdm/"
+  (dired-filename . "/sudo:root@pp4:/etc/lightdm/../"))
+ ("/sudo:root@pp4:/etc/"
+  (dired-filename . "/sudo:root@pp4:/etc/X11/"))
+ ("/sudo:root@pp4:/etc/X11/"
+  (dired-filename . "/sudo:root@pp4:/etc/X11/xorg.conf.d/"))
+ ("/sudo:root@pp4:/etc/X11/xorg.conf.d/"
+  (dired-filename . "/sudo:root@pp4:/etc/X11/xorg.conf.d/Z90-composite"))
+ ("/home/gp21012/Dropbox/Local/data/org/all/task.org" . 888)
+ ("/home/gp21012/work/bv/box-up/setup.py" . 39)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/20-init/tasks/832-init-dock.yml" . 808)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/410-install-s-stata.yml" . 3005)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/20-init/tasks/601-init-undo.yml" . 868)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/710-setup-open-dslab.yml" . 6902)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/330-setup-x-apps.yml" . 11035)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/610-setup-dsvm-base.yml" . 867)
  ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/25-upgrade/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/25-upgrade/.."))
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/.."))
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/stage/group_vars/all/vars" . 5151)
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/330-setup-x-apps.yml" . 6822)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/q/vm/outputs.tf" . 231)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/tags/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/tags/.."))
- ("/home/gp21012/work/bv/box-up/src/main/azure/api/az-devtest-vm.http" . 24)
- ("/home/gp21012/work/bv/box-up/src/main/azure/ext/20/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/azure/ext/20/.."))
- ("/home/gp21012/work/bv/box-up/src/main/azure/ext/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/azure/ext/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/oq/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/oq/vm"))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/oq/vm/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/oq/vm/main.tf"))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/oq/vm/main.tf" . 657)
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/oplab/files/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/oplab/files/az_lab_vm_create.ps1"))
- ("/home/gp21012/work/bv/box-up/src/main/azure/arm/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/azure/arm/vm"))
- ("/home/gp21012/work/bv/box-up/src/main/azure/arm/vm/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/azure/arm/vm/vm-lab-create-oq-ur401.json"))
- ("/home/gp21012/work/bv/box-up/src/main/azure/arm/vm/vm-lab-create-oq-ur401.json" . 1323)
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/oplab/files/az_lab_vm_create.ps1" . 2381)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/const/test/outputs.tf" . 1591)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/const/test/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/const/test/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/oq/vm/outputs.tf" . 253)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-ur401-lab/vm/outputs.tf" . 253)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-ur401-lab/conf/test/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-ur401-lab/conf/test/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/config/test/main.tf" . 673)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/config/test/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/config/test/variables.tf"))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/config/test/variables.tf" . 946)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-ur401-lab/conf/test/main.tf" . 89)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/a/lab/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/a/lab/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/a/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/a/.."))
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/350-setup-x-remote.yml" . 9214)
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/210-install-p-python.yml" . 10)
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/00-common/tasks/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/00-common/tasks/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-up201-lab/conf/test/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-up201-lab/conf/test/outputs.tf"))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/oq/oq-up201-lab/conf/test/outputs.tf" . 96)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/es/es-cx670-lab/lab/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/es/es-cx670-lab/lab/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/es/es-cx670-lab/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/es/es-cx670-lab/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/es/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/es/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/es/es-cx670-lab/lab/main.tf" . 798)
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/25-upgrade/tasks/"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/25-upgrade/tasks/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/25-upgrade/tasks/000-setup-apt-update.yml"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/25-upgrade/tasks/000-setup-apt-update.yml" . 451)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/usr/local/bin/libreoffice" . 123)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/usr/local/bin/firefox" . 60)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/usr/local/bin/google-chrome" . 27)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/etc/polkit-1/localauthority.conf.d/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/etc/polkit-1/localauthority.conf.d/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/etc/polkit-1/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/etc/polkit-1/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/etc/profile.d/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/etc/profile.d/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/usr/local/share/applications/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/usr/local/share/applications/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/usr/local/share/sage/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/usr/local/share/sage/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/usr/local/share/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/usr/local/share/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/usr/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/usr/local/"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/usr/local/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/usr/local/bin/"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/usr/local/bin/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/usr/local/bin/txsh"))
+ ("/sudo:root@pp4:/usr/local/"
+  (dired-filename . "/sudo:root@pp4:/usr/local/bin/"))
+ ("/sudo:root@pp4:/usr/local/bin/"
+  (dired-filename . "/sudo:root@pp4:/usr/local/bin/txsh"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/usr/local/bin/txsh" . 54)
+ ("/sudo:root@pp4:/usr/local/bin/txsh" . 1226)
+ ("/sudo:root@pp4:/bin.usr-is-merged/"
+  (dired-filename . "/sudo:root@pp4:/bin.usr-is-merged/../"))
+ ("/sudo:root@pp4:/bin/startlxde" . 33)
+ ("/sudo:root@pp4:/bin/"
+  (dired-filename . "/sudo:root@pp4:/bin/../"))
+ ("/sudo:root@pp4:/etc/xdg/lxpanel/LXDE/"
+  (dired-filename . "/sudo:root@pp4:/etc/xdg/lxpanel/LXDE/../"))
+ ("/sudo:root@pp4:/etc/xdg/lxpanel/"
+  (dired-filename . "/sudo:root@pp4:/etc/xdg/lxpanel/../"))
+ ("/sudo:root@pp4:/home/dsuser/"
+  (dired-filename . "/sudo:root@pp4:/home/dsuser/.config/"))
+ ("/sudo:root@pp4:/home/dsuser/.config/"
+  (dired-filename . "/sudo:root@pp4:/home/dsuser/.config/lxpanel/"))
+ ("/sudo:root@pp4:/home/dsuser/.config/lxpanel/"
+  (dired-filename . "/sudo:root@pp4:/home/dsuser/.config/lxpanel/LXDE/"))
+ ("/sudo:root@pp4:/home/dsuser/.config/lxpanel/LXDE/"
+  (dired-filename . "/sudo:root@pp4:/home/dsuser/.config/lxpanel/LXDE/panels/"))
+ ("/sudo:root@pp4:/home/dsuser/.config/lxpanel/LXDE/panels/"
+  (dired-filename . "/sudo:root@pp4:/home/dsuser/.config/lxpanel/LXDE/panels/panel"))
+ ("/sudo:root@pp4:/etc/xdg/lxpanel/LXDE/panels/"
+  (dired-filename . "/sudo:root@pp4:/etc/xdg/lxpanel/LXDE/panels/panel"))
+ ("/sudo:root@pp4:/home/dsuser/.config/lxpanel/LXDE/panels/panel" . 1045)
+ ("/sudo:root@pp4:/home/"
+  (dired-filename . "/sudo:root@pp4:/home/gp21012/"))
+ ("/sudo:root@pp4:/home/gp21012/"
+  (dired-filename . "/sudo:root@pp4:/home/gp21012/.Xsession"))
+ ("/sudo:root@pp4:/etc/xdg/lxpanel/LXDE/panels/panel" . 1281)
+ ("/sudo:root@pp4:/home/gp21012/.Xsession" . 10)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/etc/X11/Xsession.d/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/etc/X11/Xsession.d/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/etc/X11/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/etc/X11/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/etc/X11/Xsession.d/19x2go-fix" . 327)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/10-create/tasks/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/10-create/tasks/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/10-create/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/10-create/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/20-init/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/20-init/tasks/"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/20-init/tasks/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/20-init/tasks/832-init-dock.yml"))
+ ("/sudo:root@pp4:/root/"
+  (dired-filename . "/sudo:root@pp4:/root/Documents/"))
+ ("/sudo:root@pp4:/root/Documents/"
+  (dired-filename . "/sudo:root@pp4:/root/Documents/sys/"))
+ ("/sudo:root@pp4:/root/Documents/sys/"
+  (dired-filename . "/sudo:root@pp4:/root/Documents/sys/dm/"))
+ ("/sudo:root@pp4:/root/Documents/sys/dm/dm-0-x2go-lxde-dsuser.txt" . 25218)
+ ("/sudo:root@pp4:/root/Documents/sys/dm/"
+  (dired-filename . "/sudo:root@pp4:/root/Documents/sys/dm/dm-0-nx-lxde-s-dsuser.txt"))
+ ("/sudo:root@pp4:/root/Documents/sys/dm/dm-0-nx-lxde-s-dsuser.txt" . 27980)
+ ("/sudo:root@pp4:/root/Documents/sys/dm/dm-1-x2go-lxde-dsuser.txt" . 2925)
+ ("/sudo:root@pp4:/usr/NX/"
+  (dired-filename . "/sudo:root@pp4:/usr/NX/etc/"))
+ ("/sudo:root@pp4:/usr/NX/etc/"
+  (dired-filename . "/sudo:root@pp4:/usr/NX/etc/node.cfg"))
+ ("/sudo:root@pp4:/usr/NX/etc/node.cfg" . 1669)
+ ("/home/gp21012/Dropbox/Local/data/org/all/"
+  (dired-filename . "/home/gp21012/Dropbox/Local/data/org/all/todo.org"))
+ ("/home/gp21012/Dropbox/Local/data/org/all/todo.org" . 21)
+ ("/home/gp21012/work/bv/box-up/todo.org" . 272)
+ ("/home/gp21012/work/vs/dve-sample-r/todo.org" . 395)
+ ("/home/gp21012/work/vs/dve-sample-py/todo.org" . 290)
+ ("/home/gp21012/.emacs-site/site-pkgs.org" . 163357)
+ ("/home/gp21012/work/bv/box-up/notes/nat/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/notes/nat/../"))
+ ("/home/gp21012/work/bv/box-up/doc/up/8.HC/im/362/10-man/rh362-notes.org" . 1249)
+ ("/home/gp21012/work/bv/box-up/doc/up/8.HC/im/362/10-man/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/8.HC/im/362/10-man/rh362-9.1-student-guide.pdf"))
+ ("/home/gp21012/work/bv/box-up/notes/nat/20240123T130000--rhlcourse362__bib_op_oq_rhl.org" . 813)
+ ("/home/gp21012/work/bu/org-info/"
+  (dired-filename . "/home/gp21012/work/bu/org-info/todo.org"))
+ ("/home/gp21012/work/bv/box-up/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/todo.org"))
+ ("/home/gp21012/work/"
+  (dired-filename . "/home/gp21012/work/vs/"))
+ ("/home/gp21012/work/vs/"
+  (dired-filename . "/home/gp21012/work/vs/dve-sample-r/"))
+ ("/home/gp21012/work/vs/dve-sample-r/"
+  (dired-filename . "/home/gp21012/work/vs/dve-sample-r/todo.org"))
+ ("/home/gp21012/work/vs/dve-sample-py/"
+  (dired-filename . "/home/gp21012/work/vs/dve-sample-py/todo.org"))
+ ("/home/gp21012/"
+  (dired-filename . "/home/gp21012/.emacs-agenda.txt"))
+ ("/home/gp21012/.emacs-agenda.txt" . 120)
+ ("/home/gp21012/work/bv/box-up/doc/up/5.AO/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/5.AO/../"))
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xe/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xe/../"))
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xo/501/10-create/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xo/501/10-create/../"))
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xo/501/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xo/501/../"))
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xo/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xo/../"))
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/10-sys/220-podman.org" . 99)
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/10-sys/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/10-sys/../"))
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/../"))
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/../"))
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/../"))
+ ("/home/gp21012/work/bv/box-up/doc/up/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/../"))
+ ("/home/gp21012/work/bv/box-up/doc/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/"))
+ ("/home/gp21012/.emacs.d/elpa/poetry-20240329.1103/poetry.el" . 20632)
+ ("/home/gp21012/work/bu/org-info/pyproject.toml" . 35)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/20-init/tasks/650-init-kern.yml" . 2312)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/usr/local/bin/cpufreqstat.sh" . 194)
+ ("/home/gp21012/work/pw/pb-datalab/"
+  (dired-filename . "/home/gp21012/work/pw/pb-datalab/todo.org"))
+ ("/home/gp21012/work/pw/pb-datalab/todo.org" . 277)
+ ("/ssh:pp4:/home/gp21012/"
+  (dired-filename . "/ssh:pp4:/home/gp21012/../"))
+ ("/ssh:pp4:/home/"
+  (dired-filename . "/ssh:pp4:/home/../"))
+ ("/ssh:pp4:/"
+  (dired-filename . "/ssh:pp4:/etc/"))
+ ("/ssh:pp4:/etc/"
+  (dired-filename . "/ssh:pp4:/etc/default/"))
+ ("/ssh:pp4:/etc/default/grub.d/50-cloudimg-settings.cfg" . 319)
+ ("/ssh:pp4:/etc/default/grub.d/"
+  (dired-filename . "/ssh:pp4:/etc/default/grub.d/../"))
+ ("/ssh:pp4:/etc/default/"
+  (dired-filename . "/ssh:pp4:/etc/default/grub"))
+ ("/ssh:pp4:/etc/default/grub" . 949)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/20-init/tasks/501-init-repo.yml" . 1475)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/tasks/710-custom-ds-users.yml" . 1387)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/tasks/" . 713)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/azure/ext/20/300/vs-init.sh" . 25345)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/tasks/510-custom-ds-scripts.yml" . 704)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/tasks/310-custom-skel-deploy.yml" . 1374)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/tasks/110-custom-skel-define.yml" . 4902)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/40-data/tasks/210-setup-open-db.yml" . 425)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/40-data/tasks/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/40-data/tasks/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/40-data/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/40-data/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/dsbox.yml" . 500)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/var/lib/ans/box/skel/bin/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/var/lib/ans/box/skel/bin/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/var/lib/ans/box/skel/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/var/lib/ans/box/skel/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/var/lib/ans/box/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/var/lib/ans/box/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/var/lib/ans/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/var/lib/ans/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/var/lib/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/var/lib/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/var/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/var/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/20-init/tasks/830-init-dock.yml" . 8620)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/20-init/tasks/810-init-conf.yml" . 2486)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/20-init/tasks/701-init-sudo.yml" . 225)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/20-init/tasks/main.yml" . 1385)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/tasks/810-custom-ds-accounts.yml" . 720)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/90-ship/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/90-ship/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/main.yml" . 1138)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/40-data/tasks/810-setup-open-jq.yml" . 617)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/40-data/tasks/710-setup-open-ql.yml" . 2831)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/40-data/tasks/515-setup-open-cy.yml" . 3547)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/210-setup-lib-blas.yml" . 1182)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/130-setup-nox-build.yml" . 3997)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/40-data/tasks/815-setup-open-jp.yml" . 2489)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/40-data/tasks/510-setup-open-nj.yml" . 1227)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/40-data/tasks/415-setup-open-rm.yml" . 1611)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/40-data/tasks/410-setup-open-mg.yml" . 2340)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/40-data/tasks/370-setup-open-pg.yml" . 5952)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/40-data/tasks/310-setup-open-my.yml" . 1237)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/110-setup-nox-utils.yml" . 665)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/tasks/main.yml" . 527)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/files/usr/local/bin/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/files/usr/local/bin/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/files/usr/local/sbin/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/files/usr/local/sbin/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/files/usr/local/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/files/usr/local/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/files/usr/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/files/usr/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/files/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/files/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/etc/profile.d/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/etc/profile.d/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/etc/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/etc/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/home/dsuser/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/home/dsuser/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/home/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/home/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/usr/local/bin/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/usr/local/bin/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/usr/local/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/usr/local/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/usr/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/usr/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/var/lib/vum/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/var/lib/vum/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/templates/home/dsuser/.gitconfig" . 780)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/850-install-c-sing.yml" . 1508)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/630-install-l-julia-snap.yml" . 791)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/260-setup-lib-gsl.yml" . 595)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/270-setup-lib-gdal.yml" . 852)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/stage/host_vars/es-cx670-x33" . 229)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/stage/host_vars/pw-bs110-v04" . 229)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/stage/host_vars/pw-bs110-v05" . 246)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/stage/host_vars/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/stage/host_vars/pw-bs110-v04"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/350-install-r-dsvm.yml" . 233)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/510-setup-j-java.yml" . 6064)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/610-install-l-julia.yml" . 1505)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/280-install-p-tools.yml" . 2284)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/605-install-l-julia-pro.yml" . 1511)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/550-install-s-dynare.yml" . 3082)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/550-setup-j-jenkins.yml" . 625)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/310-install-r-blas.yml" . 542)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/210-install-p-python.yml" . 1605)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/100-install-os-prepare.yml" . 1044)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/stage/group_vars/es_cx670/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/stage/group_vars/es_cx670/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/dev/group_vars/all/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/dev/group_vars/all/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/dev/group_vars/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/dev/group_vars/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/dev/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/dev/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/22-config/tasks/510-config-home.yml" . 1543)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/dev/group_vars/all/vars" . 1797)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/410-setup-az-tools.yml" . 1852)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/530-install-s-octave.yml" . 1167)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/570-setup-js-node.yml" . 2478)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/910-setup-sys-services.yml" . 645)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/stage/group_vars/pw_bs110/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/stage/group_vars/pw_bs110/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/stage/group_vars/cs_ux110/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/inv/stage/group_vars/cs_ux110/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/files/etc/profile.d/ZC91-java.sh" . 182)
+ ("/home/gp21012/work/cs/rob/README.md" . 197)
+ ("/home/gp21012/work/cs/rob/docker/r-images/dockerfiles/anchor.Dockerfile" . 193)
+ ("/home/gp21012/work/cs/rob/docker/r-images/dockerfiles/"
+  (dired-filename . "/home/gp21012/work/cs/rob/docker/r-images/dockerfiles/../"))
+ ("/home/gp21012/work/cs/rob/docker/r-images/"
+  (dired-filename . "/home/gp21012/work/cs/rob/docker/r-images/../"))
+ ("/home/gp21012/work/cs/"
+  (dired-filename . "/home/gp21012/work/cs/rob/"))
+ ("/home/gp21012/work/cs/rob/renv/"
+  (dired-filename . "/home/gp21012/work/cs/rob/renv/settings.dcf"))
+ ("/home/gp21012/work/cs/rob/renv/settings.dcf" . 236)
+ ("/home/gp21012/work/cs/rob/DESCRIPTION" . 584)
+ ("/home/gp21012/work/cs/rob/R/"
+  (dired-filename . "/home/gp21012/work/cs/rob/R/../"))
+ ("/home/gp21012/work/cs/rob/exec/"
+  (dired-filename . "/home/gp21012/work/cs/rob/exec/../"))
+ ("/home/gp21012/work/cs/rob/tests/testthat/"
+  (dired-filename . "/home/gp21012/work/cs/rob/tests/testthat/../"))
+ ("/home/gp21012/work/cs/rob/tests/"
+  (dired-filename . "/home/gp21012/work/cs/rob/tests/../"))
+ ("/home/gp21012/work/cs/rob/data/"
+  (dired-filename . "/home/gp21012/work/cs/rob/data/../"))
+ ("/home/gp21012/work/cs/rob/docker/"
+  (dired-filename . "/home/gp21012/work/cs/rob/docker/../"))
+ ("/home/gp21012/work/cs/rob/"
+  (dired-filename . "/home/gp21012/work/cs/rob/etc/"))
+ ("/home/gp21012/work/cs/rob/docker/r-images/build.conf" . 1067)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/272-setup-lib-git2.yml" . 849)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/100-setup-os-init.yml" . 2954)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/22-config/tasks/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/22-config/tasks/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/22-config/templates/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/22-config/templates/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/22-config/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/22-config/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/25-upgrade/tasks/main.yml" . 53)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/22-config/tasks/main.yml" . 133)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/20-init/tasks/831-init-dock.yml" . 2015)
+ ("/home/gp21012/work/bv/box-up/src/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/"))
+ ("/home/gp21012/work/bv/box-up/src/main/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/"))
+ ("/home/gp21012/.config/ranger/commands.py" . 1391)
+ ("/home/gp21012/.config/ranger/"
+  (dired-filename . "/home/gp21012/.config/ranger/scope.sh"))
+ ("/home/gp21012/.config/ranger/scope.sh" . 8061)
+ ("/home/gp21012/.config/ranger/rc.conf" . 1615)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/20-init/tasks/852-init-pods.yml" . 499)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/270-install-p-pyrc.yml" . 1051)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/230-install-p-conda.yml" . 6783)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/20-init/tasks/850-init-pods.yml" . 790)
+ ("/home/gp21012/.config/ranger/commands_full.py" . 12597)
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/25-update/210-apt-keys.org" . 4461)
+ ("/home/gp21012/.emacs" . 17270)
+ ("/home/gp21012/work/bv/box-up/doc/up/5.AO/oe/701/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/5.AO/oe/701/../"))
+ ("/home/gp21012/work/bv/box-up/doc/up/5.AO/oe/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/5.AO/oe/../"))
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xe/701/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xe/701/20-init/"))
+ ("/home/gp21012/work/bv/box-up/doc/up/5.AO/oe/701/20-init/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/5.AO/oe/701/20-init/101-init-base.org"))
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xe/701/20-init/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xe/701/20-init/101-init-base.org"))
+ ("/home/gp21012/work/bv/box-up/src/main/azure/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/azure/int/"))
+ ("/home/gp21012/work/bv/box-up/src/main/azure/int/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/azure/int/20/"))
+ ("/home/gp21012/work/bv/box-up/src/main/azure/int/20/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/azure/int/20/300/"))
+ ("/home/gp21012/work/bv/box-up/src/main/azure/int/20/300/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/azure/int/20/300/vv-init.sh"))
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xe/701/20-init/101-init-base.org" . 888)
+ ("/home/gp21012/work/bv/box-up/src/main/azure/int/20/300/vv-init.sh" . 2105)
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/201/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/201/../"))
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/301/20-init/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/301/20-init/../"))
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/301/30-setup/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/301/30-setup/../"))
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/301/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/301/../"))
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/401/40-data/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/401/40-data/../"))
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/401/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/401/../"))
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xe/701/10-create/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xe/701/10-create/../"))
+ ("/home/gp21012/.emacs-site/"
+  (dired-filename . "/home/gp21012/.emacs-site/site-pkgs.org"))
+ ("/home/gp21012/work/vs/dve-sample-py/doc/setup/setup.org" . 3871)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/tasks/360-install-r-cran.yml" . 1662)
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/40-gitops/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/40-gitops/../"))
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/25-update/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/25-update/../"))
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/70-lang/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/70-lang/510-matlab.org"))
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/70-lang/510-matlab.org" . 1312)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/templates/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/templates/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/files/etc/profile.d/ZC93-matlab.sh" . 168)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/files/etc/profile.d/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/files/etc/profile.d/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/files/etc/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/files/etc/../"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/files/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/files/usr/"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/files/usr/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/files/usr/local/"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/files/usr/local/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/files/usr/local/share/"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/files/usr/local/share/"
+  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/files/usr/local/share/applications/"))
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/files/usr/local/share/applications/Matlab.desktop" . 136)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/70-install/files/usr/local/share/applications/" . 1476)
+ ("/home/gp21012/work/vs/dve-sample-py/setup.py" . 39)
+ ("/home/gp21012/work/cs/csp-drive-rd/"
+  (dired-filename . "/home/gp21012/work/cs/csp-drive-rd/../"))
+ ("/home/gp21012/work/vs/dve-sample-py/pyproject.toml" . 4356)
+ ("/home/gp21012/work/vs/dve-sample-py/doc/"
+  (dired-filename . "/home/gp21012/work/vs/dve-sample-py/doc/setup/"))
  ("/home/gp21012/work/vs/dve-sample-py/doc/setup/"
   (dired-filename . "/home/gp21012/work/vs/dve-sample-py/doc/setup/setup.org"))
- ("/home/gp21012/work/vs/dve-sample-py/doc/setup/setup.org" . 8542)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/tags/variables.tf" . 1064)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/tags/test/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/info/tags/test/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/oq/lab/main.tf" . 631)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/oq/lab/variables.tf" . 24)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/oq/lab/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/oq/lab/.."))
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/40-gitops/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/40-gitops/410-terraform.org"))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/q/lab/variables.tf" . 23)
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/40-gitops/410-terraform.org" . 1698)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/tz/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/tz/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/op/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/op/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/de/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/de/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/es/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/es/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/le/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/le/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/b/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/b/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/tz/lab/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/tz/lab/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/tz/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/tz/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/pw/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/pw/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/op/lab/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/op/lab/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/op/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/op/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/c/lab/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/c/lab/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/c/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/c/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/ec/lab/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/ec/lab/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/ec/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/ec/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/es/es-cx670-lab/conf/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/es/es-cx670-lab/conf/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/es/es-cx670-lab/vm/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/es/es-cx670-lab/vm/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/es/fw-am210-lab/conf/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/es/fw-am210-lab/conf/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/es/fw-am210-lab/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/es/fw-am210-lab/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/es/le-ld101-lab/conf/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/es/le-ld101-lab/conf/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/es/le-ld101-lab/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/es/le-ld101-lab/.."))
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/labs/es/le-ld101-lab/conf/main.tf" . 111)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/op/lab/main.tf" . 493)
- ("/home/gp21012/work/bv/box-up/src/main/terraform/az/modules/labs/op/lab/outputs.tf" . 159)
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/oplab/Makefile" . 5218)
- ("/home/gp21012/work/bv/box-up/src/main/python/vce/config/conf/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/python/vce/config/conf/app_config.py"))
- ("/home/gp21012/work/bv/box-up/src/main/python/vce/config/conf/app_config.py" . 736)
- ("/home/gp21012/Documents/System/Image/sys/refs/rocky-v31/conf/etc/cloud/cloud.cfg" . 2710)
- ("/home/gp21012/Documents/System/Image/sys/refs/rocky-v31/conf/etc/waagent.conf" . 4141)
- ("/home/gp21012/Documents/System/Image/sys/refs/rocky-v31/conf/etc/"
-  (dired-filename . "/home/gp21012/Documents/System/Image/sys/refs/rocky-v31/conf/etc/cloud"))
- ("/home/gp21012/Documents/System/Image/sys/refs/rocky-v31/conf/etc/cloud/"
-  (dired-filename . "/home/gp21012/Documents/System/Image/sys/refs/rocky-v31/conf/etc/cloud/cloud.cfg.d"))
- ("/home/gp21012/Documents/System/Image/sys/refs/rocky-v31/conf/etc/cloud/cloud.cfg.d/05_logging.cfg" . 2071)
- ("/home/gp21012/Documents/System/Image/sys/refs/rocky-v31/conf/etc/cloud/cloud.cfg.d/"
-  (dired-filename . "/home/gp21012/Documents/System/Image/sys/refs/rocky-v31/conf/etc/cloud/cloud.cfg.d/10-azure-kvp.cfg"))
- ("/home/gp21012/Documents/System/Image/sys/refs/rocky-v31/conf/etc/cloud/cloud.cfg.d/10-azure-kvp.cfg" . 112)
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/proto/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/proto/.."))
- ("/home/gp21012/work/vs/dve-sample-py/doc/"
-  (dired-filename . "/home/gp21012/work/vs/dve-sample-py/doc/setup"))
- ("/home/gp21012/work/bv/box-up/src/main/docker/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/docker/.."))
- ("/home/gp21012/work/bv/box-up/src/main/docker/e0/config.mk" . 275)
- ("/home/gp21012/work/bv/box-up/src/main/docker/e0/Makefile" . 2068)
- ("/home/gp21012/work/bv/box-up/src/main/oplabs/ansible/labs/oplab/az_lab_vm_from_imgversion.yaml" . 1563)
- ("/home/gp21012/.emacs.d/elpa/avy-20230420.404/avy-autoloads.el" . 8868)
- ("/home/gp21012/.emacs.d/elpa/flycheck-haskell-20230706.1439/flycheck-haskell-autoloads.el" . 837)
- ("/home/gp21012/.emacs.d/elpa/hcl-mode-20230302.1029/hcl-mode-autoloads.el" . 669)
- ("/home/gp21012/.emacs.d/elpa/ht-20230703.558/ht-autoloads.el" . 414)
- ("/home/gp21012/.emacs.d/elpa/use-package-20230426.2324/use-package-autoloads.el" . 8338)
- ("/home/gp21012/.emacs.d/elpa/xterm-color-20230321.3/xterm-color-autoloads.el" . 2972)
- ("/home/gp21012/work/cs/multi-spatial-pred-stack/docker/"
-  (dired-filename . "/home/gp21012/work/cs/multi-spatial-pred-stack/docker/r-images"))
- ("/home/gp21012/work/vs/dve-sample-r/"
-  (dired-filename . "/home/gp21012/work/vs/dve-sample-r/docker"))
- ("/home/gp21012/work/vs/dve-sample-r/docker/"
-  (dired-filename . "/home/gp21012/work/vs/dve-sample-r/docker/r-images"))
- ("/home/gp21012/work/vs/dve-sample-r/docker/r-images/"
-  (dired-filename . "/home/gp21012/work/vs/dve-sample-r/docker/r-images/dockerfiles"))
- ("/home/gp21012/work/vs/dve-sample-r/docker/r-images/dockerfiles/"
-  (dired-filename . "/home/gp21012/work/vs/dve-sample-r/docker/r-images/dockerfiles/anchor.Dockerfile"))
- ("/home/gp21012/work/vs/dve-sample-r/docker/r-images/dockerfiles/anchor.Dockerfile" . 191)
- ("/home/gp21012/work/vs/dve-sample-r/etc/custom/"
-  (dired-filename . "/home/gp21012/work/vs/dve-sample-r/etc/custom/custom-source.conf"))
- ("/home/gp21012/work/vs/dve-sample-r/etc/custom/custom-source.conf" . 413)
- ("/home/gp21012/work/cs/multi-spatial-pred-stack/docker/r-images/dockerfiles/anchor.Dockerfile" . 113)
- ("/home/gp21012/work/cs/multi-spatial-pred-stack/docker/r-images/dockerfiles/"
-  (dired-filename . "/home/gp21012/work/cs/multi-spatial-pred-stack/docker/r-images/dockerfiles/.."))
- ("/home/gp21012/work/cs/multi-spatial-pred-stack/docker/r-images/cuda.conf" . 330)
- ("/home/gp21012/work/cs/multi-spatial-pred-stack/docker/r-images/"
-  (dired-filename . "/home/gp21012/work/cs/multi-spatial-pred-stack/docker/r-images/build.conf"))
- ("/home/gp21012/work/cs/multi-spatial-pred-stack/"
-  (dired-filename . "/home/gp21012/work/cs/multi-spatial-pred-stack/DESCRIPTION"))
- ("/home/gp21012/work/cs/multi-spatial-pred-stack/DESCRIPTION" . 756)
- ("/home/gp21012/work/cs/multi-spatial-pred-stack/etc/"
-  (dired-filename . "/home/gp21012/work/cs/multi-spatial-pred-stack/etc/custom"))
- ("/home/gp21012/work/cs/multi-spatial-pred-stack/etc/custom/"
-  (dired-filename . "/home/gp21012/work/cs/multi-spatial-pred-stack/etc/custom/custom-target.conf"))
- ("/home/gp21012/work/cs/multi-spatial-pred-stack/etc/custom/custom-target.conf" . 152)
- ("/home/gp21012/work/cs/multi-spatial-pred-stack/pyproject.toml" . 36)
- ("/home/gp21012/work/cs/multi-spatial-pred-stack/etc/custom/custom-source.conf" . 219)
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/310-setup-x-desktop.yml" . 2005)
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/25-update/210-apt-keys.org" . 2784)
- ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/10-sys/240-image.org" . 10582)
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/380-setup-x-flatpak.yml" . 516)
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/710-setup-open-dslab.yml" . 359)
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/30-setup/tasks/130-setup-nox-build.yml" . 3375)
- ("/home/gp21012/work/bv/box-up/src/main/azure/ext/20/300/vs-init.sh" . 24149)
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/files/usr/local/bin/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/files/usr/local/bin/.."))
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/files/usr/local/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/files/usr/local/sbin"))
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/files/usr/local/sbin/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/files/usr/local/sbin/vs-user.sh"))
- ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/files/usr/local/sbin/vs-user.sh" . 12340)
- ("/home/gp21012/work/vs/"
-  (dired-filename . "/home/gp21012/work/vs/dve-sample-py"))
- ("/home/gp21012/work/vs/dve-sample-py/pyproject.toml" . 2178)
- ("/home/gp21012/work/bv/box-up/src/main/python/box/cli/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/python/box/cli/.."))
- ("/home/gp21012/work/bv/box-up/src/main/python/box/config/conf/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/python/box/config/conf/.."))
- ("/home/gp21012/work/bv/box-up/src/main/python/box/config/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/python/box/config/.."))
- ("/home/gp21012/work/bv/box-up/src/main/python/box/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/python/box/.."))
- ("/home/gp21012/work/bv/box-up/src/main/python/vce/cli/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/python/vce/cli/.."))
- ("/home/gp21012/work/bv/box-up/src/main/python/vce/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/python/vce/.."))
- ("/home/gp21012/work/bv/box-up/src/main/python/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/main/python/.."))
- ("/home/gp21012/work/bv/box-up/src/test/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/test/python"))
- ("/home/gp21012/work/bv/box-up/src/test/python/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/test/python/box_tests"))
- ("/home/gp21012/work/bv/box-up/src/test/python/box_tests/resources/sql/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/test/python/box_tests/resources/sql/.."))
- ("/home/gp21012/work/bv/box-up/src/test/python/box_tests/resources/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/test/python/box_tests/resources/.."))
- ("/home/gp21012/work/bv/box-up/src/test/python/box_tests/config/"
-  (dired-filename . "/home/gp21012/work/bv/box-up/src/test/python/box_tests/config/conf")))
+ ("/home/gp21012/work/cs/csp-drive-rd/pyproject.toml" . 922)
+ ("/home/gp21012/work/vs/dve-sample-r/pyproject.toml" . 2996)
+ ("/home/gp21012/work/vs/dve-sample-r/DESCRIPTION" . 505)
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/25-update/310-nvidia-up.org" . 2263)
+ ("/home/gp21012/.vu/vu-self/"
+  (dired-filename . "/home/gp21012/.vu/vu-self/doc/"))
+ ("/home/gp21012/.vu/vu-self/doc/"
+  (dired-filename . "/home/gp21012/.vu/vu-self/doc/vu/"))
+ ("/home/gp21012/.vu/vu-self/doc/vu/"
+  (dired-filename . "/home/gp21012/.vu/vu-self/doc/vu/9.HT/"))
+ ("/home/gp21012/.vu/vu-self/doc/vu/9.HT/"
+  (dired-filename . "/home/gp21012/.vu/vu-self/doc/vu/9.HT/mn/"))
+ ("/home/gp21012/.vu/vu-self/doc/vu/9.HT/mn/"
+  (dired-filename . "/home/gp21012/.vu/vu-self/doc/vu/9.HT/mn/501/"))
+ ("/home/gp21012/.vu/vu-self/doc/vu/9.HT/mn/501/"
+  (dired-filename . "/home/gp21012/.vu/vu-self/doc/vu/9.HT/mn/501/10-whe/"))
+ ("/home/gp21012/.vu/vu-self/doc/vu/9.HT/mn/501/10-whe/"
+  (dired-filename . "/home/gp21012/.vu/vu-self/doc/vu/9.HT/mn/501/10-whe/whe-script.org"))
+ ("/home/gp21012/.vu/vu-self/notes/ref/"
+  (dired-filename . "/home/gp21012/.vu/vu-self/notes/ref/style.org"))
+ ("/home/gp21012/.vu/vu-self/notes/ref/style.org" . 253)
+ ("/home/gp21012/.vu/vu-self/doc/vu/9.HT/mn/501/10-whe/whe-script.org" . 123)
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/10-sys/450-disk-xfs.org" . 1222)
+ ("/ssh:y3:/home/vz21081/work/"
+  (dired-filename . "/ssh:y3:/home/vz21081/work/cs/"))
+ ("/ssh:y3:/home/vz21081/work/cs/"
+  (dired-filename . "/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/"))
+ ("/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/pyproject.toml" . 36)
+ ("/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/README.md" . 15)
+ ("/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/src/dqn/config/data/"
+  (dired-filename . "/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/src/dqn/config/data/../"))
+ ("/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/src/dqn/config/"
+  (dired-filename . "/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/src/dqn/config/../"))
+ ("/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/src/dqn/sample/"
+  (dired-filename . "/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/src/dqn/sample/../"))
+ ("/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/src/dqn/common/"
+  (dired-filename . "/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/src/dqn/common/../"))
+ ("/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/src/dqn/"
+  (dired-filename . "/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/src/dqn/../"))
+ ("/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/src/"
+  (dired-filename . "/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/src/../"))
+ ("/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/scripts/"
+  (dired-filename . "/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/scripts/../"))
+ ("/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/AirsimEnv/"
+  (dired-filename . "/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/AirsimEnv/../"))
+ ("/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/AirsimApp/"
+  (dired-filename . "/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/AirsimApp/../"))
+ ("/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/notebooks/sys-test/"
+  (dired-filename . "/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/notebooks/sys-test/../"))
+ ("/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/notebooks/"
+  (dired-filename . "/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/notebooks/../"))
+ ("/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/"
+  (dired-filename . "/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/doc/"))
+ ("/ssh:y3:/home/vz21081/work/cs/csp-drive-rd/scripts/DRQN_speed_evaluation.py" . 3090)
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/10-sys/330-k8s-minikube.org" . 4113)
+ ("/home/gp21012/work/bv/box-up/doc/up/3.AZ/xv/101/10-sys/410-disk-zfs.md" . 6)
+ ("/home/gp21012/work/vs/dve-sample-py/.python-version" . 7)
+ ("/home/gp21012/work/bv/box-up/pyproject.toml" . 29)
+ ("/home/gp21012/work/bv/box-up/setup.cfg" . 1018)
+ ("/ssh:y2:/home/vz21081/work/vz/lab-info/README.md" . 146)
+ ("/ssh:y2:/home/vz21081/work/vz/lab-info/"
+  (dired-filename . "/ssh:y2:/home/vz21081/work/vz/lab-info/./"))
+ ("/home/gp21012/work/pw/"
+  (dired-filename . "/home/gp21012/work/pw/../"))
+ ("/home/gp21012/work/cs/ddi-usa/exec/runner.sh" . 1441)
+ ("/home/gp21012/work/vs/dve-sample-py/starter.sh" . 1980)
+ ("/home/gp21012/work/cs/ddi-usa/starter.sh" . 2149)
+ ("/home/gp21012/work/vs/dve-sample-py/exec/"
+  (dired-filename . "/home/gp21012/work/vs/dve-sample-py/exec/../"))
+ ("/home/gp21012/work/cs/ddi-usa/exec/"
+  (dired-filename . "/home/gp21012/work/cs/ddi-usa/exec/../"))
+ ("/home/gp21012/work/vs/dve-sample-py/src/dve/cli/"
+  (dired-filename . "/home/gp21012/work/vs/dve-sample-py/src/dve/cli/../"))
+ ("/home/gp21012/work/cs/ddi-usa/src/ddi/cli/"
+  (dired-filename . "/home/gp21012/work/cs/ddi-usa/src/ddi/cli/../"))
+ ("/home/gp21012/work/cs/ddi-usa/"
+  (dired-filename . "/home/gp21012/work/cs/ddi-usa/src/"))
+ ("/home/gp21012/work/cs/ddi-usa/src/"
+  (dired-filename . "/home/gp21012/work/cs/ddi-usa/src/ddi/"))
+ ("/home/gp21012/work/cs/ddi-usa/src/ddi/resources/"
+  (dired-filename . "/home/gp21012/work/cs/ddi-usa/src/ddi/resources/../"))
+ ("/home/gp21012/work/cs/ddi-usa/src/ddi/"
+  (dired-filename . "/home/gp21012/work/cs/ddi-usa/src/ddi/scripts/"))
+ ("/home/gp21012/work/cs/ddi-usa/src/ddi/scripts/"
+  (dired-filename . "/home/gp21012/work/cs/ddi-usa/src/ddi/scripts/dummy/"))
+ ("/home/gp21012/work/cs/ddi-usa/src/ddi/scripts/dummy/"
+  (dired-filename . "/home/gp21012/work/cs/ddi-usa/src/ddi/scripts/dummy/dummy_script.py"))
+ ("/home/gp21012/work/cs/ddi-usa/src/ddi/scripts/dummy/dummy_script.py" . 503)
+ ("/home/gp21012/work/vs/dve-sample-py/src/dve/scripts/dummy/"
+  (dired-filename . "/home/gp21012/work/vs/dve-sample-py/src/dve/scripts/dummy/../"))
+ ("/home/gp21012/work/vs/dve-sample-py/src/dve/scripts/"
+  (dired-filename . "/home/gp21012/work/vs/dve-sample-py/src/dve/scripts/../"))
+ ("/home/gp21012/work/vs/dve-sample-py/src/dve/"
+  (dired-filename . "/home/gp21012/work/vs/dve-sample-py/src/dve/../"))
+ ("/home/gp21012/work/vs/dve-sample-py/src/"
+  (dired-filename . "/home/gp21012/work/vs/dve-sample-py/src/vce/"))
+ ("/home/gp21012/work/vs/dve-sample-py/src/vce/"
+  (dired-filename . "/home/gp21012/work/vs/dve-sample-py/src/vce/demo/"))
+ ("/home/gp21012/work/vs/dve-sample-py/src/vce/demo/"
+  (dired-filename . "/home/gp21012/work/vs/dve-sample-py/src/vce/demo/dummy/"))
+ ("/home/gp21012/work/cs/ddi-usa/src/vce/cli/ctl/__init__.py" . 1298)
+ ("/home/gp21012/work/cs/ddi-usa/src/ddi/scripts/runner.py" . 438)
+ ("/home/gp21012/work/cs/ddi-usa/src/ddi/cli/__main__.py" . 322)
+ ("/home/gp21012/work/cs/ddi-usa/src/ddi/cli/__init__.py" . 638)
+ ("/home/gp21012/work/cs/ddi-usa/src/ddi/cli/xargs.py" . 3409)
+ ("/home/gp21012/work/cs/ddi-usa/src/ddi/cli/parms.py" . 2269)
+ ("/home/gp21012/work/bv/box-up/src/main/ansible/labs/dsbox/roles/60-custom/files/usr/local/sbin/vs-user.sh" . 14727))

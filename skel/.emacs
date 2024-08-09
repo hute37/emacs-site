@@ -64,6 +64,7 @@
  '(cvs-allow-dir-commit t)
  '(default-input-method "latin-1-prefix")
  '(display-buffer-reuse-frames t)
+ '(elfeed-sort-order 'ascending)
  '(flycheck-posframe-border-width 5)
  '(flymake-error-bitmap '(flymake-double-exclamation-mark modus-theme-fringe-red))
  '(flymake-note-bitmap '(exclamation-mark modus-theme-fringe-cyan))
@@ -123,7 +124,6 @@
            (buffer-file-name)
            'append)))
  '(save-place-mode t nil (saveplace))
- '(show-paren-mode t nil (paren))
  '(standard-indent 4)
  '(tab-stop-list '(4 16 24 32 40 48 56 64 72 80 88 96 104 112 120))
  '(tag-reuse-buffers nil t)
@@ -167,4 +167,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:family "Iosevka Curly" :foundry "BE5N" :slant normal :weight medium :height 151 :width normal))))
+ '(fixed-pitch ((t (:family "Iosevka Curly" :foundry "BE5N" :slant normal :weight medium :height 151 :width normal))))
+ '(variable-pitch ((t (:family "Source Sans Pro" :foundry "ADBE" :slant normal :weight semi-bold :height 165 :width normal)))))

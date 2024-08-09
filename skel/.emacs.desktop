@@ -2,138 +2,150 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Mon Jan 29 17:13:11 2024
+;; Created Wed Mar 27 11:52:57 2024
 ;; Desktop file format version 208
-;; Emacs version 28.1
+;; Emacs version 29.3
 
 ;; Global section:
-(setq desktop-saved-frameset [frameset 1 (26039 52887 790389 165000) (desktop . "208") "gp21012@xt-si701-v01" nil nil ((((minibuffer . t) (undecorated) (override-redirect) (font . "-CYEL-Iosevka Term-normal-normal-normal-*-21-*-*-*-m-0-iso10646-1") (font-parameter . "-CYEL-Iosevka Term-normal-normal-normal-*-21-*-*-*-m-0-iso10646-1") (border-width . 0) (internal-border-width . 0) (child-frame-border-width) (right-divider-width . 1) (bottom-divider-width . 0) (vertical-scroll-bars) (horizontal-scroll-bars) (foreground-color . "black") (background-color . "white") (mouse-color . "black") (border-color . "black") (screen-gamma) (line-spacing) (left-fringe . 6) (right-fringe . 6) (no-special-glyphs) (scroll-bar-foreground . "black") (scroll-bar-background) (menu-bar-lines . 0) (tab-bar-lines . 0) (tool-bar-lines . 0) (title) (wait-for-wm . t) (tool-bar-position . top) (inhibit-double-buffering) (icon-type . t) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 16) (scroll-bar-height . 16) (alpha) (no-focus-on-map) (no-accept-focus) (fullscreen . maximized) (visibility . t) (skip-taskbar) (z-group) (display-type . color) (background-mode . light) (cursor-color . "black") (sticky) (last-focus-update) (frameset--id . "A859-77DB-40E8-64CE") (frameset--mini t) (height . 38) (width . 170) (modeline . t) (unsplittable) (left . 37) (top . 29) (icon-name) (display . ":1002") (explicit-name)) ((min-height . 4) (min-width . 10) (min-height-ignore . 2) (min-width-ignore . 4) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 108) (min-pixel-width . 110) (min-pixel-height-ignore . 54) (min-pixel-width-ignore . 44) (min-pixel-height-safe . 27) (min-pixel-width-safe . 22)) leaf (pixel-width . 1883) (pixel-height . 1000) (total-width . 171) (total-height . 37) (normal-height . 1.0) (normal-width . 1.0) (buffer "rh362-7.4-student-guide.pdf" (selected) (hscroll . 0) (fringes 6 6 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 4356323) (start . 1))) (((minibuffer . t) (undecorated) (override-redirect) (font . "-CYEL-Iosevka Term-normal-normal-normal-*-21-*-*-*-m-0-iso10646-1") (font-parameter) (border-width . 0) (internal-border-width . 0) (child-frame-border-width) (right-divider-width . 1) (bottom-divider-width . 0) (vertical-scroll-bars) (horizontal-scroll-bars) (foreground-color . "black") (background-color . "white") (mouse-color . "black") (border-color . "black") (screen-gamma) (line-spacing) (left-fringe . 6) (right-fringe . 6) (no-special-glyphs) (scroll-bar-foreground . "black") (scroll-bar-background) (menu-bar-lines . 0) (tab-bar-lines . 0) (tool-bar-lines . 0) (title) (wait-for-wm . t) (tool-bar-position . top) (inhibit-double-buffering) (icon-type . t) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 16) (scroll-bar-height . 16) (alpha) (no-focus-on-map) (no-accept-focus) (fullscreen . maximized) (visibility . t) (skip-taskbar) (z-group) (display-type . color) (background-mode . light) (cursor-color . "black") (sticky) (environment) (last-focus-update . t) (frameset--id . "8B38-1E5C-821E-CEEE") (frameset--mini t . t) (height . 38) (width . 170) (modeline . t) (unsplittable) (left . 37) (top . 29) (icon-name) (display . ":1002") (explicit-name)) ((min-height . 8) (min-width . 20) (min-height-ignore . 4) (min-width-ignore . 8) (min-height-safe . 2) (min-width-safe . 4) (min-pixel-height . 216) (min-pixel-width . 220) (min-pixel-height-ignore . 108) (min-pixel-width-ignore . 88) (min-pixel-height-safe . 54) (min-pixel-width-safe . 44)) vc (pixel-width . 1883) (pixel-height . 1000) (total-width . 171) (total-height . 37) (normal-height . 1.0) (normal-width . 1.0) (combination-limit) (hc (pixel-width . 1883) (pixel-height . 487) (total-width . 171) (total-height . 18) (normal-height . 0.5) (normal-width . 1.0) (combination-limit) (leaf (pixel-width . 937) (pixel-height . 487) (total-width . 85) (total-height . 18) (normal-height . 1.0) (normal-width . 0.5) (buffer "20240123T130000--rhlcourse362__bib_op_oq_rhl.org" (selected) (hscroll . 0) (fringes 6 6 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 1) (start . 1)) (prev-buffers ("nat" 1 833) ("*dashboard*" 1 1) ("*scratch*" 1 1))) (leaf (last . t) (pixel-width . 946) (pixel-height . 487) (total-width . 86) (total-height . 18) (normal-height . 1.0) (normal-width . 0.5) (buffer "nat" (selected) (hscroll . 0) (fringes 6 6 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 147) (start . 1)))) (leaf (last . t) (pixel-width . 1883) (pixel-height . 513) (total-width . 171) (total-height . 19) (normal-height . 0.5) (normal-width . 1.0) (buffer "references.bib" (selected . t) (hscroll . 0) (fringes 6 6 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 1) (start . 1)) (prev-buffers ("*Bookmark List*" 1250 2368) ("nat" 1 147)))))])
+(setq desktop-saved-frameset [frameset 1 (26115 64137 432415 89000) (desktop . "208") "gp21012@xt-si701-v01" nil nil ((((minibuffer . t) (undecorated) (override-redirect) (font . "-CYEL-Iosevka Term-regular-normal-normal-*-21-*-*-*-m-0-iso10646-1") (border-width . 0) (internal-border-width . 0) (child-frame-border-width) (right-divider-width . 1) (bottom-divider-width . 0) (vertical-scroll-bars) (horizontal-scroll-bars) (foreground-color . "black") (background-color . "white") (mouse-color . "black") (border-color . "black") (screen-gamma) (line-spacing) (left-fringe . 6) (right-fringe . 6) (no-special-glyphs) (scroll-bar-foreground . "black") (scroll-bar-background) (menu-bar-lines . 0) (tab-bar-lines . 0) (tool-bar-lines . 0) (title) (wait-for-wm . t) (tool-bar-position . top) (inhibit-double-buffering) (icon-type . t) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 16) (scroll-bar-height . 16) (alpha) (alpha-background) (no-focus-on-map) (no-accept-focus) (fullscreen . maximized) (visibility . t) (use-frame-synchronization) (skip-taskbar) (z-group) (display-type . color) (background-mode . light) (cursor-color . "black") (font-parameter . "-CYEL-Iosevka Term-normal-normal-normal-*-21-*-*-*-m-0-iso10646-1") (sticky) (last-focus-update) (frameset--id . "A859-77DB-40E8-64CE") (frameset--mini t) (modeline . t) (unsplittable) (icon-name) (display . ":1002") (explicit-name) (powerline-cache) (shaded) (dnd-root-window-position) (height . 38) (width . 170) (left . 37) (top . 29)) ((min-height . 4) (min-width . 10) (min-height-ignore . 2) (min-width-ignore . 4) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 108) (min-pixel-width . 110) (min-pixel-height-ignore . 54) (min-pixel-width-ignore . 44) (min-pixel-height-safe . 27) (min-pixel-width-safe . 22)) leaf (pixel-width . 1883) (pixel-height . 1000) (total-width . 171) (total-height . 37) (normal-height . 1.0) (normal-width . 1.0) (buffer "rh362-9.1-student-guide.pdf" (selected) (hscroll . 0) (fringes 6 6 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 1) (start . 1)) (prev-buffers ("10-man" 1 745))) (((minibuffer . t) (undecorated) (override-redirect) (font . "-CYEL-Iosevka Term-regular-normal-normal-*-21-*-*-*-m-0-iso10646-1") (border-width . 0) (internal-border-width . 0) (child-frame-border-width) (right-divider-width . 1) (bottom-divider-width . 0) (vertical-scroll-bars) (horizontal-scroll-bars) (foreground-color . "black") (background-color . "white") (mouse-color . "black") (border-color . "black") (screen-gamma) (line-spacing) (left-fringe . 6) (right-fringe . 6) (no-special-glyphs) (scroll-bar-foreground . "black") (scroll-bar-background) (menu-bar-lines . 0) (tab-bar-lines . 0) (tool-bar-lines . 0) (title) (wait-for-wm . t) (tool-bar-position . top) (inhibit-double-buffering) (icon-type . t) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 16) (scroll-bar-height . 16) (alpha) (alpha-background) (no-focus-on-map) (no-accept-focus) (fullscreen . maximized) (visibility . t) (use-frame-synchronization) (skip-taskbar) (z-group) (display-type . color) (background-mode . light) (cursor-color . "black") (font-parameter) (sticky) (shaded) (environment) (powerline-cache) (last-focus-update . t) (dnd-root-window-position) (frameset--id . "8B38-1E5C-821E-CEEE") (frameset--mini t . t) (modeline . t) (unsplittable) (icon-name) (display . ":1002") (explicit-name) (height . 38) (width . 170) (left . 37) (top . 29)) ((min-height . 8) (min-width . 20) (min-height-ignore . 4) (min-width-ignore . 8) (min-height-safe . 2) (min-width-safe . 4) (min-pixel-height . 216) (min-pixel-width . 220) (min-pixel-height-ignore . 108) (min-pixel-width-ignore . 88) (min-pixel-height-safe . 54) (min-pixel-width-safe . 44)) vc (pixel-width . 1883) (pixel-height . 1000) (total-width . 171) (total-height . 37) (normal-height . 1.0) (normal-width . 1.0) (combination-limit) (hc (pixel-width . 1883) (pixel-height . 779) (total-width . 171) (total-height . 29) (normal-height . 0.7760891590678822) (normal-width . 1.0) (combination-limit) (leaf (pixel-width . 935) (pixel-height . 779) (total-width . 85) (total-height . 29) (normal-height . 1.0) (normal-width . 0.4965480616038237) (buffer "20240123T130000--rhlcourse362__bib_op_oq_rhl.org" (selected . t) (hscroll . 0) (fringes 6 6 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 813) (start . 1)) (prev-buffers ("nat" 1 833) ("*dashboard*" 1 1) ("*scratch*" 1 1))) (leaf (last . t) (pixel-width . 948) (pixel-height . 779) (total-width . 86) (total-height . 29) (normal-height . 1.0) (normal-width . 0.5034519383961763) (buffer "nat" (selected) (hscroll . 0) (fringes 6 6 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 147) (start . 1)))) (leaf (last . t) (pixel-width . 1883) (pixel-height . 221) (total-width . 171) (total-height . 8) (normal-height . 0.22391084093211752) (normal-width . 1.0) (buffer "references.bib" (selected) (hscroll . 0) (fringes 6 6 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 1) (start . 1)) (prev-buffers ("nat" 1 147)))))])
 (setq desktop-missing-file-warning nil)
 (setq tags-file-name nil)
 (setq tags-table-list nil)
 (setq search-ring nil)
 (setq regexp-search-ring nil)
 (setq register-alist '((116 file . "~/Dropbox/Todo/todo.org") (104 file . "~/Dropbox/Todo/mine.org") (101 file . "~/.emacs")))
-(setq file-name-history '("~/" "~/work/bv/box-up/doc/up/8.HC/im/362/10-man/rh362-7.4-student-guide.pdf" "~/Dropbox/Local/data/org/ref/references.bib" "~/work/bv/box-up/notes/nat/20240123T130000--rhlcourse362__bib_op_oq_rhl.org" "~/work/bv/box-up/doc/up/8.HC/im/362/10-man/rh362-notes.org" "~/.emacs-site/site-pkgs.org" "~/work/bv/box-up/setup.py" "~/.emacs-site/site-keys.el" "~/work/bv/box-up/notes/ref/references.bib" "~/.emacs-site/site-conf.el" "~/work/bv/box-up/notes/nat/20240125T124747--rhidminstall__bib_op_oq_rh_rhl.org" "~/work/bv/box-up/doc/up/3.AZ/xv/101/10-sys/220-podman.org" "~/.emacs.d/elpa/denote-2.2.4/denote.el" "~/.emacs"))
+(setq file-name-history '("~/" "~/work/bv/box-up/doc/up/8.HC/im/362/10-man/" "/home/gp21012/" "~/.ans/" "~nx/" "~/work/bv/box-up/doc/up/8.HC/im/362/10-man/rh362-7.4-student-guide.pdf" "~/Dropbox/Local/data/org/ref/references.bib" "~/work/bv/box-up/notes/nat/20240123T130000--rhlcourse362__bib_op_oq_rhl.org" "~/work/bv/box-up/doc/up/8.HC/im/362/10-man/rh362-notes.org" "~/.emacs-site/site-pkgs.org" "~/work/bv/box-up/setup.py" "~/.emacs-site/site-keys.el" "~/work/bv/box-up/notes/ref/references.bib" "~/.emacs-site/site-conf.el" "~/work/bv/box-up/notes/nat/20240125T124747--rhidminstall__bib_op_oq_rh_rhl.org" "~/work/bv/box-up/doc/up/3.AZ/xv/101/10-sys/220-podman.org" "~/.emacs.d/elpa/denote-2.2.4/denote.el" "~/.emacs"))
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 208
+  "/home/gp21012/work/bv/box-up/notes/nat/20240123T130000--rhlcourse362__bib_op_oq_rhl.org"
+  "20240123T130000--rhlcourse362__bib_op_oq_rhl.org"
+  'org-mode
+  '(buffer-face-mode company-mode hi-lock-mode flycheck-mode auto-revert-mode undo-tree-mode override-global-mode abbrev-mode font-lock-mode visible-mark-mode ligature-mode org-modern-mode vimish-fold-mode)
+  813
+  '(813 nil)
+  nil
+  nil
+  '((buffer-display-time 26115 64087 298142 819000) (buffer-file-coding-system . utf-8-unix) (truncate-lines . t))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/gp21012/work/bv/box-up/doc/up/8.HC/im/362/10-man/rh362-9.1-student-guide.pdf"
+  "rh362-9.1-student-guide.pdf"
+  'pdf-view-mode
+  '(auto-revert-mode font-lock-mode undo-tree-mode visible-mark-mode ligature-mode hi-lock-mode company-mode pdf-cache-prefetch-minor-mode pdf-misc-context-menu-minor-mode pdf-sync-minor-mode pdf-annot-minor-mode pdf-misc-menu-bar-minor-mode pdf-misc-size-indication-minor-mode pdf-outline-minor-mode pdf-misc-minor-mode pdf-links-minor-mode pdf-isearch-minor-mode pdf-history-minor-mode pdf-view-restore-mode)
+  1
+  '(nil nil)
+  t
+  nil
+  '((buffer-display-time 26115 64072 959414 98000) (buffer-file-coding-system . no-conversion))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "10-man"
+  'dired-mode
+  '(font-lock-mode visible-mark-mode ligature-mode hi-lock-mode company-mode hl-line-mode dired-hide-details-mode dired-omit-mode denote-dired-mode pdf-occur-dired-minor-mode)
+  745
+  '(nil nil)
+  t
+  '("/home/gp21012/work/bv/box-up/doc/up/8.HC/im/362/10-man/")
+  '((tab-width . 1) (buffer-display-time 26115 64060 698761 70000))
+  '((mark-ring nil)))
+
 (desktop-create-buffer 208
   "/home/gp21012/work/bv/box-up/notes/ref/references.bib"
   "references.bib"
   'bibtex-mode
-  '(abbrev-mode override-global-mode auto-compile-on-load-mode undo-tree-mode which-key-mode popper-mode popper-echo-mode auto-revert-mode global-auto-revert-mode projectile-mode flycheck-mode hi-lock-mode company-mode org-context-mode dap-mode citar-denote-mode)
+  '(company-mode hi-lock-mode flycheck-mode auto-revert-mode undo-tree-mode override-global-mode abbrev-mode font-lock-mode visible-mark-mode ligature-mode)
   1
   '(nil nil)
   nil
   nil
-  '((buffer-display-time 26039 52881 131261 339000) (buffer-file-coding-system . undecided-unix))
-  '((mark-ring nil)))
-
-(desktop-create-buffer 208
-  "/home/gp21012/work/bv/box-up/doc/up/8.HC/im/362/10-man/rh362-7.4-student-guide.pdf"
-  "rh362-7.4-student-guide.pdf"
-  'pdf-view-mode
-  '(abbrev-mode override-global-mode auto-compile-on-load-mode undo-tree-mode which-key-mode popper-mode popper-echo-mode auto-revert-mode global-auto-revert-mode projectile-mode hi-lock-mode company-mode org-context-mode dap-mode citar-denote-mode)
-  4356323
-  '(nil nil)
-  t
-  nil
-  '((buffer-display-time 26039 52856 993453 894000) (buffer-file-coding-system . no-conversion))
+  '((buffer-display-time 26115 64087 298143 148000) (buffer-file-coding-system . undecided-unix))
   '((mark-ring nil)))
 
 (desktop-create-buffer 208
   "/home/gp21012/work/bv/box-up/doc/up/8.HC/im/362/10-man/rh362-notes.org"
   "rh362-notes.org"
   'org-mode
-  '(auto-fill-mode abbrev-mode override-global-mode auto-compile-on-load-mode undo-tree-mode which-key-mode popper-mode popper-echo-mode auto-revert-mode global-auto-revert-mode projectile-mode flycheck-mode hi-lock-mode company-mode org-context-mode buffer-face-mode dap-mode citar-denote-mode)
+  '(buffer-face-mode company-mode hi-lock-mode flycheck-mode auto-revert-mode undo-tree-mode override-global-mode abbrev-mode font-lock-mode visible-mark-mode ligature-mode org-modern-mode vimish-fold-mode)
   1249
   '(1249 nil)
   nil
   nil
-  '((buffer-display-time 26039 52856 987717 310000) (buffer-file-coding-system . utf-8-unix) (truncate-lines . t))
+  '((buffer-display-time 26115 63859 69203 738000) (buffer-file-coding-system . utf-8-unix) (truncate-lines . t))
   '((mark-ring nil)))
 
 (desktop-create-buffer 208
   nil
   "nat"
   'dired-mode
-  '(abbrev-mode override-global-mode auto-compile-on-load-mode which-key-mode popper-mode popper-echo-mode global-auto-revert-mode projectile-mode hi-lock-mode company-mode org-context-mode dap-mode citar-denote-mode)
+  '(company-mode hi-lock-mode override-global-mode abbrev-mode font-lock-mode visible-mark-mode ligature-mode hl-line-mode dired-hide-details-mode dired-omit-mode denote-dired-mode pdf-occur-dired-minor-mode)
   147
   '(nil nil)
   t
   '("/home/gp21012/work/bv/box-up/notes/nat/")
-  '((tab-width . 1) (buffer-display-time 26039 52881 131261 79000))
-  '((mark-ring nil)))
-
-(desktop-create-buffer 208
-  "/home/gp21012/work/bv/box-up/notes/nat/20240123T130000--rhlcourse362__bib_op_oq_rhl.org"
-  "20240123T130000--rhlcourse362__bib_op_oq_rhl.org"
-  'org-mode
-  '(auto-fill-mode abbrev-mode override-global-mode auto-compile-on-load-mode undo-tree-mode which-key-mode popper-mode popper-echo-mode auto-revert-mode global-auto-revert-mode projectile-mode flycheck-mode hi-lock-mode company-mode org-context-mode buffer-face-mode dap-mode citar-denote-mode)
-  1
-  '(nil nil)
-  nil
-  nil
-  '((buffer-display-time 26039 52881 131260 826000) (buffer-file-coding-system . utf-8-unix) (truncate-lines . t))
+  '((tab-width . 1) (buffer-display-time 26115 64087 298143 51000))
   '((mark-ring nil)))
 
 (desktop-create-buffer 208
   "/home/gp21012/Dropbox/Local/data/org/all/task.org"
   "task.org"
   'org-mode
-  '(auto-fill-mode abbrev-mode override-global-mode auto-compile-on-load-mode undo-tree-mode which-key-mode popper-mode popper-echo-mode auto-revert-mode global-auto-revert-mode projectile-mode flycheck-mode hi-lock-mode company-mode org-context-mode buffer-face-mode dap-mode citar-denote-mode)
+  '(buffer-face-mode company-mode hi-lock-mode flycheck-mode auto-revert-mode undo-tree-mode override-global-mode abbrev-mode font-lock-mode visible-mark-mode ligature-mode org-modern-mode vimish-fold-mode)
   1
   '(nil nil)
   nil
   nil
-  '((buffer-display-time) (buffer-file-coding-system . undecided-unix) (truncate-lines . t))
+  '((buffer-display-time 26115 63890 180050 852000) (buffer-file-coding-system . undecided-unix) (truncate-lines . t))
   '((mark-ring nil)))
 
 (desktop-create-buffer 208
   "/home/gp21012/Dropbox/Local/data/org/all/milk.org"
   "milk.org"
   'org-mode
-  '(auto-fill-mode abbrev-mode override-global-mode auto-compile-on-load-mode undo-tree-mode which-key-mode popper-mode popper-echo-mode auto-revert-mode global-auto-revert-mode projectile-mode flycheck-mode hi-lock-mode company-mode org-context-mode buffer-face-mode dap-mode citar-denote-mode)
+  '(buffer-face-mode company-mode hi-lock-mode flycheck-mode auto-revert-mode undo-tree-mode override-global-mode abbrev-mode font-lock-mode visible-mark-mode ligature-mode org-modern-mode vimish-fold-mode)
   1
   '(nil nil)
   nil
   nil
-  '((buffer-display-time) (buffer-file-coding-system . undecided-unix) (truncate-lines . t))
+  '((buffer-display-time 26115 63890 213447 984000) (buffer-file-coding-system . undecided-unix) (truncate-lines . t))
   '((mark-ring nil)))
 
 (desktop-create-buffer 208
   "/home/gp21012/Dropbox/Local/data/org/all/read.org"
   "read.org"
   'org-mode
-  '(auto-fill-mode abbrev-mode override-global-mode auto-compile-on-load-mode undo-tree-mode which-key-mode popper-mode popper-echo-mode auto-revert-mode global-auto-revert-mode projectile-mode flycheck-mode hi-lock-mode company-mode org-context-mode buffer-face-mode dap-mode citar-denote-mode)
+  '(buffer-face-mode company-mode hi-lock-mode flycheck-mode auto-revert-mode undo-tree-mode override-global-mode abbrev-mode font-lock-mode visible-mark-mode ligature-mode org-modern-mode vimish-fold-mode)
   1
   '(nil nil)
   nil
   nil
-  '((buffer-display-time) (buffer-file-coding-system . undecided-unix) (truncate-lines . t))
+  '((buffer-display-time 26115 63890 247028 225000) (buffer-file-coding-system . undecided-unix) (truncate-lines . t))
   '((mark-ring nil)))
 
 (desktop-create-buffer 208
   "/home/gp21012/Dropbox/Local/data/org/all/dots.org"
   "dots.org"
   'org-mode
-  '(auto-fill-mode abbrev-mode override-global-mode auto-compile-on-load-mode undo-tree-mode which-key-mode popper-mode popper-echo-mode auto-revert-mode global-auto-revert-mode projectile-mode flycheck-mode hi-lock-mode company-mode org-context-mode buffer-face-mode dap-mode citar-denote-mode)
+  '(buffer-face-mode company-mode hi-lock-mode flycheck-mode auto-revert-mode undo-tree-mode override-global-mode abbrev-mode font-lock-mode visible-mark-mode ligature-mode org-modern-mode vimish-fold-mode)
   1
   '(nil nil)
   nil
   nil
-  '((buffer-display-time) (buffer-file-coding-system . undecided-unix) (truncate-lines . t))
+  '((buffer-display-time 26115 63890 280305 717000) (buffer-file-coding-system . undecided-unix) (truncate-lines . t))
   '((mark-ring nil)))
 
 (desktop-create-buffer 208
   "/home/gp21012/work/bu/org-info/todo.org"
   "todo.org"
   'org-mode
-  '(auto-fill-mode abbrev-mode override-global-mode auto-compile-on-load-mode undo-tree-mode which-key-mode popper-mode popper-echo-mode auto-revert-mode global-auto-revert-mode projectile-mode flycheck-mode hi-lock-mode company-mode org-context-mode buffer-face-mode dap-mode citar-denote-mode)
+  '(buffer-face-mode company-mode hi-lock-mode flycheck-mode auto-revert-mode undo-tree-mode override-global-mode abbrev-mode font-lock-mode visible-mark-mode ligature-mode org-modern-mode vimish-fold-mode)
   330
   '(nil nil)
   nil
   nil
-  '((buffer-display-time) (buffer-file-coding-system . undecided-unix) (truncate-lines . t))
+  '((buffer-display-time 26115 64030 757373 354000) (buffer-file-coding-system . undecided-unix) (truncate-lines . t))
   '((mark-ring nil)))
 

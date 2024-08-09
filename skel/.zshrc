@@ -38,9 +38,9 @@ if [[ -n "$EMACS" || -n "$INSIDE_EMACS" ]]; then
     export VISUAL="emacsclient"
 else
     if [[ -n $SSH_CONNECTION ]]; then
-        which nvim >/dev/null 2>&1 && export EDITOR='nvim' || export EDITOR='vim'    
+        which nvim >/dev/null  && export EDITOR='nvim' || export EDITOR='vim'    
     else
-        which nvim >/dev/null 2>&1 && export EDITOR='nvim' || export EDITOR='vim'    
+        which nvim >/dev/null  && export EDITOR='nvim' || export EDITOR='vim'    
     fi
 fi
 # echo "EDITOR=$EDITOR"
@@ -54,12 +54,6 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-# login shell
-if [[ -o login ]]; then
-  # ~/.zlogin sourced
-  export SHELL=/usr/bin/zsh
-fi
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -69,7 +63,7 @@ case "$TERM" in
     xdumb) unsetopt zle;;
     *)
 
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
 #ZSH_THEME="avit"
 #ZSH_THEME="awesomepanda"
 #ZSH_THEME="bureau"
@@ -97,7 +91,6 @@ ZSH_THEME="robbyrussell"
 #ZSH_THEME="garyblessington"
 #ZSH_THEME="gallois"
 #ZSH_THEME="imajes"
-#ZSH_THEME="smt"
 #ZSH_THEME="sorin"
 #ZSH_THEME="sporty_256"
 #ZSH_THEME="sunaku"
@@ -108,7 +101,7 @@ ZSH_THEME="robbyrussell"
 #ZSH_THEME="afowler"
 #ZSH_THEME="spaceship"
 #ZSH_THEME="agkozak"; AGKOZAK_USER_HOST_DISPLAY=0
-#ZSH_THEME="sobole"; SOBOLE_THEME_MODE=dark
+ZSH_THEME="sobole"; SOBOLE_THEME_MODE=dark
 
     ;;
 esac    
@@ -184,9 +177,6 @@ unsetopt	AUTO_CD
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-
-export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -227,6 +217,19 @@ if [ -f ~/.authinfo ]; then
   fi
 
 fi
+
+### }}}
+
+### {{{ #NODE //////////////////////////////////////////////////////////////////////////////
+
+if [ -z "$NVM_DIR" ] && [ -d ~/.nvm ]; then
+
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+fi
+
 
 ### }}}
 
@@ -317,3 +320,7 @@ export _DOT_ZSHRC_1="$(date  --rfc-3339=ns)"
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
