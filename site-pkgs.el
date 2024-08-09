@@ -4742,6 +4742,7 @@
     :ensure t
     ;; :defer t
     :bind (("C-c a" . org-agenda)
+           ("C-c s" . consult-org-agenda)
            ("C-c c" . org-capture)
            ("C-c l" . org-store-link)
            ([(meta up)] . nil)    ;; was 'org-metaup
@@ -5021,6 +5022,8 @@
     ;;warn me of any deadlines in next 7 days
     (setq org-deadline-warning-days 15)
 
+    (setq org-agenda-start-with-log-mode t)
+
     ;;don't show tasks as scheduled if they are already shown as a deadline
     (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
     ;;don't give awarning colour to tasks with impending deadlines
@@ -5032,26 +5035,75 @@
     (setq org-agenda-todo-ignore-scheduled (quote all))
 
     ;; @see: https://orgmode.org/worg/org-tutorials/org-custom-agenda-commands.html
+    ;; @see: https://youtu.be/-9rpQA6O3aM?si=uugNvFO-BkKi_TCh
 
     (setq org-agenda-custom-commands
           '(
             ("n" "Agenda and all TODOs"
-             ((agenda "") (alltodo "")))
+             ((agenda "")
+              (alltodo "" ((org-agenda-todo-ignore-deadlines nil)
+                           (org-agenda-todo-ignore-scheduled nil)))
+              ))
+
+            ("f" "Current File TODOs"
+             ((todo-tree)))
 
 
-            ("w" "Weekly Review"
-             ((agenda "" ((org-agenda-span 21))); review upcoming deadlines and appointments
-                                           ; type "l" in the agenda to review logged items 
-              (stuck "") ; review stuck projects as designated by org-stuck-projects
+            ("w" "Weekly Agenda"
+             ((agenda "" ((org-agenda-span 21)
+                          (org-deadline-warning-days 15)
+                          )); review upcoming deadlines and appointments
+                                           ; type "l" in the agenda to review logged items
+              (tags-todo "+PRIORITY=\"A\"" ((org-agenda-overriding-header "High Priority Tasks:")))
+              (tags-todo "-{.*}" ((org-agenda-overriding-header "Untagged Tasks:")))
+              )) ; review waiting items
+
+            ("r" "Monthly Review"
+             (
+              (agenda ""
+                      ((org-agenda-overriding-header "Completed Tasks:")
+                          (org-agenda-skip-function '(org-agenda-skip-entry-if 'nottodo 'done))
+                          (org-agenda-span 'month)
+                          ))
+              (agenda ""
+                      ((org-agenda-overriding-header "Pending Tasks:")
+                          (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                          (org-agenda-span 'month)
+                          ))
+              (tags-todo "+PRIORITY=\"A\"" ((org-agenda-overriding-header "High Priority Tasks:")))
+              (tags-todo "-{.*}" ((org-agenda-overriding-header "Untagged Tasks:")))
               (todo "DOING") ; review all projects (assuming you use todo keywords to designate projects)
               (todo "TODO") ; review all projects (assuming you use todo keywords to designate projects)
               (todo "NEXT") ; review someday/maybe items
-              (todo "BACK"))) ; review waiting items
+              (todo "BACK")
+              (stuck "") ; review stuck projects as designated by org-stuck-projects
+              )) ; review waiting items
 
             ("k" "Backlog Refinement"
-             ((todo "BACK" ((org-agenda-overriding-header "Backlog Tasks:")))))
+             ((todo "BACK" ((org-agenda-overriding-header "Backlog Tasks:")))
+              (tags-todo "+PRIORITY=\"A\"" ((org-agenda-overriding-header "High Priority Tasks:")))
+              (tags-todo "-{.*}" ((org-agenda-overriding-header "Untagged Tasks:")))
+              (todo "DOING") ; review all projects (assuming you use todo keywords to designate projects)
+              (todo "TODO") ; review all projects (assuming you use todo keywords to designate projects)
+              (todo "HOLD")
+              (todo "DONE")
+              (todo "UNDO")
+              (stuck "") ; review stuck projects as designated by org-stuck-projects
+              )) ; review waiting items
             ("l" "Task Schedule"
-             ((todo "NEXT" ((org-agenda-overriding-header "Pending Tasks:")))))
+              ((agenda ""
+                      ((org-agenda-overriding-header "Pending Tasks:")
+                          (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                          (org-agenda-span 'month)
+                          ))
+              (tags-todo "+PRIORITY=\"A\"" ((org-agenda-overriding-header "High Priority Tasks:")))
+              (tags-todo "-{.*}" ((org-agenda-overriding-header "Untagged Tasks:")))
+              (todo "DOING") ; review all projects (assuming you use todo keywords to designate projects)
+              (todo "TODO") ; review all projects (assuming you use todo keywords to designate projects)
+              (todo "NEXT") ; review someday/maybe items
+             ))
+            ("u" "Untagged Tasks"
+             ((tags-todo "-{.*}" ((org-agenda-overriding-header "Untagged Tasks:")))))
           ))
 
     ;;sort tasks in order of when they are due and then by priority
