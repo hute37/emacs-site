@@ -38,9 +38,9 @@ if [[ -n "$EMACS" || -n "$INSIDE_EMACS" ]]; then
     export VISUAL="emacsclient"
 else
     if [[ -n $SSH_CONNECTION ]]; then
-        which nvim >/dev/null  && export EDITOR='nvim' || export EDITOR='vim'    
+        which nvim >/dev/null 2>&1 && export EDITOR='nvim' || export EDITOR='vim'    
     else
-        which nvim >/dev/null  && export EDITOR='nvim' || export EDITOR='vim'    
+        which nvim >/dev/null 2>&1 && export EDITOR='nvim' || export EDITOR='vim'    
     fi
 fi
 # echo "EDITOR=$EDITOR"
@@ -177,6 +177,9 @@ unsetopt	AUTO_CD
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+
+export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -199,6 +202,7 @@ fi
 ### {{{ #ENVIRON //////////////////////////////////////////////////////////////////////////////
 
 export ANSIBLE_VAULT_PASSWORD_FILE=~/.ans-wall.asc
+[ -f /usr/share/doc/find-the-command/ftc.zsh ] && source /usr/share/doc/find-the-command/ftc.zsh
 
 ### }}}
 
