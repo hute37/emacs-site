@@ -3492,6 +3492,30 @@
   ;;   (defalias 'einp 'ein:notebooklist-open)
   ;;   (defalias 'eins 'ein:jupyter-server-start)
   ;;   )
+
+  ;; ---( python: 0mq )--------------------------------------------------------------
+
+  ;; @see: https://github.com/nnicandro/emacs-zmq
+  ;; dnf install zeromq-devel
+
+  (use-package zmq
+    ;; :defer t
+    :ensure t
+    :init
+    :config
+    )
+
+
+  ;; ---( python: jupyter )--------------------------------------------------------------
+
+  ;; @see: https://sqrtminusone.xyz/posts/2021-05-01-org-python/
+
+  (use-package jupyter
+    ;; :defer t
+    :ensure t
+    :init
+    :config
+    )
 ;; lang-python.ein ends here
 
 ;; Lang: Julia
@@ -5165,6 +5189,7 @@
              (dot . t)
              (ditaa . t)
              (python . t)
+             (jupyter . t)
              (ruby . t)
              (R . t)           
              (gnuplot . t)
@@ -5179,7 +5204,11 @@
              ;; (scala . t)
              (sql . t)
              (latex . t))))
-
+    
+    ;; @see: https://sqrtminusone.xyz/posts/2021-05-01-org-python/
+    ;; (org-babel-jupyter-override-src-block "python")
+    ;; (setq ob-async-no-async-languages-alist '("python" "jupyter-python"))
+    
     ;; chatgpt-shell support
     ;; @see: https://github.com/xenodium/chatgpt-shell/tree/main
     (require 'ob-chatgpt-shell)
@@ -5854,6 +5883,18 @@ With a prefix ARG, remove start location."
     (citar-at-point-function 'embark-act)           ; Use `embark'    
     )
 ;; org-roam ends here
+
+;; Org export
+;; #+NAME: org-export
+
+;; [[file:site-pkgs.org::org-export][org-export]]
+;; ---(org-export)------------------------------------------------------------------------
+
+;; @see: https://github.com/jkitchin/ox-ipynb
+(use-package ox-ipynb
+  :disabled t
+)
+;; org-export ends here
 
 ;; Org samples
 ;; #+NAME: org-samples

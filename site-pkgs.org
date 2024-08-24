@@ -3677,6 +3677,30 @@ P
   ;;   (defalias 'eins 'ein:jupyter-server-start)
   ;;   )
 
+  ;; ---( python: 0mq )--------------------------------------------------------------
+
+  ;; @see: https://github.com/nnicandro/emacs-zmq
+  ;; dnf install zeromq-devel
+
+  (use-package zmq
+    ;; :defer t
+    :ensure t
+    :init
+    :config
+    )
+
+
+  ;; ---( python: jupyter )--------------------------------------------------------------
+
+  ;; @see: https://sqrtminusone.xyz/posts/2021-05-01-org-python/
+
+  (use-package jupyter
+    ;; :defer t
+    :ensure t
+    :init
+    :config
+    )
+
 
 
 #+END_SRC
@@ -5427,6 +5451,7 @@ P
              (dot . t)
              (ditaa . t)
              (python . t)
+             (jupyter . t)
              (ruby . t)
              (R . t)           
              (gnuplot . t)
@@ -5441,7 +5466,11 @@ P
              ;; (scala . t)
              (sql . t)
              (latex . t))))
-
+    
+    ;; @see: https://sqrtminusone.xyz/posts/2021-05-01-org-python/
+    ;; (org-babel-jupyter-override-src-block "python")
+    ;; (setq ob-async-no-async-languages-alist '("python" "jupyter-python"))
+    
     ;; chatgpt-shell support
     ;; @see: https://github.com/xenodium/chatgpt-shell/tree/main
     (require 'ob-chatgpt-shell)
@@ -5630,6 +5659,8 @@ P
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((http . t))))
+
+
 
 #+END_SRC
 
@@ -6144,6 +6175,19 @@ With a prefix ARG, remove start location."
 
 #+END_SRC
 
+*** Org export
+#+NAME: org-export
+#+begin_src emacs-lisp
+
+;; ---(org-export)------------------------------------------------------------------------
+
+;; @see: https://github.com/jkitchin/ox-ipynb
+(use-package ox-ipynb
+  :disabled t
+)
+
+
+#+END_SRC
 *** Org samples
 #+NAME: org-samples
 #+begin_src emacs-lisp
