@@ -169,4 +169,6 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Iosevka Curly" :foundry "BE5N" :slant normal :weight medium :height 151 :width normal))))
  '(fixed-pitch ((t (:family "Iosevka Curly" :foundry "BE5N" :slant normal :weight medium :height 151 :width normal))))
- '(variable-pitch ((t (:family "Source Sans Pro" :foundry "ADBE" :slant normal :weight semi-bold :height 165 :width normal)))))
+ '(variable-pitch ((t (:family "Source Sans Pro" :foundry "ADBE" :slant normal :weight semi-bold :height 165 :width normal))))
+ ;; '(variable-pitch ((t (:family "Fira Sans Condensed" :foundry "CTDB" :slant normal :weight semi-bold :height 165 :width normal))))
+ )
