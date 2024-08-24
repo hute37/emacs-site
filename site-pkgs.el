@@ -4618,6 +4618,9 @@
   ;; make
   ;; @see: https://pdftools.wiki/e305cd0a
 
+  ;; required:
+  ;; (pdf-tools-install)
+
   (use-package pdf-tools
     :if (h7/use-pdf-tools)
     :ensure t
