@@ -4602,8 +4602,21 @@
   ;;   (pdf-tools-install :no-query)
   ;;   )
 
+  ;; debian
   ;; sudo apt install elpa-pdf-tools-server
   ;; @see: https://www.reddit.com/r/emacs/comments/gm1c2p/pdftools_installation/
+
+  ;; fedora
+  ;; mkdir -p ~/emacs-src.d
+  ;; cd ~/emacs-src.d
+  ;; git clone https://github.com/cask/cask
+  ;; cd cask
+  ;; make && make install
+  ;; cd ~/emacs-src.d
+  ;; git clone git clone https://github.com/vedang/pdf-tools
+  ;; cd pdf-tools
+  ;; make
+  ;; @see: https://pdftools.wiki/e305cd0a
 
   (use-package pdf-tools
     :if (h7/use-pdf-tools)
