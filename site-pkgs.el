@@ -132,10 +132,11 @@
         (add-to-list 'package-archives '("gnu"       . "https://elpa.gnu.org/packages/"))
         (add-to-list 'package-archives '("melpa"     . "https://melpa.org/packages/"))
         (add-to-list 'package-archives '("nongnu"    . "https://elpa.nongnu.org/nongnu/"))
-        (add-to-list 'package-archives '("jcs-elpa"  . "https://jcs-emacs.github.io/jcs-elpa/packages/") t)
+      ;;(add-to-list 'package-archives '("jcs-elpa"  . "https://jcs-emacs.github.io/jcs-elpa/packages/") t)
 
         (setq package-archive-priorities '(("melpa"    . 5)
-                                           ("jcs-elpa" . 0)))
+                                        ;; ("jcs-elpa" . 0)
+                                           ))
         ;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
         ;;(package-initialize)
         ;; i always fetch the archive contents on startup and during compilation, which is slow
@@ -968,7 +969,8 @@
 
   ;; @see: https://protesilaos.com/emacs/fontaine#h:031b9bea-d42b-4be0-82c7-42712cde94cc
   (use-package fontaine
-    :ensure t
+    :disabled t
+    ;;:ensure t
     :config
 
     (setq fontaine-latest-state-file
@@ -4346,22 +4348,22 @@
   ;; ---( openai )--------------------------------------------------------------
 
   (use-package openai
-    :ensure t
+    :disabled t
     :defer t
     :init
     (setq openai-key #'openai-key-auth-source)
     )
 
   (use-package chatgpt
-    :ensure t
+    :disabled t
     :defer t)
 
   (use-package codegpt
-    :ensure t
+    :disabled t
     :defer t)
 
   (use-package dall-e
-    :ensure t
+    :disabled t
     :defer t)
 
   ;; ---( chatgpt-shell )--------------------------------------------------------------
