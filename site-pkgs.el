@@ -132,10 +132,11 @@
         (add-to-list 'package-archives '("gnu"       . "https://elpa.gnu.org/packages/"))
         (add-to-list 'package-archives '("melpa"     . "https://melpa.org/packages/"))
         (add-to-list 'package-archives '("nongnu"    . "https://elpa.nongnu.org/nongnu/"))
-        (add-to-list 'package-archives '("jcs-elpa"  . "https://jcs-emacs.github.io/jcs-elpa/packages/") t)
+      ;;(add-to-list 'package-archives '("jcs-elpa"  . "https://jcs-emacs.github.io/jcs-elpa/packages/") t)
 
         (setq package-archive-priorities '(("melpa"    . 5)
-                                           ("jcs-elpa" . 0)))
+                                        ;; ("jcs-elpa" . 0)
+                                           ))
         ;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
         ;;(package-initialize)
         ;; i always fetch the archive contents on startup and during compilation, which is slow
@@ -968,7 +969,8 @@
 
   ;; @see: https://protesilaos.com/emacs/fontaine#h:031b9bea-d42b-4be0-82c7-42712cde94cc
   (use-package fontaine
-    :ensure t
+    :disabled t
+    ;;:ensure t
     :config
 
     (setq fontaine-latest-state-file
@@ -3490,6 +3492,30 @@
   ;;   (defalias 'einp 'ein:notebooklist-open)
   ;;   (defalias 'eins 'ein:jupyter-server-start)
   ;;   )
+
+  ;; ---( python: 0mq )--------------------------------------------------------------
+
+  ;; @see: https://github.com/nnicandro/emacs-zmq
+  ;; dnf install zeromq-devel
+
+  (use-package zmq
+    ;; :defer t
+    :ensure t
+    :init
+    :config
+    )
+
+
+  ;; ---( python: jupyter )--------------------------------------------------------------
+
+  ;; @see: https://sqrtminusone.xyz/posts/2021-05-01-org-python/
+
+  (use-package jupyter
+    ;; :defer t
+    :ensure t
+    :init
+    :config
+    )
 ;; lang-python.ein ends here
 
 ;; Lang: Julia
@@ -4346,22 +4372,22 @@
   ;; ---( openai )--------------------------------------------------------------
 
   (use-package openai
-    :ensure t
+    :disabled t
     :defer t
     :init
     (setq openai-key #'openai-key-auth-source)
     )
 
   (use-package chatgpt
-    :ensure t
+    :disabled t
     :defer t)
 
   (use-package codegpt
-    :ensure t
+    :disabled t
     :defer t)
 
   (use-package dall-e
-    :ensure t
+    :disabled t
     :defer t)
 
   ;; ---( chatgpt-shell )--------------------------------------------------------------
@@ -4600,8 +4626,24 @@
   ;;   (pdf-tools-install :no-query)
   ;;   )
 
+  ;; debian
   ;; sudo apt install elpa-pdf-tools-server
   ;; @see: https://www.reddit.com/r/emacs/comments/gm1c2p/pdftools_installation/
+
+  ;; fedora
+  ;; mkdir -p ~/emacs-src.d
+  ;; cd ~/emacs-src.d
+  ;; git clone https://github.com/cask/cask
+  ;; cd cask
+  ;; make && make install
+  ;; cd ~/emacs-src.d
+  ;; git clone git clone https://github.com/vedang/pdf-tools
+  ;; cd pdf-tools
+  ;; make
+  ;; @see: https://pdftools.wiki/e305cd0a
+
+  ;; required:
+  ;; (pdf-tools-install)
 
   (use-package pdf-tools
     :if (h7/use-pdf-tools)
@@ -5147,6 +5189,7 @@
              (dot . t)
              (ditaa . t)
              (python . t)
+             (jupyter . t)
              (ruby . t)
              (R . t)           
              (gnuplot . t)
@@ -5161,7 +5204,11 @@
              ;; (scala . t)
              (sql . t)
              (latex . t))))
-
+    
+    ;; @see: https://sqrtminusone.xyz/posts/2021-05-01-org-python/
+    ;; (org-babel-jupyter-override-src-block "python")
+    ;; (setq ob-async-no-async-languages-alist '("python" "jupyter-python"))
+    
     ;; chatgpt-shell support
     ;; @see: https://github.com/xenodium/chatgpt-shell/tree/main
     (require 'ob-chatgpt-shell)
@@ -5836,6 +5883,18 @@ With a prefix ARG, remove start location."
     (citar-at-point-function 'embark-act)           ; Use `embark'    
     )
 ;; org-roam ends here
+
+;; Org export
+;; #+NAME: org-export
+
+;; [[file:site-pkgs.org::org-export][org-export]]
+;; ---(org-export)------------------------------------------------------------------------
+
+;; @see: https://github.com/jkitchin/ox-ipynb
+(use-package ox-ipynb
+  :disabled t
+)
+;; org-export ends here
 
 ;; Org samples
 ;; #+NAME: org-samples
