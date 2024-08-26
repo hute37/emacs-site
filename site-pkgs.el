@@ -268,6 +268,7 @@
       (eval-and-compile
         (defvar use-package-verbose t))
 
+      ;; ---( ... )--------------------------------------------------------------
 
       (require 'bind-key)
       (require 'use-package)
@@ -3497,13 +3498,75 @@
 
   ;; @see: https://github.com/nnicandro/emacs-zmq
   ;; dnf install zeromq-devel
+  ;; apt install libczmq-dev
+
 
   (use-package zmq
-    ;; :defer t
+    :defer t
     :ensure t
+    :preface
+
+;;     (package-install "zmq")
+;;     (vterm)
+
+;; cd ~/.emacs.d/elpa
+
+;; ls -lda zmq*
+;; cd      zmq*
+
+
+;; ES=${EMACS_SNAP_DIR:-/snap/emacs/current}
+;; export CC=${ES}/usr/bin/gcc-10
+;; export CXX=${ES}/usr/bin/g++-10
+;; export CFLAGS=--sysroot=${ES}
+;; export LDFLAGS="--sysroot=${ES} -L${ES}/usr/lib"
+
+;; printenv | grep -i -e ^cc= -e ^cxx= -e ^cflags= -e ^ldflags=
+;; ls -l $CC $CXX
+
+;; make all
+
+;;     (package-install "jupyter")
+    
     :init
     :config
     )
+
+  ;; (use-package zmq
+  ;;   :ensure t
+  ;;   :preface
+  ;;   (when (getenv "EMACS_SNAP_DIR")
+  ;;     (unless (directory-files-recursively (concat user-emacs-directory "") "zmq-.*\\.so$" nil)
+  ;;              (progn
+  ;;                ;; @see: https://github.com/nnicandro/emacs-zmq/issues/48
+  ;;                (let* ((emacs-snap-dir (file-name-as-directory (getenv "EMACS_SNAP_DIR")))
+  ;;                       (process-environment
+  ;;                        (append `(,(concat "CC=" emacs-snap-dir "usr/bin/gcc-10" )
+  ;;                                  ,(concat "CXX=" emacs-snap-dir "usr/bin/g++-10")
+  ;;                                  ,(concat "CFLAGS=--sysroot=" emacs-snap-dir " -B" emacs-snap-dir "usr/lib/gcc")
+  ;;                                  ,(concat "CPATH=" (file-name-directory (car (file-expand-wildcards (concat emacs-snap-dir "usr/include/*/bits")))))
+  ;;       			   ,(concat "CPPFLAGS=--sysroot=" emacs-snap-dir)
+  ;;       			   ,(concat "LDFLAGS=--sysroot=" emacs-snap-dir " -L" emacs-snap-dir "usr/lib")
+  ;;                                  ,(concat "PKG_CONFIG_PATH=" (car (file-expand-wildcards (concat emacs-snap-dir "usr/lib/*/pkgconfig")))))
+  ;;                                process-environment)))
+  ;;                  ;; @see: https://github.com/nnicandro/emacs-zmq/issues/48#issuecomment-2208834904
+  ;;                  (when (fboundp 'native-compile-async)
+  ;;                    (progn
+  ;;                      (setq native-comp-deferred-compilation t
+  ;;                            native-comp-deferred-compilation-deny-list
+  ;;                            '("/mu4e.*\\.el$" "jupyter" "zmq" "eaf" "eaf-mode" "emacs-zmq"))))
+  ;;               ;; (custom-set-variables
+  ;;               ;;  '(native-comp-async-report-warnings-errors 'silent))
+  ;;               ;; ;; (let ((snap (file-name-as-directory "/snap/emacs/current")))
+  ;;               ;; ;; 	(setq-default native-comp-driver-options (list (concat "--sysroot=" snap)
+  ;;               ;; ;;                                                  (concat "-B" snap "usr/lib/gcc/"))))
+                   
+  ;;                  (load-library "zmq")
+                   
+  ;;                  ))))
+  ;;   :init
+  ;;   :config
+  ;;   )
 
 
   ;; ---( python: jupyter )--------------------------------------------------------------
@@ -3511,7 +3574,7 @@
   ;; @see: https://sqrtminusone.xyz/posts/2021-05-01-org-python/
 
   (use-package jupyter
-    ;; :defer t
+    :defer t
     :ensure t
     :init
     :config
