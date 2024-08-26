@@ -100,7 +100,7 @@
  '(mode-compile-expert-p t)
  '(mouse-wheel-follow-mouse t)
  '(org-agenda-files
-   '("/home/gp21012/Dropbox/Local/data/org/all/task.org" "/home/gp21012/Dropbox/Local/data/org/all/milk.org" "/home/gp21012/Dropbox/Local/data/org/all/read.org" "/home/gp21012/Dropbox/Local/data/org/all/dots.org" "/home/gp21012/work/bu/org-info/todo.org"))
+   '("~/Dropbox/Local/data/org/all/task.org" "~/Dropbox/Local/data/org/all/milk.org" "~/Dropbox/Local/data/org/all/read.org" "~/Dropbox/Local/data/org/all/dots.org" "~/work/bu/org-info/todo.org"))
  '(package-selected-packages
    '(powershell xterm-color ef-themes twilight-anti-bright-theme laguna-theme ir-black-theme gotham-theme darkokai-theme bliss-theme birds-of-paradise-plus-theme zweilight-theme starlit-theme soria-theme punpun-theme mbo70s-theme badwolf-theme afternoon-theme zen-and-art-theme sorcery-theme reverse-theme iodine-theme cyberpunk-theme creamsody-theme calmer-forest-theme caroline-theme ayu-theme acme-theme paperless toc-mode pdfgrep ranger mood-one-theme company-terraform wgrep-ag ack multi-vterm vterm multi-term color-theme-approximate git-timemachine zerodark-theme zenburn-theme yoshi-theme warm-night-theme underwater-theme toxi-theme tommyh-theme termbright-theme srcery-theme spacemacs-theme seti-theme reykjavik-theme rimero-theme purple-haze-theme plan9-theme paper-theme organic-green-theme nothing-theme night-owl-theme moe-theme mlso-theme metalheart-theme lavender-theme gruber-darker-theme hamburg-theme green-screen-theme green-phosphor-theme green-is-the-new-black-theme gandalf-theme forest-blue-theme foggy-night-theme fantom-theme exotica-theme eink-theme danneskjold-theme borland-blue-theme modus-vivendi-theme modus-operandi-theme madhat2r-theme melancholy-theme minsk-theme firecode-theme darktooth-theme darkmine-theme dakrone-theme blackboard-theme zeno-theme obsidian-theme nimbus-theme dark-krystal-theme abyss-theme iceberg-theme ag twittering-mode restclient ivy-rich ivy-hydra counsel avy ace-jump-mode edit-server regex-tool org-autolist org-ref cdlatex dockerfile-mode docker flycheck-haskell ghc haskell-mode ensime puppet-mode elpy f yaml-mode markdown-mode projectile magit powerline req-package use-package diminish bind-key))
  '(perl-dbg-flags "-c -w -MB::Lint")
@@ -169,4 +169,6 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Iosevka Curly" :foundry "BE5N" :slant normal :weight medium :height 151 :width normal))))
  '(fixed-pitch ((t (:family "Iosevka Curly" :foundry "BE5N" :slant normal :weight medium :height 151 :width normal))))
- '(variable-pitch ((t (:family "Source Sans Pro" :foundry "ADBE" :slant normal :weight semi-bold :height 165 :width normal)))))
+ '(variable-pitch ((t (:family "Source Sans Pro" :foundry "ADBE" :slant normal :weight semi-bold :height 165 :width normal))))
+ ;; '(variable-pitch ((t (:family "Fira Sans Condensed" :foundry "CTDB" :slant normal :weight semi-bold :height 165 :width normal))))
+ )
