@@ -1,0 +1,97 @@
+#!/bin/sh
+
+
+prompt_conf() {
+
+ echo "### zsh setup"
+
+ ls -lda ~/.z*
+
+ ls -lda ~/.oh-my-zsh
+ ls -lda ~/.oh-my-zsh/custom
+ ls -lda ~/.oh-my-zsh/custom/plugins
+ ls -lda ~/.oh-my-zsh/custom/plugins/*
+ ls -lda ~/.oh-my-zsh/custom/themes
+ ls -lda ~/.oh-my-zsh/custom/themes/*
+
+ echo "... (ctrl-c)"
+ read z
+
+}
+
+
+install_ohmy() {
+
+ if [ -d ~/.oh-my-zsh ]; then
+    echo " ~/.oh-my-zsh existing, skip ..."
+    return 1
+ fi
+
+ echo " ~/.oh-my-zsh install, ..."
+ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+ echo " ~/.oh-my-zsh install, done"
+
+
+}
+
+
+install_plugin() {
+    local repo=$1
+    local name=${2:-$(basename -- $1 .git)}
+
+ if [ -d ~/.oh-my-zsh/custom/plugins/$name ]; then
+    echo " plugin $name existing, skip ..."
+    return 1
+ fi
+
+ cd ~/.oh-my-zsh/custom/plugins
+
+ echo " plugin: $name install, ..."
+ git clone $repo $name
+ echo " plugin: $name install, done"
+
+}
+
+install_theme() {
+    local repo=$1
+    local name=${2:-$(basename -- $1 .git)}
+
+ if [ -d ~/.oh-my-zsh/custom/themes/$name ]; then
+    echo " theme $name existing, skip ..."
+    return 1
+ fi
+
+ cd ~/.oh-my-zsh/custom/themes
+
+ echo " theme: $name install, ..."
+ git clone $repo $name
+ echo " theme: $name install, done"
+
+}
+
+install_plugins() {
+
+    install_plugin   https://github.com/zsh-users/zsh-syntax-highlighting.git
+    install_plugin   https://github.com/joel-porquet/zsh-dircolors-solarized.git
+
+}
+
+
+install_themes() {
+
+    install_theme    https://github.com/sobolevn/sobole-zsh-theme.git
+
+}
+
+
+main() {
+
+    prompt_conf
+    install_ohmy
+    install_plugins
+    install_themes
+
+}
+
+main $@
+
