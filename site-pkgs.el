@@ -3680,8 +3680,6 @@
   (use-package maxima
     :ensure t
     :init
-    (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0)
-          maxima-display-maxima-buffer nil)
     (add-to-list 'auto-mode-alist
 		 (cons "\\.mac\\'" 'maxima-mode))
     (add-to-list 'interpreter-mode-alist
@@ -5253,6 +5251,10 @@
                   "pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f")))
 
     (setq org-latex-create-formula-image-program 'imagemagick)
+
+    (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0)
+          maxima-display-maxima-buffer nil)
+    
 
     ;; Tell the latex export to use the minted package for source
     ;; code coloration.
