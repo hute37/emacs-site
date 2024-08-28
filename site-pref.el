@@ -27,6 +27,11 @@
   :type 'boolean
   :group 'h7prefs)
 
+(defcustom z-use-py-jupyter nil
+  "Non-nil means to activate  'jupyter'. 'zmq' binary module required, see note on zmq package."
+  :type 'boolean
+  :group 'h7prefs)
+
 
 ;; ---( ... )--------------------------------------------------------------
 
@@ -47,6 +52,9 @@
 
 (defun h7/use-pdf-docview ()
  (not z-use-pdf-tools))
+
+(defun h7/use-py-jupyter ()
+ z-use-py-jupyter)
 
 
 ;; ---( site.func: end )-------------------------------------------------------
