@@ -3497,11 +3497,13 @@
   ;; ---( python: 0mq )--------------------------------------------------------------
 
   ;; @see: https://github.com/nnicandro/emacs-zmq
+  ;; @see: https://github.com/nnicandro/emacs-zmq/issues/48
   ;; dnf install zeromq-devel
   ;; apt install libczmq-dev
 
 
   (use-package zmq
+    :if (h7/use-py-jupyter)
     :defer t
     :ensure t
     :preface
@@ -3574,6 +3576,7 @@
   ;; @see: https://sqrtminusone.xyz/posts/2021-05-01-org-python/
 
   (use-package jupyter
+    :if (h7/use-py-jupyter)
     :defer t
     :ensure t
     :init
@@ -5247,26 +5250,34 @@
 
     ;; execute external programs.
     (org-babel-do-load-languages
-     (quote org-babel-load-languages)
-     (quote ((emacs-lisp . t)
-             (dot . t)
-             (ditaa . t)
-             (python . t)
-             (jupyter . t)
-             (ruby . t)
-             (R . t)           
-             (gnuplot . t)
-             ;; (clojure . t)
-             (shell . t)
-             ;; (haskell . t)
-             (octave . t)
-             (org . t)
-             (plantuml . t)
-             ;; (restclient . t)
-             ;; (prolog . t)
-             ;; (scala . t)
-             (sql . t)
-             (latex . t))))
+     'org-babel-load-languages
+     `(
+       (emacs-lisp . t)
+       (dot . t)
+       (ditaa . t)
+       (python . t) ;; can be an alias for jupyter
+       ,(if (h7/use-py-jupyter)
+            '(jupyter . t)
+          '(python . t))
+       (ruby . t)
+       (R . t)           
+       (gnuplot . t)
+       ;; (clojure . t)
+       (shell . t)
+       ;; (haskell . t)
+       (octave . t)
+       (http . t)
+       (org . t)
+       (plantuml . t)
+       ;; (restclient . t)
+       ;; (prolog . t)
+       ;; (scala . t)
+       (sql . t)
+       (latex . t)
+       ))
+
+    ;; @see: https://lists.gnu.org/archive/html//emacs-orgmode/2020-04/msg00338.html
+    ;; @see: https://aliquote.org/pub/org-setup.pdf
     
     ;; @see: https://sqrtminusone.xyz/posts/2021-05-01-org-python/
     ;; (org-babel-jupyter-override-src-block "python")
