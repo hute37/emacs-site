@@ -3668,6 +3668,26 @@
   ;; ;; M-x load-file ess-julia.el
 ;; lang-julia ends here
 
+;; Lang: Maxima
+;; #+NAME: lang-maxima
+
+;; [[file:site-pkgs.org::lang-maxima][lang-maxima]]
+  ;; ---( maxima )--------------------------------------------------------------
+
+  ;; @see: https://github.com/emacsmirror/maxima
+  ;; @see: https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-maxima.html
+
+  (use-package maxima
+    :ensure t
+    :init
+    (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0)
+          maxima-display-maxima-buffer nil)
+    (add-to-list 'auto-mode-alist
+		 (cons "\\.mac\\'" 'maxima-mode))
+    (add-to-list 'interpreter-mode-alist
+		 (cons "maxima" 'maxima-mode)))
+;; lang-maxima ends here
+
 ;; Lang: Ruby
 ;; #+NAME: lang-ruby
 
@@ -5265,6 +5285,7 @@
        ;; (clojure . t)
        (shell . t)
        ;; (haskell . t)
+       (maxima . t)
        (octave . t)
        (http . t)
        (org . t)
@@ -5276,8 +5297,13 @@
        (latex . t)
        ))
 
-    ;; @see: https://lists.gnu.org/archive/html//emacs-orgmode/2020-04/msg00338.html
+    ;; maxima
+    ;; @see: https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-maxima.html
+    ;; mathematica
+    ;; @see: https://rgoswami.me/posts/org-mathematica/
     ;; @see: https://aliquote.org/pub/org-setup.pdf
+
+    ;; @see: https://lists.gnu.org/archive/html//emacs-orgmode/2020-04/msg00338.html
     
     ;; @see: https://sqrtminusone.xyz/posts/2021-05-01-org-python/
     ;; (org-babel-jupyter-override-src-block "python")
