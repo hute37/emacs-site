@@ -336,6 +336,54 @@ pipenv lock -r --dev >requirements-dev.txt
 
 #+END_SRC
 
+* UPGRADE
+** update
+*** skel pull
+#+NAME: skel-pull
+#+BEGIN_SRC sh
+
+### ///////////////////////////////////////////////////////////////////
+### {{{  @SKEL.pull
+### ///////////////////////////////////////////////////////////////////
+
+cd ~/.emacs-site
+
+git status
+git pull
+
+git log --stat
+
+
+## }}}  .skel-pull
+
+#+END_SRC
+
+
+
+*** skel sync
+#+NAME: skel-sync
+#+BEGIN_SRC sh
+
+### ///////////////////////////////////////////////////////////////////
+### {{{  @SKEL.sync
+### ///////////////////////////////////////////////////////////////////
+
+cd ~
+
+for f in  .aliases .zsh* .emacs* .tmux*; \
+do [ -f $f ] &&  echo "echo $f; read z; \
+[ x$z = xn ] || meld ~/$f ~/.emacs-site/skel/$f & "; \
+done
+
+
+## }}}  .skel-sync
+
+#+END_SRC
+
+
+
+
+
 * SESSIONS
 ** heading
 #+NAME: session-top-header
