@@ -16,8 +16,6 @@
 	fontdiff = -family cantarell -size 8 -weight normal -slant roman -underline 0 -overstrike 0
 [push]
 	default = simple
-[pull]
-	rebase = false
 [merge]
 	tool = meld3_noauto
 	conflictstyle = diff3
@@ -84,3 +82,5 @@
 	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 [mergetool]
 	keepBackup = false
+[status]
+	showUntrackedFiles = all

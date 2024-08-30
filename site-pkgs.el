@@ -1840,7 +1840,7 @@
     :ensure t)
 
   (use-package vdiff-magit
-    :ensure t
+    :disabled t
     :config
     (define-key magit-mode-map "e" 'vdiff-magit-dwim)
     (define-key magit-mode-map "E" 'vdiff-magit)
@@ -4581,9 +4581,12 @@
   ;;   :ensure t
 
   (use-package auctex
-    :defer t)
+    :ensure t
+    :defer t
+    )
 
   (use-package auctex-latexmk
+    :ensure t
     :defer t
     :init
     (add-hook 'LaTeX-mode-hook 'auctex-latexmk-setup))
@@ -4593,11 +4596,13 @@
     :defer t)
 
   (use-package company-auctex
+    :ensure t
     :defer t
     :init
     (add-hook 'LaTeX-mode-hook 'company-auctex-init))
 
   (use-package tex
+    :ensure auctex
     :defer t
     :init
     (setq TeX-auto-save t
