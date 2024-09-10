@@ -1,10 +1,12 @@
+# vim: set foldmethod=marker :
+### {{{ #(HEADER) /////////////////////////////////////////////////////////////
 # ------------------------------------------------
 export _DOT_ZSHRC_0="$(date  --rfc-3339=ns)"
 # ------------------------------------------------
-
 #% echo "% > ~/.zshrc"
+### }}}
 
-# {{{ ---(emacs)---------------------------------------------------------------
+### {{{ #(EMACS) //////////////////////////////////////////////////////////////
 
 [[ $TERM == "tramp" ]] && unsetopt zle && PS1='$ ' && return                                     
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='%# '
@@ -38,9 +40,9 @@ if [[ -n "$EMACS" || -n "$INSIDE_EMACS" ]]; then
     export VISUAL="emacsclient"
 else
     if [[ -n $SSH_CONNECTION ]]; then
-        which nvim >/dev/null 2>&1 && export EDITOR='nvim' || export EDITOR='vim'    
+        which nvim >/dev/null  && export EDITOR='nvim' || export EDITOR='vim'    
     else
-        which nvim >/dev/null 2>&1 && export EDITOR='nvim' || export EDITOR='vim'    
+        which nvim >/dev/null  && export EDITOR='nvim' || export EDITOR='vim'    
     fi
 fi
 # echo "EDITOR=$EDITOR"
@@ -48,8 +50,12 @@ fi
 #
 
 
+### }}}
 
-# }}} ------------------------------------------------------------------------
+### {{{ #(OH-MY-ZSH) //////////////////////////////////////////////////////////
+
+
+
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -153,15 +159,36 @@ plugins=(git zsh-syntax-highlighting poetry)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+### }}}
 
+### {{{ #(ZSH) ////////////////////////////////////////////////////////////////
+
+# User configuration
 
 ##
 # @see: https://github.com/ThiefMaster/zsh-config/blob/master/zshrc.d/shellopts.zsh
 #
 
 unsetopt	AUTO_CD
+setopt shwordsplit
+#setopt globdots
+#setopt CSH_NULL_GLOB
 
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+#
+
+[ -f ~/.zsh_aliases ] && source ~/.zsh_aliases || true
+
+### }}}
+
+### {{{ #(ENVIRON) ////////////////////////////////////////////////////////////
+
+export SHELL=$(which zsh)
 
 # export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -178,37 +205,24 @@ unsetopt	AUTO_CD
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 
-export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-#
-
-setopt shwordsplit
-
 unset GREP_OPTIONS
-
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
     [ -f /etc/profile.d/vte.sh ] && source /etc/profile.d/vte.sh
 fi
 
+### }}}
 
-[ -f ~/.zsh_aliases ] && source ~/.zsh_aliases || true
-
-### {{{ #ENVIRON //////////////////////////////////////////////////////////////////////////////
+### {{{ #(TOOLS) //////////////////////////////////////////////////////////////
 
 export ANSIBLE_VAULT_PASSWORD_FILE=~/.ans-wall.asc
-[ -f /usr/share/doc/find-the-command/ftc.zsh ] && source /usr/share/doc/find-the-command/ftc.zsh
+
+if [ -x /usr/local/bin/terraform ]; then
+   complete -o nospace -C /usr/local/bin/terraform terraform
+fi
 
 ### }}}
 
-
-
-### {{{ #AUTH //////////////////////////////////////////////////////////////////////////////
+### {{{ #(AUTH) ///////////////////////////////////////////////////////////////
 
 if [ -f ~/.authinfo ]; then
 
@@ -224,7 +238,7 @@ fi
 
 ### }}}
 
-### {{{ #NODE //////////////////////////////////////////////////////////////////////////////
+### {{{ #(NODE) ///////////////////////////////////////////////////////////////
 
 if [ -z "$NVM_DIR" ] && [ -d ~/.nvm ]; then
 
@@ -234,97 +248,97 @@ if [ -z "$NVM_DIR" ] && [ -d ~/.nvm ]; then
 
 fi
 
-
 ### }}}
 
-### {{{ #CONDA //////////////////////////////////////////////////////////////////////////////
+# {{{ [ CUSTOM ] /////////////////////////////////////////////////////////////
+
+# ===( python:begin )===========================
+
+# ---(conda:begin)-----
+
+##
+#  conda environment
+#
+if [ -f ~/.py-env.off ]; then
 if [ -f ~/.conda.on ]; then
-   if [ -z "${CONDA_SHLVL+x}" ]; then
-       [ -f /etc/profile.off/conda.sh ] && . /etc/profile.off/conda.sh || true
-   fi
+if [ -x $HOME/anaconda/bin/conda ]; then    
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/data/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$($HOME/anaconda/bin/conda 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/data/anaconda/etc/profile.d/conda.sh" ]; then
-        . "/data/anaconda/etc/profile.d/conda.sh"
+    if [ -f "$HOME/anaconda/etc/profile.d/conda.sh" ]; then
+        . "$HOME/anaconda/etc/profile.d/conda.sh"
     else
-        export PATH="/data/anaconda/bin:$PATH"
+        export PATH="$HOME/anaconda/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
- . ~/.conda.on || true
+source ~/.conda.on || true  
 fi
-### }}}
+fi
+fi
+# ---(conda:end)-----
 
 # ---(pyenv:begin)-----
-if [ ! -f ~/.pyrc.off ]; then
 
-export PYENV_ROOT=~/.pyenv
+##
+#  pyenv environment
+#
 
-: ${PYRC_PYENV_HOME:=~/.pyenv}
-export PYRC_PYENV_HOME
+if [ ! -f ~/.py-env.off ]; then
+if [ -d $HOME/.pyenv ]; then
 
+# ~/.profile   
 
-if [ -d "$PYRC_PYENV_HOME" ]; then
-if [ ! "$PYRC_PYENV_ENABLE" = "0" ]; then
+if [ -z "$PY_RC_ENV" ]; then
+   export PY_RC_ENV=1
 
-if [ -z "$PY_RC_PROFILE" ]; then
-export PY_RC_PROFILE=1
-    
-_py_rc_env_profile() {
+   command -v conda >/dev/null && conda deactivate || true              
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
+   [ -z "$PYENV_ROOT" ] && export PYENV_ROOT="$HOME/.pyenv"
+   if [ -n "$PYENV_ROOT" ] ; then
+      command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+   fi
+   eval "$(pyenv init --path)"
 
+fi   
 
-}
-_py_rc_env_profile
-
-fi        
+# ~/.(bash|zsh)rc
 
 eval "$(pyenv init -)"
 
-# if [ -n "$VIRTUAL_ENV" ]; then
-#    . "$VIRTUAL_ENV/bin/activate"
-# else
-#    workon default
-# fi
-
 fi
 fi
 
-: ${PYRC_POETRY_HOME:=~/.poetry}
-export PYRC_POETRY_HOME
+##
+#  poetry environment
+#
 
-
-if [ -d "$PYRC_POETRY_HOME" ]; then
-if [ ! "$PYRC_POETRY_ENABLE" = "0" ]; then
-
-export PATH="$HOME/$PYRC_POETRY_HOME/bin:$PATH"
-
+if [ ! -f ~/.py-poetry.off ]; then
+if [ -x $HOME/.local/bin/poetry ]; then    
+    export PY_RC_POETRY=1
+py_rc_poetry_sh() {
+   command -v poetry >/dev/null || export PY_POETRY="$(which poetry)"
+   [ -z "$PYTHON_KEYRING_BACKEND" ] && export PYTHON_KEYRING_BACKEND="keyring.backends.null.Keyring"
+}
+py_rc_poetry_sh
 fi
 fi
 
-fi
 # ---(pyenv:end)-----
 
+# ===( python:end )===========================
 
 
+# }}} --- custom
+
+### {{{ #(TRAILER) ////////////////////////////////////////////////////////////
 #% echo "% < ~/.zshrc"
 # ------------------------------------------------
 export _DOT_ZSHRC_1="$(date  --rfc-3339=ns)"
 # ------------------------------------------------
-
-
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/terraform terraform
-
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+### }}}
