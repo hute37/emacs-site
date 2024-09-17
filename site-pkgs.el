@@ -2222,22 +2222,22 @@
         (interactive "sServer: ")
         (call-process "spawn" nil nil nil "ss" server))
 
-      (setq eshell-prompt-regexp "^[^#$γλ\n]*[#$γλ] "
-            eshell-prompt-function
-            (lambda ()
-              (concat
-               (propertize "[" 'face `(:foreground "Salmon" :weight bold))
-               (propertize (user-login-name) 'face `(:foreground "CornflowerBlue" :weight bold))
-               (propertize "@" 'face `(:foreground "CornflowerBlue" :weight bold))
-               (propertize (system-name) 'face `(:foreground "CornflowerBlue" :weight bold))
-               (propertize " " 'face `(:foreground "gray"))
-               (propertize (if (string= (eshell/pwd) (getenv "HOME"))
-                               "~" (eshell/basename (eshell/pwd)))
-                           'face `(:foreground "DarkTurquoise" :weight bold))
-               (propertize "]" 'face `(:foreground "Salmon" :weight bold))
-               (propertize (if (= (user-uid) 0) "γ " "λ ") 'face `(:foreground "Salmon" :weight bold))
-               (propertize " " 'face 'default)
-               )))
+      ;; (setq eshell-prompt-regexp "^[^#$γλ\n]*[#$γλ] "
+      ;;       eshell-prompt-function
+      ;;       (lambda ()
+      ;;         (concat
+      ;;          (propertize "[" 'face `(:foreground "Salmon" :weight bold))
+      ;;          (propertize (user-login-name) 'face `(:foreground "CornflowerBlue" :weight bold))
+      ;;          (propertize "@" 'face `(:foreground "CornflowerBlue" :weight bold))
+      ;;          (propertize (system-name) 'face `(:foreground "CornflowerBlue" :weight bold))
+      ;;          (propertize " " 'face `(:foreground "gray"))
+      ;;          (propertize (if (string= (eshell/pwd) (getenv "HOME"))
+      ;;                          "~" (eshell/basename (eshell/pwd)))
+      ;;                      'face `(:foreground "DarkTurquoise" :weight bold))
+      ;;          (propertize "]" 'face `(:foreground "Salmon" :weight bold))
+      ;;          (propertize (if (= (user-uid) 0) "γ " "λ ") 'face `(:foreground "Salmon" :weight bold))
+      ;;          (propertize " " 'face 'default)
+      ;;          )))
 
       
       ;; (setq eshell-output-filter-functions
@@ -2399,7 +2399,7 @@
       (define-key eshell-hist-mode-map (kbd "<down>") #'next-line)
       (define-key eshell-hist-mode-map (kbd "C-<up>") #'eshell-previous-matching-input-from-input)
       (define-key eshell-hist-mode-map (kbd "C-<down>") #'eshell-next-matching-input-from-input)
-      ;; (define-key eshell-hist-mode-map (kbd "M-r") #'consult-history)
+      (define-key eshell-hist-mode-map (kbd "M-r") #'consult-history)
       ;; Use completion-at-point to provide completions in eshell
       (define-key eshell-mode-map (kbd "<tab>") 'completion-at-point)      
       (define-key eshell-mode-map (kbd "<return>") 'eshell-copy-or-send-input)      
@@ -2433,7 +2433,8 @@
 
   ;; 
   (use-package eat
-    :ensure t
+    :disabled t
+    ;; :ensure t
     ;;:hook (eshell-load . eat-eshell-mode)
     :hook (eshell-load . eat-eshell-visual-command-mode)
     :quelpa ((eat
