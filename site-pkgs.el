@@ -2399,7 +2399,7 @@
       (define-key eshell-hist-mode-map (kbd "<down>") #'next-line)
       (define-key eshell-hist-mode-map (kbd "C-<up>") #'eshell-previous-matching-input-from-input)
       (define-key eshell-hist-mode-map (kbd "C-<down>") #'eshell-next-matching-input-from-input)
-      (define-key eshell-hist-mode-map (kbd "M-r") #'consult-history)
+      ;; (define-key eshell-hist-mode-map (kbd "M-r") #'consult-history)
       ;; Use completion-at-point to provide completions in eshell
       (define-key eshell-mode-map (kbd "<tab>") 'completion-at-point)      
       (define-key eshell-mode-map (kbd "<return>") 'eshell-copy-or-send-input)      
@@ -2553,6 +2553,16 @@
                               :doc-spec
                               '(("(bash)Index")))))
     (add-hook 'shell-mode-hook 'initialize-sh-script))
+
+
+  ;; ---( shellcheck )--------------------------------------------------------------
+
+  ;; @see: https://github.com/federicotdn/flymake-shellcheck
+  ;; alt-x flymake-mode
+  ;; (use-package flymake-shellcheck
+  ;;   :commands flymake-shellcheck-load
+  ;;   :init
+  ;;   (add-hook 'sh-mode-hook 'flymake-shellcheck-load))
 ;; shell-script ends here
 
 ;; Ranger
@@ -3745,6 +3755,7 @@
 
   (use-package maxima
     :ensure t
+    :defer t
     :init
     (add-to-list 'auto-mode-alist
 		 (cons "\\.mac\\'" 'maxima-mode))
