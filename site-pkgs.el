@@ -2184,6 +2184,8 @@
 
   ;; @see: https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/eshell
   ;;
+  ;; @see: https://config.phundrak.com/emacs/packages/emacs-builtin.html#eshell
+  ;;
   ;; ```
   ;; cd /usr/share/emacs/[23]*/lisp/eshell
   ;; he=4; ls *.gz | xargs -I{} bash -c 'echo "#>>({})#####"; zcat {}; echo "#<<({})#####"' | less -SRX
@@ -2204,7 +2206,7 @@
     :ensure t
     :commands (eshell eshell-command)
     :preface
-    (message "eshell:preface >")
+    (message "eshell::preface >")
 
 
     (defun eshell-initialize ()
@@ -2222,28 +2224,6 @@
         (interactive "sServer: ")
         (call-process "spawn" nil nil nil "ss" server))
 
-      ;; (setq eshell-prompt-regexp "^[^#$γλ\n]*[#$γλ] "
-      ;;       eshell-prompt-function
-      ;;       (lambda ()
-      ;;         (concat
-      ;;          (propertize "[" 'face `(:foreground "Salmon" :weight bold))
-      ;;          (propertize (user-login-name) 'face `(:foreground "CornflowerBlue" :weight bold))
-      ;;          (propertize "@" 'face `(:foreground "CornflowerBlue" :weight bold))
-      ;;          (propertize (system-name) 'face `(:foreground "CornflowerBlue" :weight bold))
-      ;;          (propertize " " 'face `(:foreground "gray"))
-      ;;          (propertize (if (string= (eshell/pwd) (getenv "HOME"))
-      ;;                          "~" (eshell/basename (eshell/pwd)))
-      ;;                      'face `(:foreground "DarkTurquoise" :weight bold))
-      ;;          (propertize "]" 'face `(:foreground "Salmon" :weight bold))
-      ;;          (propertize (if (= (user-uid) 0) "γ " "λ ") 'face `(:foreground "Salmon" :weight bold))
-      ;;          (propertize " " 'face 'default)
-      ;;          )))
-
-      
-      ;; (setq eshell-output-filter-functions
-      ;;       (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
-      ;; ;;
-
       (eval-after-load "em-unix"
         '(progn
            (unintern 'eshell/su nil)
@@ -2251,11 +2231,98 @@
 
 
       (message "eshell:initialize <"))
+    
+    (message "eshell:helpers >")
+
+    (defun eshell-new ()
+      "Open a new instance of eshell."
+      (interactive)
+      (eshell 'N))
+    
+
+    (defun eshell-here (&optional prefix)
+      "Opens up a new shell in the directory associated with the
+       current buffer's file. The eshell is renamed to match that
+       directory to make multiple eshell windows easier."
+      (interactive "P")
+      (let* ((parent (if (buffer-file-name)
+                         (file-name-directory (buffer-file-name))
+                       default-directory))
+             (name   (car (last (split-string parent "/" t)))))
+
+        (cond
+         ((equal current-prefix-arg nil)   ; no C-u
+          (message "eshell-here - no C-u"))
+         ((equal current-prefix-arg '(4))  ; C-u
+          (split-window-horizontally (- (/ (window-total-width) 2)))
+          (other-window 1)
+          (message "eshell-here - C-u"))
+         ((equal current-prefix-arg '(16))     ; C-u C-u
+          (split-window-vertically (- (/ (window-total-height) 3)))
+          (other-window 1)
+          (message "eshell-here - C-u C-u"))
+          )        
+        
+        (eshell "new")
+        (rename-buffer (concat "*eshell: " name "*"))
+        ;;(insert (concat "ls"))
+        ;;(eshell-send-input)
+        ))
+
+    (defun ha/eshell-host-regexp (regexp)
+      "Returns a particular regular expression based on symbol, REGEXP"
+      (let* ((user-regexp      "\\(\\([[:alpha:].]+\\)@\\)?")
+             (tramp-regexp     "\\b/ssh:[:graph:]+")
+             (ip-char          "[[:digit:]]")
+             (ip-plus-period   (concat ip-char "+" "\\."))
+             (ip-regexp        (concat "\\(\\(" ip-plus-period "\\)\\{3\\}" ip-char "+\\)"))
+             (host-char        "[[:alpha:][:digit:]-]")
+             (host-plus-period (concat host-char "+" "\\."))
+             (host-regexp      (concat "\\(\\(" host-plus-period "\\)+" host-char "+\\)"))
+             (horrific-regexp  (concat "\\b"
+                                       user-regexp ip-regexp
+                                       "\\|"
+                                       user-regexp host-regexp
+                                       "\\b")))
+        (cond
+         ((eq regexp 'tramp) tramp-regexp)
+         ((eq regexp 'host)  host-regexp)
+         ((eq regexp 'full)  horrific-regexp))))    
+
+    (defun eshell-there (host)
+      "Creates an eshell session that uses Tramp to automatically
+       connect to a remote system, HOST.  The hostname can be either the
+       IP address, or FQDN, and can specify the user account, as in
+       root@blah.com. HOST can also be a complete Tramp reference."
+      (interactive "sHost: ")
+
+      (let* ((default-directory
+              (cond
+               ((string-match-p "^/" host) host)
+
+               ((string-match-p (ha/eshell-host-regexp 'full) host)
+                (string-match (ha/eshell-host-regexp 'full) host) ;; Why!?
+                (let* ((user1 (match-string 2 host))
+                       (host1 (match-string 3 host))
+                       (user2 (match-string 6 host))
+                       (host2 (match-string 7 host)))
+                  (if host1
+                      (ha/eshell-host->tramp user1 host1)
+                    (ha/eshell-host->tramp user2 host2))))
+
+               (t (format "/%s:" host)))))
+        (eshell-here)))    
+    
+    (bind-key "C-!" 'eshell-here)
+    
+    (message "eshell:helpers <")
+    
 
     (message "eshell:builtins >")
 
     ;; @see: https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/eshell/esh-cmd.el
     ;; @see: https://github.com/howardabrams/hamacs/blob/main/ha-eshell.org
+    ;; @see: https://github.com/howardabrams/dot-files/blob/master/emacs-eshell.org
 
     (defun eshell/read-file (file-path)
       (with-temp-buffer
@@ -2310,30 +2377,78 @@
       "Edit one or more files in another window."
       (eshell-fn-on-files 'find-file-other-window 'find-file-other-window files))
 
+    (defun eshell/gst (&rest args)
+      (magit-status (pop args) nil)
+      (eshell/echo))
+
+    (defun eshell/f (filename &optional dir try-count)
+      "Searches for files matching FILENAME in either DIR or the
+       current directory. Just a typical wrapper around the standard
+       `find' executable.
+
+       Since any wildcards in FILENAME need to be escaped, this wraps the shell command.
+
+       If not results were found, it calls the `find' executable up to
+       two more times, wrapping the FILENAME pattern in wildcat
+       matches. This seems to be more helpful to me."
+      (let* ((cmd (concat
+               (executable-find "find")
+               " " (or dir ".")
+               "      -not -path '*/.git*'"
+               " -and -not -path '*node_modules*'"
+               " -and -not -path '*classes*'"
+               " -and "
+               " -type f -and "
+               "-iname '" filename "'"))
+             (results (shell-command-to-string cmd)))
+
+        (if (not (s-blank-str? results))
+            results
+          (cond
+           ((or (null try-count) (= 0 try-count))
+            (eshell/f (concat filename "*") dir 1))
+           ((or (null try-count) (= 1 try-count))
+            (eshell/f (concat "*" filename) dir 2))
+           (t "")))))
+
+    (defun eshell/ef (filename &optional dir)
+      "Searches for the first matching filename and loads it into a
+       file to edit."
+      (let* ((files (eshell/f filename dir))
+             (file (car (s-split "\n" files))))
+        (find-file file)))
+
+    (defun eshell/z ()
+      (eshell/echo)
+      (eshell/exit))
+    
+
     (defalias 'eshell/emacs 'eshell/e)
     (defalias 'eshell/v 'eshell/e)
+    (defalias 'eshell/t 'eshell-exec-visual)
 
     (message "eshell:builtins <")
     (message "eshell:hooks >")
     (add-hook 'eshell-first-time-mode-hook #'eshell-initialize)
     (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
     (message "eshell:hooks <")
-    (message "eshell:preface <")
+    (message "eshell::preface <")
     :init
-    (message "eshell:init >")
+    (message "eshell::init >")
     (message "eshell:hooks/b >")
     (add-hook 'eshell-first-time-mode-hook #'eshell-initialize)
     (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
     (message "eshell:hooks/b <")
-    (message "eshell:init <")
+    (message "eshell::init <")
     :config
-    (message "eshell:config >")
+    (message "eshell::config >")
     (setq
      eshell-rc-script "~/.emacs-site/config/eshell/profile"
      eshell-aliases-file "~/.emacs-site/config/eshell/aliases"
      eshell-history-size 5000
      eshell-buffer-maximum-lines 5000
      eshell-hist-ignoredups t
+     eshell-save-history-on-exit t
      eshell-prefer-lisp-functions t
      eshell-scroll-to-bottom-on-input t
      eshell-destroy-buffer-when-process-dies t
@@ -2342,13 +2457,54 @@
 
      )
 
+    (setq eshell-prompt-function
+          (lambda ()
+            (concat
+             (propertize
+              (s-join
+               "/"
+               (last
+                (s-split
+                 "/"
+                 (abbreviate-file-name
+                  (eshell/pwd)))
+                3))
+              'face `(:foreground "DarkTurquoise" :weight bold))
+                  (if (= (user-uid) 0) " γ " " λ ")))
+          eshell-prompt-regexp "^[^#$γλ\n]* [#$γλ] ")
+
+      ;; (setq eshell-prompt-regexp "^[^#$γλ\n]* [#$γλ] "
+      ;;       eshell-prompt-function
+      ;;       (lambda ()
+      ;;         (concat
+      ;;          (propertize "[" 'face `(:foreground "Salmon" :weight bold))
+      ;;          (propertize (user-login-name) 'face `(:foreground "CornflowerBlue" :weight bold))
+      ;;          (propertize "@" 'face `(:foreground "CornflowerBlue" :weight bold))
+      ;;          (propertize (system-name) 'face `(:foreground "CornflowerBlue" :weight bold))
+      ;;          (propertize " " 'face `(:foreground "gray"))
+      ;;          (propertize (if (string= (eshell/pwd) (getenv "HOME"))
+      ;;                          "~" (eshell/basename (eshell/pwd)))
+      ;;                      'face `(:foreground "DarkTurquoise" :weight bold))
+      ;;          (propertize "]" 'face `(:foreground "Salmon" :weight bold))
+      ;;          (propertize " " 'face 'default)
+      ;;          (propertize (if (= (user-uid) 0) "γ" "λ") 'face `(:foreground "Salmon" :weight bold))
+      ;;          (propertize " " 'face 'default)
+      ;;          )))
+
+
+      ;; (setq eshell-output-filter-functions
+      ;;       (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
+      ;; ;;
+
+
+
     ;; (require 'eshell)
     (require 'em-smart)
     (setq eshell-where-to-jump 'begin)
     (setq eshell-review-quick-commands nil)
     (setq eshell-smart-space-goes-to-end t)
 
-    
+
 
     ;; ;; We want to use xterm-256color when running interactive commands
     ;; ;; in eshell but not during other times when we might be launching
@@ -2401,13 +2557,13 @@
       (define-key eshell-hist-mode-map (kbd "C-<down>") #'eshell-next-matching-input-from-input)
       (define-key eshell-hist-mode-map (kbd "M-r") #'consult-history)
       ;; Use completion-at-point to provide completions in eshell
-      (define-key eshell-mode-map (kbd "<tab>") 'completion-at-point)      
-      (define-key eshell-mode-map (kbd "<return>") 'eshell-copy-or-send-input)      
-      (define-key eshell-mode-map (kbd "C-<return>") 'cua-rectangle-mark-mode)      
-      (define-key eshell-mode-map (kbd "C-d") 'self-insert-command)      
+      (define-key eshell-mode-map (kbd "<tab>") 'completion-at-point)
+      (define-key eshell-mode-map (kbd "<return>") 'eshell-copy-or-send-input)
+      (define-key eshell-mode-map (kbd "C-<return>") 'cua-rectangle-mark-mode)
+      (define-key eshell-mode-map (kbd "C-d") 'self-insert-command)
       (message "eshell:setup-keymap <")
 
-      (eshell-smart-initialize) 
+      (eshell-smart-initialize)
       (message "*eshell*")
       )
 
@@ -2425,16 +2581,56 @@
     (add-hook 'eshell-mode-hook #'(lambda () (message "*eshell*")))
     (message "eshell:hooks/c <")
 
-    (message "eshell:config <")
+    (message "eshell::config <")
     )
 
 
-  ;; ---( eat )--------------------------------------------------------------
+  ;; ---( eshell-toggle )--------------------------------------------------------------
 
-  ;; 
-  (use-package eat
+  (use-package eshell-toggle
+    ;;:after eshell-mode
+    :ensure t
+    :custom
+    (eshell-toggle-size-fraction 3)
+    (eshell-toggle-find-project-root-package t) ;; for projectile
+    ;;(eshell-toggle-find-project-root-package 'projectile) ;; for projectile
+    ;;(eshell-toggle-use-projectile-root 'project) ;; for in-built project.el
+    (eshell-toggle-run-command nil)
+    (eshell-toggle-init-function #'eshell-toggle-init-eshell)
+    ;; (eshell-toggle-init-function #'eshell-toggle-init-ansi-term)
+    ;; (eshell-toggle-init-function #'eshell-toggle-init-tmux)
+    :quelpa
+    (eshell-toggle :repo "4DA/eshell-toggle" :fetcher github :version original)
+    :bind
+    ("C-~" . eshell-toggle))
+
+  ;; ---( eshell-syntax-hl )--------------------------------------------------------------
+
+  ;; @see: https://github.com/akreisher/eshell-syntax-highlighting/
+
+  (use-package eshell-syntax-highlighting
+    :after eshell-mode
+    :ensure t
+    :config
+    ;; Enable in all Eshell buffers.
+    (eshell-syntax-highlighting-global-mode +1))
+
+  ;; ---( eshell-vterm )--------------------------------------------------------------
+
+  (use-package eshell-vterm
     :disabled t
     ;; :ensure t
+    :demand t
+    :after eshell
+    :config
+    (eshell-vterm-mode))
+
+  ;; ---( eat )--------------------------------------------------------------
+
+  ;;
+  (use-package eat
+    ;;:disabled t
+    :ensure t
     ;;:hook (eshell-load . eat-eshell-mode)
     :hook (eshell-load . eat-eshell-visual-command-mode)
     :quelpa ((eat
