@@ -2369,7 +2369,7 @@
 
     (defalias 'eshell/more 'eshell/s)
 
-    (defun eshell/e (&rest file)
+    (defun eshell/e (&rest files)
       "Essentially an alias to the `find-file' function."
       (eshell-fn-on-files 'find-file 'find-file-other-window files))
 
@@ -2469,7 +2469,7 @@
                  (abbreviate-file-name
                   (eshell/pwd)))
                 3))
-              'face `(:foreground "DarkTurquoise" :weight bold))
+              'face `(:foreground "CornflowerBlue" :weight bold))
                   (if (= (user-uid) 0) " γ " " λ ")))
           eshell-prompt-regexp "^[^#$γλ\n]* [#$γλ] ")
 
