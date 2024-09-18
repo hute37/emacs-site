@@ -1188,405 +1188,434 @@
 ;; #+NAME: comp-ap-begin
 
 ;; [[file:site-pkgs.org::comp-ap-begin][comp-ap-begin]]
-  ;; ;;;////////////////////////////////////////////////////////////////
-  ;; {{{  @COMPLETION "AT POINT"
-  ;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @COMPLETION "AT POINT"
+;; ;;;////////////////////////////////////////////////////////////////
 ;; comp-ap-begin ends here
+
+;; Corfu
+;; #+NAME: comp-ap-corfu
+
+;; [[file:site-pkgs.org::comp-ap-corfu][comp-ap-corfu]]
+  ;; ---( corfu )--------------------------------------------------------------
+
+  ;; @see: https://github.com/minad/corfu/
+  ;; @see: https://protesilaos.com/emacs/dotemacs#h:15edf2c3-4419-4101-928a-6e224958a741
+
+(use-package corfu
+  :ensure t
+  :hook (after-init . global-corfu-mode)
+  ;; I also have (setq tab-always-indent 'complete) for TAB to complete
+  ;; when it does not need to perform an indentation change.
+  :bind (:map corfu-map ("<tab>" . corfu-complete))
+  :config
+  (setq corfu-preview-current nil)
+  (setq corfu-min-width 20)
+
+  (setq corfu-popupinfo-delay '(1.25 . 0.5))
+  (corfu-popupinfo-mode 1) ; shows documentation after `corfu-popupinfo-delay'
+
+  ;; Sort by input history (no need to modify `corfu-sort-function').
+  (with-eval-after-load 'savehist
+    (corfu-history-mode 1)
+    (add-to-list 'savehist-additional-variables 'corfu-history))
+  )
+;; comp-ap-corfu ends here
 
 ;; Company
 ;; #+NAME: comp-ap-company
 
 ;; [[file:site-pkgs.org::comp-ap-company][comp-ap-company]]
-  ;; ---( company )--------------------------------------------------------------
+;; ---( company )--------------------------------------------------------------
 
-  (use-package company
-    :ensure t
-    :diminish company-mode
-    :commands company-mode
-    :bind ("<C-space>" . company-complete)
-    :init
-    ;; (add-hook 'clojure-mode-hook 'company-mode)
-    ;; (add-hook 'cider-repl-mode-hook 'company-mode)
-    ;; (add-hook 'lisp-mode-hook 'company-mode)
-    ;; (add-hook 'emacs-lisp-mode-hook 'company-mode)
-    ;; (add-hook 'lisp-interaction-mode-hook 'company-mode)
-    ;; (add-hook 'ielm-mode-hook 'company-mode)
-    ;; (add-hook 'json-mode-hook 'company-mode)
-    :config
-    (setq company-idle-delay 0.3)
-    (global-company-mode t)  
-    ;; (use-package helm-company :disabled t)
-    :hook (
-           (text-mode . company-mode)
-           (prog-mode . company-mode)
-           )
-    )
+(use-package company
+  :disabled t
+  :diminish company-mode
+  :commands company-mode
+  :bind ("<C-space>" . company-complete)
+  :init
+  ;; (add-hook 'clojure-mode-hook 'company-mode)
+  ;; (add-hook 'cider-repl-mode-hook 'company-mode)
+  ;; (add-hook 'lisp-mode-hook 'company-mode)
+  ;; (add-hook 'emacs-lisp-mode-hook 'company-mode)
+  ;; (add-hook 'lisp-interaction-mode-hook 'company-mode)
+  ;; (add-hook 'ielm-mode-hook 'company-mode)
+  ;; (add-hook 'json-mode-hook 'company-mode)
+  :config
+  (setq company-idle-delay 0.3)
+  (global-company-mode t)  
+  ;; (use-package helm-company :disabled t)
+  :hook (
+         (text-mode . company-mode)
+         (prog-mode . company-mode)
+         )
+  )
 
-  ;; @see: https://cloudnine.github.io/science/2020-07-27-emacs-company-mode/
-  ;; @see: https://github.com/mswift42/.emacs.d/blob/master/init.el
-  ;; @see: https://medium.com/helpshift-engineering/configuring-emacs-from-scratch-use-package-c30382297877
-  ;; (use-package company
-  ;;   :bind (:map company-active-map
-  ;;          ("C-n" . company-select-next)
-  ;;          ("C-p" . company-select-previous))
-  ;;   :config
-  ;;   (setq company-idle-delay 0.3)
-  ;;   (global-company-mode t))
+;; @see: https://cloudnine.github.io/science/2020-07-27-emacs-company-mode/
+;; @see: https://github.com/mswift42/.emacs.d/blob/master/init.el
+;; @see: https://medium.com/helpshift-engineering/configuring-emacs-from-scratch-use-package-c30382297877
+;; (use-package company
+;;   :bind (:map company-active-map
+;;          ("C-n" . company-select-next)
+;;          ("C-p" . company-select-previous))
+;;   :config
+;;   (setq company-idle-delay 0.3)
+;;   (global-company-mode t))
 
-    ;; From https://github.com/company-mode/company-mode/issues/87
-    ;; See also https://github.com/company-mode/company-mode/issues/123
-    ;; (defadvice company-pseudo-tooltip-unless-just-one-frontend
-    ;;     (around only-show-tooltip-when-invoked activate)
-    ;;   (when (company-explicit-action-p)
-    ;;     ad-do-it))
+;; From https://github.com/company-mode/company-mode/issues/87
+;; See also https://github.com/company-mode/company-mode/issues/123
+;; (defadvice company-pseudo-tooltip-unless-just-one-frontend
+;;     (around only-show-tooltip-when-invoked activate)
+;;   (when (company-explicit-action-p)
+;;     ad-do-it))
 ;; comp-ap-company ends here
 
 ;; Auto-Complete
 ;; #+NAME: comp-ap-autocomplete
 
 ;; [[file:site-pkgs.org::comp-ap-autocomplete][comp-ap-autocomplete]]
-  ;; ---( autocomplete )--------------------------------------------------------------
+;; ---( autocomplete )--------------------------------------------------------------
 
-  (use-package auto-complete
-    :disabled t
-    :diminish auto-complete-mode
-    :init
-    (use-package pos-tip)
-    (require 'auto-complete-config)
-    (ac-config-default)
-    :config
-    ;; @see: http://auto-complete.org/doc/manual.html
-    ;;(ac-set-trigger-key "<backtab>")
-    ;;(ac-set-trigger-key "TAB")
-    (setq ac-ignore-case 'smart)
-    (setq ac-auto-start nil)
-    (setq ac-use-menu-map t)
-    ;;(define-key ac-mode-map (kbd "M-SPC") 'auto-complete)
-    (define-key ac-mode-map  [(control menu)] 'auto-complete)
-    (ac-set-trigger-key "TAB")
-    ;; (define-key ac-completing-map "\M-/" 'ac-stop)
-    ;; (define-key ac-completing-map "\t" 'ac-complete)
-    ;; (define-key ac-completing-map "\r" nil)
-    ;; (setq ac-use-menu-map t)
-    ;; (define-key ac-menu-map "\C-n" 'ac-next)
-    ;; (define-key ac-menu-map "\C-p" 'ac-previous)
-    ;; (setq ac-use-quick-help nil)
-    ;; (setq ac-menu-height 20)
-    ;; (setq ac-show-menu-immediately-on-auto-complete t)
-    ;; (setq ac-auto-show-menu 0.8)
-    ;; (setq ac-delay 0.4)
+(use-package auto-complete
+  :disabled t
+  :diminish auto-complete-mode
+  :init
+  (use-package pos-tip)
+  (require 'auto-complete-config)
+  (ac-config-default)
+  :config
+  ;; @see: http://auto-complete.org/doc/manual.html
+  ;;(ac-set-trigger-key "<backtab>")
+  ;;(ac-set-trigger-key "TAB")
+  (setq ac-ignore-case 'smart)
+  (setq ac-auto-start nil)
+  (setq ac-use-menu-map t)
+  ;;(define-key ac-mode-map (kbd "M-SPC") 'auto-complete)
+  (define-key ac-mode-map  [(control menu)] 'auto-complete)
+  (ac-set-trigger-key "TAB")
+  ;; (define-key ac-completing-map "\M-/" 'ac-stop)
+  ;; (define-key ac-completing-map "\t" 'ac-complete)
+  ;; (define-key ac-completing-map "\r" nil)
+  ;; (setq ac-use-menu-map t)
+  ;; (define-key ac-menu-map "\C-n" 'ac-next)
+  ;; (define-key ac-menu-map "\C-p" 'ac-previous)
+  ;; (setq ac-use-quick-help nil)
+  ;; (setq ac-menu-height 20)
+  ;; (setq ac-show-menu-immediately-on-auto-complete t)
+  ;; (setq ac-auto-show-menu 0.8)
+  ;; (setq ac-delay 0.4)
 
-    ;; (setq-default ac-sources '(ac-source-filename
-    ;;                            ac-source-functions
-    ;;                            ac-source-yasnippet
-    ;;                            ac-source-variables
-    ;;                            ac-source-symbols
-    ;;                            ac-source-features
-    ;;                            ac-source-abbrev
-    ;;                            ac-source-words-in-same-mode-buffers
-    ;;                            ac-source-dictionary))
+  ;; (setq-default ac-sources '(ac-source-filename
+  ;;                            ac-source-functions
+  ;;                            ac-source-yasnippet
+  ;;                            ac-source-variables
+  ;;                            ac-source-symbols
+  ;;                            ac-source-features
+  ;;                            ac-source-abbrev
+  ;;                            ac-source-words-in-same-mode-buffers
+  ;;                            ac-source-dictionary))
 
-    ;; (defun ac-emacs-lisp-mode-setup ()
-    ;;   (setq ac-sources '(ac-source-symbols ac-source-words-in-same-mode-buffers)))
-    ;; (add-hook 'c++-mode (lambda () (add-to-list 'ac-sources 'ac-source-semantic)))
+  ;; (defun ac-emacs-lisp-mode-setup ()
+  ;;   (setq ac-sources '(ac-source-symbols ac-source-words-in-same-mode-buffers)))
+  ;; (add-hook 'c++-mode (lambda () (add-to-list 'ac-sources 'ac-source-semantic)))
 
-    ;; (bind-key "A-M-?" 'ac-last-help)
-    ;; (unbind-key "C-s" ac-completing-map)
+  ;; (bind-key "A-M-?" 'ac-last-help)
+  ;; (unbind-key "C-s" ac-completing-map)
 
-    )
+  )
 ;; comp-ap-autocomplete ends here
 
 ;; IDO
 ;; #+NAME: comp-ap-ido
 
 ;; [[file:site-pkgs.org::comp-ap-ido][comp-ap-ido]]
-  ;; ---( ido )--------------------------------------------------------------
+;; ---( ido )--------------------------------------------------------------
 
-  (use-package ido
-    :disabled t
-    :defer 5
-    :defines (ido-cur-item
-              ido-require-match
-              ido-selected
-              ido-final-text
-              ido-show-confirm-message)
-    :bind (("C-x b" . ido-switch-buffer)
-           ("C-x B" . ido-switch-buffer-other-window)
-           ("M-x" . ido-hacks-execute-extended-command))
-    :preface
-    (eval-when-compile
-      (defvar ido-require-match)
-      (defvar ido-cur-item)
-      (defvar ido-show-confirm-message)
-      (defvar ido-selected)
-      (defvar ido-final-text))
-    (defun ido-smart-select-text ()
-      "Select the current completed item. Do NOT descend into directories."
-      (interactive)
-      (when (and (or (not ido-require-match)
-                     (if (memq ido-require-match
-                               '(confirm confirm-after-completion))
-                         (if (or (eq ido-cur-item 'dir)
-                                 (eq last-command this-command))
-                             t
-                           (setq ido-show-confirm-message t)
-                           nil))
-                     (ido-existing-item-p))
-                 (not ido-incomplete-regexp))
-        (when ido-current-directory
-          (setq ido-exit 'takeprompt)
-          (unless (and ido-text (= 0 (length ido-text)))
-            (let ((match (ido-name (car ido-matches))))
-              (throw 'ido
-                     (setq ido-selected
-                           (if match
-                               (replace-regexp-in-string "/\\'" "" match)
-                             ido-text)
-                           ido-text ido-selected
-                           ido-final-text ido-text)))))
-        (exit-minibuffer)))
+(use-package ido
+  :disabled t
+  :defer 5
+  :defines (ido-cur-item
+            ido-require-match
+            ido-selected
+            ido-final-text
+            ido-show-confirm-message)
+  :bind (("C-x b" . ido-switch-buffer)
+         ("C-x B" . ido-switch-buffer-other-window)
+         ("M-x" . ido-hacks-execute-extended-command))
+  :preface
+  (eval-when-compile
+    (defvar ido-require-match)
+    (defvar ido-cur-item)
+    (defvar ido-show-confirm-message)
+    (defvar ido-selected)
+    (defvar ido-final-text))
+  (defun ido-smart-select-text ()
+    "Select the current completed item. Do NOT descend into directories."
+    (interactive)
+    (when (and (or (not ido-require-match)
+                   (if (memq ido-require-match
+                             '(confirm confirm-after-completion))
+                       (if (or (eq ido-cur-item 'dir)
+                               (eq last-command this-command))
+                           t
+                         (setq ido-show-confirm-message t)
+                         nil))
+                   (ido-existing-item-p))
+               (not ido-incomplete-regexp))
+      (when ido-current-directory
+        (setq ido-exit 'takeprompt)
+        (unless (and ido-text (= 0 (length ido-text)))
+          (let ((match (ido-name (car ido-matches))))
+            (throw 'ido
+                   (setq ido-selected
+                         (if match
+                             (replace-regexp-in-string "/\\'" "" match)
+                           ido-text)
+                         ido-text ido-selected
+                         ido-final-text ido-text)))))
+      (exit-minibuffer)))
+  :config
+  (ido-mode 'buffer)
+  (use-package ido-hacks
     :config
-    (ido-mode 'buffer)
-    (use-package ido-hacks
-      :config
-      (ido-hacks-mode 1))
-    (use-package ido-vertical-mode
-      :disabled t
-      :config
-      (ido-vertical-mode 1))
-    (use-package flx-ido
-      :disabled t
-      :config
-      (flx-ido-mode 1))
-    (add-hook 'ido-minibuffer-setup-hook
-              #'(lambda ()
-                  (bind-key "<return>" 'ido-smart-select-text
-                            ido-file-completion-map))))
+    (ido-hacks-mode 1))
+  (use-package ido-vertical-mode
+    :disabled t
+    :config
+    (ido-vertical-mode 1))
+  (use-package flx-ido
+    :disabled t
+    :config
+    (flx-ido-mode 1))
+  (add-hook 'ido-minibuffer-setup-hook
+            #'(lambda ()
+                (bind-key "<return>" 'ido-smart-select-text
+                          ido-file-completion-map))))
 ;; comp-ap-ido ends here
 
 ;; Completion/end
 ;; #+NAME: comp-ap-end
 
 ;; [[file:site-pkgs.org::comp-ap-end][comp-ap-end]]
-  ;; }}}  .comp-ap
+;; }}}  .comp-ap
 ;; comp-ap-end ends here
 
 ;; Completion/begin
 ;; #+NAME: comp-mb-begin
 
 ;; [[file:site-pkgs.org::comp-mb-begin][comp-mb-begin]]
-  ;; ;;;////////////////////////////////////////////////////////////////
-  ;; {{{  @COMPLETION "PROMPT"
-  ;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @COMPLETION "PROMPT"
+;; ;;;////////////////////////////////////////////////////////////////
 ;; comp-mb-begin ends here
 
 ;; Vertico*/begin
 ;; #+NAME: comp-mb-ver-begin
 
 ;; [[file:site-pkgs.org::comp-mb-ver-begin][comp-mb-ver-begin]]
-  ;; ===( vertico )=============================================================
+;; ===( vertico )=============================================================
 
-   ;; @see: https://protesilaos.com/codelog/2024-02-17-emacs-modern-minibuffer-packages/
-   ;; @see: https://kristofferbalintona.me/posts/202202211546/
+;; @see: https://protesilaos.com/codelog/2024-02-17-emacs-modern-minibuffer-packages/
+;; @see: https://kristofferbalintona.me/posts/202202211546/
 
-  (message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico))
+(message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico))
 ;; comp-mb-ver-begin ends here
 
 ;; Marginalia
 ;; #+NAME: comp-mb-ver-marginalia
 
 ;; [[file:site-pkgs.org::comp-mb-ver-marginalia][comp-mb-ver-marginalia]]
-  ;; ---( marginalia )--------------------------------------------------------------
+;; ---( marginalia )--------------------------------------------------------------
 
-  (use-package marginalia
-    :ensure t
-    :general
-    (:keymaps 'minibuffer-local-map
-              "M-A" 'marginalia-cycle)
-    ;;:custom
-    ;;(marginalia-max-relative-age 0)
-    ;;(marginalia-align 'right)
-    :config
-    (set-face-attribute 'marginalia-documentation nil :underline nil)
-    (marginalia-mode 1)
-    )
+(use-package marginalia
+  :ensure t
+  :general
+  (:keymaps 'minibuffer-local-map
+            "M-A" 'marginalia-cycle)
+  ;;:custom
+  ;;(marginalia-max-relative-age 0)
+  ;;(marginalia-align 'right)
+  :config
+  (set-face-attribute 'marginalia-documentation nil :underline nil)
+  (marginalia-mode 1)
+  )
 
-  ;; (use-package marginalia
-  ;;   :general
-  ;;   (:keymaps 'minibuffer-local-map
-  ;;             "M-A" 'marginalia-cycle)
-  ;;   :custom
-  ;;   (marginalia-max-relative-age 0)
-  ;;   (marginalia-align 'right)
-  ;;   :init
-  ;;   (marginalia-mode))
+;; (use-package marginalia
+;;   :general
+;;   (:keymaps 'minibuffer-local-map
+;;             "M-A" 'marginalia-cycle)
+;;   :custom
+;;   (marginalia-max-relative-age 0)
+;;   (marginalia-align 'right)
+;;   :init
+;;   (marginalia-mode))
 
 
-  (use-package all-the-icons-completion
-    :ensure t
-    :after (marginalia all-the-icons)
-    :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
-    :init
-    (all-the-icons-completion-mode))
+(use-package all-the-icons-completion
+  :ensure t
+  :after (marginalia all-the-icons)
+  :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
+  :init
+  (all-the-icons-completion-mode))
 ;; comp-mb-ver-marginalia ends here
 
 ;; Vertico
 ;; #+NAME: comp-mb-ver-vertico
 
 ;; [[file:site-pkgs.org::comp-mb-ver-vertico][comp-mb-ver-vertico]]
-  ;; ---( vertico )--------------------------------------------------------------
+;; ---( vertico )--------------------------------------------------------------
 
-  (use-package vertico
-    :ensure t
-    :config
-    (vertico-mode 1))
+(use-package vertico
+  :ensure t
+  :config
+  (vertico-mode 1))
 
-  ;; (use-package vertico
-  ;;   :custom
-  ;;   (vertico-count 13)                    ; Number of candidates to display
-  ;;   (vertico-resize t)
-  ;;   (vertico-cycle nil) ; Go from last to first candidate and first to last (cycle)?
-  ;;   :general
-  ;;   (:keymaps 'vertico-map
-  ;;             "<tab>" #'vertico-insert  ; Insert selected candidate into text area
-  ;;             "<escape>" #'minibuffer-keyboard-quit ; Close minibuffer
-  ;;             ;; NOTE 2022-02-05: Cycle through candidate groups
-  ;;             "C-M-n" #'vertico-next-group
-  ;;             "C-M-p" #'vertico-previous-group)
-  ;;   :config
-  ;;   (vertico-mode))
+;; (use-package vertico
+;;   :custom
+;;   (vertico-count 13)                    ; Number of candidates to display
+;;   (vertico-resize t)
+;;   (vertico-cycle nil) ; Go from last to first candidate and first to last (cycle)?
+;;   :general
+;;   (:keymaps 'vertico-map
+;;             "<tab>" #'vertico-insert  ; Insert selected candidate into text area
+;;             "<escape>" #'minibuffer-keyboard-quit ; Close minibuffer
+;;             ;; NOTE 2022-02-05: Cycle through candidate groups
+;;             "C-M-n" #'vertico-next-group
+;;             "C-M-p" #'vertico-previous-group)
+;;   :config
+;;   (vertico-mode))
 ;; comp-mb-ver-vertico ends here
 
 ;; Consult
 ;; #+NAME: comp-mb-ver-consult
 
 ;; [[file:site-pkgs.org::comp-mb-ver-consult][comp-mb-ver-consult]]
-  ;; ---( consult )--------------------------------------------------------------
+;; ---( consult )--------------------------------------------------------------
 
 
-  (setq completion-ignore-case t)
-  (setq read-file-name-completion-ignore-case t)
+(setq completion-ignore-case t)
+(setq read-file-name-completion-ignore-case t)
 
-  ;; @see: https://github.com/minad/consult
-  ;; @see: https://gitlab.com/to1ne/temacco/-/blob/main/README.org#L749
+;; @see: https://github.com/minad/consult
+;; @see: https://gitlab.com/to1ne/temacco/-/blob/main/README.org#L749
 
-  ;; Example configuration for Consult
-  (use-package consult
-    :ensure t
-    ;; Replace bindings. Lazily loaded due by `use-package'.
-    :bind (;; C-c bindings (mode-specific-map)
-           ("C-c h" . consult-history)
-           ("C-c m" . consult-mode-command)
-           ("C-c k" . consult-kmacro)
-           ;; C-x bindings (ctl-x-map)
-           ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
-           ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
-           ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
-           ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
-           ("C-x r b" . consult-bookmark)            ;; orig. bookmark-jump
-           ("C-x p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
-           ;; Custom M-# bindings for fast register access
-           ("M-#" . consult-register-load)
-           ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
-           ("C-M-#" . consult-register)
-           ;; Other custom bindings
-           ("M-y" . consult-yank-pop)                ;; orig. yank-pop
-           ("<help> a" . consult-apropos)            ;; orig. apropos-command
-           ;; M-g bindings (goto-map)
-           ("M-g e" . consult-compile-error)
-           ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
-           ("M-g g" . consult-goto-line)             ;; orig. goto-line
-           ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
-           ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
-           ("M-g m" . consult-mark)
-           ("M-g k" . consult-global-mark)
-           ("M-g i" . consult-imenu)
-           ("M-g I" . consult-imenu-multi)
-           ;; M-s bindings (search-map)
-           ("M-s d" . consult-find)
-           ("M-s D" . consult-locate)
-           ("M-s g" . consult-grep)
-           ("M-s G" . consult-git-grep)
-           ("M-s r" . consult-ripgrep)
-           ("M-s l" . consult-line)
-           ("M-s L" . consult-line-multi)
-           ("M-s m" . consult-multi-occur)
-           ("M-s k" . consult-keep-lines)
-           ("M-s u" . consult-focus-lines)
-           ;; Isearch integration
-           ("M-s e" . consult-isearch-history)
-           :map isearch-mode-map
-           ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
-           ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
-           ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
-           ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
-           ;; Minibuffer history
-           :map minibuffer-local-map
-           ("M-s" . consult-history)                 ;; orig. next-matching-history-element
-           ("M-r" . consult-history))                ;; orig. previous-matching-history-element
+;; Example configuration for Consult
+(use-package consult
+  :ensure t
+  ;; Replace bindings. Lazily loaded due by `use-package'.
+  :bind (;; C-c bindings (mode-specific-map)
+         ("C-c h" . consult-history)
+         ("C-c m" . consult-mode-command)
+         ("C-c k" . consult-kmacro)
+         ;; C-x bindings (ctl-x-map)
+         ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
+         ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
+         ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
+         ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
+         ("C-x r b" . consult-bookmark)            ;; orig. bookmark-jump
+         ("C-x p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
+         ;; Custom M-# bindings for fast register access
+         ("M-#" . consult-register-load)
+         ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
+         ("C-M-#" . consult-register)
+         ;; Other custom bindings
+         ("M-y" . consult-yank-pop)                ;; orig. yank-pop
+         ("<help> a" . consult-apropos)            ;; orig. apropos-command
+         ;; M-g bindings (goto-map)
+         ("M-g e" . consult-compile-error)
+         ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
+         ("M-g g" . consult-goto-line)             ;; orig. goto-line
+         ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
+         ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
+         ("M-g m" . consult-mark)
+         ("M-g k" . consult-global-mark)
+         ("M-g i" . consult-imenu)
+         ("M-g I" . consult-imenu-multi)
+         ;; M-s bindings (search-map)
+         ("M-s d" . consult-find)
+         ("M-s D" . consult-locate)
+         ("M-s g" . consult-grep)
+         ("M-s G" . consult-git-grep)
+         ("M-s r" . consult-ripgrep)
+         ("M-s l" . consult-line)
+         ("M-s L" . consult-line-multi)
+         ("M-s m" . consult-multi-occur)
+         ("M-s k" . consult-keep-lines)
+         ("M-s u" . consult-focus-lines)
+         ;; Isearch integration
+         ("M-s e" . consult-isearch-history)
+         :map isearch-mode-map
+         ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
+         ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
+         ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
+         ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
+         ;; Minibuffer history
+         :map minibuffer-local-map
+         ("M-s" . consult-history)                 ;; orig. next-matching-history-element
+         ("M-r" . consult-history))                ;; orig. previous-matching-history-element
 
-    ;; Enable automatic preview at point in the *Completions* buffer. This is
-    ;; relevant when you use the default completion UI.
-    :hook (completion-list-mode . consult-preview-at-point-mode)
+  ;; Enable automatic preview at point in the *Completions* buffer. This is
+  ;; relevant when you use the default completion UI.
+  :hook (completion-list-mode . consult-preview-at-point-mode)
 
-    ;; The :init configuration is always executed (Not lazy)
-    :init
+  ;; The :init configuration is always executed (Not lazy)
+  :init
 
-    ;; Optionally configure the register formatting. This improves the register
-    ;; preview for `consult-register', `consult-register-load',
-    ;; `consult-register-store' and the Emacs built-ins.
-    (setq register-preview-delay 0.5
-          register-preview-function #'consult-register-format)
+  ;; Optionally configure the register formatting. This improves the register
+  ;; preview for `consult-register', `consult-register-load',
+  ;; `consult-register-store' and the Emacs built-ins.
+  (setq register-preview-delay 0.5
+        register-preview-function #'consult-register-format)
 
-    ;; Optionally tweak the register preview window.
-    ;; This adds thin lines, sorting and hides the mode line of the window.
-    (advice-add #'register-preview :override #'consult-register-window)
+  ;; Optionally tweak the register preview window.
+  ;; This adds thin lines, sorting and hides the mode line of the window.
+  (advice-add #'register-preview :override #'consult-register-window)
 
-    ;; Use Consult to select xref locations with preview
-    (setq xref-show-xrefs-function #'consult-xref
-          xref-show-definitions-function #'consult-xref)
+  ;; Use Consult to select xref locations with preview
+  (setq xref-show-xrefs-function #'consult-xref
+        xref-show-definitions-function #'consult-xref)
 
-    ;; Configure other variables and modes in the :config section,
-    ;; after lazily loading the package.
-    :config
+  ;; Configure other variables and modes in the :config section,
+  ;; after lazily loading the package.
+  :config
 
-    ;; Optionally configure preview. The default value
-    ;; is 'any, such that any key triggers the preview.
-    ;; (setq consult-preview-key 'any)
-    ;; (setq consult-preview-key (kbd "M-."))
-    ;; (setq consult-preview-key (list (kbd "<S-down>") (kbd "<S-up>")))
-    ;; For some commands and buffer sources it is useful to configure the
-    ;; :preview-key on a per-command basis using the `consult-customize' macro.
-    (consult-customize
-     consult-theme
-     :preview-key '(:debounce 0.2 any)
-     consult-ripgrep consult-git-grep consult-grep
-     consult-bookmark consult-recent-file consult-xref
-     consult--source-bookmark consult--source-recent-file
-     consult--source-project-recent-file
-     :preview-key (kbd "M-."))
+  ;; Optionally configure preview. The default value
+  ;; is 'any, such that any key triggers the preview.
+  ;; (setq consult-preview-key 'any)
+  ;; (setq consult-preview-key (kbd "M-."))
+  ;; (setq consult-preview-key (list (kbd "<S-down>") (kbd "<S-up>")))
+  ;; For some commands and buffer sources it is useful to configure the
+  ;; :preview-key on a per-command basis using the `consult-customize' macro.
+  (consult-customize
+   consult-theme
+   :preview-key '(:debounce 0.2 any)
+   consult-ripgrep consult-git-grep consult-grep
+   consult-bookmark consult-recent-file consult-xref
+   consult--source-bookmark consult--source-recent-file
+   consult--source-project-recent-file
+   :preview-key (kbd "M-."))
 
-    ;; Optionally configure the narrowing key.
-    ;; Both < and C-+ work reasonably well.
-    (setq consult-narrow-key "<") ;; (kbd "C-+")
+  ;; Optionally configure the narrowing key.
+  ;; Both < and C-+ work reasonably well.
+  (setq consult-narrow-key "<") ;; (kbd "C-+")
 
-    ;; Optionally make narrowing help available in the minibuffer.
-    ;; You may want to use `embark-prefix-help-command' or which-key instead.
-    ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
+  ;; Optionally make narrowing help available in the minibuffer.
+  ;; You may want to use `embark-prefix-help-command' or which-key instead.
+  ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
 
-    ;; By default `consult-project-function' uses `project-root' from project.el.
-    ;; Optionally configure a different project root function.
-    ;; There are multiple reasonable alternatives to chose from.
-    ;;;; 1. project.el (the default)
-    ;; (setq consult-project-function #'consult--default-project--function)
-    ;;;; 2. projectile.el (projectile-project-root)
-    ;; (autoload 'projectile-project-root "projectile")
-    ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
-    ;;;; 3. vc.el (vc-root-dir)
-    ;; (setq consult-project-function (lambda (_) (vc-root-dir)))
-    ;;;; 4. locate-dominating-file
-    ;; (setq consult-project-function (lambda (_) (locate-dominating-file "." ".git")))
-  )
+  ;; By default `consult-project-function' uses `project-root' from project.el.
+  ;; Optionally configure a different project root function.
+  ;; There are multiple reasonable alternatives to chose from.
+  ;;;; 1. project.el (the default)
+  ;; (setq consult-project-function #'consult--default-project--function)
+  ;;;; 2. projectile.el (projectile-project-root)
+  ;; (autoload 'projectile-project-root "projectile")
+  ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
+  ;;;; 3. vc.el (vc-root-dir)
+  ;; (setq consult-project-function (lambda (_) (vc-root-dir)))
+  ;;;; 4. locate-dominating-file
+  ;; (setq consult-project-function (lambda (_) (locate-dominating-file "." ".git")))
+)
 
 (use-package consult-dir
   :ensure t
@@ -1600,106 +1629,106 @@
 ;; #+NAME: comp-mb-ver-orderless
 
 ;; [[file:site-pkgs.org::comp-mb-ver-orderless][comp-mb-ver-orderless]]
-  ;; ---( orderless )--------------------------------------------------------------
+;; ---( orderless )--------------------------------------------------------------
 
-  (use-package orderless
-    :ensure t
-    :init
-    (setq completion-styles '(orderless)))
+(use-package orderless
+  :ensure t
+  :init
+  (setq completion-styles '(orderless)))
 
-  ;; (use-package orderless
-  ;;   :custom
-  ;;   (completion-styles '(orderless))      ; Use orderless
-  ;;   (completion-category-defaults nil)    ; I want to be in control!
-  ;;   (completion-category-overrides
-  ;;    '((file (styles basic-remote ; For `tramp' hostname completion with `vertico'
-  ;;                    orderless)))))
+;; (use-package orderless
+;;   :custom
+;;   (completion-styles '(orderless))      ; Use orderless
+;;   (completion-category-defaults nil)    ; I want to be in control!
+;;   (completion-category-overrides
+;;    '((file (styles basic-remote ; For `tramp' hostname completion with `vertico'
+;;                    orderless)))))
 ;; comp-mb-ver-orderless ends here
 
 ;; Embark
 ;; #+NAME: comp-mb-ver-embark
 
 ;; [[file:site-pkgs.org::comp-mb-ver-embark][comp-mb-ver-embark]]
-  ;; ---( embark )--------------------------------------------------------------
+;; ---( embark )--------------------------------------------------------------
 
-    (use-package embark
-    :ensure t
+(use-package embark
+  :ensure t
 
-    :bind
-    (("C-." . embark-act)         ;; pick some comfortable binding
-     ("C-;" . embark-dwim)        ;; good alternative: M-.
-     ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
+  :bind
+  (("C-." . embark-act)         ;; pick some comfortable binding
+   ("C-;" . embark-dwim)        ;; good alternative: M-.
+   ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
+  
+  :init
 
-     :init
+  ;; Optionally replace the key help with a completing-read interface
+  (setq prefix-help-command #'embark-prefix-help-command)
 
-     ;; Optionally replace the key help with a completing-read interface
-     (setq prefix-help-command #'embark-prefix-help-command)
+  :config
 
-     :config
+  ;; Hide the mode line of the Embark live/completions buffers
+  (add-to-list 'display-buffer-alist
+               '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+                 nil
+                 (window-parameters (mode-line-format . none))))
 
-     ;; Hide the mode line of the Embark live/completions buffers
-     (add-to-list 'display-buffer-alist
-                  '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
-                    nil
-                    (window-parameters (mode-line-format . none))))
+  )
 
-    )
+;; Consult users will also want the embark-consult package.
+(use-package embark-consult
+  :ensure t
+  :after (embark consult)
+  ;; :demand t ; only necessary if you have the hook below
+  ;; if you want to have consult previews as you move around an
+  ;; auto-updating embark collect buffer
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
 
-  ;; Consult users will also want the embark-consult package.
-  (use-package embark-consult
-    :ensure t
-    :after (embark consult)
-    ;; :demand t ; only necessary if you have the hook below
-    ;; if you want to have consult previews as you move around an
-    ;; auto-updating embark collect buffer
-    :hook
-    (embark-collect-mode . consult-preview-at-point-mode))
+;; (use-package embark
+;;   :ensure t)
 
-  ;; (use-package embark
-  ;;   :ensure t)
-
-  ;; Consult users will also want the embark-consult package.
-  ;; (use-package embark-consult
-  ;;   :ensure t
-  ;;   :after (embark consult)
-  ;;   :demand t only necessary if you have the hook below
-  ;;   if you want to have consult previews as you move around an
-  ;;   auto-updating embark collect buffer
-  ;;   :hook
-  ;;   (embark-collect-mode . consult-preview-at-point-mode))
+;; Consult users will also want the embark-consult package.
+;; (use-package embark-consult
+;;   :ensure t
+;;   :after (embark consult)
+;;   :demand t only necessary if you have the hook below
+;;   if you want to have consult previews as you move around an
+;;   auto-updating embark collect buffer
+;;   :hook
+;;   (embark-collect-mode . consult-preview-at-point-mode))
 ;; comp-mb-ver-embark ends here
 
 ;; Savehist
 ;; #+NAME: comp-mb-ver-savehist
 
 ;; [[file:site-pkgs.org::comp-mb-ver-savehist][comp-mb-ver-savehist]]
-  ;; ---( savehist )--------------------------------------------------------------
+;; ---( savehist )--------------------------------------------------------------
 
-  ;; Persist history over Emacs restarts. Vertico sorts by history position.
-  (use-package savehist
-    :init
-    (savehist-mode))
+;; Persist history over Emacs restarts. Vertico sorts by history position.
+(use-package savehist
+  :init
+  (savehist-mode))
 
 
-  (recentf-mode)
+(recentf-mode)
 
-  (setq completion-ignore-case t)
-  (setq read-file-name-completion-ignore-case t)
+(setq completion-ignore-case t)
+(setq read-file-name-completion-ignore-case t)
 ;; comp-mb-ver-savehist ends here
 
 ;; Vertico*/end
 ;; #+NAME: comp-mb-ver-end
 
 ;; [[file:site-pkgs.org::comp-mb-ver-end][comp-mb-ver-end]]
-  (message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico)) 
-  ;; .........................................................................
+(message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico)) 
+;; .........................................................................
 ;; comp-mb-ver-end ends here
 
 ;; Completion/end
 ;; #+NAME: comp-mb-end
 
 ;; [[file:site-pkgs.org::comp-mb-end][comp-mb-end]]
-  ;; }}}  .comp-mb
+;; }}}  .comp-mb
 ;; comp-mb-end ends here
 
 ;; Edit/begin
