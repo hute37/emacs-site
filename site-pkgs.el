@@ -2677,8 +2677,8 @@
            ([kp-multiply] . vterm-copy-mode))
     :config
     (setq vterm-max-scrollback 18000)
-    :preface
-    (message "vterm::preface >")
+    :init
+    (message "vterm::init >")
 
     (defun vterm-here (&optional prefix)
       "Opens up a new shell in the directory associated with the
@@ -2715,7 +2715,7 @@
         ))
 
     
-    (message "vterm::preface <")
+    (message "vterm::init <")
 
     )
 
