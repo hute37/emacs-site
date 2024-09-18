@@ -475,7 +475,7 @@
  ((fboundp 'vterm);;
   (progn
     (message "vterm:bind [C-u] [C-u] C-F9")
-    ;;(global-set-key [(control f9)] 'vterm-here )
+    (global-set-key [(control f9)] 'vterm-here )
     ))
  ((fboundp 'multi-term);;
   (progn
