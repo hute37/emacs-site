@@ -2806,7 +2806,7 @@ P
 
   (use-package vterm
     :ensure t
-    :bind (("C-<F9>" . vterm)
+    :bind (("C-<F9>" . vterm-here)
                ;; :straight (:post-build (cl-letf (((symbol-function #'pop-to-buffer)
                ;;                        (lambda (buffer) (with-current-buffer buffer (message (buffer-string))))))
                ;;               (setq vterm-always-compile-module t)
@@ -2820,6 +2820,46 @@ P
            ([kp-multiply] . vterm-copy-mode))
     :config
     (setq vterm-max-scrollback 18000)
+    :preface
+    (message "vterm::preface >")
+
+    (defun vterm-here (&optional prefix)
+      "Opens up a new shell in the directory associated with the
+       current buffer's file. The vterm is renamed to match that
+       directory to make multiple vterm windows easier."
+      (interactive "P")
+      (let* ((parent (if (buffer-file-name)
+                         (file-name-directory (buffer-file-name))
+                       default-directory))
+             ;;(name   (car (last (split-string parent "/" t))))
+             (name (s-join
+               "/"
+               (last
+                (s-split
+                 "/"
+                 (abbreviate-file-name parent))
+                5)))
+             )
+
+        (cond
+         ((equal current-prefix-arg nil)   ; no C-u
+          (message "vterm-here - no C-u"))
+         ((equal current-prefix-arg '(4))  ; C-u
+          (split-window-horizontally (- (/ (window-total-width) 2)))
+          (other-window 1)
+          (message "vterm-here - C-u"))
+         ((equal current-prefix-arg '(16))     ; C-u C-u
+          (split-window-vertically (- (/ (window-total-height) 3)))
+          (other-window 1)
+          (message "vterm-here - C-u C-u"))
+          )        
+        
+        (vterm (concat "*vterm: " name "*"))
+        ))
+
+    
+    (message "vterm::preface <")
+
     )
 
 
