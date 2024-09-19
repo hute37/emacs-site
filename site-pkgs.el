@@ -2486,22 +2486,22 @@
 
      )
 
-    (setq eshell-prompt-function
-          (lambda ()
+    (setq
+     eshell-prompt-regexp "^[^#$γλ\n]* [#$γλ] "
+     eshell-prompt-function
+     (lambda ()
+       (let*
+           ((path (abbreviate-file-name (eshell/pwd)))
+            (parts (s-split "|" (replace-regexp-in-string "^\\(.*:\\)?\\(.*\\)" "\\1|\\2" path)))
+            (rhost (car parts))
+            (path3 (s-join "/" (last (s-split "/" (cadr parts)) 3)))
+            )
             (concat
-             (propertize
-              (s-join
-               "/"
-               (last
-                (s-split
-                 "/"
-                 (abbreviate-file-name
-                  (eshell/pwd)))
-                3))
-              'face `(:foreground "CornflowerBlue" :weight bold))
-                  (if (= (user-uid) 0) " γ " " λ ")))
-          eshell-prompt-regexp "^[^#$γλ\n]* [#$γλ] ")
-
+             (propertize rhost 'face `(:foreground "Salmon" :weight bold))
+             (propertize path3 'face `(:foreground "CornflowerBlue" :weight bold))
+             (if (= (user-uid) 0) " γ " " λ ")))
+       ))
+    
       ;; (setq eshell-prompt-regexp "^[^#$γλ\n]* [#$γλ] "
       ;;       eshell-prompt-function
       ;;       (lambda ()
