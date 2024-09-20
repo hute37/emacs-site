@@ -2543,6 +2543,20 @@ P
       (magit-status (pop args) nil)
       (eshell/echo))
 
+    (defun eshell/ccat (file)
+      "Like `cat' but output with Emacs syntax highlighting,
+       as alternative: `find-file-read-only-other-window`."
+      (with-temp-buffer
+        (insert-file-contents file)
+        (let ((buffer-file-name file))
+          (delay-mode-hooks
+            (set-auto-mode)
+            (if (fboundp 'font-lock-ensure)
+                (font-lock-ensure)
+              (with-no-warnings
+                (font-lock-fontify-buffer)))))
+        (buffer-string)))
+
     (defun eshell/f (filename &optional dir try-count)
       "Searches for files matching FILENAME in either DIR or the
        current directory. Just a typical wrapper around the standard
@@ -2605,8 +2619,9 @@ P
     :config
     (message "eshell::config >")
     (setq
-     eshell-rc-script "~/.emacs-site/config/eshell/profile"
-     eshell-aliases-file "~/.emacs-site/config/eshell/aliases"
+     eshell-login-script "~/.emacs-site/config/eshell/eprofile"
+     eshell-rc-script "~/.emacs-site/config/eshell/eshellrc"
+     eshell-aliases-file "~/.emacs-site/config/eshell/ealiases"
      eshell-history-size 5000
      eshell-buffer-maximum-lines 5000
      eshell-hist-ignoredups t
@@ -2616,6 +2631,9 @@ P
      eshell-destroy-buffer-when-process-dies t
      ;;eshell-visual-commands'("bash" "fish" "vi" "vim" "nvim" "mc" "ranger" "htop" "ssh" "top" "tmux" "zsh")
      eshell-visual-commands'("fish" "vi" "vim" "nvim" "mc" "ranger" "htop" "ssh" "top" "tmux")
+
+     eshell-ls-use-colors t
+     eshell-ls-initial-args nil
 
      )
 
@@ -2719,6 +2737,7 @@ P
       (define-key eshell-hist-mode-map (kbd "C-<down>") #'eshell-next-matching-input-from-input)
       (define-key eshell-hist-mode-map (kbd "M-r") #'consult-history)
       ;; Use completion-at-point to provide completions in eshell
+      (define-key eshell-mode-map (kbd "<home>") 'eshell-bol)
       (define-key eshell-mode-map (kbd "<tab>") 'completion-at-point)
       (define-key eshell-mode-map (kbd "<return>") 'eshell-copy-or-send-input)
       (define-key eshell-mode-map (kbd "C-<return>") 'cua-rectangle-mark-mode)
