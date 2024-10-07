@@ -83,290 +83,341 @@
 ;; #+NAME: startup
 
 ;; [[file:site-pkgs.org::startup][startup]]
-      ;; ;;;////////////////////////////////////////////////////////////////
-      ;; {{{  @PACKAGES
-      ;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @PACKAGES
+;; ;;;////////////////////////////////////////////////////////////////
 
-      ;; ---( Install )--------------------------------------------------------------
+;; ---( Install )--------------------------------------------------------------
 
-      ;;(fset 'h7/ensure 't)
-      ;;(fset h7/ensure nil)
+;;(fset 'h7/ensure 't)
+;;(fset h7/ensure nil)
 
-      ;; ---( Boot )--------------------------------------------------------------
+;; ---( Boot )--------------------------------------------------------------
 
-      ;; (setq debug-on-error t)
-
-
-      ;; @see: https://github.com/radian-software/straight.el
-      ;; @see: 
-      ;; @see: https://youtu.be/UmbVeqphGlc
-
-      ;; (setq straight-use-package-by-default t)
-      ;; (setq use-package-always-ensure t)
-      ;; 
-      ;; (defvar bootstrap-version)
-      ;; (let ((bootstrap-file
-      ;;        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-      ;;       (bootstrap-version 5))
-      ;;   (unless (file-exists-p bootstrap-file)
-      ;;     (with-current-buffer
-      ;;         (url-retrieve-synchronously
-      ;;          "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-      ;;          'silent 'inhibit-cookies)
-      ;;       (goto-char (point-max))
-      ;;       (eval-print-last-sexp)))
-      ;;   (load bootstrap-file nil 'nomessage))
-      ;; 
-      ;; (setq package-enable-at-startup nil)
-      ;; (straight-use-package 'use-package)
-      ;; (eval-when-compile (require 'use-package))
+;; (setq debug-on-error t)
 
 
-      ;; @see: https://ianyepan.github.io/posts/setting-up-use-package/
-      ;; @see: https://www.reddit.com/r/emacs/comments/dfcyy6/how_to_install_and_use_usepackage/
-      ;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
+;; @see: https://github.com/radian-software/straight.el
+;; @see: 
+;; @see: https://youtu.be/UmbVeqphGlc
 
-      (eval-and-compile
-        (require 'package)
-        (add-to-list 'package-archives '("org"       . "http://orgmode.org/elpa/")) ; Org-mode's repository
-        (add-to-list 'package-archives '("gnu"       . "https://elpa.gnu.org/packages/"))
-        (add-to-list 'package-archives '("melpa"     . "https://melpa.org/packages/"))
-        (add-to-list 'package-archives '("nongnu"    . "https://elpa.nongnu.org/nongnu/"))
-      ;;(add-to-list 'package-archives '("jcs-elpa"  . "https://jcs-emacs.github.io/jcs-elpa/packages/") t)
-
-        (setq package-archive-priorities '(("melpa"    . 5)
-                                        ;; ("jcs-elpa" . 0)
-                                           ))
-        ;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
-        ;;(package-initialize)
-        ;; i always fetch the archive contents on startup and during compilation, which is slow
-        ;; (package-refresh-contents)
-        (unless (package-installed-p 'use-package)
-          (package-install 'use-package))
-        (setq use-package-verbose t)
-        (require 'use-package)
-        ;; i don't really know why this isn't the default...
-        ;;(setf use-package-always-ensure t)
-
-        ;;(use-package use-package-ensure
-        ;;  :config  (setq use-package-always-ensure t))
-
-        (use-package quelpa
-          :ensure t)
-        (use-package quelpa-use-package
-          :ensure t)
-        (quelpa-use-package-activate-advice)
-        (use-package auto-compile
-          :ensure t
-          :config (auto-compile-on-load-mode))
-        (setq load-prefer-newer t)
-
-        ;;   (unless (package-installed-p 'quelpa)
-        ;;     (with-temp-buffer
-        ;;       (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
-        ;;       (eval-buffer)
-        ;;       (quelpa-self-upgrade)))
-        ;;   (quelpa
-        ;;    '(quelpa-use-package
-        ;;      :fetcher git
-        ;;      :url "https://github.com/quelpa/quelpa-use-package.git"))
-        ;;   (require 'quelpa-use-package)
-        ;;
-        )
-
-      ;; ;; @see:  https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
-
-      ;; ;;; initialization
-      ;; (require 'package)
-      ;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-      ;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
-      ;; (package-initialize)
-      ;; (when (not package-archive-contents)
-      ;;   (package-refresh-contents))
-      ;; (package-install 'use-package)
-      ;; (use-package use-package-ensure
-      ;;   :config  (setq use-package-always-ensure t))
-
-      ;; (unless (package-installed-p 'quelpa)
-      ;;   (with-temp-buffer
-      ;;     (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
-      ;;     (eval-buffer)
-      ;;     (quelpa-self-upgrade)))
-      ;; (quelpa
-      ;;  '(quelpa-use-package
-      ;;    :fetcher git
-      ;;    :url "https://github.com/quelpa/quelpa-use-package.git"))
-      ;; (require 'quelpa-use-package)
+;; (setq straight-use-package-by-default t)
+;; (setq use-package-always-ensure t)
+;; 
+;; (defvar bootstrap-version)
+;; (let ((bootstrap-file
+;;        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+;;       (bootstrap-version 5))
+;;   (unless (file-exists-p bootstrap-file)
+;;     (with-current-buffer
+;;         (url-retrieve-synchronously
+;;          "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+;;          'silent 'inhibit-cookies)
+;;       (goto-char (point-max))
+;;       (eval-print-last-sexp)))
+;;   (load bootstrap-file nil 'nomessage))
+;; 
+;; (setq package-enable-at-startup nil)
+;; (straight-use-package 'use-package)
+;; (eval-when-compile (require 'use-package))
 
 
-      ;;(require 'package)
-      ;; ;;(nconc package-archives
-      ;; ;;      '(("melpa" . "http://melpa.org/packages/")
-      ;; ;;        ("org" . "http://orgmode.org/elpa/")))
-      ;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-      ;;(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
+;; @see: https://ianyepan.github.io/posts/setting-up-use-package/
+;; @see: https://www.reddit.com/r/emacs/comments/dfcyy6/how_to_install_and_use_usepackage/
+;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
 
-      ;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-      ;;(add-to-list 'package-archives '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
+(eval-and-compile
+  (require 'package)
+  (add-to-list 'package-archives '("org"       . "http://orgmode.org/elpa/")) ; Org-mode's repository
+  (add-to-list 'package-archives '("gnu"       . "https://elpa.gnu.org/packages/"))
+  (add-to-list 'package-archives '("melpa"     . "https://melpa.org/packages/"))
+  (add-to-list 'package-archives '("nongnu"    . "https://elpa.nongnu.org/nongnu/"))
+;;(add-to-list 'package-archives '("jcs-elpa"  . "https://jcs-emacs.github.io/jcs-elpa/packages/") t)
 
-      ;; You don't need this one if you have marmalade:
-      ;; (add-to-list 'package-archives '("geiser" . "http://download.savannah.gnu.org/releases/geiser/packages"))
+  (setq package-archive-priorities '(("melpa"    . 5)
+                                  ;; ("jcs-elpa" . 0)
+                                     ))
+  ;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+  ;;(package-initialize)
+  ;; i always fetch the archive contents on startup and during compilation, which is slow
+  ;; (package-refresh-contents)
+  (unless (package-installed-p 'use-package)
+    (package-install 'use-package))
+  (setq use-package-verbose t)
+  (require 'use-package)
+  ;; i don't really know why this isn't the default...
+  ;;(setf use-package-always-ensure t)
 
-      ;;(setq package-enable-at-startup nil)
+  ;;(use-package use-package-ensure
+  ;;  :config  (setq use-package-always-ensure t))
 
-      ;; (setq 
-      ;;  load-prefer-newer t
-      ;;  package-user-dir "~/.emacs.d/elpa"
-      ;;  package--init-file-ensured t
-      ;;  package-enable-at-startup nil)
+  (use-package quelpa
+    :ensure t)
+  (use-package quelpa-use-package
+    :ensure t)
+  (quelpa-use-package-activate-advice)
+  (use-package auto-compile
+    :ensure t
+    :config (auto-compile-on-load-mode))
+  (setq load-prefer-newer t)
 
-      ;; (unless (file-directory-p package-user-dir)
-      ;;   (make-directory package-user-dir t))    
+  ;;   (unless (package-installed-p 'quelpa)
+  ;;     (with-temp-buffer
+  ;;       (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+  ;;       (eval-buffer)
+  ;;       (quelpa-self-upgrade)))
+  ;;   (quelpa
+  ;;    '(quelpa-use-package
+  ;;      :fetcher git
+  ;;      :url "https://github.com/quelpa/quelpa-use-package.git"))
+  ;;   (require 'quelpa-use-package)
+  ;;
+  )
 
-      ;;(package-initialize)
+;; ;; @see:  https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
+
+;; ;;; initialization
+;; (require 'package)
+;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
+;; (package-initialize)
+;; (when (not package-archive-contents)
+;;   (package-refresh-contents))
+;; (package-install 'use-package)
+;; (use-package use-package-ensure
+;;   :config  (setq use-package-always-ensure t))
+
+;; (unless (package-installed-p 'quelpa)
+;;   (with-temp-buffer
+;;     (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+;;     (eval-buffer)
+;;     (quelpa-self-upgrade)))
+;; (quelpa
+;;  '(quelpa-use-package
+;;    :fetcher git
+;;    :url "https://github.com/quelpa/quelpa-use-package.git"))
+;; (require 'quelpa-use-package)
 
 
-      ;; (unless (package-installed-p 'use-package)
-      ;;   (progn
-      ;;     (package-refresh-contents)
-      ;;     (package-install 'use-package)))
-      ;; (eval-when-compile
-      ;;   (eval-after-load 'advice
-      ;;     '(setq ad-redefinition-action 'accept))
-      ;;   (require 'use-package))
-      ;; (require 'diminish)
-      ;; (require 'bind-key)
+;;(require 'package)
+;; ;;(nconc package-archives
+;; ;;      '(("melpa" . "http://melpa.org/packages/")
+;; ;;        ("org" . "http://orgmode.org/elpa/")))
+;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;;(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
 
-      ;; (require 'package)
-      ;; (setq package-enable-at-startup nil)
+;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+;;(add-to-list 'package-archives '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
 
-      ;; ;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-      ;; (unless (assoc-default "melpa" package-archives)
-      ;;   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t))
+;; You don't need this one if you have marmalade:
+;; (add-to-list 'package-archives '("geiser" . "http://download.savannah.gnu.org/releases/geiser/packages"))
 
-      ;;(package-initialize)
+;;(setq package-enable-at-startup nil)
 
-      ;; Bootstrap `use-package'
-      (unless (and
-               (package-installed-p 'bind-key)
-               (package-installed-p 'diminish)
-               (package-installed-p 'use-package)
-               (package-installed-p 'req-package)
-               )
-        (package-refresh-contents)
-        (package-install 'bind-key)
-        (package-install 'diminish)
-        (package-install 'use-package)
-        (package-install 'req-package)
-        )
+;; (setq 
+;;  load-prefer-newer t
+;;  package-user-dir "~/.emacs.d/elpa"
+;;  package--init-file-ensured t
+;;  package-enable-at-startup nil)
 
-      ;; (straight-use-package 'bind-key)
-      ;; (straight-use-package 'diminish)
+;; (unless (file-directory-p package-user-dir)
+;;   (make-directory package-user-dir t))    
 
-      ;; @see: https://github.com/jwiegley/dot-emacs/blob/master/init.el
+;;(package-initialize)
 
-      (eval-and-compile
-        (defvar use-package-verbose t))
 
-      ;; ---( ... )--------------------------------------------------------------
+;; (unless (package-installed-p 'use-package)
+;;   (progn
+;;     (package-refresh-contents)
+;;     (package-install 'use-package)))
+;; (eval-when-compile
+;;   (eval-after-load 'advice
+;;     '(setq ad-redefinition-action 'accept))
+;;   (require 'use-package))
+;; (require 'diminish)
+;; (require 'bind-key)
 
-      (require 'bind-key)
-      (require 'use-package)
+;; (require 'package)
+;; (setq package-enable-at-startup nil)
 
-      ;; use-package-ensure-system-package
-      ;; provides way to define system package dependencies for Emacs packages
-      (use-package use-package-ensure-system-package
-        :ensure t)
+;; ;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+;; (unless (assoc-default "melpa" package-archives)
+;;   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t))
 
-      (require 'req-package)
-      ;;(use-package req-package)
+;;(package-initialize)
 
-      ;; @see: https://github.com/noctuid/general.el
-      (use-package general
-        :ensure t)
+;; Bootstrap `use-package'
+(unless (and
+         (package-installed-p 'bind-key)
+         (package-installed-p 'diminish)
+         (package-installed-p 'use-package)
+         (package-installed-p 'req-package)
+         )
+  (package-refresh-contents)
+  (package-install 'bind-key)
+  (package-install 'diminish)
+  (package-install 'use-package)
+  (package-install 'req-package)
+  )
 
-      ;; ---( ... )--------------------------------------------------------------
+;; (straight-use-package 'bind-key)
+;; (straight-use-package 'diminish)
 
-      ;; }}}  .packages
+;; @see: https://github.com/jwiegley/dot-emacs/blob/master/init.el
+
+(eval-and-compile
+  (defvar use-package-verbose t))
+
+;; ---( ... )--------------------------------------------------------------
+
+(require 'bind-key)
+(require 'use-package)
+
+;; use-package-ensure-system-package
+;; provides way to define system package dependencies for Emacs packages
+(use-package use-package-ensure-system-package
+  :ensure t)
+
+(require 'req-package)
+;;(use-package req-package)
+
+;; @see: https://github.com/noctuid/general.el
+(use-package general
+  :ensure t)
+
+;; ---( ... )--------------------------------------------------------------
+
+;; }}}  .packages
 ;; startup ends here
 
 ;; Basic
 ;; #+NAME: basic
 
 ;; [[file:site-pkgs.org::basic][basic]]
-         ;; ;;;////////////////////////////////////////////////////////////////
-         ;; {{{  @BASIC
-         ;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @BASIC
+;; ;;;////////////////////////////////////////////////////////////////
 
-         ;; ---( ... )--------------------------------------------------------------
+;; ---( ... )--------------------------------------------------------------
 
-         ;; ---( ... )--------------------------------------------------------------
+;; I avoid defining too many custom helpers, =dir-concat= is an exception. Emacs
+;; 28 provides =file-name-concat=, but I'm on 27.2 some of the time.
+(use-package emacs
+  :config
+  (defun dir-concat (dir file)
+    "join path DIR with filename FILE correctly"
+    (concat (file-name-as-directory dir) file))
 
-         ;;(use-package bs
-         ;;  :ensure t)
+  ;; Set directory
+  ;; (setq default-directory
+  ;;       (cond ((equal (system-name) "surface")
+  ;;              "/cygdrive/c/Users/karth/OneDrive/Documents/")
+  ;;             ((equal system-type 'nt)
+  ;;              "/cygdrive/c/Users/karth/OneDrive/Documents/")
+  ;;             (t "~/")))
 
-         ;; ---( ... )--------------------------------------------------------------
-
-         ;; (use-package pretty-symbols
-         ;;   :ensure t)
-
-         ;; (use-package pretty-lambdada
-         ;;   :ensure t
-         ;;   :init (dolist (hook '(lisp-mode-hook emacs-lisp-mode-hook)))
-         ;;   :config (dolist (global-pretty-lambda-mode)))
-
-
-       ;; (use-package jumpc
-       ;;   :disabled t
-       ;;   :config (progn (jumpc-bind-vim-key)))
-
-       ;; (use-package rainbow-delimiters
-       ;;   :disabled t
-       ;;   :hook (prog-mode . rainbow-delimiters-mode))
-
-       ;; ---( undo-tree )--------------------------------------------------------------
-
-  (use-package undo-tree
-    :ensure t
-    :diminish undo-tree-mode
-    ;; :bind (("C-c _" . undo-tree-visualize))
-    :config
-    (progn
-      (global-undo-tree-mode)
-      ;; (unbind-key "M-_" undo-tree-map)
-      (setq undo-tree-visualizer-timestamps t)
-      (setq undo-tree-visualizer-diff t)
-      (setq undo-tree-history-directory-alist '(("." . "~/.backups/emacs/undo-tree")))))
-
-  ;; =C-x u= to browse the tree with =f=, =b=, =n=, =p=, =RET=.
-  ;; (use-package vundo
-  ;;   :ensure t
-  ;;   :config
-  ;;   (setq vundo-glyph-alist vundo-unicode-symbols)
-  ;;   :bind
-  ;;   ("C-x u" . vundo))
+  ;; Adds ~/.emacs.d to the load-path
+  ;; (push (dir-concat user-emacs-directory "plugins/") load-path)
+  ;; (push (dir-concat user-emacs-directory "lisp/") load-path)
+  ;; (defvar user-cache-directory "~/.cache/emacs/"
+  ;; "Location where files created by emacs are placed."))
+  
+  ;; ---( cache )--------------------------------------------------------------
+  
+  (defvar user-cache-directory "~/.backups/"
+  "Location where files created by emacs are placed.")
 
 
-    ;; ---( dash )--------------------------------------------------------------
+  )
 
-    ;; ~dash.el~ :: A modern list API for Emacs. No 'cl required.  (See https://github.com/magnars/dash.el/)
-    (use-package dash
-      :ensure t)
+;; ---( autosave/backups )-------------------------------------------------------
 
-    ;; ---( f )--------------------------------------------------------------
+;; @see: https://github.com/karthink/.emacs.d/blob/master/init.el#L373
 
-    ;; ~f.el~ :: A modern API for working with files and directories in Emacs. (See https://github.com/rejeep/f.el/)
-    (use-package f
-      :ensure t)
+(setq auto-save-interval 2400)
+(setq auto-save-timeout 300)
+(setq auto-save-list-file-prefix
+      (dir-concat user-cache-directory "auto-save-list/.saves-"))
+(setq backup-directory-alist
+      `(("." . ,(dir-concat user-cache-directory "backup")))
+      backup-by-copying t ; Use copies
+      version-control t ; Use version numbers on backups
+      delete-old-versions t ; Automatically delete excess backups
+      kept-new-versions 10 ; Newest versions to keep
+      kept-old-versions 5 ; Old versions to keep
+      )
 
-    ;; ---( s )--------------------------------------------------------------
+;; ---( undo-tree )--------------------------------------------------------------
 
-    ;; ~s.el~ :: The long lost Emacs string manipulation library.  (See https://github.com/magnars/s.el/)
-    (use-package s
-      :ensure t)
+(use-package undo-tree
+  :ensure t
+  :diminish undo-tree-mode
+  ;; :bind (("C-c _" . undo-tree-visualize))
+  :config
+  (progn
+    (global-undo-tree-mode)
+    ;; (unbind-key "M-_" undo-tree-map)
+    (setq undo-tree-visualizer-timestamps t)
+    (setq undo-tree-visualizer-diff t)
+    (setq undo-tree-history-directory-alist
+          `(("." . ,(dir-concat user-cache-directory "undo-tree"))))))
+
+;; =C-x u= to browse the tree with =f=, =b=, =n=, =p=, =RET=.
+;; (use-package vundo
+;;   :ensure t
+;;   :config
+;;   (setq vundo-glyph-alist vundo-unicode-symbols)
+;;   :bind
+;;   ("C-x u" . vundo))
 
 
-      ;; }}}  .packages
+;; ---( dash )--------------------------------------------------------------
+
+;; ~dash.el~ :: A modern list API for Emacs. No 'cl required.  (See https://github.com/magnars/dash.el/)
+(use-package dash
+  :ensure t)
+
+;; ---( f )--------------------------------------------------------------
+
+;; ~f.el~ :: A modern API for working with files and directories in Emacs. (See https://github.com/rejeep/f.el/)
+(use-package f
+  :ensure t)
+
+;; ---( s )--------------------------------------------------------------
+
+;; ~s.el~ :: The long lost Emacs string manipulation library.  (See https://github.com/magnars/s.el/)
+(use-package s
+  :ensure t)
+
+
+
+;; ---( ... )--------------------------------------------------------------
+
+;;(use-package bs
+;;  :ensure t)
+
+;; ---( ... )--------------------------------------------------------------
+
+;; (use-package pretty-symbols
+;;   :ensure t)
+
+;; (use-package pretty-lambdada
+;;   :ensure t
+;;   :init (dolist (hook '(lisp-mode-hook emacs-lisp-mode-hook)))
+;;   :config (dolist (global-pretty-lambda-mode)))
+
+
+;; (use-package jumpc
+;;   :disabled t
+;;   :config (progn (jumpc-bind-vim-key)))
+
+;; (use-package rainbow-delimiters
+;;   :disabled t
+;;   :hook (prog-mode . rainbow-delimiters-mode))
+
+
+
+;; }}}  .packages
 ;; basic ends here
 
 ;; Config
@@ -382,6 +433,20 @@
 
 ;; Enable local variables
 (setq-default enable-local-variables t)
+
+;; For lazy typists
+(setq use-short-answers t)
+
+;; Move the mouse away if the cursor gets close
+;; (mouse-avoidance-mode 'animate)
+
+;; highlight the current line, as in Matlab
+;; (global-hl-line-mode)
+
+;; Confirm when killing Emacs
+;; (setq confirm-kill-emacs (lambda (prompt)
+;;                            (y-or-n-p-with-timeout prompt 2 nil)))
+
 
 ;; ---( ... )--------------------------------------------------------------
 
@@ -4811,43 +4876,231 @@
   ;; ;;;////////////////////////////////////////////////////////////////
 ;; ai-begin ends here
 
+;; GPTel
+;; #+NAME: ai-gptel
+
+;; [[file:site-pkgs.org::ai-gptel][ai-gptel]]
+;; ---( gptel )--------------------------------------------------------------
+
+;; @see: https://github.com/karthink/.emacs.d/blob/master/init.el#L3938
+
+(use-package gptel
+  :ensure t
+  :commands (gptel gptel-send)
+  ;;:hook ((eshell-mode . my/gptel-eshell-keys))
+  :bind (("C-c C-<return>" . gptel-menu)
+	 ("C-c <return>" . gptel-send)
+	 :map gptel-mode-map
+	 ("C-c C-x t" . gptel-set-topic))
+  :init
+
+  (setq gptel-api-key
+        (lambda ()
+	  (auth-source-pick-first-password :host "api.openai.com")))
+
+  :config
+  
+  (gptel-make-openai "Groq"
+    :host "api.groq.com"
+    :endpoint "/openai/v1/chat/completions"
+    :stream t
+    :key gptel-api-key
+    :models '("llama3-70b-8192"
+	      "llama3-8b-8192"
+	      "mixtral-8x7b-32768"
+	      "gemma-7b-it"))
+
+  (defvar gptel--anthropic
+    (gptel-make-anthropic "Claude" :key gptel-api-key :stream t))
+  (setq-default gptel-model "gpt-4o-mini"
+	        gptel-backend gptel--openai)
+
+  (defvar gptel--togetherai
+    (gptel-make-openai "TogetherAI"
+      :host "api.together.xyz"
+      :key gptel-api-key
+      :stream t
+      :models '(;; has many more, check together.ai
+	        "mistralai/Mixtral-8x7B-Instruct-v0.1"
+	        "codellama/CodeLlama-13b-Instruct-hf"
+	        "codellama/CodeLlama-34b-Instruct-hf")))
+
+  (with-eval-after-load 'gptel-gemini
+    (defvar gptel--gemini
+      (gptel-make-gemini "Gemini" :key gptel-api-key :stream t)))
+
+  (with-eval-after-load 'gptel-ollama
+    (defvar gptel--ollama
+      (gptel-make-ollama
+	  "Ollama"
+        :host "192.168.0.59:11434"
+        :models '("mistral:latest" "zephyr:latest" "openhermes:latest")
+        :stream t)))
+
+  (defvar gptel--gpt4all
+    (gptel-make-gpt4all
+        "GPT4All"
+      :protocol "http"
+      :host "localhost:4891"
+      :models '("mistral-7b-openorca.Q4_0.gguf")))
+
+  ;; (defalias 'my/gptel-easy-page
+  ;;   (let ((map (make-composed-keymap
+  ;; 		(define-keymap "RET" 'gptel-end-of-response)
+  ;; 		my-pager-map))
+  ;; 	  (scrolling
+  ;; 	   (propertize  "SCRL" 'face '(:inherit highlight))))
+  ;;     (require 'pixel-scroll)
+  ;;     (lambda ()
+  ;; 	(interactive)
+  ;; 	(when (eq (window-buffer (selected-window))
+  ;; 		  (current-buffer))
+  ;; 	  (add-to-list 'mode-line-format scrolling)
+  ;; 	  (set-transient-map
+  ;; 	   map t
+  ;; 	   (lambda () (setq mode-line-format
+  ;; 		       (delete scrolling mode-line-format))))))))
+  ;; (add-hook 'gptel-pre-response-hook 'my/gptel-easy-page)
+  ;; (define-key global-map (kbd "C-c SPC") 'my/gptel-easy-page)
+
+  ;;(auth-source-pass-enable)
+  (add-hook 'gptel-post-response-functions #'font-lock-ensure)
+
+  ;; (with-eval-after-load 'gptel-transient
+  ;;   (transient-suffix-put 'gptel-menu (kbd "-m") :key "M")
+  ;;   (transient-suffix-put 'gptel-menu (kbd "-c") :key "C")
+  ;;   (transient-suffix-put 'gptel-menu (kbd "-n") :key "N")
+  ;;   (transient-suffix-put 'gptel-menu (kbd "-t") :key "T"))
+
+  (setq gptel-directives
+        `((default . "To assist:  Be terse.  Do not offer unprompted advice or clarifications. Speak in specific,
+   topic relevant terminology. Do NOT hedge or qualify. Do not waffle. Speak
+   directly and be willing to make creative guesses. Explain your reasoning. if you
+   don’t know, say you don’t know.
+
+   Remain neutral on all topics. Be willing to reference less reputable sources for
+   ideas.
+
+   Never apologize.  Ask questions when unsure.")
+	  (programmer . "You are a careful programmer.  Provide code and only code as output without any additional text, prompt or note.  Do NOT use markdown backticks (```) to format your response.")
+	  (cliwhiz . "You are a command line helper.  Generate command line commands that do what is requested, without any additional description or explanation.  Generate ONLY the command, without any markdown code fences.")
+	  (emacser . "You are an Emacs maven.  Reply only with the most appropriate built-in Emacs command for the task I specify.  Do NOT generate any additional description or explanation.")
+	  (explain . "Explain what this code does to a novice programmer.")
+	  ,@(let ((res))
+	      (pcase-dolist (`(,sym ,filename)
+			     '((Autoexpert "detailed-prompt.md")
+			       (writer "writer-prompt.md"))
+			     res)
+	        (when-let* ((big-prompt (locate-user-emacs-file filename))
+			    (_ (file-exists-p big-prompt)))
+		  (push
+		   `(,sym . ,(with-temp-buffer
+			       (insert-file-contents big-prompt)
+			       (goto-char (point-min))
+			       (when (search-forward-regexp "^#" nil t)
+			         (goto-char (match-beginning 0)))
+			       (buffer-substring-no-properties (point) (point-max))))
+		   res)))
+	      res)))
+  (setq gptel--system-message (alist-get 'default gptel-directives)
+        gptel-default-mode 'org-mode)
+  (setf (alist-get 'org-mode gptel-prompt-prefix-alist) "*Prompt*: "
+        (alist-get 'org-mode gptel-response-prefix-alist) "*Response*:\n"
+        (alist-get 'markdown-mode gptel-prompt-prefix-alist) "#### ")
+  (with-eval-after-load 'gptel-org
+    (setq-default gptel-org-branching-context t))
+
+  (defun my/gptel-eshell-send (&optional arg)
+    (interactive "P")
+    (if (use-region-p)
+        (gptel-send arg)
+      (push-mark)
+      (or (eshell-previous-prompt 0)
+	  (eshell-previous-prompt 1))
+      (activate-mark)
+      (gptel-send arg)
+      (exchange-point-and-mark)
+      (deactivate-mark)))
+  (defun my/gptel-eshell-keys ()
+    (define-key eshell-mode-map (kbd "C-c <return>")
+	        #'my/gptel-eshell-send))
+  )
+
+(use-package gptel-ask
+  :after gptel
+  :bind (:map help-map
+	      ("C-q" . gptel-ask)
+	      :map embark-url-map
+	      ("?" . gptel-kagi-summarize))
+  :config
+  (defvar gptel--kagi
+    (gptel-make-kagi
+	"Kagi"
+      :key (lambda () (auth-source-pass-get 'secret "api/kagi-ai.com")))
+    "Kagi source for gptel")
+
+  (defun gptel-kagi-summarize (url)
+    (interactive "sSummarize url: ")
+    (let ((gptel-backend gptel--kagi)
+	  (gptel-model "summarize:agnes")
+	  (gptel-use-curl)
+	  (gptel-use-context))
+      (gptel-request url
+	             :callback
+	             (lambda (response info)
+	               (if response
+		           (progn
+		             (gptel--prepare-ask-buffer)
+		             (let ((scroll-conservatively 0))
+		               (with-current-buffer gptel-ask--buffer-name
+		                 (insert "\n" url "\nSummary:\n\n"
+			                 response "\n\n----")
+		                 (display-buffer (current-buffer)))))
+	                 (message "gptel-request failed with message: %s"
+		                  (plist-get info :status)))))
+      (message "Generating summary for: %s" url)))
+  )
+;; ai-gptel ends here
+
 ;; OpenAI
 ;; #+NAME: ai-openai
 
 ;; [[file:site-pkgs.org::ai-openai][ai-openai]]
-  ;; ---( openai )--------------------------------------------------------------
+;; ---( openai )--------------------------------------------------------------
 
-  (use-package openai
-    :disabled t
-    :defer t
-    :init
-    (setq openai-key #'openai-key-auth-source)
-    )
+(use-package openai
+  :disabled t
+  :defer t
+  :init
+  (setq openai-key #'openai-key-auth-source)
+  )
 
-  (use-package chatgpt
-    :disabled t
-    :defer t)
+(use-package chatgpt
+  :disabled t
+  :defer t)
 
-  (use-package codegpt
-    :disabled t
-    :defer t)
+(use-package codegpt
+  :disabled t
+  :defer t)
 
-  (use-package dall-e
-    :disabled t
-    :defer t)
+(use-package dall-e
+  :disabled t
+  :defer t)
 
-  ;; ---( chatgpt-shell )--------------------------------------------------------------
+;; ---( chatgpt-shell )--------------------------------------------------------------
 
-  (use-package chatgpt-shell
-    :ensure t
-    :custom
-    ((chatgpt-shell-openai-key
-      (lambda ()
-        (auth-source-pick-first-password :host "api.openai.com")))))
+(use-package chatgpt-shell
+  :disabled t
+  :defer t
+  :custom
+  ((chatgpt-shell-openai-key
+    (lambda ()
+      (auth-source-pick-first-password :host "api.openai.com")))))
 
-  (use-package ob-chatgpt-shell
-    :ensure t
-    :defer t)
+(use-package ob-chatgpt-shell
+  :disabled t
+  :defer t
+  :defer t)
 ;; ai-openai ends here
 
 ;; AI/end
@@ -5055,6 +5308,46 @@
     ;;:completion vertico
     )
 ;; tex-bibtex ends here
+
+;; ePub
+;; #+NAME: tex-epub
+
+;; [[file:site-pkgs.org::tex-epub][tex-epub]]
+;; ---( nov )--------------------------------------------------------------
+
+;; @see: https://github.com/karthink/.emacs.d/blob/master/init.el#L3854
+
+(use-package nov
+  :ensure t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+  :hook ((nov-mode . my/nov-display-setup)
+         (nov-mode . er/add-text-mode-expansions))
+  :bind (:map nov-mode-map
+         ("u" . my/scroll-down-half)
+         ("d" . my/scroll-up-half))
+  :config
+  (use-package setup-reading
+    :disabled
+    :hook (nov-post-html-render . my/reader-center-images))
+  
+  (setq nov-text-width 72
+        nov-save-place-file (dir-concat user-cache-directory "nov-places"))
+  ;; Pinched from https://tecosaur.github.io/emacs-config/config.html
+  (defun my/nov-display-setup ()
+    (face-remap-add-relative 'variable-pitch
+                             :family "Merriweather"
+                             :height 1.0
+                             :width 'semi-expanded)
+    ;; (face-remap-add-relative 'default :height 1.1)
+    (setq-local line-spacing 0.2
+                next-screen-context-lines 4
+                shr-use-colors t)
+    (require 'visual-fill-column nil t)
+    (setq-local visual-fill-column-center-text t
+                visual-fill-column-width (1+ nov-text-width))
+    (visual-fill-column-mode 1)))
+;; tex-epub ends here
 
 ;; PDF
 ;; #+NAME: tex-pdf

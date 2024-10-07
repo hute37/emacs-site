@@ -64,6 +64,7 @@ keycode 66 = Hyper_L
 !# x2go
 !keycode 117 = Alt_R
 
+keycode 135 = Menu
 keysym Menu = Alt_R
 
 ! Add/update the modifiers
