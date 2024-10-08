@@ -5308,7 +5308,6 @@ P
 
 #+END_SRC
 
-
 *** OpenAI
 #+NAME: ai-openai
 #+begin_src emacs-lisp
