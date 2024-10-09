@@ -57,9 +57,13 @@
 
 ;; ---( ... )--------------------------------------------------------------
 
+;; (defun h7/var-global-bibliography ()
+;;   "Global bibliography file."
+;;  (list z-var-global-bibliography))
+
 (defun h7/var-global-bibliography ()
   "Global bibliography file."
- (list z-var-global-bibliography))
+ z-var-global-bibliography)
 
 
 (defun h7/var-roam-directory ()

@@ -327,6 +327,12 @@
   (defvar user-cache-directory "~/.backups/"
   "Location where files created by emacs are placed.")
 
+  (defvar user-profile-directory "~/.emacs-site/"
+  "Location where emacs profiles are placed.")
+
+  (defvar user-plugins-directory "~/.emacs-site/plugins"
+  "Location where emacs roeming plugins placed.")
+
 
   )
 
@@ -4293,6 +4299,24 @@
     (setq indent-tabs-mode nil)
   (local-set-key [?\C-m] 'drools-return-and-indent) )
 ;; lang-drools ends here
+
+;; Lang: PlantUML
+;; #+NAME: lang-plantuml
+
+;; [[file:site-pkgs.org::lang-plantuml][lang-plantuml]]
+;; ---( plantUML)--------------------------------------------------------------
+
+;; @see: https://plantuml.com/emacs?utm_source=pocket_shared
+
+(use-package plantuml-mode
+  :ensure t
+  :defer t
+  :mode ("\\.uml\\'" "\\.plantuml\\'" )
+  :config
+  (setq org-plantuml-jar-path (dir-concat user-plugins-directory "plantuml/plantuml.jar"))
+  ;;(org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t)))
+  )
+;; lang-plantuml ends here
 
 ;; Lang/end
 ;; #+NAME: lang-end
