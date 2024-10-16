@@ -5123,7 +5123,6 @@
 
 (use-package ob-chatgpt-shell
   :disabled t
-  :defer t
   :defer t)
 ;; ai-openai ends here
 
@@ -5997,8 +5996,8 @@
     
     ;; chatgpt-shell support
     ;; @see: https://github.com/xenodium/chatgpt-shell/tree/main
-    (require 'ob-chatgpt-shell)
-    (ob-chatgpt-shell-setup)
+    ;; (require 'ob-chatgpt-shell)
+    ;; (ob-chatgpt-shell-setup)
 
 
     (defun h7/org-mode-setup ()

@@ -1,0 +1,24 @@
+@startuml
+legend
+<size:8> Rendered with Plantuml Version %version() </size>
+end legend
+
+frame "Main Frame A" {
+        
+    frame "Sub Frame 1" {
+        [Component A] 
+        [Component B]
+    }
+    
+    frame "Sub Frame 2" {
+        [Component C]
+        [Component D]
+    }
+
+    [Component A] -r-> [Component B] : "r"
+    [Component C] -r-> [Component D] : "r"
+
+    [Component B] -r-> [Component C] : "R"
+
+}
+@enduml
