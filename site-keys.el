@@ -468,13 +468,14 @@
 
 ;;(global-set-key [f9] 'function-key-error ) ;;WM expose
 ;;(global-set-key [f9] 'perldb ) ;;@TODO: move to local mode map
-(global-set-key [(f9)] 'eshell )
-(global-set-key [(shift f9)] 'eshell )
+(global-set-key [(f9)] 'eshell-toggle )
+(global-set-key [(shift f9)] 'eshell-here )
 
 (cond
  ((fboundp 'vterm);;
   (progn
-    (global-set-key [(control f9)] 'vterm )
+    (message "vterm:bind [C-u] [C-u] C-F9")
+    (global-set-key [(control f9)] 'vterm-here )
     ))
  ((fboundp 'multi-term);;
   (progn

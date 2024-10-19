@@ -1,0 +1,10 @@
+alias la ls -AFhl --group-directories-first --color=always
+alias ll ls -Fhl --group-directories-first --color=always
+alias s view-file
+alias l ls -1
+alias gg git log --color --graph --oneline --abbrev-commit --decorate --all --date=short --pretty=format:%C(cyan)%h %C(yellow)%ad %C(bold green)%d %C(reset)%s
+alias gds magit-diff-staged
+alias gd magit-diff-unstaged
+alias d dired
+alias ffd find-dired
+alias ff find-file

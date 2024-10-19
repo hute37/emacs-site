@@ -49,6 +49,9 @@
 	sa = stash apply
 	ss = stash save
 	last = log -1 HEAD
+    gss = "!f() { git status -s -uall;  git status; }; f"
+    gsr = "!f() { git status -s -uall;  git fetch --all; git --no-pager branch -av; git status; }; f"
+    pullf = "!f() { git status -s -uall; [ -z \"$(git status --porcelain)\" ] && git pull; git status; }; f"
 	tree = log --graph --decorate --pretty=oneline --abbrev-commit
 	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
 	ls1 = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr %an)%Creset' --abbrev-commit --date=relative

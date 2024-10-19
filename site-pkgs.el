@@ -83,290 +83,347 @@
 ;; #+NAME: startup
 
 ;; [[file:site-pkgs.org::startup][startup]]
-      ;; ;;;////////////////////////////////////////////////////////////////
-      ;; {{{  @PACKAGES
-      ;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @PACKAGES
+;; ;;;////////////////////////////////////////////////////////////////
 
-      ;; ---( Install )--------------------------------------------------------------
+;; ---( Install )--------------------------------------------------------------
 
-      ;;(fset 'h7/ensure 't)
-      ;;(fset h7/ensure nil)
+;;(fset 'h7/ensure 't)
+;;(fset h7/ensure nil)
 
-      ;; ---( Boot )--------------------------------------------------------------
+;; ---( Boot )--------------------------------------------------------------
 
-      ;; (setq debug-on-error t)
-
-
-      ;; @see: https://github.com/radian-software/straight.el
-      ;; @see: 
-      ;; @see: https://youtu.be/UmbVeqphGlc
-
-      ;; (setq straight-use-package-by-default t)
-      ;; (setq use-package-always-ensure t)
-      ;; 
-      ;; (defvar bootstrap-version)
-      ;; (let ((bootstrap-file
-      ;;        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-      ;;       (bootstrap-version 5))
-      ;;   (unless (file-exists-p bootstrap-file)
-      ;;     (with-current-buffer
-      ;;         (url-retrieve-synchronously
-      ;;          "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-      ;;          'silent 'inhibit-cookies)
-      ;;       (goto-char (point-max))
-      ;;       (eval-print-last-sexp)))
-      ;;   (load bootstrap-file nil 'nomessage))
-      ;; 
-      ;; (setq package-enable-at-startup nil)
-      ;; (straight-use-package 'use-package)
-      ;; (eval-when-compile (require 'use-package))
+;; (setq debug-on-error t)
 
 
-      ;; @see: https://ianyepan.github.io/posts/setting-up-use-package/
-      ;; @see: https://www.reddit.com/r/emacs/comments/dfcyy6/how_to_install_and_use_usepackage/
-      ;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
+;; @see: https://github.com/radian-software/straight.el
+;; @see: 
+;; @see: https://youtu.be/UmbVeqphGlc
 
-      (eval-and-compile
-        (require 'package)
-        (add-to-list 'package-archives '("org"       . "http://orgmode.org/elpa/")) ; Org-mode's repository
-        (add-to-list 'package-archives '("gnu"       . "https://elpa.gnu.org/packages/"))
-        (add-to-list 'package-archives '("melpa"     . "https://melpa.org/packages/"))
-        (add-to-list 'package-archives '("nongnu"    . "https://elpa.nongnu.org/nongnu/"))
-      ;;(add-to-list 'package-archives '("jcs-elpa"  . "https://jcs-emacs.github.io/jcs-elpa/packages/") t)
-
-        (setq package-archive-priorities '(("melpa"    . 5)
-                                        ;; ("jcs-elpa" . 0)
-                                           ))
-        ;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
-        ;;(package-initialize)
-        ;; i always fetch the archive contents on startup and during compilation, which is slow
-        ;; (package-refresh-contents)
-        (unless (package-installed-p 'use-package)
-          (package-install 'use-package))
-        (setq use-package-verbose t)
-        (require 'use-package)
-        ;; i don't really know why this isn't the default...
-        ;;(setf use-package-always-ensure t)
-
-        ;;(use-package use-package-ensure
-        ;;  :config  (setq use-package-always-ensure t))
-
-        (use-package quelpa
-          :ensure t)
-        (use-package quelpa-use-package
-          :ensure t)
-        (quelpa-use-package-activate-advice)
-        (use-package auto-compile
-          :ensure t
-          :config (auto-compile-on-load-mode))
-        (setq load-prefer-newer t)
-
-        ;;   (unless (package-installed-p 'quelpa)
-        ;;     (with-temp-buffer
-        ;;       (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
-        ;;       (eval-buffer)
-        ;;       (quelpa-self-upgrade)))
-        ;;   (quelpa
-        ;;    '(quelpa-use-package
-        ;;      :fetcher git
-        ;;      :url "https://github.com/quelpa/quelpa-use-package.git"))
-        ;;   (require 'quelpa-use-package)
-        ;;
-        )
-
-      ;; ;; @see:  https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
-
-      ;; ;;; initialization
-      ;; (require 'package)
-      ;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-      ;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
-      ;; (package-initialize)
-      ;; (when (not package-archive-contents)
-      ;;   (package-refresh-contents))
-      ;; (package-install 'use-package)
-      ;; (use-package use-package-ensure
-      ;;   :config  (setq use-package-always-ensure t))
-
-      ;; (unless (package-installed-p 'quelpa)
-      ;;   (with-temp-buffer
-      ;;     (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
-      ;;     (eval-buffer)
-      ;;     (quelpa-self-upgrade)))
-      ;; (quelpa
-      ;;  '(quelpa-use-package
-      ;;    :fetcher git
-      ;;    :url "https://github.com/quelpa/quelpa-use-package.git"))
-      ;; (require 'quelpa-use-package)
+;; (setq straight-use-package-by-default t)
+;; (setq use-package-always-ensure t)
+;; 
+;; (defvar bootstrap-version)
+;; (let ((bootstrap-file
+;;        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+;;       (bootstrap-version 5))
+;;   (unless (file-exists-p bootstrap-file)
+;;     (with-current-buffer
+;;         (url-retrieve-synchronously
+;;          "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+;;          'silent 'inhibit-cookies)
+;;       (goto-char (point-max))
+;;       (eval-print-last-sexp)))
+;;   (load bootstrap-file nil 'nomessage))
+;; 
+;; (setq package-enable-at-startup nil)
+;; (straight-use-package 'use-package)
+;; (eval-when-compile (require 'use-package))
 
 
-      ;;(require 'package)
-      ;; ;;(nconc package-archives
-      ;; ;;      '(("melpa" . "http://melpa.org/packages/")
-      ;; ;;        ("org" . "http://orgmode.org/elpa/")))
-      ;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-      ;;(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
+;; @see: https://ianyepan.github.io/posts/setting-up-use-package/
+;; @see: https://www.reddit.com/r/emacs/comments/dfcyy6/how_to_install_and_use_usepackage/
+;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
 
-      ;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-      ;;(add-to-list 'package-archives '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
+(eval-and-compile
+  (require 'package)
+  (add-to-list 'package-archives '("org"       . "http://orgmode.org/elpa/")) ; Org-mode's repository
+  (add-to-list 'package-archives '("gnu"       . "https://elpa.gnu.org/packages/"))
+  (add-to-list 'package-archives '("melpa"     . "https://melpa.org/packages/"))
+  (add-to-list 'package-archives '("nongnu"    . "https://elpa.nongnu.org/nongnu/"))
+;;(add-to-list 'package-archives '("jcs-elpa"  . "https://jcs-emacs.github.io/jcs-elpa/packages/") t)
 
-      ;; You don't need this one if you have marmalade:
-      ;; (add-to-list 'package-archives '("geiser" . "http://download.savannah.gnu.org/releases/geiser/packages"))
+  (setq package-archive-priorities '(("melpa"    . 5)
+                                  ;; ("jcs-elpa" . 0)
+                                     ))
+  ;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+  ;;(package-initialize)
+  ;; i always fetch the archive contents on startup and during compilation, which is slow
+  ;; (package-refresh-contents)
+  (unless (package-installed-p 'use-package)
+    (package-install 'use-package))
+  (setq use-package-verbose t)
+  (require 'use-package)
+  ;; i don't really know why this isn't the default...
+  ;;(setf use-package-always-ensure t)
 
-      ;;(setq package-enable-at-startup nil)
+  ;;(use-package use-package-ensure
+  ;;  :config  (setq use-package-always-ensure t))
 
-      ;; (setq 
-      ;;  load-prefer-newer t
-      ;;  package-user-dir "~/.emacs.d/elpa"
-      ;;  package--init-file-ensured t
-      ;;  package-enable-at-startup nil)
+  (use-package quelpa
+    :ensure t)
+  (use-package quelpa-use-package
+    :ensure t)
+  (quelpa-use-package-activate-advice)
+  (use-package auto-compile
+    :ensure t
+    :config (auto-compile-on-load-mode))
+  (setq load-prefer-newer t)
 
-      ;; (unless (file-directory-p package-user-dir)
-      ;;   (make-directory package-user-dir t))    
+  ;;   (unless (package-installed-p 'quelpa)
+  ;;     (with-temp-buffer
+  ;;       (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+  ;;       (eval-buffer)
+  ;;       (quelpa-self-upgrade)))
+  ;;   (quelpa
+  ;;    '(quelpa-use-package
+  ;;      :fetcher git
+  ;;      :url "https://github.com/quelpa/quelpa-use-package.git"))
+  ;;   (require 'quelpa-use-package)
+  ;;
+  )
 
-      ;;(package-initialize)
+;; ;; @see:  https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
+
+;; ;;; initialization
+;; (require 'package)
+;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
+;; (package-initialize)
+;; (when (not package-archive-contents)
+;;   (package-refresh-contents))
+;; (package-install 'use-package)
+;; (use-package use-package-ensure
+;;   :config  (setq use-package-always-ensure t))
+
+;; (unless (package-installed-p 'quelpa)
+;;   (with-temp-buffer
+;;     (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+;;     (eval-buffer)
+;;     (quelpa-self-upgrade)))
+;; (quelpa
+;;  '(quelpa-use-package
+;;    :fetcher git
+;;    :url "https://github.com/quelpa/quelpa-use-package.git"))
+;; (require 'quelpa-use-package)
 
 
-      ;; (unless (package-installed-p 'use-package)
-      ;;   (progn
-      ;;     (package-refresh-contents)
-      ;;     (package-install 'use-package)))
-      ;; (eval-when-compile
-      ;;   (eval-after-load 'advice
-      ;;     '(setq ad-redefinition-action 'accept))
-      ;;   (require 'use-package))
-      ;; (require 'diminish)
-      ;; (require 'bind-key)
+;;(require 'package)
+;; ;;(nconc package-archives
+;; ;;      '(("melpa" . "http://melpa.org/packages/")
+;; ;;        ("org" . "http://orgmode.org/elpa/")))
+;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;;(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
 
-      ;; (require 'package)
-      ;; (setq package-enable-at-startup nil)
+;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+;;(add-to-list 'package-archives '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
 
-      ;; ;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-      ;; (unless (assoc-default "melpa" package-archives)
-      ;;   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t))
+;; You don't need this one if you have marmalade:
+;; (add-to-list 'package-archives '("geiser" . "http://download.savannah.gnu.org/releases/geiser/packages"))
 
-      ;;(package-initialize)
+;;(setq package-enable-at-startup nil)
 
-      ;; Bootstrap `use-package'
-      (unless (and
-               (package-installed-p 'bind-key)
-               (package-installed-p 'diminish)
-               (package-installed-p 'use-package)
-               (package-installed-p 'req-package)
-               )
-        (package-refresh-contents)
-        (package-install 'bind-key)
-        (package-install 'diminish)
-        (package-install 'use-package)
-        (package-install 'req-package)
-        )
+;; (setq 
+;;  load-prefer-newer t
+;;  package-user-dir "~/.emacs.d/elpa"
+;;  package--init-file-ensured t
+;;  package-enable-at-startup nil)
 
-      ;; (straight-use-package 'bind-key)
-      ;; (straight-use-package 'diminish)
+;; (unless (file-directory-p package-user-dir)
+;;   (make-directory package-user-dir t))    
 
-      ;; @see: https://github.com/jwiegley/dot-emacs/blob/master/init.el
+;;(package-initialize)
 
-      (eval-and-compile
-        (defvar use-package-verbose t))
 
-      ;; ---( ... )--------------------------------------------------------------
+;; (unless (package-installed-p 'use-package)
+;;   (progn
+;;     (package-refresh-contents)
+;;     (package-install 'use-package)))
+;; (eval-when-compile
+;;   (eval-after-load 'advice
+;;     '(setq ad-redefinition-action 'accept))
+;;   (require 'use-package))
+;; (require 'diminish)
+;; (require 'bind-key)
 
-      (require 'bind-key)
-      (require 'use-package)
+;; (require 'package)
+;; (setq package-enable-at-startup nil)
 
-      ;; use-package-ensure-system-package
-      ;; provides way to define system package dependencies for Emacs packages
-      (use-package use-package-ensure-system-package
-        :ensure t)
+;; ;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+;; (unless (assoc-default "melpa" package-archives)
+;;   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t))
 
-      (require 'req-package)
-      ;;(use-package req-package)
+;;(package-initialize)
 
-      ;; @see: https://github.com/noctuid/general.el
-      (use-package general
-        :ensure t)
+;; Bootstrap `use-package'
+(unless (and
+         (package-installed-p 'bind-key)
+         (package-installed-p 'diminish)
+         (package-installed-p 'use-package)
+         (package-installed-p 'req-package)
+         )
+  (package-refresh-contents)
+  (package-install 'bind-key)
+  (package-install 'diminish)
+  (package-install 'use-package)
+  (package-install 'req-package)
+  )
 
-      ;; ---( ... )--------------------------------------------------------------
+;; (straight-use-package 'bind-key)
+;; (straight-use-package 'diminish)
 
-      ;; }}}  .packages
+;; @see: https://github.com/jwiegley/dot-emacs/blob/master/init.el
+
+(eval-and-compile
+  (defvar use-package-verbose t))
+
+;; ---( ... )--------------------------------------------------------------
+
+(require 'bind-key)
+(require 'use-package)
+
+;; use-package-ensure-system-package
+;; provides way to define system package dependencies for Emacs packages
+(use-package use-package-ensure-system-package
+  :ensure t)
+
+(require 'req-package)
+;;(use-package req-package)
+
+;; @see: https://github.com/noctuid/general.el
+(use-package general
+  :ensure t)
+
+;; ---( ... )--------------------------------------------------------------
+
+;; }}}  .packages
 ;; startup ends here
 
 ;; Basic
 ;; #+NAME: basic
 
 ;; [[file:site-pkgs.org::basic][basic]]
-         ;; ;;;////////////////////////////////////////////////////////////////
-         ;; {{{  @BASIC
-         ;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @BASIC
+;; ;;;////////////////////////////////////////////////////////////////
 
-         ;; ---( ... )--------------------------------------------------------------
+;; ---( ... )--------------------------------------------------------------
 
-         ;; ---( ... )--------------------------------------------------------------
+;; I avoid defining too many custom helpers, =dir-concat= is an exception. Emacs
+;; 28 provides =file-name-concat=, but I'm on 27.2 some of the time.
+(use-package emacs
+  :config
+  (defun dir-concat (dir file)
+    "join path DIR with filename FILE correctly"
+    (concat (file-name-as-directory dir) file))
 
-         ;;(use-package bs
-         ;;  :ensure t)
+  ;; Set directory
+  ;; (setq default-directory
+  ;;       (cond ((equal (system-name) "surface")
+  ;;              "/cygdrive/c/Users/karth/OneDrive/Documents/")
+  ;;             ((equal system-type 'nt)
+  ;;              "/cygdrive/c/Users/karth/OneDrive/Documents/")
+  ;;             (t "~/")))
 
-         ;; ---( ... )--------------------------------------------------------------
+  ;; Adds ~/.emacs.d to the load-path
+  ;; (push (dir-concat user-emacs-directory "plugins/") load-path)
+  ;; (push (dir-concat user-emacs-directory "lisp/") load-path)
+  ;; (defvar user-cache-directory "~/.cache/emacs/"
+  ;; "Location where files created by emacs are placed."))
+  
+  ;; ---( cache )--------------------------------------------------------------
+  
+  (defvar user-cache-directory "~/.backups/"
+  "Location where files created by emacs are placed.")
 
-         ;; (use-package pretty-symbols
-         ;;   :ensure t)
+  (defvar user-profile-directory "~/.emacs-site/"
+  "Location where emacs profiles are placed.")
 
-         ;; (use-package pretty-lambdada
-         ;;   :ensure t
-         ;;   :init (dolist (hook '(lisp-mode-hook emacs-lisp-mode-hook)))
-         ;;   :config (dolist (global-pretty-lambda-mode)))
-
-
-       ;; (use-package jumpc
-       ;;   :disabled t
-       ;;   :config (progn (jumpc-bind-vim-key)))
-
-       ;; (use-package rainbow-delimiters
-       ;;   :disabled t
-       ;;   :hook (prog-mode . rainbow-delimiters-mode))
-
-       ;; ---( undo-tree )--------------------------------------------------------------
-
-  (use-package undo-tree
-    :ensure t
-    :diminish undo-tree-mode
-    ;; :bind (("C-c _" . undo-tree-visualize))
-    :config
-    (progn
-      (global-undo-tree-mode)
-      ;; (unbind-key "M-_" undo-tree-map)
-      (setq undo-tree-visualizer-timestamps t)
-      (setq undo-tree-visualizer-diff t)
-      (setq undo-tree-history-directory-alist '(("." . "~/.backups/emacs/undo-tree")))))
-
-  ;; =C-x u= to browse the tree with =f=, =b=, =n=, =p=, =RET=.
-  ;; (use-package vundo
-  ;;   :ensure t
-  ;;   :config
-  ;;   (setq vundo-glyph-alist vundo-unicode-symbols)
-  ;;   :bind
-  ;;   ("C-x u" . vundo))
+  (defvar user-plugins-directory "~/.emacs-site/plugins"
+  "Location where emacs roeming plugins placed.")
 
 
-    ;; ---( dash )--------------------------------------------------------------
+  )
 
-    ;; ~dash.el~ :: A modern list API for Emacs. No 'cl required.  (See https://github.com/magnars/dash.el/)
-    (use-package dash
-      :ensure t)
+;; ---( autosave/backups )-------------------------------------------------------
 
-    ;; ---( f )--------------------------------------------------------------
+;; @see: https://github.com/karthink/.emacs.d/blob/master/init.el#L373
 
-    ;; ~f.el~ :: A modern API for working with files and directories in Emacs. (See https://github.com/rejeep/f.el/)
-    (use-package f
-      :ensure t)
+(setq auto-save-interval 2400)
+(setq auto-save-timeout 300)
+(setq auto-save-list-file-prefix
+      (dir-concat user-cache-directory "auto-save-list/.saves-"))
+(setq backup-directory-alist
+      `(("." . ,(dir-concat user-cache-directory "backup")))
+      backup-by-copying t ; Use copies
+      version-control t ; Use version numbers on backups
+      delete-old-versions t ; Automatically delete excess backups
+      kept-new-versions 10 ; Newest versions to keep
+      kept-old-versions 5 ; Old versions to keep
+      )
 
-    ;; ---( s )--------------------------------------------------------------
+;; ---( undo-tree )--------------------------------------------------------------
 
-    ;; ~s.el~ :: The long lost Emacs string manipulation library.  (See https://github.com/magnars/s.el/)
-    (use-package s
-      :ensure t)
+(use-package undo-tree
+  :ensure t
+  :diminish undo-tree-mode
+  ;; :bind (("C-c _" . undo-tree-visualize))
+  :config
+  (progn
+    (global-undo-tree-mode)
+    ;; (unbind-key "M-_" undo-tree-map)
+    (setq undo-tree-visualizer-timestamps t)
+    (setq undo-tree-visualizer-diff t)
+    (setq undo-tree-history-directory-alist
+          `(("." . ,(dir-concat user-cache-directory "undo-tree"))))))
+
+;; =C-x u= to browse the tree with =f=, =b=, =n=, =p=, =RET=.
+;; (use-package vundo
+;;   :ensure t
+;;   :config
+;;   (setq vundo-glyph-alist vundo-unicode-symbols)
+;;   :bind
+;;   ("C-x u" . vundo))
 
 
-      ;; }}}  .packages
+;; ---( dash )--------------------------------------------------------------
+
+;; ~dash.el~ :: A modern list API for Emacs. No 'cl required.  (See https://github.com/magnars/dash.el/)
+(use-package dash
+  :ensure t)
+
+;; ---( f )--------------------------------------------------------------
+
+;; ~f.el~ :: A modern API for working with files and directories in Emacs. (See https://github.com/rejeep/f.el/)
+(use-package f
+  :ensure t)
+
+;; ---( s )--------------------------------------------------------------
+
+;; ~s.el~ :: The long lost Emacs string manipulation library.  (See https://github.com/magnars/s.el/)
+(use-package s
+  :ensure t)
+
+
+
+;; ---( ... )--------------------------------------------------------------
+
+;;(use-package bs
+;;  :ensure t)
+
+;; ---( ... )--------------------------------------------------------------
+
+;; (use-package pretty-symbols
+;;   :ensure t)
+
+;; (use-package pretty-lambdada
+;;   :ensure t
+;;   :init (dolist (hook '(lisp-mode-hook emacs-lisp-mode-hook)))
+;;   :config (dolist (global-pretty-lambda-mode)))
+
+
+;; (use-package jumpc
+;;   :disabled t
+;;   :config (progn (jumpc-bind-vim-key)))
+
+;; (use-package rainbow-delimiters
+;;   :disabled t
+;;   :hook (prog-mode . rainbow-delimiters-mode))
+
+
+
+;; }}}  .packages
 ;; basic ends here
 
 ;; Config
@@ -382,6 +439,20 @@
 
 ;; Enable local variables
 (setq-default enable-local-variables t)
+
+;; For lazy typists
+(setq use-short-answers t)
+
+;; Move the mouse away if the cursor gets close
+;; (mouse-avoidance-mode 'animate)
+
+;; highlight the current line, as in Matlab
+;; (global-hl-line-mode)
+
+;; Confirm when killing Emacs
+;; (setq confirm-kill-emacs (lambda (prompt)
+;;                            (y-or-n-p-with-timeout prompt 2 nil)))
+
 
 ;; ---( ... )--------------------------------------------------------------
 
@@ -1188,405 +1259,434 @@
 ;; #+NAME: comp-ap-begin
 
 ;; [[file:site-pkgs.org::comp-ap-begin][comp-ap-begin]]
-  ;; ;;;////////////////////////////////////////////////////////////////
-  ;; {{{  @COMPLETION "AT POINT"
-  ;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @COMPLETION "AT POINT"
+;; ;;;////////////////////////////////////////////////////////////////
 ;; comp-ap-begin ends here
+
+;; Corfu
+;; #+NAME: comp-ap-corfu
+
+;; [[file:site-pkgs.org::comp-ap-corfu][comp-ap-corfu]]
+  ;; ---( corfu )--------------------------------------------------------------
+
+  ;; @see: https://github.com/minad/corfu/
+  ;; @see: https://protesilaos.com/emacs/dotemacs#h:15edf2c3-4419-4101-928a-6e224958a741
+
+(use-package corfu
+  :ensure t
+  :hook (after-init . global-corfu-mode)
+  ;; I also have (setq tab-always-indent 'complete) for TAB to complete
+  ;; when it does not need to perform an indentation change.
+  :bind (:map corfu-map ("<tab>" . corfu-complete))
+  :config
+  (setq corfu-preview-current nil)
+  (setq corfu-min-width 20)
+
+  (setq corfu-popupinfo-delay '(1.25 . 0.5))
+  (corfu-popupinfo-mode 1) ; shows documentation after `corfu-popupinfo-delay'
+
+  ;; Sort by input history (no need to modify `corfu-sort-function').
+  (with-eval-after-load 'savehist
+    (corfu-history-mode 1)
+    (add-to-list 'savehist-additional-variables 'corfu-history))
+  )
+;; comp-ap-corfu ends here
 
 ;; Company
 ;; #+NAME: comp-ap-company
 
 ;; [[file:site-pkgs.org::comp-ap-company][comp-ap-company]]
-  ;; ---( company )--------------------------------------------------------------
+;; ---( company )--------------------------------------------------------------
 
-  (use-package company
-    :ensure t
-    :diminish company-mode
-    :commands company-mode
-    :bind ("<C-space>" . company-complete)
-    :init
-    ;; (add-hook 'clojure-mode-hook 'company-mode)
-    ;; (add-hook 'cider-repl-mode-hook 'company-mode)
-    ;; (add-hook 'lisp-mode-hook 'company-mode)
-    ;; (add-hook 'emacs-lisp-mode-hook 'company-mode)
-    ;; (add-hook 'lisp-interaction-mode-hook 'company-mode)
-    ;; (add-hook 'ielm-mode-hook 'company-mode)
-    ;; (add-hook 'json-mode-hook 'company-mode)
-    :config
-    (setq company-idle-delay 0.3)
-    (global-company-mode t)  
-    ;; (use-package helm-company :disabled t)
-    :hook (
-           (text-mode . company-mode)
-           (prog-mode . company-mode)
-           )
-    )
+(use-package company
+  :disabled t
+  :diminish company-mode
+  :commands company-mode
+  :bind ("<C-space>" . company-complete)
+  :init
+  ;; (add-hook 'clojure-mode-hook 'company-mode)
+  ;; (add-hook 'cider-repl-mode-hook 'company-mode)
+  ;; (add-hook 'lisp-mode-hook 'company-mode)
+  ;; (add-hook 'emacs-lisp-mode-hook 'company-mode)
+  ;; (add-hook 'lisp-interaction-mode-hook 'company-mode)
+  ;; (add-hook 'ielm-mode-hook 'company-mode)
+  ;; (add-hook 'json-mode-hook 'company-mode)
+  :config
+  (setq company-idle-delay 0.3)
+  (global-company-mode t)  
+  ;; (use-package helm-company :disabled t)
+  :hook (
+         (text-mode . company-mode)
+         (prog-mode . company-mode)
+         )
+  )
 
-  ;; @see: https://cloudnine.github.io/science/2020-07-27-emacs-company-mode/
-  ;; @see: https://github.com/mswift42/.emacs.d/blob/master/init.el
-  ;; @see: https://medium.com/helpshift-engineering/configuring-emacs-from-scratch-use-package-c30382297877
-  ;; (use-package company
-  ;;   :bind (:map company-active-map
-  ;;          ("C-n" . company-select-next)
-  ;;          ("C-p" . company-select-previous))
-  ;;   :config
-  ;;   (setq company-idle-delay 0.3)
-  ;;   (global-company-mode t))
+;; @see: https://cloudnine.github.io/science/2020-07-27-emacs-company-mode/
+;; @see: https://github.com/mswift42/.emacs.d/blob/master/init.el
+;; @see: https://medium.com/helpshift-engineering/configuring-emacs-from-scratch-use-package-c30382297877
+;; (use-package company
+;;   :bind (:map company-active-map
+;;          ("C-n" . company-select-next)
+;;          ("C-p" . company-select-previous))
+;;   :config
+;;   (setq company-idle-delay 0.3)
+;;   (global-company-mode t))
 
-    ;; From https://github.com/company-mode/company-mode/issues/87
-    ;; See also https://github.com/company-mode/company-mode/issues/123
-    ;; (defadvice company-pseudo-tooltip-unless-just-one-frontend
-    ;;     (around only-show-tooltip-when-invoked activate)
-    ;;   (when (company-explicit-action-p)
-    ;;     ad-do-it))
+;; From https://github.com/company-mode/company-mode/issues/87
+;; See also https://github.com/company-mode/company-mode/issues/123
+;; (defadvice company-pseudo-tooltip-unless-just-one-frontend
+;;     (around only-show-tooltip-when-invoked activate)
+;;   (when (company-explicit-action-p)
+;;     ad-do-it))
 ;; comp-ap-company ends here
 
 ;; Auto-Complete
 ;; #+NAME: comp-ap-autocomplete
 
 ;; [[file:site-pkgs.org::comp-ap-autocomplete][comp-ap-autocomplete]]
-  ;; ---( autocomplete )--------------------------------------------------------------
+;; ---( autocomplete )--------------------------------------------------------------
 
-  (use-package auto-complete
-    :disabled t
-    :diminish auto-complete-mode
-    :init
-    (use-package pos-tip)
-    (require 'auto-complete-config)
-    (ac-config-default)
-    :config
-    ;; @see: http://auto-complete.org/doc/manual.html
-    ;;(ac-set-trigger-key "<backtab>")
-    ;;(ac-set-trigger-key "TAB")
-    (setq ac-ignore-case 'smart)
-    (setq ac-auto-start nil)
-    (setq ac-use-menu-map t)
-    ;;(define-key ac-mode-map (kbd "M-SPC") 'auto-complete)
-    (define-key ac-mode-map  [(control menu)] 'auto-complete)
-    (ac-set-trigger-key "TAB")
-    ;; (define-key ac-completing-map "\M-/" 'ac-stop)
-    ;; (define-key ac-completing-map "\t" 'ac-complete)
-    ;; (define-key ac-completing-map "\r" nil)
-    ;; (setq ac-use-menu-map t)
-    ;; (define-key ac-menu-map "\C-n" 'ac-next)
-    ;; (define-key ac-menu-map "\C-p" 'ac-previous)
-    ;; (setq ac-use-quick-help nil)
-    ;; (setq ac-menu-height 20)
-    ;; (setq ac-show-menu-immediately-on-auto-complete t)
-    ;; (setq ac-auto-show-menu 0.8)
-    ;; (setq ac-delay 0.4)
+(use-package auto-complete
+  :disabled t
+  :diminish auto-complete-mode
+  :init
+  (use-package pos-tip)
+  (require 'auto-complete-config)
+  (ac-config-default)
+  :config
+  ;; @see: http://auto-complete.org/doc/manual.html
+  ;;(ac-set-trigger-key "<backtab>")
+  ;;(ac-set-trigger-key "TAB")
+  (setq ac-ignore-case 'smart)
+  (setq ac-auto-start nil)
+  (setq ac-use-menu-map t)
+  ;;(define-key ac-mode-map (kbd "M-SPC") 'auto-complete)
+  (define-key ac-mode-map  [(control menu)] 'auto-complete)
+  (ac-set-trigger-key "TAB")
+  ;; (define-key ac-completing-map "\M-/" 'ac-stop)
+  ;; (define-key ac-completing-map "\t" 'ac-complete)
+  ;; (define-key ac-completing-map "\r" nil)
+  ;; (setq ac-use-menu-map t)
+  ;; (define-key ac-menu-map "\C-n" 'ac-next)
+  ;; (define-key ac-menu-map "\C-p" 'ac-previous)
+  ;; (setq ac-use-quick-help nil)
+  ;; (setq ac-menu-height 20)
+  ;; (setq ac-show-menu-immediately-on-auto-complete t)
+  ;; (setq ac-auto-show-menu 0.8)
+  ;; (setq ac-delay 0.4)
 
-    ;; (setq-default ac-sources '(ac-source-filename
-    ;;                            ac-source-functions
-    ;;                            ac-source-yasnippet
-    ;;                            ac-source-variables
-    ;;                            ac-source-symbols
-    ;;                            ac-source-features
-    ;;                            ac-source-abbrev
-    ;;                            ac-source-words-in-same-mode-buffers
-    ;;                            ac-source-dictionary))
+  ;; (setq-default ac-sources '(ac-source-filename
+  ;;                            ac-source-functions
+  ;;                            ac-source-yasnippet
+  ;;                            ac-source-variables
+  ;;                            ac-source-symbols
+  ;;                            ac-source-features
+  ;;                            ac-source-abbrev
+  ;;                            ac-source-words-in-same-mode-buffers
+  ;;                            ac-source-dictionary))
 
-    ;; (defun ac-emacs-lisp-mode-setup ()
-    ;;   (setq ac-sources '(ac-source-symbols ac-source-words-in-same-mode-buffers)))
-    ;; (add-hook 'c++-mode (lambda () (add-to-list 'ac-sources 'ac-source-semantic)))
+  ;; (defun ac-emacs-lisp-mode-setup ()
+  ;;   (setq ac-sources '(ac-source-symbols ac-source-words-in-same-mode-buffers)))
+  ;; (add-hook 'c++-mode (lambda () (add-to-list 'ac-sources 'ac-source-semantic)))
 
-    ;; (bind-key "A-M-?" 'ac-last-help)
-    ;; (unbind-key "C-s" ac-completing-map)
+  ;; (bind-key "A-M-?" 'ac-last-help)
+  ;; (unbind-key "C-s" ac-completing-map)
 
-    )
+  )
 ;; comp-ap-autocomplete ends here
 
 ;; IDO
 ;; #+NAME: comp-ap-ido
 
 ;; [[file:site-pkgs.org::comp-ap-ido][comp-ap-ido]]
-  ;; ---( ido )--------------------------------------------------------------
+;; ---( ido )--------------------------------------------------------------
 
-  (use-package ido
-    :disabled t
-    :defer 5
-    :defines (ido-cur-item
-              ido-require-match
-              ido-selected
-              ido-final-text
-              ido-show-confirm-message)
-    :bind (("C-x b" . ido-switch-buffer)
-           ("C-x B" . ido-switch-buffer-other-window)
-           ("M-x" . ido-hacks-execute-extended-command))
-    :preface
-    (eval-when-compile
-      (defvar ido-require-match)
-      (defvar ido-cur-item)
-      (defvar ido-show-confirm-message)
-      (defvar ido-selected)
-      (defvar ido-final-text))
-    (defun ido-smart-select-text ()
-      "Select the current completed item. Do NOT descend into directories."
-      (interactive)
-      (when (and (or (not ido-require-match)
-                     (if (memq ido-require-match
-                               '(confirm confirm-after-completion))
-                         (if (or (eq ido-cur-item 'dir)
-                                 (eq last-command this-command))
-                             t
-                           (setq ido-show-confirm-message t)
-                           nil))
-                     (ido-existing-item-p))
-                 (not ido-incomplete-regexp))
-        (when ido-current-directory
-          (setq ido-exit 'takeprompt)
-          (unless (and ido-text (= 0 (length ido-text)))
-            (let ((match (ido-name (car ido-matches))))
-              (throw 'ido
-                     (setq ido-selected
-                           (if match
-                               (replace-regexp-in-string "/\\'" "" match)
-                             ido-text)
-                           ido-text ido-selected
-                           ido-final-text ido-text)))))
-        (exit-minibuffer)))
+(use-package ido
+  :disabled t
+  :defer 5
+  :defines (ido-cur-item
+            ido-require-match
+            ido-selected
+            ido-final-text
+            ido-show-confirm-message)
+  :bind (("C-x b" . ido-switch-buffer)
+         ("C-x B" . ido-switch-buffer-other-window)
+         ("M-x" . ido-hacks-execute-extended-command))
+  :preface
+  (eval-when-compile
+    (defvar ido-require-match)
+    (defvar ido-cur-item)
+    (defvar ido-show-confirm-message)
+    (defvar ido-selected)
+    (defvar ido-final-text))
+  (defun ido-smart-select-text ()
+    "Select the current completed item. Do NOT descend into directories."
+    (interactive)
+    (when (and (or (not ido-require-match)
+                   (if (memq ido-require-match
+                             '(confirm confirm-after-completion))
+                       (if (or (eq ido-cur-item 'dir)
+                               (eq last-command this-command))
+                           t
+                         (setq ido-show-confirm-message t)
+                         nil))
+                   (ido-existing-item-p))
+               (not ido-incomplete-regexp))
+      (when ido-current-directory
+        (setq ido-exit 'takeprompt)
+        (unless (and ido-text (= 0 (length ido-text)))
+          (let ((match (ido-name (car ido-matches))))
+            (throw 'ido
+                   (setq ido-selected
+                         (if match
+                             (replace-regexp-in-string "/\\'" "" match)
+                           ido-text)
+                         ido-text ido-selected
+                         ido-final-text ido-text)))))
+      (exit-minibuffer)))
+  :config
+  (ido-mode 'buffer)
+  (use-package ido-hacks
     :config
-    (ido-mode 'buffer)
-    (use-package ido-hacks
-      :config
-      (ido-hacks-mode 1))
-    (use-package ido-vertical-mode
-      :disabled t
-      :config
-      (ido-vertical-mode 1))
-    (use-package flx-ido
-      :disabled t
-      :config
-      (flx-ido-mode 1))
-    (add-hook 'ido-minibuffer-setup-hook
-              #'(lambda ()
-                  (bind-key "<return>" 'ido-smart-select-text
-                            ido-file-completion-map))))
+    (ido-hacks-mode 1))
+  (use-package ido-vertical-mode
+    :disabled t
+    :config
+    (ido-vertical-mode 1))
+  (use-package flx-ido
+    :disabled t
+    :config
+    (flx-ido-mode 1))
+  (add-hook 'ido-minibuffer-setup-hook
+            #'(lambda ()
+                (bind-key "<return>" 'ido-smart-select-text
+                          ido-file-completion-map))))
 ;; comp-ap-ido ends here
 
 ;; Completion/end
 ;; #+NAME: comp-ap-end
 
 ;; [[file:site-pkgs.org::comp-ap-end][comp-ap-end]]
-  ;; }}}  .comp-ap
+;; }}}  .comp-ap
 ;; comp-ap-end ends here
 
 ;; Completion/begin
 ;; #+NAME: comp-mb-begin
 
 ;; [[file:site-pkgs.org::comp-mb-begin][comp-mb-begin]]
-  ;; ;;;////////////////////////////////////////////////////////////////
-  ;; {{{  @COMPLETION "PROMPT"
-  ;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @COMPLETION "PROMPT"
+;; ;;;////////////////////////////////////////////////////////////////
 ;; comp-mb-begin ends here
 
 ;; Vertico*/begin
 ;; #+NAME: comp-mb-ver-begin
 
 ;; [[file:site-pkgs.org::comp-mb-ver-begin][comp-mb-ver-begin]]
-  ;; ===( vertico )=============================================================
+;; ===( vertico )=============================================================
 
-   ;; @see: https://protesilaos.com/codelog/2024-02-17-emacs-modern-minibuffer-packages/
-   ;; @see: https://kristofferbalintona.me/posts/202202211546/
+;; @see: https://protesilaos.com/codelog/2024-02-17-emacs-modern-minibuffer-packages/
+;; @see: https://kristofferbalintona.me/posts/202202211546/
 
-  (message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico))
+(message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico))
 ;; comp-mb-ver-begin ends here
 
 ;; Marginalia
 ;; #+NAME: comp-mb-ver-marginalia
 
 ;; [[file:site-pkgs.org::comp-mb-ver-marginalia][comp-mb-ver-marginalia]]
-  ;; ---( marginalia )--------------------------------------------------------------
+;; ---( marginalia )--------------------------------------------------------------
 
-  (use-package marginalia
-    :ensure t
-    :general
-    (:keymaps 'minibuffer-local-map
-              "M-A" 'marginalia-cycle)
-    ;;:custom
-    ;;(marginalia-max-relative-age 0)
-    ;;(marginalia-align 'right)
-    :config
-    (set-face-attribute 'marginalia-documentation nil :underline nil)
-    (marginalia-mode 1)
-    )
+(use-package marginalia
+  :ensure t
+  :general
+  (:keymaps 'minibuffer-local-map
+            "M-A" 'marginalia-cycle)
+  ;;:custom
+  ;;(marginalia-max-relative-age 0)
+  ;;(marginalia-align 'right)
+  :config
+  (set-face-attribute 'marginalia-documentation nil :underline nil)
+  (marginalia-mode 1)
+  )
 
-  ;; (use-package marginalia
-  ;;   :general
-  ;;   (:keymaps 'minibuffer-local-map
-  ;;             "M-A" 'marginalia-cycle)
-  ;;   :custom
-  ;;   (marginalia-max-relative-age 0)
-  ;;   (marginalia-align 'right)
-  ;;   :init
-  ;;   (marginalia-mode))
+;; (use-package marginalia
+;;   :general
+;;   (:keymaps 'minibuffer-local-map
+;;             "M-A" 'marginalia-cycle)
+;;   :custom
+;;   (marginalia-max-relative-age 0)
+;;   (marginalia-align 'right)
+;;   :init
+;;   (marginalia-mode))
 
 
-  (use-package all-the-icons-completion
-    :ensure t
-    :after (marginalia all-the-icons)
-    :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
-    :init
-    (all-the-icons-completion-mode))
+(use-package all-the-icons-completion
+  :ensure t
+  :after (marginalia all-the-icons)
+  :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
+  :init
+  (all-the-icons-completion-mode))
 ;; comp-mb-ver-marginalia ends here
 
 ;; Vertico
 ;; #+NAME: comp-mb-ver-vertico
 
 ;; [[file:site-pkgs.org::comp-mb-ver-vertico][comp-mb-ver-vertico]]
-  ;; ---( vertico )--------------------------------------------------------------
+;; ---( vertico )--------------------------------------------------------------
 
-  (use-package vertico
-    :ensure t
-    :config
-    (vertico-mode 1))
+(use-package vertico
+  :ensure t
+  :config
+  (vertico-mode 1))
 
-  ;; (use-package vertico
-  ;;   :custom
-  ;;   (vertico-count 13)                    ; Number of candidates to display
-  ;;   (vertico-resize t)
-  ;;   (vertico-cycle nil) ; Go from last to first candidate and first to last (cycle)?
-  ;;   :general
-  ;;   (:keymaps 'vertico-map
-  ;;             "<tab>" #'vertico-insert  ; Insert selected candidate into text area
-  ;;             "<escape>" #'minibuffer-keyboard-quit ; Close minibuffer
-  ;;             ;; NOTE 2022-02-05: Cycle through candidate groups
-  ;;             "C-M-n" #'vertico-next-group
-  ;;             "C-M-p" #'vertico-previous-group)
-  ;;   :config
-  ;;   (vertico-mode))
+;; (use-package vertico
+;;   :custom
+;;   (vertico-count 13)                    ; Number of candidates to display
+;;   (vertico-resize t)
+;;   (vertico-cycle nil) ; Go from last to first candidate and first to last (cycle)?
+;;   :general
+;;   (:keymaps 'vertico-map
+;;             "<tab>" #'vertico-insert  ; Insert selected candidate into text area
+;;             "<escape>" #'minibuffer-keyboard-quit ; Close minibuffer
+;;             ;; NOTE 2022-02-05: Cycle through candidate groups
+;;             "C-M-n" #'vertico-next-group
+;;             "C-M-p" #'vertico-previous-group)
+;;   :config
+;;   (vertico-mode))
 ;; comp-mb-ver-vertico ends here
 
 ;; Consult
 ;; #+NAME: comp-mb-ver-consult
 
 ;; [[file:site-pkgs.org::comp-mb-ver-consult][comp-mb-ver-consult]]
-  ;; ---( consult )--------------------------------------------------------------
+;; ---( consult )--------------------------------------------------------------
 
 
-  (setq completion-ignore-case t)
-  (setq read-file-name-completion-ignore-case t)
+(setq completion-ignore-case t)
+(setq read-file-name-completion-ignore-case t)
 
-  ;; @see: https://github.com/minad/consult
-  ;; @see: https://gitlab.com/to1ne/temacco/-/blob/main/README.org#L749
+;; @see: https://github.com/minad/consult
+;; @see: https://gitlab.com/to1ne/temacco/-/blob/main/README.org#L749
 
-  ;; Example configuration for Consult
-  (use-package consult
-    :ensure t
-    ;; Replace bindings. Lazily loaded due by `use-package'.
-    :bind (;; C-c bindings (mode-specific-map)
-           ("C-c h" . consult-history)
-           ("C-c m" . consult-mode-command)
-           ("C-c k" . consult-kmacro)
-           ;; C-x bindings (ctl-x-map)
-           ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
-           ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
-           ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
-           ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
-           ("C-x r b" . consult-bookmark)            ;; orig. bookmark-jump
-           ("C-x p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
-           ;; Custom M-# bindings for fast register access
-           ("M-#" . consult-register-load)
-           ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
-           ("C-M-#" . consult-register)
-           ;; Other custom bindings
-           ("M-y" . consult-yank-pop)                ;; orig. yank-pop
-           ("<help> a" . consult-apropos)            ;; orig. apropos-command
-           ;; M-g bindings (goto-map)
-           ("M-g e" . consult-compile-error)
-           ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
-           ("M-g g" . consult-goto-line)             ;; orig. goto-line
-           ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
-           ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
-           ("M-g m" . consult-mark)
-           ("M-g k" . consult-global-mark)
-           ("M-g i" . consult-imenu)
-           ("M-g I" . consult-imenu-multi)
-           ;; M-s bindings (search-map)
-           ("M-s d" . consult-find)
-           ("M-s D" . consult-locate)
-           ("M-s g" . consult-grep)
-           ("M-s G" . consult-git-grep)
-           ("M-s r" . consult-ripgrep)
-           ("M-s l" . consult-line)
-           ("M-s L" . consult-line-multi)
-           ("M-s m" . consult-multi-occur)
-           ("M-s k" . consult-keep-lines)
-           ("M-s u" . consult-focus-lines)
-           ;; Isearch integration
-           ("M-s e" . consult-isearch-history)
-           :map isearch-mode-map
-           ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
-           ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
-           ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
-           ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
-           ;; Minibuffer history
-           :map minibuffer-local-map
-           ("M-s" . consult-history)                 ;; orig. next-matching-history-element
-           ("M-r" . consult-history))                ;; orig. previous-matching-history-element
+;; Example configuration for Consult
+(use-package consult
+  :ensure t
+  ;; Replace bindings. Lazily loaded due by `use-package'.
+  :bind (;; C-c bindings (mode-specific-map)
+         ("C-c h" . consult-history)
+         ("C-c m" . consult-mode-command)
+         ("C-c k" . consult-kmacro)
+         ;; C-x bindings (ctl-x-map)
+         ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
+         ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
+         ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
+         ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
+         ("C-x r b" . consult-bookmark)            ;; orig. bookmark-jump
+         ("C-x p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
+         ;; Custom M-# bindings for fast register access
+         ("M-#" . consult-register-load)
+         ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
+         ("C-M-#" . consult-register)
+         ;; Other custom bindings
+         ("M-y" . consult-yank-pop)                ;; orig. yank-pop
+         ("<help> a" . consult-apropos)            ;; orig. apropos-command
+         ;; M-g bindings (goto-map)
+         ("M-g e" . consult-compile-error)
+         ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
+         ("M-g g" . consult-goto-line)             ;; orig. goto-line
+         ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
+         ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
+         ("M-g m" . consult-mark)
+         ("M-g k" . consult-global-mark)
+         ("M-g i" . consult-imenu)
+         ("M-g I" . consult-imenu-multi)
+         ;; M-s bindings (search-map)
+         ("M-s d" . consult-find)
+         ("M-s D" . consult-locate)
+         ("M-s g" . consult-grep)
+         ("M-s G" . consult-git-grep)
+         ("M-s r" . consult-ripgrep)
+         ("M-s l" . consult-line)
+         ("M-s L" . consult-line-multi)
+         ("M-s m" . consult-multi-occur)
+         ("M-s k" . consult-keep-lines)
+         ("M-s u" . consult-focus-lines)
+         ;; Isearch integration
+         ("M-s e" . consult-isearch-history)
+         :map isearch-mode-map
+         ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
+         ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
+         ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
+         ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
+         ;; Minibuffer history
+         :map minibuffer-local-map
+         ("M-s" . consult-history)                 ;; orig. next-matching-history-element
+         ("M-r" . consult-history))                ;; orig. previous-matching-history-element
 
-    ;; Enable automatic preview at point in the *Completions* buffer. This is
-    ;; relevant when you use the default completion UI.
-    :hook (completion-list-mode . consult-preview-at-point-mode)
+  ;; Enable automatic preview at point in the *Completions* buffer. This is
+  ;; relevant when you use the default completion UI.
+  :hook (completion-list-mode . consult-preview-at-point-mode)
 
-    ;; The :init configuration is always executed (Not lazy)
-    :init
+  ;; The :init configuration is always executed (Not lazy)
+  :init
 
-    ;; Optionally configure the register formatting. This improves the register
-    ;; preview for `consult-register', `consult-register-load',
-    ;; `consult-register-store' and the Emacs built-ins.
-    (setq register-preview-delay 0.5
-          register-preview-function #'consult-register-format)
+  ;; Optionally configure the register formatting. This improves the register
+  ;; preview for `consult-register', `consult-register-load',
+  ;; `consult-register-store' and the Emacs built-ins.
+  (setq register-preview-delay 0.5
+        register-preview-function #'consult-register-format)
 
-    ;; Optionally tweak the register preview window.
-    ;; This adds thin lines, sorting and hides the mode line of the window.
-    (advice-add #'register-preview :override #'consult-register-window)
+  ;; Optionally tweak the register preview window.
+  ;; This adds thin lines, sorting and hides the mode line of the window.
+  (advice-add #'register-preview :override #'consult-register-window)
 
-    ;; Use Consult to select xref locations with preview
-    (setq xref-show-xrefs-function #'consult-xref
-          xref-show-definitions-function #'consult-xref)
+  ;; Use Consult to select xref locations with preview
+  (setq xref-show-xrefs-function #'consult-xref
+        xref-show-definitions-function #'consult-xref)
 
-    ;; Configure other variables and modes in the :config section,
-    ;; after lazily loading the package.
-    :config
+  ;; Configure other variables and modes in the :config section,
+  ;; after lazily loading the package.
+  :config
 
-    ;; Optionally configure preview. The default value
-    ;; is 'any, such that any key triggers the preview.
-    ;; (setq consult-preview-key 'any)
-    ;; (setq consult-preview-key (kbd "M-."))
-    ;; (setq consult-preview-key (list (kbd "<S-down>") (kbd "<S-up>")))
-    ;; For some commands and buffer sources it is useful to configure the
-    ;; :preview-key on a per-command basis using the `consult-customize' macro.
-    (consult-customize
-     consult-theme
-     :preview-key '(:debounce 0.2 any)
-     consult-ripgrep consult-git-grep consult-grep
-     consult-bookmark consult-recent-file consult-xref
-     consult--source-bookmark consult--source-recent-file
-     consult--source-project-recent-file
-     :preview-key (kbd "M-."))
+  ;; Optionally configure preview. The default value
+  ;; is 'any, such that any key triggers the preview.
+  ;; (setq consult-preview-key 'any)
+  ;; (setq consult-preview-key (kbd "M-."))
+  ;; (setq consult-preview-key (list (kbd "<S-down>") (kbd "<S-up>")))
+  ;; For some commands and buffer sources it is useful to configure the
+  ;; :preview-key on a per-command basis using the `consult-customize' macro.
+  (consult-customize
+   consult-theme
+   :preview-key '(:debounce 0.2 any)
+   consult-ripgrep consult-git-grep consult-grep
+   consult-bookmark consult-recent-file consult-xref
+   consult--source-bookmark consult--source-recent-file
+   consult--source-project-recent-file
+   :preview-key (kbd "M-."))
 
-    ;; Optionally configure the narrowing key.
-    ;; Both < and C-+ work reasonably well.
-    (setq consult-narrow-key "<") ;; (kbd "C-+")
+  ;; Optionally configure the narrowing key.
+  ;; Both < and C-+ work reasonably well.
+  (setq consult-narrow-key "<") ;; (kbd "C-+")
 
-    ;; Optionally make narrowing help available in the minibuffer.
-    ;; You may want to use `embark-prefix-help-command' or which-key instead.
-    ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
+  ;; Optionally make narrowing help available in the minibuffer.
+  ;; You may want to use `embark-prefix-help-command' or which-key instead.
+  ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
 
-    ;; By default `consult-project-function' uses `project-root' from project.el.
-    ;; Optionally configure a different project root function.
-    ;; There are multiple reasonable alternatives to chose from.
-    ;;;; 1. project.el (the default)
-    ;; (setq consult-project-function #'consult--default-project--function)
-    ;;;; 2. projectile.el (projectile-project-root)
-    ;; (autoload 'projectile-project-root "projectile")
-    ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
-    ;;;; 3. vc.el (vc-root-dir)
-    ;; (setq consult-project-function (lambda (_) (vc-root-dir)))
-    ;;;; 4. locate-dominating-file
-    ;; (setq consult-project-function (lambda (_) (locate-dominating-file "." ".git")))
-  )
+  ;; By default `consult-project-function' uses `project-root' from project.el.
+  ;; Optionally configure a different project root function.
+  ;; There are multiple reasonable alternatives to chose from.
+  ;;;; 1. project.el (the default)
+  ;; (setq consult-project-function #'consult--default-project--function)
+  ;;;; 2. projectile.el (projectile-project-root)
+  ;; (autoload 'projectile-project-root "projectile")
+  ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
+  ;;;; 3. vc.el (vc-root-dir)
+  ;; (setq consult-project-function (lambda (_) (vc-root-dir)))
+  ;;;; 4. locate-dominating-file
+  ;; (setq consult-project-function (lambda (_) (locate-dominating-file "." ".git")))
+)
 
 (use-package consult-dir
   :ensure t
@@ -1600,106 +1700,106 @@
 ;; #+NAME: comp-mb-ver-orderless
 
 ;; [[file:site-pkgs.org::comp-mb-ver-orderless][comp-mb-ver-orderless]]
-  ;; ---( orderless )--------------------------------------------------------------
+;; ---( orderless )--------------------------------------------------------------
 
-  (use-package orderless
-    :ensure t
-    :init
-    (setq completion-styles '(orderless)))
+(use-package orderless
+  :ensure t
+  :init
+  (setq completion-styles '(orderless)))
 
-  ;; (use-package orderless
-  ;;   :custom
-  ;;   (completion-styles '(orderless))      ; Use orderless
-  ;;   (completion-category-defaults nil)    ; I want to be in control!
-  ;;   (completion-category-overrides
-  ;;    '((file (styles basic-remote ; For `tramp' hostname completion with `vertico'
-  ;;                    orderless)))))
+;; (use-package orderless
+;;   :custom
+;;   (completion-styles '(orderless))      ; Use orderless
+;;   (completion-category-defaults nil)    ; I want to be in control!
+;;   (completion-category-overrides
+;;    '((file (styles basic-remote ; For `tramp' hostname completion with `vertico'
+;;                    orderless)))))
 ;; comp-mb-ver-orderless ends here
 
 ;; Embark
 ;; #+NAME: comp-mb-ver-embark
 
 ;; [[file:site-pkgs.org::comp-mb-ver-embark][comp-mb-ver-embark]]
-  ;; ---( embark )--------------------------------------------------------------
+;; ---( embark )--------------------------------------------------------------
 
-    (use-package embark
-    :ensure t
+(use-package embark
+  :ensure t
 
-    :bind
-    (("C-." . embark-act)         ;; pick some comfortable binding
-     ("C-;" . embark-dwim)        ;; good alternative: M-.
-     ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
+  :bind
+  (("C-." . embark-act)         ;; pick some comfortable binding
+   ("C-;" . embark-dwim)        ;; good alternative: M-.
+   ("C-h B" . embark-bindings)) ;; alternative for `describe-bindings'
+  
+  :init
 
-     :init
+  ;; Optionally replace the key help with a completing-read interface
+  (setq prefix-help-command #'embark-prefix-help-command)
 
-     ;; Optionally replace the key help with a completing-read interface
-     (setq prefix-help-command #'embark-prefix-help-command)
+  :config
 
-     :config
+  ;; Hide the mode line of the Embark live/completions buffers
+  (add-to-list 'display-buffer-alist
+               '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+                 nil
+                 (window-parameters (mode-line-format . none))))
 
-     ;; Hide the mode line of the Embark live/completions buffers
-     (add-to-list 'display-buffer-alist
-                  '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
-                    nil
-                    (window-parameters (mode-line-format . none))))
+  )
 
-    )
+;; Consult users will also want the embark-consult package.
+(use-package embark-consult
+  :ensure t
+  :after (embark consult)
+  ;; :demand t ; only necessary if you have the hook below
+  ;; if you want to have consult previews as you move around an
+  ;; auto-updating embark collect buffer
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
 
-  ;; Consult users will also want the embark-consult package.
-  (use-package embark-consult
-    :ensure t
-    :after (embark consult)
-    ;; :demand t ; only necessary if you have the hook below
-    ;; if you want to have consult previews as you move around an
-    ;; auto-updating embark collect buffer
-    :hook
-    (embark-collect-mode . consult-preview-at-point-mode))
+;; (use-package embark
+;;   :ensure t)
 
-  ;; (use-package embark
-  ;;   :ensure t)
-
-  ;; Consult users will also want the embark-consult package.
-  ;; (use-package embark-consult
-  ;;   :ensure t
-  ;;   :after (embark consult)
-  ;;   :demand t only necessary if you have the hook below
-  ;;   if you want to have consult previews as you move around an
-  ;;   auto-updating embark collect buffer
-  ;;   :hook
-  ;;   (embark-collect-mode . consult-preview-at-point-mode))
+;; Consult users will also want the embark-consult package.
+;; (use-package embark-consult
+;;   :ensure t
+;;   :after (embark consult)
+;;   :demand t only necessary if you have the hook below
+;;   if you want to have consult previews as you move around an
+;;   auto-updating embark collect buffer
+;;   :hook
+;;   (embark-collect-mode . consult-preview-at-point-mode))
 ;; comp-mb-ver-embark ends here
 
 ;; Savehist
 ;; #+NAME: comp-mb-ver-savehist
 
 ;; [[file:site-pkgs.org::comp-mb-ver-savehist][comp-mb-ver-savehist]]
-  ;; ---( savehist )--------------------------------------------------------------
+;; ---( savehist )--------------------------------------------------------------
 
-  ;; Persist history over Emacs restarts. Vertico sorts by history position.
-  (use-package savehist
-    :init
-    (savehist-mode))
+;; Persist history over Emacs restarts. Vertico sorts by history position.
+(use-package savehist
+  :init
+  (savehist-mode))
 
 
-  (recentf-mode)
+(recentf-mode)
 
-  (setq completion-ignore-case t)
-  (setq read-file-name-completion-ignore-case t)
+(setq completion-ignore-case t)
+(setq read-file-name-completion-ignore-case t)
 ;; comp-mb-ver-savehist ends here
 
 ;; Vertico*/end
 ;; #+NAME: comp-mb-ver-end
 
 ;; [[file:site-pkgs.org::comp-mb-ver-end][comp-mb-ver-end]]
-  (message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico)) 
-  ;; .........................................................................
+(message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico)) 
+;; .........................................................................
 ;; comp-mb-ver-end ends here
 
 ;; Completion/end
 ;; #+NAME: comp-mb-end
 
 ;; [[file:site-pkgs.org::comp-mb-end][comp-mb-end]]
-  ;; }}}  .comp-mb
+;; }}}  .comp-mb
 ;; comp-mb-end ends here
 
 ;; Edit/begin
@@ -2184,6 +2284,8 @@
 
   ;; @see: https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/eshell
   ;;
+  ;; @see: https://config.phundrak.com/emacs/packages/emacs-builtin.html#eshell
+  ;;
   ;; ```
   ;; cd /usr/share/emacs/[23]*/lisp/eshell
   ;; he=4; ls *.gz | xargs -I{} bash -c 'echo "#>>({})#####"; zcat {}; echo "#<<({})#####"' | less -SRX
@@ -2204,7 +2306,7 @@
     :ensure t
     :commands (eshell eshell-command)
     :preface
-    (message "eshell:preface >")
+    (message "eshell::preface >")
 
 
     (defun eshell-initialize ()
@@ -2222,28 +2324,6 @@
         (interactive "sServer: ")
         (call-process "spawn" nil nil nil "ss" server))
 
-      (setq eshell-prompt-regexp "^[^#$γλ\n]*[#$γλ] "
-            eshell-prompt-function
-            (lambda ()
-              (concat
-               (propertize "[" 'face `(:foreground "Salmon" :weight bold))
-               (propertize (user-login-name) 'face `(:foreground "CornflowerBlue" :weight bold))
-               (propertize "@" 'face `(:foreground "CornflowerBlue" :weight bold))
-               (propertize (system-name) 'face `(:foreground "CornflowerBlue" :weight bold))
-               (propertize " " 'face `(:foreground "gray"))
-               (propertize (if (string= (eshell/pwd) (getenv "HOME"))
-                               "~" (eshell/basename (eshell/pwd)))
-                           'face `(:foreground "DarkTurquoise" :weight bold))
-               (propertize "]" 'face `(:foreground "Salmon" :weight bold))
-               (propertize (if (= (user-uid) 0) "γ " "λ ") 'face `(:foreground "Salmon" :weight bold))
-               (propertize " " 'face 'default)
-               )))
-
-      
-      ;; (setq eshell-output-filter-functions
-      ;;       (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
-      ;; ;;
-
       (eval-after-load "em-unix"
         '(progn
            (unintern 'eshell/su nil)
@@ -2251,11 +2331,98 @@
 
 
       (message "eshell:initialize <"))
+    
+    (message "eshell:helpers >")
+
+    (defun eshell-new ()
+      "Open a new instance of eshell."
+      (interactive)
+      (eshell 'N))
+    
+
+    (defun eshell-here (&optional prefix)
+      "Opens up a new shell in the directory associated with the
+       current buffer's file. The eshell is renamed to match that
+       directory to make multiple eshell windows easier."
+      (interactive "P")
+      (let* ((parent (if (buffer-file-name)
+                         (file-name-directory (buffer-file-name))
+                       default-directory))
+             (name   (car (last (split-string parent "/" t)))))
+
+        (cond
+         ((equal current-prefix-arg nil)   ; no C-u
+          (message "eshell-here - no C-u"))
+         ((equal current-prefix-arg '(4))  ; C-u
+          (split-window-horizontally (- (/ (window-total-width) 2)))
+          (other-window 1)
+          (message "eshell-here - C-u"))
+         ((equal current-prefix-arg '(16))     ; C-u C-u
+          (split-window-vertically (- (/ (window-total-height) 3)))
+          (other-window 1)
+          (message "eshell-here - C-u C-u"))
+          )        
+        
+        (eshell "new")
+        (rename-buffer (concat "*eshell: " name "*"))
+        ;;(insert (concat "ls"))
+        ;;(eshell-send-input)
+        ))
+
+    (defun ha/eshell-host-regexp (regexp)
+      "Returns a particular regular expression based on symbol, REGEXP"
+      (let* ((user-regexp      "\\(\\([[:alpha:].]+\\)@\\)?")
+             (tramp-regexp     "\\b/ssh:[:graph:]+")
+             (ip-char          "[[:digit:]]")
+             (ip-plus-period   (concat ip-char "+" "\\."))
+             (ip-regexp        (concat "\\(\\(" ip-plus-period "\\)\\{3\\}" ip-char "+\\)"))
+             (host-char        "[[:alpha:][:digit:]-]")
+             (host-plus-period (concat host-char "+" "\\."))
+             (host-regexp      (concat "\\(\\(" host-plus-period "\\)+" host-char "+\\)"))
+             (horrific-regexp  (concat "\\b"
+                                       user-regexp ip-regexp
+                                       "\\|"
+                                       user-regexp host-regexp
+                                       "\\b")))
+        (cond
+         ((eq regexp 'tramp) tramp-regexp)
+         ((eq regexp 'host)  host-regexp)
+         ((eq regexp 'full)  horrific-regexp))))    
+
+    (defun eshell-there (host)
+      "Creates an eshell session that uses Tramp to automatically
+       connect to a remote system, HOST.  The hostname can be either the
+       IP address, or FQDN, and can specify the user account, as in
+       root@blah.com. HOST can also be a complete Tramp reference."
+      (interactive "sHost: ")
+
+      (let* ((default-directory
+              (cond
+               ((string-match-p "^/" host) host)
+
+               ((string-match-p (ha/eshell-host-regexp 'full) host)
+                (string-match (ha/eshell-host-regexp 'full) host) ;; Why!?
+                (let* ((user1 (match-string 2 host))
+                       (host1 (match-string 3 host))
+                       (user2 (match-string 6 host))
+                       (host2 (match-string 7 host)))
+                  (if host1
+                      (ha/eshell-host->tramp user1 host1)
+                    (ha/eshell-host->tramp user2 host2))))
+
+               (t (format "/%s:" host)))))
+        (eshell-here)))    
+    
+    (bind-key "C-!" 'eshell-here)
+    
+    (message "eshell:helpers <")
+    
 
     (message "eshell:builtins >")
 
     ;; @see: https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/eshell/esh-cmd.el
     ;; @see: https://github.com/howardabrams/hamacs/blob/main/ha-eshell.org
+    ;; @see: https://github.com/howardabrams/dot-files/blob/master/emacs-eshell.org
 
     (defun eshell/read-file (file-path)
       (with-temp-buffer
@@ -2302,7 +2469,7 @@
 
     (defalias 'eshell/more 'eshell/s)
 
-    (defun eshell/e (&rest file)
+    (defun eshell/e (&rest files)
       "Essentially an alias to the `find-file' function."
       (eshell-fn-on-files 'find-file 'find-file-other-window files))
 
@@ -2310,37 +2477,144 @@
       "Edit one or more files in another window."
       (eshell-fn-on-files 'find-file-other-window 'find-file-other-window files))
 
+    (defun eshell/gst (&rest args)
+      (magit-status (pop args) nil)
+      (eshell/echo))
+
+    (defun eshell/ccat (file)
+      "Like `cat' but output with Emacs syntax highlighting,
+       as alternative: `find-file-read-only-other-window`."
+      (with-temp-buffer
+        (insert-file-contents file)
+        (let ((buffer-file-name file))
+          (delay-mode-hooks
+            (set-auto-mode)
+            (if (fboundp 'font-lock-ensure)
+                (font-lock-ensure)
+              (with-no-warnings
+                (font-lock-fontify-buffer)))))
+        (buffer-string)))
+
+    (defun eshell/f (filename &optional dir try-count)
+      "Searches for files matching FILENAME in either DIR or the
+       current directory. Just a typical wrapper around the standard
+       `find' executable.
+
+       Since any wildcards in FILENAME need to be escaped, this wraps the shell command.
+
+       If not results were found, it calls the `find' executable up to
+       two more times, wrapping the FILENAME pattern in wildcat
+       matches. This seems to be more helpful to me."
+      (let* ((cmd (concat
+               (executable-find "find")
+               " " (or dir ".")
+               "      -not -path '*/.git*'"
+               " -and -not -path '*node_modules*'"
+               " -and -not -path '*classes*'"
+               " -and "
+               " -type f -and "
+               "-iname '" filename "'"))
+             (results (shell-command-to-string cmd)))
+
+        (if (not (s-blank-str? results))
+            results
+          (cond
+           ((or (null try-count) (= 0 try-count))
+            (eshell/f (concat filename "*") dir 1))
+           ((or (null try-count) (= 1 try-count))
+            (eshell/f (concat "*" filename) dir 2))
+           (t "")))))
+
+    (defun eshell/ef (filename &optional dir)
+      "Searches for the first matching filename and loads it into a
+       file to edit."
+      (let* ((files (eshell/f filename dir))
+             (file (car (s-split "\n" files))))
+        (find-file file)))
+
+    (defun eshell/z ()
+      (eshell/echo)
+      (eshell/exit))
+    
+
     (defalias 'eshell/emacs 'eshell/e)
     (defalias 'eshell/v 'eshell/e)
+    (defalias 'eshell/t 'eshell-exec-visual)
 
     (message "eshell:builtins <")
     (message "eshell:hooks >")
     (add-hook 'eshell-first-time-mode-hook #'eshell-initialize)
     (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
     (message "eshell:hooks <")
-    (message "eshell:preface <")
+    (message "eshell::preface <")
     :init
-    (message "eshell:init >")
+    (message "eshell::init >")
     (message "eshell:hooks/b >")
     (add-hook 'eshell-first-time-mode-hook #'eshell-initialize)
     (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
     (message "eshell:hooks/b <")
-    (message "eshell:init <")
+    (message "eshell::init <")
     :config
-    (message "eshell:config >")
+    (message "eshell::config >")
     (setq
-     eshell-rc-script "~/.emacs-site/config/eshell/profile"
-     eshell-aliases-file "~/.emacs-site/config/eshell/aliases"
+     eshell-login-script "~/.emacs-site/config/eshell/eprofile"
+     eshell-rc-script "~/.emacs-site/config/eshell/eshellrc"
+     eshell-aliases-file "~/.emacs-site/config/eshell/ealiases"
      eshell-history-size 5000
      eshell-buffer-maximum-lines 5000
      eshell-hist-ignoredups t
+     eshell-save-history-on-exit t
      eshell-prefer-lisp-functions t
      eshell-scroll-to-bottom-on-input t
      eshell-destroy-buffer-when-process-dies t
      ;;eshell-visual-commands'("bash" "fish" "vi" "vim" "nvim" "mc" "ranger" "htop" "ssh" "top" "tmux" "zsh")
      eshell-visual-commands'("fish" "vi" "vim" "nvim" "mc" "ranger" "htop" "ssh" "top" "tmux")
 
+     eshell-ls-use-colors t
+     eshell-ls-initial-args nil
+
      )
+
+    (setq
+     eshell-prompt-regexp "^[^#$γλ\n]* [#$γλ] "
+     eshell-prompt-function
+     (lambda ()
+       (let*
+           ((path (abbreviate-file-name (eshell/pwd)))
+            (parts (s-split "|" (replace-regexp-in-string "^\\(.*:\\)?\\(.*\\)" "\\1|\\2" path)))
+            (rhost (car parts))
+            (path3 (s-join "/" (last (s-split "/" (cadr parts)) 3)))
+            )
+            (concat
+             (propertize rhost 'face `(:foreground "Salmon" :weight bold))
+             (propertize path3 'face `(:foreground "CornflowerBlue" :weight bold))
+             (if (= (user-uid) 0) " γ " " λ ")))
+       ))
+    
+      ;; (setq eshell-prompt-regexp "^[^#$γλ\n]* [#$γλ] "
+      ;;       eshell-prompt-function
+      ;;       (lambda ()
+      ;;         (concat
+      ;;          (propertize "[" 'face `(:foreground "Salmon" :weight bold))
+      ;;          (propertize (user-login-name) 'face `(:foreground "CornflowerBlue" :weight bold))
+      ;;          (propertize "@" 'face `(:foreground "CornflowerBlue" :weight bold))
+      ;;          (propertize (system-name) 'face `(:foreground "CornflowerBlue" :weight bold))
+      ;;          (propertize " " 'face `(:foreground "gray"))
+      ;;          (propertize (if (string= (eshell/pwd) (getenv "HOME"))
+      ;;                          "~" (eshell/basename (eshell/pwd)))
+      ;;                      'face `(:foreground "DarkTurquoise" :weight bold))
+      ;;          (propertize "]" 'face `(:foreground "Salmon" :weight bold))
+      ;;          (propertize " " 'face 'default)
+      ;;          (propertize (if (= (user-uid) 0) "γ" "λ") 'face `(:foreground "Salmon" :weight bold))
+      ;;          (propertize " " 'face 'default)
+      ;;          )))
+
+
+      ;; (setq eshell-output-filter-functions
+      ;;       (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
+      ;; ;;
+
+
 
     ;; (require 'eshell)
     (require 'em-smart)
@@ -2348,7 +2622,7 @@
     (setq eshell-review-quick-commands nil)
     (setq eshell-smart-space-goes-to-end t)
 
-    
+
 
     ;; ;; We want to use xterm-256color when running interactive commands
     ;; ;; in eshell but not during other times when we might be launching
@@ -2401,13 +2675,14 @@
       (define-key eshell-hist-mode-map (kbd "C-<down>") #'eshell-next-matching-input-from-input)
       (define-key eshell-hist-mode-map (kbd "M-r") #'consult-history)
       ;; Use completion-at-point to provide completions in eshell
-      (define-key eshell-mode-map (kbd "<tab>") 'completion-at-point)      
-      (define-key eshell-mode-map (kbd "<return>") 'eshell-copy-or-send-input)      
-      (define-key eshell-mode-map (kbd "C-<return>") 'cua-rectangle-mark-mode)      
-      (define-key eshell-mode-map (kbd "C-d") 'self-insert-command)      
+      (define-key eshell-mode-map (kbd "<home>") 'eshell-bol)
+      (define-key eshell-mode-map (kbd "<tab>") 'completion-at-point)
+      (define-key eshell-mode-map (kbd "<return>") 'eshell-copy-or-send-input)
+      (define-key eshell-mode-map (kbd "C-<return>") 'cua-rectangle-mark-mode)
+      (define-key eshell-mode-map (kbd "C-d") 'self-insert-command)
       (message "eshell:setup-keymap <")
 
-      (eshell-smart-initialize) 
+      (eshell-smart-initialize)
       (message "*eshell*")
       )
 
@@ -2425,14 +2700,55 @@
     (add-hook 'eshell-mode-hook #'(lambda () (message "*eshell*")))
     (message "eshell:hooks/c <")
 
-    (message "eshell:config <")
+    (message "eshell::config <")
     )
 
 
+  ;; ---( eshell-toggle )--------------------------------------------------------------
+
+  (use-package eshell-toggle
+    ;;:after eshell-mode
+    :ensure t
+    :custom
+    (eshell-toggle-size-fraction 3)
+    (eshell-toggle-find-project-root-package t) ;; for projectile
+    ;;(eshell-toggle-find-project-root-package 'projectile) ;; for projectile
+    ;;(eshell-toggle-use-projectile-root 'project) ;; for in-built project.el
+    (eshell-toggle-run-command nil)
+    (eshell-toggle-init-function #'eshell-toggle-init-eshell)
+    ;; (eshell-toggle-init-function #'eshell-toggle-init-ansi-term)
+    ;; (eshell-toggle-init-function #'eshell-toggle-init-tmux)
+    :quelpa
+    (eshell-toggle :repo "4DA/eshell-toggle" :fetcher github :version original)
+    :bind
+    ("C-~" . eshell-toggle))
+
+  ;; ---( eshell-syntax-hl )--------------------------------------------------------------
+
+  ;; @see: https://github.com/akreisher/eshell-syntax-highlighting/
+
+  (use-package eshell-syntax-highlighting
+    :after eshell-mode
+    :ensure t
+    :config
+    ;; Enable in all Eshell buffers.
+    (eshell-syntax-highlighting-global-mode +1))
+
+  ;; ---( eshell-vterm )--------------------------------------------------------------
+
+  (use-package eshell-vterm
+    :disabled t
+    ;; :ensure t
+    :demand t
+    :after eshell
+    :config
+    (eshell-vterm-mode))
+
   ;; ---( eat )--------------------------------------------------------------
 
-  ;; 
+  ;;
   (use-package eat
+    ;;:disabled t
     :ensure t
     ;;:hook (eshell-load . eat-eshell-mode)
     :hook (eshell-load . eat-eshell-visual-command-mode)
@@ -2466,7 +2782,7 @@
 
   (use-package vterm
     :ensure t
-    :bind (("C-<F9>" . vterm)
+    :bind (("C-<F9>" . vterm-here)
                ;; :straight (:post-build (cl-letf (((symbol-function #'pop-to-buffer)
                ;;                        (lambda (buffer) (with-current-buffer buffer (message (buffer-string))))))
                ;;               (setq vterm-always-compile-module t)
@@ -2480,6 +2796,46 @@
            ([kp-multiply] . vterm-copy-mode))
     :config
     (setq vterm-max-scrollback 18000)
+    :init
+    (message "vterm::init >")
+
+    (defun vterm-here (&optional prefix)
+      "Opens up a new shell in the directory associated with the
+       current buffer's file. The vterm is renamed to match that
+       directory to make multiple vterm windows easier."
+      (interactive "P")
+      (let* ((parent (if (buffer-file-name)
+                         (file-name-directory (buffer-file-name))
+                       default-directory))
+             ;;(name   (car (last (split-string parent "/" t))))
+             (name (s-join
+               "/"
+               (last
+                (s-split
+                 "/"
+                 (abbreviate-file-name parent))
+                5)))
+             )
+
+        (cond
+         ((equal current-prefix-arg nil)   ; no C-u
+          (message "vterm-here - no C-u"))
+         ((equal current-prefix-arg '(4))  ; C-u
+          (split-window-horizontally (- (/ (window-total-width) 2)))
+          (other-window 1)
+          (message "vterm-here - C-u"))
+         ((equal current-prefix-arg '(16))     ; C-u C-u
+          (split-window-vertically (- (/ (window-total-height) 3)))
+          (other-window 1)
+          (message "vterm-here - C-u C-u"))
+          )        
+        
+        (vterm (concat "*vterm: " name "*"))
+        ))
+
+    
+    (message "vterm::init <")
+
     )
 
 
@@ -2553,6 +2909,16 @@
                               :doc-spec
                               '(("(bash)Index")))))
     (add-hook 'shell-mode-hook 'initialize-sh-script))
+
+
+  ;; ---( shellcheck )--------------------------------------------------------------
+
+  ;; @see: https://github.com/federicotdn/flymake-shellcheck
+  ;; alt-x flymake-mode
+  ;; (use-package flymake-shellcheck
+  ;;   :commands flymake-shellcheck-load
+  ;;   :init
+  ;;   (add-hook 'sh-mode-hook 'flymake-shellcheck-load))
 ;; shell-script ends here
 
 ;; Ranger
@@ -3745,6 +4111,7 @@
 
   (use-package maxima
     :ensure t
+    :defer t
     :init
     (add-to-list 'auto-mode-alist
 		 (cons "\\.mac\\'" 'maxima-mode))
@@ -3932,6 +4299,24 @@
     (setq indent-tabs-mode nil)
   (local-set-key [?\C-m] 'drools-return-and-indent) )
 ;; lang-drools ends here
+
+;; Lang: PlantUML
+;; #+NAME: lang-plantuml
+
+;; [[file:site-pkgs.org::lang-plantuml][lang-plantuml]]
+;; ---( plantUML)--------------------------------------------------------------
+
+;; @see: https://plantuml.com/emacs?utm_source=pocket_shared
+
+(use-package plantuml-mode
+  :ensure t
+  :defer t
+  :mode ("\\.uml\\'" "\\.plantuml\\'" )
+  :config
+  (setq org-plantuml-jar-path (dir-concat user-plugins-directory "plantuml/plantuml.jar"))
+  ;;(org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t)))
+  )
+;; lang-plantuml ends here
 
 ;; Lang/end
 ;; #+NAME: lang-end
@@ -4515,43 +4900,230 @@
   ;; ;;;////////////////////////////////////////////////////////////////
 ;; ai-begin ends here
 
+;; GPTel
+;; #+NAME: ai-gptel
+
+;; [[file:site-pkgs.org::ai-gptel][ai-gptel]]
+;; ---( gptel )--------------------------------------------------------------
+
+;; @see: https://github.com/karthink/.emacs.d/blob/master/init.el#L3938
+
+(use-package gptel
+  :ensure t
+  :commands (gptel gptel-send)
+  ;;:hook ((eshell-mode . my/gptel-eshell-keys))
+  :bind (("C-c C-<return>" . gptel-menu)
+	 ("C-c <return>" . gptel-send)
+	 :map gptel-mode-map
+	 ("C-c C-x t" . gptel-set-topic))
+  :init
+
+  (setq gptel-api-key
+        (lambda ()
+	  (auth-source-pick-first-password :host "api.openai.com")))
+
+  :config
+  
+  (gptel-make-openai "Groq"
+    :host "api.groq.com"
+    :endpoint "/openai/v1/chat/completions"
+    :stream t
+    :key gptel-api-key
+    :models '("llama3-70b-8192"
+	      "llama3-8b-8192"
+	      "mixtral-8x7b-32768"
+	      "gemma-7b-it"))
+
+  (defvar gptel--anthropic
+    (gptel-make-anthropic "Claude" :key gptel-api-key :stream t))
+  (setq-default gptel-model "gpt-4o-mini"
+	        gptel-backend gptel--openai)
+
+  (defvar gptel--togetherai
+    (gptel-make-openai "TogetherAI"
+      :host "api.together.xyz"
+      :key gptel-api-key
+      :stream t
+      :models '(;; has many more, check together.ai
+	        "mistralai/Mixtral-8x7B-Instruct-v0.1"
+	        "codellama/CodeLlama-13b-Instruct-hf"
+	        "codellama/CodeLlama-34b-Instruct-hf")))
+
+  (with-eval-after-load 'gptel-gemini
+    (defvar gptel--gemini
+      (gptel-make-gemini "Gemini" :key gptel-api-key :stream t)))
+
+  (with-eval-after-load 'gptel-ollama
+    (defvar gptel--ollama
+      (gptel-make-ollama
+	  "Ollama"
+        :host "192.168.0.59:11434"
+        :models '("mistral:latest" "zephyr:latest" "openhermes:latest")
+        :stream t)))
+
+  (defvar gptel--gpt4all
+    (gptel-make-gpt4all
+        "GPT4All"
+      :protocol "http"
+      :host "localhost:4891"
+      :models '("mistral-7b-openorca.Q4_0.gguf")))
+
+  ;; (defalias 'my/gptel-easy-page
+  ;;   (let ((map (make-composed-keymap
+  ;; 		(define-keymap "RET" 'gptel-end-of-response)
+  ;; 		my-pager-map))
+  ;; 	  (scrolling
+  ;; 	   (propertize  "SCRL" 'face '(:inherit highlight))))
+  ;;     (require 'pixel-scroll)
+  ;;     (lambda ()
+  ;; 	(interactive)
+  ;; 	(when (eq (window-buffer (selected-window))
+  ;; 		  (current-buffer))
+  ;; 	  (add-to-list 'mode-line-format scrolling)
+  ;; 	  (set-transient-map
+  ;; 	   map t
+  ;; 	   (lambda () (setq mode-line-format
+  ;; 		       (delete scrolling mode-line-format))))))))
+  ;; (add-hook 'gptel-pre-response-hook 'my/gptel-easy-page)
+  ;; (define-key global-map (kbd "C-c SPC") 'my/gptel-easy-page)
+
+  ;;(auth-source-pass-enable)
+  (add-hook 'gptel-post-response-functions #'font-lock-ensure)
+
+  ;; (with-eval-after-load 'gptel-transient
+  ;;   (transient-suffix-put 'gptel-menu (kbd "-m") :key "M")
+  ;;   (transient-suffix-put 'gptel-menu (kbd "-c") :key "C")
+  ;;   (transient-suffix-put 'gptel-menu (kbd "-n") :key "N")
+  ;;   (transient-suffix-put 'gptel-menu (kbd "-t") :key "T"))
+
+  (setq gptel-directives
+        `((default . "To assist:  Be terse.  Do not offer unprompted advice or clarifications. Speak in specific,
+   topic relevant terminology. Do NOT hedge or qualify. Do not waffle. Speak
+   directly and be willing to make creative guesses. Explain your reasoning. if you
+   don’t know, say you don’t know.
+
+   Remain neutral on all topics. Be willing to reference less reputable sources for
+   ideas.
+
+   Never apologize.  Ask questions when unsure.")
+	  (programmer . "You are a careful programmer.  Provide code and only code as output without any additional text, prompt or note.  Do NOT use markdown backticks (```) to format your response.")
+	  (cliwhiz . "You are a command line helper.  Generate command line commands that do what is requested, without any additional description or explanation.  Generate ONLY the command, without any markdown code fences.")
+	  (emacser . "You are an Emacs maven.  Reply only with the most appropriate built-in Emacs command for the task I specify.  Do NOT generate any additional description or explanation.")
+	  (explain . "Explain what this code does to a novice programmer.")
+	  ,@(let ((res))
+	      (pcase-dolist (`(,sym ,filename)
+			     '((Autoexpert "detailed-prompt.md")
+			       (writer "writer-prompt.md"))
+			     res)
+	        (when-let* ((big-prompt (locate-user-emacs-file filename))
+			    (_ (file-exists-p big-prompt)))
+		  (push
+		   `(,sym . ,(with-temp-buffer
+			       (insert-file-contents big-prompt)
+			       (goto-char (point-min))
+			       (when (search-forward-regexp "^#" nil t)
+			         (goto-char (match-beginning 0)))
+			       (buffer-substring-no-properties (point) (point-max))))
+		   res)))
+	      res)))
+  (setq gptel--system-message (alist-get 'default gptel-directives)
+        gptel-default-mode 'org-mode)
+  (setf (alist-get 'org-mode gptel-prompt-prefix-alist) "*Prompt*: "
+        (alist-get 'org-mode gptel-response-prefix-alist) "*Response*:\n"
+        (alist-get 'markdown-mode gptel-prompt-prefix-alist) "#### ")
+  (with-eval-after-load 'gptel-org
+    (setq-default gptel-org-branching-context t))
+
+  (defun my/gptel-eshell-send (&optional arg)
+    (interactive "P")
+    (if (use-region-p)
+        (gptel-send arg)
+      (push-mark)
+      (or (eshell-previous-prompt 0)
+	  (eshell-previous-prompt 1))
+      (activate-mark)
+      (gptel-send arg)
+      (exchange-point-and-mark)
+      (deactivate-mark)))
+  (defun my/gptel-eshell-keys ()
+    (define-key eshell-mode-map (kbd "C-c <return>")
+	        #'my/gptel-eshell-send))
+  )
+
+(use-package gptel-ask
+  :after gptel
+  :bind (:map help-map
+	      ("C-q" . gptel-ask)
+	      :map embark-url-map
+	      ("?" . gptel-kagi-summarize))
+  :config
+  (defvar gptel--kagi
+    (gptel-make-kagi
+	"Kagi"
+      :key (lambda () (auth-source-pass-get 'secret "api/kagi-ai.com")))
+    "Kagi source for gptel")
+
+  (defun gptel-kagi-summarize (url)
+    (interactive "sSummarize url: ")
+    (let ((gptel-backend gptel--kagi)
+	  (gptel-model "summarize:agnes")
+	  (gptel-use-curl)
+	  (gptel-use-context))
+      (gptel-request url
+	             :callback
+	             (lambda (response info)
+	               (if response
+		           (progn
+		             (gptel--prepare-ask-buffer)
+		             (let ((scroll-conservatively 0))
+		               (with-current-buffer gptel-ask--buffer-name
+		                 (insert "\n" url "\nSummary:\n\n"
+			                 response "\n\n----")
+		                 (display-buffer (current-buffer)))))
+	                 (message "gptel-request failed with message: %s"
+		                  (plist-get info :status)))))
+      (message "Generating summary for: %s" url)))
+  )
+;; ai-gptel ends here
+
 ;; OpenAI
 ;; #+NAME: ai-openai
 
 ;; [[file:site-pkgs.org::ai-openai][ai-openai]]
-  ;; ---( openai )--------------------------------------------------------------
+;; ---( openai )--------------------------------------------------------------
 
-  (use-package openai
-    :disabled t
-    :defer t
-    :init
-    (setq openai-key #'openai-key-auth-source)
-    )
+(use-package openai
+  :disabled t
+  :defer t
+  :init
+  (setq openai-key #'openai-key-auth-source)
+  )
 
-  (use-package chatgpt
-    :disabled t
-    :defer t)
+(use-package chatgpt
+  :disabled t
+  :defer t)
 
-  (use-package codegpt
-    :disabled t
-    :defer t)
+(use-package codegpt
+  :disabled t
+  :defer t)
 
-  (use-package dall-e
-    :disabled t
-    :defer t)
+(use-package dall-e
+  :disabled t
+  :defer t)
 
-  ;; ---( chatgpt-shell )--------------------------------------------------------------
+;; ---( chatgpt-shell )--------------------------------------------------------------
 
-  (use-package chatgpt-shell
-    :ensure t
-    :custom
-    ((chatgpt-shell-openai-key
-      (lambda ()
-        (auth-source-pick-first-password :host "api.openai.com")))))
+(use-package chatgpt-shell
+  :disabled t
+  :defer t
+  :custom
+  ((chatgpt-shell-openai-key
+    (lambda ()
+      (auth-source-pick-first-password :host "api.openai.com")))))
 
-  (use-package ob-chatgpt-shell
-    :ensure t
-    :defer t)
+(use-package ob-chatgpt-shell
+  :disabled t
+  :defer t)
 ;; ai-openai ends here
 
 ;; AI/end
@@ -4759,6 +5331,46 @@
     ;;:completion vertico
     )
 ;; tex-bibtex ends here
+
+;; ePub
+;; #+NAME: tex-epub
+
+;; [[file:site-pkgs.org::tex-epub][tex-epub]]
+;; ---( nov )--------------------------------------------------------------
+
+;; @see: https://github.com/karthink/.emacs.d/blob/master/init.el#L3854
+
+(use-package nov
+  :ensure t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+  :hook ((nov-mode . my/nov-display-setup)
+         (nov-mode . er/add-text-mode-expansions))
+  :bind (:map nov-mode-map
+         ("u" . my/scroll-down-half)
+         ("d" . my/scroll-up-half))
+  :config
+  (use-package setup-reading
+    :disabled
+    :hook (nov-post-html-render . my/reader-center-images))
+  
+  (setq nov-text-width 72
+        nov-save-place-file (dir-concat user-cache-directory "nov-places"))
+  ;; Pinched from https://tecosaur.github.io/emacs-config/config.html
+  (defun my/nov-display-setup ()
+    (face-remap-add-relative 'variable-pitch
+                             :family "Merriweather"
+                             :height 1.0
+                             :width 'semi-expanded)
+    ;; (face-remap-add-relative 'default :height 1.1)
+    (setq-local line-spacing 0.2
+                next-screen-context-lines 4
+                shr-use-colors t)
+    (require 'visual-fill-column nil t)
+    (setq-local visual-fill-column-center-text t
+                visual-fill-column-width (1+ nov-text-width))
+    (visual-fill-column-mode 1)))
+;; tex-epub ends here
 
 ;; PDF
 ;; #+NAME: tex-pdf
@@ -5384,8 +5996,8 @@
     
     ;; chatgpt-shell support
     ;; @see: https://github.com/xenodium/chatgpt-shell/tree/main
-    (require 'ob-chatgpt-shell)
-    (ob-chatgpt-shell-setup)
+    ;; (require 'ob-chatgpt-shell)
+    ;; (ob-chatgpt-shell-setup)
 
 
     (defun h7/org-mode-setup ()

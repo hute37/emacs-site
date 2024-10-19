@@ -1,0 +1,7 @@
+# echo ":: > eprofile"
+export PAGER="cat"
+export EDITOR="emacsclient -c -a emacs"
+export VISUAL="emacsclient -c -a emacs"
+bash -c "(if [ -f ~/.dircolors.emacs ]; then TERM=xterm-256color dircolors ~/.dircolors.emacs | head -n1| sed -e 's/^/export /' ; else cat /dev/null; fi) > ~/.dircolors.el";
+. ~/.dircolors.el
+# echo ":: < eprofile"
