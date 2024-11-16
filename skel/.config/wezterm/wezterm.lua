@@ -31,15 +31,41 @@ config.wsl_domains = {
 
 
 config.font = wezterm.font_with_fallback {
+  'Hack Nerd Font Mono',
   'Fira Code',
   'DengXian',
   'Consolas',
 }
 
+config.font_size = 18.0
+
+
+config.hide_tab_bar_if_only_one_tab = true
+
+-- config.tab_bar_at_bottom = true
 
 
 -- For example, changing the color scheme:
 config.color_scheme = 'Argonaut'
+
+config.window_background_gradient = {
+  colors = { '#002540', '#000000' },
+  -- colors = { '#EEBD89', '#D13ABD' },
+  -- Specifies a Linear gradient starting in the top left corner.
+  orientation = { Linear = { angle = -45.0 } },
+}
+
+config.window_padding = {
+  left = 20,
+  right = 20,
+  top = 15,
+  bottom = 5,
+}
+
+
+config.initial_cols = 110
+config.initial_rows = 30
+
 
 -- and finally, return the configuration to wezterm
 return config
