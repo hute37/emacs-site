@@ -275,8 +275,9 @@
 
 ;; use-package-ensure-system-package
 ;; provides way to define system package dependencies for Emacs packages
+
 (use-package use-package-ensure-system-package
-  :ensure t)
+  :ensure f)
 
 (require 'req-package)
 ;;(use-package req-package)
@@ -731,11 +732,6 @@
   ;; Restart Emacs from inside Emacs with `M-x restart-emacs`
   (use-package restart-emacs
     :defer t)
-
-  ;; use-package-ensure-system-package
-  ;; provides way to define system package dependencies for Emacs packages
-  (use-package use-package-ensure-system-package
-    :ensure t)
 
   ;; ---( windmove )--------------------------------------------------------------
 
