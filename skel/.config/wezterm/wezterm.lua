@@ -31,13 +31,14 @@ config.wsl_domains = {
 
 
 config.font = wezterm.font_with_fallback {
+  'MesloLGS NF',
   'Hack Nerd Font Mono',
   'Fira Code',
   'DengXian',
   'Consolas',
 }
 
-config.font_size = 18.0
+config.font_size = 14.0
 
 
 config.hide_tab_bar_if_only_one_tab = true
@@ -47,14 +48,18 @@ config.hide_tab_bar_if_only_one_tab = true
 config.scrollback_lines = 10000
 
 -- For example, changing the color scheme:
-config.color_scheme = 'Argonaut'
+-- config.color_scheme = 'Argonaut'
+-- config.color_scheme = 'Aci (Gogh)'
+-- config.color_scheme = 'AlienBlood'
+-- config.color_scheme = 'MaterialDarker'
+config.color_scheme = 'Matrix (terminal.sexy)'
 
-config.window_background_gradient = {
-  colors = { '#002540', '#000000' },
-  -- colors = { '#EEBD89', '#D13ABD' },
-  -- Specifies a Linear gradient starting in the top left corner.
-  orientation = { Linear = { angle = -45.0 } },
-}
+-- config.window_background_gradient = {
+--   colors = { '#001530', '#000000' },
+--   -- colors = { '#EEBD89', '#D13ABD' },
+--   -- Specifies a Linear gradient starting in the top left corner.
+--   orientation = { Linear = { angle = -45.0 } },
+-- }
 
 config.colors = {
   -- The default text color
@@ -145,6 +150,14 @@ config.window_padding = {
 
 config.initial_cols = 110
 config.initial_rows = 30
+
+local mux = wezterm.mux
+
+wezterm.on("gui-startup", function(cmd)
+  local tab, pane, window = mux.spawn_window(cmd or {})
+  window:gui_window():maximize()
+end)
+
 
 
 config.quick_select_patterns = {

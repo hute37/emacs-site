@@ -193,9 +193,13 @@
 
 
 (global-set-key [(meta home)] 'delete-other-windows )
-(global-set-key [(meta end)] 'kill-this-buffer )
+(global-set-key [(meta end)] (lambda () (interactive) (kill-buffer (current-buffer))) )
+;;(global-set-key [(meta end)] 'bury-buffer )
+;;(global-set-key [(meta end)] 'kill-this-buffer )
 (global-set-key [(meta kp-home)] 'delete-other-windows )
-(global-set-key [(meta kp-end)] 'kill-this-buffer )
+(global-set-key [(meta kp-end)] (lambda () (interactive) (kill-buffer (current-buffer))) )
+;;(global-set-key [(meta kp-end)] 'bury-buffer )
+;;(global-set-key [(meta kp-end)] 'kill-this-buffer )
 
 ;; ---( BackSpace )---------------------------------------------
 
