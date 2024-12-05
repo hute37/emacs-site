@@ -59,13 +59,12 @@ keycode 66 = Hyper_L
 ! Set the Menu key as Compose
 !keycode 135 = Multi_key
 !keycode 135 = Hyper_R
-!keycode 135 = Alt_R
+keycode 135 = Alt_R
 !
 !# x2go
 !keycode 117 = Alt_R
 
-keycode 135 = Menu
-keysym Menu = Alt_R
+!keysym Menu = Alt_R
 
 ! Add/update the modifiers
 !add control = Control_L
