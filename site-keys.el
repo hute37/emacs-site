@@ -422,7 +422,7 @@
 
 (global-set-key [f3] 'isearch-repeat-forward )
 (global-set-key [(shift f3)] 'isearch-repeat-backward )
-(global-set-key [(control f3)] 'isearch-iforward ) 
+(global-set-key [(control f3)] 'isearch-iforward )
 (global-set-key [(meta f3)] 'occur )
 (global-set-key [(shift meta f3)] 'function-key-error)
 
@@ -455,7 +455,7 @@
 ;; ---( F7: Debug/Step )----------------------------------------------------
 
 ;; (global-set-key [f7] 'gud-step ) ;;@TODO: move to local mode map
-;; ;; (global-set-key [(control f7)] 'function-key-error) 
+;; ;; (global-set-key [(control f7)] 'function-key-error)
 ;; (global-set-key [(meta f7)] 'function-key-error)
 ;; (global-set-key [(shift f7)] 'function-key-error)
 ;; (global-set-key [(shift meta f7)] 'function-key-error)
@@ -491,8 +491,10 @@
     ))
  )
 
+(global-set-key [(meta f9)] 'projectile-run-vterm )
+
 ;;(global-set-key [(shift meta f9)] 'mode-compile-kill )
-(global-set-key [(meta f9)] 'mode-compile )
+;;(global-set-key [(meta f9)] 'mode-compile )
 ;;(global-set-key [(meta f9)] 'recompile )
 ;;(global-set-key [(shift meta f9)] 'compile)
 ;;(global-set-key [(meta f9)] 'shell)
