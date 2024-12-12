@@ -6998,6 +6998,7 @@ With a prefix ARG, remove start location."
     (dashboard-set-file-icons t)
     (dashboard-set-heading-icons t)
     (dashboard-icon-type 'all-the-icons)
+    (dashboard-projects-backend 'projectile)
     (dashboard-set-init-info t)
     (dashboard-startup-banner 'logo)
     (dashboard-image-banner-max-width 80)
