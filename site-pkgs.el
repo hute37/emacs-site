@@ -1676,8 +1676,8 @@
   ;;;; 1. project.el (the default)
   ;; (setq consult-project-function #'consult--default-project--function)
   ;;;; 2. projectile.el (projectile-project-root)
-  ;; (autoload 'projectile-project-root "projectile")
-  ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
+  (autoload 'projectile-project-root "projectile")
+  (setq consult-project-function (lambda (_) (projectile-project-root)))
   ;;;; 3. vc.el (vc-root-dir)
   ;; (setq consult-project-function (lambda (_) (vc-root-dir)))
   ;;;; 4. locate-dominating-file
@@ -2094,10 +2094,23 @@
     (setq projectile-enable-caching t
           projectile-cache-file (emacs-d "var/projectile.cache")
           projectile-known-projects-file (emacs-d "var/projectile-bookmarks.eld"))
+    (add-to-list 'projectile-globally-ignored-directories "logs")
+    (add-to-list 'projectile-globally-ignored-directories "home")
+    (add-to-list 'projectile-globally-ignored-directories "node_modules")
+    (add-to-list 'projectile-globally-ignored-directories ".yarn")
+    (add-to-list 'projectile-globally-ignored-directories ".mypy_cache")
+    (add-to-list 'projectile-globally-ignored-directories "venv")
+    (add-to-list 'projectile-globally-ignored-files ".DS_Store")
     (make-directory (emacs-d "var") t)
     :config
     (projectile-global-mode)
     )
+
+  (use-package consult-projectile
+    :ensure t
+  )
+
+
 
 
   ;; ---( treemacs )--------------------------------------------------------------
