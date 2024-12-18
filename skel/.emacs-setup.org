@@ -522,7 +522,6 @@ xk=1; setxkbmap -layout "it"  -option 'caps:hyper'; xmodmap -e "keycode 108 = IS
 
 #+END_SRC
 
-
 *** wm-local
 #+NAME: session-cygwin-wm-local
 #+BEGIN_SRC sh
@@ -536,7 +535,6 @@ startx /etc/X11/xinit/Xsession mate            --  -nodecoration -noresize -unix
 # }}}  .session-cygwin-wm-local
 
 #+END_SRC
-
 
 *** wsl
 #+NAME: session-cygwin-wsl
@@ -612,6 +610,117 @@ dbus-launch $(which i3)
 # }}} (i3).
 
 ## }}}  .session-xephyr
+
+#+END_SRC
+
+** XDesktop
+*** xdesktop-
+#+NAME: session-xsession-xfce
+#+BEGIN_SRC sh
+
+# {{{ ---(xdesktop)--------------------------------------------------------------
+
+xs=1; ( \
+LG=2=; xfce4-terminal  --geometry 200x32+34-72 --zoom=-1 --hide-borders -e "tmux new-session 'less +F $HOME/.xsession-errors' ; split-window 'sudo journalctl -f'" & ; \
+firefox & ; \
+XT=1;  urxvt -fn 'xft:Noto Mono:pixelsize=13' -geometry 110x35+985+176 \
+       -e zsh -c "print 'ee=0; ssh-add ~/.ssh/id_rsa; ssh-add ~/.ssh/uh; cat  ~/.rup/* ; ssh-add ~/.ssh/un; ssh-add ~/.ssh/id_e35'; exec zsh --login" & ; \
+
+) >> ~/.xsession-errors 2>&1
+
+
+
+lt=1; export VISUAL=lvim EDITOR=lvim; LIBGL_ALWAYS_SOFTWARE=1 wezterm 2>&1 >> ~/.xsession-errors &; alacritty &; xdotool getwindowfocus windowminimize
+
+
+# ---
+
+
+# }}} .xdesktop
+
+#+END_SRC
+
+
+
+*** openbox
+
+#+NAME: session-xsession-openbox
+#+BEGIN_SRC sh
+
+  # {{{ ---(openbox)--------------------------------------------------------------
+
+  xk=1; setxkbmap -layout "it"  -option 'caps:hyper'; xmodmap ~/.Xmodmap; xmodmap -pm
+
+  dbus-launch $(which openbox-session)
+
+  # ---
+
+  ee=1; eval $(ssh-agent); ssh-add ~/.ssh/id_rsa; ssh-add ~/.ssh/??; ssh-all -l
+
+  qterminal
+
+  # }}} .xfce
+
+#+END_SRC
+
+*** lxqt
+
+#+NAME: session-xsession-lxqt
+#+BEGIN_SRC sh
+
+  # {{{ ---(lxqt)--------------------------------------------------------------
+
+  xk=1; setxkbmap -layout "it"  -option 'caps:hyper'; xmodmap ~/.Xmodmap; xmodmap -pm
+
+  ee=1; eval $(ssh-agent); ssh-add ~/.ssh/id_rsa; ssh-add ~/.ssh/??; ssh-all -l
+
+  startlxqt
+
+  # ---
+
+  qterminal
+
+
+  # }}} .lxqt
+
+#+END_SRC
+
+*** awesome
+
+#+NAME: session-xsession-awesome
+#+BEGIN_SRC sh
+
+  # {{{ ---(awesome)--------------------------------------------------------------
+
+  xk=1; setxkbmap -layout "it"  -option 'caps:hyper'; xmodmap ~/.Xmodmap; xmodmap -pm
+
+  ee=1; eval $(ssh-agent); ssh-add ~/.ssh/id_rsa; ssh-add ~/.ssh/??; ssh-all -l
+
+  dbus-launch awesome
+
+  # ---
+
+  # }}} .awesome
+
+#+END_SRC
+
+*** i3
+
+#+NAME: session-xsession-i3
+#+BEGIN_SRC sh
+
+  # {{{ ---(i3)--------------------------------------------------------------
+
+  xk=1; setxkbmap -layout "it"  -option 'caps:hyper'; xmodmap ~/.Xmodmap; xmodmap -pm
+
+  ee=1; eval $(ssh-agent); ssh-add ~/.ssh/id_rsa; ssh-add ~/.ssh/??; ssh-all -l
+
+  dbus-launch $(which i3)
+
+  # ---
+
+
+  # }}} .i3
 
 #+END_SRC
 
