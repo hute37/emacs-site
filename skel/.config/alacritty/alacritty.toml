@@ -5,7 +5,7 @@
 # git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
 #
 
-import = [
+general.import = [
   # "~/.config/alacritty/themes/themes/gotham.toml"
   # "~/.config/alacritty/themes/themes/cyber_punk_neon.toml"
   # "~/.config/alacritty/themes/themes/challenger_deep.toml"
@@ -69,5 +69,10 @@ dynamic_padding = true
 [window.padding]
 x = 6
 y = 6
+
+[window.dimensions]
+columns = 166
+lines = 39
+
 
 
