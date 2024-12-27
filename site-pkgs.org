@@ -2221,6 +2221,8 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
     (setq projectile-enable-caching t
           projectile-cache-file (emacs-d "var/projectile.cache")
           projectile-known-projects-file (emacs-d "var/projectile-bookmarks.eld"))
+    (make-directory (emacs-d "var") t)
+    :config
     (add-to-list 'projectile-globally-ignored-directories "logs")
     (add-to-list 'projectile-globally-ignored-directories "home")
     (add-to-list 'projectile-globally-ignored-directories "node_modules")
@@ -2228,8 +2230,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
     (add-to-list 'projectile-globally-ignored-directories ".mypy_cache")
     (add-to-list 'projectile-globally-ignored-directories "venv")
     (add-to-list 'projectile-globally-ignored-files ".DS_Store")
-    (make-directory (emacs-d "var") t)
-    :config
     (projectile-global-mode)
     )
 
