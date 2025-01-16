@@ -7003,8 +7003,8 @@ With a prefix ARG, remove start location."
     (dashboard-startup-banner 'logo)
     (dashboard-image-banner-max-width 80)
     (dashboard-items '((recents . 3)
-                       (projects . 3)
-                       (bookmarks . 3)
+                       (projects . 5)
+                       (bookmarks . 1)
                        (agenda . 5)))
     (initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
     :config
