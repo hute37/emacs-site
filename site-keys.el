@@ -414,6 +414,7 @@
     #'(lambda () (interactive)
          (progn
            (vimish-fold-from-marks)
+           (outline-hide-sublevels)
 	   (vimish-fold-refold-all))))
 
 
