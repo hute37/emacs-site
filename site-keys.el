@@ -399,15 +399,23 @@
 (global-set-key [f2] 'dashboard-open)
 (global-set-key [(shift f2)] 'bookmark-set )
 
-(global-set-key [(control f2)]
+;; (global-set-key [(control f2)]
+;;     #'(lambda () (interactive)
+;;        (if (eq hs-minor-mode nil)
+;; 	   (progn
+;; 	     (hs-minor-mode t)
+;; 	     (hs-hide-all))
+;;          (progn
+;;            (hs-toggle-hiding)
+;; 	   (hs-minor-mode nil)))))
+
+(global-set-key [(control f2)]	'vimish-fold-toggle)
+(global-set-key [(shift control f2)]
     #'(lambda () (interactive)
-       (if (eq hs-minor-mode nil)
-	   (progn
-	     (hs-minor-mode t)
-	     (hs-hide-all))
          (progn
-           (hs-toggle-hiding)
-	   (hs-minor-mode nil)))))
+           (vimish-fold-from-marks)
+	   (vimish-fold-refold-all))))
+
 
 (global-set-key [(meta f2)]	'bookmark-bmenu-list)
 (global-set-key [(hyper f2)]	'bookmark-bmenu-list)
