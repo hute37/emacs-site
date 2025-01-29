@@ -412,7 +412,7 @@
 (global-set-key [(control f2)]
     #'(lambda () (interactive)
          (progn
-           (vimish-fold-delete-all)
+           ;;(vimish-fold-delete-all)
            (vimish-fold-from-marks)
 	   (vimish-fold-toggle))))
 ;; (global-set-key [(shift control f2)]
