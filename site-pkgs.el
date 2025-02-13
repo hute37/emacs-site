@@ -699,6 +699,22 @@
 ;; #+NAME: util-misc
 
 ;; [[file:site-pkgs.org::util-misc][util-misc]]
+  ;; ---( recentf )--------------------------------------------------------------
+
+(use-package recentf
+  :bind ("C-x C-r" . recentf-open-files)
+  ;;:hook (after-init . recentf-mode)  
+  :config
+  (setq recentf-auto-cleanup 'never
+        recentf-max-menu-items 25
+        recentf-max-saved-items 1000
+        recentf-save-file (concat user-emacs-directory ".recentf"))
+  (dolist (el '("~/\\.emacs.bmk\\'"
+                "~/\\.elfeed/index\\'" ))
+    (add-to-list 'recentf-exclude el))  
+  (recentf-mode t)
+  :diminish nil)
+
   ;; ---( popper )--------------------------------------------------------------
 
   (use-package popper
