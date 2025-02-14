@@ -74,6 +74,11 @@
   ;; @see: https://youtu.be/0kuCeS-mfyc
   ;; @see: http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.html
   ;; @see: https://blog.sumtypeofway.com/posts/emacs-config.html
+  ;; @see: https://github.com/daedreth/UncleDavesEmacs
+  ;; @see: https://github.com/PythonNut/quark-emacs
+  ;; @see: https://tecosaur.github.io/emacs-config/config.html
+  ;; @see: https://pages.sachachua.com/.emacs.d/Sacha.html
+  ;; @see: 
 
   ;; }}}  .references
 ;; references ends here
@@ -1311,28 +1316,54 @@
 ;; [[file:site-pkgs.org::comp-ap-company][comp-ap-company]]
 ;; ---( company )--------------------------------------------------------------
 
+
+;; (with-eval-after-load 'company
+;;   (define-key company-mode-map (kbd "<tab>") 'company-indent-or-complete-common))
+
 (use-package company
-  :disabled t
+  :enabled t
   :diminish company-mode
   :commands company-mode
-  :bind ("<C-space>" . company-complete)
-  :init
-  ;; (add-hook 'clojure-mode-hook 'company-mode)
-  ;; (add-hook 'cider-repl-mode-hook 'company-mode)
-  ;; (add-hook 'lisp-mode-hook 'company-mode)
-  ;; (add-hook 'emacs-lisp-mode-hook 'company-mode)
-  ;; (add-hook 'lisp-interaction-mode-hook 'company-mode)
-  ;; (add-hook 'ielm-mode-hook 'company-mode)
-  ;; (add-hook 'json-mode-hook 'company-mode)
+  :bind ("C-c C-SPC" . company-complete)
   :config
   (setq company-idle-delay 0.3)
   (global-company-mode t)  
-  ;; (use-package helm-company :disabled t)
   :hook (
          (text-mode . company-mode)
          (prog-mode . company-mode)
          )
   )
+(use-package company-posframe
+  :enabled t
+  :init
+  (company-posframe-mode 1)
+  :diminish
+  )
+
+
+;; (use-package company
+;;   :enabled t
+;; ;; :disabled t
+;;   :diminish company-mode
+;;   :commands company-mode
+;;   :bind ("C-c C-SPC" . company-complete)
+;;   :init
+;;   ;; (add-hook 'clojure-mode-hook 'company-mode)
+;;   ;; (add-hook 'cider-repl-mode-hook 'company-mode)
+;;   ;; (add-hook 'lisp-mode-hook 'company-mode)
+;;   (add-hook 'emacs-lisp-mode-hook 'company-mode)
+;;   ;; (add-hook 'lisp-interaction-mode-hook 'company-mode)
+;;   ;; (add-hook 'ielm-mode-hook 'company-mode)
+;;   ;; (add-hook 'json-mode-hook 'company-mode)
+;;   :config
+;;   (setq company-idle-delay 0.3)
+;;   (global-company-mode t)  
+;;   ;; (use-package helm-company :disabled t)
+;;   :hook (
+;;          (text-mode . company-mode)
+;;          (prog-mode . company-mode)
+;;          )
+;;   )
 
 ;; @see: https://cloudnine.github.io/science/2020-07-27-emacs-company-mode/
 ;; @see: https://github.com/mswift42/.emacs.d/blob/master/init.el
@@ -4733,6 +4764,7 @@
   ;; ---( pocket )--------------------------------------------------------------
 
   (use-package pocket-reader
+    :ensure t
     :ensure t
     ;; :bind
     ;; ("<C-i> r" . pocket-reader)
