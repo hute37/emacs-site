@@ -715,6 +715,7 @@
         recentf-max-saved-items 1000
         recentf-save-file (concat user-emacs-directory ".recentf"))
   (dolist (el '("~/\\.emacs.bmk\\'"
+                "/tmp/.*\\'"
                 "~/\\.elfeed/index\\'" ))
     (add-to-list 'recentf-exclude el))  
   (recentf-mode t)
