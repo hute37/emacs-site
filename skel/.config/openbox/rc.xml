@@ -527,9 +527,9 @@
      <action name="Execute">
        <startupnotify>
          <enabled>true</enabled>
-         <name>termite</name>
+         <name>x-terminal-emulator</name>
        </startupnotify>
-       <command>termite</command>
+       <command>x-terminal-emulator</command>
      </action>
    </keybind>
    
@@ -649,6 +649,36 @@
          <name>rofi</name>
        </startupnotify>
        <command>rofi -show drun</command>
+     </action>
+   </keybind>
+   
+   <keybind key="H-a">
+     <action name="Execute">
+       <startupnotify>
+         <enabled>true</enabled>
+         <name>rofi</name>
+       </startupnotify>
+       <command>rofi -show combi</command>
+     </action>
+   </keybind>
+   
+   <keybind key="A-a">
+     <action name="Execute">
+       <startupnotify>
+         <enabled>true</enabled>
+         <name>rofi</name>
+       </startupnotify>
+       <command>rofi -show combi</command>
+     </action>
+   </keybind>
+   
+   <keybind key="C-A-a">
+     <action name="Execute">
+       <startupnotify>
+         <enabled>true</enabled>
+         <name>rofi</name>
+       </startupnotify>
+       <command>rofi -show combi</command>
      </action>
    </keybind>
    
