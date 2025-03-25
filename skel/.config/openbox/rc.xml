@@ -260,6 +260,34 @@
      </action>
    </keybind>
    
+   <keybind key="A-KP_Prior">
+     <action name="GoToDesktop">
+       <to>left</to>
+       <wrap>yes</wrap>
+     </action>
+   </keybind>
+   
+   <keybind key="A-KP_Next">
+     <action name="GoToDesktop">
+       <to>right</to>
+       <wrap>yes</wrap>
+     </action>
+   </keybind>
+   
+   <keybind key="H-KP_Prior">
+     <action name="GoToDesktop">
+       <to>left</to>
+       <wrap>yes</wrap>
+     </action>
+   </keybind>
+   
+   <keybind key="H-KP_Next">
+     <action name="GoToDesktop">
+       <to>right</to>
+       <wrap>yes</wrap>
+     </action>
+   </keybind>
+   
    <!--
        <keybind key="W-Up">
        <action name="ToggleMaximizeFull"/>
