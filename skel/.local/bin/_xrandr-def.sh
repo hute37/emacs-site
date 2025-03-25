@@ -7,6 +7,9 @@ case "$(hostname)" in
     eos)
         xrandr --output Virtual-1 --mode 1360x768
         ;;
+    pw-bs110-*|es-cx670-*)
+        xrandr --output nxoutput0 --mode 1152x768
+        ;;
     *)
         xrandr --output Virtual-1 --mode 1360x768
         ;;
