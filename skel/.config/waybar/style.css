@@ -87,7 +87,7 @@ window#waybar {
 }
 
 #workspaces button.active {
-    background: #13131d; 
+    background: #131343; 
 }
 
 #workspaces button:hover {
