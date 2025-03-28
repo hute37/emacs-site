@@ -313,6 +313,11 @@
   (defun dir-concat (dir file)
     "join path DIR with filename FILE correctly"
     (concat (file-name-as-directory dir) file))
+  (defun dir-mk (dir)
+    "ensure existing dir and rec creation if missing"
+    (unless (file-exists-p dir)
+      (make-directory dir t))
+    dir)
 
   ;; Set directory
   ;; (setq default-directory
@@ -330,13 +335,13 @@
   
   ;; ---( cache )--------------------------------------------------------------
   
-  (defvar user-cache-directory "~/.backups/"
+  (defvar user-cache-directory (dir-mk "~/.backups/")
   "Location where files created by emacs are placed.")
 
-  (defvar user-profile-directory "~/.emacs-site/"
+  (defvar user-profile-directory (dir-mk "~/.emacs-site/")
   "Location where emacs profiles are placed.")
 
-  (defvar user-plugins-directory "~/.emacs-site/plugins"
+  (defvar user-plugins-directory (dir-mk "~/.emacs-site/plugins")
   "Location where emacs roeming plugins placed.")
 
 
@@ -349,9 +354,9 @@
 (setq auto-save-interval 2400)
 (setq auto-save-timeout 300)
 (setq auto-save-list-file-prefix
-      (dir-concat user-cache-directory "auto-save-list/.saves-"))
+      (dir-concat user-cache-directory (dir-mk "auto-save-list/.saves-")))
 (setq backup-directory-alist
-      `(("." . ,(dir-concat user-cache-directory "backup")))
+      `(("." . ,(dir-mk (dir-concat user-cache-directory "backup"))))
       backup-by-copying t ; Use copies
       version-control t ; Use version numbers on backups
       delete-old-versions t ; Automatically delete excess backups
@@ -372,7 +377,7 @@
     (setq undo-tree-visualizer-timestamps t)
     (setq undo-tree-visualizer-diff t)
     (setq undo-tree-history-directory-alist
-          `(("." . ,(dir-concat user-cache-directory "undo-tree"))))))
+          `(("." . ,(dir-mk (dir-concat user-cache-directory "undo-tree")))))))
 
 ;; =C-x u= to browse the tree with =f=, =b=, =n=, =p=, =RET=.
 ;; (use-package vundo
@@ -1322,7 +1327,7 @@
 ;;   (define-key company-mode-map (kbd "<tab>") 'company-indent-or-complete-common))
 
 (use-package company
-  :enabled t
+  :ensure t
   :diminish company-mode
   :commands company-mode
   :bind ("C-c C-SPC" . company-complete)
@@ -1335,7 +1340,7 @@
          )
   )
 (use-package company-posframe
-  :enabled t
+  :ensure t
   :init
   (company-posframe-mode 1)
   :diminish
