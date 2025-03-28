@@ -1,0 +1,185 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "bottom", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 42, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    // "mod": "dock",
+    // "exclusive": true,
+    // "passthrough": false,
+    // "gtk-layer-shell": true,
+
+    // Choose the order of the modules
+    "modules-left": [
+        "custom/arch",
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "idle_inhibitor",
+        "pulseaudio",
+        "network",
+        "bluetooth",
+        "cpu",
+        "memory",
+        "temperature",
+        "battery",
+        "battery#bat2",
+        "custom/weather",
+        "clock",
+        "tray",
+        "custom/power"
+    ],
+    //Modules configuration
+
+//    "include": [
+//		"~/.config/waybar/modules.json"
+//	],
+
+
+    "custom/arch": {
+        "format": "󰣇",
+        "tooltip": true,
+        "tooltip-format": "btw",
+        "on-click": "rofi -show drun"
+    },
+
+
+    "hyprland/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": true,
+        "warp-on-scroll": true,
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "format": "{name}",
+        "format-icons": {
+            "urgent": "",
+            "active": "",
+            "default": ""
+        }
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "pulseaudio": {
+        "format": "{icon}  {volume}%",
+        "format-bluetooth": "{icon} {volume}%  {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "network": {
+        "format-wifi": "   {essid} ({signalStrength}%)",
+        "format-ethernet": "🖧 ",
+        "tooltip-format": "{ipaddr}/{cidr} - {ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+	"on-click": "xterm -e sudo nmtui"
+	 
+    },
+    "bluetooth": {
+        "format": " {status}",
+        "format-disabled": "", // an empty format will hide the module
+        "format-connected": " {num_connections}",
+        "tooltip-format": "{device_alias}",
+        "tooltip-format-connected": " {device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}"
+    },
+
+
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": true
+    },
+    "memory": {
+        "format": "  {}%",
+	"tooltip": true
+    },
+    "temperature": {
+        "interval": 10,
+        "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input",
+        "critical-threshold": 100,
+        "format-critical": " {temperatureC}",
+        "format": " {temperatureC}°"
+    },
+    "hyprland/language": {
+       "format": "  {}",
+       "format-en": "EN",
+       "format-ru": "RU"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-full": "{icon}  {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-alt": "{time}  {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+
+    "custom/weather": {
+        "tooltip": true,
+        "format": "{}",
+        "interval": 3600,
+        "exec": "~/.config/waybar/scripts/waybar-wttr.py",
+        "return-type": "json"
+    },
+    "custom/temperature": {
+        "tooltip": true,
+        "format": " {}",
+        "interval": 30,
+        "exec": "cpu"
+    },
+    "custom/memory": {
+        "tooltip": true,
+        "format": "🧠 {}",
+        "interval": 30,
+        "exec": "memory"
+    },
+
+    "clock": {
+        "format": "{:%H:%M %e %B} ",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "custom/power": {
+        "format" : "⏻ ",
+		"tooltip": false,
+		"menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+		"menu-actions": {
+			"shutdown": "shutdown",
+			"reboot": "reboot",
+			"suspend": "systemctl suspend",
+			"hibernate": "systemctl hibernate"
+		}
+    }
+}
