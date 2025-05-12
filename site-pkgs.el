@@ -1,8 +1,4 @@
-;; License
-;; #+NAME: lic-head
-
-;; [[file:site-pkgs.org::lic-head][lic-head]]
-;;; site-pkgs.el --- literal emacs package configuration module in ~/.emacs config
+;;; site-pkgs.el --- literal emacs package configuration module in ~/.emacs config -*- lexical-binding: t; -*-
 
 ;; Author: ht37 <hute37@gmail.com>
 ;; URL: https://github.com/hute37/emacs-site
@@ -28,7 +24,6 @@
 ;; tangled from site-pkgs.org
 
 ;;; Code:
-;; lic-head ends here
 
 ;; Log: start
 ;; #+NAME: log-start

@@ -23,8 +23,8 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 ** Header
 *** License
 #+NAME: lic-head
-#+begin_src emacs-lisp
-;;; site-pkgs.el --- literal emacs package configuration module in ~/.emacs config
+#+begin_src emacs-lisp :comments no
+;;; site-pkgs.el --- literal emacs package configuration module in ~/.emacs config -*- lexical-binding: t; -*-
 
 ;; Author: ht37 <hute37@gmail.com>
 ;; URL: https://github.com/hute37/emacs-site
