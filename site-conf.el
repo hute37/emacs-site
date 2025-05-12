@@ -1,4 +1,4 @@
-;;; site-conf.el --- local customization module in ~/.emacs config
+;;; site-conf.el --- local customization module in ~/.emacs config -*- lexical-binding: t; -*-
 
 ;; Author: ht37 <hute37@gmail.com>
 ;; URL: https://github.com/hute37/emacs-site
