@@ -2139,18 +2139,26 @@
     :ensure t
     :diminish projectile-mode
     :init
-    (setq projectile-enable-caching t
+    (setq projectile-indexing-method 'hybrid
+          projectile-enable-caching t
           projectile-cache-file (emacs-d "var/projectile.cache")
           projectile-known-projects-file (emacs-d "var/projectile-bookmarks.eld"))
     (make-directory (emacs-d "var") t)
-    :config
+    (add-to-list 'projectile-globally-ignored-files ".DS_Store")
+    (add-to-list 'projectile-globally-ignored-file-suffixes "o")
+    (add-to-list 'projectile-globally-ignored-file-suffixes "pyc")
+    (add-to-list 'projectile-globally-ignored-file-suffixes "class")
     (add-to-list 'projectile-globally-ignored-directories "logs")
     (add-to-list 'projectile-globally-ignored-directories "home")
     (add-to-list 'projectile-globally-ignored-directories "node_modules")
     (add-to-list 'projectile-globally-ignored-directories ".yarn")
     (add-to-list 'projectile-globally-ignored-directories ".mypy_cache")
     (add-to-list 'projectile-globally-ignored-directories "venv")
-    (add-to-list 'projectile-globally-ignored-files ".DS_Store")
+    (add-to-list 'projectile-globally-ignored-directories "*__pycache__")
+    (add-to-list 'projectile-globally-ignored-directories "*.ipynb_checkpoints")
+    (add-to-list 'projectile-globally-ignored-directories "*.virtual_documents")
+    (add-to-list 'projectile-globally-ignored-directories "*.obsidian/")
+    :config
     (projectile-global-mode)
     )
 
