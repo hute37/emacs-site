@@ -2139,11 +2139,12 @@
     :ensure t
     :diminish projectile-mode
     :init
+    (make-directory (emacs-d "var") t)
+    :config
     (setq projectile-indexing-method 'hybrid
           projectile-enable-caching t
           projectile-cache-file (emacs-d "var/projectile.cache")
           projectile-known-projects-file (emacs-d "var/projectile-bookmarks.eld"))
-    (make-directory (emacs-d "var") t)
     (add-to-list 'projectile-globally-ignored-files ".DS_Store")
     (add-to-list 'projectile-globally-ignored-file-suffixes "o")
     (add-to-list 'projectile-globally-ignored-file-suffixes "pyc")
@@ -2158,7 +2159,6 @@
     (add-to-list 'projectile-globally-ignored-directories "*.ipynb_checkpoints")
     (add-to-list 'projectile-globally-ignored-directories "*.virtual_documents")
     (add-to-list 'projectile-globally-ignored-directories "*.obsidian/")
-    :config
     (projectile-global-mode)
     )
 
