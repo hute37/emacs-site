@@ -3598,6 +3598,23 @@ P
 
 #+END_SRC
 
+*** Lang: C/C++
+#+NAME: lang-c
+#+begin_src emacs-lisp
+
+  ;; ---( c/c++ )--------------------------------------------------------------
+
+  ;; @see: https://google.github.io/styleguide/cppguide.html
+
+(use-package google-c-style
+  :ensure t
+  :hook ((c-mode c++-mode) . google-set-c-style)
+         (c-mode-common . google-make-newline-indent)
+)
+
+
+#+END_SRC
+
 *** Lang: R
 **** Lang: R/ess
 #+NAME: lang-r.ess

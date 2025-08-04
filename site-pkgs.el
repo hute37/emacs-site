@@ -3429,6 +3429,21 @@
     (yas-reload-all))
 ;; lang-tools.snip ends here
 
+;; Lang: C/C++
+;; #+NAME: lang-c
+
+;; [[file:site-pkgs.org::lang-c][lang-c]]
+  ;; ---( c/c++ )--------------------------------------------------------------
+
+  ;; @see: https://google.github.io/styleguide/cppguide.html
+
+(use-package google-c-style
+  :ensure t
+  :hook ((c-mode c++-mode) . google-set-c-style)
+         (c-mode-common . google-make-newline-indent)
+)
+;; lang-c ends here
+
 ;; Lang: R/ess
 ;; #+NAME: lang-r.ess
 
