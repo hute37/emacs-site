@@ -4788,8 +4788,7 @@
   ;; ---( pocket )--------------------------------------------------------------
 
   (use-package pocket-reader
-    :ensure t
-    :ensure t
+    :disabled t
     ;; :bind
     ;; ("<C-i> r" . pocket-reader)
     )
