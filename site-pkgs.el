@@ -348,8 +348,10 @@
 
 (setq auto-save-interval 2400)
 (setq auto-save-timeout 300)
+(setq auto-save-list-directory
+      (dir-mk (file-name-as-directory (file-name-concat user-cache-directory "auto-save-list"))))
 (setq auto-save-list-file-prefix
-      (dir-concat user-cache-directory (dir-mk "auto-save-list/.saves-")))
+      (file-name-concat auto-save-list-directory ".saves-"))
 (setq backup-directory-alist
       `(("." . ,(dir-mk (dir-concat user-cache-directory "backup"))))
       backup-by-copying t ; Use copies
@@ -494,6 +496,12 @@
   ;; ;;;////////////////////////////////////////////////////////////////
   ;; {{{  @UI
   ;; ;;;////////////////////////////////////////////////////////////////
+
+  ;; ---( themes )--------------------------------------------------------------
+
+  (use-package ef-themes
+    :ensure t
+    )
 
   ;; ---( mode-line )--------------------------------------------------------------
 
@@ -2863,6 +2871,7 @@
     (setq vterm-max-scrollback 18000)
     :init
     (message "vterm::init >")
+    (setq vterm-module-cmake-args "-DUSE_SYSTEM_LIBVTERM=no")
 
     (defun vterm-here (&optional prefix)
       "Opens up a new shell in the directory associated with the
@@ -3907,7 +3916,8 @@
   (use-package ein
     :unless (version< emacs-version "25.1")
     ;; :defer t
-    :ensure t
+    ;;:ensure t
+    :disabled t
     :init
     (progn
       (with-eval-after-load 'ein-notebooklist
@@ -4445,54 +4455,63 @@
 ;; #+NAME: rest-request
 
 ;; [[file:site-pkgs.org::rest-request][rest-request]]
-  ;; ---( request )--------------------------------------------------------------
+;; ---( request )--------------------------------------------------------------
 
-  ;; ---( restclient )------------------------------------------------------
+;; ---( verb )------------------------------------------------------
 
-  ;; @see: https://github.com/pashky/restclient.el
+;; @see: https://github.com/federicotdn/verb#usage-guide
 
-  (use-package restclient
-    :ensure t
-    :defer 30
-    :mode ("\\.http\\'" . restclient-mode)
-    :init
-      (progn
-        ;; (unless restclient-use-org
-        ;;   (add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode)))
-        ;; (spacemacs/set-leader-keys-for-major-mode 'restclient-mode
-        ;;   "n" 'restclient-jump-next
-        ;;   "p" 'restclient-jump-prev
-        ;;   "s" 'restclient-http-send-current-stay-in-window
-        ;;   "S" 'restclient-http-send-current
-        ;;   "r" 'spacemacs/restclient-http-send-current-raw-stay-in-window
-        ;;   "R" 'restclient-http-send-current-raw
-        ;;   "y" 'restclient-copy-curl-command)
-        ) 
-    )
+(use-package verb
+  :ensure t
+  )
 
-  (use-package restclient-jq
-    :ensure t
-    :defer 30
-    :init
-      (progn
-        ) 
-    )
 
-   ;; (use-package company-restclient
-   ;;   :ensure t
-   ;;   :after (company restclient)
-   ;;   :custom-update
-   ;;   (company-backends '(company-restclient)))
+;; ---( restclient )------------------------------------------------------
 
-  ;; ---( ob-http )------------------------------------------------------
+;; @see: https://github.com/pashky/restclient.el
 
-  ;; @see: https://github.com/zweifisch/ob-http
-  ;; @see: https://emacs.stackexchange.com/questions/2427/how-to-test-rest-api-with-emacs
+(use-package restclient
+  :ensure t
+  :defer 30
+  :mode ("\\.http\\'" . restclient-mode)
+  :init
+  (progn
+    ;; (unless restclient-use-org
+    ;;   (add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode)))
+    ;; (spacemacs/set-leader-keys-for-major-mode 'restclient-mode
+    ;;   "n" 'restclient-jump-next
+    ;;   "p" 'restclient-jump-prev
+    ;;   "s" 'restclient-http-send-current-stay-in-window
+    ;;   "S" 'restclient-http-send-current
+    ;;   "r" 'spacemacs/restclient-http-send-current-raw-stay-in-window
+    ;;   "R" 'restclient-http-send-current-raw
+    ;;   "y" 'restclient-copy-curl-command)
+    ) 
+  )
 
-  ;; (use-package ob-http
-  ;;   :ensure t
-  ;;   :defer 30
-  ;;   )
+(use-package restclient-jq
+  :ensure t
+  :defer 30
+  :init
+  (progn
+    ) 
+  )
+
+;; (use-package company-restclient
+;;   :ensure t
+;;   :after (company restclient)
+;;   :custom-update
+;;   (company-backends '(company-restclient)))
+
+;; ---( ob-http )------------------------------------------------------
+
+;; @see: https://github.com/zweifisch/ob-http
+;; @see: https://emacs.stackexchange.com/questions/2427/how-to-test-rest-api-with-emacs
+
+;; (use-package ob-http
+;;   :ensure t
+;;   :defer 30
+;;   )
 ;; rest-request ends here
 
 ;; Rest/end
@@ -5637,6 +5656,7 @@
            ([(meta up)] . nil)    ;; was 'org-metaup
            ([(meta down)] . nil)  ;; was 'org-metadown
            )
+    :bind-keymap (("C-c C-r" . verb-command-map))
     :init 
     ;;keymap conflicts
     (setq org-CUA-compatible t)
@@ -6068,7 +6088,7 @@
        ;; (haskell . t)
        (maxima . t)
        (octave . t)
-       (http . t)
+       ;; (http . t)
        (org . t)
        (plantuml . t)
        ;; (restclient . t)
@@ -6255,7 +6275,7 @@
 ;;   :mode (("\\.http\\'" . restclient-mode)))
 
 (use-package ob-restclient
-  :ensure t
+  :disabled t
   :after org restclient
   :init
   (org-babel-do-load-languages
@@ -6263,7 +6283,7 @@
    '((restclient . t))))
 
 (use-package ob-http
-  :ensure t
+  :disabled t
   :after org restclient
   :init
   (org-babel-do-load-languages
