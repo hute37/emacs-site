@@ -936,6 +936,14 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
   ;; ---( folding )--------------------------------------------------------------
 
+  (use-package vimish-fold
+    :ensure t
+    :hook ((
+            terraform-mode
+            yaml-mode
+            text-mode
+            ) . vimish-fold-mode)
+  )
 
   ;;        markdown-mode
 
