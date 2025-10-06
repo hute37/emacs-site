@@ -936,14 +936,6 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
   ;; ---( folding )--------------------------------------------------------------
 
-  (use-package vimish-fold
-    :ensure t
-    :hook ((
-            terraform-mode
-            yaml-mode
-            text-mode
-            ) . vimish-fold-mode)
-  )
 
   ;;        markdown-mode
 
@@ -3587,7 +3579,7 @@ P
              :cwd nil
              :env '(("DEBUG" . "1"))
              :request "launch"
-             :name "App:demo"))
+          e   :name "App:demo"))
       )
 
 #+END_SRC
