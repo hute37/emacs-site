@@ -886,16 +886,35 @@
 
   ;; ---( folding )--------------------------------------------------------------
 
-  (use-package vimish-fold
-    :ensure t
-    :hook ((
-            terraform-mode
-            yaml-mode
-            text-mode
-            ) . vimish-fold-mode)
+(use-package vimish-fold
+  :ensure t
+  :hook ((
+          terraform-mode
+          yaml-mode
+          text-mode
+          markdown-mode
+          ) . vimish-fold-mode)
   )
 
-  ;;        markdown-mode
+;; C-c C-f C-f 	Fold region
+;; C-c C-f C-u or C ` 	Unfold region
+;; C-c C-f C-d 	Delete folded region
+;; C-c C-f C-a C-f 	Fold all regions
+;; C-c C-f C-a C-u 	Unfold all regions
+;; C-c C-a C-d 	Delete all folded regions
+
+;; (use-package origami
+;;   :ensure t
+;;   :config
+;;     (global-origami-mode 1)
+;;     (setq origami-fold-style 'triple-braces)
+;;     ;; (add-hook 'prog-mode-hook
+;;     ;;   (lambda ()
+;;     ;;     (setq-local origami-fold-style 'triple-braces)
+;;     ;;     (origami-mode)
+;;     ;;     (origami-close-all-nodes (current-buffer))))
+;; )
+
 
 
   ;; (use-package folding
@@ -3422,7 +3441,7 @@
              :cwd nil
              :env '(("DEBUG" . "1"))
              :request "launch"
-             :name "App:demo"))
+          e   :name "App:demo"))
       )
 ;; lang-lsp.mode.dap ends here
 
@@ -7611,6 +7630,31 @@ With a prefix ARG, remove start location."
 (global-set-key (kbd "C-c 1") 'hydra-window/body)
 
 
+    ;; ---( hydra-fold )--------------------------------------------------------------
+
+    (defhydra hydra-fold (:color red :hint nil)
+      "
+         _t_: toggle  _n_: next    _p_: previous
+         _f_: fold    _u_: unfold  _r_: refold  _d_: delete
+         _T_: Toggle  _U_: Unfold  _R_: Refold  _D_: Delete    
+      "
+      ("f" vimish-fold)
+      ("u" vimish-fold-unfold)
+      ("r" vimish-fold-refold)
+      ("t" vimish-fold-toggle)
+      ("d" vimish-fold-delete)
+      ("U" vimish-fold-unfold-all)
+      ("R" vimish-fold-refold-all)
+      ("T" vimish-fold-toggle-all)
+      ("D" vimish-fold-delete-all)
+      ("n" vimish-fold-next-fold)
+      ("p" vimish-fold-previous-fold)
+      ("\\" hydra-of-hydras/body "back")
+      ("<tab>" hydra-of-hydras/body "back")
+      ("<ESC>" nil "quit"))
+
+(global-set-key (kbd "C-c 7") 'hydra-fold/body)
+
 
     ;; ---( hydras )--------------------------------------------------------------
 
@@ -7626,9 +7670,11 @@ With a prefix ARG, remove start location."
    _d_ pdf-tools          C-c 4
    _n_ denote             C-c 5
    _e_ engine-mode        C-c 6
+   _f_ fold               C-c 7
    ^────────-------------------------------------------
    "
 
+  ("f"   hydra-fold/body :color red)
   ("e"   hydra-engine/body :color amaranth)
   ("n"   hydra-denote/body :color green)
   ("d"   hydra-pdftools/body :color blue)
