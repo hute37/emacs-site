@@ -7674,7 +7674,7 @@ With a prefix ARG, remove start location."
    ^────────-------------------------------------------
    "
 
-  ("f"   hydra-fold/body :color red)
+  ("f"   hydra-fold/body :color blue)
   ("e"   hydra-engine/body :color amaranth)
   ("n"   hydra-denote/body :color green)
   ("d"   hydra-pdftools/body :color blue)
