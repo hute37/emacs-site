@@ -349,7 +349,9 @@
 (setq auto-save-interval 2400)
 (setq auto-save-timeout 300)
 (setq auto-save-list-directory
-      (dir-mk (file-name-as-directory (file-name-concat user-cache-directory "auto-save-list"))))
+      (file-name-as-directory (dir-mk (file-name-concat user-cache-directory "auto-save-list"))))
+;;    (make-directory (emacs-d "var") t)
+
 (setq auto-save-list-file-prefix
       (file-name-concat auto-save-list-directory ".saves-"))
 (setq backup-directory-alist
@@ -2169,6 +2171,7 @@
     (make-directory (emacs-d "var") t)
     :config
     (setq projectile-indexing-method 'hybrid
+          projectile-sort-order 'recentf
           projectile-enable-caching t
           projectile-cache-file (emacs-d "var/projectile.cache")
           projectile-known-projects-file (emacs-d "var/projectile-bookmarks.eld"))
@@ -7570,16 +7573,71 @@ With a prefix ARG, remove start location."
     (defhydra hydra-projects (:color blue :hint nil)
               "
                                                                       ╭──-───────┐
-         Projects         Session                 Bookmarks           │ Projects │
+         Projectile         Project.el              Bookmarks         │ Projects │
   ╭───────────────────────────────────────────────────────────────────┴─-────────╯
-       [_pD_] dired       [_ss_] save-session     [_b_] bookmarks
-       [_pf_] find-file   [_sr_] read-session     [_d_] dashboard
-       [_pg_] grep-file
+       [_pl_] recentf     [_Pl_] recentf          [_b_] bookmarks
+       [_po_] consult     [_Po_] flymake          [_d_] dashboard
+       [_pT_] treemacs    [_PT_] treemacs                           
+       [_pt_] vterm       [_Pt_] eat-term         [_ss_] save-session
+       [_pe_] eshell      [_Pe_] eshell           [_sr_] read-session
+       [_px_] run         [_Px_] exec       
+       [_py_] commander   [_Py_] async
+       [_pi_] info        [_Pi_] list       
+       [_pk_] configure   [_Pk_] kill
+       [_pb_] buffer      [_Pb_] buffer     
+       [_pD_] dired       [_PD_] dired      
+       [_pf_] find-file   [_Pf_] find-file  
+       [_pd_] find-dir    [_Pd_] find-dir   
+       [_pa_] find-tag    [_Pa_] find-tag   
+       [_pA_] re-tags     [_PA_] re-tags    
+       [_pu_] occur       [_Pu_] occur      
+       [_pg_] ripgrep     [_Pg_] ripgrep    
+       [_pr_] replace     [_Pr_] replace    
+       [_pS_] switch      [_PS_] switch          
   --------------------------------------------------------------------------------
               "
-              ("pD" project-dired)
-              ("pf" project-find-file)
-              ("pg" project-find-regexp)
+              ("pl" consult-projectile-recentf)
+              ("po" consult-projectile)
+              ("pT" treemacs-projectile)
+              ("pt" projectile-run-vterm)
+              ("pe" projectile-run-eshell)
+              ("pm" projectile-compile-project)
+              ("px" projectile-run-project)
+              ("py" projectile-commander)
+              ("pi" projectile-project-info)
+              ("pk" projectile-configure-project)
+              ("pb" consult-projectile-switch-to-buffer)
+              ("pD" projectile-dired)
+              ("pf" consult-projectile-find-file)
+              ("pd" consult-projectile-find-dir)
+              ("pa" projectile-find-tag)
+              ("pA" projectile-regenerate-tags)
+              ("pu" projectile-multi-occur)
+              ("pg" projectile-ripgrep)
+              ("pr" projectile-replace-regexp)
+              ("pS" consult-projectile-switch-project)
+              
+              ("Pl" consult-recentf)
+              ("Po" flymake-show-project-diagnostics)
+              ("PT" treemacs-project-follow-mode)
+              ("Pt" eat-project-other-window)
+              ("Pe" project-eshell)
+              ("Pm" project-compile)
+              ("Px" project-execute-extended-command)
+              ("Py" project-async-shell-command)
+              ("Pi" project-list-buffers)
+              ("Pk" project-kill-buffers)
+              ("Pb" consult-project-buffer)
+              ("PD" project-dired)
+              ("Pf" project-or-external-find-file)
+              ("Pd" project-find-dir)
+              ("Pa" ag-regexp-project-at-point)
+              ("PA" ag-project-regexp)
+              ("Pu" ag-project-regexp)
+              ("Pg" project-or-external-find-regexp)
+              ("Pr" project-query-replace-regexp)
+              ("PS" project-switch-project)
+              
               ("ss" desktop-save)
               ("sr" desktop-read)
               ("b"  bookmark-bmenu-list)
