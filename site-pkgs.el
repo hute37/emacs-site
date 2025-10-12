@@ -1322,7 +1322,7 @@
 ;;   (define-key company-mode-map (kbd "<tab>") 'company-indent-or-complete-common))
 
 (use-package company
-  :enabled t
+  :ensure t
   :diminish company-mode
   :commands company-mode
   :bind ("C-c C-SPC" . company-complete)
@@ -1335,7 +1335,7 @@
          )
   )
 (use-package company-posframe
-  :enabled t
+  :ensure t
   :init
   (company-posframe-mode 1)
   :diminish
