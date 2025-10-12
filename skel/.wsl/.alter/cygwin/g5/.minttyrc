@@ -1,0 +1,12 @@
+Font=Source Code Pro
+FontHeight=14
+BoldAsFont=yes
+AltFnShortcuts=no
+RightClickAction=paste
+Columns=120
+Rows=35
+Term=xterm-256color
+BellFlash=yes
+ForegroundColour=187,255,207
+CursorColour=251,255,83
+Scrollbar=none

@@ -403,8 +403,11 @@ URxvt.letterSpace: -1
 
 ! Xft: Google Droid fonts
 
-URxvt*font:xft:Noto Mono:pixelsize=12
-URxvt*boldFont:xft:Noto Mono:Bold:pixelsize=12
+URxvt*font:xft:NotoSansM Nerd Font Mono:pixelsize=12
+URxvt*boldFont:xft:NotoSansM Nerd Font Mono:Bold:pixelsize=12
+
+!URxvt*font:xft:Noto Mono:pixelsize=12
+!URxvt*boldFont:xft:Noto Mono:Bold:pixelsize=12
 
 !URxvt.font: xft:Inconsolata:size=11,xft:SF Mono:size=12,xft:Noto Sans Mono:pixelsize=12:antialias=true:hinting=true
 !URxvt.boldFont:xft:Inconsolata:size=11:Bold,xft:SF Mono:size=12:Bold,xft:Noto Sans Mono:pixelsize=12:antialias=true:hinting=true
