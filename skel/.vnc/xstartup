@@ -1,0 +1,52 @@
+#!/usr/bin/zsh
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+
+# Starting GNOME session
+export XDG_SESSION_TYPE=x11
+export GDK_BACKEND=x11
+
+### # Force X11 instead of Wayland for the VNC session
+### export GNOME_SHELL_SESSION_MODE=classic
+### exec gnome-session
+
+x_login() {
+
+  case "$SHELL" in
+	  */zsh)
+		  [ -f /etc/zprofile ] && source /etc/zprofile || true
+		  [ -f ~/.xprofile ] && source ~/.xprofile || true
+		  [ -f ~/.zprofile ] && source ~/.zprofile || true
+		  [ -f ~/.zprofile ] || source ~/.profile || true
+		  [ -f ~/.zshenv ] && source ~/.zshenv || true
+		  [ -f ~/.zshrc ] && source ~/.zshrc || true
+		  ;;
+	  */bash)
+		  [ -f /etc/profile ] && source /etc/profile || true
+		  [ -f ~/.xprofile ] && source ~/.xprofile || true
+		  [ -f ~/.bash_profile ] && source ~/.bash_profile || true
+		  [ -f ~/.bash_profile ] || source ~/.profile || true
+		  [ -f ~/.bashrc ] && source ~/.bashrc || true
+		  ;;
+	  *)
+		  [ -f /etc/profile ] && source /etc/profile || true
+		  [ -f ~/.xprofile ] && source ~/.xprofile || true
+		  ;;
+  esac		  
+
+}
+
+x_init() {
+
+   setxkbmap -layout "it"  -option 'caps:hyper'
+   xmodmap -e "keycode 108 = ISO_Level3_Shift NoSymbol ISO_Level3_Shift NoSymbol"
+   [ -f ~/.Xmodmap ] xmodmap ~/.Xmodmap
+   [ -f ~/.Xresources ] xrdb --merge ~/.Xresources
+
+}
+
+x_login
+x_init
+
+exec openbox-session
+

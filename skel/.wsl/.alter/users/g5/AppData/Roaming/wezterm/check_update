@@ -1,0 +1,272 @@
+{
+  "url": "https://api.github.com/repos/wez/wezterm/releases/139782130",
+  "body": "See https://wezfurlong.org/wezterm/changelog.html#20240203-110809-5046fc22 for the changelog\r\n\r\nIf you're looking for nightly downloads or more detailed installation instructions:\r\n\r\n[Windows](https://wezfurlong.org/wezterm/install/windows.html)\r\n[macOS](https://wezfurlong.org/wezterm/install/macos.html)\r\n[Linux](https://wezfurlong.org/wezterm/install/linux.html)\r\n[FreeBSD](https://wezfurlong.org/wezterm/install/freebsd.html)",
+  "html_url": "https://github.com/wez/wezterm/releases/tag/20240203-110809-5046fc22",
+  "tag_name": "20240203-110809-5046fc22",
+  "assets": [
+    {
+      "name": "WezTerm-20240203-110809-5046fc22-setup.exe",
+      "size": 42321770,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149623825",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/WezTerm-20240203-110809-5046fc22-setup.exe"
+    },
+    {
+      "name": "WezTerm-20240203-110809-5046fc22-setup.exe.sha256",
+      "size": 109,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149623826",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/WezTerm-20240203-110809-5046fc22-setup.exe.sha256"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22-src.tar.gz",
+      "size": 41444064,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149622517",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22-src.tar.gz"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22-src.tar.gz.sha256",
+      "size": 110,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149622526",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22-src.tar.gz.sha256"
+    },
+    {
+      "name": "WezTerm-20240203-110809-5046fc22-Ubuntu20.04.AppImage",
+      "size": 49505472,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149622515",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/WezTerm-20240203-110809-5046fc22-Ubuntu20.04.AppImage"
+    },
+    {
+      "name": "WezTerm-20240203-110809-5046fc22-Ubuntu20.04.AppImage.sha256",
+      "size": 120,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149622519",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/WezTerm-20240203-110809-5046fc22-Ubuntu20.04.AppImage.sha256"
+    },
+    {
+      "name": "WezTerm-20240203-110809-5046fc22-Ubuntu20.04.AppImage.zsync",
+      "size": 169488,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149622518",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/WezTerm-20240203-110809-5046fc22-Ubuntu20.04.AppImage.zsync"
+    },
+    {
+      "name": "WezTerm-20240203-110809-5046fc22-Ubuntu20.04.AppImage.zsync.sha256",
+      "size": 126,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149622521",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/WezTerm-20240203-110809-5046fc22-Ubuntu20.04.AppImage.zsync.sha256"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22.Debian10.deb",
+      "size": 30526688,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149621786",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Debian10.deb"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22.Debian10.deb.sha256",
+      "size": 112,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149621789",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Debian10.deb.sha256"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22.Debian10.tar.xz",
+      "size": 30440576,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149621790",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Debian10.tar.xz"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22.Debian10.tar.xz.sha256",
+      "size": 115,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149621785",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Debian10.tar.xz.sha256"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22.Debian11.deb",
+      "size": 30639140,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149621901",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Debian11.deb"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22.Debian11.deb.sha256",
+      "size": 112,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149621898",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Debian11.deb.sha256"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22.Debian11.tar.xz",
+      "size": 30445432,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149621897",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Debian11.tar.xz"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22.Debian11.tar.xz.sha256",
+      "size": 115,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149621899",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Debian11.tar.xz.sha256"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22.Debian12.arm64.deb",
+      "size": 28477484,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149635518",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Debian12.arm64.deb"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22.Debian12.deb",
+      "size": 30714456,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149622786",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Debian12.deb"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22.Debian12.deb.sha256",
+      "size": 112,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149622785",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Debian12.deb.sha256"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22.Debian12.tar.xz",
+      "size": 30433096,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149622783",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Debian12.tar.xz"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22.Debian12.tar.xz.sha256",
+      "size": 115,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149622784",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Debian12.tar.xz.sha256"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22.Ubuntu20.04.deb",
+      "size": 30703868,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149622516",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Ubuntu20.04.deb"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22.Ubuntu20.04.deb.sha256",
+      "size": 115,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149622529",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Ubuntu20.04.deb.sha256"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22.Ubuntu20.04.tar.xz",
+      "size": 30515256,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149622514",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Ubuntu20.04.tar.xz"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22.Ubuntu20.04.tar.xz.sha256",
+      "size": 118,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149622531",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Ubuntu20.04.tar.xz.sha256"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22.Ubuntu22.04.arm64.deb",
+      "size": 33303026,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149635586",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Ubuntu22.04.arm64.deb"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb",
+      "size": 34300188,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149621505",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb.sha256",
+      "size": 115,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149621507",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb.sha256"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22.Ubuntu22.04.tar.xz",
+      "size": 30508792,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149621506",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Ubuntu22.04.tar.xz"
+    },
+    {
+      "name": "wezterm-20240203-110809-5046fc22.Ubuntu22.04.tar.xz.sha256",
+      "size": 118,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149621508",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Ubuntu22.04.tar.xz.sha256"
+    },
+    {
+      "name": "wezterm-20240203_110809_5046fc22-1.centos8.x86_64.rpm",
+      "size": 34561128,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149621141",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203_110809_5046fc22-1.centos8.x86_64.rpm"
+    },
+    {
+      "name": "wezterm-20240203_110809_5046fc22-1.centos8.x86_64.rpm.sha256",
+      "size": 120,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149621140",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203_110809_5046fc22-1.centos8.x86_64.rpm.sha256"
+    },
+    {
+      "name": "wezterm-20240203_110809_5046fc22-1.centos9.x86_64.rpm",
+      "size": 33867680,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149622231",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203_110809_5046fc22-1.centos9.x86_64.rpm"
+    },
+    {
+      "name": "wezterm-20240203_110809_5046fc22-1.centos9.x86_64.rpm.sha256",
+      "size": 120,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149622230",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203_110809_5046fc22-1.centos9.x86_64.rpm.sha256"
+    },
+    {
+      "name": "wezterm-20240203_110809_5046fc22-1.fedora37.x86_64.rpm",
+      "size": 34102597,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149622391",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203_110809_5046fc22-1.fedora37.x86_64.rpm"
+    },
+    {
+      "name": "wezterm-20240203_110809_5046fc22-1.fedora37.x86_64.rpm.sha256",
+      "size": 121,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149622390",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203_110809_5046fc22-1.fedora37.x86_64.rpm.sha256"
+    },
+    {
+      "name": "wezterm-20240203_110809_5046fc22-1.fedora38.x86_64.rpm",
+      "size": 34185663,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149621780",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203_110809_5046fc22-1.fedora38.x86_64.rpm"
+    },
+    {
+      "name": "wezterm-20240203_110809_5046fc22-1.fedora38.x86_64.rpm.sha256",
+      "size": 121,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149621781",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203_110809_5046fc22-1.fedora38.x86_64.rpm.sha256"
+    },
+    {
+      "name": "wezterm-20240203_110809_5046fc22-1.fedora39.x86_64.rpm",
+      "size": 34179903,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149622203",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203_110809_5046fc22-1.fedora39.x86_64.rpm"
+    },
+    {
+      "name": "wezterm-20240203_110809_5046fc22-1.fedora39.x86_64.rpm.sha256",
+      "size": 121,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149622202",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203_110809_5046fc22-1.fedora39.x86_64.rpm.sha256"
+    },
+    {
+      "name": "WezTerm-macos-20240203-110809-5046fc22.zip",
+      "size": 102967427,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149624041",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/WezTerm-macos-20240203-110809-5046fc22.zip"
+    },
+    {
+      "name": "WezTerm-macos-20240203-110809-5046fc22.zip.sha256",
+      "size": 109,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149624042",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/WezTerm-macos-20240203-110809-5046fc22.zip.sha256"
+    },
+    {
+      "name": "WezTerm-windows-20240203-110809-5046fc22.zip",
+      "size": 66162319,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149623827",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/WezTerm-windows-20240203-110809-5046fc22.zip"
+    },
+    {
+      "name": "WezTerm-windows-20240203-110809-5046fc22.zip.sha256",
+      "size": 111,
+      "url": "https://api.github.com/repos/wez/wezterm/releases/assets/149623828",
+      "browser_download_url": "https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/WezTerm-windows-20240203-110809-5046fc22.zip.sha256"
+    }
+  ]
+}
