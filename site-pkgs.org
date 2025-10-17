@@ -1869,8 +1869,8 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;;;; 1. project.el (the default)
   ;; (setq consult-project-function #'consult--default-project--function)
   ;;;; 2. projectile.el (projectile-project-root)
-  (autoload 'projectile-project-root "projectile")
-  (setq consult-project-function (lambda (_) (projectile-project-root)))
+  ;; (autoload 'projectile-project-root "projectile")
+  ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
   ;;;; 3. vc.el (vc-root-dir)
   ;; (setq consult-project-function (lambda (_) (vc-root-dir)))
   ;;;; 4. locate-dominating-file
@@ -2289,125 +2289,125 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 #+NAME: project
 #+begin_src emacs-lisp
 
-  ;; ;;;////////////////////////////////////////////////////////////////
-  ;; {{{  @PROJECT
-  ;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @PROJECT
+;; ;;;////////////////////////////////////////////////////////////////
 
 
-  ;; ---( projectile )--------------------------------------------------------------
+;; ---( projectile )--------------------------------------------------------------
 
-  (use-package projectile
-    :ensure t
-    :diminish projectile-mode
-    :init
-    (make-directory (emacs-d "var") t)
-    :config
-    (setq projectile-indexing-method 'hybrid
-          projectile-sort-order 'recentf
-          projectile-enable-caching t
-          projectile-cache-file (emacs-d "var/projectile.cache")
-          projectile-known-projects-file (emacs-d "var/projectile-bookmarks.eld"))
-    (add-to-list 'projectile-globally-ignored-files ".DS_Store")
-    (add-to-list 'projectile-globally-ignored-file-suffixes "o")
-    (add-to-list 'projectile-globally-ignored-file-suffixes "pyc")
-    (add-to-list 'projectile-globally-ignored-file-suffixes "class")
-    (add-to-list 'projectile-globally-ignored-directories "logs")
-    (add-to-list 'projectile-globally-ignored-directories "home")
-    (add-to-list 'projectile-globally-ignored-directories "node_modules")
-    (add-to-list 'projectile-globally-ignored-directories ".yarn")
-    (add-to-list 'projectile-globally-ignored-directories ".mypy_cache")
-    (add-to-list 'projectile-globally-ignored-directories "venv")
-    (add-to-list 'projectile-globally-ignored-directories "*__pycache__")
-    (add-to-list 'projectile-globally-ignored-directories "*.ipynb_checkpoints")
-    (add-to-list 'projectile-globally-ignored-directories "*.virtual_documents")
-    (add-to-list 'projectile-globally-ignored-directories "*.obsidian/")
-    (projectile-global-mode)
-    )
+(use-package projectile
+  :ensure t
+  :diminish projectile-mode
+  :init
+  (make-directory (emacs-d "var") t)
+  :config
+  (setq projectile-indexing-method 'hybrid
+        projectile-sort-order 'recentf
+        projectile-enable-caching t
+        projectile-cache-file (emacs-d "var/projectile.cache")
+        projectile-known-projects-file (emacs-d "var/projectile-bookmarks.eld"))
+  (add-to-list 'projectile-globally-ignored-files ".DS_Store")
+  (add-to-list 'projectile-globally-ignored-file-suffixes "o")
+  (add-to-list 'projectile-globally-ignored-file-suffixes "pyc")
+  (add-to-list 'projectile-globally-ignored-file-suffixes "class")
+  (add-to-list 'projectile-globally-ignored-directories "logs")
+  (add-to-list 'projectile-globally-ignored-directories "home")
+  (add-to-list 'projectile-globally-ignored-directories "node_modules")
+  (add-to-list 'projectile-globally-ignored-directories ".yarn")
+  (add-to-list 'projectile-globally-ignored-directories ".mypy_cache")
+  (add-to-list 'projectile-globally-ignored-directories "venv")
+  (add-to-list 'projectile-globally-ignored-directories "*__pycache__")
+  (add-to-list 'projectile-globally-ignored-directories "*.ipynb_checkpoints")
+  (add-to-list 'projectile-globally-ignored-directories "*.virtual_documents")
+  (add-to-list 'projectile-globally-ignored-directories "*.obsidian/")
+  (projectile-global-mode)
+  )
 
-  (use-package consult-projectile
-    :ensure t
+(use-package consult-projectile
+  :ensure t
   )
 
 
 
 
-  ;; ---( treemacs )--------------------------------------------------------------
+;; ---( treemacs )--------------------------------------------------------------
 
-  ;; Provides workspaces with file browsing (tree file viewer)
-  ;; and project management when coupled with `projectile`.
+;; Provides workspaces with file browsing (tree file viewer)
+;; and project management when coupled with `projectile`.
 
-  (use-package treemacs
-    :ensure t
-    :defer t
+(use-package treemacs
+  :ensure t
+  :defer t
+  :config
+  (setq treemacs-no-png-images t
+        treemacs-width 24)
+
+  (dolist (face '(treemacs-root-face
+                  treemacs-git-unmodified-face
+                  treemacs-git-modified-face
+                  treemacs-git-renamed-face
+                  treemacs-git-ignored-face
+                  treemacs-git-untracked-face
+                  treemacs-git-added-face
+                  treemacs-git-conflict-face
+                  treemacs-directory-face
+                  treemacs-directory-collapsed-face
+                  treemacs-file-face
+                  treemacs-tags-face))
+    (set-face-attribute face nil :family "PT Sans Narrow" :height 120))
+  
+  :bind ("C-c t" . treemacs))
+
+(use-package treemacs-projectile
+  :after treemacs projectile
+  :ensure t)
+
+(use-package treemacs-icons-dired
+  :after treemacs dired
+  :ensure t
+  :config (treemacs-icons-dired-mode))
+
+(use-package treemacs-all-the-icons
+  :after treemacs
+  :ensure t
+  :config (treemacs-load-theme "all-the-icons"))
+
+(use-package treemacs-magit
+  :after treemacs magit
+  :ensure t)
+
+
+;; ---( etags )--------------------------------------------------------------
+
+(use-package etags
+  :bind ("M-T" . tags-search))
+
+;; ---( gtags )--------------------------------------------------------------
+
+(use-package gtags
+  :disabled t
+  :commands gtags-mode
+  :diminish gtags-mode
+  :config
+  (bind-key "C-c t ." 'gtags-find-rtag)
+  (bind-key "C-c t f" 'gtags-find-file)
+  (bind-key "C-c t p" 'gtags-parse-file)
+  (bind-key "C-c t g" 'gtags-find-with-grep)
+  (bind-key "C-c t i" 'gtags-find-with-idutils)
+  (bind-key "C-c t s" 'gtags-find-symbol)
+  (bind-key "C-c t r" 'gtags-find-rtag)
+  (bind-key "C-c t v" 'gtags-visit-rootdir)
+  (bind-key "<mouse-2>" 'gtags-find-tag-from-here gtags-mode-map)
+  (use-package helm-gtags
+    :bind ("M-T" . helm-gtags-select)
     :config
-    (setq treemacs-no-png-images t
-            treemacs-width 24)
-
-    (dolist (face '(treemacs-root-face
-                    treemacs-git-unmodified-face
-                    treemacs-git-modified-face
-                    treemacs-git-renamed-face
-                    treemacs-git-ignored-face
-                    treemacs-git-untracked-face
-                    treemacs-git-added-face
-                    treemacs-git-conflict-face
-                    treemacs-directory-face
-                    treemacs-directory-collapsed-face
-                    treemacs-file-face
-                    treemacs-tags-face))
-      (set-face-attribute face nil :family "PT Sans Narrow" :height 120))
-   
-    :bind ("C-c t" . treemacs))
-
-  (use-package treemacs-projectile
-    :after treemacs projectile
-    :ensure t)
-
-  (use-package treemacs-icons-dired
-    :after treemacs dired
-    :ensure t
-    :config (treemacs-icons-dired-mode))
-
-  (use-package treemacs-all-the-icons
-    :after treemacs
-    :ensure t
-    :config (treemacs-load-theme "all-the-icons"))
-
-  (use-package treemacs-magit
-    :after treemacs magit
-    :ensure t)
-
-
-  ;; ---( etags )--------------------------------------------------------------
-
-  (use-package etags
-    :bind ("M-T" . tags-search))
-
-  ;; ---( gtags )--------------------------------------------------------------
-
-  (use-package gtags
-    :disabled t
-    :commands gtags-mode
-    :diminish gtags-mode
-    :config
-    (bind-key "C-c t ." 'gtags-find-rtag)
-    (bind-key "C-c t f" 'gtags-find-file)
-    (bind-key "C-c t p" 'gtags-parse-file)
-    (bind-key "C-c t g" 'gtags-find-with-grep)
-    (bind-key "C-c t i" 'gtags-find-with-idutils)
-    (bind-key "C-c t s" 'gtags-find-symbol)
-    (bind-key "C-c t r" 'gtags-find-rtag)
-    (bind-key "C-c t v" 'gtags-visit-rootdir)
-    (bind-key "<mouse-2>" 'gtags-find-tag-from-here gtags-mode-map)
-    (use-package helm-gtags
-      :bind ("M-T" . helm-gtags-select)
-      :config
-      (bind-key "M-," 'helm-gtags-resume gtags-mode-map))
-    )
+    (bind-key "M-," 'helm-gtags-resume gtags-mode-map))
+  )
 
 
 
-  ;; }}}  .project
+;; }}}  .project
 
 #+END_SRC
 
@@ -2415,17 +2415,17 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 #+NAME: grep
 #+begin_src emacs-lisp
 
-  ;; ;;;////////////////////////////////////////////////////////////////
-  ;; {{{  @GREP
-  ;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @GREP
+;; ;;;////////////////////////////////////////////////////////////////
 
-  ;; ---( ack )--------------------------------------------------------------
+;; ---( ack )--------------------------------------------------------------
 
-  (use-package ack
-    :disabled t)
-  ;;(use-package ack-and-a-half)
+(use-package ack
+  :disabled t)
+;;(use-package ack-and-a-half)
 
-  ;; ---( ag )--------------------------------------------------------------
+;; ---( ag )--------------------------------------------------------------
 
 
 ;; The `wgrep' packages lets us edit the results of a grep search
@@ -2434,65 +2434,75 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 ;; or C-c C-k to abort.
 ;;
 ;; Further reading: https://protesilaos.com/emacs/dotemacs#h:9a3581df-ab18-4266-815e-2edd7f7e4852
-  (use-package wgrep
-    :ensure t
-    :bind ( :map grep-mode-map
+(use-package wgrep
+  :ensure t
+  :bind ( :map grep-mode-map
           ("e" . wgrep-change-to-wgrep-mode)
           ("C-x C-q" . wgrep-change-to-wgrep-mode)
           ("C-c C-c" . wgrep-finish-edit))
-    :custom
-    (wgrep-enable-key "e")
-    (wgrep-auto-save-buffer )
-    (twgrep-change-readonly-file t))
+  :custom
+  (wgrep-enable-key "e")
+  (wgrep-auto-save-buffer )
+  (twgrep-change-readonly-file t))
 
-  (use-package ag
-    :ensure t
-    :custom
-    (ag-highligh-search )
-    (tag-reuse-buffers )
-    (tag-reuse-window t)
-    :bind
-    ("M-s a" . ag-project)
-    :config
-    (use-package wgrep-ag
-      :ensure t))
+(use-package ag
+  :ensure t
+  :custom
+  (ag-highligh-search )
+  (tag-reuse-buffers )
+  (tag-reuse-window t)
+  :bind
+  ("M-s a" . ag-project)
+  :config
+  (use-package wgrep-ag
+    :ensure t))
 
+;; ---( ripgrep )--------------------------------------------------------------
 
-  ;; ---( grep )--------------------------------------------------------------
+(use-package rg
+  :ensure t
+  )
 
-  (use-package grep
-    :bind (("M-s d" . find-grep-dired)
-           ("M-s F" . find-grep)
-           ("M-s G" . grep)
-           ("M-s p" . find-grep-in-project))
-    :init
-    (defun find-grep-in-project (command-args)
-      (interactive
-       (let ((default (thing-at-point 'symbol)))
-         (list (read-shell-command "Run find (like this): "
-                                   (cons (concat "git --no-pager grep -n "
-                                                 default)
-                                         (+ 24 (length default)))
-                                   'grep-find-history))))
-      (if command-args
-          (let ((null-device nil)) ; see grep
-            (grep command-args))))
-    :config
-    (add-hook 'grep-mode-hook #'(lambda () (use-package grep-ed)))
-    (grep-apply-setting 'grep-command "egrep -nH -e ")
-    (if nil
-        (progn
-          (setq-default grep-first-column 1)
-          (grep-apply-setting
-           'grep-find-command
-           '("ag --noheading --nocolor --smart-case --nogroup --column -- "
-             . 61)))
-      (grep-apply-setting
-       'grep-find-command
-       '("find . -type f -print0 | xargs -P4 -0 egrep -nH " . 49))))
+(use-package deadgrep
+  :ensure t
+  )
 
 
-  ;; }}}  .grep
+;; ---( grep )--------------------------------------------------------------
+
+(use-package grep
+  :bind (("M-s d" . find-grep-dired)
+         ("M-s F" . find-grep)
+         ("M-s G" . grep)
+         ("M-s p" . find-grep-in-project))
+  :init
+  (defun find-grep-in-project (command-args)
+    (interactive
+     (let ((default (thing-at-point 'symbol)))
+       (list (read-shell-command "Run find (like this): "
+                                 (cons (concat "git --no-pager grep -n "
+                                               default)
+                                       (+ 24 (length default)))
+                                 'grep-find-history))))
+    (if command-args
+        (let ((null-device nil)) ; see grep
+          (grep command-args))))
+  :config
+  (add-hook 'grep-mode-hook #'(lambda () (use-package grep-ed)))
+  (grep-apply-setting 'grep-command "egrep -nH -e ")
+  (if nil
+      (progn
+        (setq-default grep-first-column 1)
+        (grep-apply-setting
+         'grep-find-command
+         '("ag --noheading --nocolor --smart-case --nogroup --column -- "
+           . 61)))
+    (grep-apply-setting
+     'grep-find-command
+     '("find . -type f -print0 | xargs -P4 -0 egrep -nH " . 49))))
+
+
+;; }}}  .grep
 
 #+END_SRC
 
