@@ -1,0 +1,78 @@
+##
+# @see: https://github.com/alacritty/alacritty-theme/tree/master
+#
+# mkdir -p ~/.config/alacritty/themes
+# git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+#
+
+general.import = [
+  # "~/.config/alacritty/themes/themes/gotham.toml"
+  # "~/.config/alacritty/themes/themes/cyber_punk_neon.toml"
+  # "~/.config/alacritty/themes/themes/challenger_deep.toml"
+  # "~/.config/alacritty/themes/themes/monokai_charcoal.toml"
+  # "~/.config/alacritty/themes/themes/campbell.toml"
+  # "~/.config/alacritty/themes/themes/tokyo-night.toml"
+  # "~/.config/alacritty/themes/themes/github_dark_tritanopia.toml"
+  # "~/.config/alacritty/themes/themes/Cobalt2.toml"
+  # "~/.config/alacritty/themes/themes/deep_space.toml"
+  # "~/.config/alacritty/themes/themes/github_dark_high_contrast.toml"
+  # "~/.config/alacritty/themes/themes/horizon-dark.toml"
+  # "~/.config/alacritty/themes/themes/iris.toml"
+  # "~/.config/alacritty/themes/themes/iterm.toml"
+  # "~/.config/alacritty/themes/themes/xterm.toml"
+  # "~/.config/alacritty/themes/themes/material_theme_mod.toml"
+  # "~/.config/alacritty/themes/themes/smoooooth.toml"
+  # "~/.config/alacritty/themes/themes/terminal_app.toml"
+  # "~/.config/alacritty/themes/themes/tomorrow_night_bright.toml"
+   "~/.config/alacritty/themes/themes/alabaster_dark.toml"
+]
+
+
+##
+# @see: https://github.com/alacritty/alacritty/blob/master/extra/man/alacritty.5.scd
+#
+# man 5 alacritty
+#
+
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 14.0
+
+[font.bold]
+family = "Iosevka Term Curly Slab"
+style = "Bold"
+
+[font.bold_italic]
+family = "Iosevka Term Curly Slab"
+style = "Bold Italic"
+
+[font.italic]
+family = "Iosevka Term Curly Slab"
+style = "Italic"
+
+[font.normal]
+family = "Iosevka Term Curly Slab"
+style = "Regular"
+
+[font.offset]
+x = 1
+y = 1
+
+[window]
+decorations = "None"
+dynamic_padding = true
+#startup_mode = "Maximized"
+
+[window.padding]
+x = 6
+y = 6
+
+[window.dimensions]
+columns = 166
+lines = 39
+
+
+
