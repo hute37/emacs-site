@@ -362,12 +362,14 @@ linux.shell.args = ["--login"]
 # More information in: https://raphamorim.io/rio/docs/key-bindings
 #
 # Example:
-# [bindings]
-# keys = [
-#   { key = "q", with = "super", action = "Quit" },
-#   # Send escape sequence to clear screen
-#   { key = "l", with = "control", esc = "\u001b[2J\u001b[H" }
-# ]
+[bindings]
+keys = [
+#  { key = "q", with = "super", action = "Quit" },
+   { key = "pageup", with = "control | shift", action = "SelectNextTab" },
+   { key = "pagedown", with = "control | shift", action = "SelectNextSplit" }
+   # Send escape sequence to clear screen
+#  { key = "l", with = "control", esc = "\u001b[2J\u001b[H" }
+]
 
 # Platform
 #
