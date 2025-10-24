@@ -132,9 +132,9 @@
 #     - "rec2020"
 #
 # Example:
-[window]
- width = 1400
- height = 800
+# [window]
+# width = 600
+# height = 400
 # mode = "windowed"
 # opacity = 1.0
 # blur = false
@@ -222,11 +222,8 @@
 # ]
 #
 # Simple example:
-[fonts]
-size = 18
-family = "FiraCode Nerd Font"
-#family = "cascadiamono"
-
+# [fonts]
+# size = 18
 #
 # [fonts.regular]
 # family = "cascadiamono"
@@ -298,27 +295,9 @@ family = "FiraCode Nerd Font"
 #
 # Example 1 using fish shell from bin path:
 #
-[shell]
-program = "/usr/bin/bash"
-args = ["--login"]
-
-[platform]
-# Microsoft Windows overwrite
-windows.shell.program = "wsl"
-windows.shell.args = ["-d", "Ubuntu", "--cd", "~"]
-# windows.shell.program = "D:\cygwin\bin\mintty.exe -i /Cygwin-Terminal.ico -"
-# windows.shell.args = ["-i", "/Cygwin-Terminal.ico", "-"]
-# windows.shell.program = "%LOCALAPPDATA%/Programs/Git/git-bash.exe"
-# windows.shell.args = ["--cd-to-home"]
-# windows.shell.program = "pwsh"
-# windows.shell.args = ["-l"]
-
-# Linux overwrite
-linux.shell.program = "/usr/bin/zsh"
-linux.shell.args = ["--login"]
-#linux.shell.program = "tmux"
-#linux.shell.args = ["new-session", "-c", "/var/www"]
-
+# [shell]
+# program = "/bin/fish"
+# args = ["--login"]
 #
 # Example 2 for Windows using powershell
 #
