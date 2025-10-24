@@ -1,0 +1,8 @@
+#!/bin/sh
+: ${RXVT_OPTIONS:="-name rxvt"}
+urxvtc $RXVT_OPTIONS "$@"
+if [ $? -eq 2 ]; then
+    echo "rxvt: starting daemon on DISPLAY=$DISPLAY, ..."
+    urxvtd -q -o -f
+    urxvtc $RXVT_OPTIONS "$@"
+fi
