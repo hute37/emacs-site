@@ -1,8 +1,4 @@
-;; License
-;; #+NAME: lic-head
-
-;; [[file:site-pkgs.org::lic-head][lic-head]]
-;;; site-pkgs.el --- literal emacs package configuration module in ~/.emacs config
+;;; site-pkgs.el --- literal emacs package configuration module in ~/.emacs config -*- lexical-binding: t; -*-
 
 ;; Author: ht37 <hute37@gmail.com>
 ;; URL: https://github.com/hute37/emacs-site
@@ -28,7 +24,6 @@
 ;; tangled from site-pkgs.org
 
 ;;; Code:
-;; lic-head ends here
 
 ;; Log: start
 ;; #+NAME: log-start
@@ -353,8 +348,12 @@
 
 (setq auto-save-interval 2400)
 (setq auto-save-timeout 300)
+(setq auto-save-list-directory
+      (file-name-as-directory (dir-mk (file-name-concat user-cache-directory "auto-save-list"))))
+;;    (make-directory (emacs-d "var") t)
+
 (setq auto-save-list-file-prefix
-      (dir-concat user-cache-directory (dir-mk "auto-save-list/.saves-")))
+      (file-name-concat auto-save-list-directory ".saves-"))
 (setq backup-directory-alist
       `(("." . ,(dir-mk (dir-concat user-cache-directory "backup"))))
       backup-by-copying t ; Use copies
@@ -499,6 +498,12 @@
   ;; ;;;////////////////////////////////////////////////////////////////
   ;; {{{  @UI
   ;; ;;;////////////////////////////////////////////////////////////////
+
+  ;; ---( themes )--------------------------------------------------------------
+
+  (use-package ef-themes
+    :ensure t
+    )
 
   ;; ---( mode-line )--------------------------------------------------------------
 
@@ -883,16 +888,35 @@
 
   ;; ---( folding )--------------------------------------------------------------
 
-  (use-package vimish-fold
-    :ensure t
-    :hook ((
-            terraform-mode
-            yaml-mode
-            text-mode
-            ) . vimish-fold-mode)
+(use-package vimish-fold
+  :ensure t
+  :hook ((
+          terraform-mode
+          yaml-mode
+          text-mode
+          markdown-mode
+          ) . vimish-fold-mode)
   )
 
-  ;;        markdown-mode
+;; C-c C-f C-f 	Fold region
+;; C-c C-f C-u or C ` 	Unfold region
+;; C-c C-f C-d 	Delete folded region
+;; C-c C-f C-a C-f 	Fold all regions
+;; C-c C-f C-a C-u 	Unfold all regions
+;; C-c C-a C-d 	Delete all folded regions
+
+;; (use-package origami
+;;   :ensure t
+;;   :config
+;;     (global-origami-mode 1)
+;;     (setq origami-fold-style 'triple-braces)
+;;     ;; (add-hook 'prog-mode-hook
+;;     ;;   (lambda ()
+;;     ;;     (setq-local origami-fold-style 'triple-braces)
+;;     ;;     (origami-mode)
+;;     ;;     (origami-close-all-nodes (current-buffer))))
+;; )
+
 
 
   ;; (use-package folding
@@ -1729,8 +1753,8 @@
   ;;;; 1. project.el (the default)
   ;; (setq consult-project-function #'consult--default-project--function)
   ;;;; 2. projectile.el (projectile-project-root)
-  (autoload 'projectile-project-root "projectile")
-  (setq consult-project-function (lambda (_) (projectile-project-root)))
+  ;; (autoload 'projectile-project-root "projectile")
+  ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
   ;;;; 3. vc.el (vc-root-dir)
   ;; (setq consult-project-function (lambda (_) (vc-root-dir)))
   ;;;; 4. locate-dominating-file
@@ -2133,133 +2157,142 @@
 ;; #+NAME: project
 
 ;; [[file:site-pkgs.org::project][project]]
-  ;; ;;;////////////////////////////////////////////////////////////////
-  ;; {{{  @PROJECT
-  ;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @PROJECT
+;; ;;;////////////////////////////////////////////////////////////////
 
 
-  ;; ---( projectile )--------------------------------------------------------------
+;; ---( projectile )--------------------------------------------------------------
 
-  (use-package projectile
-    :ensure t
-    :diminish projectile-mode
-    :init
-    (setq projectile-enable-caching t
-          projectile-cache-file (emacs-d "var/projectile.cache")
-          projectile-known-projects-file (emacs-d "var/projectile-bookmarks.eld"))
-    (make-directory (emacs-d "var") t)
-    :config
-    (add-to-list 'projectile-globally-ignored-directories "logs")
-    (add-to-list 'projectile-globally-ignored-directories "home")
-    (add-to-list 'projectile-globally-ignored-directories "node_modules")
-    (add-to-list 'projectile-globally-ignored-directories ".yarn")
-    (add-to-list 'projectile-globally-ignored-directories ".mypy_cache")
-    (add-to-list 'projectile-globally-ignored-directories "venv")
-    (add-to-list 'projectile-globally-ignored-files ".DS_Store")
-    (projectile-global-mode)
-    )
+(use-package projectile
+  :ensure t
+  :diminish projectile-mode
+  :init
+  (make-directory (emacs-d "var") t)
+  :config
+  (setq projectile-indexing-method 'hybrid
+        projectile-sort-order 'recentf
+        projectile-enable-caching t
+        projectile-cache-file (emacs-d "var/projectile.cache")
+        projectile-known-projects-file (emacs-d "var/projectile-bookmarks.eld"))
+  (add-to-list 'projectile-globally-ignored-files ".DS_Store")
+  (add-to-list 'projectile-globally-ignored-file-suffixes "o")
+  (add-to-list 'projectile-globally-ignored-file-suffixes "pyc")
+  (add-to-list 'projectile-globally-ignored-file-suffixes "class")
+  (add-to-list 'projectile-globally-ignored-directories "logs")
+  (add-to-list 'projectile-globally-ignored-directories "home")
+  (add-to-list 'projectile-globally-ignored-directories "node_modules")
+  (add-to-list 'projectile-globally-ignored-directories ".yarn")
+  (add-to-list 'projectile-globally-ignored-directories ".mypy_cache")
+  (add-to-list 'projectile-globally-ignored-directories "venv")
+  (add-to-list 'projectile-globally-ignored-directories "*__pycache__")
+  (add-to-list 'projectile-globally-ignored-directories "*.ipynb_checkpoints")
+  (add-to-list 'projectile-globally-ignored-directories "*.virtual_documents")
+  (add-to-list 'projectile-globally-ignored-directories "*.obsidian/")
+  (projectile-global-mode)
+  )
 
-  (use-package consult-projectile
-    :ensure t
+(use-package consult-projectile
+  :ensure t
   )
 
 
 
 
-  ;; ---( treemacs )--------------------------------------------------------------
+;; ---( treemacs )--------------------------------------------------------------
 
-  ;; Provides workspaces with file browsing (tree file viewer)
-  ;; and project management when coupled with `projectile`.
+;; Provides workspaces with file browsing (tree file viewer)
+;; and project management when coupled with `projectile`.
 
-  (use-package treemacs
-    :ensure t
-    :defer t
+(use-package treemacs
+  :ensure t
+  :defer t
+  :config
+  (setq treemacs-no-png-images t
+        treemacs-width 24)
+
+  (dolist (face '(treemacs-root-face
+                  treemacs-git-unmodified-face
+                  treemacs-git-modified-face
+                  treemacs-git-renamed-face
+                  treemacs-git-ignored-face
+                  treemacs-git-untracked-face
+                  treemacs-git-added-face
+                  treemacs-git-conflict-face
+                  treemacs-directory-face
+                  treemacs-directory-collapsed-face
+                  treemacs-file-face
+                  treemacs-tags-face))
+    (set-face-attribute face nil :family "PT Sans Narrow" :height 120))
+  
+  :bind ("C-c t" . treemacs))
+
+(use-package treemacs-projectile
+  :after treemacs projectile
+  :ensure t)
+
+(use-package treemacs-icons-dired
+  :after treemacs dired
+  :ensure t
+  :config (treemacs-icons-dired-mode))
+
+(use-package treemacs-all-the-icons
+  :after treemacs
+  :ensure t
+  :config (treemacs-load-theme "all-the-icons"))
+
+(use-package treemacs-magit
+  :after treemacs magit
+  :ensure t)
+
+
+;; ---( etags )--------------------------------------------------------------
+
+(use-package etags
+  :bind ("M-T" . tags-search))
+
+;; ---( gtags )--------------------------------------------------------------
+
+(use-package gtags
+  :disabled t
+  :commands gtags-mode
+  :diminish gtags-mode
+  :config
+  (bind-key "C-c t ." 'gtags-find-rtag)
+  (bind-key "C-c t f" 'gtags-find-file)
+  (bind-key "C-c t p" 'gtags-parse-file)
+  (bind-key "C-c t g" 'gtags-find-with-grep)
+  (bind-key "C-c t i" 'gtags-find-with-idutils)
+  (bind-key "C-c t s" 'gtags-find-symbol)
+  (bind-key "C-c t r" 'gtags-find-rtag)
+  (bind-key "C-c t v" 'gtags-visit-rootdir)
+  (bind-key "<mouse-2>" 'gtags-find-tag-from-here gtags-mode-map)
+  (use-package helm-gtags
+    :bind ("M-T" . helm-gtags-select)
     :config
-    (setq treemacs-no-png-images t
-            treemacs-width 24)
-
-    (dolist (face '(treemacs-root-face
-                    treemacs-git-unmodified-face
-                    treemacs-git-modified-face
-                    treemacs-git-renamed-face
-                    treemacs-git-ignored-face
-                    treemacs-git-untracked-face
-                    treemacs-git-added-face
-                    treemacs-git-conflict-face
-                    treemacs-directory-face
-                    treemacs-directory-collapsed-face
-                    treemacs-file-face
-                    treemacs-tags-face))
-      (set-face-attribute face nil :family "PT Sans Narrow" :height 120))
-   
-    :bind ("C-c t" . treemacs))
-
-  (use-package treemacs-projectile
-    :after treemacs projectile
-    :ensure t)
-
-  (use-package treemacs-icons-dired
-    :after treemacs dired
-    :ensure t
-    :config (treemacs-icons-dired-mode))
-
-  (use-package treemacs-all-the-icons
-    :after treemacs
-    :ensure t
-    :config (treemacs-load-theme "all-the-icons"))
-
-  (use-package treemacs-magit
-    :after treemacs magit
-    :ensure t)
-
-
-  ;; ---( etags )--------------------------------------------------------------
-
-  (use-package etags
-    :bind ("M-T" . tags-search))
-
-  ;; ---( gtags )--------------------------------------------------------------
-
-  (use-package gtags
-    :disabled t
-    :commands gtags-mode
-    :diminish gtags-mode
-    :config
-    (bind-key "C-c t ." 'gtags-find-rtag)
-    (bind-key "C-c t f" 'gtags-find-file)
-    (bind-key "C-c t p" 'gtags-parse-file)
-    (bind-key "C-c t g" 'gtags-find-with-grep)
-    (bind-key "C-c t i" 'gtags-find-with-idutils)
-    (bind-key "C-c t s" 'gtags-find-symbol)
-    (bind-key "C-c t r" 'gtags-find-rtag)
-    (bind-key "C-c t v" 'gtags-visit-rootdir)
-    (bind-key "<mouse-2>" 'gtags-find-tag-from-here gtags-mode-map)
-    (use-package helm-gtags
-      :bind ("M-T" . helm-gtags-select)
-      :config
-      (bind-key "M-," 'helm-gtags-resume gtags-mode-map))
-    )
+    (bind-key "M-," 'helm-gtags-resume gtags-mode-map))
+  )
 
 
 
-  ;; }}}  .project
+;; }}}  .project
 ;; project ends here
 
 ;; Grep
 ;; #+NAME: grep
 
 ;; [[file:site-pkgs.org::grep][grep]]
-  ;; ;;;////////////////////////////////////////////////////////////////
-  ;; {{{  @GREP
-  ;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @GREP
+;; ;;;////////////////////////////////////////////////////////////////
 
-  ;; ---( ack )--------------------------------------------------------------
+;; ---( ack )--------------------------------------------------------------
 
-  (use-package ack
-    :disabled t)
-  ;;(use-package ack-and-a-half)
+(use-package ack
+  :disabled t)
+;;(use-package ack-and-a-half)
 
-  ;; ---( ag )--------------------------------------------------------------
+;; ---( ag )--------------------------------------------------------------
 
 
 ;; The `wgrep' packages lets us edit the results of a grep search
@@ -2268,65 +2301,75 @@
 ;; or C-c C-k to abort.
 ;;
 ;; Further reading: https://protesilaos.com/emacs/dotemacs#h:9a3581df-ab18-4266-815e-2edd7f7e4852
-  (use-package wgrep
-    :ensure t
-    :bind ( :map grep-mode-map
+(use-package wgrep
+  :ensure t
+  :bind ( :map grep-mode-map
           ("e" . wgrep-change-to-wgrep-mode)
           ("C-x C-q" . wgrep-change-to-wgrep-mode)
           ("C-c C-c" . wgrep-finish-edit))
-    :custom
-    (wgrep-enable-key "e")
-    (wgrep-auto-save-buffer )
-    (twgrep-change-readonly-file t))
+  :custom
+  (wgrep-enable-key "e")
+  (wgrep-auto-save-buffer )
+  (twgrep-change-readonly-file t))
 
-  (use-package ag
-    :ensure t
-    :custom
-    (ag-highligh-search )
-    (tag-reuse-buffers )
-    (tag-reuse-window t)
-    :bind
-    ("M-s a" . ag-project)
-    :config
-    (use-package wgrep-ag
-      :ensure t))
+(use-package ag
+  :ensure t
+  :custom
+  (ag-highligh-search )
+  (tag-reuse-buffers )
+  (tag-reuse-window t)
+  :bind
+  ("M-s a" . ag-project)
+  :config
+  (use-package wgrep-ag
+    :ensure t))
 
+;; ---( ripgrep )--------------------------------------------------------------
 
-  ;; ---( grep )--------------------------------------------------------------
+(use-package rg
+  :ensure t
+  )
 
-  (use-package grep
-    :bind (("M-s d" . find-grep-dired)
-           ("M-s F" . find-grep)
-           ("M-s G" . grep)
-           ("M-s p" . find-grep-in-project))
-    :init
-    (defun find-grep-in-project (command-args)
-      (interactive
-       (let ((default (thing-at-point 'symbol)))
-         (list (read-shell-command "Run find (like this): "
-                                   (cons (concat "git --no-pager grep -n "
-                                                 default)
-                                         (+ 24 (length default)))
-                                   'grep-find-history))))
-      (if command-args
-          (let ((null-device nil)) ; see grep
-            (grep command-args))))
-    :config
-    (add-hook 'grep-mode-hook #'(lambda () (use-package grep-ed)))
-    (grep-apply-setting 'grep-command "egrep -nH -e ")
-    (if nil
-        (progn
-          (setq-default grep-first-column 1)
-          (grep-apply-setting
-           'grep-find-command
-           '("ag --noheading --nocolor --smart-case --nogroup --column -- "
-             . 61)))
-      (grep-apply-setting
-       'grep-find-command
-       '("find . -type f -print0 | xargs -P4 -0 egrep -nH " . 49))))
+(use-package deadgrep
+  :ensure t
+  )
 
 
-  ;; }}}  .grep
+;; ---( grep )--------------------------------------------------------------
+
+(use-package grep
+  :bind (("M-s d" . find-grep-dired)
+         ("M-s F" . find-grep)
+         ("M-s G" . grep)
+         ("M-s p" . find-grep-in-project))
+  :init
+  (defun find-grep-in-project (command-args)
+    (interactive
+     (let ((default (thing-at-point 'symbol)))
+       (list (read-shell-command "Run find (like this): "
+                                 (cons (concat "git --no-pager grep -n "
+                                               default)
+                                       (+ 24 (length default)))
+                                 'grep-find-history))))
+    (if command-args
+        (let ((null-device nil)) ; see grep
+          (grep command-args))))
+  :config
+  (add-hook 'grep-mode-hook #'(lambda () (use-package grep-ed)))
+  (grep-apply-setting 'grep-command "egrep -nH -e ")
+  (if nil
+      (progn
+        (setq-default grep-first-column 1)
+        (grep-apply-setting
+         'grep-find-command
+         '("ag --noheading --nocolor --smart-case --nogroup --column -- "
+           . 61)))
+    (grep-apply-setting
+     'grep-find-command
+     '("find . -type f -print0 | xargs -P4 -0 egrep -nH " . 49))))
+
+
+;; }}}  .grep
 ;; grep ends here
 
 ;; Shell/begin
@@ -2860,6 +2903,7 @@
     (setq vterm-max-scrollback 18000)
     :init
     (message "vterm::init >")
+    (setq vterm-module-cmake-args "-DUSE_SYSTEM_LIBVTERM=no")
 
     (defun vterm-here (&optional prefix)
       "Opens up a new shell in the directory associated with the
@@ -3410,7 +3454,7 @@
              :cwd nil
              :env '(("DEBUG" . "1"))
              :request "launch"
-             :name "App:demo"))
+          e   :name "App:demo"))
       )
 ;; lang-lsp.mode.dap ends here
 
@@ -3425,6 +3469,21 @@
     :config
     (yas-reload-all))
 ;; lang-tools.snip ends here
+
+;; Lang: C/C++
+;; #+NAME: lang-c
+
+;; [[file:site-pkgs.org::lang-c][lang-c]]
+  ;; ---( c/c++ )--------------------------------------------------------------
+
+  ;; @see: https://google.github.io/styleguide/cppguide.html
+
+(use-package google-c-style
+  :ensure t
+  :hook ((c-mode c++-mode) . google-set-c-style)
+         (c-mode-common . google-make-newline-indent)
+)
+;; lang-c ends here
 
 ;; Lang: R/ess
 ;; #+NAME: lang-r.ess
@@ -3889,7 +3948,8 @@
   (use-package ein
     :unless (version< emacs-version "25.1")
     ;; :defer t
-    :ensure t
+    ;;:ensure t
+    :disabled t
     :init
     (progn
       (with-eval-after-load 'ein-notebooklist
@@ -4427,54 +4487,63 @@
 ;; #+NAME: rest-request
 
 ;; [[file:site-pkgs.org::rest-request][rest-request]]
-  ;; ---( request )--------------------------------------------------------------
+;; ---( request )--------------------------------------------------------------
 
-  ;; ---( restclient )------------------------------------------------------
+;; ---( verb )------------------------------------------------------
 
-  ;; @see: https://github.com/pashky/restclient.el
+;; @see: https://github.com/federicotdn/verb#usage-guide
 
-  (use-package restclient
-    :ensure t
-    :defer 30
-    :mode ("\\.http\\'" . restclient-mode)
-    :init
-      (progn
-        ;; (unless restclient-use-org
-        ;;   (add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode)))
-        ;; (spacemacs/set-leader-keys-for-major-mode 'restclient-mode
-        ;;   "n" 'restclient-jump-next
-        ;;   "p" 'restclient-jump-prev
-        ;;   "s" 'restclient-http-send-current-stay-in-window
-        ;;   "S" 'restclient-http-send-current
-        ;;   "r" 'spacemacs/restclient-http-send-current-raw-stay-in-window
-        ;;   "R" 'restclient-http-send-current-raw
-        ;;   "y" 'restclient-copy-curl-command)
-        ) 
-    )
+(use-package verb
+  :ensure t
+  )
 
-  (use-package restclient-jq
-    :ensure t
-    :defer 30
-    :init
-      (progn
-        ) 
-    )
 
-   ;; (use-package company-restclient
-   ;;   :ensure t
-   ;;   :after (company restclient)
-   ;;   :custom-update
-   ;;   (company-backends '(company-restclient)))
+;; ---( restclient )------------------------------------------------------
 
-  ;; ---( ob-http )------------------------------------------------------
+;; @see: https://github.com/pashky/restclient.el
 
-  ;; @see: https://github.com/zweifisch/ob-http
-  ;; @see: https://emacs.stackexchange.com/questions/2427/how-to-test-rest-api-with-emacs
+(use-package restclient
+  :ensure t
+  :defer 30
+  :mode ("\\.http\\'" . restclient-mode)
+  :init
+  (progn
+    ;; (unless restclient-use-org
+    ;;   (add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode)))
+    ;; (spacemacs/set-leader-keys-for-major-mode 'restclient-mode
+    ;;   "n" 'restclient-jump-next
+    ;;   "p" 'restclient-jump-prev
+    ;;   "s" 'restclient-http-send-current-stay-in-window
+    ;;   "S" 'restclient-http-send-current
+    ;;   "r" 'spacemacs/restclient-http-send-current-raw-stay-in-window
+    ;;   "R" 'restclient-http-send-current-raw
+    ;;   "y" 'restclient-copy-curl-command)
+    ) 
+  )
 
-  ;; (use-package ob-http
-  ;;   :ensure t
-  ;;   :defer 30
-  ;;   )
+(use-package restclient-jq
+  :ensure t
+  :defer 30
+  :init
+  (progn
+    ) 
+  )
+
+;; (use-package company-restclient
+;;   :ensure t
+;;   :after (company restclient)
+;;   :custom-update
+;;   (company-backends '(company-restclient)))
+
+;; ---( ob-http )------------------------------------------------------
+
+;; @see: https://github.com/zweifisch/ob-http
+;; @see: https://emacs.stackexchange.com/questions/2427/how-to-test-rest-api-with-emacs
+
+;; (use-package ob-http
+;;   :ensure t
+;;   :defer 30
+;;   )
 ;; rest-request ends here
 
 ;; Rest/end
@@ -4770,8 +4839,7 @@
   ;; ---( pocket )--------------------------------------------------------------
 
   (use-package pocket-reader
-    :ensure t
-    :ensure t
+    :disabled t
     ;; :bind
     ;; ("<C-i> r" . pocket-reader)
     )
@@ -5620,6 +5688,7 @@
            ([(meta up)] . nil)    ;; was 'org-metaup
            ([(meta down)] . nil)  ;; was 'org-metadown
            )
+    :bind-keymap (("C-c C-r" . verb-command-map))
     :init 
     ;;keymap conflicts
     (setq org-CUA-compatible t)
@@ -6051,7 +6120,7 @@
        ;; (haskell . t)
        (maxima . t)
        (octave . t)
-       (http . t)
+       ;; (http . t)
        (org . t)
        (plantuml . t)
        ;; (restclient . t)
@@ -6238,7 +6307,7 @@
 ;;   :mode (("\\.http\\'" . restclient-mode)))
 
 (use-package ob-restclient
-  :ensure t
+  :disabled t
   :after org restclient
   :init
   (org-babel-do-load-languages
@@ -6246,7 +6315,7 @@
    '((restclient . t))))
 
 (use-package ob-http
-  :ensure t
+  :disabled t
   :after org restclient
   :init
   (org-babel-do-load-languages
@@ -7514,16 +7583,71 @@ With a prefix ARG, remove start location."
     (defhydra hydra-projects (:color blue :hint nil)
               "
                                                                       ╭──-───────┐
-         Projects         Session                 Bookmarks           │ Projects │
+         Projectile         Project.el              Bookmarks         │ Projects │
   ╭───────────────────────────────────────────────────────────────────┴─-────────╯
-       [_pD_] dired       [_ss_] save-session     [_b_] bookmarks
-       [_pf_] find-file   [_sr_] read-session     [_d_] dashboard
-       [_pg_] grep-file
+       [_pl_] recentf     [_Pl_] recentf          [_b_] bookmarks
+       [_po_] consult     [_Po_] flymake          [_d_] dashboard
+       [_pT_] treemacs    [_PT_] treemacs                           
+       [_pt_] vterm       [_Pt_] eat-term         [_ss_] save-session
+       [_pe_] eshell      [_Pe_] eshell           [_sr_] read-session
+       [_px_] run         [_Px_] exec       
+       [_py_] commander   [_Py_] async
+       [_pi_] info        [_Pi_] list       
+       [_pk_] configure   [_Pk_] kill
+       [_pb_] buffer      [_Pb_] buffer     
+       [_pD_] dired       [_PD_] dired      
+       [_pf_] find-file   [_Pf_] find-file  
+       [_pd_] find-dir    [_Pd_] find-dir   
+       [_pa_] find-tag    [_Pa_] find-tag   
+       [_pA_] re-tags     [_PA_] re-tags    
+       [_pu_] occur       [_Pu_] occur      
+       [_pg_] ripgrep     [_Pg_] ripgrep    
+       [_pr_] replace     [_Pr_] replace    
+       [_pS_] switch      [_PS_] switch          
   --------------------------------------------------------------------------------
               "
-              ("pD" project-dired)
-              ("pf" project-find-file)
-              ("pg" project-find-regexp)
+              ("pl" consult-projectile-recentf)
+              ("po" consult-projectile)
+              ("pT" treemacs-projectile)
+              ("pt" projectile-run-vterm)
+              ("pe" projectile-run-eshell)
+              ("pm" projectile-compile-project)
+              ("px" projectile-run-project)
+              ("py" projectile-commander)
+              ("pi" projectile-project-info)
+              ("pk" projectile-configure-project)
+              ("pb" consult-projectile-switch-to-buffer)
+              ("pD" projectile-dired)
+              ("pf" consult-projectile-find-file)
+              ("pd" consult-projectile-find-dir)
+              ("pa" projectile-find-tag)
+              ("pA" projectile-regenerate-tags)
+              ("pu" projectile-multi-occur)
+              ("pg" projectile-ripgrep)
+              ("pr" projectile-replace-regexp)
+              ("pS" consult-projectile-switch-project)
+              
+              ("Pl" consult-recentf)
+              ("Po" flymake-show-project-diagnostics)
+              ("PT" treemacs-project-follow-mode)
+              ("Pt" eat-project-other-window)
+              ("Pe" project-eshell)
+              ("Pm" project-compile)
+              ("Px" project-execute-extended-command)
+              ("Py" project-async-shell-command)
+              ("Pi" project-list-buffers)
+              ("Pk" project-kill-buffers)
+              ("Pb" consult-project-buffer)
+              ("PD" project-dired)
+              ("Pf" project-or-external-find-file)
+              ("Pd" project-find-dir)
+              ("Pa" ag-regexp-project-at-point)
+              ("PA" ag-project-regexp)
+              ("Pu" ag-project-regexp)
+              ("Pg" project-or-external-find-regexp)
+              ("Pr" project-query-replace-regexp)
+              ("PS" project-switch-project)
+              
               ("ss" desktop-save)
               ("sr" desktop-read)
               ("b"  bookmark-bmenu-list)
@@ -7574,6 +7698,31 @@ With a prefix ARG, remove start location."
 (global-set-key (kbd "C-c 1") 'hydra-window/body)
 
 
+    ;; ---( hydra-fold )--------------------------------------------------------------
+
+    (defhydra hydra-fold (:color red :hint nil)
+      "
+         _t_: toggle  _n_: next    _p_: previous
+         _f_: fold    _u_: unfold  _r_: refold  _d_: delete
+         _T_: Toggle  _U_: Unfold  _R_: Refold  _D_: Delete    
+      "
+      ("f" vimish-fold)
+      ("u" vimish-fold-unfold)
+      ("r" vimish-fold-refold)
+      ("t" vimish-fold-toggle)
+      ("d" vimish-fold-delete)
+      ("U" vimish-fold-unfold-all)
+      ("R" vimish-fold-refold-all)
+      ("T" vimish-fold-toggle-all)
+      ("D" vimish-fold-delete-all)
+      ("n" vimish-fold-next-fold)
+      ("p" vimish-fold-previous-fold)
+      ("\\" hydra-of-hydras/body "back")
+      ("<tab>" hydra-of-hydras/body "back")
+      ("<ESC>" nil "quit"))
+
+(global-set-key (kbd "C-c 7") 'hydra-fold/body)
+
 
     ;; ---( hydras )--------------------------------------------------------------
 
@@ -7589,9 +7738,11 @@ With a prefix ARG, remove start location."
    _d_ pdf-tools          C-c 4
    _n_ denote             C-c 5
    _e_ engine-mode        C-c 6
+   _f_ fold               C-c 7
    ^────────-------------------------------------------
    "
 
+  ("f"   hydra-fold/body :color blue)
   ("e"   hydra-engine/body :color amaranth)
   ("n"   hydra-denote/body :color green)
   ("d"   hydra-pdftools/body :color blue)

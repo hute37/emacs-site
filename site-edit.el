@@ -1,4 +1,4 @@
-;;; site-edit.el --- editor features customization in ~/.emacs config
+;;; site-edit.el --- editor features customization in ~/.emacs config -*- lexical-binding: t; -*-
 
 ;; Author: ht37 <hute37@gmail.com>
 ;; URL: https://github.com/hute37/emacs-site

@@ -1,4 +1,4 @@
-;;; site-func.el --- utility functions definition in ~/.emacs config
+;;; site-func.el --- utility functions definition in ~/.emacs config -*- lexical-binding: t; -*-
 
 ;; Author: ht37 <hute37@gmail.com>
 ;; URL: https://github.com/hute37/emacs-site
