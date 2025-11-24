@@ -3324,10 +3324,12 @@ P
   ;;         (setq markdown-command preferred-markdown-impl)))))
 
 
-  (use-package pandoc-mode
-    :ensure t
-    :hook (markdown-mode . pandoc-mode)
-    )
+(use-package pandoc-mode
+  :ensure t
+  :hook (markdown-mode . pandoc-mode)
+  :config
+  (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
+  )
 
 #+END_SRC
 
@@ -5941,501 +5943,566 @@ P
 #+NAME: org-mode
 #+begin_src emacs-lisp
 
-  ;; ---( org-mode )--------------------------------------------------------------
+;; ---( org-mode )--------------------------------------------------------------
 
-  ;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
-  ;; @see: https://stackoverflow.com/questions/45041399/proper-configuration-of-packages-in-gnu-emacs
-  ;; @see: https://hugocisneros.com/org-config/
+;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
+;; @see: https://stackoverflow.com/questions/45041399/proper-configuration-of-packages-in-gnu-emacs
+;; @see: https://hugocisneros.com/org-config/
 
-  (use-package org
+(use-package org
+  :ensure t
+  ;; :defer t
+  :bind (("C-c a" . org-agenda)
+         ("C-c s" . consult-org-agenda)
+         ("C-c c" . org-capture)
+         ("C-c l" . org-store-link)
+         ([(meta up)] . nil)    ;; was 'org-metaup
+         ([(meta down)] . nil)  ;; was 'org-metadown
+         )
+  :bind-keymap (("C-c C-r" . verb-command-map))
+  :init 
+  ;;keymap conflicts
+  (setq org-CUA-compatible t)
+  (setq org-support-shift-select t) ;; were 'org-shiftup+dpwn+left+right
+  (setq org-replace-disputed-keys t)
+
+  :hook (org-mode . h7/org-mode-setup)
+
+  :config
+
+  ;; --[plugins] ----------------------------------------------------------
+
+
+  (use-package ob-dot
+    :ensure nil
+    :demand)
+  (use-package ox-rss
+    :ensure nil
+    :demand)
+  (use-package ox-latex
+    :ensure nil
+    :demand)
+  (use-package ox-beamer
+    :ensure nil
+    :demand)
+  (use-package ox-md
+    :ensure nil
+    :demand)
+  (use-package ox-reveal
+    :disabled
+    :demand)
+  (use-package ox-pandoc
+    :disabled
+    :demand)
+
+  (use-package ox-pandoc
     :ensure t
-    ;; :defer t
-    :bind (("C-c a" . org-agenda)
-           ("C-c s" . consult-org-agenda)
-           ("C-c c" . org-capture)
-           ("C-c l" . org-store-link)
-           ([(meta up)] . nil)    ;; was 'org-metaup
-           ([(meta down)] . nil)  ;; was 'org-metadown
-           )
-    :bind-keymap (("C-c C-r" . verb-command-map))
-    :init 
-    ;;keymap conflicts
-    (setq org-CUA-compatible t)
-    (setq org-support-shift-select t) ;; were 'org-shiftup+dpwn+left+right
-    (setq org-replace-disputed-keys t)
-
-    :hook (org-mode . h7/org-mode-setup)
-
+    :after org
     :config
-    (require 'ox-md)
-    (require 'ox-beamer)
-    (unbind-key "C-c ;" org-mode-map)
-
-    ;;keymap conflicts
-    (setq org-CUA-compatible t)
-    (setq org-support-shift-select t) ;; were 'org-shiftup+dpwn+left+right
-    (setq org-replace-disputed-keys t)
-
-
-    ;; --[org-mode options] ----------------------------------------------------------
-
-    (setq org-ellipsis " ▾")
-    (setq org-hide-emphasis-markers t)
-    (setq org-src-tab-acts-natively t)
-    (setq org-edit-src-content-indentation 0)
-    (setq org-src-preserve-indentation t)
-    (setq org-hide-block-startup nil)
-    (setq org-startup-folded 'content)
-    (setq org-cycle-separator-lines 2)
-
-    ;; Essential Settings
-    (setq org-log-done 'time)
-    (setq org-html-doctype "html5")
-    ;;(setq org-export-headline-levels 6)
-    (setq org-export-with-smart-quotes t)
-
-    
-
-    ;; (setq org-modules
-    ;;   '(org-crypt
-    ;;       org-habit
-    ;;       org-bookmark
-    ;;       org-eshell
-    ;;       org-irc))
-
-
-    ;; --[org-mode images] ----------------------------------------------------------
-
-    (setq org-image-actual-width nil)
-    
-    ;; --[org-mode faces] ----------------------------------------------------------
-
-    (add-hook 'org-mode-hook 'variable-pitch-mode)    
-
-    ;; Fontify org-mode code blocks
-    (setq org-src-fontify-natively t)
-    (setq org-fontify-quote-and-verse-blocks t)
-
-    ;; Stop the org-level headers from increasing in height relative to the other text.
-    ;;(set-face-attribute 'org-block nil :weight 'semi-bold :height 1.3)
-
-    (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
-    (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
-
-    (dolist (face '(org-document-info-keyword))
-      (set-face-attribute face nil :weight 'bold :height 1.1))
-
-    (dolist (face '(org-document-title))
-      (set-face-attribute face nil :weight 'bold :height 1.2))
-    (dolist (face '(org-document-info))
-      (set-face-attribute face nil :weight 'semi-bold :height 1.2))
-
-
-    (dolist (face '(org-level-1))
-      (set-face-attribute face nil :weight 'semi-bold :height 1.3))
-
-    (dolist (face '(org-level-2))
-      (set-face-attribute face nil :weight 'semi-bold :height 1.2))
-
-    (dolist (face '(org-level-3
-                    org-level-4
-                    org-level-5))
-      (set-face-attribute face nil :weight 'semi-bold :height 1.1))
-
-    (dolist (face '(org-block-begin-line
-                    org-block-end-line
-                    org-meta-line))
-      (set-face-attribute face nil :weight 'bold :height 0.9))
+    (setq org-pandoc-options '((standalone . t)))
+    ;; (setq org-pandoc-options-for-beamer-pdf '((pdf-engine . "xelatex")))
+    ;; (setq org-pandoc-options-for-latex-pdf '((pdf-engine . "xelatex")))
+    (setq org-pandoc-options-for-beamer-pdf '((pdf-engine . "lualatex")))
+    (setq org-pandoc-options-for-latex-pdf '((pdf-engine . "lualatex")))
+    (setq org-pandoc-format-extensions '(markdown_github+pipe_tables+raw_html))
+    )  
+  (use-package ob-http
+    :disabled
+    :demand)
+  (use-package org-brain
+    :disabled
+    :demand)
+  (use-package org-projectile
+    :disabled
+    :demand)
+  (use-package org-present
+    :disabled
+    :demand)
+  (use-package org-ref
+    :disabled
+    :demand)
+  (use-package org-autolist
+    :disabled
+    :demand)
+  (use-package ox-tufte
+    :disabled
+    :demand)
+  (use-package org-static-blog
+    :demand)
 
 
 
+  ;; --[org-mode options] ----------------------------------------------------------
+  
+  (require 'ox-md)
+  (require 'ox-beamer)
+  (unbind-key "C-c ;" org-mode-map)
+
+  ;;keymap conflicts
+  (setq org-CUA-compatible t)
+  (setq org-support-shift-select t) ;; were 'org-shiftup+dpwn+left+right
+  (setq org-replace-disputed-keys t)
 
 
-    ;; --[org-mode todo] ----------------------------------------------------------
+  ;; --[org-mode options] ----------------------------------------------------------
 
-    ;; @see: https://github.com/daviwil/dotfiles/blob/master/Workflow.org
-    ;; @see: https://youtu.be/GP8uOU6SSyk?si=jikTf7JS1vZICd2L
+  (setq org-ellipsis " ▾")
+  (setq org-hide-emphasis-markers t)
+  (setq org-src-tab-acts-natively t)
+  (setq org-edit-src-content-indentation 0)
+  (setq org-src-preserve-indentation t)
+  (setq org-hide-block-startup nil)
+  (setq org-startup-folded 'content)
+  (setq org-cycle-separator-lines 2)
 
-    ;;(setq org-store-todo "~/Dropbox/Local/data/org/all")
+  ;; Essential Settings
+  (setq org-log-done 'time)
+  (setq org-html-doctype "html5")
+  ;;(setq org-export-headline-levels 6)
+  (setq org-export-with-smart-quotes t)
 
-    ;; (setq org-agenda-files
-    ;;       (mapcar (lambda(x) (mapconcat 'identity (list org-store-todo x) "/"))
-    ;;               '("task.org"
-    ;;                 "milk.org"
-    ;;                 "read.org"
-    ;;                 "dots.org")))        
-
-    ;; (setq org-store-todo (concat org-directory "/agenda"))
-    ;; (unless (file-directory-p org-store-todo)
-    ;;   (make-directory org-store-todo t))
-    ;; (setq org-agenda-files (directory-files-recursively org-store-todo "\\.org$"))
-    ;; (setq org-agenda-files `(,org-store-todo))
-
-    ;; ```
-    ;; cat > ~/.emacs-agenda.txt <<EOF
-    ;; ~/work/bu/org-info/todo.org
-    ;; ~/work/bv/box-up/todo.org
-    ;; ~/work/vs/dve-sample-r/todo.org
-    ;; ~/work/vs/dve-sample-py/todo.org
-    ;; EOF
-    ;;
-    
-
-    (setq org-store-todo  "~/Dropbox/Local/data/org/all")
-    (setq org-agenda-names "~/.emacs-agenda.txt")
-
-    (unless (file-exists-p org-agenda-names)
-      (make-empty-file org-agenda-names))
-
-    (setq org-agenda-files org-agenda-names)
   
 
-    (setq org-capture-templates
-          `(
-            ("t" "task" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "ACTIVE")
-             "** TODO [#C] %? [/]    :@W:\n   %a\n   + [ ] ...\n\n")
-            ("n" "task (next)" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "ACTIVE")
-             "** NEXT [#B] %? [/]    :@W:\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n   %a\n   + [ ] ...\n\n")
-            ("b" "backlog" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "BACKLOG")
-             "* BACK [#C] %? [/]    :@W:\n   %a\n   + [ ] ...\n\n")
-            ("p" "attic" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "ATTIC")
-             "* PAST [#C] %?    :@W:\n")
-            ("m" "milk" entry (file+headline ,(format "%s/%s" org-store-todo "milk.org") "ACTIVE")
-             "** TODO [#B] %?    :@H:milk:\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n")
-            ("r" "read" entry (file+headline ,(format "%s/%s" org-store-todo "read.org") "BACKLOG")
-             "** READ [#C] %?    :@Y:read:\n\n")
-            ("d" "dots" entry (file+headline ,(format "%s/%s" org-store-todo "dots.org") "ACTIVE")
-             "** EDIT [#C] %?    :@W:dots:\n   - %a\n\n")
-            ))
-
-    (setq org-todo-keywords
-          '((sequence "TODO(t)" "NEXT(n)" "DOING(x)" "|" "UNDO(u)" "DONE(d)")
-            (sequence "READY(w)" "|" "BACK(b)" "WAIT(w)" "HOLD(w)" "CANCELLED(c@/!)")
-            (sequence "EDIT(e)" "|" "READ(r)" "NOP(o)" "ACK(a)" "NACK(k)")
-            (sequence "|" "PAST(p)" "LOST(l)")))
-
-    (setq org-todo-keyword-faces
-          '(("TODO" . (:foreground "green" :weight bold))
-            ("NEXT" :foreground "orange" :weight bold)
-            ("DOING" :foreground "yellow" :weight bold)
-            ("UNDO" :foreground "SteelBlue" :weight bold)
-            ("READY" :foreground "orange red" :weight bold)
-            ("BACK" :foreground "MediumPurple3" :weight bold)
-            ("WAIT" :foreground "orange" :weight bold)
-            ("HOLD" :foreground "magenta" :weight bold)
-            ("PAST" :foreground "Silver" :weight bold)
-            ("PAST" :foreground "Dark Silver" :weight bold)
-            ("CANCELLED" :foreground "forest green" :weight bold)))
-
-    ;; Configure common tags
-    (setq org-tag-alist '(
-                          (:startgroup . nil) ;; Places
-                          ("@W" . ?W) ;; @work
-                          ("@H" . ?H) ;; @home
-                          ("@Y" . ?Y) ;; @away
-                          (:endgroup . nil)
-                          (:startgroup . nil) ;; Devices
-                          ("@local" . ?L)
-                          ("@house" . ?U)
-                          ("@phone" . ?P)
-                          (:endgroup . nil)
-                          (:startgrouptag) ;; Activities
-                          ("GTD")
-                          (:grouptags)
-                          ("Meta")
-                          ("Project")
-                          ("Language")
-                          ("System")
-                          ("Labs")
-                          ("Profile")
-                          ("Struct")
-                          ("Personal")
-                          (:endgrouptag)
-                          (:startgrouptag)
-                          ("Meta")
-                          (:grouptags)
-                          ("backlog" . ?k)
-                          ("design" . ?d)
-                          ("sched" . ?t)
-                          (:endgrouptag)
-                          ("Project")
-                          (:grouptags)
-                          ("custom" . ?c)
-                          ("template" . ?v)
-                          ("maint" . ?n)
-                          ("misc" . ?s)
-                          (:endgrouptag)
-                          ("Language")
-                          (:grouptags)
-                          ("python" . ?p)
-                          ("r" . ?r)
-                          ("julia" . ?j)
-                          ("matlab" . ?f)
-                          ("shell" . ?h)
-                          ("ansible" . ?b)
-                          ("emacs" . ?e)
-                          ("undef" . ?n)
-                          (:endgrouptag)
-                          (:startgrouptag)
-                          ("System")
-                          (:grouptags)
-                          ("dslabs" . ?l)
-                          ("azlabs" . ?a)
-                          ("oplabs" . ?o)
-                          ("unclass" . ?z)
-                          (:endgrouptag)
-                          (:startgrouptag)
-                          ("Labs")
-                          (:grouptags)
-                          ("ds")
-                          ("de")
-                          ("es")
-                          ("le")
-                          ("mn")
-                          ("pm")
-                          ("pq")
-                          ("pw")
-                          ("xt")
-                          ("op")
-                          ("oq")
-                          (:endgrouptag)
-                          ("Profile")
-                          (:grouptags)
-                          ("dots" . ?u)
-                          (:endgrouptag)
-                          ("Struct")
-                          (:grouptags)
-                          ("report")
-                          ("meeting")
-                          ("support")
-                          ("courses")
-                          ("clock")
-                          ("cart")
-                          (:endgrouptag)
-                          (:startgrouptag)
-                          ("Personal")
-                          (:grouptags)
-                          ("action")
-                          ("milk" . ?+)
-                          ("money" . ?$)
-                          ("read")
-                          ("search")
-                          ("think")
-                          ("dream")
-                          (:endgrouptag)
-                          ))
+  ;; (setq org-modules
+  ;;   '(org-crypt
+  ;;       org-habit
+  ;;       org-bookmark
+  ;;       org-eshell
+  ;;       org-irc))
 
 
-    ;;set priority range from A to C with default A
-    (setq org-highest-priority ?A)
-    (setq org-lowest-priority ?C)
-    (setq org-default-priority ?B)
+  ;; --[org-mode images] ----------------------------------------------------------
 
-    ;;set colours for priorities
-    (setq org-priority-faces '((?A . (:foreground "OliveDrab" :weight bold))
-                               (?B . (:foreground "LightSteelBlue"))
-                               (?C . (:foreground "#F0DFAF"))))
+  (setq org-image-actual-width nil)
+  
+  ;; --[org-mode faces] ----------------------------------------------------------
 
-    (setq org-use-fast-todo-selection t)
-    (setq org-treat-S-cursor-todo-selection-as-state-change nil)
+  (add-hook 'org-mode-hook 'variable-pitch-mode)    
 
-    (setq org-enforce-todo-dependencies t)
+  ;; Fontify org-mode code blocks
+  (setq org-src-fontify-natively t)
+  (setq org-fontify-quote-and-verse-blocks t)
 
-    ;; --[org-mode agenda] ----------------------------------------------------------
+  ;; Stop the org-level headers from increasing in height relative to the other text.
+  ;;(set-face-attribute 'org-block nil :weight 'semi-bold :height 1.3)
 
-    ;;open agenda in current window
-    (setq org-agenda-window-setup (quote current-window))
-    ;;warn me of any deadlines in next 7 days
-    (setq org-deadline-warning-days 15)
+  (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
 
-    (setq org-agenda-start-with-log-mode t)
+  (dolist (face '(org-document-info-keyword))
+    (set-face-attribute face nil :weight 'bold :height 1.1))
 
-    ;;don't show tasks as scheduled if they are already shown as a deadline
-    (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
-    ;;don't give awarning colour to tasks with impending deadlines
-    ;;if they are scheduled to be done
-    (setq org-agenda-skip-deadline-prewarning-if-scheduled (quote pre-scheduled))
-    ;;don't show tasks that are scheduled or have deadlines in the
-    ;;normal todo list
-    (setq org-agenda-todo-ignore-deadlines (quote all))
-    (setq org-agenda-todo-ignore-scheduled (quote all))
-
-    ;; @see: https://orgmode.org/worg/org-tutorials/org-custom-agenda-commands.html
-    ;; @see: https://youtu.be/-9rpQA6O3aM?si=uugNvFO-BkKi_TCh
-
-    (setq org-agenda-custom-commands
-          '(
-            ("n" "Agenda and all TODOs"
-             ((agenda "")
-              (alltodo "" ((org-agenda-todo-ignore-deadlines nil)
-                           (org-agenda-todo-ignore-scheduled nil)))
-              ))
-
-            ("f" "Current File TODOs"
-             ((todo-tree)))
+  (dolist (face '(org-document-title))
+    (set-face-attribute face nil :weight 'bold :height 1.2))
+  (dolist (face '(org-document-info))
+    (set-face-attribute face nil :weight 'semi-bold :height 1.2))
 
 
-            ("w" "Weekly Agenda"
-             ((agenda "" ((org-agenda-span 21)
-                          (org-deadline-warning-days 15)
-                          )); review upcoming deadlines and appointments
-                                           ; type "l" in the agenda to review logged items
-              (tags-todo "+PRIORITY=\"A\"" ((org-agenda-overriding-header "High Priority Tasks:")))
-              (tags-todo "-{.*}" ((org-agenda-overriding-header "Untagged Tasks:")))
-              )) ; review waiting items
+  (dolist (face '(org-level-1))
+    (set-face-attribute face nil :weight 'semi-bold :height 1.3))
 
-            ("r" "Monthly Review"
-             (
-              (agenda ""
-                      ((org-agenda-overriding-header "Completed Tasks:")
-                          (org-agenda-skip-function '(org-agenda-skip-entry-if 'nottodo 'done))
-                          (org-agenda-span 'month)
-                          ))
-              (agenda ""
-                      ((org-agenda-overriding-header "Pending Tasks:")
-                          (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-                          (org-agenda-span 'month)
-                          ))
-              (tags-todo "+PRIORITY=\"A\"" ((org-agenda-overriding-header "High Priority Tasks:")))
-              (tags-todo "-{.*}" ((org-agenda-overriding-header "Untagged Tasks:")))
-              (todo "DOING") ; review all projects (assuming you use todo keywords to designate projects)
-              (todo "TODO") ; review all projects (assuming you use todo keywords to designate projects)
-              (todo "NEXT") ; review someday/maybe items
-              (todo "BACK")
-              (stuck "") ; review stuck projects as designated by org-stuck-projects
-              )) ; review waiting items
+  (dolist (face '(org-level-2))
+    (set-face-attribute face nil :weight 'semi-bold :height 1.2))
 
-            ("k" "Backlog Refinement"
-             ((todo "BACK" ((org-agenda-overriding-header "Backlog Tasks:")))
-              (tags-todo "+PRIORITY=\"A\"" ((org-agenda-overriding-header "High Priority Tasks:")))
-              (tags-todo "-{.*}" ((org-agenda-overriding-header "Untagged Tasks:")))
-              (todo "DOING") ; review all projects (assuming you use todo keywords to designate projects)
-              (todo "TODO") ; review all projects (assuming you use todo keywords to designate projects)
-              (todo "HOLD")
-              (todo "DONE")
-              (todo "UNDO")
-              (stuck "") ; review stuck projects as designated by org-stuck-projects
-              )) ; review waiting items
-            ("l" "Task Schedule"
-              ((agenda ""
-                      ((org-agenda-overriding-header "Pending Tasks:")
-                          (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-                          (org-agenda-span 'month)
-                          ))
-              (tags-todo "+PRIORITY=\"A\"" ((org-agenda-overriding-header "High Priority Tasks:")))
-              (tags-todo "-{.*}" ((org-agenda-overriding-header "Untagged Tasks:")))
-              (todo "DOING") ; review all projects (assuming you use todo keywords to designate projects)
-              (todo "TODO") ; review all projects (assuming you use todo keywords to designate projects)
-              (todo "NEXT") ; review someday/maybe items
-             ))
-            ("u" "Untagged Tasks"
-             ((tags-todo "-{.*}" ((org-agenda-overriding-header "Untagged Tasks:")))))
+  (dolist (face '(org-level-3
+                  org-level-4
+                  org-level-5))
+    (set-face-attribute face nil :weight 'semi-bold :height 1.1))
+
+  (dolist (face '(org-block-begin-line
+                  org-block-end-line
+                  org-meta-line))
+    (set-face-attribute face nil :weight 'bold :height 0.9))
+
+
+
+
+
+  ;; --[org-mode todo] ----------------------------------------------------------
+
+  ;; @see: https://github.com/daviwil/dotfiles/blob/master/Workflow.org
+  ;; @see: https://youtu.be/GP8uOU6SSyk?si=jikTf7JS1vZICd2L
+
+  ;;(setq org-store-todo "~/Dropbox/Local/data/org/all")
+
+  ;; (setq org-agenda-files
+  ;;       (mapcar (lambda(x) (mapconcat 'identity (list org-store-todo x) "/"))
+  ;;               '("task.org"
+  ;;                 "milk.org"
+  ;;                 "read.org"
+  ;;                 "dots.org")))        
+
+  ;; (setq org-store-todo (concat org-directory "/agenda"))
+  ;; (unless (file-directory-p org-store-todo)
+  ;;   (make-directory org-store-todo t))
+  ;; (setq org-agenda-files (directory-files-recursively org-store-todo "\\.org$"))
+  ;; (setq org-agenda-files `(,org-store-todo))
+
+  ;; ```
+  ;; cat > ~/.emacs-agenda.txt <<EOF
+  ;; ~/work/bu/org-info/todo.org
+  ;; ~/work/bv/box-up/todo.org
+  ;; ~/work/vs/dve-sample-r/todo.org
+  ;; ~/work/vs/dve-sample-py/todo.org
+  ;; EOF
+  ;;
+  
+
+  (setq org-store-todo  "~/Dropbox/Local/data/org/all")
+  (setq org-agenda-names "~/.emacs-agenda.txt")
+
+  (unless (file-exists-p org-agenda-names)
+    (make-empty-file org-agenda-names))
+
+  (setq org-agenda-files org-agenda-names)
+  
+
+  (setq org-capture-templates
+        `(
+          ("t" "task" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "ACTIVE")
+           "** TODO [#C] %? [/]    :@W:\n   %a\n   + [ ] ...\n\n")
+          ("n" "task (next)" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "ACTIVE")
+           "** NEXT [#B] %? [/]    :@W:\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n   %a\n   + [ ] ...\n\n")
+          ("b" "backlog" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "BACKLOG")
+           "* BACK [#C] %? [/]    :@W:\n   %a\n   + [ ] ...\n\n")
+          ("p" "attic" entry (file+headline ,(format "%s/%s" org-store-todo "task.org") "ATTIC")
+           "* PAST [#C] %?    :@W:\n")
+          ("m" "milk" entry (file+headline ,(format "%s/%s" org-store-todo "milk.org") "ACTIVE")
+           "** TODO [#B] %?    :@H:milk:\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n")
+          ("r" "read" entry (file+headline ,(format "%s/%s" org-store-todo "read.org") "BACKLOG")
+           "** READ [#C] %?    :@Y:read:\n\n")
+          ("d" "dots" entry (file+headline ,(format "%s/%s" org-store-todo "dots.org") "ACTIVE")
+           "** EDIT [#C] %?    :@W:dots:\n   - %a\n\n")
           ))
 
-    ;;sort tasks in order of when they are due and then by priority
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "NEXT(n)" "DOING(x)" "|" "UNDO(u)" "DONE(d)")
+          (sequence "READY(w)" "|" "BACK(b)" "WAIT(w)" "HOLD(w)" "CANCELLED(c@/!)")
+          (sequence "EDIT(e)" "|" "READ(r)" "NOP(o)" "ACK(a)" "NACK(k)")
+          (sequence "|" "PAST(p)" "LOST(l)")))
 
-    (setq org-agenda-sorting-strategy
-          (quote
-           ((agenda deadline-up priority-down)
-            (todo priority-down category-keep)
-            (tags priority-down category-keep)
-            (search category-keep))))
+  (setq org-todo-keyword-faces
+        '(("TODO" . (:foreground "green" :weight bold))
+          ("NEXT" :foreground "orange" :weight bold)
+          ("DOING" :foreground "yellow" :weight bold)
+          ("UNDO" :foreground "SteelBlue" :weight bold)
+          ("READY" :foreground "orange red" :weight bold)
+          ("BACK" :foreground "MediumPurple3" :weight bold)
+          ("WAIT" :foreground "orange" :weight bold)
+          ("HOLD" :foreground "magenta" :weight bold)
+          ("PAST" :foreground "Silver" :weight bold)
+          ("PAST" :foreground "Dark Silver" :weight bold)
+          ("CANCELLED" :foreground "forest green" :weight bold)))
+
+  ;; Configure common tags
+  (setq org-tag-alist '(
+                        (:startgroup . nil) ;; Places
+                        ("@W" . ?W) ;; @work
+                        ("@H" . ?H) ;; @home
+                        ("@Y" . ?Y) ;; @away
+                        (:endgroup . nil)
+                        (:startgroup . nil) ;; Devices
+                        ("@local" . ?L)
+                        ("@house" . ?U)
+                        ("@phone" . ?P)
+                        (:endgroup . nil)
+                        (:startgrouptag) ;; Activities
+                        ("GTD")
+                        (:grouptags)
+                        ("Meta")
+                        ("Project")
+                        ("Language")
+                        ("System")
+                        ("Labs")
+                        ("Profile")
+                        ("Struct")
+                        ("Personal")
+                        (:endgrouptag)
+                        (:startgrouptag)
+                        ("Meta")
+                        (:grouptags)
+                        ("backlog" . ?k)
+                        ("design" . ?d)
+                        ("sched" . ?t)
+                        (:endgrouptag)
+                        ("Project")
+                        (:grouptags)
+                        ("custom" . ?c)
+                        ("template" . ?v)
+                        ("maint" . ?n)
+                        ("misc" . ?s)
+                        (:endgrouptag)
+                        ("Language")
+                        (:grouptags)
+                        ("python" . ?p)
+                        ("r" . ?r)
+                        ("julia" . ?j)
+                        ("matlab" . ?f)
+                        ("shell" . ?h)
+                        ("ansible" . ?b)
+                        ("emacs" . ?e)
+                        ("undef" . ?n)
+                        (:endgrouptag)
+                        (:startgrouptag)
+                        ("System")
+                        (:grouptags)
+                        ("dslabs" . ?l)
+                        ("azlabs" . ?a)
+                        ("oplabs" . ?o)
+                        ("unclass" . ?z)
+                        (:endgrouptag)
+                        (:startgrouptag)
+                        ("Labs")
+                        (:grouptags)
+                        ("ds")
+                        ("de")
+                        ("es")
+                        ("le")
+                        ("mn")
+                        ("pm")
+                        ("pq")
+                        ("pw")
+                        ("xt")
+                        ("op")
+                        ("oq")
+                        (:endgrouptag)
+                        ("Profile")
+                        (:grouptags)
+                        ("dots" . ?u)
+                        (:endgrouptag)
+                        ("Struct")
+                        (:grouptags)
+                        ("report")
+                        ("meeting")
+                        ("support")
+                        ("courses")
+                        ("clock")
+                        ("cart")
+                        (:endgrouptag)
+                        (:startgrouptag)
+                        ("Personal")
+                        (:grouptags)
+                        ("action")
+                        ("milk" . ?+)
+                        ("money" . ?$)
+                        ("read")
+                        ("search")
+                        ("think")
+                        ("dream")
+                        (:endgrouptag)
+                        ))
 
 
-    ;; --[org-mode latex] ----------------------------------------------------------
+  ;;set priority range from A to C with default A
+  (setq org-highest-priority ?A)
+  (setq org-lowest-priority ?C)
+  (setq org-default-priority ?B)
 
-    (setq org-latex-pdf-process
-          (quote ("pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f"
-                  "bibtex $(basename %b)"
-                  "pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f"
-                  "pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f")))
+  ;;set colours for priorities
+  (setq org-priority-faces '((?A . (:foreground "OliveDrab" :weight bold))
+                             (?B . (:foreground "LightSteelBlue"))
+                             (?C . (:foreground "#F0DFAF"))))
 
-    (setq org-latex-create-formula-image-program 'imagemagick)
+  (setq org-use-fast-todo-selection t)
+  (setq org-treat-S-cursor-todo-selection-as-state-change nil)
 
-    (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0)
-          maxima-display-maxima-buffer nil)
-    
+  (setq org-enforce-todo-dependencies t)
 
-    ;; Tell the latex export to use the minted package for source
-    ;; code coloration.
-    (add-to-list 'org-latex-packages-alist '("" "minted"))
-    (require 'ox-latex)
-    (setq org-latex-listings 'minted)
+  ;; --[org-mode agenda] ----------------------------------------------------------
 
-    ;; (setq org-latex-minted-options
-    ;;       '(("frame" "lines") ("framesep" "6pt")
-    ;;         ("mathescape" "true") ("fontsize" "\\small")))
-    
-    ;; --[org-mode babel] ----------------------------------------------------------
+  ;;open agenda in current window
+  (setq org-agenda-window-setup (quote current-window))
+  ;;warn me of any deadlines in next 7 days
+  (setq org-deadline-warning-days 15)
 
-    (setq org-confirm-babel-evaluate nil)
+  (setq org-agenda-start-with-log-mode t)
 
-    ;; execute external programs.
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     `(
-       (emacs-lisp . t)
-       (dot . t)
-       (ditaa . t)
-       (python . t) ;; can be an alias for jupyter
-       ,(if (h7/use-py-jupyter)
-            '(jupyter . t)
-          '(python . t))
-       (ruby . t)
-       (R . t)           
-       (gnuplot . t)
-       ;; (clojure . t)
-       (shell . t)
-       ;; (haskell . t)
-       (maxima . t)
-       (octave . t)
-       ;; (http . t)
-       (org . t)
-       (plantuml . t)
-       ;; (restclient . t)
-       ;; (prolog . t)
-       ;; (scala . t)
-       (sql . t)
-       (latex . t)
-       ))
+  ;;don't show tasks as scheduled if they are already shown as a deadline
+  (setq org-agenda-skip-scheduled-if-deadline-is-shown t)
+  ;;don't give awarning colour to tasks with impending deadlines
+  ;;if they are scheduled to be done
+  (setq org-agenda-skip-deadline-prewarning-if-scheduled (quote pre-scheduled))
+  ;;don't show tasks that are scheduled or have deadlines in the
+  ;;normal todo list
+  (setq org-agenda-todo-ignore-deadlines (quote all))
+  (setq org-agenda-todo-ignore-scheduled (quote all))
 
-    ;; maxima
-    ;; @see: https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-maxima.html
-    ;; mathematica
-    ;; @see: https://rgoswami.me/posts/org-mathematica/
-    ;; @see: https://aliquote.org/pub/org-setup.pdf
+  ;; @see: https://orgmode.org/worg/org-tutorials/org-custom-agenda-commands.html
+  ;; @see: https://youtu.be/-9rpQA6O3aM?si=uugNvFO-BkKi_TCh
 
-    ;; @see: https://lists.gnu.org/archive/html//emacs-orgmode/2020-04/msg00338.html
-    
-    ;; @see: https://sqrtminusone.xyz/posts/2021-05-01-org-python/
-    ;; (org-babel-jupyter-override-src-block "python")
-    ;; (setq ob-async-no-async-languages-alist '("python" "jupyter-python"))
-    
-    ;; chatgpt-shell support
-    ;; @see: https://github.com/xenodium/chatgpt-shell/tree/main
-    ;; (require 'ob-chatgpt-shell)
-    ;; (ob-chatgpt-shell-setup)
+  (setq org-agenda-custom-commands
+        '(
+          ("n" "Agenda and all TODOs"
+           ((agenda "")
+            (alltodo "" ((org-agenda-todo-ignore-deadlines nil)
+                         (org-agenda-todo-ignore-scheduled nil)))
+            ))
+
+          ("f" "Current File TODOs"
+           ((todo-tree)))
 
 
-    (defun h7/org-mode-setup ()
+          ("w" "Weekly Agenda"
+           ((agenda "" ((org-agenda-span 21)
+                        (org-deadline-warning-days 15)
+                        )); review upcoming deadlines and appointments
+                                        ; type "l" in the agenda to review logged items
+            (tags-todo "+PRIORITY=\"A\"" ((org-agenda-overriding-header "High Priority Tasks:")))
+            (tags-todo "-{.*}" ((org-agenda-overriding-header "Untagged Tasks:")))
+            )) ; review waiting items
 
-      ;;keymap conflicts
-      (local-set-key [(meta up)] 'dired)
-      (local-set-key [(meta down)] 'bs-show)
+          ("r" "Monthly Review"
+           (
+            (agenda ""
+                    ((org-agenda-overriding-header "Completed Tasks:")
+                     (org-agenda-skip-function '(org-agenda-skip-entry-if 'nottodo 'done))
+                     (org-agenda-span 'month)
+                     ))
+            (agenda ""
+                    ((org-agenda-overriding-header "Pending Tasks:")
+                     (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                     (org-agenda-span 'month)
+                     ))
+            (tags-todo "+PRIORITY=\"A\"" ((org-agenda-overriding-header "High Priority Tasks:")))
+            (tags-todo "-{.*}" ((org-agenda-overriding-header "Untagged Tasks:")))
+            (todo "DOING") ; review all projects (assuming you use todo keywords to designate projects)
+            (todo "TODO") ; review all projects (assuming you use todo keywords to designate projects)
+            (todo "NEXT") ; review someday/maybe items
+            (todo "BACK")
+            (stuck "") ; review stuck projects as designated by org-stuck-projects
+            )) ; review waiting items
 
-      ;; (turn-on-org-cdlatex)
-      ;; (diminish 'org-cdlatex-mode "")
-      (turn-on-auto-fill)
+          ("k" "Backlog Refinement"
+           ((todo "BACK" ((org-agenda-overriding-header "Backlog Tasks:")))
+            (tags-todo "+PRIORITY=\"A\"" ((org-agenda-overriding-header "High Priority Tasks:")))
+            (tags-todo "-{.*}" ((org-agenda-overriding-header "Untagged Tasks:")))
+            (todo "DOING") ; review all projects (assuming you use todo keywords to designate projects)
+            (todo "TODO") ; review all projects (assuming you use todo keywords to designate projects)
+            (todo "HOLD")
+            (todo "DONE")
+            (todo "UNDO")
+            (stuck "") ; review stuck projects as designated by org-stuck-projects
+            )) ; review waiting items
+          ("l" "Task Schedule"
+           ((agenda ""
+                    ((org-agenda-overriding-header "Pending Tasks:")
+                     (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                     (org-agenda-span 'month)
+                     ))
+            (tags-todo "+PRIORITY=\"A\"" ((org-agenda-overriding-header "High Priority Tasks:")))
+            (tags-todo "-{.*}" ((org-agenda-overriding-header "Untagged Tasks:")))
+            (todo "DOING") ; review all projects (assuming you use todo keywords to designate projects)
+            (todo "TODO") ; review all projects (assuming you use todo keywords to designate projects)
+            (todo "NEXT") ; review someday/maybe items
+            ))
+          ("u" "Untagged Tasks"
+           ((tags-todo "-{.*}" ((org-agenda-overriding-header "Untagged Tasks:")))))
+          ))
 
-      ;; make `company-backends' local is critcal
-      ;; or else, you will have completion in every major mode, that's very annoying!
-      (make-local-variable 'company-backends)
-      ;; company-ispell is the plugin to complete words
-      (add-to-list 'company-backends 'company-ispell))
+  ;;sort tasks in order of when they are due and then by priority
 
-    (eval-after-load 'org-src
-      '(define-key org-src-mode-map
-         "\C-x\C-s" #'org-edit-src-exit)))
+  (setq org-agenda-sorting-strategy
+        (quote
+         ((agenda deadline-up priority-down)
+          (todo priority-down category-keep)
+          (tags priority-down category-keep)
+          (search category-keep))))
+
+
+  ;; --[org-mode latex] ----------------------------------------------------------
+
+  (setq org-latex-pdf-process
+        (quote ("pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f"
+                "bibtex $(basename %b)"
+                "pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f"
+                "pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f")))
+
+  (setq org-latex-create-formula-image-program 'imagemagick)
+
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0)
+        maxima-display-maxima-buffer nil)
+  
+
+  ;; Tell the latex export to use the minted package for source
+  ;; code coloration.
+  (add-to-list 'org-latex-packages-alist '("" "minted"))
+  (require 'ox-latex)
+  (setq org-latex-listings 'minted)
+
+  ;; (setq org-latex-minted-options
+  ;;       '(("frame" "lines") ("framesep" "6pt")
+  ;;         ("mathescape" "true") ("fontsize" "\\small")))
+  
+  ;; --[org-mode babel] ----------------------------------------------------------
+
+  (setq org-confirm-babel-evaluate nil)
+
+  ;; execute external programs.
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   `(
+     (emacs-lisp . t)
+     (dot . t)
+     (ditaa . t)
+     (python . t) ;; can be an alias for jupyter
+     ,(if (h7/use-py-jupyter)
+          '(jupyter . t)
+        '(python . t))
+     (ruby . t)
+     (R . t)           
+     (gnuplot . t)
+     ;; (clojure . t)
+     (shell . t)
+     ;; (haskell . t)
+     (maxima . t)
+     (octave . t)
+     ;; (http . t)
+     (org . t)
+     (plantuml . t)
+     ;; (restclient . t)
+     ;; (prolog . t)
+     ;; (scala . t)
+     (sql . t)
+     (latex . t)
+     ))
+
+  ;; maxima
+  ;; @see: https://orgmode.org/worg/org-contrib/babel/languages/ob-doc-maxima.html
+  ;; mathematica
+  ;; @see: https://rgoswami.me/posts/org-mathematica/
+  ;; @see: https://aliquote.org/pub/org-setup.pdf
+
+  ;; @see: https://lists.gnu.org/archive/html//emacs-orgmode/2020-04/msg00338.html
+  
+  ;; @see: https://sqrtminusone.xyz/posts/2021-05-01-org-python/
+  ;; (org-babel-jupyter-override-src-block "python")
+  ;; (setq ob-async-no-async-languages-alist '("python" "jupyter-python"))
+  
+  ;; chatgpt-shell support
+  ;; @see: https://github.com/xenodium/chatgpt-shell/tree/main
+  ;; (require 'ob-chatgpt-shell)
+  ;; (ob-chatgpt-shell-setup)
+
+
+  (defun h7/org-mode-setup ()
+
+    ;;keymap conflicts
+    (local-set-key [(meta up)] 'dired)
+    (local-set-key [(meta down)] 'bs-show)
+
+    ;; (turn-on-org-cdlatex)
+    ;; (diminish 'org-cdlatex-mode "")
+    (turn-on-auto-fill)
+
+    ;; make `company-backends' local is critcal
+    ;; or else, you will have completion in every major mode, that's very annoying!
+    (make-local-variable 'company-backends)
+    ;; company-ispell is the plugin to complete words
+    (add-to-list 'company-backends 'company-ispell))
+
+  (eval-after-load 'org-src
+    '(define-key org-src-mode-map
+                 "\C-x\C-s" #'org-edit-src-exit)))
 
 
 
