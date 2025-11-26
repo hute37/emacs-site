@@ -5708,7 +5708,7 @@
     :ensure nil
     :demand)
   (use-package ox-rss
-    :ensure nil
+    :disabled
     :demand)
   (use-package ox-latex
     :ensure nil
@@ -5759,6 +5759,7 @@
     :disabled
     :demand)
   (use-package org-static-blog
+    :disabled
     :demand)
 
 
