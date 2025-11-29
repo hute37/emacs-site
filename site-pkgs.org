@@ -3621,7 +3621,7 @@ P
              :cwd nil
              :env '(("DEBUG" . "1"))
              :request "launch"
-          e   :name "App:demo"))
+             :name "App:demo"))
       )
 
 #+END_SRC
