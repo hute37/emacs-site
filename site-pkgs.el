@@ -3456,7 +3456,7 @@
              :cwd nil
              :env '(("DEBUG" . "1"))
              :request "launch"
-          e   :name "App:demo"))
+             :name "App:demo"))
       )
 ;; lang-lsp.mode.dap ends here
 
