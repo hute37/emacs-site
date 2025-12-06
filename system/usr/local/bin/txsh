@@ -1,0 +1,20 @@
+#!/bin/bash
+
+HOSTNAME=$(hostnamectl hostname)
+export HOSTNAME
+export COLORTERM=truecolor
+
+#set -x
+if [ -n "$TILIX_ID" ] || [ -n "$VTE_VERSION" ]; then
+    [ -f /etc/profile.d/vte-2.91.sh ] && source /etc/profile.d/vte-2.91.sh
+fi
+
+#printenv | sort
+#read z
+
+tmux ls >/dev/null 2>&1
+if [ $? ]; then
+    exec tmux new-session -t 0 "$@"
+else
+    exec tmux "$@"
+fi
