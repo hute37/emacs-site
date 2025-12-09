@@ -2177,111 +2177,155 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 #+NAME: dired
 #+begin_src emacs-lisp
 
-  ;; ;;;////////////////////////////////////////////////////////////////
-  ;; {{{  @DIRED
-  ;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @DIRED
+;; ;;;////////////////////////////////////////////////////////////////
 
 
-  ;; ---( dired )--------------------------------------------------------------
+;; ---( dired )--------------------------------------------------------------
 
-  ;; @see: https://protesilaos.com/codelog/2023-06-26-emacs-file-dired-basics/
+;; @see: https://protesilaos.com/codelog/2023-06-26-emacs-file-dired-basics/
 
-  (use-package dired
-    ;; :straight (:type built-in)
-    ;; :ensure t 
-    :hook ((dired-mode . hl-line-mode)
-           (dired-mode . dired-hide-details-mode))
-    :custom
-    ;; (require 'ls-lisp)
-    (ls-lisp-dirs-first t)
-    (ls-lisp-ignore-case nil)
-    (ls-lisp-use-insert-directory-program nil)
+(use-package dired
+  ;; :straight (:type built-in)
+  ;; :ensure t 
+  :hook ((dired-mode . hl-line-mode)
+         (dired-mode . dired-hide-details-mode))
+  :custom
+  ;; (require 'ls-lisp)
+  (ls-lisp-dirs-first t)
+  (ls-lisp-ignore-case nil)
+  (ls-lisp-use-insert-directory-program nil)
 
-    (dired-listing-switches "-alvhp --dired --group-directories-first")
+  (dired-listing-switches "-alvhp --dired --group-directories-first")
 
-    (dired-by-moving-to-trash t)
-    (dired-recursive-copies 'always)
-    (dired-recursive-deletes 'always)
-    (dired-dwim-target t) ;;use to copy to the next buffer visible
-    ;; Auto refresh Dired, but be quiet about it
-    (global-auto-revert-non-file-buffers t)
-    (auto-revert-verbose t)
-    ;;(image-dired-external-viewer (executable-find "sxiv"))
-    )
+  (dired-by-moving-to-trash t)
+  (dired-recursive-copies 'always)
+  (dired-recursive-deletes 'always)
+  (dired-dwim-target t) ;;use to copy to the next buffer visible
+  ;; Auto refresh Dired, but be quiet about it
+  (global-auto-revert-non-file-buffers t)
+  (auto-revert-verbose t)
+  ;;(image-dired-external-viewer (executable-find "sxiv"))
+  )
 
-  ;; @see: https://github.com/CSRaghunandan/.emacs.d/blob/master/setup-files/setup-dired.el
+;; @see: http://xahlee.info/emacs/emacs/elisp_dired_rename_space_to_underscore.html
 
-  ;; dired-x: to hide uninteresting files in dired
-  (use-package dired-x
-    ;; :straight nil
-    ;; :ensure t 
-    :bind ("C-x C-j" . dired-jump)
-    :hook ((dired-mode . dired-omit-mode))
-    :config
-    (setq dired-omit-verbose nil)
+(defun xah-dired-rename-space-to-underscore ()
+  "In dired, rename current or marked files by replacing space to lowline _.
+If not in `dired', do nothing.
+
+2025-10-28 was-named-xah-dired-rename-space-to-underscore.
+
+URL `http://xahlee.info/emacs/emacs/elisp_dired_rename_space_to_underscore.html'
+Created: 2016-10-04
+Version: 2025-10-28"
+  (interactive)
+  (require 'dired-aux)
+  (if (eq major-mode 'dired-mode)
+      (let ((xmarkedFiles (dired-get-marked-files)))
+        (mapc (lambda (x)
+                (let ((xfname (file-name-nondirectory x)))
+                  (when (string-match " " xfname)
+                    (dired-rename-file
+                     x
+                     (file-name-concat (file-name-directory x) (string-replace " " "_" xfname)) nil))))
+              xmarkedFiles)
+        ;; (dired-next-line 1)
+        (dired-revert))
+    (user-error "%s: Not in dired" real-this-command)))
+
+(defun xah-dired-rename-space-to-hyphen ()
+  "In dired, rename current or marked files by replacing space to hyphen -.
+If not in `dired', do nothing.
+
+URL `http://xahlee.info/emacs/emacs/elisp_dired_rename_space_to_underscore.html'
+Created: 2016-10-04
+Version: 2024-01-18"
+  (interactive)
+  (require 'dired-aux)
+  (if (eq major-mode 'dired-mode)
+      (progn
+        (mapc (lambda (x)
+                (when (string-match " " x )
+                  (dired-rename-file x (string-replace " " "-" x) nil)))
+              (dired-get-marked-files ))
+        (dired-revert))
+    (user-error "%s: Not in dired" real-this-command)))
+
+;; @see: https://github.com/CSRaghunandan/.emacs.d/blob/master/setup-files/setup-dired.el
+
+;; dired-x: to hide uninteresting files in dired
+(use-package dired-x
+  ;; :straight nil
+  ;; :ensure t 
+  :bind ("C-x C-j" . dired-jump)
+  :hook ((dired-mode . dired-omit-mode))
+  :config
+  (setq dired-omit-verbose nil)
   
-    ;; hide backup, autosave, *.*~ files
-    ;; omit mode can be toggled using `C-x M-o' in dired buffer.
-    ;;(setq dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$")
-    (setq dired-omit-files "^\\.?#\\|^\\.$")
-    (setq dired-omit-files
-          (concat dired-omit-files "\\|^.DS_STORE$\\|^.projectile$\\|^.git$"))
-    
-    ;; Teach Dired to use a specific external program with either the
-    ;; `dired-do-shell-command' or `dired-do-async-shell-command' command
-    ;; (with the default keys, those are bound to `!' `&', respectively).
-    ;; The first string is a pattern match against file names.  The
-    ;; remaining strings are external programs that Dired will provide as
-    ;; suggestions.  Of course, you can always type an arbitrary program
-    ;; despite these defaults.
-    (setq dired-guess-shell-alist-user
-          '(("\\.\\(png\\|jpe?g\\|tiff\\)" "feh" "xdg-open")
-            ("\\.\\(mp[34]\\|m4a\\|ogg\\|flac\\|webm\\|mkv\\)" "mpv" "xdg-open")
-	    (".*" "xdg-open")))
-    )
+  ;; hide backup, autosave, *.*~ files
+  ;; omit mode can be toggled using `C-x M-o' in dired buffer.
+  ;;(setq dired-omit-files "^\\.?#\\|^\\.$\\|^\\.\\.$")
+  (setq dired-omit-files "^\\.?#\\|^\\.$")
+  (setq dired-omit-files
+        (concat dired-omit-files "\\|^.DS_STORE$\\|^.projectile$\\|^.git$"))
+  
+  ;; Teach Dired to use a specific external program with either the
+  ;; `dired-do-shell-command' or `dired-do-async-shell-command' command
+  ;; (with the default keys, those are bound to `!' `&', respectively).
+  ;; The first string is a pattern match against file names.  The
+  ;; remaining strings are external programs that Dired will provide as
+  ;; suggestions.  Of course, you can always type an arbitrary program
+  ;; despite these defaults.
+  (setq dired-guess-shell-alist-user
+        '(("\\.\\(png\\|jpe?g\\|tiff\\)" "feh" "xdg-open")
+          ("\\.\\(mp[34]\\|m4a\\|ogg\\|flac\\|webm\\|mkv\\)" "mpv" "xdg-open")
+	  (".*" "xdg-open")))
+  )
 
-  ;; find-dired: dired find
-  (use-package find-dired
-    ;; :straight (:type built-in)
-    ;; :ensure t 
-    :custom
-    (setq find-ls-option '("-print0 | xargs -0 ls -ld" . "-ld"))
-    )
+;; find-dired: dired find
+(use-package find-dired
+  ;; :straight (:type built-in)
+  ;; :ensure t 
+  :custom
+  (setq find-ls-option '("-print0 | xargs -0 ls -ld" . "-ld"))
+  )
 
-  ;; peep-dired: file preview
-  (use-package dired-preview
-    :ensure t 
-    :custom
-    (setq dired-preview-delay 0.7)
-    (setq dired-preview-max-size (expt 2 20))
-    (setq dired-preview-ignored-extensions-regexp
-          (concat "\\."
-                  "\\(mkv\\|webm\\|mp4\\|mp3\\|ogg\\|m4a"
-                  "\\|gz\\|zst\\|tar\\|xz\\|rar\\|zip"
-                  "\\|iso\\|epub\\|pdf\\)"))
+;; peep-dired: file preview
+(use-package dired-preview
+  :ensure t 
+  :custom
+  (setq dired-preview-delay 0.7)
+  (setq dired-preview-max-size (expt 2 20))
+  (setq dired-preview-ignored-extensions-regexp
+        (concat "\\."
+                "\\(mkv\\|webm\\|mp4\\|mp3\\|ogg\\|m4a"
+                "\\|gz\\|zst\\|tar\\|xz\\|rar\\|zip"
+                "\\|iso\\|epub\\|pdf\\)"))
 
-    (defun my-dired-preview-to-the-right ()
-      "My preferred `dired-preview-display-action-alist-function'."
-      '((display-buffer-in-side-window)
-        (side . right)
-        (width . 0.6)))
+  (defun my-dired-preview-to-the-right ()
+    "My preferred `dired-preview-display-action-alist-function'."
+    '((display-buffer-in-side-window)
+      (side . right)
+      (width . 0.6)))
 
-    (setq dired-preview-display-action-alist-function #'my-dired-preview-to-the-right)
-    
-    
-    ;; Enable `dired-preview-mode' in a given Dired buffer or do it
-    ;; globally:
-    ;; (dired-preview-global-mode 1)
-    )
+  (setq dired-preview-display-action-alist-function #'my-dired-preview-to-the-right)
+  
+  
+  ;; Enable `dired-preview-mode' in a given Dired buffer or do it
+  ;; globally:
+  ;; (dired-preview-global-mode 1)
+  )
 
-  ;; ;; peep-dired: file preview
-  ;; (use-package peep-dired
-  ;;   :ensure t 
-  ;;   :bind (:map peep-dired-mode-map
-  ;;             ("SPC" . nil)
-  ;;             ("<backspace>" . nil)))
+;; ;; peep-dired: file preview
+;; (use-package peep-dired
+;;   :ensure t 
+;;   :bind (:map peep-dired-mode-map
+;;             ("SPC" . nil)
+;;             ("<backspace>" . nil)))
 
-  ;; }}}  .dired
+;; }}}  .dired
 
 #+END_SRC
 
