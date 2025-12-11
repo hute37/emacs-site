@@ -1339,7 +1339,7 @@ $" nil t))
 
 
 (global-set-key [f1] 'help )
-(global-set-key [(shift f1)] 'woman )
+;; (global-set-key [(shift f1)] 'woman )
 (global-set-key [(control f1)] 'find-function )
 (global-set-key [(meta f1)]	'function-key-error)
 (global-set-key [(shift meta f1)] 'function-key-error)
