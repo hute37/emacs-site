@@ -3187,6 +3187,32 @@ P
 
 #+END_SRC
 
+
+*** Processes
+#+NAME: processes
+#+begin_src emacs-lisp
+
+;; ---( projector )--------------------------------------------------------------
+
+(use-package projector
+  :ensure t
+  :config
+  ;; Recommended for handling exit messages of async processes
+  (setq alert-default-style 'notifier)
+  
+  ;; Example: Run specific commands always in the background
+  (setq projector-always-background-regex '("^xdg-open\\.*"))
+  ;;(setq projector-always-background-regex '("^mysql.server\\.*" "^powder\\.*"))
+  
+  ;; Example: Map specific commands to a specialized mode
+  (setq projector-command-modes-alist '(("^heroku run\\.*" . inf-ruby-mode))))
+
+
+
+#+END_SRC
+
+
+
 *** Scripts
 #+NAME: shell-script
 #+begin_src emacs-lisp
