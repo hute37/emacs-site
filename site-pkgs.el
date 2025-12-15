@@ -3051,6 +3051,26 @@ Version: 2024-01-18"
   ;;     (define-key term-pager-break-map "\177" 'term-pager-back-page)))
 ;; shell-vterm ends here
 
+;; Processes
+;; #+NAME: processes
+
+;; [[file:site-pkgs.org::processes][processes]]
+;; ---( projector )--------------------------------------------------------------
+
+(use-package projector
+  :ensure t
+  :config
+  ;; Recommended for handling exit messages of async processes
+  (setq alert-default-style 'notifier)
+  
+  ;; Example: Run specific commands always in the background
+  (setq projector-always-background-regex '("^xdg-open\\.*"))
+  ;;(setq projector-always-background-regex '("^mysql.server\\.*" "^powder\\.*"))
+  
+  ;; Example: Map specific commands to a specialized mode
+  (setq projector-command-modes-alist '(("^heroku run\\.*" . inf-ruby-mode))))
+;; processes ends here
+
 ;; Scripts
 ;; #+NAME: shell-script
 
