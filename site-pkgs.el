@@ -339,6 +339,16 @@
   (defvar user-plugins-directory (dir-mk "~/.emacs-site/plugins")
   "Location where emacs roeming plugins placed.")
 
+  ;; ---( UI )------------------------------------------------------------------
+
+  (setq frame-resize-pixelwise t)
+
+  (defun h7/make-maximized-frame ()
+    "Create a new frame and maximize it."
+    (interactive)
+    (let ((new-frame (make-frame)))
+      (select-frame new-frame)
+      (set-frame-parameter nil 'fullscreen 'maximized)))  
 
   )
 
