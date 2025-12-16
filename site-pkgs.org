@@ -956,6 +956,30 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
           text-mode
           markdown-mode
           ) . vimish-fold-mode)
+    ;; :bind
+    ;; (("C-c C-f C-f" . vimish-fold)
+    ;;  ("C-c C-f C-u" . vimish-fold-unfold)
+    ;;  ("C-c C-f C-d" . vimish-fold-delete)
+    ;;  ("C-c C-f C-r" . vimish-fold-refold)
+    ;;  ("C-c C-f C-t" . vimish-fold-toggle)
+    ;;  ("C-c C-f C-a C-f" . vimish-fold-fold-all)
+    ;;  ("C-c C-f C-a C-u" . vimish-fold-unfold-all)
+    ;;  ("C-c C-f C-a C-d" . vimish-fold-delete-all)
+    ;;  ("C-c C-f C-a C-r" . vimish-fold-refold-all)
+    ;;  ("C-c C-f C-a C-t" . vimish-fold-toggle-all)
+    ;;  ("C-c C-f C-m" . vimish-fold-refold-all-from-marks))
+    :config
+      (defun vimish-fold-refold-all-from-marks ()
+	"Clear all folds and refold from marks"
+	(interactive)
+	(vimish-fold-delete-all)
+	(vimish-fold-from-marks)
+	(vimish-fold-toggle-all))
+    :custom
+    ;; (setq vimish-fold-find-marks-on-open t)
+    ;; (setq vimish-fold-persist-on-saving t)
+    (setq vimish-fold-show-lines nil)
+  
   )
 
 ;; C-c C-f C-f 	Fold region
