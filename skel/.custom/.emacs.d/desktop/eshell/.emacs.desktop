@@ -1,0 +1,163 @@
+;; -*- mode: emacs-lisp; lexical-binding:t; coding: utf-8-emacs; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Tue Dec 16 17:29:37 2025
+;; Desktop file format version 208
+;; Emacs version 30.2
+
+;; Global section:
+(setq desktop-saved-frameset [frameset 1 (26945 35057 870230 23000) (desktop . "208") "gio@heka" nil nil ((((minibuffer . t) (undecorated) (override-redirect) (font . "-BE5N-Iosevka Curly-medium-normal-normal-*-21-*-*-*-d-0-iso10646-1") (border-width . 0) (internal-border-width . 0) (child-frame-border-width) (right-divider-width . 1) (bottom-divider-width . 0) (vertical-scroll-bars) (horizontal-scroll-bars) (foreground-color . "#afbcbf") (background-color . "#000e17") (mouse-color . "black") (border-color . "black") (screen-gamma) (line-spacing) (left-fringe . 6) (right-fringe . 6) (no-special-glyphs) (scroll-bar-foreground . "#3a4a66") (scroll-bar-background) (menu-bar-lines . 0) (tab-bar-lines . 0) (tool-bar-lines . 0) (title) (wait-for-wm . t) (tool-bar-position . top) (inhibit-double-buffering) (icon-type . t) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 16) (scroll-bar-height . 16) (alpha) (alpha-background) (no-focus-on-map) (no-accept-focus) (fullscreen . maximized) (visibility . t) (use-frame-synchronization) (skip-taskbar) (z-group) (font-parameter) (display-type . color) (background-mode . dark) (cursor-color . "#00ccff") (sticky) (shaded) (dnd-root-window-position) (last-focus-update . t) (powerline-cache) (frameset--id . "8B01-674F-229D-2A90") (frameset--mini t) (height . 36) (width . 148) (modeline . t) (unsplittable) (left . 39) (top . 39) (icon-name) (display . ":0") (explicit-name)) ((min-height . 12) (min-width . 20) (min-height-ignore . 10) (min-width-ignore . 9) (min-height-safe . 3) (min-width-safe . 4) (min-pixel-height . 324) (min-pixel-width . 220) (min-pixel-height-ignore . 270) (min-pixel-width-ignore . 99) (min-pixel-height-safe . 81) (min-pixel-width-safe . 44)) hc (pixel-width . 1641) (pixel-height . 947) (total-width . 149) (total-height . 35) (normal-height . 1.0) (normal-width . 1.0) (combination-limit) (vc (pixel-width . 875) (pixel-height . 947) (total-width . 79) (total-height . 35) (normal-height . 1.0) (normal-width . 0.5221459762944479) (combination-limit) (leaf (pixel-width . 875) (pixel-height . 672) (total-width . 79) (total-height . 25) (normal-height . 0.7068230277185502) (normal-width . 1.0) (buffer "*eshell: _styles*" (selected) (hscroll . 0) (fringes 6 6 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 75458) (start . 74158)) (prev-buffers ("*eshell: _styles*" 1 75458) ("md-report.tex" 6823 6906))) (leaf (last . t) (pixel-width . 875) (pixel-height . 275) (total-width . 79) (total-height . 10) (normal-height . 0.2931769722814499) (normal-width . 1.0) (buffer "*eat*" (selected) (hscroll . 0) (fringes 6 6 nil nil) (margins 1) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 1227) (start . 1026)) (prev-buffers ("*eshell: _styles*" 144 161)))) (vc (last . t) (pixel-width . 766) (pixel-height . 947) (total-width . 70) (total-height . 35) (normal-height . 1.0) (normal-width . 0.4778540237055521) (combination-limit) (leaf (pixel-width . 766) (pixel-height . 454) (total-width . 70) (total-height . 17) (normal-height . 0.4763957987838587) (normal-width . 1.0) (buffer "*Proced*" (selected . t) (hscroll . 0) (fringes 6 6 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 42) (start . 1)) (prev-buffers ("*Process List*" 1 1) ("_styles" 1 517) ("*eshell: _styles*" 1 118))) (leaf (pixel-width . 766) (pixel-height . 218) (total-width . 70) (total-height . 8) (normal-height . 0.23259891021085055) (normal-width . 1.0) (buffer "*Process List*" (selected) (hscroll . 0) (fringes 6 6 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 612) (start . 1))) (leaf (last . t) (pixel-width . 766) (pixel-height . 275) (total-width . 70) (total-height . 10) (normal-height . 0.291005291005291) (normal-width . 1.0) (buffer "_styles" (selected) (hscroll . 0) (fringes 6 6 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 824) (start . 771)) (prev-buffers ("*Proced*" 1 1) ("_styles" 1 36) ("300" 1 249) ("om" 1 138) ("7.LM" 1 135))))) (((minibuffer . t) (undecorated) (override-redirect) (font . "-BE5N-Iosevka Curly-medium-normal-normal-*-20-*-*-*-d-0-iso10646-1") (border-width . 0) (internal-border-width . 0) (child-frame-border-width) (right-divider-width . 1) (bottom-divider-width . 0) (vertical-scroll-bars) (horizontal-scroll-bars) (foreground-color . "#afbcbf") (background-color . "#000e17") (mouse-color . "black") (border-color . "black") (screen-gamma) (line-spacing) (left-fringe . 6) (right-fringe . 6) (no-special-glyphs) (scroll-bar-foreground . "#3a4a66") (scroll-bar-background) (menu-bar-lines . 0) (tab-bar-lines . 0) (tool-bar-lines . 0) (title) (wait-for-wm . t) (tool-bar-position . top) (inhibit-double-buffering) (icon-type . t) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 16) (scroll-bar-height . 16) (alpha) (alpha-background) (no-focus-on-map) (no-accept-focus) (fullscreen . maximized) (visibility . t) (use-frame-synchronization) (skip-taskbar) (z-group) (display-type . color) (background-mode . dark) (cursor-color . "#00ccff") (font-parameter) (sticky) (shaded) (environment) (dnd-root-window-position) (powerline-cache) (last-focus-update) (frameset--id . "C62F-9FD0-F0CD-735F") (frameset--mini t . t) (height . 37) (width . 162) (modeline . t) (unsplittable) (left . 39) (top . 39) (icon-name) (display . ":0") (explicit-name)) ((min-height . 4) (min-width . 20) (min-height-ignore . 3) (min-width-ignore . 8) (min-height-safe . 1) (min-width-safe . 4) (min-pixel-height . 104) (min-pixel-width . 200) (min-pixel-height-ignore . 78) (min-pixel-width-ignore . 80) (min-pixel-height-safe . 26) (min-pixel-width-safe . 40)) hc (pixel-width . 1641) (pixel-height . 948) (total-width . 164) (total-height . 36) (normal-height . 1.0) (normal-width . 1.0) (combination-limit) (leaf (pixel-width . 821) (pixel-height . 948) (total-width . 82) (total-height . 36) (normal-height . 1.0) (normal-width . 0.5) (buffer "md-report.lua" (selected) (hscroll . 0) (fringes 6 6 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 1) (start . 1)) (prev-buffers ("_styles" 1 461) ("_LLM_Template_.md[yaml]" 1 184) ("*dashboard*" 1 678) ("*scratch*" 1 1))) (leaf (last . t) (pixel-width . 820) (pixel-height . 948) (total-width . 82) (total-height . 36) (normal-height . 1.0) (normal-width . 0.5) (buffer "md-report.tex" (selected) (hscroll . 0) (fringes 6 6 nil nil) (margins nil) (scroll-bars nil 0 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 7164) (start . 7105)) (prev-buffers ("_styles" 1 517) ("md-report.lua" 1 1)))))])
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring nil)
+(setq regexp-search-ring nil)
+(setq register-alist '((116 file . "~/work/bv/box-up/todo.org") (102 file . "~/.rss/elfeed.org") (97 file . "~/.emacs-agenda.txt") (101 file . "~/.emacs-site/site-pkgs.org") (118 buffer . "*vterm*") (115 buffer . "*scratch*") (100 buffer . "*dashboard*") (109 buffer . "*Messages*") (119 buffer . "*Warnings*")))
+(setq file-name-history '("~/.emacs.d/" "~/work/bv/box-up/doc/up/7.LM/om/300/_styles/" "~/work/bv/box-up/doc/up/7.LM/om/300/_styles/_LLM_Template_.md" "~/work/bv/box-up/setup.py" "~/work/bv/box-up/build.sh" "~/work/bu/org-info/todo.org" "~/Dropbox/Local/data/org/all/dots.org" "~/Dropbox/Local/data/org/all/read.org" "~/Dropbox/Local/data/org/all/milk.org" "~/Dropbox/Local/data/org/all/task.org"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 208
+  nil
+  "_styles"
+  'dired-mode
+  '(text-scale-mode font-lock-mode visible-mark-mode ligature-mode company-mode hi-lock-mode hl-line-mode dired-hide-details-mode dired-omit-mode denote-dired-mode pdf-occur-dired-minor-mode)
+  824
+  '(824 nil)
+  t
+  '("/home/gio/work/bv/box-up/doc/up/7.LM/om/300/_styles/")
+  '((tab-width . 1) (buffer-display-time 26945 35008 579801 10000))
+  '((mark-ring (104 104 36 824))))
+
+(desktop-create-buffer 208
+  nil
+  "300"
+  'dired-mode
+  '(font-lock-mode visible-mark-mode ligature-mode company-mode hi-lock-mode hl-line-mode dired-hide-details-mode dired-omit-mode denote-dired-mode pdf-occur-dired-minor-mode)
+  249
+  '(nil nil)
+  t
+  '("/home/gio/work/bv/box-up/doc/up/7.LM/om/300/")
+  '((tab-width . 1) (buffer-display-time 26945 33834 51863 374000))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "om"
+  'dired-mode
+  '(font-lock-mode visible-mark-mode ligature-mode company-mode hi-lock-mode hl-line-mode dired-hide-details-mode dired-omit-mode denote-dired-mode pdf-occur-dired-minor-mode)
+  138
+  '(nil nil)
+  t
+  '("/home/gio/work/bv/box-up/doc/up/7.LM/om/")
+  '((tab-width . 1) (buffer-display-time 26945 33833 293240 670000))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "7.LM"
+  'dired-mode
+  '(font-lock-mode visible-mark-mode ligature-mode company-mode hi-lock-mode hl-line-mode dired-hide-details-mode dired-omit-mode denote-dired-mode pdf-occur-dired-minor-mode)
+  135
+  '(139 nil)
+  t
+  '("/home/gio/work/bv/box-up/doc/up/7.LM/")
+  '((tab-width . 1) (buffer-display-time 26945 33819 699926 998000))
+  '((mark-ring (138 28 28 138 138 135 139 139))))
+
+(desktop-create-buffer 208
+  "/home/gio/work/bv/box-up/doc/up/7.LM/om/300/_styles/md-report.tex"
+  "md-report.tex"
+  'LaTeX-mode
+  '(auto-revert-mode font-lock-mode undo-tree-mode visible-mark-mode ligature-mode flycheck-mode hi-lock-mode LaTeX-math-mode vimish-fold-mode company-mode)
+  7164
+  '(6887 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-display-time 26945 32411 17144 972000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (6867 7075 7232 7075 7075 6867 6887 6906))))
+
+(desktop-create-buffer 208
+  "/home/gio/work/bv/box-up/doc/up/7.LM/om/300/_styles/md-report.lua"
+  "md-report.lua"
+  'lua-mode
+  '(auto-revert-mode font-lock-mode undo-tree-mode visible-mark-mode ligature-mode flycheck-mode hi-lock-mode hl-todo-mode company-mode git-gutter-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 26945 32366 653077 384000) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/gio/Dropbox/Local/data/org/all/task.org"
+  "task.org"
+  'org-mode
+  '(auto-revert-mode font-lock-mode undo-tree-mode visible-mark-mode ligature-mode flycheck-mode hi-lock-mode git-gutter-mode buffer-face-mode org-modern-mode vimish-fold-mode company-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 8) (buffer-display-time) (buffer-file-coding-system . undecided-unix) (truncate-lines . t))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/gio/Dropbox/Local/data/org/all/milk.org"
+  "milk.org"
+  'org-mode
+  '(auto-revert-mode font-lock-mode undo-tree-mode visible-mark-mode ligature-mode flycheck-mode hi-lock-mode git-gutter-mode buffer-face-mode org-modern-mode vimish-fold-mode company-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 8) (buffer-display-time) (buffer-file-coding-system . undecided-unix) (truncate-lines . t))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/gio/Dropbox/Local/data/org/all/read.org"
+  "read.org"
+  'org-mode
+  '(auto-revert-mode font-lock-mode undo-tree-mode visible-mark-mode ligature-mode flycheck-mode hi-lock-mode git-gutter-mode buffer-face-mode org-modern-mode vimish-fold-mode company-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 8) (buffer-display-time) (buffer-file-coding-system . undecided-unix) (truncate-lines . t))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/gio/Dropbox/Local/data/org/all/dots.org"
+  "dots.org"
+  'org-mode
+  '(auto-revert-mode font-lock-mode undo-tree-mode visible-mark-mode ligature-mode flycheck-mode hi-lock-mode git-gutter-mode buffer-face-mode org-modern-mode vimish-fold-mode company-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 8) (buffer-display-time) (buffer-file-coding-system . undecided-unix) (truncate-lines . t))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/gio/work/bu/org-info/todo.org"
+  "todo.org"
+  'org-mode
+  '(auto-revert-mode font-lock-mode undo-tree-mode visible-mark-mode ligature-mode flycheck-mode hi-lock-mode git-gutter-mode buffer-face-mode org-modern-mode vimish-fold-mode company-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 8) (buffer-display-time) (buffer-file-coding-system . undecided-unix) (truncate-lines . t))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/home/gio/work/bv/box-up/doc/up/7.LM/om/300/_styles/_LLM_Template_.md"
+  "_LLM_Template_.md"
+  'markdown-mode
+  '(auto-revert-mode font-lock-mode eldoc-mode undo-tree-mode visible-mark-mode ligature-mode flycheck-mode hi-lock-mode vimish-fold-mode git-gutter-mode pandoc-mode company-mode)
+  184
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 4) (buffer-display-time 26945 32218 582759 111000) (buffer-file-coding-system . undecided-unix) (overwrite-mode) (truncate-lines . t))
+  '((mark-ring nil)))
+
