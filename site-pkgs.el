@@ -4321,50 +4321,74 @@ Version: 2024-01-18"
 ;; #+NAME: lang-ruby
 
 ;; [[file:site-pkgs.org::lang-ruby][lang-ruby]]
-  ;; ---( ruby )--------------------------------------------------------------
+;; ---( ruby )--------------------------------------------------------------
 
-  (use-package ruby-mode
-    :mode ("\\.rb\\'" . ruby-mode)
-    :interpreter ("ruby" . ruby-mode)
-    ;; :functions inf-ruby-keys
-    ;; :config
-    ;; (use-package yari
-    ;;   :init
-    ;;   (progn
-    ;;     (defvar yari-helm-source-ri-pages
-    ;;       '((name . "RI documentation")
-    ;;         (candidates . (lambda () (yari-ruby-obarray)))
-    ;;         (action ("Show with Yari" . yari))
-    ;;         (candidate-number-limit . 300)
-    ;;         (requires-pattern . 2)
-    ;;         "Source for completing RI documentation."))
-    ;;     (defun helm-yari (&optional rehash)
-    ;;       (interactive (list current-prefix-arg))
-    ;;       (when current-prefix-arg (yari-ruby-obarray rehash))
-    ;;       (helm 'yari-helm-source-ri-pages (yari-symbol-at-point)))))
-    ;; (defun my-ruby-smart-return ()
-    ;;   (interactive)
-    ;;   (when (memq (char-after) '(?\| ?\" ?\'))
-    ;;     (forward-char))
-    ;;   (call-interactively 'newline-and-indent))
-    ;; (defun my-ruby-mode-hook ()
-    ;;   (require 'inf-ruby)
-    ;;   (inf-ruby-keys)
-    ;;   (bind-key "<return>" 'my-ruby-smart-return ruby-mode-map)
-    ;;   (bind-key "C-h C-i" 'helm-yari ruby-mode-map))
-    ;; (add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
-    )
+(use-package ruby-mode
+  :mode ("\\.rb\\'" . ruby-mode)
+  :interpreter ("ruby" . ruby-mode)
+  ;; :functions inf-ruby-keys
+  ;; :config
+  ;; (use-package yari
+  ;;   :init
+  ;;   (progn
+  ;;     (defvar yari-helm-source-ri-pages
+  ;;       '((name . "RI documentation")
+  ;;         (candidates . (lambda () (yari-ruby-obarray)))
+  ;;         (action ("Show with Yari" . yari))
+  ;;         (candidate-number-limit . 300)
+  ;;         (requires-pattern . 2)
+  ;;         "Source for completing RI documentation."))
+  ;;     (defun helm-yari (&optional rehash)
+  ;;       (interactive (list current-prefix-arg))
+  ;;       (when current-prefix-arg (yari-ruby-obarray rehash))
+  ;;       (helm 'yari-helm-source-ri-pages (yari-symbol-at-point)))))
+  ;; (defun my-ruby-smart-return ()
+  ;;   (interactive)
+  ;;   (when (memq (char-after) '(?\| ?\" ?\'))
+  ;;     (forward-char))
+  ;;   (call-interactively 'newline-and-indent))
+  ;; (defun my-ruby-mode-hook ()
+  ;;   (require 'inf-ruby)
+  ;;   (inf-ruby-keys)
+  ;;   (bind-key "<return>" 'my-ruby-smart-return ruby-mode-map)
+  ;;   (bind-key "C-h C-i" 'helm-yari ruby-mode-map))
+  ;; (add-hook 'ruby-mode-hook 'my-ruby-mode-hook)
+  )
 
-  ;; ---( puppet )--------------------------------------------------------------
+;; ---( puppet )--------------------------------------------------------------
 
-  (use-package puppet-mode
-    :ensure t
-    :mode ("\\.pp$" . puppet-mode)
-    ;; :config
-    ;; (use-package puppet-ext
-    ;;   :ensure t)
-    )
+(use-package puppet-mode
+  :ensure t
+  :mode ("\\.pp$" . puppet-mode)
+  ;; :config
+  ;; (use-package puppet-ext
+  ;;   :ensure t)
+  )
 ;; lang-ruby ends here
+
+;; Lang: Lua
+;; #+NAME: lang-lua
+
+;; [[file:site-pkgs.org::lang-lua][lang-lua]]
+;; ---( lua )--------------------------------------------------------------
+
+(use-package lua-mode
+  :ensure t
+  :defer t
+  :mode ("\\.lua\\'")
+  :config
+  ;;
+  )
+
+;; (use-package lua-mode
+;;   :config (progn
+;;             (setq lua-indent-level 4)
+;;             (use-package lua-block
+;;               :config (lua-block-mode t)))
+;;   :mode (("\\.rockspec" . lua-mode)
+;;          ("\\.busted" . lua-mode)
+;;          ("\\.slua" . lua-mode)))
+;; lang-lua ends here
 
 ;; Lang: Prolog
 ;; #+NAME: lang-prolog

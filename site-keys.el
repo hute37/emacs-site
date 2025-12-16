@@ -509,14 +509,14 @@
     ))
  )
 
-(global-set-key [(meta f9)] 'projectile-run-vterm )
+(global-set-key [(shift meta f9)] 'projectile-run-vterm )
 
 ;;(global-set-key [(shift meta f9)] 'mode-compile-kill )
 ;;(global-set-key [(meta f9)] 'mode-compile )
 ;;(global-set-key [(meta f9)] 'recompile )
 ;;(global-set-key [(shift meta f9)] 'compile)
 ;;(global-set-key [(meta f9)] 'shell)
-(global-set-key [(shift meta f9)] 'list-processes)
+(global-set-key [(meta f9)] 'list-processes)
 
 
 ;; ---( F10: UI )----------------------------------------------------
