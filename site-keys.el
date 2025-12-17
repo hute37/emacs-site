@@ -571,7 +571,7 @@
 ;; ---( F12: Frames )----------------------------------------------------
 
 ;; (global-set-key [f12] 'make-frame )
-(global-set-key [f12] 'h7/make-maximized-frame )
+(global-set-key [f12] 'h7/make-note-frame )
 (global-set-key [(control f12)] 'delete-frame )
 (global-set-key [(shift f12)] 'buffer-menu )
 (global-set-key [(meta f12)] 'toggle-frame-maximized )

@@ -348,7 +348,40 @@
     (interactive)
     (let ((new-frame (make-frame)))
       (select-frame new-frame)
-      (set-frame-parameter nil 'fullscreen 'maximized)))  
+      
+      (set-frame-parameter nil 'fullscreen 'maximized)))
+  
+  (defun h7/make-scratch-frame ()
+    "Create a new frame and maximize it."
+    (interactive)
+    (let ((new-frame (make-frame)))
+      (select-frame new-frame)
+      (switch-to-buffer "*scratch*")))  
+
+  (defun h7/make-eshell-frame ()
+    "Create a new frame and maximize it."
+    (interactive)
+    (let ((new-frame (make-frame)))
+      (select-frame new-frame)
+      (eshell)))  
+
+  (defun h7/make-vterm-frame ()
+    "Create a new frame and maximize it."
+    (interactive)
+    (let ((new-frame (make-frame)))
+      (select-frame new-frame)
+      (vterm)))  
+
+  (defun h7/make-note-frame ()
+    "Create a new frame with a new buffer inheriting the current `default-directory`."
+    (interactive)
+    (let ((inherited-dir default-directory)) ; Capture current path
+      (with-selected-frame (make-frame)       ; Create and select new frame
+        (let ((new-buf (generate-new-buffer "*notes.md*"))) ; Create temp buffer
+          (with-current-buffer new-buf
+            (setq default-directory inherited-dir) ; Set the inherited path
+            (gfm-mode))        ; Optional: set major mode
+          (switch-to-buffer new-buf)))))           ; Display it in the new frame  
 
   ;; ---( Outline )------------------------------------------------------------------
 
