@@ -409,23 +409,28 @@
 ;;            (hs-toggle-hiding)
 ;; 	   (hs-minor-mode nil)))))
 
+;; (global-set-key [(control f2)]
+;;     #'(lambda () (interactive)
+;;          (progn
+;;            ;;(vimish-fold-delete-all)
+;;            (vimish-fold-from-marks)
+;; 	   (vimish-fold-toggle))))
+;; ;; (global-set-key [(shift control f2)]
+;; ;;     #'(lambda () (interactive)
+;; ;;          (progn
+;; ;;            (vimish-fold-from-marks)
+;; ;;            ;; (outline-hide-sublevels 1)
+;; ;; 	   (vimish-fold-refold-all))))
+
 (global-set-key [(control f2)]
     #'(lambda () (interactive)
          (progn
-           ;;(vimish-fold-delete-all)
-           (vimish-fold-from-marks)
-	   (vimish-fold-toggle))))
-;; (global-set-key [(shift control f2)]
-;;     #'(lambda () (interactive)
-;;          (progn
-;;            (vimish-fold-from-marks)
-;;            ;; (outline-hide-sublevels 1)
-;; 	   (vimish-fold-refold-all))))
+           (outline-hide-sublevels 1))))
 
 (global-set-key [(shift control f2)]
     #'(lambda () (interactive)
          (progn
-           (outline-hide-sublevels 1))))
+           (outline-show-all))))
 
 (global-set-key [(meta f2)]	'bookmark-bmenu-list)
 (global-set-key [(hyper f2)]	'bookmark-bmenu-list)
@@ -444,15 +449,20 @@
 (global-set-key [(meta f3)] 'occur )
 (global-set-key [(shift meta f3)] 'function-key-error)
 
-;; ---( F4: Macro )----------------------------------------------------
+;; ---( F4: Fold )----------------------------------------------------
 
-(global-set-key [f4] 'call-last-kbd-macro)
-(global-set-key [(shift f4)] 'start-or-end-kbd-macro )
-(global-set-key [(control f4)] 'edit-last-kbd-macro )
-(global-set-key [(meta f4)] 'kbd-macro-query )
-(global-set-key [(shift meta f4)] 'edit-last-kbd-macro )
-;; (global-set-key [(control f4)] 'start-kbd-macro )
-;; (global-set-key [(meta f4)] 'end-kbd-macro )
+(global-set-key [f4] 'vimish-fold-toggle) ;; or 'vimish-fold is on selected regzion
+(global-set-key [(shift f4)] 'hydra-fold/body)
+(global-set-key [(control f4)] 'vimish-fold-refold-all-from-marks)
+(global-set-key [(shift control f4)] 'vimish-fold-unfold-all)
+(global-set-key [(shift meta f4)] 'vimish-fold)
+;; (global-set-key [f4] 'call-last-kbd-macro)
+;; (global-set-key [(shift f4)] 'start-or-end-kbd-macro )
+;; (global-set-key [(control f4)] 'edit-last-kbd-macro )
+;; (global-set-key [(meta f4)] 'kbd-macro-query )
+;; (global-set-key [(shift meta f4)] 'edit-last-kbd-macro )
+;; ;; (global-set-key [(control f4)] 'start-kbd-macro )
+;; ;; (global-set-key [(meta f4)] 'end-kbd-macro )
 
 ;; ---( F5: Search/Grep )----------------------------------------------------
 

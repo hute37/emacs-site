@@ -382,6 +382,23 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
       (select-frame new-frame)
       (set-frame-parameter nil 'fullscreen 'maximized)))  
 
+  ;; ---( Outline )------------------------------------------------------------------
+
+  (defun h7/outline-show-level-1 ()
+    "command alias for (outline-hide-sublevels 1)."
+    (interactive)
+    (outline-hide-sublevels 1))  
+
+  (defun h7/outline-show-level-2 ()
+    "command alias for (outline-hide-sublevels 2)."
+    (interactive)
+    (outline-hide-sublevels 2))  
+
+  (defun h7/outline-show-level-3 ()
+    "command alias for (outline-hide-sublevels 3)."
+    (interactive)
+    (outline-hide-sublevels 3))  
+
   )
 
 ;; ---( autosave/backups )-------------------------------------------------------
@@ -8002,13 +8019,13 @@ With a prefix ARG, remove start location."
        [_nf_] open      [_Nc_] clear      [_bc_] cite   [_wn_] open    
        [_ni_] link      [_Nr_] filter     [_br_] ref    [_wd_] dwim
        [_nI_] links     [_Nk_] in by key  [_bo_] note   [_we_] ref-entry
-       [_nk_] key add   [_No_] out by key             [_wa_] add cite
-       [_nK_] key del   [_Ne_] to dired               [_wk_] del cite
-       [_nu_] rename                                [_wr_] find ref
-       [_nl_] rev-find  [_ll_] consult                [_wl_] link ref
-       [_nb_] rev-list                              [_wf_] find cite
-                                                  [_wx_] nocite
-                                                  [_wy_] cite-nocite
+       [_nk_] key add   [_No_] out by key               [_wa_] add cite
+       [_nK_] key del   [_Ne_] to dired                 [_wk_] del cite
+       [_nu_] rename                                    [_wr_] find ref
+       [_nl_] rev-find  [_ll_] consult                  [_wl_] link ref
+       [_nb_] rev-list                                  [_wf_] find cite
+                                                        [_wx_] nocite
+                                                        [_wy_] cite-nocite
   --------------------------------------------------------------------------------
               "
               ("nn" denote)
@@ -8065,9 +8082,9 @@ With a prefix ARG, remove start location."
      Move to Window         Switch                  Do                 │ Buffers │
   ╭────────────────────────────────────────────────────────────────────┴─────────╯
            ^_k_^          [_b_] switch (ido)       [_d_] kill the buffer
-           ^^↑^^          [_i_] ibuffer            [_r_] toggle read-only mode
-       _h_ ←   → _l_      [_a_] alternate          [_u_] revert buffer changes
-           ^^↓^^          [_s_] switch (helm)      [_w_] save buffer
+           ^^↑^^         [_i_] ibuffer            [_r_] toggle read-only mode
+       _h_ ←   → _l_    [_a_] alternate          [_u_] revert buffer changes
+           ^^↓^^         [_s_] switch (helm)      [_w_] save buffer
            ^_j_^
   --------------------------------------------------------------------------------
               "
@@ -8211,23 +8228,33 @@ With a prefix ARG, remove start location."
 
     ;; ---( hydra-fold )--------------------------------------------------------------
 
-    (defhydra hydra-fold (:color red :hint nil)
+    (defhydra hydra-fold (:color blue :hint nil)
       "
-         _t_: toggle  _n_: next    _p_: previous
-         _f_: fold    _u_: unfold  _r_: refold  _d_: delete
-         _T_: Toggle  _U_: Unfold  _R_: Refold  _D_: Delete    
+         Outline         VF:move      VF:local       VF:global            │ Fold │
+  ╭───────────────────────────────────────────────────────────────────────┴──────╯
+         _1_: level-1    _n_: next    _t_: toggle    _T_: Toggle
+         _2_: level-2    _p_: prev    _f_: fold      _M_: Marks
+         _3_: level-3                 _r_: refold    _R_: Refold
+                                      _u_: unfold    _U_: Unfold
+         _0_: All                     _d_: delete    _D_: Delete
+  --------------------------------------------------------------------------------
       "
+      ("0" outline-show-all)
+      ("1" h7/outline-show-level-1)
+      ("2" h7/outline-show-level-2)
+      ("3" h7/outline-show-level-3)
       ("f" vimish-fold)
       ("u" vimish-fold-unfold)
       ("r" vimish-fold-refold)
-      ("t" vimish-fold-toggle)
+      ("t" vimish-fold-toggle :color red)
       ("d" vimish-fold-delete)
       ("U" vimish-fold-unfold-all)
       ("R" vimish-fold-refold-all)
       ("T" vimish-fold-toggle-all)
       ("D" vimish-fold-delete-all)
-      ("n" vimish-fold-next-fold)
-      ("p" vimish-fold-previous-fold)
+      ("n" vimish-fold-next-fold :color red)
+      ("p" vimish-fold-previous-fold :color red)
+      ("M" vimish-fold-refold-all-from-marks)
       ("\\" hydra-of-hydras/body "back")
       ("<tab>" hydra-of-hydras/body "back")
       ("<ESC>" nil "quit"))
