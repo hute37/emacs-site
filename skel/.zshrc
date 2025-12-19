@@ -205,7 +205,10 @@ export SHELL=$(which zsh)
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 
-unset GREP_OPTIONS
+#unset GREP_OPTIONS
+export GREP_COLORS="mt=${GREP_COLOR:-'37;45'}"
+
+
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
     [ -f /etc/profile.d/vte.sh ] && source /etc/profile.d/vte.sh
 fi
@@ -247,6 +250,17 @@ if [ -z "$NVM_DIR" ] && [ -d ~/.nvm ]; then
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 fi
+
+
+if [ -z "$FNM_DIR" ] && [ -d ~/.fnm ]; then
+
+    export FNM_DIR="$HOME/.fnm"
+    export PATH=$FNM_DIR:$PATH
+
+    eval "$(fnm env --use-on-cd --shell zsh)"
+
+fi
+
 
 ### }}}
 
