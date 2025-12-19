@@ -3294,27 +3294,43 @@ Version: 2024-01-18"
 ;; #+NAME: markdown
 
 ;; [[file:site-pkgs.org::markdown][markdown]]
-  ;; ---( markdown )--------------------------------------------------------------
+;; ---( markdown )--------------------------------------------------------------
 
-  (use-package markdown-mode
-    :ensure t
-    :commands (markdown-mode gfm-mode)
-    :mode (("README\\.md\\'" . gfm-mode)
-           ("\\.md\\'" . markdown-mode)
-           ("\\.markdown\\'" . markdown-mode))
-    :init (setq markdown-command "multimarkdown"))
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . gfm-mode)
+         ("\\.cm\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
 
-  ;; (use-package markdown-mode
-  ;;   :ensure t
-  ;;   :mode ("\\.\\(m\\(ark\\)?down\\|md\\)$" . markdown-mode)
-  ;;   :init
-  ;;   (add-hook 'markdown-mode-hook 'spell-check-and-wrap-at-80)
-  ;;   :config
-  ;;   (progn
-  ;;     (let ((preferred-markdown-impl "peg-markdown"))
-  ;;       (when (executable-find preferred-markdown-impl)
-  ;;         (setq markdown-command preferred-markdown-impl)))))
+;; (use-package markdown-mode
+;;   :ensure t
+;;   :mode ("\\.\\(m\\(ark\\)?down\\|md\\)$" . markdown-mode)
+;;   :init
+;;   (add-hook 'markdown-mode-hook 'spell-check-and-wrap-at-80)
+;;   :config
+;;   (progn
+;;     (let ((preferred-markdown-impl "peg-markdown"))
+;;       (when (executable-find preferred-markdown-impl)
+;;         (setq markdown-command preferred-markdown-impl)))))
 
+
+;; ---( markdownlint )--------------------------------------------------------------
+
+;; markdownlint-cli2
+;; @see: https://claude.ai/share/0d9878e9-e353-4d70-8577-681d2e8b97d0
+
+;; (use-package add-node-modules-path
+;;   :ensure t
+;;   :config
+;;   (setq add-node-modules-path-command "echo \"$(npm root)/.bin\"")
+;;   :hook
+;;   (markdown-mode . add-node-modules-path))
+
+
+;; ---( pandoc )--------------------------------------------------------------
 
 (use-package pandoc-mode
   :ensure t
