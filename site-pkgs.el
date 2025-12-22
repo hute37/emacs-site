@@ -73,6 +73,7 @@
   ;; @see: https://github.com/PythonNut/quark-emacs
   ;; @see: https://tecosaur.github.io/emacs-config/config.html
   ;; @see: https://pages.sachachua.com/.emacs.d/Sacha.html
+  ;; @see: https://github.com/captainflasmr/Emacs/blob/main/emacs--init-all.org
   ;; @see: 
 
   ;; }}}  .references
@@ -1395,14 +1396,39 @@
 ;; ;;;////////////////////////////////////////////////////////////////
 ;; comp-ap-begin ends here
 
+;; Capf
+;; #+NAME: comp-ap-capf
+
+;; [[file:site-pkgs.org::comp-ap-capf][comp-ap-capf]]
+  ;; ---( autosuggest )--------------------------------------------------------------
+
+  ;; @see: https://www.dyerdwelling.family/emacs/20240827210257-emacs--enhancing-eshell-to-be-more-fishy/
+  ;; @see: https://github.com/captainflasmr/Emacs/blob/main/emacs--init-all.org
+
+(use-package cape
+  :ensure t
+  )
+
+(use-package capf-autosuggest
+  :ensure t
+  :hook
+  ;;(eshell-mode . capf-autosuggest-mode)
+  (shell-mode . capf-autosuggest-mode))
+
+(use-package esh-autosuggest
+  :ensure t
+  :hook (eshell-mode . esh-autosuggest-mode)
+  )
+;; comp-ap-capf ends here
+
 ;; Corfu
 ;; #+NAME: comp-ap-corfu
 
 ;; [[file:site-pkgs.org::comp-ap-corfu][comp-ap-corfu]]
-  ;; ---( corfu )--------------------------------------------------------------
+;; ---( corfu )--------------------------------------------------------------
 
-  ;; @see: https://github.com/minad/corfu/
-  ;; @see: https://protesilaos.com/emacs/dotemacs#h:15edf2c3-4419-4101-928a-6e224958a741
+;; @see: https://github.com/minad/corfu/
+;; @see: https://protesilaos.com/emacs/dotemacs#h:15edf2c3-4419-4101-928a-6e224958a741
 
 (use-package corfu
   :ensure t
@@ -1441,7 +1467,7 @@
   :bind ("C-c C-SPC" . company-complete)
   :config
   (setq company-idle-delay 0.3)
-  (global-company-mode t)  
+  (global-company-mode nil)  
   :hook (
          (text-mode . company-mode)
          (prog-mode . company-mode)
@@ -2509,227 +2535,373 @@ Version: 2024-01-18"
   ;; ;;;////////////////////////////////////////////////////////////////
 ;; shell-begin ends here
 
+;; vterm
+;; #+NAME: shell-vterm
+
+;; [[file:site-pkgs.org::shell-vterm][shell-vterm]]
+;; ---( vterm )--------------------------------------------------------------
+
+(cond
+ ((string-lessp emacs-version "27.1") ;;
+  (progn
+    (message "SITE:term-legacy, ...")
+    (setq h7/term-vterm-enabled nil)
+    (message "SITE:term-legacy.")
+    ))
+ (t
+  (progn
+    (message "SITE:term-libvterm, ...")
+
+    (use-package vterm
+      :ensure t
+      :bind (("C-<F9>" . vterm-here)
+             ;; :straight (:post-build (cl-letf (((symbol-function #'pop-to-buffer)
+             ;;                        (lambda (buffer) (with-current-buffer buffer (message (buffer-string))))))
+             ;;               (setq vterm-always-compile-module t)
+             ;;               (require 'vterm)))
+             :map vterm-mode-map
+             ("C-v" . vterm-yank)
+             ("S-<insert>" . vterm-yank)
+             ([kp-insert] . vterm-yank-primary)
+             ([kp-enter] . vterm-yank)
+             ([kp-divide] . vterm-yank-pop)
+             ([kp-multiply] . vterm-copy-mode))
+      :config
+      (setq vterm-max-scrollback 18000)
+      :init
+      (message "vterm::init >")
+      (setq vterm-module-cmake-args "-DUSE_SYSTEM_LIBVTERM=no")
+
+      (defun vterm-here (&optional prefix)
+        "Opens up a new shell in the directory associated with the
+       current buffer's file. The vterm is renamed to match that
+       directory to make multiple vterm windows easier."
+        (interactive "P")
+        (let* ((parent (if (buffer-file-name)
+                           (file-name-directory (buffer-file-name))
+                         default-directory))
+               ;;(name   (car (last (split-string parent "/" t))))
+               (name (s-join
+                      "/"
+                      (last
+                       (s-split
+                        "/"
+                        (abbreviate-file-name parent))
+                       5)))
+               )
+
+          (cond
+           ((equal current-prefix-arg nil)   ; no C-u
+            (message "vterm-here - no C-u"))
+           ((equal current-prefix-arg '(4))  ; C-u
+            (split-window-horizontally (- (/ (window-total-width) 2)))
+            (other-window 1)
+            (message "vterm-here - C-u"))
+           ((equal current-prefix-arg '(16))     ; C-u C-u
+            (split-window-vertically (- (/ (window-total-height) 3)))
+            (other-window 1)
+            (message "vterm-here - C-u C-u"))
+           )        
+          
+          (vterm (concat "*vterm: " name "*"))
+          ))
+
+      
+      (message "vterm::init <")
+
+      )
+
+
+    (use-package multi-vterm
+      :bind (("C-S-<f9>" . multi-vterm)
+             :map vterm-mode-map
+             ("C-<f7>" . multi-vterm-prev)
+             ("C-<f8>" . multi-vterm-next))
+      :ensure t)
+
+    ;; @see: https://lupan.pl/dotemacs/
+    ;; (use-package vterm-toggle
+    ;;   :bind (("H-z" . vterm-toggle)
+    ;;          ("H-F" . vterm-toggle-forward)
+    ;;          ("H-B" . vterm-toggle-backward)))
+
+    (setq h7/term-vterm-enabled t)
+
+    (message "SITE:term-libvterm.")
+    ))
+ )
+
+
+;; ---( multi-term )--------------------------------------------------------------
+
+;; (use-package multi-term
+;;   :disabled t
+;;   :bind (("C-. t" . multi-term-next)
+;;          ("C-. T" . multi-term))
+;;   :init
+;;   (defun screen ()
+;;     (interactive)
+;;     (let (term-buffer)
+;;       ;; Set buffer.
+;;       (setq term-buffer
+;;             (let ((multi-term-program (executable-find "screen"))
+;;                   (multi-term-program-switches "-DR"))
+;;               (multi-term-get-buffer)))
+;;       (set-buffer term-buffer)
+;;       ;; Internal handle for `multi-term' buffer.
+;;       (multi-term-internal)
+;;       ;; Switch buffer
+;;       (switch-to-buffer term-buffer)))
+;;   :config
+;;   (defalias 'my-term-send-raw-at-prompt 'term-send-raw)
+;;   (defun my-term-end-of-buffer ()
+;;     (interactive)
+;;     (call-interactively #'end-of-buffer)
+;;     (if (and (eobp) (bolp))
+;;         (delete-char -1)))
+;;   (require 'term)
+;;   (defadvice term-process-pager (after term-process-rebind-keys activate)
+;;     (define-key term-pager-break-map "\177" 'term-pager-back-page)))
+;; shell-vterm ends here
+
 ;; eshell
 ;; #+NAME: shell-eshell
 
 ;; [[file:site-pkgs.org::shell-eshell][shell-eshell]]
-  ;; ---( eshell )--------------------------------------------------------------
+;; ---( eshell )--------------------------------------------------------------
 
-  ;; @see: https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/eshell
-  ;;
-  ;; @see: https://config.phundrak.com/emacs/packages/emacs-builtin.html#eshell
-  ;;
-  ;; ```
-  ;; cd /usr/share/emacs/[23]*/lisp/eshell
-  ;; he=4; ls *.gz | xargs -I{} bash -c 'echo "#>>({})#####"; zcat {}; echo "#<<({})#####"' | less -SRX
-  ;; he=5; ls *.gz | xargs -I{} bash -c 'zcat {} | bat -l lisp --file-name={} --color=always;' | less -SRX
-  ;; ```
+;; @see: https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/eshell
+;;
+;; @see: https://config.phundrak.com/emacs/packages/emacs-builtin.html#eshell
+;;
+;; ```
+;; cd /usr/share/emacs/[23]*/lisp/eshell
+;; he=4; ls *.gz | xargs -I{} bash -c 'echo "#>>({})#####"; zcat {}; echo "#<<({})#####"' | less -SRX
+;; he=5; ls *.gz | xargs -I{} bash -c 'zcat {} | bat -l lisp --file-name={} --color=always;' | less -SRX
+;; ```
 
-  ;; (use-package esh-toggle
-  ;;   :ensure t
-  ;;   :bind ("C-x C-h" . eshell-toggle))
-  (use-package xterm-color
-    :ensure t
-    :commands (xterm-color-filter))
+;; (use-package esh-toggle
+;;   :ensure t
+;;   :bind ("C-x C-h" . eshell-toggle))
+(use-package xterm-color
+  :ensure t
+  :commands (xterm-color-filter))
 
-  (use-package eshell
-    :after (esh-mode)
-    ;;:after (esh-mode xterm-color)
-    ;;:after (xterm-color)
-    :ensure t
-    :commands (eshell eshell-command)
-    :preface
-    (message "eshell::preface >")
-
-
-    (defun eshell-initialize ()
-      (message "eshell:initialize >")
-      (defun eshell-spawn-external-command (beg end)
-        "Parse and expand any history references in current input."
-        (save-excursion
-          (goto-char end)
-          (when (looking-back "&!" beg)
-            (delete-region (match-beginning 0) (match-end 0))
-            (goto-char beg)
-            (insert "spawn "))))
-      (add-hook 'eshell-expand-input-functions 'eshell-spawn-external-command)
-      (defun ss (server)
-        (interactive "sServer: ")
-        (call-process "spawn" nil nil nil "ss" server))
-
-      (eval-after-load "em-unix"
-        '(progn
-           (unintern 'eshell/su nil)
-           (unintern 'eshell/sudo nil)))
+(use-package eshell
+  :after (esh-mode)
+  ;;:after (esh-mode xterm-color)
+  ;;:after (xterm-color)
+  :ensure t
+  :commands (eshell eshell-command)
+  :preface
+  (message "eshell::preface >")
 
 
-      (message "eshell:initialize <"))
-    
-    (message "eshell:helpers >")
+  (defun eshell-initialize ()
+    (message "eshell:initialize >")
+    (defun eshell-spawn-external-command (beg end)
+      "Parse and expand any history references in current input."
+      (save-excursion
+        (goto-char end)
+        (when (looking-back "&!" beg)
+          (delete-region (match-beginning 0) (match-end 0))
+          (goto-char beg)
+          (insert "spawn "))))
+    (add-hook 'eshell-expand-input-functions 'eshell-spawn-external-command)
+    (defun ss (server)
+      (interactive "sServer: ")
+      (call-process "spawn" nil nil nil "ss" server))
 
-    (defun eshell-new ()
-      "Open a new instance of eshell."
-      (interactive)
-      (eshell 'N))
-    
+    (eval-after-load "em-unix"
+      '(progn
+         (unintern 'eshell/su nil)
+         (unintern 'eshell/sudo nil)))
 
-    (defun eshell-here (&optional prefix)
-      "Opens up a new shell in the directory associated with the
+
+    (message "eshell:initialize <"))
+  
+  (message "eshell:helpers >")
+
+  (defun eshell-new ()
+    "Open a new instance of eshell."
+    (interactive)
+    (eshell 'N))
+  
+
+  (defun eshell-here (&optional prefix)
+    "Opens up a new shell in the directory associated with the
        current buffer's file. The eshell is renamed to match that
        directory to make multiple eshell windows easier."
-      (interactive "P")
-      (let* ((parent (if (buffer-file-name)
-                         (file-name-directory (buffer-file-name))
-                       default-directory))
-             (name   (car (last (split-string parent "/" t)))))
+    (interactive "P")
+    (let* ((parent (if (buffer-file-name)
+                       (file-name-directory (buffer-file-name))
+                     default-directory))
+           (name   (car (last (split-string parent "/" t)))))
 
-        (cond
-         ((equal current-prefix-arg nil)   ; no C-u
-          (message "eshell-here - no C-u"))
-         ((equal current-prefix-arg '(4))  ; C-u
-          (split-window-horizontally (- (/ (window-total-width) 2)))
-          (other-window 1)
-          (message "eshell-here - C-u"))
-         ((equal current-prefix-arg '(16))     ; C-u C-u
-          (split-window-vertically (- (/ (window-total-height) 3)))
-          (other-window 1)
-          (message "eshell-here - C-u C-u"))
-          )        
-        
-        (eshell "new")
-        (rename-buffer (concat "*eshell: " name "*"))
-        ;;(insert (concat "ls"))
-        ;;(eshell-send-input)
-        ))
+      (cond
+       ((equal current-prefix-arg nil)   ; no C-u
+        (message "eshell-here - no C-u"))
+       ((equal current-prefix-arg '(4))  ; C-u
+        (split-window-horizontally (- (/ (window-total-width) 2)))
+        (other-window 1)
+        (message "eshell-here - C-u"))
+       ((equal current-prefix-arg '(16))     ; C-u C-u
+        (split-window-vertically (- (/ (window-total-height) 3)))
+        (other-window 1)
+        (message "eshell-here - C-u C-u"))
+       )        
+      
+      (eshell "new")
+      (rename-buffer (concat "*eshell: " name "*"))
+      ;;(insert (concat "ls"))
+      ;;(eshell-send-input)
+      ))
 
-    (defun ha/eshell-host-regexp (regexp)
-      "Returns a particular regular expression based on symbol, REGEXP"
-      (let* ((user-regexp      "\\(\\([[:alpha:].]+\\)@\\)?")
-             (tramp-regexp     "\\b/ssh:[:graph:]+")
-             (ip-char          "[[:digit:]]")
-             (ip-plus-period   (concat ip-char "+" "\\."))
-             (ip-regexp        (concat "\\(\\(" ip-plus-period "\\)\\{3\\}" ip-char "+\\)"))
-             (host-char        "[[:alpha:][:digit:]-]")
-             (host-plus-period (concat host-char "+" "\\."))
-             (host-regexp      (concat "\\(\\(" host-plus-period "\\)+" host-char "+\\)"))
-             (horrific-regexp  (concat "\\b"
-                                       user-regexp ip-regexp
-                                       "\\|"
-                                       user-regexp host-regexp
-                                       "\\b")))
-        (cond
-         ((eq regexp 'tramp) tramp-regexp)
-         ((eq regexp 'host)  host-regexp)
-         ((eq regexp 'full)  horrific-regexp))))    
+  (defun ha/eshell-host-regexp (regexp)
+    "Returns a particular regular expression based on symbol, REGEXP"
+    (let* ((user-regexp      "\\(\\([[:alpha:].]+\\)@\\)?")
+           (tramp-regexp     "\\b/ssh:[:graph:]+")
+           (ip-char          "[[:digit:]]")
+           (ip-plus-period   (concat ip-char "+" "\\."))
+           (ip-regexp        (concat "\\(\\(" ip-plus-period "\\)\\{3\\}" ip-char "+\\)"))
+           (host-char        "[[:alpha:][:digit:]-]")
+           (host-plus-period (concat host-char "+" "\\."))
+           (host-regexp      (concat "\\(\\(" host-plus-period "\\)+" host-char "+\\)"))
+           (horrific-regexp  (concat "\\b"
+                                     user-regexp ip-regexp
+                                     "\\|"
+                                     user-regexp host-regexp
+                                     "\\b")))
+      (cond
+       ((eq regexp 'tramp) tramp-regexp)
+       ((eq regexp 'host)  host-regexp)
+       ((eq regexp 'full)  horrific-regexp))))    
 
-    (defun eshell-there (host)
-      "Creates an eshell session that uses Tramp to automatically
+  (defun eshell-there (host)
+    "Creates an eshell session that uses Tramp to automatically
        connect to a remote system, HOST.  The hostname can be either the
        IP address, or FQDN, and can specify the user account, as in
        root@blah.com. HOST can also be a complete Tramp reference."
-      (interactive "sHost: ")
+    (interactive "sHost: ")
 
-      (let* ((default-directory
-              (cond
-               ((string-match-p "^/" host) host)
+    (let* ((default-directory
+            (cond
+             ((string-match-p "^/" host) host)
 
-               ((string-match-p (ha/eshell-host-regexp 'full) host)
-                (string-match (ha/eshell-host-regexp 'full) host) ;; Why!?
-                (let* ((user1 (match-string 2 host))
-                       (host1 (match-string 3 host))
-                       (user2 (match-string 6 host))
-                       (host2 (match-string 7 host)))
-                  (if host1
-                      (ha/eshell-host->tramp user1 host1)
-                    (ha/eshell-host->tramp user2 host2))))
+             ((string-match-p (ha/eshell-host-regexp 'full) host)
+              (string-match (ha/eshell-host-regexp 'full) host) ;; Why!?
+              (let* ((user1 (match-string 2 host))
+                     (host1 (match-string 3 host))
+                     (user2 (match-string 6 host))
+                     (host2 (match-string 7 host)))
+                (if host1
+                    (ha/eshell-host->tramp user1 host1)
+                  (ha/eshell-host->tramp user2 host2))))
 
-               (t (format "/%s:" host)))))
-        (eshell-here)))    
-    
+             (t (format "/%s:" host)))))
+      (eshell-here)))    
+  
     (bind-key "C-!" 'eshell-here)
-    
-    (message "eshell:helpers <")
-    
+    (bind-key "M-r" 'consult-history)
+    (bind-key "M-r" 'consult-history)
+    (bind-key "M-c" 'company-complete)
+  
+  (message "eshell:helpers <")
+  
+  (message "eshell:completion >")
 
-    (message "eshell:builtins >")
+  (setq-local completion-styles '(basic partial-completion))
+  (setq-local corfu-auto nil)
+  (corfu-mode)
+  (setq-local completion-at-point-functions
+              (list (cape-capf-super
+                     #'pcomplete-completions-at-point
+                     #'cape-history)))
+  ;; (define-key eshell-mode-map (kbd "<tab>") #'company-complete)
+ ;; (define-key eshell-hist-mode-map (kbd "M-r") #'consult-history))
+  
 
-    ;; @see: https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/eshell/esh-cmd.el
-    ;; @see: https://github.com/howardabrams/hamacs/blob/main/ha-eshell.org
-    ;; @see: https://github.com/howardabrams/dot-files/blob/master/emacs-eshell.org
+  (message "eshell:completion <")
+  
+  (message "eshell:builtins >")
 
-    (defun eshell/read-file (file-path)
-      (with-temp-buffer
-        (insert-file-contents file-path)
-        (buffer-string)))
+  ;; @see: https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/eshell/esh-cmd.el
+  ;; @see: https://github.com/howardabrams/hamacs/blob/main/ha-eshell.org
+  ;; @see: https://github.com/howardabrams/dot-files/blob/master/emacs-eshell.org
 
-    (defun eshell/do (&rest args)
-      "Execute commands over lst. do chmod -x :: *.csv(x) "
-      (seq-let (cmd lst) (-split-on "::" args)
-        (dolist (file
-                 (flatten-list (append lst)))
-          (add-to-list 'cmd file)
-          (eshell-named-command
-           (car cmd) (cdr cmd)))))
+  (defun eshell/read-file (file-path)
+    (with-temp-buffer
+      (insert-file-contents file-path)
+      (buffer-string)))
 
-    (defun eshell-fn-on-files (fun1 fun2 args)
-      "Call FUN1 on the first element in list, ARGS.
+  (defun eshell/do (&rest args)
+    "Execute commands over lst. do chmod -x :: *.csv(x) "
+    (seq-let (cmd lst) (-split-on "::" args)
+      (dolist (file
+               (flatten-list (append lst)))
+        (add-to-list 'cmd file)
+        (eshell-named-command
+         (car cmd) (cdr cmd)))))
+
+  (defun eshell-fn-on-files (fun1 fun2 args)
+    "Call FUN1 on the first element in list, ARGS.
          Call FUN2 on all the rest of the elements in ARGS."
-      (unless (null args)
-        (let ((filenames (flatten-list args)))
-          (funcall fun1 (car filenames))
-          (when (cdr filenames)
-            (mapcar fun2 (cdr filenames))))
-        ;; Return an empty string, as the return value from `fun1'
-        ;; probably isn't helpful to display in the `eshell' window.
-        ""))
+    (unless (null args)
+      (let ((filenames (flatten-list args)))
+        (funcall fun1 (car filenames))
+        (when (cdr filenames)
+          (mapcar fun2 (cdr filenames))))
+      ;; Return an empty string, as the return value from `fun1'
+      ;; probably isn't helpful to display in the `eshell' window.
+      ""))
 
-    (defun eshell/cab (&rest args)
-      (if args
-          (if (bufferp (car args))
-              (with-current-buffer (car args)
-                (buffer-string))
-            (apply #'eshell/cat args))
-        (eshell/cab (eshell/o))))
+  (defun eshell/cab (&rest args)
+    (if args
+        (if (bufferp (car args))
+            (with-current-buffer (car args)
+              (buffer-string))
+          (apply #'eshell/cat args))
+      (eshell/cab (eshell/o))))
 
-    (defun eshell/o (&rest args)
-      (if (stringp (car args))
-          (get-buffer-create (car args))
-        (get-buffer-create "*scratch*")))
+  (defun eshell/o (&rest args)
+    (if (stringp (car args))
+        (get-buffer-create (car args))
+      (get-buffer-create "*scratch*")))
 
-    (defun eshell/s (&rest files)
-      "Essentially an alias to the `view-file' function."
-      (eshell-fn-on-files 'view-file 'view-file-other-window files))
+  (defun eshell/s (&rest files)
+    "Essentially an alias to the `view-file' function."
+    (eshell-fn-on-files 'view-file 'view-file-other-window files))
 
-    (defalias 'eshell/more 'eshell/s)
+  (defalias 'eshell/more 'eshell/s)
 
-    (defun eshell/e (&rest files)
-      "Essentially an alias to the `find-file' function."
-      (eshell-fn-on-files 'find-file 'find-file-other-window files))
+  (defun eshell/e (&rest files)
+    "Essentially an alias to the `find-file' function."
+    (eshell-fn-on-files 'find-file 'find-file-other-window files))
 
-    (defun eshell/ee (&rest files)
-      "Edit one or more files in another window."
-      (eshell-fn-on-files 'find-file-other-window 'find-file-other-window files))
+  (defun eshell/ee (&rest files)
+    "Edit one or more files in another window."
+    (eshell-fn-on-files 'find-file-other-window 'find-file-other-window files))
 
-    (defun eshell/gst (&rest args)
-      (magit-status (pop args) nil)
-      (eshell/echo))
+  (defun eshell/gst (&rest args)
+    (magit-status (pop args) nil)
+    (eshell/echo))
 
-    (defun eshell/ccat (file)
-      "Like `cat' but output with Emacs syntax highlighting,
+  (defun eshell/ccat (file)
+    "Like `cat' but output with Emacs syntax highlighting,
        as alternative: `find-file-read-only-other-window`."
-      (with-temp-buffer
-        (insert-file-contents file)
-        (let ((buffer-file-name file))
-          (delay-mode-hooks
-            (set-auto-mode)
-            (if (fboundp 'font-lock-ensure)
-                (font-lock-ensure)
-              (with-no-warnings
-                (font-lock-fontify-buffer)))))
-        (buffer-string)))
+    (with-temp-buffer
+      (insert-file-contents file)
+      (let ((buffer-file-name file))
+        (delay-mode-hooks
+          (set-auto-mode)
+          (if (fboundp 'font-lock-ensure)
+              (font-lock-ensure)
+            (with-no-warnings
+              (font-lock-fontify-buffer)))))
+      (buffer-string)))
 
-    (defun eshell/f (filename &optional dir try-count)
-      "Searches for files matching FILENAME in either DIR or the
+  (defun eshell/f (filename &optional dir try-count)
+    "Searches for files matching FILENAME in either DIR or the
        current directory. Just a typical wrapper around the standard
        `find' executable.
 
@@ -2738,392 +2910,271 @@ Version: 2024-01-18"
        If not results were found, it calls the `find' executable up to
        two more times, wrapping the FILENAME pattern in wildcat
        matches. This seems to be more helpful to me."
-      (let* ((cmd (concat
-               (executable-find "find")
-               " " (or dir ".")
-               "      -not -path '*/.git*'"
-               " -and -not -path '*node_modules*'"
-               " -and -not -path '*classes*'"
-               " -and "
-               " -type f -and "
-               "-iname '" filename "'"))
-             (results (shell-command-to-string cmd)))
+    (let* ((cmd (concat
+                 (executable-find "find")
+                 " " (or dir ".")
+                 "      -not -path '*/.git*'"
+                 " -and -not -path '*node_modules*'"
+                 " -and -not -path '*classes*'"
+                 " -and "
+                 " -type f -and "
+                 "-iname '" filename "'"))
+           (results (shell-command-to-string cmd)))
 
-        (if (not (s-blank-str? results))
-            results
-          (cond
-           ((or (null try-count) (= 0 try-count))
-            (eshell/f (concat filename "*") dir 1))
-           ((or (null try-count) (= 1 try-count))
-            (eshell/f (concat "*" filename) dir 2))
-           (t "")))))
-
-    (defun eshell/ef (filename &optional dir)
-      "Searches for the first matching filename and loads it into a
-       file to edit."
-      (let* ((files (eshell/f filename dir))
-             (file (car (s-split "\n" files))))
-        (find-file file)))
-
-    (defun eshell/z ()
-      (eshell/echo)
-      (eshell/exit))
-    
-
-    (defalias 'eshell/emacs 'eshell/e)
-    (defalias 'eshell/v 'eshell/e)
-    (defalias 'eshell/t 'eshell-exec-visual)
-
-    (message "eshell:builtins <")
-    (message "eshell:hooks >")
-    (add-hook 'eshell-first-time-mode-hook #'eshell-initialize)
-    (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
-    (message "eshell:hooks <")
-    (message "eshell::preface <")
-    :init
-    (message "eshell::init >")
-    (message "eshell:hooks/b >")
-    (add-hook 'eshell-first-time-mode-hook #'eshell-initialize)
-    (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
-    (message "eshell:hooks/b <")
-    (message "eshell::init <")
-    :config
-    (message "eshell::config >")
-    (setq
-     eshell-login-script "~/.emacs-site/config/eshell/eprofile"
-     eshell-rc-script "~/.emacs-site/config/eshell/eshellrc"
-     eshell-aliases-file "~/.emacs-site/config/eshell/ealiases"
-     eshell-history-size 5000
-     eshell-buffer-maximum-lines 5000
-     eshell-hist-ignoredups t
-     eshell-save-history-on-exit t
-     eshell-prefer-lisp-functions t
-     eshell-scroll-to-bottom-on-input t
-     eshell-destroy-buffer-when-process-dies t
-     ;;eshell-visual-commands'("bash" "fish" "vi" "vim" "nvim" "mc" "ranger" "htop" "ssh" "top" "tmux" "zsh")
-     eshell-visual-commands'("fish" "vi" "vim" "nvim" "mc" "ranger" "htop" "ssh" "top" "tmux")
-
-     eshell-ls-use-colors t
-     eshell-ls-initial-args nil
-
-     )
-
-    (setq
-     eshell-prompt-regexp "^[^#$γλ\n]* [#$γλ] "
-     eshell-prompt-function
-     (lambda ()
-       (let*
-           ((path (abbreviate-file-name (eshell/pwd)))
-            (parts (s-split "|" (replace-regexp-in-string "^\\(.*:\\)?\\(.*\\)" "\\1|\\2" path)))
-            (rhost (car parts))
-            (path3 (s-join "/" (last (s-split "/" (cadr parts)) 3)))
-            )
-            (concat
-             (propertize rhost 'face `(:foreground "Salmon" :weight bold))
-             (propertize path3 'face `(:foreground "CornflowerBlue" :weight bold))
-             (if (= (user-uid) 0) " γ " " λ ")))
-       ))
-    
-      ;; (setq eshell-prompt-regexp "^[^#$γλ\n]* [#$γλ] "
-      ;;       eshell-prompt-function
-      ;;       (lambda ()
-      ;;         (concat
-      ;;          (propertize "[" 'face `(:foreground "Salmon" :weight bold))
-      ;;          (propertize (user-login-name) 'face `(:foreground "CornflowerBlue" :weight bold))
-      ;;          (propertize "@" 'face `(:foreground "CornflowerBlue" :weight bold))
-      ;;          (propertize (system-name) 'face `(:foreground "CornflowerBlue" :weight bold))
-      ;;          (propertize " " 'face `(:foreground "gray"))
-      ;;          (propertize (if (string= (eshell/pwd) (getenv "HOME"))
-      ;;                          "~" (eshell/basename (eshell/pwd)))
-      ;;                      'face `(:foreground "DarkTurquoise" :weight bold))
-      ;;          (propertize "]" 'face `(:foreground "Salmon" :weight bold))
-      ;;          (propertize " " 'face 'default)
-      ;;          (propertize (if (= (user-uid) 0) "γ" "λ") 'face `(:foreground "Salmon" :weight bold))
-      ;;          (propertize " " 'face 'default)
-      ;;          )))
-
-
-      ;; (setq eshell-output-filter-functions
-      ;;       (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
-      ;; ;;
-
-
-
-    ;; (require 'eshell)
-    (require 'em-smart)
-    (setq eshell-where-to-jump 'begin)
-    (setq eshell-review-quick-commands nil)
-    (setq eshell-smart-space-goes-to-end t)
-
-
-
-    ;; ;; We want to use xterm-256color when running interactive commands
-    ;; ;; in eshell but not during other times when we might be launching
-    ;; ;; a shell command to gather its output.
-    ;; (add-hook 'eshell-pre-command-hook
-    ;;           (lambda () (setenv "TERM" "xterm-256color")))
-    ;; (add-hook 'eshell-post-command-hook
-    ;;           (lambda () (setenv "TERM" "dumb")))
-
-    (defun eshell-clear-buffer ()
-      "Clear terminal"
-      (interactive)
-      (let ((inhibit-read-only t))
-        (erase-buffer)
-        (eshell-send-input)))
-
-    (defun eshell-copy-or-send-input (arg)
-      "Copy selection before sending input"
-      (interactive "P")
-      (require 'em-smart)
-      (when mark-active
-        (cua-copy-region arg))
-      (if (or current-prefix-arg
-              (and (> (point) eshell-last-input-start)
-                   (< (point) eshell-last-input-end))
-              (>= (point) eshell-last-output-end))
-          (eshell-send-input)
-        (eshell-smart-goto-end)))
-
-
-    (defun eshell-setup-keymap ()
-      "Setup eshell (local) keymap"
-      (interactive)
-      (message "eshell:setup-keymap >")
-
-      (local-set-key (kbd "C-l") 'eshell-clear-buffer)
-      ;; (unbind-key (kbd "<up>") eshell-mode-map)
-      ;; (unbind-key (kbd "<down>") eshell-mode-map)
-      ;; (define-key eshell-mode-map (kbd "C-<up>") 'eshell-previous-matching-input-from-input)
-      ;; (define-key eshell-mode-map (kbd "C-<down>") 'eshell-previous-matching-input-from-input)
-      ;; (define-key eshell-mode-map (kbd "<up>") 'previous-line)
-      ;; (define-key eshell-mode-map (kbd "<down>") 'next-line)
-      ;; (local-set-key (kbd "<up>") #'previous-line)
-      ;; (local-set-key (kbd "<down>") #'next-line)
-      ;; (define-key eshell-mode-map (kbd "<up>") 'previous-line)
-      ;; (define-key eshell-mode-map (kbd "<down>") 'next-line)
-      (define-key eshell-hist-mode-map (kbd "<up>") #'previous-line)
-      (define-key eshell-hist-mode-map (kbd "<down>") #'next-line)
-      (define-key eshell-hist-mode-map (kbd "C-<up>") #'eshell-previous-matching-input-from-input)
-      (define-key eshell-hist-mode-map (kbd "C-<down>") #'eshell-next-matching-input-from-input)
-      (define-key eshell-hist-mode-map (kbd "M-r") #'consult-history)
-      ;; Use completion-at-point to provide completions in eshell
-      (define-key eshell-mode-map (kbd "<home>") 'eshell-bol)
-      (define-key eshell-mode-map (kbd "<tab>") 'completion-at-point)
-      (define-key eshell-mode-map (kbd "<return>") 'eshell-copy-or-send-input)
-      (define-key eshell-mode-map (kbd "C-<return>") 'cua-rectangle-mark-mode)
-      (define-key eshell-mode-map (kbd "C-d") 'self-insert-command)
-      (message "eshell:setup-keymap <")
-
-      (eshell-smart-initialize)
-      (message "*eshell*")
-      )
-
-    (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
-    (message "eshell:hooks/c >")
-    (add-hook 'eshell-before-prompt-hook (setq xterm-color-preserve-properties t))
-    (add-hook 'eshell-mode-hook
-              (lambda ()
-                (progn
-                  (setq O (eshell/o))
-                  (setenv "PAGER" "cat")
-                  (setenv "TERM" "xterm-256color")
-                  )))
-    (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
-    (add-hook 'eshell-mode-hook #'(lambda () (message "*eshell*")))
-    (message "eshell:hooks/c <")
-
-    (message "eshell::config <")
-    )
-
-
-  ;; ---( eshell-toggle )--------------------------------------------------------------
-
-  (use-package eshell-toggle
-    ;;:after eshell-mode
-    :ensure t
-    :custom
-    (eshell-toggle-size-fraction 3)
-    (eshell-toggle-find-project-root-package t) ;; for projectile
-    ;;(eshell-toggle-find-project-root-package 'projectile) ;; for projectile
-    ;;(eshell-toggle-use-projectile-root 'project) ;; for in-built project.el
-    (eshell-toggle-run-command nil)
-    (eshell-toggle-init-function #'eshell-toggle-init-eshell)
-    ;; (eshell-toggle-init-function #'eshell-toggle-init-ansi-term)
-    ;; (eshell-toggle-init-function #'eshell-toggle-init-tmux)
-    :quelpa
-    (eshell-toggle :repo "4DA/eshell-toggle" :fetcher github :version original)
-    :bind
-    ("C-~" . eshell-toggle))
-
-  ;; ---( eshell-syntax-hl )--------------------------------------------------------------
-
-  ;; @see: https://github.com/akreisher/eshell-syntax-highlighting/
-
-  (use-package eshell-syntax-highlighting
-    :after eshell-mode
-    :ensure t
-    :config
-    ;; Enable in all Eshell buffers.
-    (eshell-syntax-highlighting-global-mode +1))
-
-  ;; ---( eshell-vterm )--------------------------------------------------------------
-
-  (use-package eshell-vterm
-    :disabled t
-    ;; :ensure t
-    :demand t
-    :after eshell
-    :config
-    (eshell-vterm-mode))
-
-  ;; ---( eat )--------------------------------------------------------------
-
-  ;;
-  (use-package eat
-    ;;:disabled t
-    :ensure t
-    ;;:hook (eshell-load . eat-eshell-mode)
-    :hook (eshell-load . eat-eshell-visual-command-mode)
-    :quelpa ((eat
-              :fetcher git
-              :url "https://codeberg.org/akib/emacs-eat"
-              :files ("*.el" ("term" "term/*.el") "*.texi"
-                      "*.ti" ("terminfo/e" "terminfo/e/*")
-                      ("terminfo/65" "terminfo/65/*")
-                      ("integration" "integration/*")
-                      (:exclude ".dir-locals.el" "*-tests.el"))))
-    )
-;; shell-eshell ends here
-
-;; vterm
-;; #+NAME: shell-vterm
-
-;; [[file:site-pkgs.org::shell-vterm][shell-vterm]]
-  ;; ---( vterm )--------------------------------------------------------------
-
-  (cond
-   ((string-lessp emacs-version "27.1") ;;
-    (progn
-      (message "SITE:term-legacy, ...")
-      (setq h7/term-vterm-enabled nil)
-      (message "SITE:term-legacy.")
-      ))
-   (t
-    (progn
-      (message "SITE:term-libvterm, ...")
-
-  (use-package vterm
-    :ensure t
-    :bind (("C-<F9>" . vterm-here)
-               ;; :straight (:post-build (cl-letf (((symbol-function #'pop-to-buffer)
-               ;;                        (lambda (buffer) (with-current-buffer buffer (message (buffer-string))))))
-               ;;               (setq vterm-always-compile-module t)
-               ;;               (require 'vterm)))
-           :map vterm-mode-map
-           ("C-v" . vterm-yank)
-           ("S-<insert>" . vterm-yank)
-           ([kp-insert] . vterm-yank-primary)
-           ([kp-enter] . vterm-yank)
-           ([kp-divide] . vterm-yank-pop)
-           ([kp-multiply] . vterm-copy-mode))
-    :config
-    (setq vterm-max-scrollback 18000)
-    :init
-    (message "vterm::init >")
-    (setq vterm-module-cmake-args "-DUSE_SYSTEM_LIBVTERM=no")
-
-    (defun vterm-here (&optional prefix)
-      "Opens up a new shell in the directory associated with the
-       current buffer's file. The vterm is renamed to match that
-       directory to make multiple vterm windows easier."
-      (interactive "P")
-      (let* ((parent (if (buffer-file-name)
-                         (file-name-directory (buffer-file-name))
-                       default-directory))
-             ;;(name   (car (last (split-string parent "/" t))))
-             (name (s-join
-               "/"
-               (last
-                (s-split
-                 "/"
-                 (abbreviate-file-name parent))
-                5)))
-             )
-
+      (if (not (s-blank-str? results))
+          results
         (cond
-         ((equal current-prefix-arg nil)   ; no C-u
-          (message "vterm-here - no C-u"))
-         ((equal current-prefix-arg '(4))  ; C-u
-          (split-window-horizontally (- (/ (window-total-width) 2)))
-          (other-window 1)
-          (message "vterm-here - C-u"))
-         ((equal current-prefix-arg '(16))     ; C-u C-u
-          (split-window-vertically (- (/ (window-total-height) 3)))
-          (other-window 1)
-          (message "vterm-here - C-u C-u"))
-          )        
-        
-        (vterm (concat "*vterm: " name "*"))
-        ))
+         ((or (null try-count) (= 0 try-count))
+          (eshell/f (concat filename "*") dir 1))
+         ((or (null try-count) (= 1 try-count))
+          (eshell/f (concat "*" filename) dir 2))
+         (t "")))))
 
-    
-    (message "vterm::init <")
+  (defun eshell/ef (filename &optional dir)
+    "Searches for the first matching filename and loads it into a
+       file to edit."
+    (let* ((files (eshell/f filename dir))
+           (file (car (s-split "\n" files))))
+      (find-file file)))
 
+  (defun eshell/ps ()
+    (split-window-right)
+    (proced))
+
+  (defun eshell/psx ()
+    (split-window-right)
+    (list-processes))
+
+  (defun eshell/z ()
+    (eshell/echo)
+    (eshell/exit))
+  
+
+  (defalias 'eshell/emacs 'eshell/e)
+  (defalias 'eshell/v 'eshell/e)
+  (defalias 'eshell/t 'eshell-exec-visual)
+
+  (message "eshell:builtins <")
+  (message "eshell:hooks >")
+  (add-hook 'eshell-first-time-mode-hook #'eshell-initialize)
+  (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
+  (message "eshell:hooks <")
+  (message "eshell::preface <")
+  :init
+  (message "eshell::init >")
+  (message "eshell:hooks/b >")
+  (add-hook 'eshell-first-time-mode-hook #'eshell-initialize)
+  (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
+  (message "eshell:hooks/b <")
+  (message "eshell::init <")
+  :config
+  (message "eshell::config >")
+  (setq
+   eshell-login-script "~/.emacs-site/config/eshell/eprofile"
+   eshell-rc-script "~/.emacs-site/config/eshell/eshellrc"
+   eshell-aliases-file "~/.emacs-site/config/eshell/ealiases"
+   eshell-history-size 5000
+   eshell-buffer-maximum-lines 5000
+   eshell-hist-ignoredups t
+   eshell-save-history-on-exit t
+   eshell-prefer-lisp-functions t
+   eshell-scroll-to-bottom-on-input t
+   eshell-destroy-buffer-when-process-dies t
+   ;;eshell-visual-commands'("bash" "fish" "vi" "vim" "nvim" "mc" "ranger" "htop" "ssh" "top" "tmux" "zsh")
+   eshell-visual-commands'("fish" "vi" "vim" "nvim" "mc" "ranger" "htop" "ssh" "top" "tmux")
+
+   eshell-ls-use-colors t
+   eshell-ls-initial-args nil
+
+   )
+
+  (setq
+   eshell-prompt-regexp "^[^#$γλ\n]* [#$γλ] "
+   eshell-prompt-function
+   (lambda ()
+     (let*
+         ((path (abbreviate-file-name (eshell/pwd)))
+          (parts (s-split "|" (replace-regexp-in-string "^\\(.*:\\)?\\(.*\\)" "\\1|\\2" path)))
+          (rhost (car parts))
+          (path3 (s-join "/" (last (s-split "/" (cadr parts)) 3)))
+          )
+       (concat
+        (propertize rhost 'face `(:foreground "Salmon" :weight bold))
+        (propertize path3 'face `(:foreground "CornflowerBlue" :weight bold))
+        (if (= (user-uid) 0) " γ " " λ ")))
+     ))
+  
+  ;; (setq eshell-prompt-regexp "^[^#$γλ\n]* [#$γλ] "
+  ;;       eshell-prompt-function
+  ;;       (lambda ()
+  ;;         (concat
+  ;;          (propertize "[" 'face `(:foreground "Salmon" :weight bold))
+  ;;          (propertize (user-login-name) 'face `(:foreground "CornflowerBlue" :weight bold))
+  ;;          (propertize "@" 'face `(:foreground "CornflowerBlue" :weight bold))
+  ;;          (propertize (system-name) 'face `(:foreground "CornflowerBlue" :weight bold))
+  ;;          (propertize " " 'face `(:foreground "gray"))
+  ;;          (propertize (if (string= (eshell/pwd) (getenv "HOME"))
+  ;;                          "~" (eshell/basename (eshell/pwd)))
+  ;;                      'face `(:foreground "DarkTurquoise" :weight bold))
+  ;;          (propertize "]" 'face `(:foreground "Salmon" :weight bold))
+  ;;          (propertize " " 'face 'default)
+  ;;          (propertize (if (= (user-uid) 0) "γ" "λ") 'face `(:foreground "Salmon" :weight bold))
+  ;;          (propertize " " 'face 'default)
+  ;;          )))
+
+
+  ;; (setq eshell-output-filter-functions
+  ;;       (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
+  ;; ;;
+
+
+
+  ;; (require 'eshell)
+  (require 'em-smart)
+  (setq eshell-where-to-jump 'begin)
+  (setq eshell-review-quick-commands nil)
+  (setq eshell-smart-space-goes-to-end t)
+
+
+
+  ;; ;; We want to use xterm-256color when running interactive commands
+  ;; ;; in eshell but not during other times when we might be launching
+  ;; ;; a shell command to gather its output.
+  ;; (add-hook 'eshell-pre-command-hook
+  ;;           (lambda () (setenv "TERM" "xterm-256color")))
+  ;; (add-hook 'eshell-post-command-hook
+  ;;           (lambda () (setenv "TERM" "dumb")))
+
+  (defun eshell-clear-buffer ()
+    "Clear terminal"
+    (interactive)
+    (let ((inhibit-read-only t))
+      (erase-buffer)
+      (eshell-send-input)))
+
+  (defun eshell-copy-or-send-input (arg)
+    "Copy selection before sending input"
+    (interactive "P")
+    (require 'em-smart)
+    (when mark-active
+      (cua-copy-region arg))
+    (if (or current-prefix-arg
+            (and (> (point) eshell-last-input-start)
+                 (< (point) eshell-last-input-end))
+            (>= (point) eshell-last-output-end))
+        (eshell-send-input)
+      (eshell-smart-goto-end)))
+
+
+  (defun eshell-setup-keymap ()
+    "Setup eshell (local) keymap"
+    (interactive)
+    (message "eshell:setup-keymap >")
+
+    (local-set-key (kbd "C-l") 'eshell-clear-buffer)
+    ;; (unbind-key (kbd "<up>") eshell-mode-map)
+    ;; (unbind-key (kbd "<down>") eshell-mode-map)
+    ;; (define-key eshell-mode-map (kbd "C-<up>") 'eshell-previous-matching-input-from-input)
+    ;; (define-key eshell-mode-map (kbd "C-<down>") 'eshell-previous-matching-input-from-input)
+    ;; (define-key eshell-mode-map (kbd "<up>") 'previous-line)
+    ;; (define-key eshell-mode-map (kbd "<down>") 'next-line)
+    ;; (local-set-key (kbd "<up>") #'previous-line)
+    ;; (local-set-key (kbd "<down>") #'next-line)
+    ;; (define-key eshell-mode-map (kbd "<up>") 'previous-line)
+    ;; (define-key eshell-mode-map (kbd "<down>") 'next-line)
+    (define-key eshell-hist-mode-map (kbd "<up>") #'previous-line)
+    (define-key eshell-hist-mode-map (kbd "<down>") #'next-line)
+    (define-key eshell-hist-mode-map (kbd "C-<up>") #'eshell-previous-matching-input-from-input)
+    (define-key eshell-hist-mode-map (kbd "C-<down>") #'eshell-next-matching-input-from-input)
+    (define-key eshell-hist-mode-map (kbd "M-r") #'consult-history)
+    ;; Use completion-at-point to provide completions in eshell
+    (define-key eshell-mode-map (kbd "<home>") 'eshell-bol)
+    (define-key eshell-mode-map (kbd "<tab>") 'completion-at-point)
+    (define-key eshell-mode-map (kbd "<return>") 'eshell-copy-or-send-input)
+    (define-key eshell-mode-map (kbd "C-<return>") 'cua-rectangle-mark-mode)
+    (define-key eshell-mode-map (kbd "C-d") 'self-insert-command)
+    (message "eshell:setup-keymap <")
+
+    (eshell-smart-initialize)
+    (message "*eshell*")
     )
 
+  (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
+  (message "eshell:hooks/c >")
+  (add-hook 'eshell-before-prompt-hook (setq xterm-color-preserve-properties t))
+  (add-hook 'eshell-mode-hook
+            (lambda ()
+              (progn
+                (setq O (eshell/o))
+                (setenv "PAGER" "cat")
+                (setenv "TERM" "xterm-256color")
+                )))
+  (add-hook 'eshell-mode-hook #'eshell-setup-keymap)
+  (add-hook 'eshell-mode-hook #'(lambda () (message "*eshell*")))
+  (message "eshell:hooks/c <")
 
-  (use-package multi-vterm
-    :bind (("C-S-<f9>" . multi-vterm)
-           :map vterm-mode-map
-           ("C-<f7>" . multi-vterm-prev)
-           ("C-<f8>" . multi-vterm-next))
-    :ensure t)
-
-  ;; @see: https://lupan.pl/dotemacs/
-  ;; (use-package vterm-toggle
-  ;;   :bind (("H-z" . vterm-toggle)
-  ;;          ("H-F" . vterm-toggle-forward)
-  ;;          ("H-B" . vterm-toggle-backward)))
-
-  (setq h7/term-vterm-enabled t)
-
-      (message "SITE:term-libvterm.")
-      ))
+  (message "eshell::config <")
   )
 
 
-  ;; ---( multi-term )--------------------------------------------------------------
+;; ---( eshell-toggle )--------------------------------------------------------------
 
-  ;; (use-package multi-term
-  ;;   :disabled t
-  ;;   :bind (("C-. t" . multi-term-next)
-  ;;          ("C-. T" . multi-term))
-  ;;   :init
-  ;;   (defun screen ()
-  ;;     (interactive)
-  ;;     (let (term-buffer)
-  ;;       ;; Set buffer.
-  ;;       (setq term-buffer
-  ;;             (let ((multi-term-program (executable-find "screen"))
-  ;;                   (multi-term-program-switches "-DR"))
-  ;;               (multi-term-get-buffer)))
-  ;;       (set-buffer term-buffer)
-  ;;       ;; Internal handle for `multi-term' buffer.
-  ;;       (multi-term-internal)
-  ;;       ;; Switch buffer
-  ;;       (switch-to-buffer term-buffer)))
-  ;;   :config
-  ;;   (defalias 'my-term-send-raw-at-prompt 'term-send-raw)
-  ;;   (defun my-term-end-of-buffer ()
-  ;;     (interactive)
-  ;;     (call-interactively #'end-of-buffer)
-  ;;     (if (and (eobp) (bolp))
-  ;;         (delete-char -1)))
-  ;;   (require 'term)
-  ;;   (defadvice term-process-pager (after term-process-rebind-keys activate)
-  ;;     (define-key term-pager-break-map "\177" 'term-pager-back-page)))
-;; shell-vterm ends here
+(use-package eshell-toggle
+  ;;:after eshell-mode
+  :ensure t
+  :custom
+  (eshell-toggle-size-fraction 3)
+  (eshell-toggle-find-project-root-package t) ;; for projectile
+  ;;(eshell-toggle-find-project-root-package 'projectile) ;; for projectile
+  ;;(eshell-toggle-use-projectile-root 'project) ;; for in-built project.el
+  (eshell-toggle-run-command nil)
+  (eshell-toggle-init-function #'eshell-toggle-init-eshell)
+  ;; (eshell-toggle-init-function #'eshell-toggle-init-ansi-term)
+  ;; (eshell-toggle-init-function #'eshell-toggle-init-tmux)
+  :quelpa
+  (eshell-toggle :repo "4DA/eshell-toggle" :fetcher github :version original)
+  :bind
+  ("C-~" . eshell-toggle))
+
+;; ---( eshell-syntax-hl )--------------------------------------------------------------
+
+;; @see: https://github.com/akreisher/eshell-syntax-highlighting/
+
+(use-package eshell-syntax-highlighting
+  :after eshell-mode
+  :ensure t
+  :config
+  ;; Enable in all Eshell buffers.
+  (eshell-syntax-highlighting-global-mode +1))
+
+;; ---( eshell-vterm )--------------------------------------------------------------
+
+(use-package eshell-vterm
+  ;; :disabled t
+  :ensure t
+  :demand t
+  :after eshell
+  :config
+  (eshell-vterm-mode))
+
+;; ---( eat )--------------------------------------------------------------
+
+;;
+(use-package eat
+  ;;:disabled t
+  :ensure t
+  ;;:hook (eshell-load . eat-eshell-mode)
+  :hook (eshell-load . eat-eshell-visual-command-mode)
+  :quelpa ((eat
+            :fetcher git
+            :url "https://codeberg.org/akib/emacs-eat"
+            :files ("*.el" ("term" "term/*.el") "*.texi"
+                    "*.ti" ("terminfo/e" "terminfo/e/*")
+                    ("terminfo/65" "terminfo/65/*")
+                    ("integration" "integration/*")
+                    (:exclude ".dir-locals.el" "*-tests.el"))))
+  )
+;; shell-eshell ends here
 
 ;; Processes
 ;; #+NAME: processes
@@ -3623,6 +3674,54 @@ Version: 2024-01-18"
              :name "App:demo"))
       )
 ;; lang-lsp.mode.dap ends here
+
+;; Lang: Treesitter.setup
+;; #+NAME: lang-treesitter.setup
+
+;; [[file:site-pkgs.org::lang-treesitter.setup][lang-treesitter.setup]]
+;; ---( treesitter-setup )------------------------------------------------------------
+
+(defun h7/treesitter-setup ()
+
+  (setq treesit-language-source-alist
+        '((ada "https://github.com/briot/tree-sitter-ada")
+          (bash "https://github.com/tree-sitter/tree-sitter-bash")
+          (cmake "https://github.com/uyha/tree-sitter-cmake")
+          (css "https://github.com/tree-sitter/tree-sitter-css")
+          (elisp "https://github.com/Wilfred/tree-sitter-elisp")
+          (go "https://github.com/tree-sitter/tree-sitter-go")
+          (html "https://github.com/tree-sitter/tree-sitter-html")
+          (javascript "https://github.com/tree-sitter/tree-sitter-javascript"
+                      "master" "src")
+          (json "https://github.com/tree-sitter/tree-sitter-json")
+          (make "https://github.com/alemuller/tree-sitter-make")
+          (markdown "https://github.com/ikatyang/tree-sitter-markdown")
+          (python "https://github.com/tree-sitter/tree-sitter-python")
+          (toml "https://github.com/tree-sitter/tree-sitter-toml")
+          (tsx "https://github.com/tree-sitter/tree-sitter-typescript"
+               "master" "tsx/src")
+          (typescript "https://github.com/tree-sitter/tree-sitter-typescript"
+                      "master" "typescript/src")
+          (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
+
+  ;; (mapc #'treesit-install-language-grammar
+  ;;      (mapcar #'car treesit-language-source-alist))
+
+  (setq major-mode-remap-alist
+        '( ;;      (ada-mode . ada-ts-mode)
+          ;;      (yaml-mode . yaml-ts-mode)
+          (toml-mode . toml-ts-mode)
+          ;;      (bash-mode . bash-ts-mode)
+          ;;      (sh-mode . bash-ts-mode)
+          ;;      (js2-mode . js-ts-mode)
+          ;;      (typescript-mode . typescript-ts-mode)
+          ;;      (conf-colon-mode . json-ts-mode)
+          ;;      (json-mode . json-ts-mode)
+          ;;      (css-mode . css-ts-mode)
+          ;;      (python-mode . python-ts-mode)
+          ))
+  )
+;; lang-treesitter.setup ends here
 
 ;; Lang: Tools.snippets
 ;; #+NAME: lang-tools.snip
