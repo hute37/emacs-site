@@ -642,13 +642,13 @@ When `universal-argument' is called first, cut whole buffer (but respect `narrow
 (define-key global-map [kp-insert]     'yank)
 
 ;; @see: http://unix.stackexchange.com/questions/75473/how-to-disable-caps-lock-without-remapping-or-disabling-it
-;; @see: 
+;; @see:
 
 ;;(keyboard-translate 176 ?{ ) ;; -es
 (define-key key-translation-map (kbd "<kp-delete>") (kbd "<delete>"))
 
 ;;(define-key global-map [(meta kp-insert)]   'repeat-complex-command) ;; ctrl-x esc esc
-;;q(define-key global-map [(meta kp-delete)]   'undo) ;; ctrl-x esc esc 
+;;q(define-key global-map [(meta kp-delete)]   'undo) ;; ctrl-x esc esc
 (define-key global-map [(meta kp-multiply)]   'repeat-complex-command) ;; ctrl-x esc esc
 (define-key global-map [(meta kp-divide)]   'undo) ;; ctrl-x esc esc
 ;; requires redo, redo+ or undo-tree

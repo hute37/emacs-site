@@ -332,12 +332,24 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 ;; {{{  @BASIC
 ;; ;;;////////////////////////////////////////////////////////////////
 
+;; ---( libs )--------------------------------------------------------------
+
+(require 'cl-lib)
+
 ;; ---( ... )--------------------------------------------------------------
 
-;; I avoid defining too many custom helpers, =dir-concat= is an exception. Emacs
-;; 28 provides =file-name-concat=, but I'm on 27.2 some of the time.
 (use-package emacs
-  :config
+  :init
+  
+  ;; ---( generic )----------------------------------------------------------
+  
+  (defun h7/string-matches-none-p (str regexp-list)
+    "Return t if STR matches none of the regexps in REGEXP-LIST.
+Return nil if any single regexp matches."
+    (cl-notany (lambda (regex) 
+                 (string-match-p regex str))
+               regexp-list))
+  
   (defun dir-concat (dir file)
     "join path DIR with filename FILE correctly"
     (concat (file-name-as-directory dir) file))
@@ -364,97 +376,40 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
   ;; ---( cache )--------------------------------------------------------------
   
   (defvar user-cache-directory (dir-mk "~/.backups/")
-  "Location where files created by emacs are placed.")
+    "Location where files created by emacs are placed.")
 
   (defvar user-profile-directory (dir-mk "~/.emacs-site/")
-  "Location where emacs profiles are placed.")
+    "Location where emacs profiles are placed.")
 
   (defvar user-plugins-directory (dir-mk "~/.emacs-site/plugins")
-  "Location where emacs roeming plugins placed.")
+    "Location where emacs roeming plugins placed.")
 
-  ;; ---( UI )------------------------------------------------------------------
 
-  (setq frame-resize-pixelwise t)
-
-  (defun h7/make-maximized-frame ()
-    "Create a new frame and maximize it."
-    (interactive)
-    (let ((new-frame (make-frame)))
-      (select-frame new-frame)
-      
-      (set-frame-parameter nil 'fullscreen 'maximized)))
+  :config
   
-  (defun h7/make-scratch-frame ()
-    "Create a new frame and maximize it."
-    (interactive)
-    (let ((new-frame (make-frame)))
-      (select-frame new-frame)
-      (switch-to-buffer "*scratch*")))  
+  ;; ---( autosave/backups )-------------------------------------------------------
 
-  (defun h7/make-eshell-frame ()
-    "Create a new frame and maximize it."
-    (interactive)
-    (let ((new-frame (make-frame)))
-      (select-frame new-frame)
-      (eshell)))  
+  ;; @see: https://github.com/karthink/.emacs.d/blob/master/init.el#L373
 
-  (defun h7/make-vterm-frame ()
-    "Create a new frame and maximize it."
-    (interactive)
-    (let ((new-frame (make-frame)))
-      (select-frame new-frame)
-      (vterm)))  
+  (setq auto-save-interval 2400)
+  (setq auto-save-timeout 300)
+  (setq auto-save-list-directory
+        (file-name-as-directory (dir-mk (file-name-concat user-cache-directory "auto-save-list"))))
+  ;;    (make-directory (emacs-d "var") t)
 
-  (defun h7/make-note-frame ()
-    "Create a new frame with a new buffer inheriting the current `default-directory`."
-    (interactive)
-    (let ((inherited-dir default-directory)) ; Capture current path
-      (with-selected-frame (make-frame)       ; Create and select new frame
-        (let ((new-buf (generate-new-buffer "*notes.md*"))) ; Create temp buffer
-          (with-current-buffer new-buf
-            (setq default-directory inherited-dir) ; Set the inherited path
-            (gfm-mode))        ; Optional: set major mode
-          (switch-to-buffer new-buf)))))           ; Display it in the new frame  
-
-  ;; ---( Outline )------------------------------------------------------------------
-
-  (defun h7/outline-show-level-1 ()
-    "command alias for (outline-hide-sublevels 1)."
-    (interactive)
-    (outline-hide-sublevels 1))  
-
-  (defun h7/outline-show-level-2 ()
-    "command alias for (outline-hide-sublevels 2)."
-    (interactive)
-    (outline-hide-sublevels 2))  
-
-  (defun h7/outline-show-level-3 ()
-    "command alias for (outline-hide-sublevels 3)."
-    (interactive)
-    (outline-hide-sublevels 3))  
+  (setq auto-save-list-file-prefix
+        (file-name-concat auto-save-list-directory ".saves-"))
+  (setq backup-directory-alist
+        `(("." . ,(dir-mk (dir-concat user-cache-directory "backup"))))
+        backup-by-copying t ; Use copies
+        version-control t ; Use version numbers on backups
+        delete-old-versions t ; Automatically delete excess backups
+        kept-new-versions 10 ; Newest versions to keep
+        kept-old-versions 5 ; Old versions to keep
+        )
 
   )
 
-;; ---( autosave/backups )-------------------------------------------------------
-
-;; @see: https://github.com/karthink/.emacs.d/blob/master/init.el#L373
-
-(setq auto-save-interval 2400)
-(setq auto-save-timeout 300)
-(setq auto-save-list-directory
-      (file-name-as-directory (dir-mk (file-name-concat user-cache-directory "auto-save-list"))))
-;;    (make-directory (emacs-d "var") t)
-
-(setq auto-save-list-file-prefix
-      (file-name-concat auto-save-list-directory ".saves-"))
-(setq backup-directory-alist
-      `(("." . ,(dir-mk (dir-concat user-cache-directory "backup"))))
-      backup-by-copying t ; Use copies
-      version-control t ; Use version numbers on backups
-      delete-old-versions t ; Automatically delete excess backups
-      kept-new-versions 10 ; Newest versions to keep
-      kept-old-versions 5 ; Old versions to keep
-      )
 
 ;; ---( undo-tree )--------------------------------------------------------------
 
@@ -586,124 +541,225 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 #+END_SRC
 
+
+*** Window
+
+#+NAME: window
+#+begin_src emacs-lisp
+
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @WINDOW
+;; ;;;////////////////////////////////////////////////////////////////
+
+;; ---( ... )--------------------------------------------------------------
+
+(use-package emacs
+  :init
+
+  ;; ---( Frames )------------------------------------------------------------------
+
+  (defun h7/make-maximized-frame ()
+    "Create a new frame and maximize it."
+    (interactive)
+    (let ((new-frame (make-frame)))
+      (select-frame new-frame)
+      
+      (set-frame-parameter nil 'fullscreen 'maximized)))
+  
+  (defun h7/make-scratch-frame ()
+    "Create a new frame and maximize it."
+    (interactive)
+    (let ((new-frame (make-frame)))
+      (select-frame new-frame)
+      (switch-to-buffer "*scratch*")))  
+
+  (defun h7/make-eshell-frame ()
+    "Create a new frame and maximize it."
+    (interactive)
+    (let ((new-frame (make-frame)))
+      (select-frame new-frame)
+      (eshell)))  
+
+  (defun h7/make-vterm-frame ()
+    "Create a new frame and maximize it."
+    (interactive)
+    (let ((new-frame (make-frame)))
+      (select-frame new-frame)
+      (vterm)))  
+
+  (defun h7/make-note-frame ()
+    "Create a new frame with a new buffer inheriting the current `default-directory`."
+    (interactive)
+    (let ((inherited-dir default-directory)) ; Capture current path
+      (with-selected-frame (make-frame)       ; Create and select new frame
+        (let ((new-buf (generate-new-buffer "*notes.md*"))) ; Create temp buffer
+          (with-current-buffer new-buf
+            (setq default-directory inherited-dir) ; Set the inherited path
+            (gfm-mode))        ; Optional: set major mode
+          (switch-to-buffer new-buf)))))           ; Display it in the new frame  
+
+  ;; ---( Outline )------------------------------------------------------------------
+
+  (defun h7/outline-show-level-1 ()
+    "command alias for (outline-hide-sublevels 1)."
+    (interactive)
+    (outline-hide-sublevels 1))  
+
+  (defun h7/outline-show-level-2 ()
+    "command alias for (outline-hide-sublevels 2)."
+    (interactive)
+    (outline-hide-sublevels 2))  
+
+  (defun h7/outline-show-level-3 ()
+    "command alias for (outline-hide-sublevels 3)."
+    (interactive)
+    (outline-hide-sublevels 3))
+
+  :config
+  
+  ;; ---( UI )------------------------------------------------------------------
+
+  (setq frame-resize-pixelwise t)
+
+
+  )
+
+
+;; ---( zoom )--------------------------------------------------------------
+
+(use-package zoom-window
+  :ensure t
+  :bind ("C-x C-z" . zoom-window-zoom)
+  :config
+  ;; (setq zoom-window-use-elscreen t)
+  ;; (zoom-window-setup)
+  :custom
+  (zoom-window-mode-line-color "DarkGreen")
+  )
+
+
+;; }}}  .window
+
+#+END_SRC
+
 *** UI
 
 #+NAME: ui
 #+begin_src emacs-lisp
 
-  ;; ;;;////////////////////////////////////////////////////////////////
-  ;; {{{  @UI
-  ;; ;;;////////////////////////////////////////////////////////////////
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @UI
+;; ;;;////////////////////////////////////////////////////////////////
 
-  ;; ---( themes )--------------------------------------------------------------
+;; ---( themes )--------------------------------------------------------------
 
-  (use-package ef-themes
-    :ensure t
-    )
+(use-package ef-themes
+  :ensure t
+  )
 
-  ;; ---( mode-line )--------------------------------------------------------------
+;; ---( mode-line )--------------------------------------------------------------
 
-  (use-package minions
-    :ensure t
-    :config (minions-mode 1)
-    )
+(use-package minions
+  :ensure t
+  :config (minions-mode 1)
+  )
 
-  (use-package mood-line
-    :ensure t
-    :config (mood-line-mode 1)
-    )
+(use-package mood-line
+  :ensure t
+  :config (mood-line-mode 1)
+  )
 
-  ;; delight
-  ;; hides modeline displays
-  (use-package delight
-    :ensure t)
-  (require 'delight)                ;; if you use :delight
-  (require 'bind-key)                ;; if you use any :bind variant
+;; delight
+;; hides modeline displays
+(use-package delight
+  :ensure t)
+(require 'delight)                ;; if you use :delight
+(require 'bind-key)                ;; if you use any :bind variant
 
-  ;; ;; Required to hide the modeline 
-  ;; (use-package hide-mode-line
-  ;;   :ensure t
-  ;;   :defer t)
+;; ;; Required to hide the modeline 
+;; (use-package hide-mode-line
+;;   :ensure t
+;;   :defer t)
 
-  ;; icon fonts: M-x all-the-icons-install-fonts
-  (use-package all-the-icons
-    :ensure t
-    )
+;; icon fonts: M-x all-the-icons-install-fonts
+(use-package all-the-icons
+  :ensure t
+  )
 
-   (use-package solaire-mode
-     :ensure t
-     :init (solaire-global-mode +1))
-
-
-  ;; (use-package doom-modeline
-  ;;   :after eshell
-  ;;   :init (doom-modeline-mode 1))
-
-  ;; (use-package powerline
-  ;;   :ensure t
-  ;;   :init (powerline-default-theme)
-  ;; )
+(use-package solaire-mode
+  :ensure t
+  :init (solaire-global-mode +1))
 
 
-  ;; (use-package powerline
-  ;; 	     :init (dolist
+;; (use-package doom-modeline
+;;   :after eshell
+;;   :init (doom-modeline-mode 1))
 
-  ;; 			 ;; powerine
-  ;; 			 ;; smart-mode-line
-  ;; 			 ;; smart-mode-line-powerline-theme
-  ;; 			 ;;(require 'powerline)
-
-  ;; 		       (set-face-attribute 'mode-line nil
-  ;; 					   :foreground "Black"
-  ;; 					   :background "DarkOrange"
-  ;; 					   :box nil)
-
-  ;; 		       (powerline-default-theme)
-
-  ;; 		       ;;    (require 'smart-mode-line)
-  ;; 		       ;;    (setq sml/theme 'powerline)
-  ;; 		       ;;    (load-theme 'smart-mode-line-powerline t)
-  ;; 		       ;;    (sml/setup)
-
-  ;; 		       ;;(sml/apply-theme 'powerline)
-  ;; 		       ;;(sml/apply-theme 'dark)
-  ;; 		       ;;(sml/apply-theme 'light)
-  ;; 		       ;;(sml/apply-theme 'respectful)
-  ;; 		       ;;(sml/apply-theme 'automatic)
-
-  ;; 		       ;;(powerline-default-theme)
-
-  ;; 		       (powerline-reset)
-
-  ;; 		       )
-  ;; 	     )
-
-  ;; ---( highlight )--------------------------------------------------------------
-
-  (use-package hl-todo
-    :ensure t
-    :config (minions-mode 1)
-    )
-
-  (use-package hl-todo
-    :ensure t
-    :hook (prog-mode . hl-todo-mode)
-    :config
-    ;; (define-key hl-todo-mode-map (kbd "C-c p") #'hl-todo-previous)
-    ;; (define-key hl-todo-mode-map (kbd "C-c n") #'hl-todo-next)
-    ;; (define-key hl-todo-mode-map (kbd "C-c o") #'hl-todo-occur)
-    ;; (define-key hl-todo-mode-map (kbd "C-c i") #'hl-todo-insert  
-    (setq hl-todo-highlight-punctuation ":"
-          hl-todo-keyword-faces
-          `(("TODO"       warning bold)
-            ("FIXME"      error bold)
-            ("HACK"       font-lock-constant-face bold)
-            ("REVIEW"     font-lock-keyword-face bold)
-            ("NOTE"       success bold)
-            ("DEPRECATED" font-lock-doc-face bold))))
+;; (use-package powerline
+;;   :ensure t
+;;   :init (powerline-default-theme)
+;; )
 
 
-  ;; }}}  .ui
+;; (use-package powerline
+;; 	     :init (dolist
+
+;; 			 ;; powerine
+;; 			 ;; smart-mode-line
+;; 			 ;; smart-mode-line-powerline-theme
+;; 			 ;;(require 'powerline)
+
+;; 		       (set-face-attribute 'mode-line nil
+;; 					   :foreground "Black"
+;; 					   :background "DarkOrange"
+;; 					   :box nil)
+
+;; 		       (powerline-default-theme)
+
+;; 		       ;;    (require 'smart-mode-line)
+;; 		       ;;    (setq sml/theme 'powerline)
+;; 		       ;;    (load-theme 'smart-mode-line-powerline t)
+;; 		       ;;    (sml/setup)
+
+;; 		       ;;(sml/apply-theme 'powerline)
+;; 		       ;;(sml/apply-theme 'dark)
+;; 		       ;;(sml/apply-theme 'light)
+;; 		       ;;(sml/apply-theme 'respectful)
+;; 		       ;;(sml/apply-theme 'automatic)
+
+;; 		       ;;(powerline-default-theme)
+
+;; 		       (powerline-reset)
+
+;; 		       )
+;; 	     )
+
+;; ---( highlight )--------------------------------------------------------------
+
+(use-package hl-todo
+  :ensure t
+  :config (minions-mode 1)
+  )
+
+(use-package hl-todo
+  :ensure t
+  :hook (prog-mode . hl-todo-mode)
+  :config
+  ;; (define-key hl-todo-mode-map (kbd "C-c p") #'hl-todo-previous)
+  ;; (define-key hl-todo-mode-map (kbd "C-c n") #'hl-todo-next)
+  ;; (define-key hl-todo-mode-map (kbd "C-c o") #'hl-todo-occur)
+  ;; (define-key hl-todo-mode-map (kbd "C-c i") #'hl-todo-insert  
+  (setq hl-todo-highlight-punctuation ":"
+        hl-todo-keyword-faces
+        `(("TODO"       warning bold)
+          ("FIXME"      error bold)
+          ("HACK"       font-lock-constant-face bold)
+          ("REVIEW"     font-lock-keyword-face bold)
+          ("NOTE"       success bold)
+          ("DEPRECATED" font-lock-doc-face bold))))
+
+
+;; }}}  .ui
 
 #+END_SRC
 
@@ -1027,10 +1083,9 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 	(vimish-fold-from-marks)
 	(vimish-fold-toggle-all))
     :custom
-    ;; (setq vimish-fold-find-marks-on-open t)
-    ;; (setq vimish-fold-persist-on-saving t)
-    (setq vimish-fold-show-lines nil)
-  
+    (vimish-fold-find-marks-on-open t)
+    (vimish-fold-persist-on-saving nil)
+    (vimish-fold-show-lines nil)
   )
 
 ;; C-c C-f C-f 	Fold region
@@ -2824,13 +2879,6 @@ P
 ;; he=5; ls *.gz | xargs -I{} bash -c 'zcat {} | bat -l lisp --file-name={} --color=always;' | less -SRX
 ;; ```
 
-;; (use-package esh-toggle
-;;   :ensure t
-;;   :bind ("C-x C-h" . eshell-toggle))
-(use-package xterm-color
-  :ensure t
-  :commands (xterm-color-filter))
-
 (use-package eshell
   :after (esh-mode)
   ;;:after (esh-mode xterm-color)
@@ -3081,12 +3129,15 @@ P
            (file (car (s-split "\n" files))))
       (find-file file)))
 
-  (defun eshell/ps ()
-    (split-window-right)
-    (proced))
-
   (defun eshell/psx ()
     (split-window-right)
+    (proced)
+    (proced-toggle-auto-update 0)
+    (split-window-below)
+    (list-processes)
+    (other-window 2))
+
+  (defun eshell/pls ()
     (list-processes))
 
   (defun eshell/z ()
@@ -3125,7 +3176,7 @@ P
    eshell-scroll-to-bottom-on-input t
    eshell-destroy-buffer-when-process-dies t
    ;;eshell-visual-commands'("bash" "fish" "vi" "vim" "nvim" "mc" "ranger" "htop" "ssh" "top" "tmux" "zsh")
-   eshell-visual-commands'("fish" "vi" "vim" "nvim" "mc" "ranger" "htop" "ssh" "top" "tmux")
+   eshell-visual-commands'("fish" "vi" "vim" "nvim" "mc" "ranger" "htop" "ssh" "top" "tmux" "txsh")
 
    eshell-ls-use-colors t
    eshell-ls-initial-args nil
@@ -3280,6 +3331,11 @@ P
   :bind
   ("C-~" . eshell-toggle))
 
+;; (use-package esh-toggle
+;;   :ensure t
+;;   :bind ("C-x C-h" . eshell-toggle))
+
+
 ;; ---( eshell-syntax-hl )--------------------------------------------------------------
 
 ;; @see: https://github.com/akreisher/eshell-syntax-highlighting/
@@ -3290,6 +3346,10 @@ P
   :config
   ;; Enable in all Eshell buffers.
   (eshell-syntax-highlighting-global-mode +1))
+
+(use-package xterm-color
+  :ensure t
+  :commands (xterm-color-filter))
 
 ;; ---( eshell-vterm )--------------------------------------------------------------
 
@@ -3324,10 +3384,108 @@ P
 
 #+END_SRC
 
-
 *** Processes
 #+NAME: processes
 #+begin_src emacs-lisp
+
+;; ---( proced )--------------------------------------------------------------
+
+(use-package proced
+  ;; :ensure t ;; native
+  :config
+
+  (setq h7/proced-internal-processes
+        `(
+          ".*ruff server.*"
+          ".*pyright.*"
+          ".*langserver.*"
+          ".*epdfinfo.*"
+          ))
+
+  (defun h7/filter-internal-processes (args)
+    (h7/string-matches-none-p
+     args h7/proced-internal-processes)
+    )
+
+  (defcustom h7/proced-emacs-internal-processes
+    '("rust-analyzer"
+      "ruff*"
+      "pyright"
+      "langserver"
+      "epdfinfo"
+      "magit-git"
+      "telega")
+    "List of regexps matching command lines to exclude from the Emacs proced filter."
+    :type '(repeat string)
+    :group 'proced)  
+
+  (defun h7/proced-filter-emacs-internal-processes (process-alist)
+    "Filter for Emacs processes, excluding those matching `h7/proced-emacs-internal-processes`."
+    (let* ((emacs-tree (proced-filter-children process-alist (emacs-pid)))
+           (filtered-tree nil))
+      (dolist (proc emacs-tree)
+        (let* ((attributes (cdr proc))
+               (args (cdr (assoc 'args attributes)))
+               (should-exclude nil))
+          ;; Check if args match any regexp in our list
+          (dolist (regexp h7/proced-emacs-internal-processes)
+            (when (and args (string-match-p regexp args))
+              (setq should-exclude t)))
+          
+          (unless should-exclude
+            (push proc filtered-tree))))
+      (nreverse filtered-tree)))  
+
+  (add-to-list 'proced-filter-alist
+               '(local (fun-all . h7/proced-filter-emacs-internal-processes))
+               )
+
+  (defun h7/format-proc-args (args)
+    (pcase-let* ((base (proced-format-args args))
+                 (`(,full-exe . ,rest) (split-string base))
+                 (exe (file-name-base full-exe))
+                 (exe-prop
+                  (cond
+                   ((string= exe "java")
+                    (propertize exe 'font-lock-face '((t (:foreground "#f89820"))))
+                    exe)
+                   ((string= exe "python")
+                    (propertize exe 'font-lock-face '((t (:foreground "#9898f8"))))
+                    exe)
+                   ((string= exe "R")
+                    (propertize exe 'font-lock-face '((t (:foreground "#20f820"))))
+                    exe)
+                   ((string= exe "node")
+                    (propertize exe 'font-lock-face '((t (:foreground "#f8f020"))))
+                    exe)
+                   (t (propertize exe 'font-lock-face 'proced-executable)
+                      exe)
+                   )))
+      (mapconcat #'identity (cons exe-prop rest) " ")))
+
+  (setf (alist-get 'args proced-grammar-alist)
+        '("Args"               ; name of the column
+          h7/format-proc-args  ; format function
+          left                 ; alignment within column
+          proced-string-lessp  ; defines the sort method (ascending)
+          nil                  ; non-nil reverses sort order
+          (args pid)            ; sort scheme
+          (nil t nil)))         ; refiner for custom refinement logic - see proced-refine
+
+
+  ;; ps columns
+  (add-to-list 'proced-format-alist '(min pid tree start (args comm)))
+
+  ;;:bind (("C-M-p" . proced))
+  :custom
+  (proced-tree-flag t)
+  (proced-auto-update-flag t)
+  (proced-show-remote-processes t)
+  (proced-enable-color-flag t)
+  (proced-format 'min)
+  (proced-filter 'local)
+  )
+
 
 ;; ---( projector )--------------------------------------------------------------
 
@@ -3343,8 +3501,6 @@ P
   
   ;; Example: Map specific commands to a specialized mode
   (setq projector-command-modes-alist '(("^heroku run\\.*" . inf-ruby-mode))))
-
-
 
 #+END_SRC
 
@@ -5402,6 +5558,7 @@ P
     ;; @see: https://github.com/danlamanna/.emacs.d/blob/master/init.el
     ;; @see: https://karthinks.com/software/lazy-elfeed/
     ;; @see: http://feedly.com/i/opml
+    ;; @see: https://github.com/howardabrams/hamacs/blob/main/ha-feed-reader.org
 
     (use-package elfeed-org
     ;;:disabled t
@@ -7806,19 +7963,19 @@ With a prefix ARG, remove start location."
     (setq dashboard-set-navigator t)
     (setq dashboard-navigator-buttons `((
       ("★" "scratch" "show scratch buffer" (lambda (&rest _) (switch-to-buffer "*scratch*")) warning "⋗" " ")
-      ("★" "restore" "desktop" (lambda (&rest _) (desktop-read)) warning "⋗" " ")
+      ("★" "shell" "project eshell" (lambda (&rest _) (project-eshell)) warning "⋗" " ")
+      ("★" "term" "project vterm" (lambda (&rest _) (projectile-run-vterm)) warning "⋗" " ")
+      ("★" "files" "recent files" (lambda (&rest _) (recentf-open-files)) warning "⋗" " ")
       ("★" "marks" "bookmrks" (lambda (&rest _)
                                 (require 'bookmark)                  
                                 (bookmark-bmenu-list)                
                                 (switch-to-buffer "*Bookmark List*")
                                 ) warning "⋗" " ")
       ("★" "project" "project files" (lambda (&rest _) (project-dired)) warning "⋗" " ")
-      ("★" "files" "recent files" (lambda (&rest _) (recentf-open-files)) warning "⋗" " ")
       ("★" "view" "view url" (lambda (&rest _) (crux-view-url)) warning "⋗" " ")
       ;;("★" "packages" "list packages" (lambda (&rest _) (list-packages)) warning "⋗" " ")
       ;;("★" "mail" "start mu4e" (lambda (&rest _) (mu4e)) warning "⋗" " ")
-      ("★" "term" "project vterm" (lambda (&rest _) (projectile-run-vterm)) warning "⋗" " ")
-      ("★" "shell" "project eshell" (lambda (&rest _) (project-eshell)) warning "⋗" " ")
+      ("★" "restore" "desktop" (lambda (&rest _) (desktop-read)) warning "⋗" " ")
       ("★" "feed" "start elfeed" (lambda (&rest _) (elfeed)) warning "⋗" " ")
       ("★" "restart" "restart emacs" (lambda (&rest _) (restart-emacs)) warning "⋗" " ")
       ("★" "manual" "emacs manual" (lambda (&rest _) (info-emacs-manual)) warning "⋗" " ")
@@ -7874,7 +8031,6 @@ With a prefix ARG, remove start location."
   ;; }}}  .dashboard
 
 #+END_SRC
-
 
 *** Register
 #+NAME: register
