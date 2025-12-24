@@ -127,6 +127,13 @@
 ;; @see: https://www.reddit.com/r/emacs/comments/dfcyy6/how_to_install_and_use_usepackage/
 ;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
 
+;; @see: https://howardabrams.com/hamacs/bootstrap.html
+;; (when (and (fboundp 'native-comp-available-p)
+;;            (native-comp-available-p))
+;;   (setq native-comp-async-report-warnings-errors nil
+;;         native-comp-deferred-compilation t))
+
+
 (eval-and-compile
   (require 'package)
   (add-to-list 'package-archives '("org"       . "http://orgmode.org/elpa/")) ; Org-mode's repository
@@ -304,6 +311,13 @@
 
 (require 'cl-lib)
 
+;; (use-package cl-lib
+;;   ;; :straight (:type built-in)
+;;   :init (defun first (elt) (car elt))
+;;   :commands (first))
+
+;; (require 'subr-x)
+
 ;; ---( ... )--------------------------------------------------------------
 
 (use-package emacs
@@ -352,7 +366,25 @@ Return nil if any single regexp matches."
   (defvar user-plugins-directory (dir-mk "~/.emacs-site/plugins")
     "Location where emacs roeming plugins placed.")
 
+  )
 
+
+
+;; }}}  .basic
+;; basic ends here
+
+;; Config
+
+;; #+NAME: config
+
+;; [[file:site-pkgs.org::config][config]]
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @CONFIG
+;; ;;;////////////////////////////////////////////////////////////////
+
+;; ---( ... )--------------------------------------------------------------
+
+(use-package emacs
   :config
   
   ;; ---( autosave/backups )-------------------------------------------------------
@@ -376,114 +408,32 @@ Return nil if any single regexp matches."
         kept-old-versions 5 ; Old versions to keep
         )
 
+  ;; ---( misc )-------------------------------------------------------
+
+  ;; Enable local variables
+  (setq-default enable-local-variables t)
+
+  ;; For lazy typists
+  (setq use-short-answers t)
+
+  ;; Move the mouse away if the cursor gets close
+  ;; (mouse-avoidance-mode 'animate)
+
+  ;; highlight the current line, as in Matlab
+  ;; (global-hl-line-mode)
+
+  ;; Confirm when killing Emacs
+  ;; (setq confirm-kill-emacs (lambda (prompt)
+  ;;                            (y-or-n-p-with-timeout prompt 2 nil)))
+
   )
 
 
-;; ---( undo-tree )--------------------------------------------------------------
-
-(use-package undo-tree
-  :ensure t
-  :diminish undo-tree-mode
-  ;; :bind (("C-c _" . undo-tree-visualize))
-  :config
-  (progn
-    (global-undo-tree-mode)
-    ;; (unbind-key "M-_" undo-tree-map)
-    (setq undo-tree-visualizer-timestamps t)
-    (setq undo-tree-visualizer-diff t)
-    (setq undo-tree-history-directory-alist
-          `(("." . ,(dir-mk (dir-concat user-cache-directory "undo-tree")))))))
-
-;; =C-x u= to browse the tree with =f=, =b=, =n=, =p=, =RET=.
-;; (use-package vundo
-;;   :ensure t
-;;   :config
-;;   (setq vundo-glyph-alist vundo-unicode-symbols)
-;;   :bind
-;;   ("C-x u" . vundo))
-
-
-;; ---( dash )--------------------------------------------------------------
-
-;; ~dash.el~ :: A modern list API for Emacs. No 'cl required.  (See https://github.com/magnars/dash.el/)
-(use-package dash
-  :ensure t)
-
-;; ---( f )--------------------------------------------------------------
-
-;; ~f.el~ :: A modern API for working with files and directories in Emacs. (See https://github.com/rejeep/f.el/)
-(use-package f
-  :ensure t)
-
-;; ---( s )--------------------------------------------------------------
-
-;; ~s.el~ :: The long lost Emacs string manipulation library.  (See https://github.com/magnars/s.el/)
-(use-package s
-  :ensure t)
-
-
-
-;; ---( ... )--------------------------------------------------------------
-
-;;(use-package bs
-;;  :ensure t)
-
-;; ---( ... )--------------------------------------------------------------
-
-;; (use-package pretty-symbols
-;;   :ensure t)
-
-;; (use-package pretty-lambdada
-;;   :ensure t
-;;   :init (dolist (hook '(lisp-mode-hook emacs-lisp-mode-hook)))
-;;   :config (dolist (global-pretty-lambda-mode)))
-
-
-;; (use-package jumpc
-;;   :disabled t
-;;   :config (progn (jumpc-bind-vim-key)))
-
-;; (use-package rainbow-delimiters
-;;   :disabled t
-;;   :hook (prog-mode . rainbow-delimiters-mode))
-
-
-
-;; }}}  .packages
-;; basic ends here
-
-;; Config
-
-;; #+NAME: config
-
-;; [[file:site-pkgs.org::config][config]]
-;; ;;;////////////////////////////////////////////////////////////////
-;; {{{  @CONFIG
-;; ;;;////////////////////////////////////////////////////////////////
-
-;; ---( ... )--------------------------------------------------------------
-
-;; Enable local variables
-(setq-default enable-local-variables t)
-
-;; For lazy typists
-(setq use-short-answers t)
-
-;; Move the mouse away if the cursor gets close
-;; (mouse-avoidance-mode 'animate)
-
-;; highlight the current line, as in Matlab
-;; (global-hl-line-mode)
-
-;; Confirm when killing Emacs
-;; (setq confirm-kill-emacs (lambda (prompt)
-;;                            (y-or-n-p-with-timeout prompt 2 nil)))
-
 
 ;; ---( ... )--------------------------------------------------------------
 
 
-;; }}}  .packages
+;; }}}  .config
 ;; config ends here
 
 ;; System
@@ -498,7 +448,7 @@ Return nil if any single regexp matches."
 ;; ---( ... )--------------------------------------------------------------
 
 ;; tune gc
-(setq gc-cons-threshold 100000000)
+(setq gc-cons-threshold (* 100 1024 1024))
 
 ;; ---( ... )--------------------------------------------------------------
 
@@ -585,7 +535,12 @@ Return nil if any single regexp matches."
 
   (setq frame-resize-pixelwise t)
 
-
+  ;; (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+  
+  ;; (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+  ;; (add-to-list 'default-frame-alist '(ns-appearance . dark))
+  ;; (add-to-list 'default-frame-alist '(undecorated-round . t))
+  
   )
 
 
@@ -701,25 +656,48 @@ Return nil if any single regexp matches."
 
 (use-package hl-todo
   :ensure t
-  :config (minions-mode 1)
-  )
-
-(use-package hl-todo
-  :ensure t
-  :hook (prog-mode . hl-todo-mode)
+  :hook ((
+          prog-mode
+          yaml-mode
+          text-mode
+          markdown-mode
+          ) . hl-todo-mode)
   :config
+  (minions-mode 1)
   ;; (define-key hl-todo-mode-map (kbd "C-c p") #'hl-todo-previous)
   ;; (define-key hl-todo-mode-map (kbd "C-c n") #'hl-todo-next)
   ;; (define-key hl-todo-mode-map (kbd "C-c o") #'hl-todo-occur)
   ;; (define-key hl-todo-mode-map (kbd "C-c i") #'hl-todo-insert  
-  (setq hl-todo-highlight-punctuation ":"
-        hl-todo-keyword-faces
-        `(("TODO"       warning bold)
-          ("FIXME"      error bold)
-          ("HACK"       font-lock-constant-face bold)
-          ("REVIEW"     font-lock-keyword-face bold)
-          ("NOTE"       success bold)
-          ("DEPRECATED" font-lock-doc-face bold))))
+  ;; (setq hl-todo-highlight-punctuation ":"
+  ;;       hl-todo-keyword-faces
+  ;;       `(("/todo"      warning bold)
+  ;;         ("TODO"       warning bold)
+  ;;         ("FIXME"      error bold)
+  ;;         ("HACK"       font-lock-constant-face bold)
+  ;;         ("REVIEW"     font-lock-keyword-face bold)
+  ;;         ("NOTE"       success bold)
+  ;;         ("DEPRECATED" font-lock-doc-face bold)))
+  :custom
+  (hl-todo-highlight-punctuation ":"
+   hl-todo-keyword-faces
+  '(("HOLD"   . "#d0bf8f")
+    ("TODO"   . "#cc9393")
+    ("NEXT"   . "#dca3a3")
+    ("THEM"   . "#dc8cc3")
+    ("PROG"   . "#7cb8bb")
+    ("OKAY"   . "#7cb8bb")
+    ("DONT"   . "#5f7f5f")
+    ("FAIL"   . "#8c5353")
+    ("DONE"   . "#afd8af")
+    ("NOTE"   . "#d0bf8f")
+    ("MAYBE"  . "#d0bf8f")
+    ("KLUDGE" . "#d0bf8f")
+    ("HACK"   . "#d0bf8f")
+    ("TEMP"   . "#d0bf8f")
+    ("FIXME"  . "#cc9393")
+    ("XXXX*"  . "#cc9393"))
+   )
+  )
 
 
 ;; }}}  .ui
@@ -733,6 +711,55 @@ Return nil if any single regexp matches."
   ;; {{{  @UTIL
   ;; ;;;////////////////////////////////////////////////////////////////
 ;; utils-begin ends here
+
+;; Utils/Libs
+;; #+NAME: util-libs
+
+;; [[file:site-pkgs.org::util-libs][util-libs]]
+;; ---( dash )--------------------------------------------------------------
+
+;; ~dash.el~ :: A modern list API for Emacs. No 'cl required.  (See https://github.com/magnars/dash.el/)
+(use-package dash
+  :ensure t)
+
+;; ---( f )--------------------------------------------------------------
+
+;; ~f.el~ :: A modern API for working with files and directories in Emacs. (See https://github.com/rejeep/f.el/)
+(use-package f
+  :ensure t)
+
+;; ---( s )--------------------------------------------------------------
+
+;; ~s.el~ :: The long lost Emacs string manipulation library.  (See https://github.com/magnars/s.el/)
+(use-package s
+  :ensure t)
+
+
+
+;; ---( ... )--------------------------------------------------------------
+
+;;(use-package bs
+;;  :ensure t)
+
+;; ---( ... )--------------------------------------------------------------
+
+;; (use-package pretty-symbols
+;;   :ensure t)
+
+;; (use-package pretty-lambdada
+;;   :ensure t
+;;   :init (dolist (hook '(lisp-mode-hook emacs-lisp-mode-hook)))
+;;   :config (dolist (global-pretty-lambda-mode)))
+
+
+;; (use-package jumpc
+;;   :disabled t
+;;   :config (progn (jumpc-bind-vim-key)))
+
+;; (use-package rainbow-delimiters
+;;   :disabled t
+;;   :hook (prog-mode . rainbow-delimiters-mode))
+;; util-libs ends here
 
 ;; Utils/Jump
 ;; #+NAME: util-jump
@@ -770,12 +797,21 @@ Return nil if any single regexp matches."
 ;; #+NAME: util-search
 
 ;; [[file:site-pkgs.org::util-search][util-search]]
-  ;; ---( regex )--------------------------------------------------------------
+;; ---( regex )--------------------------------------------------------------
 
 
-  (use-package regex-tool
-    :ensure t
-    :defer t)
+(use-package regex-tool
+  :ensure t
+  :defer t)
+
+(use-package visual-regexp
+  :ensure t
+  :bind (("C-c r" . vr/replace)
+         ("C-c q" . vr/query-replace))
+  :general (:states 'normal "g r" '("replace" . vr/replace))
+  :config (ha-leader
+            "r" '("replace" . vr/replace)
+            "R" '("query replace" . vr/query-replace)))
 ;; util-search ends here
 
 ;; Utils/Help
@@ -829,7 +865,30 @@ Return nil if any single regexp matches."
 ;; #+NAME: util-misc
 
 ;; [[file:site-pkgs.org::util-misc][util-misc]]
-  ;; ---( recentf )--------------------------------------------------------------
+;; ---( undo-tree )--------------------------------------------------------------
+
+(use-package undo-tree
+  :ensure t
+  :diminish undo-tree-mode
+  ;; :bind (("C-c _" . undo-tree-visualize))
+  :config
+  (progn
+    (global-undo-tree-mode)
+    ;; (unbind-key "M-_" undo-tree-map)
+    (setq undo-tree-visualizer-timestamps t)
+    (setq undo-tree-visualizer-diff t)
+    (setq undo-tree-history-directory-alist
+          `(("." . ,(dir-mk (dir-concat user-cache-directory "undo-tree")))))))
+
+;; =C-x u= to browse the tree with =f=, =b=, =n=, =p=, =RET=.
+;; (use-package vundo
+;;   :ensure t
+;;   :config
+;;   (setq vundo-glyph-alist vundo-unicode-symbols)
+;;   :bind
+;;   ("C-x u" . vundo))
+
+;; ---( recentf )--------------------------------------------------------------
 
 (use-package recentf
   :bind ("C-x C-r" . recentf-open-files)
@@ -846,162 +905,162 @@ Return nil if any single regexp matches."
   (recentf-mode t)
   :diminish nil)
 
-  ;; ---( popper )--------------------------------------------------------------
+;; ---( popper )--------------------------------------------------------------
 
-  (use-package popper
-    :ensure t
-    ;; :general
-    ;; (:states '(normal visual emacs)
-    ;;          :prefix "SPC"
-    ;;          "`" 'popper-toggle-latest
-    ;;          "~" 'popper-cycle)
-    :custom
-    (popper-reference-buffers '("\\*Messages\\*"
-                                "Output\\*$"
-                                "\\*Async Shell Command\\*"
-                                help-mode
-                                compilation-mode
-                                eldoc-mode))
-    (popper-window-height 30)
-    :init
-    (popper-mode +1)
-    (popper-echo-mode +1))
+(use-package popper
+  :ensure t
+  ;; :general
+  ;; (:states '(normal visual emacs)
+  ;;          :prefix "SPC"
+  ;;          "`" 'popper-toggle-latest
+  ;;          "~" 'popper-cycle)
+  :custom
+  (popper-reference-buffers '("\\*Messages\\*"
+                              "Output\\*$"
+                              "\\*Async Shell Command\\*"
+                              help-mode
+                              compilation-mode
+                              eldoc-mode))
+  (popper-window-height 30)
+  :init
+  (popper-mode +1)
+  (popper-echo-mode +1))
 
-  ;; ---( comint )--------------------------------------------------------------
+;; ---( comint )--------------------------------------------------------------
 
-  (use-package comint
-    :custom
-    (comint-buffer-maximum-size 20000 "Increase comint buffer size.")
-    (comint-prompt-read-only t "Make the prompt read only."))
+(use-package comint
+  :custom
+  (comint-buffer-maximum-size 20000 "Increase comint buffer size.")
+  (comint-prompt-read-only t "Make the prompt read only."))
 
-  ;; ---( environment )--------------------------------------------------------------
+;; ---( environment )--------------------------------------------------------------
 
-  ;; Restart Emacs from inside Emacs with `M-x restart-emacs`
-  (use-package restart-emacs
-    :defer t)
+;; Restart Emacs from inside Emacs with `M-x restart-emacs`
+(use-package restart-emacs
+  :defer t)
 
-  ;; ---( windmove )--------------------------------------------------------------
+;; ---( windmove )--------------------------------------------------------------
 
-  ;; (use-package windmove
-  ;;   :ensure t
-  ;;   :defer t
-  ;;   :bind
-  ;;   (("<f2> <right>" . windmove-right)
-  ;;    ("<f2> <left>" . windmove-left)
-  ;;    ("<f2> <up>" . windmove-up)
-  ;;    ("<f2> <down>" . windmove-down)
-  ;;    ))
-
-
-  ;; ---( whitespace )--------------------------------------------------------------
-
-  ;; (use-package whitespace
-  ;;   :ensure t
-  ;;   :bind (("C-c T w" . whitespace-mode))
-  ;;   :init
-  ;;   (dolist (hook '(conf-mode-hook))
-  ;; ;;  (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
-  ;;     (add-hook hook #'whitespace-mode))
-  ;;   :config (setq whitespace-line-column nil)
-  ;;   :diminish whitespace-mode)
-
-  ;; (use-package whitespace
-  ;;   :diminish (global-whitespace-mode
-  ;;              whitespace-mode
-  ;;              whitespace-newline-mode)
-  ;;   :commands (whitespace-buffer
-  ;;              whitespace-cleanup
-  ;;              whitespace-mode)
-  ;;   :defines (whitespace-auto-cleanup
-  ;;             whitespace-rescan-timer-time
-  ;;             whitespace-silent)
-  ;;   :preface
-  ;;   (defun normalize-file ()
-  ;;     (interactive)
-  ;;     (save-excursion
-  ;;       (goto-char (point-min))
-  ;;       (whitespace-cleanup)
-  ;;       (delete-trailing-whitespace)
-  ;;       (goto-char (point-max))
-  ;;       (delete-blank-lines)
-  ;;       (set-buffer-file-coding-system 'unix)
-  ;;       (goto-char (point-min))
-  ;;       (while (re-search-forward "\r$" nil t)
-  ;;         (replace-match ""))
-  ;;       (set-buffer-file-coding-system 'utf-8)
-  ;;       (let ((require-final-newline t))
-  ;;         (save-buffer))))
-  ;;   (defun maybe-turn-on-whitespace ()
-  ;;     "Depending on the file, maybe clean up whitespace."
-  ;;     (let ((file (expand-file-name ".clean"))
-  ;;           parent-dir)
-  ;;       (while (and (not (file-exists-p file))
-  ;;                   (progn
-  ;;                     (setq parent-dir
-  ;;                           (file-name-directory
-  ;;                            (directory-file-name
-  ;;                             (file-name-directory file))))
-  ;;                     ;; Give up if we are already at the root dir.
-  ;;                     (not (string= (file-name-directory file)
-  ;;                                   parent-dir))))
-  ;;         ;; Move up to the parent dir and try again.
-  ;;         (setq file (expand-file-name ".clean" parent-dir)))
-  ;;       ;; If we found a change log in a parent, use that.
-  ;;       (when (and (file-exists-p file)
-  ;;                  (not (file-exists-p ".noclean"))
-  ;;                  (not (and buffer-file-name
-  ;;                            (string-match "\\.texi\\'" buffer-file-name))))
-  ;;         (add-hook 'write-contents-hooks
-  ;;                   #'(lambda () (ignore (whitespace-cleanup))) nil t)
-  ;;         (whitespace-cleanup))))
-  ;;   :init
-  ;;   (hook-into-modes 'whitespace-mode '(prog-mode-hook c-mode-common-hook))
-  ;;   (add-hook 'find-file-hooks 'maybe-turn-on-whitespace t)
-  ;;   :config
-  ;;   (remove-hook 'find-file-hooks 'whitespace-buffer)
-  ;;   (remove-hook 'kill-buffer-hook 'whitespace-buffer)
-  ;;   ;; For some reason, having these in settings.el gets ignored if whitespace
-  ;;   ;; loads lazily.
-  ;;   (setq whitespace-auto-cleanup t
-  ;;         whitespace-line-column 80
-  ;;         whitespace-rescan-timer-time nil
-  ;;         whitespace-silent t
-  ;;         whitespace-style '(face trailing lines space-before-tab empty)))
-
-  ;; ---( autorevert )--------------------------------------------------------------
-
-  (use-package autorevert
-    :commands auto-revert-mode
-    :diminish auto-revert-mode
-    :init
-    (add-hook 'find-file-hook #'(lambda () (auto-revert-mode 1))))
+;; (use-package windmove
+;;   :ensure t
+;;   :defer t
+;;   :bind
+;;   (("<f2> <right>" . windmove-right)
+;;    ("<f2> <left>" . windmove-left)
+;;    ("<f2> <up>" . windmove-up)
+;;    ("<f2> <down>" . windmove-down)
+;;    ))
 
 
-  ;; ---( visible-mark )--------------------------------------------------------------
+;; ---( whitespace )--------------------------------------------------------------
 
-  (use-package visible-mark
-    :ensure t
-    :init
-    (global-visible-mark-mode)
-    :custom
-    (visible-mark-faces '(visible-mark-face1 visible-mark-face2))
-    (visible-mark-forward-faces '(visible-mark-face1 visible-mark-face2))
-    (visible-mark-max 2))
+;; (use-package whitespace
+;;   :ensure t
+;;   :bind (("C-c T w" . whitespace-mode))
+;;   :init
+;;   (dolist (hook '(conf-mode-hook))
+;; ;;  (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
+;;     (add-hook hook #'whitespace-mode))
+;;   :config (setq whitespace-line-column nil)
+;;   :diminish whitespace-mode)
 
-  ;; ---( changes )--------------------------------------------------------------
+;; (use-package whitespace
+;;   :diminish (global-whitespace-mode
+;;              whitespace-mode
+;;              whitespace-newline-mode)
+;;   :commands (whitespace-buffer
+;;              whitespace-cleanup
+;;              whitespace-mode)
+;;   :defines (whitespace-auto-cleanup
+;;             whitespace-rescan-timer-time
+;;             whitespace-silent)
+;;   :preface
+;;   (defun normalize-file ()
+;;     (interactive)
+;;     (save-excursion
+;;       (goto-char (point-min))
+;;       (whitespace-cleanup)
+;;       (delete-trailing-whitespace)
+;;       (goto-char (point-max))
+;;       (delete-blank-lines)
+;;       (set-buffer-file-coding-system 'unix)
+;;       (goto-char (point-min))
+;;       (while (re-search-forward "\r$" nil t)
+;;         (replace-match ""))
+;;       (set-buffer-file-coding-system 'utf-8)
+;;       (let ((require-final-newline t))
+;;         (save-buffer))))
+;;   (defun maybe-turn-on-whitespace ()
+;;     "Depending on the file, maybe clean up whitespace."
+;;     (let ((file (expand-file-name ".clean"))
+;;           parent-dir)
+;;       (while (and (not (file-exists-p file))
+;;                   (progn
+;;                     (setq parent-dir
+;;                           (file-name-directory
+;;                            (directory-file-name
+;;                             (file-name-directory file))))
+;;                     ;; Give up if we are already at the root dir.
+;;                     (not (string= (file-name-directory file)
+;;                                   parent-dir))))
+;;         ;; Move up to the parent dir and try again.
+;;         (setq file (expand-file-name ".clean" parent-dir)))
+;;       ;; If we found a change log in a parent, use that.
+;;       (when (and (file-exists-p file)
+;;                  (not (file-exists-p ".noclean"))
+;;                  (not (and buffer-file-name
+;;                            (string-match "\\.texi\\'" buffer-file-name))))
+;;         (add-hook 'write-contents-hooks
+;;                   #'(lambda () (ignore (whitespace-cleanup))) nil t)
+;;         (whitespace-cleanup))))
+;;   :init
+;;   (hook-into-modes 'whitespace-mode '(prog-mode-hook c-mode-common-hook))
+;;   (add-hook 'find-file-hooks 'maybe-turn-on-whitespace t)
+;;   :config
+;;   (remove-hook 'find-file-hooks 'whitespace-buffer)
+;;   (remove-hook 'kill-buffer-hook 'whitespace-buffer)
+;;   ;; For some reason, having these in settings.el gets ignored if whitespace
+;;   ;; loads lazily.
+;;   (setq whitespace-auto-cleanup t
+;;         whitespace-line-column 80
+;;         whitespace-rescan-timer-time nil
+;;         whitespace-silent t
+;;         whitespace-style '(face trailing lines space-before-tab empty)))
 
-  (use-package hilit-chg
-    :ensure t
-    :bind
-    ("C-x M-u" . highlight-changes-mode))
+;; ---( autorevert )--------------------------------------------------------------
 
-  (use-package goto-chg
-    :ensure t
-    :bind
-    ("C-x M-u" . goto-last-change))
+(use-package autorevert
+  :commands auto-revert-mode
+  :diminish auto-revert-mode
+  :init
+  (add-hook 'find-file-hook #'(lambda () (auto-revert-mode 1))))
 
 
-  ;; ---( folding )--------------------------------------------------------------
+;; ---( visible-mark )--------------------------------------------------------------
+
+(use-package visible-mark
+  :ensure t
+  :init
+  (global-visible-mark-mode)
+  :custom
+  (visible-mark-faces '(visible-mark-face1 visible-mark-face2))
+  (visible-mark-forward-faces '(visible-mark-face1 visible-mark-face2))
+  (visible-mark-max 2))
+
+;; ---( changes )--------------------------------------------------------------
+
+(use-package hilit-chg
+  :ensure t
+  :bind
+  ("C-x M-u" . highlight-changes-mode))
+
+(use-package goto-chg
+  :ensure t
+  :bind
+  ("C-x M-u" . goto-last-change))
+
+
+;; ---( folding )--------------------------------------------------------------
 
 (use-package vimish-fold
   :ensure t
@@ -1011,29 +1070,29 @@ Return nil if any single regexp matches."
           text-mode
           markdown-mode
           ) . vimish-fold-mode)
-    ;; :bind
-    ;; (("C-c C-f C-f" . vimish-fold)
-    ;;  ("C-c C-f C-u" . vimish-fold-unfold)
-    ;;  ("C-c C-f C-d" . vimish-fold-delete)
-    ;;  ("C-c C-f C-r" . vimish-fold-refold)
-    ;;  ("C-c C-f C-t" . vimish-fold-toggle)
-    ;;  ("C-c C-f C-a C-f" . vimish-fold-fold-all)
-    ;;  ("C-c C-f C-a C-u" . vimish-fold-unfold-all)
-    ;;  ("C-c C-f C-a C-d" . vimish-fold-delete-all)
-    ;;  ("C-c C-f C-a C-r" . vimish-fold-refold-all)
-    ;;  ("C-c C-f C-a C-t" . vimish-fold-toggle-all)
-    ;;  ("C-c C-f C-m" . vimish-fold-refold-all-from-marks))
-    :config
-      (defun vimish-fold-refold-all-from-marks ()
-	"Clear all folds and refold from marks"
-	(interactive)
-	(vimish-fold-delete-all)
-	(vimish-fold-from-marks)
-	(vimish-fold-toggle-all))
-    :custom
-    (vimish-fold-find-marks-on-open t)
-    (vimish-fold-persist-on-saving nil)
-    (vimish-fold-show-lines nil)
+  ;; :bind
+  ;; (("C-c C-f C-f" . vimish-fold)
+  ;;  ("C-c C-f C-u" . vimish-fold-unfold)
+  ;;  ("C-c C-f C-d" . vimish-fold-delete)
+  ;;  ("C-c C-f C-r" . vimish-fold-refold)
+  ;;  ("C-c C-f C-t" . vimish-fold-toggle)
+  ;;  ("C-c C-f C-a C-f" . vimish-fold-fold-all)
+  ;;  ("C-c C-f C-a C-u" . vimish-fold-unfold-all)
+  ;;  ("C-c C-f C-a C-d" . vimish-fold-delete-all)
+  ;;  ("C-c C-f C-a C-r" . vimish-fold-refold-all)
+  ;;  ("C-c C-f C-a C-t" . vimish-fold-toggle-all)
+  ;;  ("C-c C-f C-m" . vimish-fold-refold-all-from-marks))
+  :config
+  (defun vimish-fold-refold-all-from-marks ()
+    "Clear all folds and refold from marks"
+    (interactive)
+    (vimish-fold-delete-all)
+    (vimish-fold-from-marks)
+    (vimish-fold-toggle-all))
+  :custom
+  (vimish-fold-find-marks-on-open t)
+  (vimish-fold-persist-on-saving nil)
+  (vimish-fold-show-lines nil)
   )
 
 ;; C-c C-f C-f 	Fold region
@@ -1057,9 +1116,9 @@ Return nil if any single regexp matches."
 
 
 
-  ;; (use-package folding
-  ;;   :ensure t
-  ;; )
+;; (use-package folding
+;;   :ensure t
+;; )
 ;; util-misc ends here
 
 ;; Utils/Tools
@@ -1739,10 +1798,14 @@ Return nil if any single regexp matches."
   :general
   (:keymaps 'minibuffer-local-map
             "M-A" 'marginalia-cycle)
+  ;; :init
+  ;; (setq marginalia-annotators-heavy t)
   ;;:custom
   ;;(marginalia-max-relative-age 0)
   ;;(marginalia-align 'right)
   :config
+  ;; (add-to-list 'marginalia-command-categories
+  ;;              '(project-find-file . file))
   (set-face-attribute 'marginalia-documentation nil :underline nil)
   (marginalia-mode 1)
   )
@@ -1930,6 +1993,18 @@ Return nil if any single regexp matches."
          :map minibuffer-local-completion-map
          ("C-x C-d" . consult-dir)
          ("C-x C-j" . consult-dir-jump-file)))
+
+(use-package consult-todo
+  :ensure t
+  :init
+  (defconst consult-todo--narrow
+    '((?t . "TODO")
+      (?f . "FIXME")
+      (?n . "NOTE")
+      (?m . "/todo")
+      )
+    "Mapping of narrow and keywords.")
+  )
 ;; comp-mb-ver-consult ends here
 
 ;; Orderless
@@ -2847,10 +2922,10 @@ Version: 2024-01-18"
              (t (format "/%s:" host)))))
       (eshell-here)))    
   
-    (bind-key "C-!" 'eshell-here)
-    (bind-key "M-r" 'consult-history)
-    (bind-key "M-r" 'consult-history)
-    (bind-key "M-c" 'company-complete)
+  (bind-key "C-!" 'eshell-here)
+  (bind-key "M-r" 'consult-history)
+  (bind-key "M-r" 'consult-history)
+  (bind-key "M-c" 'company-complete)
   
   (message "eshell:helpers <")
   
@@ -2864,7 +2939,7 @@ Version: 2024-01-18"
                      #'pcomplete-completions-at-point
                      #'cape-history)))
   ;; (define-key eshell-mode-map (kbd "<tab>") #'company-complete)
- ;; (define-key eshell-hist-mode-map (kbd "M-r") #'consult-history))
+  ;; (define-key eshell-hist-mode-map (kbd "M-r") #'consult-history))
   
 
   (message "eshell:completion <")
@@ -2874,6 +2949,7 @@ Version: 2024-01-18"
   ;; @see: https://git.savannah.gnu.org/cgit/emacs.git/tree/lisp/eshell/esh-cmd.el
   ;; @see: https://github.com/howardabrams/hamacs/blob/main/ha-eshell.org
   ;; @see: https://github.com/howardabrams/dot-files/blob/master/emacs-eshell.org
+  ;; @see: https://howardabrams.com/hamacs/ha-eshell.html
 
   (defun eshell/read-file (file-path)
     (with-temp-buffer
@@ -2888,6 +2964,30 @@ Version: 2024-01-18"
         (add-to-list 'cmd file)
         (eshell-named-command
          (car cmd) (cdr cmd)))))
+
+  (defun eshell/set (&rest args)
+    "Creates a buffer local variable.
+The first parameters of ARGS is the name of the variable.
+The other parameters are the values. If not given, the
+variable is deleted. (i.e.: set a 42 b 7)"
+    (let* ((var (car args))
+           (var-sym (make-symbol var))
+           ;; Convert value to a string
+           (val (pcase (seq-length (cdr args))
+                  (0 nil)
+                  (1 (format "%s" (cadr args)))
+                  (_ (thread-last (cdr args)
+                                  (seq-map 'eshell-stringify)
+                                  (s-join " "))))))
+      (if val
+          (progn
+            (set (make-local-variable var-sym) val)
+            (setenv var val))
+
+        ;; If we don't get both a variable and a value, let's try to
+        ;; delete the variable:
+        (makunbound var-sym)
+        (setenv var))))  
 
   (defun eshell-fn-on-files (fun1 fun2 args)
     "Call FUN1 on the first element in list, ARGS.
@@ -2919,6 +3019,10 @@ Version: 2024-01-18"
     (eshell-fn-on-files 'view-file 'view-file-other-window files))
 
   (defalias 'eshell/more 'eshell/s)
+
+  (defun eshell/less (&rest files)
+    "Essentially an alias to the `view-file' function."
+    (eat (mapconcat 'identity (cons "less" files) " ")))  
 
   (defun eshell/e (&rest files)
     "Essentially an alias to the `find-file' function."
@@ -3000,8 +3104,9 @@ Version: 2024-01-18"
   
 
   (defalias 'eshell/emacs 'eshell/e)
-  (defalias 'eshell/v 'eshell/e)
+  (defalias 'eshell/v 'eshell-exec-visual)
   (defalias 'eshell/t 'eshell-exec-visual)
+  (defalias 'eshell/base 'file-name-base)
 
   (message "eshell:builtins <")
   (message "eshell:hooks >")
@@ -3214,6 +3319,13 @@ Version: 2024-01-18"
   :after eshell
   :config
   (eshell-vterm-mode))
+
+;; ---( pcomplete )--------------------------------------------------------------
+
+(use-package pcmpl-args
+  ;; :disabled t
+  :ensure t
+  )
 
 ;; ---( eat )--------------------------------------------------------------
 
