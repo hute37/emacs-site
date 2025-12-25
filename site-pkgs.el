@@ -1208,39 +1208,63 @@ Return nil if any single regexp matches."
 ;; #+NAME: server-control
 
 ;; [[file:site-pkgs.org::server-control][server-control]]
-  ;; ---( server )--------------------------------------------------------------
+;; ---( server )--------------------------------------------------------------
 
-  ;;
-  ;; @see: http://babbagefiles.blogspot.it/2017/03/take-elfeed-everywhere-mobile-rss.html
-  ;;
-  ;;  ~/.config/systemd/user/emacs.service
-  ;;
-  ;; ------------------------------------------------------------------
-  ;; [Unit]
-  ;; Description=Emacs: the extensible, self-documenting text editor
-  ;;
-  ;; [Service]
-  ;; Type=forking
-  ;; ExecStart=/usr/bin/emacs --daemon
-  ;; ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
-  ;; Restart=always
-  ;;
-  ;; [Install]
-  ;; WantedBy=default.target
-  ;; ------------------------------------------------------------------
-  ;;
-  ;; systemctl --user enable --now emacs
-  ;; loginctl enable-linger USERNAME
-  ;;
+(use-package server
+  ;; :straight nil
+  ;; :if window-system
+  :config
+  (unless (server-running-p)
+    (server-start)))
 
-  (use-package edit-server
-    :ensure t
-    :if window-system
-  ;;  :load-path "site-lisp/emacs_chrome/servers/"
-    :init
-    (add-hook 'after-init-hook 'server-start t)
-    (add-hook 'after-init-hook 'edit-server-start t))
+
+;;
+;; @see: http://babbagefiles.blogspot.it/2017/03/take-elfeed-everywhere-mobile-rss.html
+;;
+;;  ~/.config/systemd/user/emacs.service
+;;
+;; ------------------------------------------------------------------
+;; [Unit]
+;; Description=Emacs: the extensible, self-documenting text editor
+;;
+;; [Service]
+;; Type=forking
+;; ExecStart=/usr/bin/emacs --daemon
+;; ExecStop=/usr/bin/emacsclient --eval "(kill-emacs)"
+;; Restart=always
+;;
+;; [Install]
+;; WantedBy=default.target
+;; ------------------------------------------------------------------
+;;
+;; systemctl --user enable --now emacs
+;; loginctl enable-linger USERNAME
+;;
+
+;; (use-package edit-server
+;;   :ensure t
+;;   :if window-system
+;;   ;;  :load-path "site-lisp/emacs_chrome/servers/"
+;;   :init
+;;   (add-hook 'after-init-hook 'server-start t)
+;;   (add-hook 'after-init-hook 'edit-server-start t))
 ;; server-control ends here
+
+;; Server Sockets
+;; #+NAME: server-sockets
+
+;; [[file:site-pkgs.org::server-sockets][server-sockets]]
+;; ---(http server)------------------------------------------------------------------------
+
+(use-package websocket
+  :ensure t
+  ;; :straight (:host github :repo "ahyatt/emacs-websocket" :branch "main")
+  )
+
+(use-package simple-httpd
+  :ensure t
+  )
+;; server-sockets ends here
 
 ;; Server/end
 ;; #+NAME: server-end
@@ -1370,96 +1394,126 @@ Return nil if any single regexp matches."
 ;; #+NAME: fonts-ligatures
 
 ;; [[file:site-pkgs.org::fonts-ligatures][fonts-ligatures]]
-  ;; ---( ligatures )--------------------------------------------------------------
+;; ---( ligatures )--------------------------------------------------------------
 
-  (cond
-   ((string-lessp emacs-version "27.1") ;;
-    (progn
-      (message "SITE:font-legacy, ...")
-      (message "SITE:font-legacy.")
-      ))
-   (t
-    (progn
-      (message "SITE:font-ligatures, ...")
 
-      (setq ligature-path (expand-file-name "local/repos/ligatures.el" user-emacs-directory))
-      (let ((ligature-source (expand-file-name "ligatures.el" ligature-path)))
-        (unless (file-exists-p ligature-source)
-          (progn
-            (make-directory ligature-path t)
-            (url-copy-file "https://raw.githubusercontent.com/mickeynp/ligature.el/master/ligature.el" ligature-source t))))
-
-  (load-library "~/.emacs.d/local/repos/ligatures.el/ligatures")
-
-  (use-package ligature
-  ;;  :load-path "local/repos/ligatures.el/ligature"
-    :config
-    ;; Enable the "www" ligature in every possible major mode
-    (ligature-set-ligatures 't '("www"))
-    ;; Enable traditional ligature support in eww-mode, if the
-    ;; `variable-pitch' face supports it
-    (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
-    ;; Enable all Cascadia Code ligatures in programming modes
-    (ligature-set-ligatures 'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
-                                         ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
-                                         "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
-                                         "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
-                                         "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
-                                         "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
-                                         "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
-                                         "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
-                                         ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
-                                         "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
-                                         "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
-                                         "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
-                                         "\\\\" "://"))
-    ;; Enables ligature checks globally in all buffers. You can also do it
-    ;; per mode with `ligature-mode'.
-    (global-ligature-mode t))
+;; This assumes you've installed the package via MELPA.
+(use-package ligature
+  :ensure t
+  :config
+  ;; Enable the "www" ligature in every possible major mode
+  (ligature-set-ligatures 't '("www"))
+  ;; Enable traditional ligature support in eww-mode, if the
+  ;; `variable-pitch' face supports it
+  (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
+  ;; Enable all Cascadia Code ligatures in programming modes
+  (ligature-set-ligatures 'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
+                                       ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
+                                       "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
+                                       "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
+                                       "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
+                                       "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
+                                       "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
+                                       "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
+                                       ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
+                                       "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
+                                       "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
+                                       "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
+                                       "\\\\" "://"))
+  ;; Enables ligature checks globally in all buffers. You can also do it
+  ;; per mode with `ligature-mode'.
+  (global-ligature-mode t))
 
 
 
-  ;; (use-package fira-code-mode
-  ;;   :ensure t
-  ;; ;; :disabled t
-  ;;   :custom (fira-code-mode-disabled-ligatures '("[]" "x"))  ; ligatures you don't want
-  ;;   :hook prog-mode)                                         ; mode to enable fira-code-mode in
+;; (cond
+;;  ((string-lessp emacs-version "27.1") ;;
+;;   (progn
+;;     (message "SITE:font-legacy, ...")
+;;     (message "SITE:font-legacy.")
+;;     ))
+;;  (t
+;;   (progn
+;;     (message "SITE:font-ligatures, ...")
+
+;;     (setq ligature-path (expand-file-name "local/repos/ligatures.el" user-emacs-directory))
+;;     (let ((ligature-source (expand-file-name "ligatures.el" ligature-path)))
+;;       (unless (file-exists-p ligature-source)
+;;         (progn
+;;           (make-directory ligature-path t)
+;;           (url-copy-file "https://raw.githubusercontent.com/mickeynp/ligature.el/master/ligature.el" ligature-source t))))
+
+;;     (load-library "~/.emacs.d/local/repos/ligatures.el/ligatures")
+
+;;     (use-package ligature
+;;       ;;  :load-path "local/repos/ligatures.el/ligature"
+;;       :config
+;;       ;; Enable the "www" ligature in every possible major mode
+;;       (ligature-set-ligatures 't '("www"))
+;;       ;; Enable traditional ligature support in eww-mode, if the
+;;       ;; `variable-pitch' face supports it
+;;       (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
+;;       ;; Enable all Cascadia Code ligatures in programming modes
+;;       (ligature-set-ligatures 'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
+;;                                            ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
+;;                                            "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
+;;                                            "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
+;;                                            "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
+;;                                            "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
+;;                                            "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
+;;                                            "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
+;;                                            ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
+;;                                            "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
+;;                                            "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
+;;                                            "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
+;;                                            "\\\\" "://"))
+;;       ;; Enables ligature checks globally in all buffers. You can also do it
+;;       ;; per mode with `ligature-mode'.
+;;       (global-ligature-mode t))
 
 
-      (message "SITE:font-ligatures.")
-      ))
-  )
+
+;;     ;; (use-package fira-code-mode
+;;     ;;   :ensure t
+;;     ;; ;; :disabled t
+;;     ;;   :custom (fira-code-mode-disabled-ligatures '("[]" "x"))  ; ligatures you don't want
+;;     ;;   :hook prog-mode)                                         ; mode to enable fira-code-mode in
+
+
+;;     (message "SITE:font-ligatures.")
+;;     ))
+;;  )
 
 
 
 
-  ;; @see: https://github.com/tonsky/FiraCode/issues/211#issuecomment-239058632
+;; @see: https://github.com/tonsky/FiraCode/issues/211#issuecomment-239058632
 
-  ;; (use-package ligature
-  ;;   ;;:load-path "path-to-ligature-repo"
-  ;;   :config
-  ;;   ;; Enable the "www" ligature in every possible major mode
-  ;;   (ligature-set-ligatures 't '("www"))
-  ;;   ;; Enable traditional ligature support in eww-mode, if the
-  ;;   ;; `variable-pitch' face supports it
-  ;;   (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
-  ;;   ;; Enable all Cascadia Code ligatures in programming modes
-  ;;   (ligature-set-ligatures 'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
-  ;;                                        ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
-  ;;                                        "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
-  ;;                                        "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
-  ;;                                        "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
-  ;;                                        "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
-  ;;                                        "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
-  ;;                                        "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
-  ;;                                        ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
-  ;;                                        "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
-  ;;                                        "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
-  ;;                                        "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
-  ;;                                        "\\" "://"))
-  ;;   ;; Enables ligature checks globally in all buffers. You can also do it
-  ;;   ;; per mode with `ligature-mode'.
-  ;;   (global-ligature-mode t))
+;; (use-package ligature
+;;   ;;:load-path "path-to-ligature-repo"
+;;   :config
+;;   ;; Enable the "www" ligature in every possible major mode
+;;   (ligature-set-ligatures 't '("www"))
+;;   ;; Enable traditional ligature support in eww-mode, if the
+;;   ;; `variable-pitch' face supports it
+;;   (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
+;;   ;; Enable all Cascadia Code ligatures in programming modes
+;;   (ligature-set-ligatures 'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
+;;                                        ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
+;;                                        "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
+;;                                        "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
+;;                                        "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
+;;                                        "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
+;;                                        "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
+;;                                        "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
+;;                                        ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
+;;                                        "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
+;;                                        "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
+;;                                        "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
+;;                                        "\\" "://"))
+;;   ;; Enables ligature checks globally in all buffers. You can also do it
+;;   ;; per mode with `ligature-mode'.
+;;   (global-ligature-mode t))
 ;; fonts-ligatures ends here
 
 ;; Fonts/end
@@ -2395,8 +2449,12 @@ Version: 2024-01-18"
 (use-package find-dired
   ;; :straight (:type built-in)
   ;; :ensure t 
-  :custom
-  (setq find-ls-option '("-print0 | xargs -0 ls -ld" . "-ld"))
+  ;; :custom
+  ;; (find-ls-option '("-print0 | xargs -0 ls -ld" . "-ld"))
+  )
+
+(use-package fd-dired
+  :ensure t
   )
 
 ;; peep-dired: file preview
