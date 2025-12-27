@@ -1214,8 +1214,25 @@ Return nil if any single regexp matches."
   ;; :straight nil
   ;; :if window-system
   :config
+  (setq server-use-tcp t)
+  (setq server-host "127.0.0.1")
+  (setq server-port  60321)
+  
+  ;; (setq server-name system-name)
+  ;; (setq server-auth-dir "~/.emacs.d/server/")
+  ;; ;; Generate server auth file
+  ;; (with-temp-buffer
+  ;;   (insert (format "127.0.0.1:%d %s" server-port 
+  ;;                   (secure-hash 'sha1 (current-time-string))))
+  ;;   (write-file "~/.emacs.d/server/auth"))
+  
   (unless (server-running-p)
-    (server-start)))
+    (server-start))
+
+  (message "Server running on port: %s" 
+           (process-contact server-process :service))
+  
+  )
 
 
 ;;

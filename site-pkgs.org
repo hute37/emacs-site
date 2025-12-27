@@ -1279,8 +1279,25 @@ Return nil if any single regexp matches."
   ;; :straight nil
   ;; :if window-system
   :config
+  (setq server-use-tcp t)
+  (setq server-host "127.0.0.1")
+  (setq server-port  60321)
+  
+  ;; (setq server-name system-name)
+  ;; (setq server-auth-dir "~/.emacs.d/server/")
+  ;; ;; Generate server auth file
+  ;; (with-temp-buffer
+  ;;   (insert (format "127.0.0.1:%d %s" server-port 
+  ;;                   (secure-hash 'sha1 (current-time-string))))
+  ;;   (write-file "~/.emacs.d/server/auth"))
+  
   (unless (server-running-p)
-    (server-start)))
+    (server-start))
+
+  (message "Server running on port: %s" 
+           (process-contact server-process :service))
+  
+  )
 
 
 ;;
@@ -6570,6 +6587,12 @@ variable is deleted. (i.e.: set a 42 b 7)"
   (setq org-support-shift-select t) ;; were 'org-shiftup+dpwn+left+right
   (setq org-replace-disputed-keys t)
 
+  ;; Issue: "imenu-default-create-index-function: Invalid function: org-element-with-disabled-cache"
+  ;; @see: https://emacs.stackexchange.com/questions/42006/trouble-with-org-mode-cache-find-error
+  ;; @see: https://www.reddit.com/r/emacs/comments/1hayavx/invalid_function_orgelementwithdisabledcache/
+  (setq org-element-use-cache nil)
+  ;; (setq native-comp-jit-compilation-deny-list '(".*org-element.*"))
+  
   :hook (org-mode . h7/org-mode-setup)
 
   :config
