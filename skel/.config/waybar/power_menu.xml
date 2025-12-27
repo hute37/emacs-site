@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <object class="GtkMenu" id="menu">
-	<child>
+    <child>
 		<object class="GtkMenuItem" id="suspend">
 			<property name="label">Suspend</property>
         </object>
 	</child>
 	<child>
-        <object class="GtkMenuItem" id="hibernat">
+        <object class="GtkMenuItem" id="hibernate">
 			<property name="label">Hibernate</property>
         </object>
 	</child>
