@@ -1,11 +1,30 @@
-alias lls lsd -l
 alias ff find-file
 alias ffd find-dired
 alias d dired
 alias gd magit-diff-unstaged
 alias gds magit-diff-staged
 alias gg git log --color --graph --oneline --abbrev-commit --decorate --all --date=short --pretty=format:%C(cyan)%h %C(yellow)%ad %C(bold green)%d %C(reset)%s
-alias l ls -1
 alias s view-file
-alias ll ls -Fhl --group-directories-first --color=always
-alias la ls -AFhl --group-directories-first --color=always
+alias lls exa -l
+alias llsd lsd -l
+alias l1 ls -1
+alias lsl ls -Fhl --group-directories-first --color=always
+alias lsa ls -AFhl --group-directories-first --color=always
+alias l exa -1 --color=always --no-icons --no-user --no-permission 
+alias ll exa --long --header --git --color=always --icons
+alias lg exa --long --header --git --color=always --icons -g
+alias le exa --long --header --git --color=always --icons --sort=ext
+alias ln exa --long --header -n --color=always --icons --extended
+alias lz exa --long --header  --color=always --icons --extended
+alias lf exa --long --header -g -i -c -m -u --color=always --icons
+alias la exa --long --header --git --color=always --icons --all
+alias lm exa --long --header --git  --color=always -T -L 3 -r -m -s modified
+alias lu exa --long --header --git  --color=always -T -L 3 -r -u -s accessed
+alias lk exa --long --header --git  --color=always -T -L 3
+alias ld exa --long --header --git  --color=always -T -D
+alias lkm exa --long --header --git  --color=always -T -L 5 -r -m -s modified --git-ignore
+alias lku exa --long --header --git  --color=always -T -L 5 -r -u -s accessed --git-ignore
+alias lks exa --long --header --git  --color=always -T -L 5 -r -u -s size --git-ignore
+alias lkg exa --long --header --git --color=always --icons --all --git-ignore
+alias lkd exa --long --header --git  --color=always -T -D
+alias lt exa --grid  --header --git --color=always --icons
