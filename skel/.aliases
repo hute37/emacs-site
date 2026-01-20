@@ -9,6 +9,27 @@ export _DOT_ALIASES_0="$(date  --rfc-3339=ns)"
 [ -x /usr/libexec/mc/mc-wrapper.sh ] && alias mc='. /usr/libexec/mc/mc-wrapper.sh'
 [ -x /usr/share/mc/bin/mc-wrapper.sh ] && alias mc='. /usr/share/mc/bin/mc-wrapper.sh'
 
+# ---(ls)-----------------------------------------------------
+
+if command -v 'eza' >/dev/null; then
+
+alias ll='eza -l --group-directories-first'
+alias la='eza -la --group-directories-first'
+alias lk='eza'
+alias l='eza -1'
+alias lu='eza -la -g -Z -u -s accessed --group-directories-first'
+alias lc='eza -la -g -Z -U -s created --group-directories-first'
+alias lm='eza -la -g -Z -m -s modified --group-directories-first'
+alias lz='eza -la -g -Z -m --group-directories-first'
+alias lg='eza -la --git --git-ignore --group-directories-first'
+alias lt0='eza -T'
+alias lt1='eza -T -L 1'
+alias lt2='eza -T -L 2'
+alias lt3='eza -T -L 3'
+alias lt4='eza -T -L 4'
+alias lt5='eza -T -L 5'
+
+else
 
 # enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ]; then
@@ -29,6 +50,8 @@ alias lla='ls -lArthtu --full-time'
 
 alias lt="ls --color -lFhart"
 
+fi
+
 #
 alias t='tail -F'
 alias sv='less -SRX --follow-name -#24 +F'
@@ -36,7 +59,7 @@ alias s='less -SRX'
 alias rr='ranger'
 alias re='env VISUAL="emacsclient -n" ranger'
 
-which nvim >/dev/null 2>&1 && alias v='nvim' || alias v='vim'
+which nvim >/dev/null  && alias v='nvim' || alias v='vim'
 alias e='emacsclient --no-wait'
 alias ec='emacsclient -c'
 
@@ -150,7 +173,7 @@ man() {
 }
 
 vman() { nvim -c "Man $@" .c 'other'; }
-wman() { w3mman  -N $@; }
+wman() { w3mman  $@; }
 eman() { emacsclient -c -e "(man \"$1\")"; }
 tman() { emacsclient -nw -c -e "(man \"$1\")"; }
 cman() { PAGER=cat man $@; }
