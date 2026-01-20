@@ -3817,6 +3817,7 @@ variable is deleted. (i.e.: set a 42 b 7)"
   ;; ---( lsp-setup )------------------------------------------------------------
 
 (defun h7/lsp-setup ()
+    (interactive)
 
   ;;lsp server install
 
@@ -3937,20 +3938,6 @@ variable is deleted. (i.e.: set a 42 b 7)"
     :after lsp
     :commands lsp-treemacs-errors-list)
 
-
-  ;; ---( pyright )------------------------------------------------------------
-
-(use-package lsp-pyright
-  :ensure t
-  :custom (lsp-pyright-langserver-command "pyright") ;; or basedpyright
-  :hook (python-mode . (lambda ()
-                          (require 'lsp-pyright)
-                          (lsp))))  ; or lsp-deferred
-
-  ;; ---( virtual env )------------------------------------------------------------
-
-  (use-package with-venv
-    :ensure t)
 
   ;; ---( LSP examples )------------------------------------------------------------
 
@@ -4345,6 +4332,11 @@ variable is deleted. (i.e.: set a 42 b 7)"
 ;; #+NAME: lang-python.env
 
 ;; [[file:site-pkgs.org::lang-python.env][lang-python.env]]
+  ;; ---( virtual env )------------------------------------------------------------
+
+  (use-package with-venv
+    :ensure t)
+
   ;; ---( pyvenv )--------------------------------------------------------------
 
   ;; Required to easily switch virtual envs 
@@ -4418,11 +4410,12 @@ variable is deleted. (i.e.: set a 42 b 7)"
     :ensure t
     :defer t
     :custom
+    (lsp-pyright-langserver-command "pyright") ;; or basedpyright
     (lsp-pyright-disable-language-service nil)
     (lsp-pyright-disable-organize-imports nil)
     (lsp-pyright-auto-import-completions t)
     (lsp-pyright-use-library-code-for-types t)
-    (lsp-pyright-venv-path "~/.cache/pypoetry/virtualenvs")
+    ;;(lsp-pyright-venv-path "~/.cache/pypoetry/virtualenvs")
     :config
     ;;(setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
     ;;(setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
@@ -4441,6 +4434,14 @@ variable is deleted. (i.e.: set a 42 b 7)"
 ;; #+NAME: lang-python.tools
 
 ;; [[file:site-pkgs.org::lang-python.tools][lang-python.tools]]
+  ;; ---( pytest )------------------------------------------------------------
+
+
+(use-package python-pytest
+  :ensure t
+ :custom
+ (python-pytest-confirm t))
+
   ;; ---( yapfify )-------------------------------------------------------------
 
   ;; Format the python buffer following YAPF rules
