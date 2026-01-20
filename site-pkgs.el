@@ -3938,6 +3938,15 @@ variable is deleted. (i.e.: set a 42 b 7)"
     :commands lsp-treemacs-errors-list)
 
 
+  ;; ---( pyright )------------------------------------------------------------
+
+(use-package lsp-pyright
+  :ensure t
+  :custom (lsp-pyright-langserver-command "pyright") ;; or basedpyright
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp))))  ; or lsp-deferred
+
   ;; ---( virtual env )------------------------------------------------------------
 
   (use-package with-venv
@@ -4016,6 +4025,15 @@ variable is deleted. (i.e.: set a 42 b 7)"
              :env '(("DEBUG" . "1"))
              :request "launch"
              :name "App:demo"))
+      
+      (dap-register-debug-template
+       "UV :: Run 'pytest'"
+       (list :type "uv"
+             :args "run pytest"
+             :cwd nil
+             :env '(("DEBUG" . "1"))
+             :request "launch"
+             :name "uv:pytest"))
       )
 ;; lang-lsp.mode.dap ends here
 
@@ -4368,7 +4386,13 @@ variable is deleted. (i.e.: set a 42 b 7)"
     (add-hook 'projectile-after-switch-project-hook 'poetry-track-virtualenv))
 
 
-  ;; ---( pipenv )-------------------------------------------------------------
+  ;; ---( uv )-------------------------------------------------------------
+
+(use-package uv-mode
+    :ensure t
+    :hook (python-mode . uv-mode-auto-activate-hook))
+
+  ;;t ---( pipenv )-------------------------------------------------------------
   ;;
   ;; (use-package pipenv
   ;;   :unless (version< emacs-version "25.1")
@@ -6329,6 +6353,12 @@ variable is deleted. (i.e.: set a 42 b 7)"
   (setq org-support-shift-select t) ;; were 'org-shiftup+dpwn+left+right
   (setq org-replace-disputed-keys t)
 
+  ;; Issue: "imenu-default-create-index-function: Invalid function: org-element-with-disabled-cache"
+  ;; @see: https://emacs.stackexchange.com/questions/42006/trouble-with-org-mode-cache-find-error
+  ;; @see: https://www.reddit.com/r/emacs/comments/1hayavx/invalid_function_orgelementwithdisabledcache/
+  (setq org-element-use-cache nil)
+  ;; (setq native-comp-jit-compilation-deny-list '(".*org-element.*"))
+  
   :hook (org-mode . h7/org-mode-setup)
 
   :config
