@@ -87,6 +87,7 @@ case "$TERM" in
 #ZSH_THEME="kolo"
 #ZSH_THEME="macovsky"
 #ZSH_THEME="mgutz"
+ZSH_THEME="mrtazz" 
 #ZSH_THEME="muse"
 #ZSH_THEME="nicoulaj"
 #ZSH_THEME="refined"
@@ -107,7 +108,7 @@ case "$TERM" in
 #ZSH_THEME="afowler"
 #ZSH_THEME="spaceship"
 #ZSH_THEME="agkozak"; AGKOZAK_USER_HOST_DISPLAY=0
-ZSH_THEME="sobole"; SOBOLE_THEME_MODE=dark
+#ZSH_THEME="sobole"; SOBOLE_THEME_MODE=dark
 
     ;;
 esac    
