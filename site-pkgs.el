@@ -2507,6 +2507,17 @@ Version: 2024-01-18"
 ;;             ("SPC" . nil)
 ;;             ("<backspace>" . nil)))
 
+
+;; ---( ztree )--------------------------------------------------------------
+
+(use-package ztree
+  :ensure t
+  )
+
+
+
+
+
 ;; }}}  .dired
 ;; dired ends here
 
