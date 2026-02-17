@@ -1,4 +1,9 @@
 #!/bin/sh
 
-exec rxvt $@
+URXVTC_FONT="xft:Inconsolata Nerd Font:size=18"
 
+urxvtc -fn "$URXVTC_FONT" -fb "$URXVTC_FONT" "$@"
+if [ $? -eq 2 ]; then
+  urxvtd -q -o -f
+  urxvtc -fn "$URXVTC_FONT" -fb "$URXVTC_FONT" "$@"
+fi
