@@ -87,6 +87,7 @@ case "$TERM" in
 ZSH_THEME="kolo"
 #ZSH_THEME="macovsky"
 #ZSH_THEME="mgutz"
+ZSH_THEME="mrtazz" 
 #ZSH_THEME="muse"
 #ZSH_THEME="nicoulaj"
 #ZSH_THEME="refined"

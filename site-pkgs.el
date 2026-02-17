@@ -2507,6 +2507,17 @@ Version: 2024-01-18"
 ;;             ("SPC" . nil)
 ;;             ("<backspace>" . nil)))
 
+
+;; ---( ztree )--------------------------------------------------------------
+
+(use-package ztree
+  :ensure t
+  )
+
+
+
+
+
 ;; }}}  .dired
 ;; dired ends here
 
@@ -3818,6 +3829,7 @@ variable is deleted. (i.e.: set a 42 b 7)"
   ;; ---( lsp-setup )------------------------------------------------------------
 
 (defun h7/lsp-setup ()
+    (interactive)
 
   ;;lsp server install
 
@@ -3939,11 +3951,6 @@ variable is deleted. (i.e.: set a 42 b 7)"
     :commands lsp-treemacs-errors-list)
 
 
-  ;; ---( virtual env )------------------------------------------------------------
-
-  (use-package with-venv
-    :ensure t)
-
   ;; ---( LSP examples )------------------------------------------------------------
 
   ;; (use-package company-c-headers
@@ -4017,6 +4024,15 @@ variable is deleted. (i.e.: set a 42 b 7)"
              :env '(("DEBUG" . "1"))
              :request "launch"
              :name "App:demo"))
+      
+      (dap-register-debug-template
+       "UV :: Run 'pytest'"
+       (list :type "uv"
+             :args "run pytest"
+             :cwd nil
+             :env '(("DEBUG" . "1"))
+             :request "launch"
+             :name "uv:pytest"))
       )
 ;; lang-lsp.mode.dap ends here
 
@@ -4328,6 +4344,11 @@ variable is deleted. (i.e.: set a 42 b 7)"
 ;; #+NAME: lang-python.env
 
 ;; [[file:site-pkgs.org::lang-python.env][lang-python.env]]
+  ;; ---( virtual env )------------------------------------------------------------
+
+  (use-package with-venv
+    :ensure t)
+
   ;; ---( pyvenv )--------------------------------------------------------------
 
   ;; Required to easily switch virtual envs 
@@ -4369,7 +4390,13 @@ variable is deleted. (i.e.: set a 42 b 7)"
     (add-hook 'projectile-after-switch-project-hook 'poetry-track-virtualenv))
 
 
-  ;; ---( pipenv )-------------------------------------------------------------
+  ;; ---( uv )-------------------------------------------------------------
+
+(use-package uv-mode
+    :ensure t
+    :hook (python-mode . uv-mode-auto-activate-hook))
+
+  ;;t ---( pipenv )-------------------------------------------------------------
   ;;
   ;; (use-package pipenv
   ;;   :unless (version< emacs-version "25.1")
@@ -4395,11 +4422,12 @@ variable is deleted. (i.e.: set a 42 b 7)"
     :ensure t
     :defer t
     :custom
+    (lsp-pyright-langserver-command "pyright") ;; or basedpyright
     (lsp-pyright-disable-language-service nil)
     (lsp-pyright-disable-organize-imports nil)
     (lsp-pyright-auto-import-completions t)
     (lsp-pyright-use-library-code-for-types t)
-    (lsp-pyright-venv-path "~/.cache/pypoetry/virtualenvs")
+    ;;(lsp-pyright-venv-path "~/.cache/pypoetry/virtualenvs")
     :config
     ;;(setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
     ;;(setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
@@ -4418,6 +4446,14 @@ variable is deleted. (i.e.: set a 42 b 7)"
 ;; #+NAME: lang-python.tools
 
 ;; [[file:site-pkgs.org::lang-python.tools][lang-python.tools]]
+  ;; ---( pytest )------------------------------------------------------------
+
+
+(use-package python-pytest
+  :ensure t
+ :custom
+ (python-pytest-confirm t))
+
   ;; ---( yapfify )-------------------------------------------------------------
 
   ;; Format the python buffer following YAPF rules
@@ -7832,8 +7868,8 @@ With a prefix ARG, remove start location."
     (dashboard-set-init-info t)
     (dashboard-startup-banner 'logo)
     (dashboard-image-banner-max-width 80)
-    (dashboard-items '((recents . 3)
-                       (projects . 5)
+    (dashboard-items '((recents . 4)
+                       (projects . 4)
                        (bookmarks . 1)
                        (agenda . 5)))
     (initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
