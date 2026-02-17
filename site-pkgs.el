@@ -3577,7 +3577,8 @@ variable is deleted. (i.e.: set a 42 b 7)"
   ;; ---( ranger )--------------------------------------------------------------
 
   (use-package ranger
-    :ensure t
+    ;; :ensure t
+    :disabled t
     ;;:bind ("C-, C-," . ranger)
     )
 
@@ -6329,6 +6330,12 @@ variable is deleted. (i.e.: set a 42 b 7)"
   (setq org-support-shift-select t) ;; were 'org-shiftup+dpwn+left+right
   (setq org-replace-disputed-keys t)
 
+  ;; Issue: "imenu-default-create-index-function: Invalid function: org-element-with-disabled-cache"
+  ;; @see: https://emacs.stackexchange.com/questions/42006/trouble-with-org-mode-cache-find-error
+  ;; @see: https://www.reddit.com/r/emacs/comments/1hayavx/invalid_function_orgelementwithdisabledcache/
+  (setq org-element-use-cache nil)
+  ;; (setq native-comp-jit-compilation-deny-list '(".*org-element.*"))
+  
   :hook (org-mode . h7/org-mode-setup)
 
   :config

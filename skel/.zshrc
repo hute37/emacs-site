@@ -84,7 +84,7 @@ case "$TERM" in
 #ZSH_THEME="arrow"
 #ZSH_THEME="eastwood"
 #ZSH_THEME="jnrowe"
-#ZSH_THEME="kolo"
+ZSH_THEME="kolo"
 #ZSH_THEME="macovsky"
 #ZSH_THEME="mgutz"
 #ZSH_THEME="muse"
@@ -107,7 +107,7 @@ case "$TERM" in
 #ZSH_THEME="afowler"
 #ZSH_THEME="spaceship"
 #ZSH_THEME="agkozak"; AGKOZAK_USER_HOST_DISPLAY=0
-ZSH_THEME="sobole"; SOBOLE_THEME_MODE=dark
+#ZSH_THEME="sobole"; SOBOLE_THEME_MODE=dark
 
     ;;
 esac    
@@ -192,6 +192,12 @@ export SHELL=$(which zsh)
 
 # export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 # export MANPATH="/usr/local/man:$MANPATH"
+#
+
+case "$PATH" in 
+	*.local/bin*) ;;
+	*) export PATH="$HOME/.local/bin:$PATH" ;;
+esac
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -243,11 +249,16 @@ fi
 
 ### {{{ #(NODE) ///////////////////////////////////////////////////////////////
 
-if [ -z "$NVM_DIR" ] && [ -d ~/.nvm ]; then
+if [ -z "$NVM_DIR" ]; then
+    [ -d ~/.nvm ] && export NVM_DIR="$HOME/.nvm"
+    [ -d ~/.config/nvm ] && export NVM_DIR="$HOME/.config/nvm"
 
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    if [ -n "$NVM_DIR" ]; then
+
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+    fi
 
 fi
 

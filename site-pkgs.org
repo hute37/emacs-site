@@ -3712,7 +3712,8 @@ variable is deleted. (i.e.: set a 42 b 7)"
   ;; ---( ranger )--------------------------------------------------------------
 
   (use-package ranger
-    :ensure t
+    ;; :ensure t
+    :disabled t
     ;;:bind ("C-, C-," . ranger)
     )
 
