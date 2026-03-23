@@ -4016,176 +4016,169 @@ variable is deleted. (i.e.: set a 42 b 7)"
 #+NAME: lang-lsp.mode
 #+begin_src emacs-lisp
 
-  ;; ---( flycheck )------------------------------------------------------------
+;; ---( flycheck )------------------------------------------------------------
 
-  (use-package flycheck
-    :ensure t
-    :init (global-flycheck-mode)
-    )
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode)
+  )
 
-  ;; ---( LSP mode )------------------------------------------------------------
+;; ---( LSP mode )------------------------------------------------------------
 
-  (use-package lsp-mode
-    :ensure t
-    :init
-    (setq lsp-keymap-prefix "C-l")
-    :hook (
-           (python-mode . lsp-deferred)
-           )
-    :commands (lsp lsp-deferred)
-    :config
-    (dolist (dir '(
-                   "[/\\\\]\\.cache"
-                   "[/\\\\]\\.mypy_cache"
-                   "[/\\\\]\\.pytest_cache"
-                   "[/\\\\]\\.Rproj.user"
-                   "[/\\\\]venv$"
-                   "[/\\\\]build$"
-                   "[/\\\\]dist$"
-                   "[/\\\\]docker$"
-                   "[/\\\\]notes$"
-                   "[/\\\\]data$"
-                   "[/\\\\]home$"
-                   "[/\\\\]logs$"
-                   "[/\\\\]renv$"
-                   "[/\\\\]temp$"
-                   "[/\\\\]_targets"
-                   ))
-      (push dir lsp-file-watch-ignored-directories))
-    (lsp-enable-which-key-integration t)
-    :custom
-    (lsp-enable-snippet nil)
-    )
+(use-package lsp-mode
+  :ensure t
+  :init
+  ;; "C-l" shadows recenter-top-bottom; use the standard lsp prefix.
+  ;;(setq lsp-keymap-prefix "C-c l")    
+  (setq lsp-keymap-prefix "C-l")
+  :hook (
+         (python-mode . lsp-deferred)
+         (python-ts-mode . lsp-deferred)
+         (lsp-mode . lsp-enable-which-key-integration)
+         )
+  :commands (lsp lsp-deferred)
+  :custom
+  ;; Performance: increase IPC read buffer (critical for large PyTorch stubs).
+  (read-process-output-max (* 1024 1024))
+  ;; Use flycheck (already running globally) as the diagnostics provider.
+  (lsp-diagnostics-provider :flycheck)
+  ;; Disable pylsp/pyls; pyright (basedpyright) is the sole Python server.
+  (lsp-disabled-clients '(pyls pylsp))
+  ;; Snippets require yasnippet which is currently disabled.
+  (lsp-enable-snippet nil)
+  ;; Breadcrumb is useful for NLP codebases with deep class hierarchies.
+  (lsp-headerline-breadcrumb-enable t)
+  (lsp-headerline-breadcrumb-segments '(project file symbols))
+  ;; Lens costs a round-trip per buffer; disable by default.
+  (lsp-lens-enable nil)
+  ;; Idle delay: 0.3 s gives responsive feedback on fast machines.
+  (lsp-idle-delay 0.3)
+  :config
+  (dolist (dir '(
+                 "[/\\\\]\\.cache"
+                 "[/\\\\]\\.mypy_cache"
+                 "[/\\\\]\\.pytest_cache"
+                 "[/\\\\]\\.Rproj.user"
+                 "[/\\\\]venv$"
+                 "[/\\\\]build$"
+                 "[/\\\\]dist$"
+                 "[/\\\\]docker$"
+                 "[/\\\\]notes$"
+                 "[/\\\\]data$"
+                 "[/\\\\]home$"
+                 "[/\\\\]logs$"
+                 "[/\\\\]renv$"
+                 "[/\\\\]temp$"
+                 "[/\\\\]_targets"
+                 ))
+    (push dir lsp-file-watch-ignored-directories))
+  )
 
-  (use-package lsp-ui
-    :ensure t
-    :after lsp
-    :hook (lsp-mode . lsp-ui-mode)
-    :bind (:map lsp-ui-mode-map
-                ("C-c i" . lsp-ui-imenu))
-    :custom
-    (lsp-ui-doc-position 'bottom)
-    (lsp-ui-doc-enable t)
-    (lsp-ui-sideline-enable t)
-    (lsp-ui-imenu-enable t)
-    (lsp-ui-flycheck-enable t)
-    (lsp-ui-doc-delay 2)
-    )
-
-
-  ;; if you are helm user
-  ;;(use-package helm-lsp :commands helm-lsp-workspace-symbol)
-  ;; if you are ivy user
-  ;;(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
-
-  (use-package consult-lsp
-    :ensure t
-    :defer t
-    :after lsp
-    :commands (consult-lsp-diagnostics consult-lsp-symbols consult-lsp-file-symbols)
-    )
-
-  ;; (use-package company-lsp
-  ;;   :ensure t
-  ;;   :defer t
-  ;;   :after lsp
-  ;;   :commands company-lsp
-  ;;   )
-
-
-  (use-package lsp-treemacs
-    :ensure t
-    :defer t
-    :after lsp
-    :commands lsp-treemacs-errors-list)
+(use-package lsp-ui
+  :ensure t
+  :after lsp
+  :hook (lsp-mode . lsp-ui-mode)
+  :bind (:map lsp-ui-mode-map
+              ("C-c i" . lsp-ui-imenu))
+  :custom
+  (lsp-ui-doc-position 'at-point)
+  (lsp-ui-doc-enable t)
+  ;; Show on demand only (M-. or hover); avoid constant pop-up noise.
+  (lsp-ui-doc-show-with-cursor nil)
+  (lsp-ui-sideline-enable t)
+  (lsp-ui-sideline-show-diagnostics t)
+  (lsp-ui-sideline-show-code-actions nil)
+  (lsp-ui-imenu-enable t)
+  (lsp-ui-flycheck-enable t)
+  (lsp-ui-doc-delay 1.5)
+  )
 
 
-  ;; ---( LSP examples )------------------------------------------------------------
+(use-package consult-lsp
+  :ensure t
+  :defer t
+  :after lsp-mode
+  :commands (consult-lsp-diagnostics consult-lsp-symbols consult-lsp-file-symbols)
+  )
 
-  ;; (use-package company-c-headers
-  ;;   :ensure t
-  ;;   :config
-  ;;   (push 'company-c-headers company-backends)
-  ;;   (add-to-list 'company-c-headers-path-system "/usr/include/c++/7/")
-  ;;   )
+;; (use-package company-lsp
+;;   :ensure t
+;;   :defer t
+;;   :after lsp
+;;   :commands company-lsp
+;;   )
 
-  ;; (use-package lsp-mode
-  ;;   :ensure t
-  ;;   :init
-  ;;   (setq lsp-keymap-prefix "C-c l")
-  ;;   :config
-  ;;   (require 'lsp-mode)
-  ;;   (require 'company-capf)
-  ;;   (setq lsp-prefer-capf t)
-  ;;   (setq lsp-completion-provider :capf)
-  ;;   (push 'company-capf company-backends)
-  ;;   ;; Recommended settings
-  ;;   (add-hook 'lsp-mode-hook (lambda ()
-  ;;                  (setq company-minimum-prefix-length 1
-  ;;                    company-idle-delay 0.0)))
-  ;;   ;; Other niceties
-  ;;   (setq lsp-enable-semantic-highlighting t)
-  ;;   (setq lsp-enable-snippet nil)  ;; Enable arguments completion
-  ;;   (setq lsp-signature-auto-activate nil)
-  ;;   )
 
+(use-package lsp-treemacs
+  :ensure t
+  :defer t
+  :after lsp-mode
+  :commands lsp-treemacs-errors-list
+  )
 
 
 #+END_SRC
-
 **** Lang: LSP.dap
 #+NAME: lang-lsp.mode.dap
 #+begin_src emacs-lisp
 
-    ;; ---( dap )--------------------------------------------------------------
+;; ---( dap )--------------------------------------------------------------
 
-    (use-package dap-mode
-      :ensure t
-      :after lsp-mode
-      :commands dap-debug
-      :hook (
-             (python-mode . dap-mode)
-             (python-mode . dap-ui-mode)
-             (dap-stopped . (lambda (arg) (call-interactively #'dap-hydra)))
-             )
-      :custom
-      (lsp-enable-dap-auto-configure t)  
-      ;; (dap-auto-configure-features '(sessions locals controls tooltip))
-      :config
-      ;; (dap-auto-configure-mode)
-      (require 'dap-hydra)
-      (require 'dap-python)
-      (setq dap-python-debugger 'debugpy)
-      (defun dap-python--pyenv-executable-find (command)
-        (with-venv (executable-find "python")))
+(use-package dap-mode
+  :ensure t
+  :after lsp-mode
+  :commands dap-debug
+  :hook (
 
-      (dap-register-debug-template
-       "Poetry :: Run 'main'"
-       (list :type "poetry"
-             :args "run main"
-             :cwd nil
-             :env '(("DEBUG" . "1"))
-             :request "launch"
-             :name "App:main"))
+         (python-mode . dap-mode)
+         (python-mode . dap-ui-mode)
+         (python-ts-mode . dap-mode)
+         (python-ts-mode . dap-ui-mode)
+         (dap-stopped . (lambda (arg) (call-interactively #'dap-hydra)))
+         )
+  :custom
+  (lsp-enable-dap-auto-configure t)  
+  ;; (dap-auto-configure-features '(sessions locals controls tooltip))
+  :config
+  ;; (dap-auto-configure-mode)
+  (require 'dap-hydra)
+  (require 'dap-python)
+  (setq dap-python-debugger 'debugpy)
 
-      (dap-register-debug-template
-       "Poetry :: Run 'demo'"
-       (list :type "poetry"
-             :args "run demo"
-             :cwd nil
-             :env '(("DEBUG" . "1"))
-             :request "launch"
-             :name "App:demo"))
-      
-      (dap-register-debug-template
-       "UV :: Run 'pytest'"
-       (list :type "uv"
-             :args "run pytest"
-             :cwd nil
-             :env '(("DEBUG" . "1"))
-             :request "launch"
-             :name "uv:pytest"))
-      )
+  ;; Use pet to find the project's interpreter rather than with-venv.
+  (defun dap-python--pyenv-executabl-find (command)
+    (or (and (fboundp 'pet-executable-find)
+             (pet-executable-find command))
+        (with-venv (executable-find command))))
+  
+
+  (dap-register-debug-template
+   "UV :: Run 'main'"
+   (list :type "uv"
+         :args "run main"
+         :cwd nil
+         :env '(("DEBUG" . "1"))
+         :request "launch"
+         :name "App:main"))
+
+  (dap-register-debug-template
+   "UV :: Run 'demo'"
+   (list :type "uv"
+         :args "run demo"
+         :cwd nil
+         :env '(("DEBUG" . "1"))
+         :request "launch"
+         :name "App:demo"))
+  
+  (dap-register-debug-template
+   "UV :: Run 'pytest'"
+   (list :type "uv"
+         :args "run pytest"
+         :cwd nil
+         :env '(("DEBUG" . "1"))
+         :request "launch"
+         :name "uv:pytest"))
+  )
 
 #+END_SRC
 
@@ -4198,6 +4191,11 @@ variable is deleted. (i.e.: set a 42 b 7)"
 
 (defun h7/treesitter-setup ()
 
+  ;; treesit-auto manages grammar installation and major-mode-remap-alist
+  ;; automatically. It supersedes the manual h7/treesitter-setup function.
+  ;;
+  ;; To install a grammar interactively: M-x treesit-install-language-grammar
+  ;; treesit-auto-install 'prompt asks before compiling any grammar.
   (setq treesit-language-source-alist
         '((ada "https://github.com/briot/tree-sitter-ada")
           (bash "https://github.com/tree-sitter/tree-sitter-bash")
@@ -4218,10 +4216,30 @@ variable is deleted. (i.e.: set a 42 b 7)"
           (typescript "https://github.com/tree-sitter/tree-sitter-typescript"
                       "master" "typescript/src")
           (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
+  )
 
-  ;; (mapc #'treesit-install-language-grammar
-  ;;      (mapcar #'car treesit-language-source-alist))
 
+  (use-package treesit-auto
+    :ensure t
+    :custom
+    ;; Ask before downloading and compiling a grammar.
+    ;; Change to t for silent auto-install (useful on CI or container first-boot).
+    (treesit-auto-install 'prompt)
+    :config
+    ;; Register all grammars in auto-mode-alist and populate major-mode-remap-alist.
+    ;; This activates python-ts-mode automatically when the python grammar is present.
+    (treesit-auto-add-to-auto-mode-alist 'all)
+    (global-treesit-auto-mode))
+  ;; NOTE: h7/treesitter-setup is retained below as a convenience utility for
+  ;; bulk-installing all grammars at once (e.g. on a fresh machine).
+  ;; Call it manually: M-x h7/treesitter-setup
+  (defun h7/treesitter-setup ()
+    "Install all tree-sitter grammars defined in `treesit-language-source-alist'."
+    (interactive)
+    (mapc #'treesit-install-language-grammar
+          (mapcar #'car treesit-language-source-alist))
+
+  
   (setq major-mode-remap-alist
         '( ;;      (ada-mode . ada-ts-mode)
           ;;      (yaml-mode . yaml-ts-mode)
@@ -4437,73 +4455,74 @@ variable is deleted. (i.e.: set a 42 b 7)"
 #+NAME: lang-python.mode
 #+begin_src emacs-lisp
 
+;; ---( python )--------------------------------------------------------------
 
-  ;; ---( python )--------------------------------------------------------------
-
-  ;; @see: https://gitlab.com/nathanfurnal/dotemacs/-/snippets/2060535?utm_source=pocket_mylist
-  ;; @see: https://github.com/jidicula/dotfiles/blob/main/init.el?utm_source=pocket_mylist
-
-
-  ;; Built-in Python utilities
-  (use-package python
-    :ensure t
-    :config
-    ;; Remove guess indent python message
-    (setq python-indent-guess-indent-offset-verbose nil)
-    ;; Use IPython when available or fall back to regular Python 
-    (cond
-     ((executable-find "ipython")
-      (progn
-        (setq python-shell-buffer-name "IPython")
-        (setq python-shell-interpreter "ipython")
-        (setq python-shell-interpreter-args "-i --simple-prompt")))
-     ((executable-find "python3")
-      (setq python-shell-interpreter "python3"))
-     ((executable-find "python2")
-      (setq python-shell-interpreter "python2"))
-     (t
-      (setq python-shell-interpreter "python"))))
+;; @see: https://gitlab.com/nathanfurnal/dotemacs/-/snippets/2060535?utm_source=pocket_mylist
+;; @see: https://github.com/jidicula/dotfiles/blob/main/init.el?utm_source=pocket_mylist
 
 
-  ;; Hide the modeline for inferior python processes
-  (use-package inferior-python-mode
-    :ensure nil
-    :hook (inferior-python-mode . hide-mode-line-mode))
+;; Built-in Python utilities
+(use-package python
+  :ensure nil
+  :hook (python-ts-mode . eglot-ensure)
+  :config
+  ;; Remove guess indent python message
+  (setq python-indent-guess-indent-offset-verbose nil)
+  ;; Use IPython when available or fall back to regular Python 
+  (cond
+   ((executable-find "ipython")
+    (progn
+      (setq python-shell-buffer-name "IPython")
+      (setq python-shell-interpreter "ipython")
+      (setq python-shell-interpreter-args "-i --simple-prompt")))
+   ((executable-find "python3")
+    (setq python-shell-interpreter "python3"))
+   ((executable-find "python2")
+    (setq python-shell-interpreter "python2"))
+   (t
+    (setq python-shell-interpreter "python")))
+  )
 
-  ;; Required to hide the modeline 
-  (use-package hide-mode-line
-    :ensure t
-    :defer t)
+
+;; Hide the modeline for inferior python processes
+(use-package inferior-python-mode
+  :ensure nil
+  :hook (inferior-python-mode . hide-mode-line-mode))
+
+;; Required to hide the modeline 
+(use-package hide-mode-line
+  :ensure t
+  :defer t)
 
 
 
-  ;; (use-package python-mode
-  ;;   :mode ("\\.py\\'" . python-mode)
-  ;;   :interpreter ("python" . python-mode)
-  ;;   :config
-  ;;   (defvar python-mode-initialized nil)
-  ;;   (defun my-python-mode-hook ()
-  ;;     (unless python-mode-initialized
-  ;;       (setq python-mode-initialized t)
-  ;;       (info-lookup-add-help
-  ;;        :mode 'python-mode
-  ;;        :regexp "[a-zA-Z_0-9.]+"
-  ;;        :doc-spec
-  ;;        '(("(python)Python Module Index" )
-  ;;          ("(python)Index"
-  ;;           (lambda
-  ;;             (item)
-  ;;             (cond
-  ;;              ((string-match
-  ;;                "\\([A-Za-z0-9_]+\\)() (in module \\([A-Za-z0-9_.]+\\))" item)
-  ;;               (format "%s.%s" (match-string 2 item)
-  ;;                       (match-string 1 item)))))))))
-  ;;     (setq indicate-empty-lines t)
-  ;;     (set (make-local-variable 'parens-require-spaces) nil)
-  ;;     (setq indent-tabs-mode nil)
-  ;;     (bind-key "C-c C-z" 'python-shell python-mode-map)
-  ;;     (unbind-key "C-c c" python-mode-map))
-  ;;   (add-hook 'python-mode-hook 'my-python-mode-hook))
+;; (use-package python-mode
+;;   :mode ("\\.py\\'" . python-mode)
+;;   :interpreter ("python" . python-mode)
+;;   :config
+;;   (defvar python-mode-initialized nil)
+;;   (defun my-python-mode-hook ()
+;;     (unless python-mode-initialized
+;;       (setq python-mode-initialized t)
+;;       (info-lookup-add-help
+;;        :mode 'python-mode
+;;        :regexp "[a-zA-Z_0-9.]+"
+;;        :doc-spec
+;;        '(("(python)Python Module Index" )
+;;          ("(python)Index"
+;;           (lambda
+;;             (item)
+;;             (cond
+;;              ((string-match
+;;                "\\([A-Za-z0-9_]+\\)() (in module \\([A-Za-z0-9_.]+\\))" item)
+;;               (format "%s.%s" (match-string 2 item)
+;;                       (match-string 1 item)))))))))
+;;     (setq indicate-empty-lines t)
+;;     (set (make-local-variable 'parens-require-spaces) nil)
+;;     (setq indent-tabs-mode nil)
+;;     (bind-key "C-c C-z" 'python-shell python-mode-map)
+;;     (unbind-key "C-c c" python-mode-map))
+;;   (add-hook 'python-mode-hook 'my-python-mode-hook))
 
 
 
@@ -4512,70 +4531,92 @@ variable is deleted. (i.e.: set a 42 b 7)"
 **** Lang: Python/env
 #+NAME: lang-python.env
 #+begin_src emacs-lisp
+;; ---( uv / virtual env integration )------------------------------------------
+;; Architecture:
+;; uv-mode – activates the .venv found by uv for shell commands
+;; pet – resolves the exact interpreter from pyproject.toml / uv.lock
+;; and wires it into LSP before lsp-deferred fires
+;; pyvenv-auto – silently activates .venv / venv on buffer/dired entry
+;;
+;; poetry and pipenv hooks have been removed; poetry tracking caused conflicts
+;; with uv-mode and added latency on post-command-hook.
 
-  ;; ---( virtual env )------------------------------------------------------------
-
-  (use-package with-venv
-    :ensure t)
-
-  ;; ---( pyvenv )--------------------------------------------------------------
-
-  ;; Required to easily switch virtual envs 
-  ;; via the menu bar or with `pyvenv-workon` 
-  ;; Setting the `WORKON_HOME` environment variable points 
-  ;; at where the envs are located. I use (miniconda ^H) poetry. 
-  (use-package pyvenv
-    :ensure t
-    :defer t
-    :config
-    ;; Setting work on to easily switch between environments
-    ;;(setenv "WORKON_HOME" (expand-file-name "~/miniconda3/envs/"))
-    (setenv "WORKON_HOME" (expand-file-name "~/.cache/pypoetry/virtualenvs"))
-    ;; Display virtual envs in the menu bar
-    (setq pyvenv-menu t)
-    ;; Restart the python process when switching environments
-    (add-hook 'pyvenv-post-activate-hooks (lambda ()
-                                            (pyvenv-restart-python)))
-    :hook (python-mode . pyvenv-mode))
-
-
-  ;; ---( poetry )-------------------------------------------------------------
-
-  ;; (use-package poetry
-  ;;   :ensure t
-  ;;   ;; :init
-  ;;   ;; imperfect tracking strategy causes lags in builds
-  ;;   ;; (setq poetry-tracking-strategy 'switch-buffer)
-  ;;   :hook
-  ;;   ;; activate poetry-tracking-mode when python-mode is active
-  ;;   (python-mode . poetry-tracking-mode)
-  ;;   )
-
-  (use-package poetry
-    :ensure t
-    :config
-    (add-hook 'poetry-tracking-mode-hook (lambda () (remove-hook 'post-command-hook 'poetry-track-virtualenv)))
-    (add-hook 'python-mode-hook 'poetry-track-virtualenv)
-    (add-hook 'projectile-after-switch-project-hook 'poetry-track-virtualenv))
-
-
-  ;; ---( uv )-------------------------------------------------------------
+;; ---( uv-mode )-------------------------------------------------------------
+;; uv-mode sets PATH / VIRTUAL_ENV for the current project's .venv
 
 (use-package uv-mode
-    :ensure t
-    :hook (python-mode . uv-mode-auto-activate-hook))
+  :ensure t
+  :hook ((python-mode . uv-mode-auto-activate-hook)
+         (python-ts-mode . uv-mode-auto-activate-hook))
+  )
 
-  ;;t ---( pipenv )-------------------------------------------------------------
-  ;;
-  ;; (use-package pipenv
-  ;;   :unless (version< emacs-version "25.1")
-  ;;   :defer t
-  ;;   ;; :ensure t
-  ;;   :hook (python-mode . pipenv-mode)
-  ;;   :init
-  ;;   (setq
-  ;;    pipenv-projectile-after-switch-function
-  ;;    #'pipenv-projectile-after-switch-extended))
+
+;; ---( pet: Python Executable Tracker )--------------------------------------
+;; pet reads uv.lock / pyproject.toml / .python-version to resolve the exact
+;; interpreter, then sets buffer-local variables consumed by lsp-pyright.
+  
+(use-package pet
+  :ensure t
+  :config
+  (add-hook 'python-base-mode-hook
+            (lambda ()
+              (setq-local python-shell-interpreter
+                          (or (pet-executable-find "python") "python3")
+                          python-shell-interpreter-args "-i")
+              (pet-mode)))
+  ;; Wire pet's resolved venv into lsp-pyright before the server starts.
+  (add-hook 'pet-mode-hook
+            (lambda ()
+              (when-let ((root (pet-virtualenv-root)))
+                (setq-local
+                 lsp-pyright-venv-path
+                 (file-name-directory (directory-file-name root))
+                 lsp-pyright-python-executable-cmd
+                 (pet-executable-find "python"))))))  
+
+
+
+;; ---( pyvenv-auto )---------------------------------------------------------
+;; pyvenv-auto activates .venv automatically on project entry; it also
+;; triggers pyvenv-post-activate-hooks which restarts the Python process.
+(use-package pyvenv-auto
+  :ensure t
+  :hook ((python-mode . pyvenv-auto-run)
+         (python-ts-mode . pyvenv-auto-run)))
+
+
+;; Keep pyvenv available for manual workon and menu-bar integration.
+(use-package pyvenv
+  :ensure t
+  :defer t
+  :config
+  ;; Update WORKON_HOME to the uv global venv store.
+  (setenv "WORKON_HOME" (expand-file-name "~/.local/share/uv/venvs"))
+  (setq pyvenv-menu t))
+
+
+;; ---( virtual env )------------------------------------------------------------
+;; used by dap-mode's dap-python--pyenv-executable-find
+
+(use-package with-venv
+  :ensure t)
+
+
+
+
+;; ---( poetry: disabled )----------------------------------------------------
+;; poetry tracking hooks have been replaced by pet + uv-mode.
+;; The package is kept as disabled so the tangle does not break any
+;; residual callers in other files that may still reference it
+
+(use-package poetry
+  :ensure t
+  :disabled t  
+  ;; :config
+  ;; (add-hook 'poetry-tracking-mode-hook (lambda () (remove-hook 'post-command-hook 'poetry-track-virtualenv)))
+  ;; (add-hook 'python-mode-hook 'poetry-track-virtualenv)
+  ;; (add-hook 'projectile-after-switch-project-hook 'poetry-track-virtualenv)
+  )
 
 
 #+END_SRC
@@ -4583,81 +4624,319 @@ variable is deleted. (i.e.: set a 42 b 7)"
 #+NAME: lang-python.lsp
 #+begin_src emacs-lisp
 
-  ;; ---( lsp-pyright )--------------------------------------------------------------
 
-  ;; Language server for Python 
-  ;; Read the docs for the different variables set in the config.
+;; ---( lsp-pyright / basedpyright )-------------------------------------------
+;; basedpyright is a community fork of pyright with stricter defaults,
+;; inlay hints, and better PEP 695 generics support. Switch the command
+;; back to "pyright" if the upstream server is preferred.
+;;
+;; Install
+;; npm install -g basedpyright
+;; # or, per-project:
+;; uv tool install basedpyright
 
-  (use-package lsp-pyright
-    :ensure t
-    :defer t
-    :custom
-    (lsp-pyright-langserver-command "pyright") ;; or basedpyright
-    (lsp-pyright-disable-language-service nil)
-    (lsp-pyright-disable-organize-imports nil)
-    (lsp-pyright-auto-import-completions t)
-    (lsp-pyright-use-library-code-for-types t)
-    ;;(lsp-pyright-venv-path "~/.cache/pypoetry/virtualenvs")
-    :config
-    ;;(setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
-    ;;(setq lsp-clients-python-library-directories '("/usr/" "~/miniconda3/pkgs"))
-    ;; (setq lsp-pyright-disable-language-service nil
-    ;;       lsp-pyright-disable-organize-imports nil
-    ;;       lsp-pyright-auto-import-completions t
-    ;;       lsp-pyright-use-library-code-for-types t
-    ;;       ;;lsp-pyright-venv-path "~/miniconda3/envs")
-    ;;       lsp-pyright-venv-path "~/.cache/pypoetry/virtualenvs")
-    :hook ((python-mode . (lambda () 
-                            (require 'lsp-pyright) (lsp-deferred))))
-    )
+(use-package lsp-pyright
+  :ensure t
+  :defer t
+  :custom
+  (lsp-pyright-langserver-command "basedpyright")
+  (lsp-pyright-disable-language-service nil)
+  (lsp-pyright-disable-organize-imports nil)
+  (lsp-pyright-auto-import-completions t)
+  (lsp-pyright-use-library-code-for-types t)
+  ;; "workspace" mode scans the full project; use "openFilesOnly" on slow
+  ;; machines or when stub sets are very large.
+  (lsp-pyright-diagnostic-mode "workspace")
+  ;; Type-checking strictness: "standard" for most NLP projects.
+  ;; Override per project via pyrightconfig.json or .dir-locals.el.
+  (lsp-pyright-type-checking-mode "standard")
+  ;; basedpyright inlay hints (no pyrightconfig.json required).
+  (lsp-pyright-basedpyright-inlay-hints-variable-types t)
+  (lsp-pyright-basedpyright-inlay-hints-function-return-types t)
+  (lsp-pyright-basedpyright-inlay-hints-call-argument-names "all")
+  :hook
+  ((python-mode . (lambda () (require 'lsp-pyright) (lsp-deferred)))
+   (python-ts-mode . (lambda () (require 'lsp-pyright) (lsp-deferred)))
+   )
+  )
+
+
+;; ---( eglot + pyright + ruff )-----------------------------------------------
+(use-package eglot
+  :ensure nil
+  :bind (:map eglot-mode-map
+              ("C-c c a" . eglot-code-actions)
+              ("C-c c r" . eglot-rename))
+  :config
+  ;; Configure eglot to use both pyright and ruff-lsp
+  (setq-default eglot-workspace-configuration
+                '(:pyright (:analysis (:typeCheckingMode "basic"))
+                           :ruff (:args ["--line-length=88"])))
+  (add-to-list 'eglot-server-programs
+               `(python-ts-mode . ("pyright-langserver" "--stdio"))))
 
 #+END_SRC
+
 **** Lang: Python/tools
 #+NAME: lang-python.tools
 #+begin_src emacs-lisp
 
+;; ---( ruff: LSP add-on and formatter )----------------------------------------
+;; ruff is integrated at two levels:
+;; 1. ruff server – secondary LSP client alongside basedpyright (lint diagnostics)
+;; 2. ruff-format – on-save buffer formatter (replaces yapfify + python-black)
+;;
+;; yapfify and python-black are removed: running three on-save formatters caused
+;; race conditions and produced inconsistent results.
+;;
+;; Install: uv tool install ruff
+;; or: pip install ruff (inside the project venv)
 
-  ;; ---( pytest )------------------------------------------------------------
+;; Register ruff server as an add-on LSP client (diagnostics only, no hover).
+(with-eval-after-load 'lsp-mode
+  (lsp-register-client
+   (make-lsp-client
+    :new-connection
+    (lsp-stdio-connection
+     (lambda () (list (or (executable-find "ruff") "ruff") "server")))
+    :activation-fn (lsp-activate-on "python")
+    :server-id 'ruff-lsp
+    ;; add-on? t: run alongside basedpyright, not instead of it.
+    :add-on? t
+    :initialization-options
+    '(:settings (:logLevel "warning"
+                           :lint (:enable t)
+                           :format (:enable t))))))
 
 
-(use-package python-pytest
+;; ruff-format: on-save formatting.
+;; Replaces python-black-on-save-mode and yapf-mode.
+
+(use-package ruff-format
   :ensure t
- :custom
- (python-pytest-confirm t))
+  :hook ((python-mode . ruff-format-on-save-mode)
+         (python-ts-mode . ruff-format-on-save-mode)))
+
+;; py-isort: sort imports before save.
+;; Retained because ruff's isort implementation does not yet cover all
+;; isort profiles (e.g. google, wemake). Remove if ruff's [tool.ruff.lint.isort]
+;; is sufficient for the project.
+
+;; (use-package py-isort
+;;   :ensure t
+;;   :after python
+;;   :hook (before-save . py-isort-before-save))
 
   ;; ---( yapfify )-------------------------------------------------------------
+  ;; yapfify: superseded by ruff-format.
 
-  ;; Format the python buffer following YAPF rules
-  ;; There's also blacken if you like it better.
-  (use-package yapfify
-    :ensure t
-    :defer t
-    :hook (python-mode . yapf-mode))
+  ;; (use-package yapfify
+  ;;   :ensure nil
+  ;;   :disabled t
+  ;;   :hook (python-mode . yapf-mode))
 
 
   ;; ---( python-black )--------------------------------------------------------------
+  ;; python-black: superseded by ruff-format.
 
-  (use-package python-black
-    ;;:delight python-black-on-save-mode "⚫️"
-    :ensure t
-    :hook
-    (python-mode . python-black-on-save-mode)
-    :init
-    (put 'python-black-command 'safe-local-variable #'stringp)
-    (put 'python-black-extra-args 'safe-local-variable #'stringp)
-    (put 'python-black-on-save-mode 'safe-local-variable #'booleanp)
-    )
+  ;; (use-package python-black
+  ;;   ;;:delight python-black-on-save-mode "⚫️"
+  ;;   :ensure nil
+  ;;   :hook
+  ;;   (python-mode . python-black-on-save-mode)
+  ;;   :init
+  ;;   (put 'python-black-command 'safe-local-variable #'stringp)
+  ;;   (put 'python-black-extra-args 'safe-local-variable #'stringp)
+  ;;   (put 'python-black-on-save-mode 'safe-local-variable #'booleanp)
+  ;;   )
+ 
+#+END_SRC
 
-  ;; ---( pyisort )-------------------------------------------------------------
+**** Lang: Python/test
+#+NAME: lang-python.test
+#+begin_src emacs-lisp
 
-  (use-package py-isort
-    :ensure t
-    :after python
-    :hook ((python-mode . pyvenv-mode)
-           (before-save . py-isort-before-save)))
+;; ---( pytest )----------------------------------------------------------------
+;; python-pytest uses transient (same UX as magit) and detects treesit
+;; automatically for function/class DWIM commands.
+;;
+;; Note: "C-c t" was previously bound to treemacs (line 2717).
+;; The binding below uses "C-c T" (uppercase) to avoid that conflict.
+;; Adjust according to preference; see treemacs binding at line 2717.
+
+(use-package python-pytest
+  :ensure t
+  :after python
+  :commands (python-pytest-dispatch
+             python-pytest
+             python-pytest-file
+             python-pytest-file-dwim
+             python-pytest-function
+             python-pytest-function-dwim
+             python-pytest-last-failed
+             python-pytest-repeat)
+  :custom
+  (python-pytest-confirm nil)
+  ;; Default flags: colour output, most-recently-failed first, compact traceback.
+  (python-pytest-arguments '("--color=yes" "--failed-first" "--tb=short"))
+  :config
+  ;; Integration with uv: ensure pytest is run via 'uv run'
+  (setq python-pytest-executable "uv run pytest")
+  :bind (:map python-base-mode-map
+              ("C-c T d" . python-pytest-dispatch)
+              ("C-c T t" . python-pytest)
+              ("C-c T f" . python-pytest-file-dwim)
+              ("C-c T F" . python-pytest-file)
+              ("C-c T m" . python-pytest-function-dwim)
+              ("C-c T M" . python-pytest-function)
+              ("C-c T l" . python-pytest-last-failed)
+              ("C-c T r" . python-pytest-repeat))
+ )
+
+
+;; ---( coverage overlay )------------------------------------------------------
+;; cov reads coverage.json / .coverage and paints hit/miss fringe indicators.
+;; Coverage is optional; generate data with:
+;; uv run pytest --cov --cov-report=json
+;; then M-x cov-mode in any Python buffer.
+
+(use-package cov
+  :ensure t
+  :defer t
+  :custom
+  (cov-coverage-file-paths '("." "coverage" "htmlcov"))
+  ;; 'coverage-py reads .coverage directly; switch to 'lcov for lcov output.
+  (cov-coverage-mode 'coverage-py))  
+
 
 
 #+END_SRC
+
+**** Lang: Python/bdd
+#+NAME: lang-python.bdd
+#+begin_src emacs-lisp
+
+;; ---( behave BDD runner )-----------------------------------------------------
+;; No dedicated MELPA package exists for behave as of 2026.
+;; This block provides a compilation-mode wrapper with:
+;; - a behave-specific error regexp for .feature:LINE navigation
+;; - three interactive commands: suite, file-dwim, scenario-at-point
+;; - C-c B prefix keybindings (uppercase B avoids the citar C-c b bindings
+;; defined at line 7545
+;;
+;; gherkin-mode provides .feature syntax highlighting.
+;; Install: uv add behave --dev (or uv tool install behave  
+
+(defgroup python-behave nil
+  "Run behave BDD tests from Emacs."
+  :group 'python
+  :prefix "python-behave-")
+
+(defcustom python-behave-command "behave"
+  "Command used to invoke behave."
+  :type 'string
+  :group 'python-behave)
+
+(defcustom python-behave-arguments '("--no-capture" "--color")
+  "Default arguments passed to behave."
+  :type '(repeat string)
+  :group 'python-behave)
+
+(defcustom python-behave-features-directory "features"
+  "Relative path to the features directory from the project root."
+  :type 'string
+  :group 'python-behave)
+
+;; Register behave's scenario-location lines in compilation output.
+;; Format: features/my_feature.feature:12
+(with-eval-after-load 'compile
+  (add-to-list 'compilation-error-regexp-alist-alist
+               '(behave
+                 "\\(features/[^ \t\n]+\\.feature\\):\\([0-9]+\\)"
+                 1 2 nil 0 1))
+  (add-to-list 'compilation-error-regexp-alist 'behave))
+
+(defun python-behave--project-root ()
+  "Return the project root, preferring projectile then project.el."
+  (or (and (fboundp 'projectile-project-root)
+           (ignore-errors (projectile-project-root)))
+      (when-let ((p (project-current)))
+        (project-root p))
+      default-directory))
+
+(defun python-behave--build-command (&optional target)
+  "Construct the behave invocation string.
+When TARGET is non-nil it is appended as the positional argument."
+  (string-join
+   (flatten-list
+    (list python-behave-command
+          python-behave-arguments
+          (when target (list target))))
+   " "))
+
+;;;^^###autoload
+(defun python-behave ()
+  "Run the full behave test suite from the project root."
+  (interactive)
+  (let ((default-directory (python-behave--project-root)))
+    (compile (python-behave--build-command))))
+
+
+;;;^^###autoload
+(defun python-behave-feature-dwim ()
+  "Run behave on the feature file associated with the current buffer.
+Falls back to the full suite when no feature file can be inferred."
+  (interactive)
+  (let* ((default-directory (python-behave--project-root))
+         (target
+          (cond
+           ;; Current buffer is a .feature file.
+           ((and buffer-file-name
+                 (string-suffix-p ".feature" buffer-file-name))
+            (file-relative-name buffer-file-name default-directory))
+           ;; Current buffer is a steps file: run the whole feature dir.
+           ((and buffer-file-name
+                 (string-match-p "/steps/" buffer-file-name))
+            python-behave-features-directory)
+           (t nil))))
+    (compile (python-behave--build-command target))))
+
+;;;^^###autoload
+(defun python-behave-scenario-at-point ()
+  "Run behave for the scenario whose name is at or before point.
+Uses behave's --name flag to select the scenario."
+  (interactive)
+  (let* ((default-directory (python-behave--project-root))
+         (scenario-name
+          (save-excursion
+            (when (re-search-backward
+                   "^\\s-*Scenario\\(^?:\\s-+Outline\\)^?:\\s-+\\(.*\\)$"
+                   nil t)
+              (match-string-no-properties 1))))
+         (cmd (if scenario-name
+                  (concat (python-behave--build-command)
+                          " --name "
+                          (shell-quote-argument scenario-name))
+                (python-behave--build-command))))
+    (compile cmd)))
+
+;; Keybindings: C-c B prefix (uppercase avoids conflict with citar C-c b).
+(with-eval-after-load 'python
+  (define-key python-base-mode-map (kbd "C-c B b") #'python-behave)
+  (define-key python-base-mode-map (kbd "C-c B f") #'python-behave-feature-dwim)
+  (define-key python-base-mode-map (kbd "C-c B s") #'python-behave-scenario-at-point))
+;; gherkin-mode: .feature syntax highlighting.
+;; Falls back to conf-mode if the package is unavailable.
+(use-package gherkin-mode
+  :ensure t
+  :mode "\\.feature\\'")
+
+
+
+  
+ 
+#+END_SRC
+
 **** Lang: Python/elpy
 #+NAME: lang-python.elpy
 #+begin_src emacs-lisp
@@ -4757,6 +5036,7 @@ variable is deleted. (i.e.: set a 42 b 7)"
   (add-to-list 'process-coding-system-alist '("flake8" . (utf-8 . utf-8)))
 
 #+END_SRC
+
 **** Lang: Python/ein
 #+NAME: lang-python.ein
 #+begin_src emacs-lisp
@@ -5555,6 +5835,7 @@ variable is deleted. (i.e.: set a 42 b 7)"
 
 #+END_SRC
 
+
 ** VM
 *** VM/begin
 #+NAME: vm-begin
@@ -5601,6 +5882,7 @@ variable is deleted. (i.e.: set a 42 b 7)"
   ;; }}}  .vm
 
 #+END_SRC
+
 
 ** Net
 *** Net/begin
@@ -8817,6 +9099,64 @@ With a prefix ARG, remove start location."
   ;; }}}  .jump
 
 #+END_SRC
+
+
+
+** Setup
+*** Setup/begin
+#+NAME: vm-begin
+#+begin_src emacs-lisp
+
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @VM
+  ;; ;;;////////////////////////////////////////////////////////////////
+
+
+#+END_SRC
+*** Install
+#+NAME: setup-install
+#+begin_src emacs-lisp
+
+  ;; ---( initial setup)--------------------------------------------------------------
+
+(defun h7/initial-setup ()
+
+  ;; fisrt-time install
+  (message "SITE:PKGS - SETUP, ...")
+  
+  (message "SITE:PKGS - setup:all-the-icons-install-fonts, ...")
+  (all-the-icons-install-fonts)
+  (message "SITE:PKGS - setup: all-the-icons-install-fonts, done.")
+
+  (message "SITE:PKGS - setup: pdf-tools-install, ...")
+  (pdf-tools-install)
+  (message "SITE:PKGS - setup: pdf-tools-install, done.")
+  
+  (message "SITE:PKGS - setup: lsp-install-server, ...")
+  (lsp-install-server)
+  (message "SITE:PKGS - setup: lsp-install-server, done.")
+  
+  (message "SITE:PKGS - setup: treesitter-setup, ...")
+  (h7/treesitter-setup)
+  (message "SITE:PKGS - setup: treesitter-setup, done.")
+  
+  (message "SITE:PKGS - SETUP, done.")
+  )
+
+
+
+
+#+END_SRC
+
+*** Setup/end
+#+NAME: vm-end
+#+begin_src emacs-lisp
+
+  ;; }}}  .vm
+
+#+END_SRC
+
+
 
 ** Footer
 *** Log: finish
