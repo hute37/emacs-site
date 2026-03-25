@@ -4618,14 +4618,14 @@ variable is deleted. (i.e.: set a 42 b 7)"
   ;; Integration with uv: ensure pytest is run via 'uv run'
   (setq python-pytest-executable "uv run pytest")
   :bind (:map python-base-mode-map
-              ("C-c T d" . python-pytest-dispatch)
-              ("C-c T t" . python-pytest)
-              ("C-c T f" . python-pytest-file-dwim)
-              ("C-c T F" . python-pytest-file)
-              ("C-c T m" . python-pytest-function-dwim)
-              ("C-c T M" . python-pytest-function)
-              ("C-c T l" . python-pytest-last-failed)
-              ("C-c T r" . python-pytest-repeat))
+              ("C-c t d" . python-pytest-dispatch)
+              ("C-c t t" . python-pytest)
+              ("C-c t f" . python-pytest-file-dwim)
+              ("C-c t F" . python-pytest-file)
+              ("C-c t m" . python-pytest-function-dwim)
+              ("C-c t M" . python-pytest-function)
+              ("C-c t l" . python-pytest-last-failed)
+              ("C-c t r" . python-pytest-repeat))
  )
 
 
