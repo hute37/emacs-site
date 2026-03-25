@@ -2716,7 +2716,7 @@ Version: 2024-01-18"
                   treemacs-tags-face))
     (set-face-attribute face nil :family "PT Sans Narrow" :height 120))
   
-  :bind ("C-c t" . treemacs))
+  :bind ("C-c f" . treemacs))
 
 (use-package treemacs-projectile
   :after treemacs projectile
