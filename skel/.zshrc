@@ -84,7 +84,7 @@ case "$TERM" in
 #ZSH_THEME="arrow"
 #ZSH_THEME="eastwood"
 #ZSH_THEME="jnrowe"
-ZSH_THEME="kolo"
+#ZSH_THEME="kolo"
 #ZSH_THEME="macovsky"
 #ZSH_THEME="mgutz"
 ZSH_THEME="mrtazz" 
@@ -156,7 +156,7 @@ esac
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git  zsh-dircolors-solarized)
-plugins=(git zsh-syntax-highlighting poetry)
+plugins=(git zsh-syntax-highlighting poetry uv)
 
 source $ZSH/oh-my-zsh.sh
 

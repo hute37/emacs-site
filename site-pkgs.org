@@ -428,6 +428,8 @@ Return nil if any single regexp matches."
   (setq auto-save-timeout 300)
   (setq auto-save-list-directory
         (file-name-as-directory (dir-mk (file-name-concat user-cache-directory "auto-save-list"))))
+  (setq auto-save-list-directory-alt
+        (file-name-as-directory (dir-mk (file-name-concat user-emacs-directory "auto-save-list"))))
   ;;    (make-directory (emacs-d "var") t)
 
   (setq auto-save-list-file-prefix
@@ -9120,6 +9122,8 @@ With a prefix ARG, remove start location."
   ;; ---( initial setup)--------------------------------------------------------------
 
 (defun h7/initial-setup ()
+    "First time manual setup after `/.emacs.d reset."
+    (interactive)
 
   ;; fisrt-time install
   (message "SITE:PKGS - SETUP, ...")

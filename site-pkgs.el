@@ -395,6 +395,8 @@ Return nil if any single regexp matches."
   (setq auto-save-timeout 300)
   (setq auto-save-list-directory
         (file-name-as-directory (dir-mk (file-name-concat user-cache-directory "auto-save-list"))))
+  (setq auto-save-list-directory-alt
+        (file-name-as-directory (dir-mk (file-name-concat user-emacs-directory "auto-save-list"))))
   ;;    (make-directory (emacs-d "var") t)
 
   (setq auto-save-list-file-prefix
@@ -4610,7 +4612,7 @@ variable is deleted. (i.e.: set a 42 b 7)"
   (python-pytest-confirm nil)
   ;; Default flags: colour output, most-recently-failed first, compact traceback.
   (python-pytest-arguments '("--color=yes" "--failed-first" "--tb=short"))
-  ::config
+  :config
   ;; Integration with uv: ensure pytest is run via 'uv run'
   (setq python-pytest-executable "uv run pytest")
   :bind (:map python-base-mode-map
@@ -8787,6 +8789,55 @@ With a prefix ARG, remove start location."
 ;; [[file:site-pkgs.org::jump-end][jump-end]]
   ;; }}}  .jump
 ;; jump-end ends here
+
+;; Setup/begin
+;; #+NAME: vm-begin
+
+;; [[file:site-pkgs.org::vm-begin][vm-begin]]
+  ;; ;;;////////////////////////////////////////////////////////////////
+  ;; {{{  @VM
+  ;; ;;;////////////////////////////////////////////////////////////////
+;; vm-begin ends here
+
+;; Install
+;; #+NAME: setup-install
+
+;; [[file:site-pkgs.org::setup-install][setup-install]]
+  ;; ---( initial setup)--------------------------------------------------------------
+
+(defun h7/initial-setup ()
+    "First time manual setup after `/.emacs.d reset."
+    (interactive)
+
+  ;; fisrt-time install
+  (message "SITE:PKGS - SETUP, ...")
+  
+  (message "SITE:PKGS - setup:all-the-icons-install-fonts, ...")
+  (all-the-icons-install-fonts)
+  (message "SITE:PKGS - setup: all-the-icons-install-fonts, done.")
+
+  (message "SITE:PKGS - setup: pdf-tools-install, ...")
+  (pdf-tools-install)
+  (message "SITE:PKGS - setup: pdf-tools-install, done.")
+  
+  (message "SITE:PKGS - setup: lsp-install-server, ...")
+  (lsp-install-server)
+  (message "SITE:PKGS - setup: lsp-install-server, done.")
+  
+  (message "SITE:PKGS - setup: treesitter-setup, ...")
+  (h7/treesitter-setup)
+  (message "SITE:PKGS - setup: treesitter-setup, done.")
+  
+  (message "SITE:PKGS - SETUP, done.")
+  )
+;; setup-install ends here
+
+;; Setup/end
+;; #+NAME: vm-end
+
+;; [[file:site-pkgs.org::vm-end][vm-end]]
+  ;; }}}  .vm
+;; vm-end ends here
 
 ;; Log: finish
 ;; #+NAME: log-finish
