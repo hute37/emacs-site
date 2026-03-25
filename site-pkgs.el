@@ -3839,18 +3839,15 @@ variable is deleted. (i.e.: set a 42 b 7)"
   (message "https://emacs-lsp.github.io/lsp-mode/page/languages/")
 
   ;; python
-  (lsp-install-server t 'pyright) 
-  ;; powershell
-  (lsp-install-server t 'pwsh-ls) 
-  ;; html
+  (lsp-install-server t 'pyright)
+  
+    ;; html
   (lsp-install-server t 'html-ls) 
   ;; css
   (lsp-install-server t 'css-ls) 
   ;; json
   (lsp-install-server t 'json-ls)
-  ;; graphql
-  (lsp-install-server t 'graphql-ls) 
-  ;; dockerfile
+    ;; dockerfile
   (lsp-install-server t 'dockerfile-ls) 
   ;; bash
   (lsp-install-server t 'bash-ls) 
@@ -3859,8 +3856,13 @@ variable is deleted. (i.e.: set a 42 b 7)"
   ;; yaml
   (lsp-install-server t 'yamlls) 
 
+  ;; graphql - postgres dependency
+  ;; (lsp-install-server t 'graphql-ls)
+  ;; powershell - pwsh.exe requisite
+  ;; (lsp-install-server t 'pwsh-ls)
   
   ;; prolog
+  
   (message "swipl -g 'pack_install(lsp_server).")
   )
 ;; lang-lsp.setup ends here
