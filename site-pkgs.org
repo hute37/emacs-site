@@ -9137,7 +9137,7 @@ With a prefix ARG, remove start location."
   (message "SITE:PKGS - setup: pdf-tools-install, done.")
   
   (message "SITE:PKGS - setup: lsp-install-server, ...")
-  (lsp-install-server)
+  (lsp-install-server t)
   (message "SITE:PKGS - setup: lsp-install-server, done.")
   
   (message "SITE:PKGS - setup: treesitter-setup, ...")
