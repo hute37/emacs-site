@@ -1,0 +1,420 @@
+% ========================================================================
+% Pandoc LaTeX Preamble
+% ========================================================================
+% This file contains all LaTeX package imports, font definitions, and
+% layout customizations for Markdown-to-PDF conversion via Pandoc.
+% Designed for use with LuaLaTeX engine on Ubuntu 24.04 (TeX Live).
+% ========================================================================
+
+% ------------------------------------------------------------------------
+% Document class
+% ------------------------------------------------------------------------
+
+% \documentclass[11pt,a4paper]{report}  # (pandoc injected)
+
+% ------------------------------------------------------------------------
+% Language & Typography
+% ------------------------------------------------------------------------
+% \usepackage{polyglossia}
+% \setdefaultlanguage{english}
+
+% Microtypographic refinements (improved spacing, kerning, hyphenation)
+% \usepackage{microtype}
+
+% \usepackage[utf8]{inputenc}    # useless with utf-8 based LuaLaTeX
+
+
+% ---------------------------
+% LUA Support
+% ---------------------------
+% codeblocks style
+\usepackage{luacode}
+
+
+% ------------------------------------------------------------------------
+% Font Configuration
+% ------------------------------------------------------------------------
+% font selection for Xe/LuaLaTeX
+\usepackage{fontspec}
+
+% Main serif font for body text
+\setmainfont{XCharter}
+
+% Sans-serif font for headings (via sectsty below)
+\setsansfont{Inter}
+
+% Monospaced font for code blocks, scaled down for better fit
+\setmonofont[Scale=0.85]{JetBrainsMono}
+
+% ---------------------------
+% Maths support
+% ---------------------------
+% Unicode math support for LuaLaTeX
+% \usepackage{unicode-math}
+
+% ---------------------------
+% Code Listings
+% ---------------------------
+% codeblocks style
+\usepackage{listings}
+
+% ------------------------------------------------------------------------
+% Colors & Graphics
+% ------------------------------------------------------------------------
+% Extended color names (Blue, Maroon, ForestGreen, etc.)
+\usepackage[dvipsnames]{xcolor}
+
+% Image inclusion support
+\usepackage{graphicx}
+
+% Color boxes
+\usepackage[skins]{tcolorbox}
+
+% ------------------------------------------------------------------------
+% Tables & Floats
+% ------------------------------------------------------------------------
+% Professional table rules (toprule, midrule, bottomrule)
+\usepackage{booktabs}
+
+% Improved float placement control (H option for "HERE")
+\usepackage{float}
+
+% Conditional compilation support (comment/uncomment blocks)
+\usepackage{comment}
+
+% Extended tabular column attributes
+\usepackage{array}
+
+% Extended tabular environment
+\usepackage{tabularx}
+
+% ------------------------------------------------------------------------
+% Page Geometry
+% ------------------------------------------------------------------------
+\usepackage[
+  top=2.5cm,
+  bottom=2.5cm,
+  left=2.2cm,
+  right=2.2cm,
+  headheight=14pt,
+  headsep=0.8cm
+]{geometry}
+
+% ------------------------------------------------------------------------
+% Paragraph & Line Spacing
+% ------------------------------------------------------------------------
+% Vertical space between paragraphs
+\setlength{\parskip}{0.8em}
+
+% No paragraph indentation (space-separated paragraphs instead)
+\setlength{\parindent}{0pt}
+
+% Line spacing (1.15 = slightly more than single-spaced)
+\linespread{1.15}
+
+% ------------------------------------------------------------------------
+% Page Layout: Headers & Footers
+% ------------------------------------------------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% Clear default header/footer
+\fancyhead{}
+\fancyfoot{}
+
+% Left page (even): section name on right, chapter name on left
+% Right page (odd): section name on right, chapter name on left
+%\fancyhead[LE,RO]{\nouppercase{\slshape \rightmark}}
+%\fancyhead[LO,RE]{\nouppercase{\slshape \leftmark}}
+
+\fancyhead[L]{\nouppercase{\small\slshape \rightmark}}
+\fancyhead[R]{\nouppercase{\small\slshape \leftmark}}
+
+% Centered page number in footer
+\fancyfoot[C]{\small\thepage}
+
+% Header rule thickness
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ------------------------------------------------------------------------
+% Section Heading Customization
+% ------------------------------------------------------------------------
+\usepackage{titlesec}
+
+% Chapter format: display style with "Chapter N" label
+\titleformat{\chapter}[display]%
+  {\normalfont\huge\sffamily\bfseries}%
+  {\chaptertitlename\ \thechapter}%
+  {20pt}%
+  {\Huge}
+
+% Chapter spacing: no extra space before, 40pt after
+\titlespacing*{\chapter}{0pt}{0pt}{40pt}
+
+% Section formats: large bold with number
+\titleformat{\section}%
+  {\sffamily\Large\bfseries}%
+  {\thesection}%
+  {0.5em}%
+  {}
+
+\titleformat{\subsection}%
+  {\sffamily\large\bfseries}%
+  {\thesubsection}%
+  {0.5em}%
+  {}
+
+\titleformat{\subsubsection}%
+  {\sffamily\normalsize\bfseries}%
+  {\thesubsubsection}%
+  {0.5em}%
+  {}
+
+% % Apply sans-serif font to all section headings
+% \usepackage{sectsty}
+% \allsectionsfont{\sffamily}
+
+% ------------------------------------------------------------------------
+% Captions
+% ------------------------------------------------------------------------
+% Bold labels, small font size for figure/table captions
+\usepackage{caption}
+\captionsetup{labelfont=bf, font=small}
+
+
+% ------------------------------------------------------------------------
+% Hyperlinks
+% ------------------------------------------------------------------------
+%  Note: Hyperref is handled in pandoc template
+
+% \usepackage[unicode]{hyperref}
+
+% \usepackage{bookmark}
+% \usepackage{xurl}
+
+\usepackage[bookmarksopen=true,bookmarks=true]{hyperref}
+% \usepackage{bookmark}
+
+\AtBeginDocument{%
+  \hypersetup{%
+    colorlinks=true,
+    linkcolor=Maroon,
+    filecolor=magenta,
+    citecolor=ForestGreen,
+    urlcolor=blue,
+  }%
+}
+
+% ------------------------------------------------------------------------
+% Cover
+% ------------------------------------------------------------------------
+
+%% Code grabbed from Overleaf Gallery:
+%% "Ludus Academik Journal Overleaf Template"
+%% @see: https://www.overleaf.com/latex/templates/ludus-academik-journal-overleaf-template/ygpnjwmxzgbj
+%% ludusofficial.cls
+%% LaTeX document class for LUDUS official publications
+%% Version 2.0 - Optimized typography based on artnodes specifications
+%% 2024-01-26
+
+
+%% Theme color system - enhanced contrast
+% Predefined theme colors (darker and more vivid)
+\definecolor{ludusblue}{RGB}{0,85,184}         % Deeper blue
+\definecolor{ludusred}{RGB}{200,30,30}         % Deeper red
+\definecolor{ludusgreen}{RGB}{0,130,100}       % Deeper green
+\definecolor{luduspurple}{RGB}{120,50,150}     % Deeper purple
+\definecolor{ludusorange}{RGB}{230,90,0}       % Deeper orange
+\definecolor{luduscyan}{RGB}{0,160,180}        % Deeper cyan
+
+% Default theme color
+\colorlet{themecolor}{ludusred}
+
+
+\makeatletter
+
+%% Document metadata
+\newcommand{\@journalname}{LUDUS}
+\newcommand{\@journalsubtitle}{Official Publication}
+\newcommand{\@journalurl}{https://ludusofficial.site/}
+\newcommand{\@institution}{ludus academik journal}
+\newcommand{\@conferencename}{}
+\newcommand{\@issuenumber}{}
+\newcommand{\@publicationyear}{2026}
+\newcommand{\@articletype}{GEN Report}
+% \@articletype already defined before option processing
+
+% Command definitions
+\newcommand{\journalname}[1]{\renewcommand{\@journalname}{#1}}
+\newcommand{\journalsubtitle}[1]{\renewcommand{\@journalsubtitle}{#1}}
+\newcommand{\journalurl}[1]{\renewcommand{\@journalurl}{#1}}
+\newcommand{\institution}[1]{\renewcommand{\@institution}{#1}}
+\newcommand{\conferencename}[1]{\renewcommand{\@conferencename}{#1}}
+\newcommand{\issuenumber}[1]{\renewcommand{\@issuenumber}{#1}}
+\newcommand{\publicationyear}[1]{\renewcommand{\@publicationyear}{#1}}
+\newcommand{\articletype}[1]{\renewcommand{\@articletype}{#1}}
+
+%% DOI
+\newcommand{\@articledoi}{}
+\newcommand{\articledoi}[1]{\renewcommand{\@articledoi}{#1}}
+
+
+%% First page special header - left: institution, center: logo, right: URL (vertically centered)
+\fancypagestyle{firstpage}{%
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+    \fancyhead[L]{%
+        \fontsize{7.5}{8}\selectfont\sffamily\textcolor{darkgray}{\@orgname}
+        % \raisebox{-0.3\height}{\fontsize{7.5}{9}\selectfont\sffamily\textcolor{darkgray}{\@orgname}}%
+    }
+    % \fancyhead[C]{%
+    %     % Logo centered, height approximately 5mm (adapted to original headheight)
+    %     \IfFileExists{../logo.png}{%
+    %         \includegraphics[height=5mm]{../logo.png}%
+    %     }{%
+    %         \IfFileExists{logo.png}{%
+    %             \includegraphics[height=5mm]{logo.png}%
+    %         }{%
+    %             % If logo does not exist, display placeholder text
+    %             \fontsize{7.5}{9}\selectfont\sffamily\textcolor{darkgray}{[LOGO]}%
+    %         }%
+    %     }%
+    % }
+    \fancyhead[R]{%
+        \fontsize{7.5}{8}\selectfont\sffamily\textcolor{darkgray}{\@orgsite}
+    }
+    % \fancyfoot[C]{%
+    %     \fontsize{8}{10}\selectfont\textcolor{darkgray}{\thepage}
+    % }
+}
+
+
+
+\renewcommand{\maketitle}{
+  \begin{titlepage}
+
+    \thispagestyle{firstpage}
+    \addtolength{\headsep}{-20pt}
+
+    % Top horizontal bar (theme color) 3pt - full width
+    \noindent\textcolor{themecolor}{\rule{\textwidth}{3pt}}
+    \vspace{-3mm}
+    
+    % Journal information - left-aligned, 8.5-9pt ARTICLE label
+    \noindent{\fontsize{8.5}{10.2}\selectfont\sffamily\bfseries\textcolor{darkgray}{\MakeUppercase{\@articletype}}}%
+    \ifdefempty{\@category}{}{%
+        \quad|\quad{\fontsize{8.5}{10.2}\selectfont\sffamily\textcolor{darkgray}{\MakeUppercase{\@category}}}%
+        \par
+      }
+      \vspace{5mm}
+      
+      % Article title - left-aligned, 21pt
+      \noindent{\fontsize{21}{35}\selectfont\bfseries\sffamily\textcolor{themecolor}\@title}\par
+      \vspace{4mm}
+      
+      % Article subtitle - left-aligned, 16pt
+      \noindent{\fontsize{16}{35}\selectfont\bfseries\sffamily\textcolor{darkgray}\@subtitle}\par
+      \vspace{4mm}
+      
+      % Author - left-aligned, 10pt (name bolding controlled in tex file)
+      \noindent{\fontsize{9}{13.2}\selectfont\sffamily\@author}\par
+      \vspace{4mm}
+      
+      % % Bottom horizontal bar
+      % \vspace{3mm}
+      % \noindent\textcolor{lightgray}{\rule{\textwidth}{0.5pt}}
+      % \vspace{-1mm}
+      \vspace{3mm}
+        
+      \begin{flushleft}
+        \fontsize{8.5}{9.2}\selectfont\sffamily\color{darkgray}
+        \begin{tabular}{ | >{\bfseries}r l | }
+          \hline
+          Project: & \@project\\
+          Document: & \@docname \\
+          URL: & \href{\@docsurl}{\@docsurl} \\
+          Date: & \@date \\
+          \hline
+        \end{tabular}
+      \end{flushleft}
+        
+      \vspace{2mm}
+      % Keywords - full-width single column
+      \ifdefempty{\@keywords}{}{%
+          \noindent{\fontsize{9}{10.35}\selectfont\sffamily\textbf{Keywords:} \@keywords}\par
+        }
+            
+        % Bottom horizontal bar
+        \vspace{-4mm}
+        \noindent\textcolor{lightgray}{\rule{\textwidth}{0.5pt}}
+        \vspace{1mm}
+            
+        % Abstract - full-width single column
+        \ifdefempty{\@abstract}{}{%
+            \noindent{\fontsize{11.5}{13.8}\selectfont\sffamily\bfseries\color{themecolor}Abstract}\par
+            \vspace{2mm}
+            {\fontsize{9}{10.35}\selectfont\@abstract\par}
+            \vspace{4mm}
+          }
+          
+            % Bottom horizontal bar
+          \vspace{2mm}
+          \noindent\textcolor{lightgray}{\rule{\textwidth}{0.5pt}}
+          \vspace{5mm}
+    
+    \vfill
+  \end{titlepage}
+  \clearpage
+  \addtolength{\headsep}{20pt} % Restore for subsequent pages
+  \setcounter{page}{1}
+}
+
+\newcommand{\@orgname}{}
+\newcommand{\orgname}[1]{\renewcommand{\@orgname}{#1}}
+\newcommand{\@orgsite}{}
+\newcommand{\orgsite}[1]{\renewcommand{\@orgsite}{#1}}
+\newcommand{\@docname}{}
+\newcommand{\docname}[1]{\renewcommand{\@docname}{#1}}
+\newcommand{\@docpath}{}
+\newcommand{\docpath}[1]{\renewcommand{\@docpath}{#1}}
+\newcommand{\@docsurl}{}
+\newcommand{\docsurl}[1]{\renewcommand{\@docsurl}{#1}}
+\newcommand{\@docurl}{}
+\newcommand{\docurl}[1]{\renewcommand{\@docurl}{#1}}
+\newcommand{\@projecturl}{}
+\newcommand{\projecturl}[1]{\renewcommand{\@projecturl}{#1}}
+\newcommand{\@project}{}
+\newcommand{\project}[1]{\renewcommand{\@project}{#1}}
+\newcommand{\@category}{}
+\newcommand{\category}[1]{\renewcommand{\@category}{#1}}
+\newcommand{\@keywords}{}
+\newcommand{\keywords}[1]{\renewcommand{\@keywords}{#1}}
+\newcommand{\@subtitle}{}
+\newcommand{\subtitle}[1]{\renewcommand{\@subtitle}{#1}}
+
+\newcommand{\@abstract}{}
+\renewcommand{\abstract}[1]{\renewcommand{\@abstract}{#1}}
+
+\makeatother
+
+
+% Include filter-generated metadata commands
+% Fixed filename in current working directory (Pandoc's output-dir)
+\IfFileExists{pandoc-meta-commands.tex}{%
+  \input{pandoc-meta-commands.tex}%
+}{%
+  % File doesn't exist - this is OK if no keywords/abstract
+}
+
+
+
+% ---------------------------
+% Safety: ensure known Pandoc macros exist
+% ---------------------------
+% Pandoc sometimes expects these; define them gently if missing
+\providecommand{\tightlist}{}
+
+
+% ========================================================================
+% End of Preamble
+% ========================================================================

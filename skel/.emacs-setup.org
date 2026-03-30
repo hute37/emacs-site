@@ -184,158 +184,28 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 
 #+END_SRC
 
+
+* NODE
+:PROPERTIES:
+:CUSTOM_ID: python
+:END:
+** NVM
+   * [[https://nodejs.org/en][nodejs.org]]
+
+* MARKDOWM
+:PROPERTIES:
+:CUSTOM_ID: python
+:END:
+** LaTeX
+   * [[https://gitlab.com/ub-dems-public/ds-labs/dve-sample-r/-/blob/develop/docker/r-images/scripts/base/install_ubs-commons.sh?ref_type=heads#L174][install_ubs-commons.sh#latex]]
+
 * PYTHON
 :PROPERTIES:
 :CUSTOM_ID: python
 :END:
-** PYENV/POETRY
-   * [[https://gitlab.com/ub-dems-public/ds-labs/dve-sample-py/-/raw/f/2206-org-setup/doc/setup/setup.org][dve-sample-py/doc/setup/setup.org]]
-   
-** VIRTUALENV
-:PROPERTIES:
-:CUSTOM_ID: VIRTUALENV
-:END:
-*** prepare
-#+NAME: python-venv-prepare
-#+BEGIN_SRC sh
-
-### ///////////////////////////////////////////////////////////////////
-### {{{  @PYTHON-VENV-PREPARE
-### ///////////////////////////////////////////////////////////////////
-
-
-# add ~/.local/bin to PATH
-
-mkdir -p ~/.local/bin
-
-cat >> ~/.bash_profile <!EOF
-
-# User specific environment and startup programs
-
-PATH=$PATH:$HOME/.local/bin:$HOME/bin
-
-export PATH
-
-!EOF
-
-source ~/.bash_profile
-echo $PATH
-
-## }}}  .python-venv-prepare
-
-#+END_SRC
-
-*** system env
-:PROPERTIES:
-:CUSTOM_ID: install-1
-:END:
-#+NAME: python-venv-system
-#+BEGIN_SRC sh
-
-### ///////////////////////////////////////////////////////////////////
-### {{{  @PYTHON-VENV-SYSTEM
-### ///////////////////////////////////////////////////////////////////
-
-# -------
-sudo -i
-# -------
-
-# OS - apt
-
-### pip3
-apt search  python3-pip
-apt install python3-pip
-
-### launchpadlib <- setuptools
-apt search  python3-testresources
-apt install python3-testresources
-
-### jupyter
-apt search  python3-widgetsnbextension
-apt install python3-widgetsnbextension
-
-
-# -----
-exit
-# -----
-
-## }}}  .python-venv-system
-
-#+END_SRC
-
-*** user env
-#+NAME: python-venv-system
-#+BEGIN_SRC sh
-
-### ///////////////////////////////////////////////////////////////////
-### {{{  @PYTHON-VENV-USER
-### ///////////////////////////////////////////////////////////////////
-
-
-python -V
-python3 -V
-
-python3 -m site
-python3 -m site --user-base
-
-python3 -m pip -V
-
-python3 -m pip install --upgrade pip --user
-python3 -m pip install --upgrade setuptools --user
-python3 -m pip install --upgrade pipenv --user
-
-# zsh: rehash
-
-which python
-which python3
-
-which pip
-which pip3
-
-python -V
-python3 -V
-
-python3 -m pip -V
-
-which pipenv
-
-pipenv --version
-
-pipenv
-pipenv --three
-## }}}  .python-venv-user
-
-#+END_SRC
-
-*** env usage
-#+NAME: python-venv-usage
-#+BEGIN_SRC sh
-
-### ///////////////////////////////////////////////////////////////////
-### {{{  @PYTHON-VENV-USAGE
-### ///////////////////////////////////////////////////////////////////
-
-pipenv  --three install --dev
-pipenv graph
-pipenv update
-pipenv lock
-pipenv graph
-
-ls -l PipEnv*
-git status PipEnv*
-
-pipenv shell
-pipenv -m site
-
-
-pipenv lock -r       >requirements.txt
-
-pipenv lock -r --dev >requirements-dev.txt
-
-## }}}  .python-venv-usage
-
-#+END_SRC
-
+** UV
+   * [[https://gitlab.com/ub-dems-public/ds-labs/dve-sample-py/-/blob/develop/notes/setup/setup.org?ref_type=heads][dve-sample-py/notes/setup/setup.org]]
+     
 * UPGRADE
 ** update
 *** skel pull
@@ -379,7 +249,6 @@ done
 ## }}}  .skel-sync
 
 #+END_SRC
-
 
 
 

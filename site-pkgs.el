@@ -2366,6 +2366,17 @@ Return nil if any single regexp matches."
 
 ;; @see: https://protesilaos.com/codelog/2023-06-26-emacs-file-dired-basics/
 
+(use-package ls-lisp
+  :custom
+  (ls-lisp-use-insert-directory-program nil)  ; use built-in, not system ls
+  (ls-lisp-dirs-first t)
+  (ls-lisp-ignore-case nil)
+  (ls-lisp-verbosity '(uid gid))
+  :config
+  (require 'ls-lisp))                         ; ensure it's loaded immediately
+
+
+
 (use-package dired
   ;; :straight (:type built-in)
   ;; :ensure t 
@@ -2373,17 +2384,16 @@ Return nil if any single regexp matches."
          (dired-mode . dired-hide-details-mode))
   :custom
   ;; (require 'ls-lisp)
+  (ls-lisp-use-insert-directory-program nil)
   (ls-lisp-dirs-first t)
   (ls-lisp-ignore-case nil)
-  (ls-lisp-use-insert-directory-program nil)
-
-  (dired-listing-switches "-alvhp --dired --group-directories-first")
-
-  (dired-by-moving-to-trash t)
+  (dired-listing-switches "-alvhp")
+  (dired-delete-by-moving-to-trash t)
+  (dired-create-destination-dirs 'always)
+  (dired-create-destination-dirs-on-trailing-dirsep t)
   (dired-recursive-copies 'always)
   (dired-recursive-deletes 'always)
-  (dired-dwim-target t) ;;use to copy to the next buffer visible
-  ;; Auto refresh Dired, but be quiet about it
+  (dired-dwim-target t)
   (global-auto-revert-non-file-buffers t)
   (auto-revert-verbose t)
   ;;(image-dired-external-viewer (executable-find "sxiv"))

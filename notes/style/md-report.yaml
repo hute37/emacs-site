@@ -1,0 +1,28 @@
+from: gfm+yaml_metadata_block+raw_attribute
+to: pdf
+
+verbosity: INFO
+
+log-file: md-report.log.json
+trace: false
+
+standalone: true
+
+toc: true
+toc-depth: 3
+
+pdf-engine: lualatex
+
+pdf-engine-opts:
+  - '-shell-escape'
+
+metadata-files:
+- '${.}/md-report+style.yaml'
+- '${.}/md-report+meta.yaml'
+
+filters:
+- '${.}/md-report.lua'
+
+include-in-header:
+- '${.}/md-report.tex'
+
