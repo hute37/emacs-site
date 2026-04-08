@@ -2612,9 +2612,11 @@ Version: 2024-01-18"
   :ensure t)
 
 (use-package treemacs-icons-dired
-  :after treemacs dired
+  ;;:after treemacs dired
   :ensure t
-  :config (treemacs-icons-dired-mode))
+  :hook (dired-mode . treemacs-icons-dired-enable-once)
+  ;;:config (treemacs-icons-dired-mode)
+  )
 
 (use-package treemacs-all-the-icons
   :after treemacs
