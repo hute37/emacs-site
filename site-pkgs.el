@@ -2032,10 +2032,19 @@ Return nil if any single regexp matches."
   (consult-customize
    consult-theme
    :preview-key '(:debounce 0.2 any)
-   consult-ripgrep consult-git-grep consult-grep
-   consult-bookmark consult-recent-file consult-xref
-   consult--source-bookmark consult--source-recent-file
-   consult--source-project-recent-file
+   consult-ripgrep
+   consult-git-grep
+   consult-grep
+   consult-bookmark
+   consult-recent-file
+   consult-outline
+   consult-org-heading
+   consult-todo
+   consult-flymake
+   consult-xref
+   ;; consult--source-bookmark
+   ;; consult--source-recent-file
+   ;; consult--source-project-recent-file
    :preview-key (kbd "M-."))
 
   ;; Optionally configure the narrowing key.
