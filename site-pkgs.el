@@ -4300,7 +4300,7 @@ variable is deleted. (i.e.: set a 42 b 7)"
 )
 
 (use-package poly-R
-  :ensure t
+  :disabled t
 )
 ;; lang-r.ess.polymode ends here
 
