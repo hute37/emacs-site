@@ -3733,7 +3733,27 @@ variable is deleted. (i.e.: set a 42 b 7)"
          ("\\.md\\'" . gfm-mode)
          ("\\.cm\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
+  :init
+  ;;(setq markdown-command "multimarkdown")
+  (setq markdown-command "pandoc")
+
+  :config
+  ;; Enable syntax highlighting
+  (setq markdown-fontify-code-blocks-natively t)
+  ;; Enable inline code highlighting
+  (setq markdown-enable-highlighting-syntax t)
+  
+  ;; ;; Optional: customize faces for better visibility
+  ;; (custom-set-faces
+  ;;  '(markdown-code-face ((t (:inherit fixed-pitch :background "#2d2d2d"))))
+  ;;  '(markdown-inline-code-face ((t (:inherit (font-lock-constant-face fixed-pitch) :background "#2d2d2d")))))
+  
+  :hook ((
+          markdown-mode
+          gfm-mode
+          ) . visual-line-mode)
+  )
+
 
 ;; (use-package markdown-mode
 ;;   :ensure t
@@ -6019,7 +6039,7 @@ Uses behave's --name flag to select the scenario."
 ;; @see: https://github.com/karthink/.emacs.d/blob/master/init.el#L3938
 
 (use-package gptel
-  :ensure t
+  :disabled t
   :commands (gptel gptel-send)
   ;;:hook ((eshell-mode . my/gptel-eshell-keys))
   :bind (("C-c C-<return>" . gptel-menu)
