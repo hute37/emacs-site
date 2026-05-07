@@ -19,6 +19,8 @@
 ;;;
 ;;;
 
+;; (progn (setq byte-compile-debug t)(setq byte-compile-error-on-warn t))
+
 ;; '(Info-additional-directory-list (quote ("D:\\usr\\share\\info")))
 
 ;; Added by Package.el.  This must come before configurations of

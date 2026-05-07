@@ -4447,7 +4447,7 @@ variable is deleted. (i.e.: set a 42 b 7)"
   ;; Wire pet's resolved venv into lsp-pyright before the server starts.
   (add-hook 'pet-mode-hook
             (lambda ()
-              (when-let ((root (pet-virtualenv-root)))
+              (when-let* ((root (pet-virtualenv-root)))
                 (setq-local
                  lsp-pyright-venv-path
                  (file-name-directory (directory-file-name root))
@@ -4733,7 +4733,7 @@ variable is deleted. (i.e.: set a 42 b 7)"
   "Return the project root, preferring projectile then project.el."
   (or (and (fboundp 'projectile-project-root)
            (ignore-errors (projectile-project-root)))
-      (when-let ((p (project-current)))
+      (when-let* ((p (project-current)))
         (project-root p))
       default-directory))
 
@@ -6649,6 +6649,14 @@ Uses behave's --name flag to select the scenario."
   ;; (use-package biblithek
   ;;   :disabled t
   ;; )
+
+
+(use-package djvu
+  :if (h7/use-pdf-tools)
+  :ensure t
+  ;; :disabled t
+  ;; required by org-noter
+  )
 ;; tex-pdf ends here
 
 ;; TeX/end
