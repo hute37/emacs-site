@@ -2329,7 +2329,9 @@ Return nil if any single regexp matches."
 
   (use-package olivetti
     :ensure t
-    :custom (olivetti-body-width 92)
+    ;; :hook ((markdown-mode . olivetti-mode)
+    ;;        (markdown-ts-mode . olivetti-mode))
+    :custom (olivetti-body-width 100)
     ;;:hook (org-mode . olivetti-mode)
     :bind ("C-c M-o" . olivetti-mode)
     )
@@ -3869,57 +3871,53 @@ variable is deleted. (i.e.: set a 42 b 7)"
 
 ;; ---( markdown )--------------------------------------------------------------
 
-
-;; (use-package markdown-ts-mode
-;;   :mode ("\\.md\\'" . markdown-ts-mode)
-;;   :defer 't
-;;   :config
-;;   (add-to-list 'treesit-language-source-alist '(markdown "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/src"))
-;;   (add-to-list 'treesit-language-source-alist '(markdown-inline "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown-inline/src"))
-;;   )
-
-
-
+;; --- 1. Classical Markdown-mode (for Pandoc and GFM Logic) ---
 (use-package markdown-mode
   :ensure t
+  :mode ("\\.md\\'" . gfm-mode)
   :commands (markdown-mode gfm-mode)
-  :mode (("README\\.md\\'" . gfm-mode)
-         ("\\.md\\'" . gfm-mode)
-         ("\\.cm\\'" . markdown-mode)
-         ("\\.markdown\\'" . markdown-mode))
-  :init
-  ;;(setq markdown-command "multimarkdown")
-  (setq markdown-command "pandoc")
-
-  :config
-  ;; Enable syntax highlighting
-  (setq markdown-fontify-code-blocks-natively t)
-  ;; Enable inline code highlighting
-  (setq markdown-enable-highlighting-syntax t)
-  
-  ;; ;; Optional: customize faces for better visibility
-  ;; (custom-set-faces
-  ;;  '(markdown-code-face ((t (:inherit fixed-pitch :background "#2d2d2d"))))
-  ;;  '(markdown-inline-code-face ((t (:inherit (font-lock-constant-face fixed-pitch) :background "#2d2d2d")))))
-  
   :hook ((
           markdown-mode
           gfm-mode
           ) . visual-line-mode)
+
+  :init
+  (setq markdown-command "pandoc -f gfm+yaml_metadata_block+raw_attribute -t html")
+  :config
+  (setq markdown-header-scaling t
+        markdown-fontify-code-blocks-natively t
+        markdown-enable-highlighting-syntax t
+        markdown-table-display t
+        markdown-export-kill-buffer t)
+  ;;   (progn
+  ;;     (let ((preferred-markdown-impl "peg-markdown"))
+  ;;       (when (executable-find preferred-markdown-impl)
+  ;;         (setq markdown-command preferred-markdown-impl)))))
+  ;;   (add-hook 'markdown-mode-hook 'spell-check-and-wrap-at-80)
+  
+  ;; Integration with Flycheck for markdownlint-cli2
+  (with-eval-after-load 'flycheck
+    (setq-default flycheck-markdown-markdownlint-cli-executable "markdownlint-cli2"))
   )
 
+;; --- 2. Modern Tree-Sitter Mode (for Performance and Code Blocks) ---
 
-;; (use-package markdown-mode
-;;   :ensure t
-;;   :mode ("\\.\\(m\\(ark\\)?down\\|md\\)$" . markdown-mode)
-;;   :init
-;;   (add-hook 'markdown-mode-hook 'spell-check-and-wrap-at-80)
-;;   :config
-;;   (progn
-;;     (let ((preferred-markdown-impl "peg-markdown"))
-;;       (when (executable-find preferred-markdown-impl)
-;;         (setq markdown-command preferred-markdown-impl)))))
-
+(use-package markdown-ts-mode
+  :ensure t ; Available in Emacs 30/31+ or via MELPA as md-ts-mode
+  :mode ("\\.md\\'" . markdown-ts-mode)
+  :config
+  ;;   (add-to-list 'treesit-language-source-alist '(markdown "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/src"))
+  ;;   (add-to-list 'treesit-language-source-alist '(markdown-inline "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown-inline/src"))
+  
+  ;; Enable Org-style table editing in TS mode
+  (add-hook 'markdown-ts-mode-hook #'turn-on-orgtbl)
+  (add-hook 'markdown-ts-mode-hook #'outline-minor-mode)
+  (add-hook 'markdown-ts-mode-hook #'visual-line-mode)
+  
+  ;; Consult integration: Use treesit-outline for navigation
+  (with-eval-after-load 'consult
+    (add-to-list 'consult-config `(markdown-ts-mode :outline ,treesit-outline-search-default)))
+  )
 
 ;; ---( markdownlint )--------------------------------------------------------------
 
@@ -3938,7 +3936,7 @@ variable is deleted. (i.e.: set a 42 b 7)"
 
 (use-package pandoc-mode
   :ensure t
-  :hook (markdown-mode . pandoc-mode)
+  :hook (markdown-mode markdown-ts-mode)
   :config
   (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
   )
@@ -4077,6 +4075,9 @@ variable is deleted. (i.e.: set a 42 b 7)"
 (use-package flycheck
   :ensure t
   :init (global-flycheck-mode)
+  :config
+  ;; Ensure markdownlint-cli2 is the preferred checker
+  (flycheck-add-mode 'markdown-markdownlint-cli 'markdown-ts-mode)  
   )
 
 ;; ---( LSP mode )------------------------------------------------------------
@@ -6687,6 +6688,28 @@ Uses behave's --name flag to select the scenario."
 #+begin_src emacs-lisp
 
   ;; ---( Spell )--------------------------------------------------------------
+
+(use-package flyspell
+  :ensure t
+  :diminish flyspell-mode
+  :hook
+  ;; (markdown-mode . flyspell-mode)
+  ;; (markdown-ts-mode . flyspell-mode)
+  (markdown-mode . turn-on-flyspell)
+  (markdown-ts-mode . turn-on-flyspell)
+  ;; (text-mode . turn-on-flyspell)
+  (prog-mode . flyspell-prog-mode)
+
+  :config
+
+ (setq ispell-program-name "hunspell")
+  ;; Configure multiple dictionaries: e.g., US English and Italian
+  (setq ispell-local-dictionary "en_US,it_IT")
+  (setq ispell-local-dictionary-alist
+        '(("en_US,it_IT"
+           "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US,it_IT") nil utf-8)))
+  
+  )
 
 (defun flyspell-italian ()
   (interactive)
