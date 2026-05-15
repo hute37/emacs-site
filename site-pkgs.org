@@ -6701,9 +6701,13 @@ Uses behave's --name flag to select the scenario."
   (prog-mode . flyspell-prog-mode)
 
   :config
-
- (setq ispell-program-name "hunspell")
+  (require 'ispell)
+  (setq ispell-program-name "hunspell")
+  (setq ispell-really-hunspell t)
   ;; Configure multiple dictionaries: e.g., US English and Italian
+  (ispell-set-spellchecker-params)
+  (ispell-hunspell-add-multi-dic "en_US,it_IT")
+  (ispell-change-dictionary "en_US,it_IT" t) 
   (setq ispell-local-dictionary "en_US,it_IT")
   (setq ispell-local-dictionary-alist
         '(("en_US,it_IT"
@@ -6723,6 +6727,13 @@ Uses behave's --name flag to select the scenario."
   (flyspell-buffer)
   (flyspell-mode 1))
 
+
+
+(use-package jinx
+  :ensure t
+  ;; :hook (emacs-startup . global-jinx-mode)
+  :bind (("M-$" . jinx-correct)
+         ("C-M-$" . jinx-languages)))
 
 ;; @see: https://www.tenderisthebyte.com/blog/2019/06/09/spell-checking-emacs/
 
