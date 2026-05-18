@@ -1106,7 +1106,7 @@ Return nil if any single regexp matches."
 (use-package hilit-chg
   :ensure t
   :bind
-  ("C-x M-u" . highlight-changes-mode))
+  ("C-x M-c" . highlight-changes-mode))
 
 (use-package goto-chg
   :ensure t
@@ -1116,8 +1116,30 @@ Return nil if any single regexp matches."
 
 ;; ---( folding )--------------------------------------------------------------
 
-(use-package vimish-fold
+(use-package kirigami
   :ensure t
+  :commands (kirigami-open-fold
+             kirigami-open-fold-rec
+             kirigami-close-fold
+             kirigami-toggle-fold
+             kirigami-open-folds
+             kirigami-close-folds-except-current
+             kirigami-close-folds)
+
+  :bind
+  ;; Vanilla Emacs keybindings
+  (("C-c z o" . kirigami-open-fold)          ; Open fold at point
+   ("C-c z O" . kirigami-open-fold-rec)      ; Open fold recursively
+   ("C-c z r" . kirigami-open-folds)         ; Open all folds
+   ("C-c z c" . kirigami-close-fold)         ; Close fold at point
+   ("C-c z m" . kirigami-close-folds)        ; Close all folds
+   ("C-c z a" . kirigami-toggle-fold)))      ; Toggle fold at point
+
+
+
+(use-package vimish-fold
+    :disabled t
+    ;;:ensure t
   :hook ((
           terraform-mode
           yaml-mode
@@ -1167,8 +1189,6 @@ Return nil if any single regexp matches."
 ;;     ;;     (origami-mode)
 ;;     ;;     (origami-close-all-nodes (current-buffer))))
 ;; )
-
-
 
 ;; (use-package folding
 ;;   :ensure t
