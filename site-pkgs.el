@@ -1202,7 +1202,8 @@ Return nil if any single regexp matches."
 
 
 (use-package savefold
-  :ensure t
+  :disabled t
+  ;;:ensure t
   :init
   ;;  list of symbols indicating active backends. Default: '(outline)
   (setq savefold-backends '(outline org hideshow treesit-fold markdown))
@@ -6963,9 +6964,9 @@ Uses behave's --name flag to select the scenario."
   (use-package org-ref
     :disabled
     :demand)
-  (use-package org-autolist
-    :disabled
-    :demand)
+  ;; (use-package org-autolist
+  ;;   :disabled
+  ;;   :demand)
   (use-package ox-tufte
     :disabled
     :demand)
