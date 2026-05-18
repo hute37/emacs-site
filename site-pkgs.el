@@ -3927,6 +3927,18 @@ variable is deleted. (i.e.: set a 42 b 7)"
   (add-hook 'markdown-ts-mode-hook #'outline-minor-mode)
   (add-hook 'markdown-ts-mode-hook #'visual-line-mode)
   
+  ;; Disable Keybindings
+
+  (add-hook 'markdown-ts-mode-hook (lambda() (local-unset-key (kbd "M-up"))))
+  (add-hook 'markdown-ts-mode-hook (lambda() (local-unset-key (kbd "M-down"))))
+  (add-hook 'markdown-ts-mode-hook (lambda() (local-unset-key (kbd "M-left"))))
+  (add-hook 'markdown-ts-mode-hook (lambda() (local-unset-key (kbd "M-right"))))
+  (add-hook 'markdown-ts-mode-hook (lambda() (local-set-key (kbd "M-S-up") 'markdown-ts-move-subtree-up)))
+  (add-hook 'markdown-ts-mode-hook (lambda() (local-set-key (kbd "M-S-down") 'markdown-ts-move-subtree-down)))
+  (add-hook 'markdown-ts-mode-hook (lambda() (local-set-key (kbd "M-S-left") 'markdown-ts-promote)))
+  (add-hook 'markdown-ts-mode-hook (lambda() (local-set-key (kbd "M-S-right") 'markdown-ts-demote)))
+  
+  
   ;; Consult integration: Use treesit-outline for navigation
   (with-eval-after-load 'consult
     (add-to-list 'consult-config `(markdown-ts-mode :outline ,treesit-outline-search-default)))
