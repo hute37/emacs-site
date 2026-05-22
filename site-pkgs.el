@@ -5660,9 +5660,20 @@ Uses behave's --name flag to select the scenario."
 ;; [[file:site-pkgs.org::rest-yaml][rest-yaml]]
   ;; ---( yaml )--------------------------------------------------------------
 
-  (use-package yaml-mode
-    :ensure t
-    :defer t)
+(use-package yaml-ts-mode
+  :mode (
+           ("\\.cff\\'" . yaml-ts-mode)
+           ("\\.yml\\'" . yaml-ts-mode)
+	   ("\\.yaml\\'" . yaml-ts-mode))
+)
+
+(use-package yaml-mode
+  :ensure t
+  ;; :mode (
+  ;;          ("\\.cff\\'" . yaml-mode)
+  ;;          ("\\.yml\\'" . yaml-mode)
+  ;;          ("\\.yaml\\'" . yaml-mode))
+)
 ;; rest-yaml ends here
 
 ;; Request 
