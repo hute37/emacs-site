@@ -113,15 +113,15 @@
 (unless (assoc-default "nongnu" package-archives)
   (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/") t))
 
-  (setq package-review-policy t
-        package-review-diff-command '("git" "diff" "--no-index" "--color=never" "--diff-filter=d"))
-  (add-to-list 'display-buffer-alist
-               '("\\`\\*Package Review Diff:"
-                 (display-buffer-full-frame)))
+  ;; (setq package-review-policy t
+  ;;       package-review-diff-command '("git" "diff" "--no-index" "--color=never" "--diff-filter=d"))
+  ;; (add-to-list 'display-buffer-alist
+  ;;              '("\\`\\*Package Review Diff:"
+  ;;                (display-buffer-full-frame)))
 
 
 ;; (add-to-list 'load-path "~/elisp")
-;;(setq use-package-verbose t)
+(setq use-package-verbose t)
 ;; (setq use-package-always-ensure t)
 
 (require 'use-package)
