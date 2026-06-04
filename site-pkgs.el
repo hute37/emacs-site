@@ -95,6 +95,48 @@
 
 ;; ---( Boot )--------------------------------------------------------------
 
+;; @see: https://sachachua.com/dotemacs/
+;; @see: https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
+;; @see: https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.el
+
+;; This sets up the load path so that we can override it
+(setq warning-suppress-log-types '((package reinitialization)))  (package-initialize)
+;;(add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
+
+;;(setq use-package-always-ensure t)
+
+;; (use-package memoize
+;;   :ensure t)
+
+(unless (assoc-default "melpa" package-archives)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
+(unless (assoc-default "nongnu" package-archives)
+  (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/") t))
+
+  (setq package-review-policy t
+        package-review-diff-command '("git" "diff" "--no-index" "--color=never" "--diff-filter=d"))
+  (add-to-list 'display-buffer-alist
+               '("\\`\\*Package Review Diff:"
+                 (display-buffer-full-frame)))
+
+
+;; (add-to-list 'load-path "~/elisp")
+(setq use-package-verbose t)
+;; (setq use-package-always-ensure t)
+(require 'use-package)
+
+
+;;(use-package quelpa)
+;;(use-package quelpa-use-package)
+;;(quelpa-use-package-activate-advice)
+;;(setq load-prefer-newer t)
+
+
+
+
+
+;; ---( Boot.ex )--------------------------------------------------------------
+
 ;; (setq debug-on-error t)
 
 
@@ -134,53 +176,54 @@
 ;;         native-comp-deferred-compilation t))
 
 
-(eval-and-compile
-  (require 'package)
-  (add-to-list 'package-archives '("org"       . "http://orgmode.org/elpa/")) ; Org-mode's repository
-  (add-to-list 'package-archives '("gnu"       . "https://elpa.gnu.org/packages/"))
-  (add-to-list 'package-archives '("melpa"     . "https://melpa.org/packages/"))
-  (add-to-list 'package-archives '("nongnu"    . "https://elpa.nongnu.org/nongnu/"))
-;;(add-to-list 'package-archives '("jcs-elpa"  . "https://jcs-emacs.github.io/jcs-elpa/packages/") t)
+;; (eval-and-compile
+;;   (require 'package)
+;;   (add-to-list 'package-archives '("org"       . "http://orgmode.org/elpa/")) ; Org-mode's repository
+;;   (add-to-list 'package-archives '("gnu"       . "https://elpa.gnu.org/packages/"))
+;;   (add-to-list 'package-archives '("melpa"     . "https://melpa.org/packages/"))
+;;   (add-to-list 'package-archives '("nongnu"    . "https://elpa.nongnu.org/nongnu/"))
+;; ;;(add-to-list 'package-archives '("jcs-elpa"  . "https://jcs-emacs.github.io/jcs-elpa/packages/") t)
 
-  (setq package-archive-priorities '(("melpa"    . 5)
-                                  ;; ("jcs-elpa" . 0)
-                                     ))
-  ;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
-  ;;(package-initialize)
-  ;; i always fetch the archive contents on startup and during compilation, which is slow
-  ;; (package-refresh-contents)
-  (unless (package-installed-p 'use-package)
-    (package-install 'use-package))
-  (setq use-package-verbose t)
-  (require 'use-package)
-  ;; i don't really know why this isn't the default...
-  ;;(setf use-package-always-ensure t)
+;;   (setq package-archive-priorities '(("melpa"    . 5)
+;;                                   ;; ("jcs-elpa" . 0)
+;;                                      ))
+;;   ;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+;;   ;;(package-initialize)
+;;   ;; i always fetch the archive contents on startup and during compilation, which is slow
+;;   ;; (package-refresh-contents)
+;;   (unless (package-installed-p 'use-package)
+;;     (package-install 'use-package))
+;;   (setq use-package-verbose t)
+;;   (require 'use-package)
+;;   ;; i don't really know why this isn't the default...
+;;   ;;(setf use-package-always-ensure t)
 
-  ;;(use-package use-package-ensure
-  ;;  :config  (setq use-package-always-ensure t))
+;;   ;;(use-package use-package-ensure
+;;   ;;  :config  (setq use-package-always-ensure t))
 
-  (use-package quelpa
-    :ensure t)
-  (use-package quelpa-use-package
-    :ensure t)
-  (quelpa-use-package-activate-advice)
-  (use-package auto-compile
-    :ensure t
-    :config (auto-compile-on-load-mode))
-  (setq load-prefer-newer t)
+;;   ;; (use-package quelpa
+;;   ;;   :ensure t)
+;;   ;; (use-package quelpa-use-package
+;;   ;;   :ensure t)
+;;   ;; (quelpa-use-package-activate-advice)
+;;   ;; (use-package auto-compile
+;;   ;;   :ensure t
+;;   ;;   :config (auto-compile-on-load-mode))
+  
+;;   (setq load-prefer-newer t)
 
-  ;;   (unless (package-installed-p 'quelpa)
-  ;;     (with-temp-buffer
-  ;;       (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
-  ;;       (eval-buffer)
-  ;;       (quelpa-self-upgrade)))
-  ;;   (quelpa
-  ;;    '(quelpa-use-package
-  ;;      :fetcher git
-  ;;      :url "https://github.com/quelpa/quelpa-use-package.git"))
-  ;;   (require 'quelpa-use-package)
-  ;;
-  )
+;;   ;;   (unless (package-installed-p 'quelpa)
+;;   ;;     (with-temp-buffer
+;;   ;;       (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+;;   ;;       (eval-buffer)
+;;   ;;       (quelpa-self-upgrade)))
+;;   ;;   (quelpa
+;;   ;;    '(quelpa-use-package
+;;   ;;      :fetcher git
+;;   ;;      :url "https://github.com/quelpa/quelpa-use-package.git"))
+;;   ;;   (require 'quelpa-use-package)
+;;   ;;
+;;   )
 
 ;; ;; @see:  https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
 
@@ -273,13 +316,13 @@
 
 ;; @see: https://github.com/jwiegley/dot-emacs/blob/master/init.el
 
-(eval-and-compile
-  (defvar use-package-verbose t))
+;; (eval-and-compile
+;;   (defvar use-package-verbose t))
 
 ;; ---( ... )--------------------------------------------------------------
 
 (require 'bind-key)
-(require 'use-package)
+;; (require 'use-package)
 
 ;; use-package-ensure-system-package
 ;; provides way to define system package dependencies for Emacs packages
@@ -3552,8 +3595,8 @@ variable is deleted. (i.e.: set a 42 b 7)"
   (eshell-toggle-init-function #'eshell-toggle-init-eshell)
   ;; (eshell-toggle-init-function #'eshell-toggle-init-ansi-term)
   ;; (eshell-toggle-init-function #'eshell-toggle-init-tmux)
-  :quelpa
-  (eshell-toggle :repo "4DA/eshell-toggle" :fetcher github :version original)
+  ;; :quelpa
+  ;; (eshell-toggle :repo "4DA/eshell-toggle" :fetcher github :version original)
   :bind
   ("C-~" . eshell-toggle))
 
@@ -3602,14 +3645,14 @@ variable is deleted. (i.e.: set a 42 b 7)"
   :ensure t
   ;;:hook (eshell-load . eat-eshell-mode)
   :hook (eshell-load . eat-eshell-visual-command-mode)
-  :quelpa ((eat
-            :fetcher git
-            :url "https://codeberg.org/akib/emacs-eat"
-            :files ("*.el" ("term" "term/*.el") "*.texi"
-                    "*.ti" ("terminfo/e" "terminfo/e/*")
-                    ("terminfo/65" "terminfo/65/*")
-                    ("integration" "integration/*")
-                    (:exclude ".dir-locals.el" "*-tests.el"))))
+  ;; :quelpa ((eat
+  ;;           :fetcher git
+  ;;           :url "https://codeberg.org/akib/emacs-eat"
+  ;;           :files ("*.el" ("term" "term/*.el") "*.texi"
+  ;;                   "*.ti" ("terminfo/e" "terminfo/e/*")
+  ;;                   ("terminfo/65" "terminfo/65/*")
+  ;;                   ("integration" "integration/*")
+  ;;                   (:exclude ".dir-locals.el" "*-tests.el"))))
   )
 ;; shell-eshell ends here
 
@@ -7704,7 +7747,7 @@ Uses behave's --name flag to select the scenario."
     :after (denote)
     ;; :straight
     ;;   (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
-    :quelpa (denote-refs :fetcher git :url "https://codeberg.org/akib/emacs-denote-refs.git")
+    ;; :quelpa (denote-refs :fetcher git :url "https://codeberg.org/akib/emacs-denote-refs.git")
     ;; ;; normally we'd recommend hooking orui after org-roam, but since org-roam does not have
     ;; ;; a hookable mode anymore, you're advised to pick something yourself
     ;; ;; if you don't care about startup time, use
