@@ -151,8 +151,9 @@ Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
 
 
 ;; (add-to-list 'load-path "~/elisp")
-(setq use-package-verbose t)
+;;(setq use-package-verbose t)
 ;; (setq use-package-always-ensure t)
+
 (require 'use-package)
 
 

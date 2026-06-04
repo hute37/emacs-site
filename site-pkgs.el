@@ -121,8 +121,9 @@
 
 
 ;; (add-to-list 'load-path "~/elisp")
-(setq use-package-verbose t)
+;;(setq use-package-verbose t)
 ;; (setq use-package-always-ensure t)
+
 (require 'use-package)
 
 
