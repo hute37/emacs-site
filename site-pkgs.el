@@ -2534,7 +2534,7 @@ Return nil if any single regexp matches."
   ;; ---( git-gutter-fringe )-----------------------------------------------------------
 
   (use-package git-gutter-fringe
-    :ensure t
+    :disabled t
     :hook ((prog-mode     . git-gutter-mode)
            (yaml-mode     . git-gutter-mode)
            (org-mode      . git-gutter-mode)
