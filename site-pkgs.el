@@ -126,6 +126,8 @@
 (require 'use-package)
 
 
+
+
 ;;(use-package quelpa)
 ;;(use-package quelpa-use-package)
 ;;(quelpa-use-package-activate-advice)
@@ -297,19 +299,19 @@
 
 ;;(package-initialize)
 
-;; Bootstrap `use-package'
-(unless (and
-         (package-installed-p 'bind-key)
-         (package-installed-p 'diminish)
-         (package-installed-p 'use-package)
-         (package-installed-p 'req-package)
-         )
-  (package-refresh-contents)
-  (package-install 'bind-key)
-  (package-install 'diminish)
-  (package-install 'use-package)
-  (package-install 'req-package)
-  )
+;; ;; Bootstrap `use-package'
+;; (unless (and
+;;          (package-installed-p 'bind-key)
+;;          (package-installed-p 'diminish)
+;;          (package-installed-p 'use-package)
+;;          (package-installed-p 'req-package)
+;;          )
+;;   (package-refresh-contents)
+;;   (package-install 'bind-key)
+;;   (package-install 'diminish)
+;;   (package-install 'use-package)
+;;   (package-install 'req-package)
+;;   )
 
 ;; (straight-use-package 'bind-key)
 ;; (straight-use-package 'diminish)
@@ -321,17 +323,30 @@
 
 ;; ---( ... )--------------------------------------------------------------
 
-(require 'bind-key)
+;; (require 'bind-key)
 ;; (require 'use-package)
+
+(use-package bind-key
+   :ensure t
+ )
+
+
+(use-package diminish
+   :ensure t
+ )
 
 ;; use-package-ensure-system-package
 ;; provides way to define system package dependencies for Emacs packages
-
 (use-package use-package-ensure-system-package
   :ensure f)
 
-(require 'req-package)
+
+;; (require 'req-package)
 ;;(use-package req-package)
+(use-package req-package
+   :ensure f
+ )
+
 
 ;; @see: https://github.com/noctuid/general.el
 (use-package general
