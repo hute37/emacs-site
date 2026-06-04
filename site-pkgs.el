@@ -345,7 +345,7 @@
 ;; (require 'req-package)
 ;;(use-package req-package)
 (use-package req-package
-   :ensure f
+   :disabled t
  )
 
 
@@ -3778,7 +3778,8 @@ variable is deleted. (i.e.: set a 42 b 7)"
 ;; ---( projector )--------------------------------------------------------------
 
 (use-package projector
-  :ensure t
+  ;;:ensure t
+  :disabled t
   :config
   ;; Recommended for handling exit messages of async processes
   (setq alert-default-style 'notifier)
@@ -5499,7 +5500,8 @@ Uses behave's --name flag to select the scenario."
 ;; ---( puppet )--------------------------------------------------------------
 
 (use-package puppet-mode
-  :ensure t
+  ;;:ensure t
+  :disabled t
   :mode ("\\.pp$" . puppet-mode)
   ;; :config
   ;; (use-package puppet-ext
@@ -6177,7 +6179,8 @@ Uses behave's --name flag to select the scenario."
 			     '(elfeed-sort-order 'ascending))))
 
 		(use-package elfeed-goodies
-		  :ensure t
+		  :disabled t
+		  ;; :ensure t
 		  ;; :config (progn
 		  ;;           (elfeed-goodies/setup)
 		  ;;          )
@@ -7546,7 +7549,8 @@ Uses behave's --name flag to select the scenario."
 
 (use-package org-autolist
   :after org
-  :ensure t
+  ;;:ensure t
+  :disabled t
   :config
   (org-autolist-mode +1))
 
