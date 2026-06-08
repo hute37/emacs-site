@@ -4146,10 +4146,10 @@ variable is deleted. (i.e.: set a 42 b 7)"
   (add-hook 'markdown-ts-mode-hook (lambda() (local-set-key (kbd "M-<kp-prior>") 'outline-previous-heading)))
   (add-hook 'markdown-ts-mode-hook (lambda() (local-set-key (kbd "M-<kp-next>") 'outline-next-heading)))
   
-  ;; Consult integration: Use treesit-outline for navigation
-  (with-eval-after-load 'consult
-    (add-to-list 'consult-config `(markdown-ts-mode :outline ,treesit-outline-search-default)))
-  )
+  ;; ;; Consult integration: Use treesit-outline for navigation
+  ;; (with-eval-after-load 'consult
+  ;;   (add-to-list 'consult-config `(markdown-ts-mode :outline ,treesit-outline-search-default)))
+  ;; )
 
 ;; ---( markdownlint )--------------------------------------------------------------
 
