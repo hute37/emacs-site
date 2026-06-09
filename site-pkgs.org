@@ -4149,7 +4149,7 @@ variable is deleted. (i.e.: set a 42 b 7)"
   ;; ;; Consult integration: Use treesit-outline for navigation
   ;; (with-eval-after-load 'consult
   ;;   (add-to-list 'consult-config `(markdown-ts-mode :outline ,treesit-outline-search-default)))
-  ;; )
+)
 
 ;; ---( markdownlint )--------------------------------------------------------------
 
