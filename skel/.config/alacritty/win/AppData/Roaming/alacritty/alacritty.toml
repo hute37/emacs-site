@@ -72,7 +72,7 @@ WINIT_X11_SCALE_FACTOR = "1"
 
 [terminal]
 
-shell = { program = "C:\\Program Files\\WSL\\wsl.exe", args = ["--cd ~"]] }
+shell = { program = "C:\\Program Files\\WSL\\wsl.exe", args = ["--cd ~"] }
 #shell = { program = "/usr/bin/zsh", args = ["--login",] }
 osc52 = "CopyPaste"
 
