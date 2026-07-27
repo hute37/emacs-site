@@ -2993,6 +2993,63 @@ Version: 2024-01-18"
 ;; #+NAME: shell-vterm
 
 ;; [[file:site-pkgs.org::shell-vterm][shell-vterm]]
+;; ---( ghostel )--------------------------------------------------------------
+
+;; @see: https://github.com/dakra/ghostel
+;; @see: https://dakra.github.io/ghostel/
+
+
+(use-package ghostel
+  :ensure t)
+
+(use-package ghostel-eshell
+  :hook (eshell-load . ghostel-eshell-visual-command-mode))
+
+(use-package ghostel-compile
+  :hook (after-init . ghostel-compile-global-mode))
+
+(use-package ghostel-comint
+  :hook (after-init . ghostel-comint-global-mode))
+
+;; .bashrc/.zshrc config
+
+;; if [[ "$INSIDE_EMACS" = 'ghostel' ]]; then
+;;     # Open a file in Emacs from the terminal
+;;     e()   { ghostel_cmd find-file-other-window "$@"; }
+
+;;     # Open dired in another window
+;;     dow() { ghostel_cmd dired-other-window "$@"; }
+
+;;     # Open magit for the current directory
+;;     gst() { ghostel_cmd magit-status-setup-buffer "$(pwd)"; }
+;; fi
+
+
+;; (use-package ghostel
+;;   :ensure t
+;;   :bind (("C-x m" . ghostel)
+;;          :map ghostel-semi-char-mode-map
+;;          ("C-s"  . consult-line)
+;;          ("C-k"  . my/ghostel-send-C-k-and-kill)
+;;          ;; I'm used to go up/down the shell history with M-n/p from eshell
+;;          ;; Simulate this behavior in ghostel by sending C-p and C-n
+;;          ("M-p" . (lambda () (interactive) (ghostel-send-key "p" "ctrl")))
+;;          ("M-n" . (lambda () (interactive) (ghostel-send-key "n" "ctrl")))
+;;          :map project-prefix-map
+;;          ("m" . ghostel-project)
+;;          ("M" . ghostel-project-list-buffers))
+;;   :config
+;;   (defun my/ghostel-send-C-k-and-kill ()
+;;     "Send `C-k' to ghostel.
+;; Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
+;;     (interactive)
+;;     (kill-ring-save (point) (line-end-position))
+;;     (ghostel-send-key "k" "ctrl"))
+
+;;   (add-to-list 'project-switch-commands '(ghostel-project "Ghostel") t)
+;;   (add-to-list 'project-switch-commands '(ghostel-project-list-buffers "Ghostel buffers") t)
+;;   (add-to-list 'ghostel-eval-cmds '("magit-status-setup-buffer" magit-status-setup-buffer)))
+
 ;; ---( vterm )--------------------------------------------------------------
 
 (cond
@@ -4594,6 +4651,8 @@ variable is deleted. (i.e.: set a 42 b 7)"
   :config
   ;; Remove guess indent python message
   (setq python-indent-guess-indent-offset-verbose nil)
+  ;; Ensure all tree-sitter features are font-locked
+  (setq treesit-font-lock-level 4)  
   ;; Use IPython when available or fall back to regular Python 
   (cond
    ((executable-find "ipython")
@@ -5726,6 +5785,9 @@ Uses behave's --name flag to select the scenario."
            ("\\.cff\\'" . yaml-ts-mode)
            ("\\.yml\\'" . yaml-ts-mode)
 	   ("\\.yaml\\'" . yaml-ts-mode))
+  :init
+  (setq yaml-ts-mode-yamllint-options
+        '("-d" "{extends: relaxed, rules: {line-length: {max: 220}}}"))
 )
 
 (use-package yaml-mode
