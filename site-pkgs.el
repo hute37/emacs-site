@@ -1431,9 +1431,9 @@ Return nil if any single regexp matches."
   ;; :straight nil
   ;; :if window-system
   :config
-  (setq server-use-tcp t)
-  (setq server-host "127.0.0.1")
-  (setq server-port  60321)
+  (setopt server-use-tcp t)
+  (setopt server-host "127.0.0.1")
+  (setopt server-port  "60321")
   
   ;; (setq server-name system-name)
   ;; (setq server-auth-dir "~/.emacs.d/server/")
@@ -1446,9 +1446,14 @@ Return nil if any single regexp matches."
   (unless (server-running-p)
     (server-start))
 
-  (message "Server running on port: %s" 
-           (process-contact server-process :service))
-  
+
+  (cond
+   ((equal server-process nil)   ; no C-u
+    (message "WARNING: Server not running"))
+   (t
+    (message "Server running on port: %s" 
+             (process-contact server-process :service)))
+   )    
   )
 
 
