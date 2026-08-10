@@ -3005,7 +3005,23 @@ Version: 2024-01-18"
 
 
 (use-package ghostel
-  :ensure t)
+  :ensure t
+  :bind (("C-x m" . ghostel)
+         :map ghostel-semi-char-mode-map
+         ("C-s"  . consult-line)
+         ;; ("C-k"  . my/ghostel-send-C-k-and-kill)
+         ;; I'm used to go up/down the shell history with M-n/p from eshell
+         ;; Simulate this behavior in ghostel by sending C-p and C-n
+         ("M-p" . (lambda () (interactive) (ghostel-send-key "p" "ctrl")))
+         ("M-n" . (lambda () (interactive) (ghostel-send-key "n" "ctrl")))
+         ([kp-insert] . ghostel-xterm-paste)
+         ([kp-enter] . ghostel-yank)
+         ([kp-divide] . ghostel-yank-pop)
+         ([kp-multiply] . ghostel-copy-mode)         
+         :map project-prefix-map
+         ("m" . ghostel-project)
+         ("M" . ghostel-project-list-buffers))
+  )
 
 (use-package ghostel-eshell
   :hook (eshell-load . ghostel-eshell-visual-command-mode))
