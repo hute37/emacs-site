@@ -2921,7 +2921,7 @@ Version: 2024-01-18"
   (add-to-list 'projectile-globally-ignored-directories "*.ipynb_checkpoints")
   (add-to-list 'projectile-globally-ignored-directories "*.virtual_documents")
   (add-to-list 'projectile-globally-ignored-directories "*.obsidian/")
-  (projectile-global-mode)
+  ;;(projectile-global-mode)
   )
 
 (use-package consult-projectile
