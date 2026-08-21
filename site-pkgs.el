@@ -3021,6 +3021,8 @@ Version: 2024-01-18"
          :map project-prefix-map
          ("m" . ghostel-project)
          ("M" . ghostel-project-list-buffers))
+  :custom
+  (ghostel-shell (getenv "SHELL"))
   )
 
 (use-package ghostel-eshell
