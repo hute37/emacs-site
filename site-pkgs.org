@@ -8156,7 +8156,7 @@ Uses behave's --name flag to select the scenario."
   :ensure t
   ;; :disabled t
   :config
-  (require 'org-noter-pdftools)
+  ;;(require 'org-noter-pdftools)
   (setq
    ;; The WM can handle splits
    org-noter-notes-window-location 'other-frame
@@ -9566,10 +9566,14 @@ With a prefix ARG, remove start location."
   (message "SITE:PKGS - setup:all-the-icons-install-fonts, ...")
   (all-the-icons-install-fonts)
   (message "SITE:PKGS - setup: all-the-icons-install-fonts, done.")
-
+  
   (message "SITE:PKGS - setup: pdf-tools-install, ...")
   (pdf-tools-install)
   (message "SITE:PKGS - setup: pdf-tools-install, done.")
+  
+ (message "SITE:PKGS - setup: ghostel-install, ...")
+ (ghostel-download-module)
+ (message "SITE:PKGS - setup: ghostel-install, done.")
   
   (message "SITE:PKGS - setup: lsp-install-server, ...")
   (h7/lsp-setup)
