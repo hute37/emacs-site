@@ -447,6 +447,9 @@ Return nil if any single regexp matches."
   :config
   
   ;; ---( autosave/backups )-------------------------------------------------------
+  
+  ;; @see: https://github.com/alexmurray/emacs-snap/issues/117#issuecomment-5452218952
+  (setq x-gtk-use-native-input t)
 
   ;; @see: https://github.com/karthink/.emacs.d/blob/master/init.el#L373
 
