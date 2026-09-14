@@ -4254,11 +4254,19 @@ variable is deleted. (i.e.: set a 42 b 7)"
   ;; "C-l" shadows recenter-top-bottom; use the standard lsp prefix.
   ;;(setq lsp-keymap-prefix "C-c l")    
   (setq lsp-keymap-prefix "C-l")
-  :hook (
+
+
+  :hook (;; ONLY invoke lsp-deferred HERE, do not repeat it in lsp-pyright
          (python-mode . lsp-deferred)
          (python-ts-mode . lsp-deferred)
          (lsp-mode . lsp-enable-which-key-integration)
-         )
+         
+         ;; Force structural rendering cleanly when the connection stabilizes
+         (lsp-managed-mode-hook . (lambda ()
+                                    (font-lock-mode 1)
+                                    (when (fboundp 'treesit-font-lock-refontify)
+                                      (treesit-font-lock-refontify)))))
+  
   :commands (lsp lsp-deferred)
   :custom
   ;; Performance: increase IPC read buffer (critical for large PyTorch stubs).
@@ -4673,7 +4681,12 @@ variable is deleted. (i.e.: set a 42 b 7)"
 ;; Built-in Python utilities
 (use-package python
   :ensure nil
-  :hook (python-ts-mode . eglot-ensure)
+  :hook (
+         ;; (python-mode . eglot-ensure)
+         ;; (python-ts-mode . eglot-ensure)
+         ;; Explicitly force font-lock back on if an LSP framework toggled it off
+         (python-mode . font-lock-mode)
+         (python-ts-mode . font-lock-mode))
   :config
   ;; Remove guess indent python message
   (setq python-indent-guess-indent-offset-verbose nil)
@@ -4704,36 +4717,6 @@ variable is deleted. (i.e.: set a 42 b 7)"
 (use-package hide-mode-line
   :ensure t
   :defer t)
-
-
-
-;; (use-package python-mode
-;;   :mode ("\\.py\\'" . python-mode)
-;;   :interpreter ("python" . python-mode)
-;;   :config
-;;   (defvar python-mode-initialized nil)
-;;   (defun my-python-mode-hook ()
-;;     (unless python-mode-initialized
-;;       (setq python-mode-initialized t)
-;;       (info-lookup-add-help
-;;        :mode 'python-mode
-;;        :regexp "[a-zA-Z_0-9.]+"
-;;        :doc-spec
-;;        '(("(python)Python Module Index" )
-;;          ("(python)Index"
-;;           (lambda
-;;             (item)
-;;             (cond
-;;              ((string-match
-;;                "\\([A-Za-z0-9_]+\\)() (in module \\([A-Za-z0-9_.]+\\))" item)
-;;               (format "%s.%s" (match-string 2 item)
-;;                       (match-string 1 item)))))))))
-;;     (setq indicate-empty-lines t)
-;;     (set (make-local-variable 'parens-require-spaces) nil)
-;;     (setq indent-tabs-mode nil)
-;;     (bind-key "C-c C-z" 'python-shell python-mode-map)
-;;     (unbind-key "C-c c" python-mode-map))
-;;   (add-hook 'python-mode-hook 'my-python-mode-hook))
 ;; lang-python.mode ends here
 
 ;; Lang: Python/env
@@ -4794,14 +4777,14 @@ variable is deleted. (i.e.: set a 42 b 7)"
          (python-ts-mode . pyvenv-auto-run)))
 
 
-;; Keep pyvenv available for manual workon and menu-bar integration.
-(use-package pyvenv
-  :ensure t
-  :defer t
-  :config
-  ;; Update WORKON_HOME to the uv global venv store.
-  (setenv "WORKON_HOME" (expand-file-name "~/.local/share/uv/venvs"))
-  (setq pyvenv-menu t))
+;; ;; Keep pyvenv available for manual workon and menu-bar integration.
+;; (use-package pyvenv
+;;   :ensure t
+;;   :defer t
+;;   :config
+;;   ;; Update WORKON_HOME to the uv global venv store.
+;;   (setenv "WORKON_HOME" (expand-file-name "~/.local/share/uv/venvs"))
+;;   (setq pyvenv-menu t))
 
 
 ;; ---( virtual env )------------------------------------------------------------
@@ -4844,75 +4827,157 @@ variable is deleted. (i.e.: set a 42 b 7)"
 
 (use-package lsp-pyright
   :ensure t
+  :after lsp-mode
   :defer t
-  :custom
-  (lsp-pyright-langserver-command "basedpyright")
-  (lsp-pyright-disable-language-service nil)
-  (lsp-pyright-disable-organize-imports nil)
-  (lsp-pyright-auto-import-completions t)
-  (lsp-pyright-use-library-code-for-types t)
-  ;; "workspace" mode scans the full project; use "openFilesOnly" on slow
-  ;; machines or when stub sets are very large.
-  (lsp-pyright-diagnostic-mode "workspace")
-  ;; Type-checking strictness: "standard" for most NLP projects.
-  ;; Override per project via pyrightconfig.json or .dir-locals.el.
-  (lsp-pyright-type-checking-mode "standard")
-  ;; basedpyright inlay hints (no pyrightconfig.json required).
-  (lsp-pyright-basedpyright-inlay-hints-variable-types t)
-  (lsp-pyright-basedpyright-inlay-hints-function-return-types t)
-  (lsp-pyright-basedpyright-inlay-hints-call-argument-names "all")
+  :init
+ ;; Moving variables to :init ensures they are defined BEFORE lsp-mode triggers
+  (setq lsp-pyright-langserver-command "basedpyright"
+        lsp-pyright-disable-language-service nil
+        lsp-pyright-disable-organize-imports nil
+        lsp-pyright-auto-import-completions t
+        lsp-pyright-use-library-code-for-types t
+        lsp-pyright-diagnostic-mode "workspace"
+        lsp-pyright-type-checking-mode "standard"
+        lsp-pyright-basedpyright-inlay-hints-variable-types t
+        lsp-pyright-basedpyright-inlay-hints-function-return-types t
+        lsp-pyright-basedpyright-inlay-hints-call-argument-names "all")  
+  ;; :custom
+  ;; (lsp-pyright-langserver-command "basedpyright")
+  ;; (lsp-pyright-disable-language-service nil)
+  ;; (lsp-pyright-disable-organize-imports nil)
+  ;; (lsp-pyright-auto-import-completions t)
+  ;; (lsp-pyright-use-library-code-for-types t)
+  ;; ;; "workspace" mode scans the full project; use "openFilesOnly" on slow
+  ;; ;; machines or when stub sets are very large.
+  ;; (lsp-pyright-diagnostic-mode "workspace")
+  ;; ;; Type-checking strictness: "standard" for most NLP projects.
+  ;; ;; Override per project via pyrightconfig.json or .dir-locals.el.
+  ;; (lsp-pyright-type-checking-mode "standard")
+  ;; ;; basedpyright inlay hints (no pyrightconfig.json required).
+  ;; (lsp-pyright-basedpyright-inlay-hints-variable-types t)
+  ;; (lsp-pyright-basedpyright-inlay-hints-function-return-types t)
+  ;; (lsp-pyright-basedpyright-inlay-hints-call-argument-names "all")
   :hook
-  ((python-mode . (lambda () (require 'lsp-pyright) (lsp-deferred)))
-   (python-ts-mode . (lambda () (require 'lsp-pyright) (lsp-deferred)))
+  ((python-mode . (lambda () (require 'lsp-pyright)))
+   (python-ts-mode . (lambda () (require 'lsp-pyright)))
    )
   )
 
 
 ;; ---( eglot + pyright + ruff )-----------------------------------------------
+
+
 (use-package eglot
   :ensure nil
   :bind (:map eglot-mode-map
               ("C-c c a" . eglot-code-actions)
               ("C-c c r" . eglot-rename))
+  :init
+  ;; Lower memory and I/O overhead before the server loads
+  (setq eglot-events-buffer-size 0)
+  (setq read-process-output-max (* 1024 1024))
+
+  (setq eglot-events-buffer-size 0)           ; Completely disables the JSON-RPC event log buffer
+  (setq eglot-ignored-server-capabilities     ; Tell Eglot to ignore resource-heavy LSP features you don't need
+        '(
+          ;; :documentHighlightProvider          ; Disables highlighting matching symbols under cursor
+          :documentLinkProvider
+          ))             ; Disables parsing clickable links in text
+  
   :config
-  ;; Configure eglot to use both pyright and ruff-lsp
-  (setq-default eglot-workspace-configuration
-                '(:pyright (:analysis (:typeCheckingMode "basic"))
-                           :ruff (:args ["--line-length=88"])))
+  (setq eglot-ignored-server-capabilities '(:documentHighlightProvider :documentLinkProvider))
+  
+  (setq eglot-server-programs
+        (assoc-delete-all '(python-mode python-ts-mode) eglot-server-programs))
+  
   (add-to-list 'eglot-server-programs
-               `(python-ts-mode . ("pyright-langserver" "--stdio"))))
+               '((python-mode python-ts-mode)
+                 ("basedpyright-langserver" "--stdio")
+                 ("ruff" "server")))
+
+  (setq-default eglot-workspace-configuration
+                '(:basedpyright (:analysis (:typeCheckingMode "basic"
+                                            :diagnosticMode "openFilesOnly"
+                                            :useLibraryCodeForTypes nil))
+                  :ruff ())))
+
+
+
+;; 2. The interactive switcher function
+(defun h7/switch-to-eglot-notebook ()
+  "Disconnect lsp-mode in the current buffer and start eglot for notebook files."
+  (interactive)
+  (when (bound-and-true-p lsp-mode)
+    ;; Turn off lsp-mode for this buffer specifically
+    (lsp-mode -1)
+    ;; ;; Prevent lsp-deferred from re-firing if the buffer reverts
+    ;; (remove-hook 'python-mode-hook #'lsp-deferred t)
+    ;; (remove-hook 'python-ts-mode-hook #'lsp-deferred t)
+    )
+  
+  ;; Disable automatic format on save
+  (ruff-format-on-save-mode -1)
+  
+  ;; Disable automatic structural highlighting if it lags
+  (setq-local treesit-font-lock-level 3) ; Level 4 can choke on massive files
+            
+  ;; Defer fontification so text renders instantly when scrolling
+  (setq-local jit-lock-defer-time 0.05)
+  (setq-local jit-lock-chunk-size 1000)
+  (font-lock-mode)
+  
+  ;; Start eglot manually
+  (eglot))
+
+
+(add-hook 'python-base-mode-hook
+          (lambda ()
+            (when (and buffer-file-name 
+                       (string-match-p "notebook" (file-name-nondirectory buffer-file-name)))
+              ;; Remove lsp-deferred locally so it doesn't fight eglot
+              (remove-hook 'python-mode-hook #'lsp-deferred t)
+              (remove-hook 'python-ts-mode-hook #'lsp-deferred t)
+              ;; Run our eglot switcher directly
+              (h7/switch-to-eglot-notebook))))
 ;; lang-python.lsp ends here
 
 ;; Lang: Python/tools
 ;; #+NAME: lang-python.tools
 
 ;; [[file:site-pkgs.org::lang-python.tools][lang-python.tools]]
-;; ---( ruff: LSP add-on and formatter )----------------------------------------
-;; ruff is integrated at two levels:
-;; 1. ruff server – secondary LSP client alongside basedpyright (lint diagnostics)
-;; 2. ruff-format – on-save buffer formatter (replaces yapfify + python-black)
-;;
-;; yapfify and python-black are removed: running three on-save formatters caused
-;; race conditions and produced inconsistent results.
-;;
-;; Install: uv tool install ruff
-;; or: pip install ruff (inside the project venv)
+;; ;; ---( ruff: LSP add-on and formatter )----------------------------------------
+;; ;; ruff is integrated at two levels:
+;; ;; 1. ruff server – secondary LSP client alongside basedpyright (lint diagnostics)
+;; ;; 2. ruff-format – on-save buffer formatter (replaces yapfify + python-black)
+;; ;;
+;; ;; yapfify and python-black are removed: running three on-save formatters caused
+;; ;; race conditions and produced inconsistent results.
+;; ;;
+;; ;; Install: uv tool install ruff
+;; ;; or: pip install ruff (inside the project venv)
 
-;; Register ruff server as an add-on LSP client (diagnostics only, no hover).
-(with-eval-after-load 'lsp-mode
-  (lsp-register-client
-   (make-lsp-client
-    :new-connection
-    (lsp-stdio-connection
-     (lambda () (list (or (executable-find "ruff") "ruff") "server")))
-    :activation-fn (lsp-activate-on "python")
-    :server-id 'ruff-lsp
-    ;; add-on? t: run alongside basedpyright, not instead of it.
-    :add-on? t
-    :initialization-options
-    '(:settings (:logLevel "warning"
-                           :lint (:enable t)
-                           :format (:enable t))))))
+;; ;; Register ruff server as an add-on LSP client (diagnostics only, no hover).
+;; (with-eval-after-load 'lsp-mode
+;;   (lsp-register-client
+;;    (make-lsp-client
+;;     :new-connection
+;;     (lsp-stdio-connection
+;;      (lambda () (list (or (executable-find "ruff") "ruff") "server")))
+;;     :activation-fn (lsp-activate-on "python")
+;;     :server-id 'ruff-lsp
+;;     ;; add-on? t: run alongside basedpyright, not instead of it.
+;;     :add-on? t
+;;     :initialization-options
+;;     '(:settings (:logLevel "warning"
+;;                            :lint (:enable t)
+;;                            :format (:enable t))))))
+
+
+;; Use standard flymake-ruff for background Ruff linting alongside Eglot
+(use-package flymake-ruff
+  :ensure t
+  :hook ((python-mode python-ts-mode) . flymake-ruff-load))
+
 
 
 ;; ruff-format: on-save formatting.
@@ -4922,39 +4987,6 @@ variable is deleted. (i.e.: set a 42 b 7)"
   :ensure t
   :hook ((python-mode . ruff-format-on-save-mode)
          (python-ts-mode . ruff-format-on-save-mode)))
-
-;; py-isort: sort imports before save.
-;; Retained because ruff's isort implementation does not yet cover all
-;; isort profiles (e.g. google, wemake). Remove if ruff's [tool.ruff.lint.isort]
-;; is sufficient for the project.
-
-;; (use-package py-isort
-;;   :ensure t
-;;   :after python
-;;   :hook (before-save . py-isort-before-save))
-
-  ;; ---( yapfify )-------------------------------------------------------------
-  ;; yapfify: superseded by ruff-format.
-
-  ;; (use-package yapfify
-  ;;   :ensure nil
-  ;;   :disabled t
-  ;;   :hook (python-mode . yapf-mode))
-
-
-  ;; ---( python-black )--------------------------------------------------------------
-  ;; python-black: superseded by ruff-format.
-
-  ;; (use-package python-black
-  ;;   ;;:delight python-black-on-save-mode "⚫️"
-  ;;   :ensure nil
-  ;;   :hook
-  ;;   (python-mode . python-black-on-save-mode)
-  ;;   :init
-  ;;   (put 'python-black-command 'safe-local-variable #'stringp)
-  ;;   (put 'python-black-extra-args 'safe-local-variable #'stringp)
-  ;;   (put 'python-black-on-save-mode 'safe-local-variable #'booleanp)
-  ;;   )
 ;; lang-python.tools ends here
 
 ;; Lang: Python/test
@@ -5138,183 +5170,183 @@ Uses behave's --name flag to select the scenario."
 ;; #+NAME: lang-python.elpy
 
 ;; [[file:site-pkgs.org::lang-python.elpy][lang-python.elpy]]
-  ;; ---( python: elpy )--------------------------------------------------------------
+;; ---( python: elpy )--------------------------------------------------------------
 
-  (use-package elpy
-    :disabled t
-    :preface
+(use-package elpy
+  :disabled t
+  :preface
 
-    ;; @see: https://elpy.readthedocs.org/en/latest/
-    ;; @see: https://github.com/jorgenschaefer/elpy
-    ;; @see: https://youtu.be/0kuCeS-mfyc
+  ;; @see: https://elpy.readthedocs.org/en/latest/
+  ;; @see: https://github.com/jorgenschaefer/elpy
+  ;; @see: https://youtu.be/0kuCeS-mfyc
 
-    (defvar elpy-mode-map
-      (let ((map (make-sparse-keymap)))
-        ;; Alphabetical order to make it easier to find free C-c C-X
-        ;; bindings in the future. Heh.
+  (defvar elpy-mode-map
+    (let ((map (make-sparse-keymap)))
+      ;; Alphabetical order to make it easier to find free C-c C-X
+      ;; bindings in the future. Heh.
 
-        ;; (define-key map (kbd "<backspace>") 'python-indent-dedent-line-backspace)
-        ;; (define-key map (kbd "<backtab>")   'python-indent-dedent-line)
+      ;; (define-key map (kbd "<backspace>") 'python-indent-dedent-line-backspace)
+      ;; (define-key map (kbd "<backtab>")   'python-indent-dedent-line)
 
-        ;; (define-key map (kbd "C-M-x")   'python-shell-send-defun)
+      ;; (define-key map (kbd "C-M-x")   'python-shell-send-defun)
 
-        (define-key map (kbd "M-c <")   'python-indent-shift-left)
-        (define-key map (kbd "M-c >")   'python-indent-shift-right)
+      (define-key map (kbd "M-c <")   'python-indent-shift-left)
+      (define-key map (kbd "M-c >")   'python-indent-shift-right)
 
-        (define-key map (kbd "M-c RET") 'elpy-importmagic-add-import)
-        (define-key map (kbd "M-c M-b") 'elpy-nav-expand-to-indentation)
-        (define-key map (kbd "M-c M-c") 'elpy-shell-send-region-or-buffer)
-        (define-key map (kbd "M-c M-d") 'elpy-doc)
-        (define-key map (kbd "M-c M-e") 'elpy-multiedit-python-symbol-at-point)
-        (define-key map (kbd "M-c M-f") 'elpy-find-file)
-        (define-key map (kbd "M-c M-n") 'elpy-flymake-next-error)
-        (define-key map (kbd "M-c M-o") 'elpy-occur-definitions)
-        (define-key map (kbd "M-c M-p") 'elpy-flymake-previous-error)
-        (define-key map (kbd "M-c M-s") 'elpy-rgrep-symbol)
-        (define-key map (kbd "M-c M-t") 'elpy-test)
-        (define-key map (kbd "M-c M-v") 'elpy-check)
-        (define-key map (kbd "M-c M-z") 'elpy-shell-switch-to-shell)
-        (define-key map (kbd "M-c M-r i") 'elpy-importmagic-fixup)
-        (define-key map (kbd "M-c M-r p") 'elpy-autopep8-fix-code)
-        (define-key map (kbd "M-c M-r r") 'elpy-refactor)
+      (define-key map (kbd "M-c RET") 'elpy-importmagic-add-import)
+      (define-key map (kbd "M-c M-b") 'elpy-nav-expand-to-indentation)
+      (define-key map (kbd "M-c M-c") 'elpy-shell-send-region-or-buffer)
+      (define-key map (kbd "M-c M-d") 'elpy-doc)
+      (define-key map (kbd "M-c M-e") 'elpy-multiedit-python-symbol-at-point)
+      (define-key map (kbd "M-c M-f") 'elpy-find-file)
+      (define-key map (kbd "M-c M-n") 'elpy-flymake-next-error)
+      (define-key map (kbd "M-c M-o") 'elpy-occur-definitions)
+      (define-key map (kbd "M-c M-p") 'elpy-flymake-previous-error)
+      (define-key map (kbd "M-c M-s") 'elpy-rgrep-symbol)
+      (define-key map (kbd "M-c M-t") 'elpy-test)
+      (define-key map (kbd "M-c M-v") 'elpy-check)
+      (define-key map (kbd "M-c M-z") 'elpy-shell-switch-to-shell)
+      (define-key map (kbd "M-c M-r i") 'elpy-importmagic-fixup)
+      (define-key map (kbd "M-c M-r p") 'elpy-autopep8-fix-code)
+      (define-key map (kbd "M-c M-r r") 'elpy-refactor)
 
-        ;; (define-key map (kbd "<S-return>") 'elpy-open-and-indent-line-below)
-        ;; (define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-above)
+      ;; (define-key map (kbd "<S-return>") 'elpy-open-and-indent-line-below)
+      ;; (define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-above)
 
-        ;; (define-key map (kbd "<C-return>") 'elpy-shell-send-current-statement)
+      ;; (define-key map (kbd "<C-return>") 'elpy-shell-send-current-statement)
 
-        ;; (define-key map (kbd "<C-down>") 'elpy-nav-forward-block)
-        ;; (define-key map (kbd "<C-up>") 'elpy-nav-backward-block)
-        ;; (define-key map (kbd "<C-left>") 'elpy-nav-backward-indent)
-        ;; (define-key map (kbd "<C-right>") 'elpy-nav-forward-indent)
+      ;; (define-key map (kbd "<C-down>") 'elpy-nav-forward-block)
+      ;; (define-key map (kbd "<C-up>") 'elpy-nav-backward-block)
+      ;; (define-key map (kbd "<C-left>") 'elpy-nav-backward-indent)
+      ;; (define-key map (kbd "<C-right>") 'elpy-nav-forward-indent)
 
-        ;; (define-key map (kbd "<M-down>") 'elpy-nav-move-line-or-region-down)
-        ;; (define-key map (kbd "<M-up>") 'elpy-nav-move-line-or-region-up)
-        ;; (define-key map (kbd "<M-left>") 'elpy-nav-indent-shift-left)
-        ;; (define-key map (kbd "<M-right>") 'elpy-nav-indent-shift-right)
+      ;; (define-key map (kbd "<M-down>") 'elpy-nav-move-line-or-region-down)
+      ;; (define-key map (kbd "<M-up>") 'elpy-nav-move-line-or-region-up)
+      ;; (define-key map (kbd "<M-left>") 'elpy-nav-indent-shift-left)
+      ;; (define-key map (kbd "<M-right>") 'elpy-nav-indent-shift-right)
 
-        ;; (define-key map (kbd "M-.")     'elpy-goto-definition)
-        ;; (define-key map (kbd "M-TAB")   'elpy-company-backend)
+      ;; (define-key map (kbd "M-.")     'elpy-goto-definition)
+      ;; (define-key map (kbd "M-TAB")   'elpy-company-backend)
 
-        (define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-below)
-        ;;(define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-above)
+      (define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-below)
+      ;;(define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-above)
 
-        ;;(define-key map (kbd "<C-return>") 'elpy-shell-send-current-statement)
+      ;;(define-key map (kbd "<C-return>") 'elpy-shell-send-current-statement)
 
-        (define-key map (kbd "<M-right>") 'elpy-nav-forward-block)
-        (define-key map (kbd "<M-left>") 'elpy-nav-backward-block)
-        ;; (define-key map (kbd "<C-S-left>") 'elpy-nav-backward-indent)
-        ;; (define-key map (kbd "<C-S-right>") 'elpy-nav-forward-indent)
+      (define-key map (kbd "<M-right>") 'elpy-nav-forward-block)
+      (define-key map (kbd "<M-left>") 'elpy-nav-backward-block)
+      ;; (define-key map (kbd "<C-S-left>") 'elpy-nav-backward-indent)
+      ;; (define-key map (kbd "<C-S-right>") 'elpy-nav-forward-indent)
 
-        ;; (define-key map (kbd "<M-S-down>") 'elpy-nav-move-line-or-region-down)
-        ;; (define-key map (kbd "<M-S-up>") 'elpy-nav-move-line-or-region-up)
-        (define-key map (kbd "<M-S-left>") 'elpy-nav-indent-shift-left)
-        (define-key map (kbd "<M-S-right>") 'elpy-nav-indent-shift-right)
+      ;; (define-key map (kbd "<M-S-down>") 'elpy-nav-move-line-or-region-down)
+      ;; (define-key map (kbd "<M-S-up>") 'elpy-nav-move-line-or-region-up)
+      (define-key map (kbd "<M-S-left>") 'elpy-nav-indent-shift-left)
+      (define-key map (kbd "<M-S-right>") 'elpy-nav-indent-shift-right)
 
-        (define-key map [(meta prior)]    'elpy-goto-definition)
-        (define-key map [(meta next)]     'pop-tag-mark)
+      (define-key map [(meta prior)]    'elpy-goto-definition)
+      (define-key map [(meta next)]     'pop-tag-mark)
 
-        (define-key map [(control menu)]   'elpy-company-backend)
+      (define-key map [(control menu)]   'elpy-company-backend)
 
-        map)
-      "Key map for the Emacs Lisp Python Environment.")
-    :config
-    (elpy-enable)
-    (setq python-shell-interpreter "jupyter"
-          python-shell-interpreter-args "console --simple-prompt")
+      map)
+    "Key map for the Emacs Lisp Python Environment.")
+  :config
+  (elpy-enable)
+  (setq python-shell-interpreter "jupyter"
+        python-shell-interpreter-args "console --simple-prompt")
 
-    ;; (elpy-use-ipython "ipython3") 
-    (defalias 'workon 'pyvenv-workon))
+  ;; (elpy-use-ipython "ipython3") 
+  (defalias 'workon 'pyvenv-workon))
 
-  (setenv "PYTHONIOENCODING" "utf-8")
-  (add-to-list 'process-coding-system-alist '("python" . (utf-8 . utf-8)))
-  (add-to-list 'process-coding-system-alist '("elpy" . (utf-8 . utf-8)))
-  (add-to-list 'process-coding-system-alist '("flake8" . (utf-8 . utf-8)))
+(setenv "PYTHONIOENCODING" "utf-8")
+(add-to-list 'process-coding-system-alist '("python" . (utf-8 . utf-8)))
+(add-to-list 'process-coding-system-alist '("elpy" . (utf-8 . utf-8)))
+;;(add-to-list 'process-coding-system-alist '("flake8" . (utf-8 . utf-8)))
 ;; lang-python.elpy ends here
 
 ;; Lang: Python/ein
 ;; #+NAME: lang-python.ein
 
 ;; [[file:site-pkgs.org::lang-python.ein][lang-python.ein]]
-  ;; ---( python: ein )--------------------------------------------------------------
+;; ---( python: ein )--------------------------------------------------------------
 
 
-  (use-package ein
-    :unless (version< emacs-version "25.1")
-    ;; :defer t
-    ;;:ensure t
-    :disabled t
-    :init
-    (progn
-      (with-eval-after-load 'ein-notebooklist
-        (define-key ein:notebooklist-mode-map (kbd "<S-return>") 'ein:worksheet-execute-cell-and-goto-next-km)
-        (define-key ein:notebooklist-mode-map (kbd "<C-return>") 'ein:worksheet-execute-cell)
-        ))
-    :config
-    (defalias 'eip 'ein:notebooklist-open))
+(use-package ein
+  :unless (version< emacs-version "25.1")
+  ;; :defer t
+  ;;:ensure t
+  :disabled t
+  :init
+  (progn
+    (with-eval-after-load 'ein-notebooklist
+      (define-key ein:notebooklist-mode-map (kbd "<S-return>") 'ein:worksheet-execute-cell-and-goto-next-km)
+      (define-key ein:notebooklist-mode-map (kbd "<C-return>") 'ein:worksheet-execute-cell)
+      ))
+  :config
+  (defalias 'eip 'ein:notebooklist-open))
 
 
 
-  ;; (use-package ein
-  ;;   :unless (version< emacs-version "25.1")
-  ;;   :ensure t
-  ;;   :defer t
-  ;;   :commands ein:notebooklist-open
-  ;;   :init
-  ;;   ;; (progn
-  ;;   ;;   (with-eval-after-load 'ein-notebooklist
-  ;;   ;;     ;; removing keybindings
-  ;;   ;;     (define-key ein:notebook-mode-map (kbd "M-p") nil)
-  ;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-up>") nil)
-  ;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-down>") nil)
-  ;;   ;;     ;; changing keybinding
-  ;;   ;;     (define-key ein:notebook-mode-map (kbd "C-s") 'ein:notebook-save-notebook-command)
-  ;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-S-up>") 'ein:worksheet-move-cell-up)
-  ;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-S-down>") 'ein:worksheet-move-cell-down)))
-  ;;   :config
-  ;;   (defalias 'einp 'ein:notebooklist-open)
-  ;;   (defalias 'eins 'ein:jupyter-server-start)
-  ;;   )
+;; (use-package ein
+;;   :unless (version< emacs-version "25.1")
+;;   :ensure t
+;;   :defer t
+;;   :commands ein:notebooklist-open
+;;   :init
+;;   ;; (progn
+;;   ;;   (with-eval-after-load 'ein-notebooklist
+;;   ;;     ;; removing keybindings
+;;   ;;     (define-key ein:notebook-mode-map (kbd "M-p") nil)
+;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-up>") nil)
+;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-down>") nil)
+;;   ;;     ;; changing keybinding
+;;   ;;     (define-key ein:notebook-mode-map (kbd "C-s") 'ein:notebook-save-notebook-command)
+;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-S-up>") 'ein:worksheet-move-cell-up)
+;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-S-down>") 'ein:worksheet-move-cell-down)))
+;;   :config
+;;   (defalias 'einp 'ein:notebooklist-open)
+;;   (defalias 'eins 'ein:jupyter-server-start)
+;;   )
 
-  ;; ---( python: 0mq )--------------------------------------------------------------
+;; ---( python: 0mq )--------------------------------------------------------------
 
-  ;; @see: https://github.com/nnicandro/emacs-zmq
-  ;; @see: https://github.com/nnicandro/emacs-zmq/issues/48
-  ;; dnf install zeromq-devel
-  ;; apt install libczmq-dev
+;; @see: https://github.com/nnicandro/emacs-zmq
+;; @see: https://github.com/nnicandro/emacs-zmq/issues/48
+;; dnf install zeromq-devel
+;; apt install libczmq-dev
 
 
-  ;; python and jupyter
+;; python and jupyter
   ;;; custom zmq build - see https://github.com/alexmurray/emacs-snap/issues/66
   ;;; @see: https://github.com/martibosch/snakemacs/blob/main/main.el#L346
 
-  (cond ((getenv "EMACS_SNAP_DIR")
+(cond ((getenv "EMACS_SNAP_DIR")
 
-         (let* ((emacs-snap-dir (file-name-as-directory (getenv "EMACS_SNAP_DIR")))
-                (process-environment (append process-environment `(,(concat "CC=" emacs-snap-dir "usr/bin/gcc-10" )
-                                                                   ,(concat "CXX=" emacs-snap-dir "usr/bin/g++-10")
-                                                                   ,(concat "CFLAGS=--sysroot=" emacs-snap-dir)
-							           ,(concat "CPPFLAGS=--sysroot=" emacs-snap-dir)
-							           ,(concat "LDFLAGS=--sysroot=" emacs-snap-dir " -L" emacs-snap-dir "/usr/lib")))))
-           (use-package zmq
-            :if (h7/use-py-jupyter)
-            :defer t
-            :ensure t)
-           ))
-        (t 
-          (use-package zmq
-            :if (h7/use-py-jupyter)
-            :defer t
-            :ensure t)
-          ))
+       (let* ((emacs-snap-dir (file-name-as-directory (getenv "EMACS_SNAP_DIR")))
+              (process-environment (append process-environment `(,(concat "CC=" emacs-snap-dir "usr/bin/gcc-10" )
+                                                                 ,(concat "CXX=" emacs-snap-dir "usr/bin/g++-10")
+                                                                 ,(concat "CFLAGS=--sysroot=" emacs-snap-dir)
+							         ,(concat "CPPFLAGS=--sysroot=" emacs-snap-dir)
+							         ,(concat "LDFLAGS=--sysroot=" emacs-snap-dir " -L" emacs-snap-dir "/usr/lib")))))
+         (use-package zmq
+           :if (h7/use-py-jupyter)
+           :defer t
+           :ensure t)
+         ))
+      (t 
+       (use-package zmq
+         :if (h7/use-py-jupyter)
+         :defer t
+         :ensure t)
+       ))
 
 
 
-  ;; (use-package zmq
-  ;;   :if (h7/use-py-jupyter)
-  ;;   :defer t
-  ;;   :ensure t
-  ;;   :preface
+;; (use-package zmq
+;;   :if (h7/use-py-jupyter)
+;;   :defer t
+;;   :ensure t
+;;   :preface
 
 ;;     (package-install "zmq")
 ;;     (vterm)
@@ -5337,99 +5369,99 @@ Uses behave's --name flag to select the scenario."
 ;; make all
 
 ;;     (package-install "jupyter")
-    
-    ;; :init
-    ;; :config
-    ;; )
 
-  ;; (use-package zmq
-  ;;   :ensure t
-  ;;   :preface
-  ;;   (when (getenv "EMACS_SNAP_DIR")
-  ;;     (unless (directory-files-recursively (concat user-emacs-directory "") "zmq-.*\\.so$" nil)
-  ;;              (progn
-  ;;                ;; @see: https://github.com/nnicandro/emacs-zmq/issues/48
-  ;;                (let* ((emacs-snap-dir (file-name-as-directory (getenv "EMACS_SNAP_DIR")))
-  ;;                       (process-environment
-  ;;                        (append `(,(concat "CC=" emacs-snap-dir "usr/bin/gcc-10" )
-  ;;                                  ,(concat "CXX=" emacs-snap-dir "usr/bin/g++-10")
-  ;;                                  ,(concat "CFLAGS=--sysroot=" emacs-snap-dir " -B" emacs-snap-dir "usr/lib/gcc")
-  ;;                                  ,(concat "CPATH=" (file-name-directory (car (file-expand-wildcards (concat emacs-snap-dir "usr/include/*/bits")))))
-  ;;       			   ,(concat "CPPFLAGS=--sysroot=" emacs-snap-dir)
-  ;;       			   ,(concat "LDFLAGS=--sysroot=" emacs-snap-dir " -L" emacs-snap-dir "usr/lib")
-  ;;                                  ,(concat "PKG_CONFIG_PATH=" (car (file-expand-wildcards (concat emacs-snap-dir "usr/lib/*/pkgconfig")))))
-  ;;                                process-environment)))
-  ;;                  ;; @see: https://github.com/nnicandro/emacs-zmq/issues/48#issuecomment-2208834904
-  ;;                  (when (fboundp 'native-compile-async)
-  ;;                    (progn
-  ;;                      (setq native-comp-deferred-compilation t
-  ;;                            native-comp-deferred-compilation-deny-list
-  ;;                            '("/mu4e.*\\.el$" "jupyter" "zmq" "eaf" "eaf-mode" "emacs-zmq"))))
-  ;;               ;; (custom-set-variables
-  ;;               ;;  '(native-comp-async-report-warnings-errors 'silent))
-  ;;               ;; ;; (let ((snap (file-name-as-directory "/snap/emacs/current")))
-  ;;               ;; ;; 	(setq-default native-comp-driver-options (list (concat "--sysroot=" snap)
-  ;;               ;; ;;                                                  (concat "-B" snap "usr/lib/gcc/"))))
-                   
-  ;;                  (load-library "zmq")
-                   
-  ;;                  ))))
-  ;;   :init
-  ;;   :config
-  ;;   )
+;; :init
+;; :config
+;; )
 
+;; (use-package zmq
+;;   :ensure t
+;;   :preface
+;;   (when (getenv "EMACS_SNAP_DIR")
+;;     (unless (directory-files-recursively (concat user-emacs-directory "") "zmq-.*\\.so$" nil)
+;;              (progn
+;;                ;; @see: https://github.com/nnicandro/emacs-zmq/issues/48
+;;                (let* ((emacs-snap-dir (file-name-as-directory (getenv "EMACS_SNAP_DIR")))
+;;                       (process-environment
+;;                        (append `(,(concat "CC=" emacs-snap-dir "usr/bin/gcc-10" )
+;;                                  ,(concat "CXX=" emacs-snap-dir "usr/bin/g++-10")
+;;                                  ,(concat "CFLAGS=--sysroot=" emacs-snap-dir " -B" emacs-snap-dir "usr/lib/gcc")
+;;                                  ,(concat "CPATH=" (file-name-directory (car (file-expand-wildcards (concat emacs-snap-dir "usr/include/*/bits")))))
+;;       			   ,(concat "CPPFLAGS=--sysroot=" emacs-snap-dir)
+;;       			   ,(concat "LDFLAGS=--sysroot=" emacs-snap-dir " -L" emacs-snap-dir "usr/lib")
+;;                                  ,(concat "PKG_CONFIG_PATH=" (car (file-expand-wildcards (concat emacs-snap-dir "usr/lib/*/pkgconfig")))))
+;;                                process-environment)))
+;;                  ;; @see: https://github.com/nnicandro/emacs-zmq/issues/48#issuecomment-2208834904
+;;                  (when (fboundp 'native-compile-async)
+;;                    (progn
+;;                      (setq native-comp-deferred-compilation t
+;;                            native-comp-deferred-compilation-deny-list
+;;                            '("/mu4e.*\\.el$" "jupyter" "zmq" "eaf" "eaf-mode" "emacs-zmq"))))
+;;               ;; (custom-set-variables
+;;               ;;  '(native-comp-async-report-warnings-errors 'silent))
+;;               ;; ;; (let ((snap (file-name-as-directory "/snap/emacs/current")))
+;;               ;; ;; 	(setq-default native-comp-driver-options (list (concat "--sysroot=" snap)
+;;               ;; ;;                                                  (concat "-B" snap "usr/lib/gcc/"))))
 
-  ;; ---( python: jupyter )--------------------------------------------------------------
+;;                  (load-library "zmq")
 
-  ;; @see: https://sqrtminusone.xyz/posts/2021-05-01-org-python/
-
-  (use-package jupyter
-    :if (h7/use-py-jupyter)
-    :defer t
-    :ensure t
-    :init
-    :config
-    )
+;;                  ))))
+;;   :init
+;;   :config
+;;   )
 
 
-  ;; ---( python: code cells )--------------------------------------------------------------
+;; ---( python: jupyter )--------------------------------------------------------------
 
-  ;; @see: https://github.com/martibosch/snakemacs/blob/main/main.el#L444
+;; @see: https://sqrtminusone.xyz/posts/2021-05-01-org-python/
 
-  (use-package code-cells
-    :ensure t
-    :after org
-    :config
-    (setq code-cells-convert-ipynb-style '(("pandoc" "--to" "ipynb" "--from" "org")
+(use-package jupyter
+  :if (h7/use-py-jupyter)
+  :defer t
+  :ensure t
+  :init
+  :config
+  )
+
+
+;; ---( python: code cells )--------------------------------------------------------------
+
+;; @see: https://github.com/martibosch/snakemacs/blob/main/main.el#L444
+
+(use-package code-cells
+  :ensure t
+  :after org
+  :config
+  (setq code-cells-convert-ipynb-style '(("pandoc" "--to" "ipynb" "--from" "org")
      					 ("pandoc" "--to" "org" "--from" "ipynb")
      					 org-mode))
-    ;; see https://github.com/astoff/code-cells.el/issues/22
-    ;; (defun gm/jupyter-eval-region (beg end)
-    ;;   (jupyter-eval-region nil beg end))
-    ;; (add-to-list 'code-cells-eval-region-commands '(jupyter-repl-interaction-mode . gm/jupyter-eval-region))
-    (let ((map code-cells-mode-map))
-      (define-key map (kbd "C-c <up>") 'code-cells-backward-cell)
-      (define-key map (kbd "C-c <down>") 'code-cells-forward-cell)
-      (define-key map (kbd "M-<up>") 'code-cells-move-cell-up)
-      (define-key map (kbd "M-<down>") 'code-cells-move-cell-down)
-      (define-key map (kbd "C-c C-c") 'code-cells-eval)
-      ;; Overriding other minor mode bindings requires some insistence...
-      (define-key map [remap jupyter-eval-line-or-region] 'code-cells-eval)))
-      (defun my/new-notebook (notebook-name &optional kernel)
-        "Creates an empty notebook in the current directory with an associated kernel."
-        (interactive "sEnter the notebook name: ")
-        (when (file-name-extension notebook-name)
-          (setq notebook-name (file-name-sans-extension notebook-name)))
-        (unless kernel
-          (setq kernel (jupyter-kernelspec-name (jupyter-completing-read-kernelspec))))
-        (unless (executable-find "jupytext")
-          (error "Can't find \"jupytext\""))
-        (let ((notebook-py (concat notebook-name ".py")))
-          (shell-command (concat "touch " notebook-py))
-          (shell-command (concat "jupytext --set-kernel " kernel " " notebook-py))
-          (shell-command (concat "jupytext --to notebook " notebook-py))
-          (shell-command (concat "rm " notebook-py))
-          (message (concat "Notebook successfully created at " notebook-name ".ipynb"))))
+  ;; see https://github.com/astoff/code-cells.el/issues/22
+  ;; (defun gm/jupyter-eval-region (beg end)
+  ;;   (jupyter-eval-region nil beg end))
+  ;; (add-to-list 'code-cells-eval-region-commands '(jupyter-repl-interaction-mode . gm/jupyter-eval-region))
+  (let ((map code-cells-mode-map))
+    (define-key map (kbd "C-c <up>") 'code-cells-backward-cell)
+    (define-key map (kbd "C-c <down>") 'code-cells-forward-cell)
+    (define-key map (kbd "M-<up>") 'code-cells-move-cell-up)
+    (define-key map (kbd "M-<down>") 'code-cells-move-cell-down)
+    (define-key map (kbd "C-c C-c") 'code-cells-eval)
+    ;; Overriding other minor mode bindings requires some insistence...
+    (define-key map [remap jupyter-eval-line-or-region] 'code-cells-eval)))
+(defun my/new-notebook (notebook-name &optional kernel)
+  "Creates an empty notebook in the current directory with an associated kernel."
+  (interactive "sEnter the notebook name: ")
+  (when (file-name-extension notebook-name)
+    (setq notebook-name (file-name-sans-extension notebook-name)))
+  (unless kernel
+    (setq kernel (jupyter-kernelspec-name (jupyter-completing-read-kernelspec))))
+  (unless (executable-find "jupytext")
+    (error "Can't find \"jupytext\""))
+  (let ((notebook-py (concat notebook-name ".py")))
+    (shell-command (concat "touch " notebook-py))
+    (shell-command (concat "jupytext --set-kernel " kernel " " notebook-py))
+    (shell-command (concat "jupytext --to notebook " notebook-py))
+    (shell-command (concat "rm " notebook-py))
+    (message (concat "Notebook successfully created at " notebook-name ".ipynb"))))
 ;; lang-python.ein ends here
 
 ;; Lang: Julia
