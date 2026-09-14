@@ -4243,7 +4243,11 @@ variable is deleted. (i.e.: set a 42 b 7)"
 
 (use-package flycheck
   :ensure t
-  :init (global-flycheck-mode)
+  :init
+  ;; Flycheck is used by lsp-mode.
+  ;; Eglot uses Flymake and therefore does not depend on Flycheck.
+  (global-flycheck-mode 1)
+  
   :config
   ;; Ensure markdownlint-cli2 is the preferred checker
   (flycheck-add-mode 'markdown-markdownlint-cli 'markdown-ts-mode)  
@@ -4259,33 +4263,51 @@ variable is deleted. (i.e.: set a 42 b 7)"
   (setq lsp-keymap-prefix "C-l")
 
 
-  :hook (;; ONLY invoke lsp-deferred HERE, do not repeat it in lsp-pyright
-         (python-mode . lsp-deferred)
-         (python-ts-mode . lsp-deferred)
-         (lsp-mode . lsp-enable-which-key-integration)
-         
-         ;; Force structural rendering cleanly when the connection stabilizes
-         (lsp-managed-mode-hook . (lambda ()
-                                    (font-lock-mode 1)
-                                    (when (fboundp 'treesit-font-lock-refontify)
-                                      (treesit-font-lock-refontify)))))
+  :hook
+  ;; LSP is the default backend.  The buffer-local flag is set by
+  ;; h7/python-lsp-switch before Eglot is started.
+  (python-mode
+   . (lambda ()
+       (unless (bound-and-true-p h7/python-use-eglot)
+         (lsp-deferred))))
+
+  (python-ts-mode
+   . (lambda ()
+       (unless (bound-and-true-p h7/python-use-eglot)
+         (lsp-deferred))))
+
+  (lsp-mode . lsp-enable-which-key-integration)
+
+  ;; Retain the tree-sitter refontification workaround only while LSP
+  ;; actually owns the buffer.
+  (lsp-managed-mode-hook
+   . (lambda ()
+       (when (derived-mode-p 'python-ts-mode)
+         (when (fboundp #'treesit-font-lock-refontify)
+           (treesit-font-lock-refontify)))))
   
   :commands (lsp lsp-deferred)
   :custom
-  ;; Performance: increase IPC read buffer (critical for large PyTorch stubs).
+  ;; Large Python projects / PyTorch type stubs.
   (read-process-output-max (* 1024 1024))
-  ;; Use flycheck (already running globally) as the diagnostics provider.
+
+  ;; Normal Python diagnostics are presented through Flycheck.
   (lsp-diagnostics-provider :flycheck)
-  ;; Disable pylsp/pyls; pyright (basedpyright) is the sole Python server.
+
+  ;; basedpyright is the Python language server; don't allow pylsp/pyls.
   (lsp-disabled-clients '(pyls pylsp))
-  ;; Snippets require yasnippet which is currently disabled.
+
+  ;; No yasnippet dependency.
   (lsp-enable-snippet nil)
-  ;; Breadcrumb is useful for NLP codebases with deep class hierarchies.
+
+  ;; Useful for large class hierarchies.
   (lsp-headerline-breadcrumb-enable t)
   (lsp-headerline-breadcrumb-segments '(project file symbols))
-  ;; Lens costs a round-trip per buffer; disable by default.
+
+  ;; Avoid the additional lens traffic.
   (lsp-lens-enable nil)
-  ;; Idle delay: 0.3 s gives responsive feedback on fast machines.
+
+  ;; Responsive diagnostics/completion.
   (lsp-idle-delay 0.3)
   :config
   (dolist (dir '(
@@ -4305,23 +4327,30 @@ variable is deleted. (i.e.: set a 42 b 7)"
                  "[/\\\\]temp$"
                  "[/\\\\]_targets"
                  ))
-    (push dir lsp-file-watch-ignored-directories))
+    ;;(push dir lsp-file-watch-ignored-directories)
+    (cl-pushnew dir lsp-file-watch-ignored-directories :test #'equal)
+    )
   )
 
 (use-package lsp-ui
   :ensure t
-  :after lsp
-  :hook (lsp-mode . lsp-ui-mode)
-  :bind (:map lsp-ui-mode-map
-              ("C-c i" . lsp-ui-imenu))
+  :after lsp-mode
+  :hook
+  (lsp-mode . lsp-ui-mode)
+  :bind
+  (:map lsp-ui-mode-map
+        ("C-c i" . lsp-ui-imenu))
   :custom
   (lsp-ui-doc-position 'at-point)
   (lsp-ui-doc-enable t)
+  
   ;; Show on demand only (M-. or hover); avoid constant pop-up noise.
   (lsp-ui-doc-show-with-cursor nil)
+  
   (lsp-ui-sideline-enable t)
   (lsp-ui-sideline-show-diagnostics t)
   (lsp-ui-sideline-show-code-actions nil)
+  
   (lsp-ui-imenu-enable t)
   (lsp-ui-flycheck-enable t)
   (lsp-ui-doc-delay 1.5)
@@ -4332,7 +4361,10 @@ variable is deleted. (i.e.: set a 42 b 7)"
   :ensure t
   :defer t
   :after lsp-mode
-  :commands (consult-lsp-diagnostics consult-lsp-symbols consult-lsp-file-symbols)
+  :commands
+  (consult-lsp-diagnostics
+   consult-lsp-symbols
+   consult-lsp-file-symbols)
   )
 
 ;; (use-package company-lsp
@@ -4347,7 +4379,8 @@ variable is deleted. (i.e.: set a 42 b 7)"
   :ensure t
   :defer t
   :after lsp-mode
-  :commands lsp-treemacs-errors-list
+  :commands
+  lsp-treemacs-errors-list
   )
 ;; lang-lsp.mode ends here
 
@@ -4361,29 +4394,36 @@ variable is deleted. (i.e.: set a 42 b 7)"
   :ensure t
   :after lsp-mode
   :commands dap-debug
-  :hook (
-
-         (python-mode . dap-mode)
-         (python-mode . dap-ui-mode)
-         (python-ts-mode . dap-mode)
-         (python-ts-mode . dap-ui-mode)
-         (dap-stopped . (lambda (arg) (call-interactively #'dap-hydra)))
-         )
+  :hook
+  ((python-mode . dap-mode)
+   (python-mode . dap-ui-mode)
+   (python-ts-mode . dap-mode)
+   (python-ts-mode . dap-ui-mode)
+   (dap-stopped . (lambda (_arg) (call-interactively #'dap-hydra)))
+   )
   :custom
+  ;; Let lsp-mode configure DAP integration where applicable.
   (lsp-enable-dap-auto-configure t)  
   ;; (dap-auto-configure-features '(sessions locals controls tooltip))
   :config
   ;; (dap-auto-configure-mode)
   (require 'dap-hydra)
   (require 'dap-python)
+  
   (setq dap-python-debugger 'debugpy)
 
-  ;; Use pet to find the project's interpreter rather than with-venv.
-  (defun dap-python--pyenv-executabl-find (command)
-    (or (and (fboundp 'pet-executable-find)
+  ;; Prefer the project's executable, normally supplied by uv/.venv.
+  (defun dap-python--pyenv-executable-find (command)
+    (or (and (fboundp #'pet-executable-find)
              (pet-executable-find command))
-        (with-venv (executable-find command))))
+        (and (fboundp #'with-venv)
+             (with-venv (executable-find command)))
+        (executable-find command)))
   
+
+  ;; -------------------------------------------------------------------------
+  ;; uv debug templates
+  ;; -------------------------------------------------------------------------
 
   (dap-register-debug-template
    "UV :: Run 'main'"
@@ -4420,7 +4460,7 @@ variable is deleted. (i.e.: set a 42 b 7)"
 ;; [[file:site-pkgs.org::lang-treesitter.setup][lang-treesitter.setup]]
 ;; ---( treesitter-setup )------------------------------------------------------------
 
-(defun h7/treesitter-setup ()
+(defun h7/treesitter-setup-sources ()
 
   ;; treesit-auto manages grammar installation and major-mode-remap-alist
   ;; automatically. It supersedes the manual h7/treesitter-setup function.
@@ -4449,42 +4489,45 @@ variable is deleted. (i.e.: set a 42 b 7)"
           (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
   )
 
-
-  (use-package treesit-auto
-    :ensure t
-    :custom
-    ;; Ask before downloading and compiling a grammar.
-    ;; Change to t for silent auto-install (useful on CI or container first-boot).
-    (treesit-auto-install 'prompt)
-    :config
-    ;; Register all grammars in auto-mode-alist and populate major-mode-remap-alist.
-    ;; This activates python-ts-mode automatically when the python grammar is present.
-    (treesit-auto-add-to-auto-mode-alist 'all)
-    (global-treesit-auto-mode))
-  ;; NOTE: h7/treesitter-setup is retained below as a convenience utility for
-  ;; bulk-installing all grammars at once (e.g. on a fresh machine).
-  ;; Call it manually: M-x h7/treesitter-setup
-  (defun h7/treesitter-setup ()
+;; NOTE: h7/treesitter-setup is retained below as a convenience utility for
+;; bulk-installing all grammars at once (e.g. on a fresh machine).
+;; Call it manually: M-x h7/treesitter-setup
+(defun h7/treesitter-setup ()
     "Install all tree-sitter grammars defined in `treesit-language-source-alist'."
     (interactive)
+
+    ;;(h7/treesitter-setup-sources)
+    
     (mapc #'treesit-install-language-grammar
           (mapcar #'car treesit-language-source-alist))
 
   
-  (setq major-mode-remap-alist
-        '( ;;      (ada-mode . ada-ts-mode)
-          ;;      (yaml-mode . yaml-ts-mode)
-          (toml-mode . toml-ts-mode)
-          ;;      (bash-mode . bash-ts-mode)
-          ;;      (sh-mode . bash-ts-mode)
-          ;;      (js2-mode . js-ts-mode)
-          ;;      (typescript-mode . typescript-ts-mode)
-          ;;      (conf-colon-mode . json-ts-mode)
-          ;;      (json-mode . json-ts-mode)
-          ;;      (css-mode . css-ts-mode)
-          ;;      (python-mode . python-ts-mode)
+    (setq major-mode-remap-alist
+          '(;;      (ada-mode . ada-ts-mode)
+            ;;      (yaml-mode . yaml-ts-mode)
+            (toml-mode . toml-ts-mode)
+            ;;      (bash-mode . bash-ts-mode)
+            ;;      (sh-mode . bash-ts-mode)
+            ;;      (js2-mode . js-ts-mode)
+            ;;      (typescript-mode . typescript-ts-mode)
+            ;;      (conf-colon-mode . json-ts-mode)
+            ;;      (json-mode . json-ts-mode)
+            ;;      (css-mode . css-ts-mode)
+            ;;      (python-mode . python-ts-mode)
           ))
   )
+
+(use-package treesit-auto
+  :ensure t
+  :custom
+  ;; Ask before downloading and compiling a grammar.
+  ;; Change to t for silent auto-install (useful on CI or container first-boot).
+  (treesit-auto-install 'prompt)
+  :config
+  ;; Register all grammars in auto-mode-alist and populate major-mode-remap-alist.
+  ;; This activates python-ts-mode automatically when the python grammar is present.
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))
 ;; lang-treesitter.setup ends here
 
 ;; Lang: Tools.snippets
@@ -4679,37 +4722,43 @@ variable is deleted. (i.e.: set a 42 b 7)"
 
 ;; @see: https://gitlab.com/nathanfurnal/dotemacs/-/snippets/2060535?utm_source=pocket_mylist
 ;; @see: https://github.com/jidicula/dotfiles/blob/main/init.el?utm_source=pocket_mylist
+;; @see: https://chatgpt.com/share/6aa87257-6e98-83ed-93f6-66dab8ca93c7
 
+;; ---------------------------------------------------------------------------
+;; Python Mode
+;; ---------------------------------------------------------------------------
 
-;; Built-in Python utilities
 (use-package python
   :ensure nil
-  :hook (
-         ;; (python-mode . eglot-ensure)
-         ;; (python-ts-mode . eglot-ensure)
-         ;; Explicitly force font-lock back on if an LSP framework toggled it off
-         (python-mode . font-lock-mode)
-         (python-ts-mode . font-lock-mode))
-  :config
-  ;; Remove guess indent python message
-  (setq python-indent-guess-indent-offset-verbose nil)
-  ;; Ensure all tree-sitter features are font-locked
-  (setq treesit-font-lock-level 4)  
-  ;; Use IPython when available or fall back to regular Python 
+  :hook
+  ;; Keep this hook intentionally small.  Python LSP policy is handled above.
+  ((python-mode . (lambda ()
+                    (setq-local h7/python-use-eglot nil)))
+   (python-ts-mode . (lambda ()
+                       (setq-local h7/python-use-eglot nil))))
+  :custom
+  (python-indent-guess-indent-offset-verbose nil)
+  (treesit-font-lock-level 4)
+  ;; Prefer IPython for interactive Python execution.
   (cond
    ((executable-find "ipython")
-    (progn
-      (setq python-shell-buffer-name "IPython")
-      (setq python-shell-interpreter "ipython")
-      (setq python-shell-interpreter-args "-i --simple-prompt")))
+    (setq python-shell-buffer-name "IPython"
+          python-shell-interpreter "ipython"
+          python-shell-interpreter-args "-i --simple-prompt"))
+
    ((executable-find "python3")
     (setq python-shell-interpreter "python3"))
+
    ((executable-find "python2")
     (setq python-shell-interpreter "python2"))
-   (t
-    (setq python-shell-interpreter "python")))
-  )
 
+   (t
+    (setq python-shell-interpreter "python"))))
+
+
+;; ---------------------------------------------------------------------------
+;; inferior Python
+;; ---------------------------------------------------------------------------
 
 ;; Hide the modeline for inferior python processes
 (use-package inferior-python-mode
@@ -4819,6 +4868,7 @@ variable is deleted. (i.e.: set a 42 b 7)"
 
 ;; [[file:site-pkgs.org::lang-python.lsp][lang-python.lsp]]
 ;; ---( lsp-pyright / basedpyright )-------------------------------------------
+
 ;; basedpyright is a community fork of pyright with stricter defaults,
 ;; inlay hints, and better PEP 695 generics support. Switch the command
 ;; back to "pyright" if the upstream server is preferred.
@@ -4827,6 +4877,26 @@ variable is deleted. (i.e.: set a 42 b 7)"
 ;; npm install -g basedpyright
 ;; # or, per-project:
 ;; uv tool install basedpyright
+;; ---------------------------------------------------------------------------
+;; basedpyright through lsp-pyright
+;;
+;; basedpyright is a community fork of pyright with stricter defaults,
+;; inlay hints, and better PEP 695 generics support. Switch the command
+;; back to "pyright" if the upstream server is preferred.
+;;
+;; lsp-pyright is the Emacs client adapter.
+;; basedpyright is the actual language server.
+;;
+;; Expected project installation:
+;;
+;;   uv add --dev basedpyright
+;;
+;; Alternative npm install
+;;
+;;   npm install -g basedpyright
+;;
+;; The project-local executable should therefore be found through PATH/.venv.
+;; ---------------------------------------------------------------------------
 
 (use-package lsp-pyright
   :ensure t
@@ -4844,37 +4914,39 @@ variable is deleted. (i.e.: set a 42 b 7)"
         lsp-pyright-basedpyright-inlay-hints-variable-types t
         lsp-pyright-basedpyright-inlay-hints-function-return-types t
         lsp-pyright-basedpyright-inlay-hints-call-argument-names "all")  
-  ;; :custom
-  ;; (lsp-pyright-langserver-command "basedpyright")
-  ;; (lsp-pyright-disable-language-service nil)
-  ;; (lsp-pyright-disable-organize-imports nil)
-  ;; (lsp-pyright-auto-import-completions t)
-  ;; (lsp-pyright-use-library-code-for-types t)
-  ;; ;; "workspace" mode scans the full project; use "openFilesOnly" on slow
-  ;; ;; machines or when stub sets are very large.
-  ;; (lsp-pyright-diagnostic-mode "workspace")
-  ;; ;; Type-checking strictness: "standard" for most NLP projects.
-  ;; ;; Override per project via pyrightconfig.json or .dir-locals.el.
-  ;; (lsp-pyright-type-checking-mode "standard")
-  ;; ;; basedpyright inlay hints (no pyrightconfig.json required).
-  ;; (lsp-pyright-basedpyright-inlay-hints-variable-types t)
-  ;; (lsp-pyright-basedpyright-inlay-hints-function-return-types t)
-  ;; (lsp-pyright-basedpyright-inlay-hints-call-argument-names "all")
-  :hook
-  ((python-mode . (lambda () (require 'lsp-pyright)))
-   (python-ts-mode . (lambda () (require 'lsp-pyright)))
-   )
+  ;; :hook
+  ;; ((python-mode . (lambda () (require 'lsp-pyright)))
+  ;;  (python-ts-mode . (lambda () (require 'lsp-pyright)))
+  ;;  )
   )
 
 
 ;; ---( eglot + pyright + ruff )-----------------------------------------------
 
+;; ---------------------------------------------------------------------------
+;; Eglot
+;;
+;; Eglot is used as the lightweight alternative for large Jupytext/Python
+;; buffers.
+;;
+;; IMPORTANT:
+;;
+;;   Eglot's Python configuration uses a MULTI-SERVER specification:
+;;
+;;       basedpyright-langserver --stdio
+;;       ruff server
+;;
+;; They are two separate LSP processes attached to the same Eglot session.
+;; ---------------------------------------------------------------------------
+
 
 (use-package eglot
   :ensure nil
-  :bind (:map eglot-mode-map
-              ("C-c c a" . eglot-code-actions)
-              ("C-c c r" . eglot-rename))
+  :commands (eglot eglot-ensure)
+  :bind
+  (:map eglot-mode-map
+        ("C-c c a" . eglot-code-actions)
+        ("C-c c r" . eglot-rename))
   :init
   ;; Lower memory and I/O overhead before the server loads
   (setq eglot-events-buffer-size 0)
@@ -4888,60 +4960,162 @@ variable is deleted. (i.e.: set a 42 b 7)"
           ))             ; Disables parsing clickable links in text
   
   :config
-  (setq eglot-ignored-server-capabilities '(:documentHighlightProvider :documentLinkProvider))
   
+  ;; Remove any previous Python definition before installing ours.
   (setq eglot-server-programs
-        (assoc-delete-all '(python-mode python-ts-mode) eglot-server-programs))
-  
-  (add-to-list 'eglot-server-programs
-               '((python-mode python-ts-mode)
-                 ("basedpyright-langserver" "--stdio")
-                 ("ruff" "server")))
+        (assq-delete-all 'python-mode eglot-server-programs))
 
-  (setq-default eglot-workspace-configuration
-                '(:basedpyright (:analysis (:typeCheckingMode "basic"
-                                            :diagnosticMode "openFilesOnly"
-                                            :useLibraryCodeForTypes nil))
-                  :ruff ())))
+  (setq eglot-server-programs
+        (assq-delete-all 'python-ts-mode eglot-server-programs))
+
+  ;; Eglot multi-server specification.
+  ;;
+  ;; NOTE:
+  ;; This is intentionally a single mode entry containing the two server
+  ;; command specifications.  Current Eglot interprets this as a multi-server
+  ;; configuration.
+  (add-to-list
+   'eglot-server-programs
+   '((python-mode python-ts-mode)
+     ("basedpyright-langserver" "--stdio")
+     ("ruff" "server")))
+
+  ;; Project configuration is ultimately controlled by pyproject.toml /
+  ;; basedpyright configuration.  These values are conservative defaults for
+  ;; the lightweight notebook mode.
+  (setq-default
+   eglot-workspace-configuration
+   '(:basedpyright
+     (:analysis
+      (:typeCheckingMode "basic"
+       :diagnosticMode "openFilesOnly"
+       :useLibraryCodeForTypes nil))
+     :ruff
+     ())))
 
 
 
-;; 2. The interactive switcher function
-(defun h7/eglot-mode-switch ()
-  "Disconnect lsp-mode in the current buffer and start eglot for notebook files."
+
+;; ---------------------------------------------------------------------------
+;; Python LSP backend switching
+;; ---------------------------------------------------------------------------
+
+(defvar-local h7/python-use-eglot nil
+  "Non-nil when the current Python buffer uses Eglot instead of lsp-mode.")
+
+
+(defun h7/python-lsp-switch (&optional backend)
+  "Switch the current Python buffer between LSP backends.
+
+With BACKEND equal to `eglot', use Eglot.
+With BACKEND equal to `lsp', use lsp-mode.
+When BACKEND is nil, toggle the current backend.
+
+This is deliberately buffer-local: ordinary Python buffers can continue
+using lsp-mode while a large Jupytext notebook uses Eglot."
   (interactive)
-  (when (bound-and-true-p lsp-mode)
-    ;; Turn off lsp-mode for this buffer specifically
-    (lsp-mode -1)
-    ;; ;; Prevent lsp-deferred from re-firing if the buffer reverts
-    ;; (remove-hook 'python-mode-hook #'lsp-deferred t)
-    ;; (remove-hook 'python-ts-mode-hook #'lsp-deferred t)
-    )
-  
-  ;; Disable automatic format on save
-  (ruff-format-on-save-mode -1)
-  
-  ;; Disable automatic structural highlighting if it lags
-  (setq-local treesit-font-lock-level 3) ; Level 4 can choke on massive files
-            
-  ;; Defer fontification so text renders instantly when scrolling
-  (setq-local jit-lock-defer-time 0.05)
-  (setq-local jit-lock-chunk-size 1000)
-  (font-lock-mode)
-  
-  ;; Start eglot manually
-  (eglot-ensure))
+  (unless (derived-mode-p 'python-mode)
+    (user-error "This command is intended for Python buffers"))
+
+  (let ((target
+         (or backend
+             (if (bound-and-true-p h7/python-use-eglot)
+                 'lsp
+               'eglot))))
+
+    (pcase target
+      ('eglot
+       ;; Stop lsp-mode before starting Eglot.
+       (when (bound-and-true-p lsp-mode)
+         (lsp-disconnect)
+         (lsp-mode -1))
+
+       ;; Mark this buffer before Eglot starts.
+       (setq-local h7/python-use-eglot t)
+
+       ;; Large notebooks should not be reformatted on every save.
+       (when (fboundp #'ruff-format-on-save-mode)
+         (ruff-format-on-save-mode -1))
+
+       ;; Reduce tree-sitter/fontification pressure for large buffers.
+       (when (derived-mode-p 'python-ts-mode)
+         (setq-local treesit-font-lock-level 3
+                     jit-lock-defer-time 0.05
+                     jit-lock-chunk-size 1000))
+
+       (font-lock-mode 1)
+
+       ;; Eglot uses Flymake.  Do not leave a stale LSP diagnostic system
+       ;; running in the buffer.
+       (eglot-ensure)
+
+       (message "Python backend: Eglot"))
+
+      ('lsp
+       ;; Stop Eglot first.
+       (when (fboundp #'eglot-shutdown)
+         (when (eglot-managed-p)
+           (eglot-shutdown)))
+
+       (setq-local h7/python-use-eglot nil)
+
+       ;; Restore normal fontification.
+       (when (derived-mode-p 'python-ts-mode)
+         (setq-local treesit-font-lock-level 4
+                     jit-lock-defer-time nil
+                     jit-lock-chunk-size nil))
+
+       ;; Normal Python buffers use Ruff formatting on save.
+       (when (fboundp #'ruff-format-on-save-mode)
+         (ruff-format-on-save-mode 1))
+
+       ;; Start normal LSP.
+       (lsp-deferred)
+
+       (message "Python backend: lsp-mode"))
+
+      (_
+       (user-error "Unknown Python backend: %S (use `lsp' or `eglot')"
+                   target)))))
 
 
-(add-hook 'python-base-mode-hook
+;; Convenient explicit commands.
+
+(defun h7/python-use-eglot ()
+  "Use Eglot for the current Python buffer."
+  (interactive)
+  (h7/python-lsp-switch 'eglot))
+
+
+(defun h7/python-use-lsp ()
+  "Use lsp-mode for the current Python buffer."
+  (interactive)
+  (h7/python-lsp-switch 'lsp))
+
+
+;; Keep the original command name as a compatibility alias.
+(defalias 'h7/eglot-mode-switch #'h7/python-use-eglot)
+
+
+;; Useful buffer-local bindings.
+(with-eval-after-load 'python
+  (define-key python-base-mode-map
+              (kbd "C-c l e")
+              #'h7/python-use-eglot)
+  (define-key python-base-mode-map
+              (kbd "C-c l l")
+              #'h7/python-use-lsp))
+
+;; auto eglot mode for jupyter notebooks (stored under notebooks/ direstory)..
+(add-hook 'python-ts-mode-hook
           (lambda ()
             (when (and buffer-file-name 
-                       (string-match-p "notebook" (file-name-nondirectory buffer-file-name)))
+                       (string-match-p "notebooks" (buffer-file-name))
               ;; Remove lsp-deferred locally so it doesn't fight eglot
               (remove-hook 'python-mode-hook #'lsp-deferred t)
               (remove-hook 'python-ts-mode-hook #'lsp-deferred t)
               ;; Run our eglot switcher directly
-              (h7/switch-to-eglot-notebook))))
+              (h7/python-use-eglot)))))
 ;; lang-python.lsp ends here
 
 ;; Lang: Python/tools
@@ -4949,6 +5123,22 @@ variable is deleted. (i.e.: set a 42 b 7)"
 
 ;; [[file:site-pkgs.org::lang-python.tools][lang-python.tools]]
 ;; ;; ---( ruff: LSP add-on and formatter )----------------------------------------
+
+;; ---------------------------------------------------------------------------
+;; Ruff
+;;
+;; Ruff is installed in the project environment and is available both as:
+;;
+;;   * an LSP server ("ruff server")
+;;   * a formatter ("ruff format")
+;;
+;; LSP mode and Eglot use Ruff as an LSP server.
+;; ruff-format provides the convenient Emacs formatter for normal buffers.
+;;
+;; There is deliberately NO flymake-ruff configuration here: that would
+;; duplicate the Ruff LSP diagnostics used by Eglot.
+;; ---------------------------------------------------------------------------
+
 ;; ;; ruff is integrated at two levels:
 ;; ;; 1. ruff server – secondary LSP client alongside basedpyright (lint diagnostics)
 ;; ;; 2. ruff-format – on-save buffer formatter (replaces yapfify + python-black)
@@ -4958,6 +5148,17 @@ variable is deleted. (i.e.: set a 42 b 7)"
 ;; ;;
 ;; ;; Install: uv tool install ruff
 ;; ;; or: pip install ruff (inside the project venv)
+
+
+;; ruff-format: on-save formatting.
+;; Replaces python-black-on-save-mode and yapf-mode.
+
+(use-package ruff-format
+  :ensure t
+  :hook ((python-mode . ruff-format-on-save-mode)
+         (python-ts-mode . ruff-format-on-save-mode)))
+
+
 
 ;; ;; Register ruff server as an add-on LSP client (diagnostics only, no hover).
 ;; (with-eval-after-load 'lsp-mode
@@ -4976,20 +5177,10 @@ variable is deleted. (i.e.: set a 42 b 7)"
 ;;                            :format (:enable t))))))
 
 
-;; Use standard flymake-ruff for background Ruff linting alongside Eglot
-(use-package flymake-ruff
-  :ensure t
-  :hook ((python-mode python-ts-mode) . flymake-ruff-load))
-
-
-
-;; ruff-format: on-save formatting.
-;; Replaces python-black-on-save-mode and yapf-mode.
-
-(use-package ruff-format
-  :ensure t
-  :hook ((python-mode . ruff-format-on-save-mode)
-         (python-ts-mode . ruff-format-on-save-mode)))
+;; ;; Use standard flymake-ruff for background Ruff linting alongside Eglot
+;; (use-package flymake-ruff
+;;   :ensure t
+;;   :hook ((python-mode python-ts-mode) . flymake-ruff-load))
 ;; lang-python.tools ends here
 
 ;; Lang: Python/test
@@ -4997,6 +5188,7 @@ variable is deleted. (i.e.: set a 42 b 7)"
 
 ;; [[file:site-pkgs.org::lang-python.test][lang-python.test]]
 ;; ---( pytest )----------------------------------------------------------------
+
 ;; python-pytest uses transient (same UX as magit) and detects treesit
 ;; automatically for function/class DWIM commands.
 ;;
@@ -5007,18 +5199,22 @@ variable is deleted. (i.e.: set a 42 b 7)"
 (use-package python-pytest
   :ensure t
   :after python
-  :commands (python-pytest-dispatch
-             python-pytest
-             python-pytest-file
-             python-pytest-file-dwim
-             python-pytest-function
-             python-pytest-function-dwim
-             python-pytest-last-failed
-             python-pytest-repeat)
+  :commands
+  (python-pytest-dispatch
+   python-pytest
+   python-pytest-file
+   python-pytest-file-dwim
+   python-pytest-function
+   python-pytest-function-dwim
+   python-pytest-last-failed
+   python-pytest-repeat)
   :custom
   (python-pytest-confirm nil)
   ;; Default flags: colour output, most-recently-failed first, compact traceback.
-  (python-pytest-arguments '("--color=yes" "--failed-first" "--tb=short"))
+  (python-pytest-arguments
+   '("--color=yes"
+     "--failed-first"
+     "--tb=short"))
   :config
   ;; Integration with uv: ensure pytest is run via 'uv run'
   (setq python-pytest-executable "uv run pytest")
@@ -5035,6 +5231,7 @@ variable is deleted. (i.e.: set a 42 b 7)"
 
 
 ;; ---( coverage overlay )------------------------------------------------------
+
 ;; cov reads coverage.json / .coverage and paints hit/miss fringe indicators.
 ;; Coverage is optional; generate data with:
 ;; uv run pytest --cov --cov-report=json
