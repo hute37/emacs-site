@@ -4930,7 +4930,7 @@ variable is deleted. (i.e.: set a 42 b 7)"
   (font-lock-mode)
   
   ;; Start eglot manually
-  (eglot))
+  (eglot-ensure))
 
 
 (add-hook 'python-base-mode-hook
