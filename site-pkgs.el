@@ -4907,7 +4907,7 @@ variable is deleted. (i.e.: set a 42 b 7)"
 
 
 ;; 2. The interactive switcher function
-(defun h7/switch-to-eglot-notebook ()
+(defun h7/eglot-mode-switch ()
   "Disconnect lsp-mode in the current buffer and start eglot for notebook files."
   (interactive)
   (when (bound-and-true-p lsp-mode)
