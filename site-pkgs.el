@@ -1811,13 +1811,32 @@ Return nil if any single regexp matches."
 ;; #+NAME: comp-ap-capf
 
 ;; [[file:site-pkgs.org::comp-ap-capf][comp-ap-capf]]
-  ;; ---( autosuggest )--------------------------------------------------------------
+;; ---( CAPF )--------------------------------------------------------------
 
-  ;; @see: https://www.dyerdwelling.family/emacs/20240827210257-emacs--enhancing-eshell-to-be-more-fishy/
-  ;; @see: https://github.com/captainflasmr/Emacs/blob/main/emacs--init-all.org
+;; Let TAB perform indentation OR completion.
+(setq tab-always-indent 'complete)
+
+;; Explicit completion command.
+;; ;; (global-set-key (kbd "C-M-i") #'completion-at-point)
+;; ;; (global-set-key (kbd "M-TAB") #'completion-at-point)
+;; (global-set-key (kbd "C-SPC") #'completion-at-point)
+
+;; ---( autosuggest )--------------------------------------------------------------
+
+;; @see: https://www.dyerdwelling.family/emacs/20240827210257-emacs--enhancing-eshell-to-be-more-fishy/
+;; @see: https://github.com/captainflasmr/Emacs/blob/main/emacs--init-all.org
 
 (use-package cape
   :ensure t
+  ;; :init
+  ;; ;; Keep LSP/Eglot completion as the primary Python source.
+  ;; ;; Add lightweight fallback sources after it.
+  ;; (add-hook 'python-ts-mode-hook
+  ;;           (lambda ()
+  ;;             (add-hook 'completion-at-point-functions
+  ;;                       #'cape-file nil t)
+  ;;             (add-hook 'completion-at-point-functions
+  ;;                       #'cape-dabbrev nil t)))
   )
 
 (use-package capf-autosuggest
@@ -1843,10 +1862,20 @@ Return nil if any single regexp matches."
 
 (use-package corfu
   :ensure t
-  :hook (after-init . global-corfu-mode)
-  ;; I also have (setq tab-always-indent 'complete) for TAB to complete
-  ;; when it does not need to perform an indentation change.
-  :bind (:map corfu-map ("<tab>" . corfu-complete))
+  :custom
+  ;; Show completion automatically while typing.
+  (corfu-auto t)
+  (corfu-auto-delay 0.2)
+  (corfu-auto-prefix 2)
+
+  ;; TAB accepts/cycles; RET accepts.
+  (corfu-cycle t)
+  (corfu-preselect 'prompt)
+
+  ;; Keep completion lightweight.
+  (corfu-quit-no-match 'separator)
+  (corfu-preview-current nil)
+
   :config
   (setq corfu-preview-current nil)
   (setq corfu-min-width 20)
@@ -1858,6 +1887,25 @@ Return nil if any single regexp matches."
   (with-eval-after-load 'savehist
     (corfu-history-mode 1)
     (add-to-list 'savehist-additional-variables 'corfu-history))
+  
+  ;; :init
+  ;; (global-corfu-mode)
+
+  :hook
+  (after-init . global-corfu-mode)
+  
+  ;; I also have (setq tab-always-indent 'complete) for TAB to complete
+  ;; when it does not need to perform an indentation change.
+  :bind
+  (:map corfu-map
+        ("TAB"   . corfu-complete)
+        ([tab]   . corfu-complete)
+        ("RET"   . corfu-insert)
+        ("C-n"   . corfu-next)
+        ("C-p"   . corfu-previous)
+        ("M-n"   . corfu-next)
+        ("M-p"   . corfu-previous)
+        ("C-g"   . corfu-quit))
   )
 ;; comp-ap-corfu ends here
 
