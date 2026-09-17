@@ -2061,6 +2061,7 @@ Return nil if any single regexp matches."
   ;; when it does not need to perform an indentation change.
   :bind
   (:map corfu-map
+        ("C-SPC" . corfu-complete)
         ("TAB"   . corfu-complete)
         ([tab]   . corfu-complete)
         ("RET"   . corfu-insert)
@@ -2090,10 +2091,10 @@ Return nil if any single regexp matches."
   :config
   (setq company-idle-delay 0.3)
   (global-company-mode nil)  
-  :hook (
-         (text-mode . company-mode)
-         (prog-mode . company-mode)
-         )
+  ;; :hook (
+  ;;        (text-mode . company-mode)
+  ;;        (prog-mode . company-mode)
+  ;;        )
   )
 (use-package company-posframe
   :ensure t
@@ -5258,11 +5259,18 @@ variable is deleted. (i.e.: set a 42 b 7)"
   ;; This is intentionally a single mode entry containing the two server
   ;; command specifications.  Current Eglot interprets this as a multi-server
   ;; configuration.
-  (add-to-list
-   'eglot-server-programs
-   '((python-mode python-ts-mode)
-     ("basedpyright-langserver" "--stdio")
-     ("ruff" "server")))
+  ;; (add-to-list
+  ;;  'eglot-server-programs
+  ;;  '((python-mode python-ts-mode)
+  ;;    ("basedpyright-langserver" "--stdio")
+  ;;    ;; ("ruff" "server")
+  ;;    ))
+
+  (add-to-list 'eglot-server-programs
+               '(python-ts-mode . ("rass"
+                                   "--" "ty" "server"
+                                   "--" "ruff" "server"
+                                   )))  
 
   ;; Project configuration is ultimately controlled by pyproject.toml /
   ;; basedpyright configuration.  These values are conservative defaults for
@@ -5275,7 +5283,8 @@ variable is deleted. (i.e.: set a 42 b 7)"
        :diagnosticMode "openFilesOnly"
        :useLibraryCodeForTypes nil))
      :ruff
-     ())))
+     ()
+     )))
 
 
 
