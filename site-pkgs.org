@@ -2359,8 +2359,10 @@ Return nil if any single regexp matches."
 (use-package vertico
   :ensure t
   :config
-  (vertico-mode 1))
-
+  (vertico-mode 1)
+  :bind (:map vertico-map
+              ("C-<return>" . vertico-exit-input))
+  )
 ;; (use-package vertico
 ;;   :custom
 ;;   (vertico-count 13)                    ; Number of candidates to display
