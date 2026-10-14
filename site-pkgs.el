@@ -5733,40 +5733,85 @@ Uses behave's --name flag to select the scenario."
 ;; @see: https://julia-users-zurich.github.io/talks/talk-2018-04/emacs.html
 ;; @see: https://github.com/cgroll/dot_emacs.d/blob/master/init.el
 
+;; @see: https://claude.ai/share/0dab7154-240b-4da6-b45c-2583c60cd0aa
+;; @see: https://share.gemini.google/cwwSLSWSYj8A
+;; @see: https://chatgpt.com/share/6ace6484-0f20-83ed-8d9e-371a04a07c37
+;; @see: https://chat.deepseek.com/share/0oh6d1a7a4m4wzwkc9
+;; @see: https://www.kimi.ai/share/1a1364af-d992-8aa0-8000-00006346de02
+;; @see: https://www.perplexity.ai/search/13bae8cf-7917-4dea-b180-2aabd14ce93b
+;; @see: https://chat.mistral.ai/work/b371fe0b-78f4-4212-82cf-cb139b5297a8
+
+
+;; init.el — Julia editing + LSP via eglot + eglot-jl
 (use-package julia-mode
   :ensure t
-  :defer t
-  :commands julia-mode
-  :mode ("\\.jl$" . julia-mode)
-  :init
-  (progn
-    (autoload 'julia-mode "julia-mode" nil t)
-    (setq inferior-julia-program-name "julia")
-    )
-  :config
-  (progn
-    (setq inferior-julia-program-name "julia")
-    )
-  )
+  :mode "\\.jl\\'")
 
-
-(use-package julia-repl
+;; eglot itself is built into Emacs 29+. On older Emacsen: (use-package eglot :ensure t)
+(use-package eglot-jl
   :ensure t
-  :defer t
+  :after (julia-mode eglot)
+  :hook (julia-mode . eglot-ensure)
+  :init
+  ;; use the environment bundled with eglot-jl
+  (setq eglot-jl-language-server-project eglot-jl-base)
+  ;; (setq eglot-jl-project-root (expand-file-name "."))
+  ;; first start precompiles and indexes; the default 30 s is too short
+  (setq eglot-connect-timeout 300)
   :config
-  (progn
-    (add-to-list 'julia-mode-hook 'julia-repl-mode)
-    )
+  (eglot-jl-init)              ; registers the Julia language server with eglot/project.el
   )
+
 
 (use-package lsp-julia
   :ensure t
-  :hook ((
-          julia-mode
-          ) . lsp-mode)
-  ;;:config
-  ;;(setq lsp-julia-default-environment "~/.julia/environments/v1.7")
+  :after lsp-mode
+  ;; :hook (julia-mode . lsp-deferred)
+  :config
+  ;; ;; own environment holding LanguageServer, instead of the bundled one
+  ;; (setq lsp-julia-package-dir nil
+  ;;       lsp-julia-default-environment "~/.julia/environments/lsp"))
+  ;; (setq lsp-julia-default-environment "~/.julia/environments/v1.13")
   )
+
+
+
+
+
+;; (use-package julia-mode
+;;   :ensure t
+;;   :defer t
+;;   :commands julia-mode
+;;   :mode ("\\.jl$" . julia-mode)
+;;   :init
+;;   (progn
+;;     (autoload 'julia-mode "julia-mode" nil t)
+;;     (setq inferior-julia-program-name "julia")
+;;     )
+;;   :config
+;;   (progn
+;;     (setq inferior-julia-program-name "julia")
+;;     )
+;;   )
+
+
+;; (use-package julia-repl
+;;   :ensure t
+;;   :defer t
+;;   :config
+;;   (progn
+;;     (add-to-list 'julia-mode-hook 'julia-repl-mode)
+;;     )
+;;   )
+
+;; (use-package lsp-julia
+;;   :ensure t
+;;   :hook ((
+;;           julia-mode
+;;           ) . lsp-mode)
+;;   ;;:config
+;;   ;;(setq lsp-julia-default-environment "~/.julia/environments/v1.7")
+;;   )
 
 ;; ;; allow julia to be loaded through call to julia-mode or
 ;; ;; ess-inferior process
