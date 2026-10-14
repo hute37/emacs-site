@@ -5754,7 +5754,7 @@ Uses behave's --name flag to select the scenario."
   :hook (julia-mode . eglot-ensure)
   :init
   ;; use the environment bundled with eglot-jl
-  (setq eglot-jl-language-server-project eglot-jl-base)
+  ;; (setq eglot-jl-language-server-project eglot-jl-base)
   ;; (setq eglot-jl-project-root (expand-file-name "."))
   ;; first start precompiles and indexes; the default 30 s is too short
   (setq eglot-connect-timeout 300)
