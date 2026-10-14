@@ -2185,7 +2185,7 @@ Return nil if any single regexp matches."
 
 (use-package vertico
   :ensure t
-  :config
+  :init
   (vertico-mode 1)
   :bind (:map vertico-map
               ("C-<return>" . vertico-exit-input))
