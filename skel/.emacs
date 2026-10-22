@@ -1,4 +1,4 @@
-;;; $Id: .emacs,v 1.6 2005-12-05 03:06:24 hute37 Exp $
+;;; $Id: .emacs,v 1.6 2005-12-05 03:06:24 hute37 Exp $  -*- lexical-binding: t; -*-
 
 ;;;  
 ;;; $Revision: 1.6 $
