@@ -368,3 +368,27 @@ fi
 export _DOT_ZSHRC_1="$(date  --rfc-3339=ns)"
 # ------------------------------------------------
 ### }}}
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'micromamba shell init' !!
+export MAMBA_EXE=~/.local/bin/micromamba;
+export MAMBA_ROOT_PREFIX=~/micromamba;
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    alias micromamba="$MAMBA_EXE"  # Fallback on help from micromamba activate
+fi
+unset __mamba_setup
+# <<< mamba initialize <<<
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/home/gp21012/.juliaup/bin' $path)
+export PATH
+# Tab completion for juliaup and julia channel selection
+[ -f "/home/gp21012/.julia/juliaup/completions/zsh.zsh" ] && source "/home/gp21012/.julia/juliaup/completions/zsh.zsh"
+
+# <<< juliaup initialize <<<
