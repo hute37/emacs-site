@@ -360,14 +360,6 @@ fi
 # ===( python:end )===========================
 
 
-# }}} --- custom
-
-### {{{ #(TRAILER) ////////////////////////////////////////////////////////////
-#% echo "% < ~/.zshrc"
-# ------------------------------------------------
-export _DOT_ZSHRC_1="$(date  --rfc-3339=ns)"
-# ------------------------------------------------
-### }}}
 
 # >>> mamba initialize >>>
 # !! Contents within this block are managed by 'micromamba shell init' !!
@@ -392,3 +384,13 @@ export PATH
 [ -f "/home/gp21012/.julia/juliaup/completions/zsh.zsh" ] && source "/home/gp21012/.julia/juliaup/completions/zsh.zsh"
 
 # <<< juliaup initialize <<<
+
+# }}} --- custom
+
+### {{{ #(TRAILER) ////////////////////////////////////////////////////////////
+#% echo "% < ~/.zshrc"
+# ------------------------------------------------
+export _DOT_ZSHRC_1="$(date  --rfc-3339=ns)"
+# ------------------------------------------------
+### }}}
+
