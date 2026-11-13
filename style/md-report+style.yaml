@@ -1,8 +1,0 @@
----
-date: \today
-lang: en-US
-documentclass: report
-classoption: [a4paper, 11pt]
-colorlinks: true
-syntax-highlighting: kate
----
