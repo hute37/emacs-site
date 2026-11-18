@@ -6117,7 +6117,8 @@ TODO:(a2-claude) ...
 
 # A:2 (Gemini)
 
-[^](#toc) **_TODO:(a2-ref-gemini)_**
+[^](#toc) [**_Refactored `site-pkgs.org`_**](https://github.com/hute37/emacs-site/blob/master/attic/2611-phoenix/pnx/gemini/pnx-g-pkgs.org)
+
 
 I will now generate the refactored `site-pkgs.org` file incorporating all modernization changes, along with the inventory of inactive configuration files and key-map issues.
 
@@ -6244,7 +6245,7 @@ I will now generate the refactored `site-pkgs.org` file incorporating all modern
   
 # A:2 (ChatGPT)
 
-[^](#toc) [**_Emacs site configuration refactor notes_**](https://chatgpt.com/share/6afdd54c-55b4-83eb-a67c-c3f2d1b3766b)
+[^](#toc) [**_Refactored `site-pkgs.org`_**](https://github.com/hute37/emacs-site/blob/master/attic/2611-phoenix/pnx/chatgpt/pnx-t-pkgs.org)
 
 
 **Scope:** `site-pkgs.org` refactor based on the previously audited source and keymap scan. The public repository's current `master` version of `site-keys.el` was also checked. The bundle does not replace the rest of `~/.emacs-site/`, because the other active `site-*.el` files were not supplied for editing.
@@ -6816,7 +6817,7 @@ The following issues are supported by the supplied keymap scan. `site-load.el` d
 
 # A:2 (DeepSeek)
 
-[^](#toc) **_TODO:(a2-ref-deepseek)_**
+[^](#toc) [**_Refactored `site-pkgs.org`_**](https://github.com/hute37/emacs-site/blob/master/attic/2611-phoenix/pnx/deepseek/pnx-d-pkgs.org)
 
 > Refactored `site-pkgs.org`
 

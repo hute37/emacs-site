@@ -2,13 +2,18 @@
 #+PROPERTY: header-args :results silent
 
 * Initialization & Core
-
+#+begin_src emacs-lisp
 ;;; #PNX(ENH-01): Cleaned up dead/unloaded legacy files (site-load.el, site-init.el, site-attic.org, site-config.org, site-custom.el, site-local.el)
 
 (use-package bind-key :ensure t)
 (use-package diminish :ensure t)
 
+#+END_SRC
+
 * Completion "at-point"
+
+#+begin_src emacs-lisp
+
 
 ;;; #PNX(OBS-01): Removed obsolete company, company-posframe, and company backend packages
 ;;; #PNX(DUP-01): Resolved dual completion stack by standardizing entirely on Corfu and Cape
@@ -41,7 +46,12 @@
 (add-to-list 'completion-at-point-functions #'cape-file)
 (add-to-list 'completion-at-point-functions #'cape-elisp-block))
 
+#+END_SRC
+
+
 * Project & Navigation
+#+begin_src emacs-lisp
+
 
 ;;; #PNX(OBS-03): Removed obsolete etags and gtags use-package blocks in favor of project.el and xref
 
@@ -49,7 +59,12 @@
 :ensure nil
 :bind ("C-x p" . project-prefix-map))
 
+#+END_SRC
+
+
 * Lang :: Python / LSP
+
+#+begin_src emacs-lisp
 
 ;;; #PNX(OBS-02): Removed global flycheck mode in favor of native flymake and lsp diagnostics
 ;;; #PNX(DUP-02): Enforced strict Python LSP/Eglot buffer-local coexistence (lsp-mode for standard scripts, eglot for notebooks)
@@ -82,3 +97,5 @@
 (remove-hook 'python-mode-hook #'lsp-deferred t)
 (remove-hook 'python-ts-mode-hook #'lsp-deferred t)
 (h7/python-use-eglot))))
+
+#+END_SRC
