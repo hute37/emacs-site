@@ -1,0 +1,5271 @@
+--- site-pkgs.org (original)
++++ site-pkgs.org (refactored)
+@@ -163,8 +163,7 @@
+   ;; @see: https://julia-users-zurich.github.io/talks/talk-2018-04/emacs.html
+   ;; @see: https://ladicle.com/post/config/
+   ;; @see: https://sgtpeacock.com/dot-files/Emacs.html#org66117b2
+-  ;; @see: https://systemcrafters.net/build-a-second-brain-in-emacs/5-org-roam-hacks/
+-  ;; @see: https://youtu.be/0kuCeS-mfyc
++    ;; @see: https://youtu.be/0kuCeS-mfyc
+   ;; @see: http://www.lunaryorn.com/2015/01/06/my-emacs-configuration-with-use-package.html
+   ;; @see: https://blog.sumtypeofway.com/posts/emacs-config.html
+   ;; @see: https://github.com/daedreth/UncleDavesEmacs
+@@ -184,281 +183,19 @@
+ #+NAME: startup
+ #+begin_src emacs-lisp
+ 
+-;; ;;;////////////////////////////////////////////////////////////////
+-;; {{{  @PACKAGES
+-;; ;;;////////////////////////////////////////////////////////////////
+-
+-;; ---( Install )--------------------------------------------------------------
+-
+-;;(fset 'h7/ensure 't)
+-;;(fset h7/ensure nil)
+-
+-;; ---( Boot )--------------------------------------------------------------
+-
+-;; @see: https://sachachua.com/dotemacs/
+-;; @see: https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.org
+-;; @see: https://github.com/sachac/.emacs.d/blob/gh-pages/Sacha.el
+-
+-;; disable "Missing ‘lexical-binding’ cookie" warnings
+-(setq internal--get-default-lexical-binding-function nil)
+-
+-;; This sets up the load path so that we can override it
+-(setq warning-suppress-log-types '((package reinitialization)))  (package-initialize)
+-;;(add-to-list 'load-path "/usr/local/share/emacs/site-lisp")
+-
+-;;(setq use-package-always-ensure t)
+-
+-;; (use-package memoize
+-;;   :ensure t)
++;;; #PNX(ENH-07): Rely on normal package.el startup activation; do not call package-initialize a second time.
++;;; #PNX(OBS-03): use-package is built into this Emacs baseline; no bootstrap package is needed.
++;;; #PNX(OBS-08): Removed req-package, Quelpa and obsolete package-manager bootstrap experiments.
++;;; #PNX(ENH-10): Removed use-package-ensure-system-package; :ensure f is not a disabling value.
++;;; #PNX(OBS-10): Removed commented-out package declarations and historical bootstrap blocks; see site-attic.org.
+ 
+ (unless (assoc-default "melpa" package-archives)
+   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
+ (unless (assoc-default "nongnu" package-archives)
+   (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/") t))
+ 
+-  ;; (setq package-review-policy t
+-  ;;       package-review-diff-command '("git" "diff" "--no-index" "--color=never" "--diff-filter=d"))
+-  ;; (add-to-list 'display-buffer-alist
+-  ;;              '("\\`\\*Package Review Diff:"
+-  ;;                (display-buffer-full-frame)))
+-
+-
+-;; (add-to-list 'load-path "~/elisp")
+-(setq use-package-verbose t)
+-;; (setq use-package-always-ensure t)
+-
++(setq use-package-verbose nil)
+ (require 'use-package)
+-
+-
+-
+-
+-;;(use-package quelpa)
+-;;(use-package quelpa-use-package)
+-;;(quelpa-use-package-activate-advice)
+-;;(setq load-prefer-newer t)
+-
+-
+-
+-
+-
+-;; ---( Boot.ex )--------------------------------------------------------------
+-
+-;; (setq debug-on-error t)
+-
+-
+-;; @see: https://github.com/radian-software/straight.el
+-;; @see: 
+-;; @see: https://youtu.be/UmbVeqphGlc
+-
+-;; (setq straight-use-package-by-default t)
+-;; (setq use-package-always-ensure t)
+-;; 
+-;; (defvar bootstrap-version)
+-;; (let ((bootstrap-file
+-;;        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+-;;       (bootstrap-version 5))
+-;;   (unless (file-exists-p bootstrap-file)
+-;;     (with-current-buffer
+-;;         (url-retrieve-synchronously
+-;;          "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+-;;          'silent 'inhibit-cookies)
+-;;       (goto-char (point-max))
+-;;       (eval-print-last-sexp)))
+-;;   (load bootstrap-file nil 'nomessage))
+-;; 
+-;; (setq package-enable-at-startup nil)
+-;; (straight-use-package 'use-package)
+-;; (eval-when-compile (require 'use-package))
+-
+-
+-;; @see: https://ianyepan.github.io/posts/setting-up-use-package/
+-;; @see: https://www.reddit.com/r/emacs/comments/dfcyy6/how_to_install_and_use_usepackage/
+-;; @see: https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
+-
+-;; @see: https://howardabrams.com/hamacs/bootstrap.html
+-;; (when (and (fboundp 'native-comp-available-p)
+-;;            (native-comp-available-p))
+-;;   (setq native-comp-async-report-warnings-errors nil
+-;;         native-comp-deferred-compilation t))
+-
+-
+-;; (eval-and-compile
+-;;   (require 'package)
+-;;   (add-to-list 'package-archives '("org"       . "http://orgmode.org/elpa/")) ; Org-mode's repository
+-;;   (add-to-list 'package-archives '("gnu"       . "https://elpa.gnu.org/packages/"))
+-;;   (add-to-list 'package-archives '("melpa"     . "https://melpa.org/packages/"))
+-;;   (add-to-list 'package-archives '("nongnu"    . "https://elpa.nongnu.org/nongnu/"))
+-;; ;;(add-to-list 'package-archives '("jcs-elpa"  . "https://jcs-emacs.github.io/jcs-elpa/packages/") t)
+-
+-;;   (setq package-archive-priorities '(("melpa"    . 5)
+-;;                                   ;; ("jcs-elpa" . 0)
+-;;                                      ))
+-;;   ;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+-;;   ;;(package-initialize)
+-;;   ;; i always fetch the archive contents on startup and during compilation, which is slow
+-;;   ;; (package-refresh-contents)
+-;;   (unless (package-installed-p 'use-package)
+-;;     (package-install 'use-package))
+-;;   (setq use-package-verbose t)
+-;;   (require 'use-package)
+-;;   ;; i don't really know why this isn't the default...
+-;;   ;;(setf use-package-always-ensure t)
+-
+-;;   ;;(use-package use-package-ensure
+-;;   ;;  :config  (setq use-package-always-ensure t))
+-
+-;;   ;; (use-package quelpa
+-;;   ;;   :ensure t)
+-;;   ;; (use-package quelpa-use-package
+-;;   ;;   :ensure t)
+-;;   ;; (quelpa-use-package-activate-advice)
+-;;   ;; (use-package auto-compile
+-;;   ;;   :ensure t
+-;;   ;;   :config (auto-compile-on-load-mode))
+-  
+-;;   (setq load-prefer-newer t)
+-
+-;;   ;;   (unless (package-installed-p 'quelpa)
+-;;   ;;     (with-temp-buffer
+-;;   ;;       (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+-;;   ;;       (eval-buffer)
+-;;   ;;       (quelpa-self-upgrade)))
+-;;   ;;   (quelpa
+-;;   ;;    '(quelpa-use-package
+-;;   ;;      :fetcher git
+-;;   ;;      :url "https://github.com/quelpa/quelpa-use-package.git"))
+-;;   ;;   (require 'quelpa-use-package)
+-;;   ;;
+-;;   )
+-
+-;; ;; @see:  https://framagit.org/steckerhalter/steckemacs.el/-/blob/master/steckemacs.el
+-
+-;; ;;; initialization
+-;; (require 'package)
+-;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+-;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
+-;; (package-initialize)
+-;; (when (not package-archive-contents)
+-;;   (package-refresh-contents))
+-;; (package-install 'use-package)
+-;; (use-package use-package-ensure
+-;;   :config  (setq use-package-always-ensure t))
+-
+-;; (unless (package-installed-p 'quelpa)
+-;;   (with-temp-buffer
+-;;     (url-insert-file-contents "https://github.com/quelpa/quelpa/raw/master/quelpa.el")
+-;;     (eval-buffer)
+-;;     (quelpa-self-upgrade)))
+-;; (quelpa
+-;;  '(quelpa-use-package
+-;;    :fetcher git
+-;;    :url "https://github.com/quelpa/quelpa-use-package.git"))
+-;; (require 'quelpa-use-package)
+-
+-
+-;;(require 'package)
+-;; ;;(nconc package-archives
+-;; ;;      '(("melpa" . "http://melpa.org/packages/")
+-;; ;;        ("org" . "http://orgmode.org/elpa/")))
+-;;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+-;;(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t) ; Org-mode's repository
+-
+-;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+-;;(add-to-list 'package-archives '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/") t)
+-
+-;; You don't need this one if you have marmalade:
+-;; (add-to-list 'package-archives '("geiser" . "http://download.savannah.gnu.org/releases/geiser/packages"))
+-
+-;;(setq package-enable-at-startup nil)
+-
+-;; (setq 
+-;;  load-prefer-newer t
+-;;  package-user-dir "~/.emacs.d/elpa"
+-;;  package--init-file-ensured t
+-;;  package-enable-at-startup nil)
+-
+-;; (unless (file-directory-p package-user-dir)
+-;;   (make-directory package-user-dir t))    
+-
+-;;(package-initialize)
+-
+-
+-;; (unless (package-installed-p 'use-package)
+-;;   (progn
+-;;     (package-refresh-contents)
+-;;     (package-install 'use-package)))
+-;; (eval-when-compile
+-;;   (eval-after-load 'advice
+-;;     '(setq ad-redefinition-action 'accept))
+-;;   (require 'use-package))
+-;; (require 'diminish)
+-;; (require 'bind-key)
+-
+-;; (require 'package)
+-;; (setq package-enable-at-startup nil)
+-
+-;; ;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+-;; (unless (assoc-default "melpa" package-archives)
+-;;   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t))
+-
+-;;(package-initialize)
+-
+-;; ;; Bootstrap `use-package'
+-;; (unless (and
+-;;          (package-installed-p 'bind-key)
+-;;          (package-installed-p 'diminish)
+-;;          (package-installed-p 'use-package)
+-;;          (package-installed-p 'req-package)
+-;;          )
+-;;   (package-refresh-contents)
+-;;   (package-install 'bind-key)
+-;;   (package-install 'diminish)
+-;;   (package-install 'use-package)
+-;;   (package-install 'req-package)
+-;;   )
+-
+-;; (straight-use-package 'bind-key)
+-;; (straight-use-package 'diminish)
+-
+-;; @see: https://github.com/jwiegley/dot-emacs/blob/master/init.el
+-
+-;; (eval-and-compile
+-;;   (defvar use-package-verbose t))
+-
+-;; ---( ... )--------------------------------------------------------------
+-
+-;; (require 'bind-key)
+-;; (require 'use-package)
+-
+-(use-package bind-key
+-   :ensure t
+- )
+-
+-
+-(use-package diminish
+-   :ensure t
+- )
+-
+-;; use-package-ensure-system-package
+-;; provides way to define system package dependencies for Emacs packages
+-(use-package use-package-ensure-system-package
+-  :ensure f)
+-
+-
+-;; (require 'req-package)
+-;;(use-package req-package)
+-(use-package req-package
+-   :disabled t
+- )
+-
+-
+-;; @see: https://github.com/noctuid/general.el
+-(use-package general
+-  :ensure t)
+-
+-;; ---( ... )--------------------------------------------------------------
+-
+-;; }}}  .packages
+ 
+ #+END_SRC
+ 
+@@ -475,10 +212,20 @@
+ 
+ (require 'cl-lib)
+ 
+-;; (use-package cl-lib
+-;;   ;; :straight (:type built-in)
+-;;   :init (defun first (elt) (car elt))
+-;;   :commands (first))
++;;; #PNX(ENH-01): Provide safe defaults for helper functions referenced before site-func.el loads; later definitions may override them.
++(unless (fboundp 'h7/use-pdf-tools)
++  (defun h7/use-pdf-tools ()
++    "Default to the configured PDF-tools workflow when no platform policy exists."
++    t))
++(unless (fboundp 'h7/var-denote-directory)
++  (defun h7/var-denote-directory ()
++    "Return the default Denote directory under the Emacs state directory."
++    (expand-file-name "var/denote" user-emacs-directory)))
++(unless (fboundp 'h7/var-global-bibliography)
++  (defun h7/var-global-bibliography ()
++    "Return the default bibliography file list."
++    (list (expand-file-name "var/references.bib" user-emacs-directory))))
++
+ 
+ ;; (require 'subr-x)
+ 
+@@ -565,7 +312,7 @@
+         (file-name-as-directory (dir-mk (file-name-concat user-cache-directory "auto-save-list"))))
+   (setq auto-save-list-directory-alt
+         (file-name-as-directory (dir-mk (file-name-concat user-emacs-directory "auto-save-list"))))
+-  ;;    (make-directory (emacs-d "var") t)
++  ;;    (make-directory (expand-file-name "var" user-emacs-directory) t)
+ 
+   (setq auto-save-list-file-prefix
+         (file-name-concat auto-save-list-directory ".saves-"))
+@@ -618,8 +365,10 @@
+ 
+ ;; ---( ... )--------------------------------------------------------------
+ 
+-;; tune gc
++;;; #PNX(ENH-07): Raise GC threshold only during startup, then restore a modest steady-state value.
+ (setq gc-cons-threshold (* 100 1024 1024))
++(add-hook 'emacs-startup-hook
++          (lambda () (setq gc-cons-threshold (* 16 1024 1024))))
+ 
+ ;; ---( ... )--------------------------------------------------------------
+ 
+@@ -744,17 +493,11 @@
+ 
+ ;; ---( themes )--------------------------------------------------------------
+ 
+-(use-package ef-themes
+-  :ensure t
+-  )
++;;; #PNX(ENH-12): Removed ef-themes package installation because no theme activation or commands are configured in this file.
+ 
+ ;; ---( mode-line )--------------------------------------------------------------
+ 
+-(use-package minions
+-  :ensure t
+-  :config (minions-mode 1)
+-  )
+-
++;;; #PNX(DUP-03): Removed Minions; Mood-Line is the single active modeline implementation.
+ (use-package mood-line
+   :ensure t
+   :config (mood-line-mode 1)
+@@ -768,9 +511,6 @@
+ (require 'bind-key)                ;; if you use any :bind variant
+ 
+ ;; ;; Required to hide the modeline 
+-;; (use-package hide-mode-line
+-;;   :ensure t
+-;;   :defer t)
+ 
+ ;; icon fonts: M-x all-the-icons-install-fonts
+ (use-package all-the-icons
+@@ -782,96 +522,35 @@
+   :init (solaire-global-mode +1))
+ 
+ 
+-;; (use-package doom-modeline
+-;;   :after eshell
+-;;   :init (doom-modeline-mode 1))
+-
+-;; (use-package powerline
+-;;   :ensure t
+-;;   :init (powerline-default-theme)
+-;; )
+-
+-
+-;; (use-package powerline
+-;; 	     :init (dolist
+-
+-;; 			 ;; powerine
+-;; 			 ;; smart-mode-line
+-;; 			 ;; smart-mode-line-powerline-theme
+-;; 			 ;;(require 'powerline)
+-
+-;; 		       (set-face-attribute 'mode-line nil
+-;; 					   :foreground "Black"
+-;; 					   :background "DarkOrange"
+-;; 					   :box nil)
+-
+-;; 		       (powerline-default-theme)
+-
+-;; 		       ;;    (require 'smart-mode-line)
+-;; 		       ;;    (setq sml/theme 'powerline)
+-;; 		       ;;    (load-theme 'smart-mode-line-powerline t)
+-;; 		       ;;    (sml/setup)
+-
+-;; 		       ;;(sml/apply-theme 'powerline)
+-;; 		       ;;(sml/apply-theme 'dark)
+-;; 		       ;;(sml/apply-theme 'light)
+-;; 		       ;;(sml/apply-theme 'respectful)
+-;; 		       ;;(sml/apply-theme 'automatic)
+-
+-;; 		       ;;(powerline-default-theme)
+-
+-;; 		       (powerline-reset)
+-
+-;; 		       )
+-;; 	     )
++
++
++
+ 
+ ;; ---( highlight )--------------------------------------------------------------
+ 
++;;; #PNX(ENH-06): Split hl-todo custom variables into valid use-package :custom entries.
+ (use-package hl-todo
+   :ensure t
+-  :hook ((
+-          prog-mode
+-          yaml-mode
+-          text-mode
+-          markdown-mode
+-          ) . hl-todo-mode)
+-  :config
+-  (minions-mode 1)
+-  ;; (define-key hl-todo-mode-map (kbd "C-c p") #'hl-todo-previous)
+-  ;; (define-key hl-todo-mode-map (kbd "C-c n") #'hl-todo-next)
+-  ;; (define-key hl-todo-mode-map (kbd "C-c o") #'hl-todo-occur)
+-  ;; (define-key hl-todo-mode-map (kbd "C-c i") #'hl-todo-insert  
+-  ;; (setq hl-todo-highlight-punctuation ":"
+-  ;;       hl-todo-keyword-faces
+-  ;;       `(("/todo"      warning bold)
+-  ;;         ("TODO"       warning bold)
+-  ;;         ("FIXME"      error bold)
+-  ;;         ("HACK"       font-lock-constant-face bold)
+-  ;;         ("REVIEW"     font-lock-keyword-face bold)
+-  ;;         ("NOTE"       success bold)
+-  ;;         ("DEPRECATED" font-lock-doc-face bold)))
++  :hook ((prog-mode yaml-mode text-mode markdown-mode) . hl-todo-mode)
+   :custom
+-  (hl-todo-highlight-punctuation ":"
+-   hl-todo-keyword-faces
+-  '(("HOLD"   . "#d0bf8f")
+-    ("TODO"   . "#cc9393")
+-    ("NEXT"   . "#dca3a3")
+-    ("THEM"   . "#dc8cc3")
+-    ("PROG"   . "#7cb8bb")
+-    ("OKAY"   . "#7cb8bb")
+-    ("DONT"   . "#5f7f5f")
+-    ("FAIL"   . "#8c5353")
+-    ("DONE"   . "#afd8af")
+-    ("NOTE"   . "#d0bf8f")
+-    ("MAYBE"  . "#d0bf8f")
+-    ("KLUDGE" . "#d0bf8f")
+-    ("HACK"   . "#d0bf8f")
+-    ("TEMP"   . "#d0bf8f")
+-    ("FIXME"  . "#cc9393")
+-    ("XXXX*"  . "#cc9393"))
+-   )
+-  )
+-
++  (hl-todo-highlight-punctuation ":")
++  (hl-todo-keyword-faces
++   '(("HOLD"   . "#d0bf8f")
++     ("TODO"   . "#cc9393")
++     ("NEXT"   . "#dca3a3")
++     ("THEM"   . "#dc8cc3")
++     ("PROG"   . "#7cb8bb")
++     ("OKAY"   . "#7cb8bb")
++     ("DONT"   . "#5f7f5f")
++     ("FAIL"   . "#8c5353")
++     ("DONE"   . "#afd8af")
++     ("NOTE"   . "#d0bf8f")
++     ("MAYBE"  . "#d0bf8f")
++     ("KLUDGE" . "#d0bf8f")
++     ("HACK"   . "#d0bf8f")
++     ("TEMP"   . "#d0bf8f")
++     ("FIXME"  . "#cc9393")
++     ("XXXX*"  . "#cc9393"))))
+ 
+ ;; }}}  .ui
+ 
+@@ -882,6 +561,8 @@
+ #+NAME: utils-begin
+ #+begin_src emacs-lisp
+ 
++;;; #PNX(OBS-10): Removed commented-out package experiments and obsolete helper alternatives.
++
+   ;; ;;;////////////////////////////////////////////////////////////////
+   ;; {{{  @UTIL
+   ;; ;;;////////////////////////////////////////////////////////////////
+@@ -915,27 +596,13 @@
+ 
+ ;; ---( ... )--------------------------------------------------------------
+ 
+-;;(use-package bs
+-;;  :ensure t)
+ 
+ ;; ---( ... )--------------------------------------------------------------
+ 
+-;; (use-package pretty-symbols
+-;;   :ensure t)
+-
+-;; (use-package pretty-lambdada
+-;;   :ensure t
+-;;   :init (dolist (hook '(lisp-mode-hook emacs-lisp-mode-hook)))
+-;;   :config (dolist (global-pretty-lambda-mode)))
+-
+-
+-;; (use-package jumpc
+-;;   :disabled t
+-;;   :config (progn (jumpc-bind-vim-key)))
+-
+-;; (use-package rainbow-delimiters
+-;;   :disabled t
+-;;   :hook (prog-mode . rainbow-delimiters-mode))
++
++
++
++
+ 
+ 
+ #+END_SRC
+@@ -956,22 +623,7 @@
+       :after hydra
+       )
+ 
+-    ;; ---( ace )--------------------------------------------------------------
+-
+-
+-    (use-package ace-jump-mode
+-      :ensure t
+-      :commands ace-jump-mode
+-      :init
+-      ;; (bind-key "C-." 'ace-jump-mode)
+-      )
+-
+-    ;; ;; ---( avy )--------------------------------------------------------------
+-
+-    (use-package avy
+-      :ensure t)
+-
+-
++    ;;; #PNX(OBS-06): Removed unbound ace-jump-mode and Avy declarations; Consult/Embark and xref are the active navigation stack.
+ 
+ #+END_SRC
+ 
+@@ -982,18 +634,19 @@
+ ;; ---( regex )--------------------------------------------------------------
+ 
+ 
+-(use-package regex-tool
+-  :ensure t
+-  :defer t)
++;;; #PNX(ENH-12): Removed unused deferred regex-tool; visual-regexp and Consult cover the active search workflows.
+ 
+ (use-package visual-regexp
+   :ensure t
+   :bind (("C-c r" . vr/replace)
+          ("C-c q" . vr/query-replace))
+   :general (:states 'normal "g r" '("replace" . vr/replace))
+-  :config (ha-leader
+-            "r" '("replace" . vr/replace)
+-            "R" '("query replace" . vr/query-replace)))
++  :config
++  ;;; #PNX(ENH-01): Guard the optional leader helper; direct C-c bindings remain available without it.
++  (when (fboundp 'ha-leader)
++    (ha-leader
++     "r" '("replace" . vr/replace)
++     "R" '("query replace" . vr/query-replace))))
+ 
+ #+END_SRC
+ 
+@@ -1004,24 +657,12 @@
+ 
+   ;; ---( guide-key )--------------------------------------------------------------
+ 
+-  ;; (use-package guide-key
+-  ;;   :ensure t
+-  ;;   :defer t
+-  ;;   :diminish guide-key-mode
+-  ;;   :idle
+-  ;;   (progn
+-  ;;     (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-c"))
+-  ;;     (guide-key-mode 1)))
+ 
+   ;; ---( which-key )--------------------------------------------------------------
+-
+-  (use-package which-key
+-    :delight
+-    :ensure t
+-    :init
+-    (which-key-mode)
+-    :config
++  ;;; #PNX(OBS-03): Use Emacs' built-in which-key instead of installing a duplicate package.
++  (with-eval-after-load 'which-key
+     (setq which-key-idle-delay 1))
++  (which-key-mode 1)
+ 
+ 
+ 
+@@ -1070,12 +711,6 @@
+           `(("." . ,(dir-mk (dir-concat user-cache-directory "undo-tree")))))))
+ 
+ ;; =C-x u= to browse the tree with =f=, =b=, =n=, =p=, =RET=.
+-;; (use-package vundo
+-;;   :ensure t
+-;;   :config
+-;;   (setq vundo-glyph-alist vundo-unicode-symbols)
+-;;   :bind
+-;;   ("C-x u" . vundo))
+ 
+ ;; ---( recentf )--------------------------------------------------------------
+ 
+@@ -1130,91 +765,11 @@
+ 
+ ;; ---( windmove )--------------------------------------------------------------
+ 
+-;; (use-package windmove
+-;;   :ensure t
+-;;   :defer t
+-;;   :bind
+-;;   (("<f2> <right>" . windmove-right)
+-;;    ("<f2> <left>" . windmove-left)
+-;;    ("<f2> <up>" . windmove-up)
+-;;    ("<f2> <down>" . windmove-down)
+-;;    ))
+ 
+ 
+ ;; ---( whitespace )--------------------------------------------------------------
+ 
+-;; (use-package whitespace
+-;;   :ensure t
+-;;   :bind (("C-c T w" . whitespace-mode))
+-;;   :init
+-;;   (dolist (hook '(conf-mode-hook))
+-;; ;;  (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
+-;;     (add-hook hook #'whitespace-mode))
+-;;   :config (setq whitespace-line-column nil)
+-;;   :diminish whitespace-mode)
+-
+-;; (use-package whitespace
+-;;   :diminish (global-whitespace-mode
+-;;              whitespace-mode
+-;;              whitespace-newline-mode)
+-;;   :commands (whitespace-buffer
+-;;              whitespace-cleanup
+-;;              whitespace-mode)
+-;;   :defines (whitespace-auto-cleanup
+-;;             whitespace-rescan-timer-time
+-;;             whitespace-silent)
+-;;   :preface
+-;;   (defun normalize-file ()
+-;;     (interactive)
+-;;     (save-excursion
+-;;       (goto-char (point-min))
+-;;       (whitespace-cleanup)
+-;;       (delete-trailing-whitespace)
+-;;       (goto-char (point-max))
+-;;       (delete-blank-lines)
+-;;       (set-buffer-file-coding-system 'unix)
+-;;       (goto-char (point-min))
+-;;       (while (re-search-forward "\r$" nil t)
+-;;         (replace-match ""))
+-;;       (set-buffer-file-coding-system 'utf-8)
+-;;       (let ((require-final-newline t))
+-;;         (save-buffer))))
+-;;   (defun maybe-turn-on-whitespace ()
+-;;     "Depending on the file, maybe clean up whitespace."
+-;;     (let ((file (expand-file-name ".clean"))
+-;;           parent-dir)
+-;;       (while (and (not (file-exists-p file))
+-;;                   (progn
+-;;                     (setq parent-dir
+-;;                           (file-name-directory
+-;;                            (directory-file-name
+-;;                             (file-name-directory file))))
+-;;                     ;; Give up if we are already at the root dir.
+-;;                     (not (string= (file-name-directory file)
+-;;                                   parent-dir))))
+-;;         ;; Move up to the parent dir and try again.
+-;;         (setq file (expand-file-name ".clean" parent-dir)))
+-;;       ;; If we found a change log in a parent, use that.
+-;;       (when (and (file-exists-p file)
+-;;                  (not (file-exists-p ".noclean"))
+-;;                  (not (and buffer-file-name
+-;;                            (string-match "\\.texi\\'" buffer-file-name))))
+-;;         (add-hook 'write-contents-hooks
+-;;                   #'(lambda () (ignore (whitespace-cleanup))) nil t)
+-;;         (whitespace-cleanup))))
+-;;   :init
+-;;   (hook-into-modes 'whitespace-mode '(prog-mode-hook c-mode-common-hook))
+-;;   (add-hook 'find-file-hooks 'maybe-turn-on-whitespace t)
+-;;   :config
+-;;   (remove-hook 'find-file-hooks 'whitespace-buffer)
+-;;   (remove-hook 'kill-buffer-hook 'whitespace-buffer)
+-;;   ;; For some reason, having these in settings.el gets ignored if whitespace
+-;;   ;; loads lazily.
+-;;   (setq whitespace-auto-cleanup t
+-;;         whitespace-line-column 80
+-;;         whitespace-rescan-timer-time nil
+-;;         whitespace-silent t
+-;;         whitespace-style '(face trailing lines space-before-tab empty)))
++
+ 
+ ;; ---( autorevert )--------------------------------------------------------------
+ 
+@@ -1282,190 +837,31 @@
+ 
+ 
+ 
+-(use-package kirigami
+-  :ensure t
+-  :commands (kirigami-open-fold
+-             kirigami-open-fold-rec
+-             kirigami-close-fold
+-             kirigami-toggle-fold
+-             kirigami-open-folds
+-             kirigami-close-folds-except-current
+-             kirigami-close-folds)
+-
+-  :bind
+-  ;; Vanilla Emacs keybindings
+-  (("C-c z o" . kirigami-open-fold)          ; Open fold at point
+-   ("C-c z O" . kirigami-open-fold-rec)      ; Open fold recursively
+-   ("C-c z r" . kirigami-open-folds)         ; Open all folds
+-   ("C-c z c" . kirigami-close-fold)         ; Close fold at point
+-   ("C-c z m" . kirigami-close-folds)        ; Close all folds
+-   ("C-c z a" . kirigami-toggle-fold))      ; Toggle fold at point
+-  :config
+-
+-  ;; Outline mode ----------
+-  
+-  (add-hook 'emacs-lisp-mode-hook #'outline-minor-mode)
+-  (add-hook 'lisp-interaction-mode-hook #'hs-minor-mode) ; scratch
+-  (add-hook 'lisp-mode-hook #'outline-minor-mode)
+-  (add-hook 'conf-mode-hook #'outline-minor-mode)
+-  (add-hook 'markdown-mode-hook #'outline-minor-mode)
+-  (add-hook 'diff-mode-hook #'outline-minor-mode)
+-
+-  ;; Indent mode ----------
+-  
+-  ;; Python
+-  (add-hook 'python-mode-hook #'outline-indent-minor-mode)
+-  (add-hook 'python-ts-mode-hook #'outline-indent-minor-mode)
+-
+-  ;; Yaml
+-  (add-hook 'yaml-mode-hook #'outline-indent-minor-mode)
+-  (add-hook 'yaml-ts-mode-hook #'outline-indent-minor-mode)
+-
+-  ;; Haskell
+-  (add-hook 'haskell-mode-hook #'outline-indent-minor-mode)
+-  
+-  ;; Hideshow mode ----------
+-
+-  ;; Systems and General Purpose
+-  (add-hook 'c-mode-hook #'hs-minor-mode)
+-  (add-hook 'c++-mode-hook #'hs-minor-mode)
+-  (add-hook 'java-mode-hook #'hs-minor-mode)
+-  (add-hook 'rust-mode-hook #'hs-minor-mode)
+-  (add-hook 'go-mode-hook #'hs-minor-mode)
+-  (add-hook 'ruby-mode-hook #'hs-minor-mode)
+-  (add-hook 'php-mode-hook #'hs-minor-mode)
+-  (add-hook 'perl-mode-hook #'hs-minor-mode)
+-
+-  ;; Web and Frontend
+-  (add-hook 'js-mode-hook #'hs-minor-mode)
+-  (add-hook 'typescript-mode-hook #'hs-minor-mode)
+-  (add-hook 'css-mode-hook #'hs-minor-mode)
+-
+-  ;; Scripting, Data, and Infrastructure
+-  (add-hook 'sh-mode-hook #'hs-minor-mode) ; for bash/shell scripts
+-  (add-hook 'json-mode-hook #'hs-minor-mode)
+-  (add-hook 'lua-mode-hook #'hs-minor-mode)
+-  (add-hook 'nxml-mode-hook #'hs-minor-mode)
+-  (add-hook 'html-mode-hook #'hs-minor-mode)  ;; mhtml and html
+-
+-  ;; Treesit mode ----------
+-
+-
+-  ;; Markdown
+-  (add-hook 'markdown-ts-mode-hook #'treesit-fold-mode)
+-  
+-  ;; Systems and General Purpose
+-  (add-hook 'c-ts-mode-hook #'treesit-fold-mode)
+-  (add-hook 'c++-ts-mode-hook #'treesit-fold-mode)
+-  (add-hook 'java-ts-mode-hook #'treesit-fold-mode)
+-  (add-hook 'rust-ts-mode-hook #'treesit-fold-mode)
+-  (add-hook 'go-ts-mode-hook #'treesit-fold-mode)
+-  (add-hook 'ruby-ts-mode-hook #'treesit-fold-mode)
+-  (add-hook 'php-ts-mode-hook #'treesit-fold-mode)
+-
+-  ;; Web and Frontend
+-  (add-hook 'js-ts-mode-hook #'treesit-fold-mode)
+-  (add-hook 'typescript-ts-mode-hook #'treesit-fold-mode)
+-  (add-hook 'tsx-ts-mode-hook #'treesit-fold-mode)
+-  (add-hook 'css-ts-mode-hook #'treesit-fold-mode)
+-  (add-hook 'html-ts-mode-hook #'treesit-fold-mode)
+-
+-  ;; Scripting and Infrastructure
+-  (add-hook 'bash-ts-mode-hook #'treesit-fold-mode)
+-  (add-hook 'cmake-ts-mode-hook #'treesit-fold-mode)
+-  (add-hook 'dockerfile-ts-mode-hook #'treesit-fold-mode)
+-
+-  ;; Data and Configuration
+-  (add-hook 'json-ts-mode-hook #'treesit-fold-mode)
+-  (add-hook 'toml-ts-mode-hook #'treesit-fold-mode)
+-  
+-  ;; Third-party packages
+-  ;; (add-hook 'kotlin-ts-mode-hook #'treesit-fold-mode)
+-  ;; (add-hook 'swift-ts-mode-hook #'treesit-fold-mode)
+-  ;; (add-hook 'elixir-ts-mode-hook #'treesit-fold-mode)
+-  ;; (add-hook 'zig-ts-mode-hook #'treesit-fold-mode)
+-  
+-  )
+-
+-
+-(use-package savefold
+-  :disabled t
+-  ;;:ensure t
+-  :init
+-  ;;  list of symbols indicating active backends. Default: '(outline)
+-  (setq savefold-backends '(outline org hideshow treesit-fold markdown))
+-
+-  ;; The directory path where the serialization files are stored.
+-  (setq savefold-directory (locate-user-emacs-file "savefold"))
+-
+-  ;; When using `savefold' alongside `org-mode', configure the default Org startup
+-  ;; visibility to ensure that the saved state applies correctly without
+-  ;; conflicting with internal Org visibility cycles:
+-  (setq org-startup-folded 'showeverything)
+-
+-  :config
+-  ;;(savefold-mode 1)
+-  )
+-
+-
+-(use-package vimish-fold
+-  :disabled t
+-  ;;:ensure t
+-  :hook ((
+-          terraform-mode
+-          yaml-mode
+-          text-mode
+-          markdown-mode
+-          ) . vimish-fold-mode)
+-  ;; :bind
+-  ;; (("C-c C-f C-f" . vimish-fold)
+-  ;;  ("C-c C-f C-u" . vimish-fold-unfold)
+-  ;;  ("C-c C-f C-d" . vimish-fold-delete)
+-  ;;  ("C-c C-f C-r" . vimish-fold-refold)
+-  ;;  ("C-c C-f C-t" . vimish-fold-toggle)
+-  ;;  ("C-c C-f C-a C-f" . vimish-fold-fold-all)
+-  ;;  ("C-c C-f C-a C-u" . vimish-fold-unfold-all)
+-  ;;  ("C-c C-f C-a C-d" . vimish-fold-delete-all)
+-  ;;  ("C-c C-f C-a C-r" . vimish-fold-refold-all)
+-  ;;  ("C-c C-f C-a C-t" . vimish-fold-toggle-all)
+-  ;;  ("C-c C-f C-m" . vimish-fold-refold-all-from-marks))
+-  :config
+-  (defun vimish-fold-refold-all-from-marks ()
+-    "Clear all folds and refold from marks"
+-    (interactive)
+-    (vimish-fold-delete-all)
+-    (vimish-fold-from-marks)
+-    (vimish-fold-toggle-all))
+-  :custom
+-  (vimish-fold-find-marks-on-open t)
+-  (vimish-fold-persist-on-saving nil)
+-  (vimish-fold-show-lines nil)
+-  )
+-
+-;; C-c C-f C-f 	Fold region
+-;; C-c C-f C-u or C ` 	Unfold region
+-;; C-c C-f C-d 	Delete folded region
+-;; C-c C-f C-a C-f 	Fold all regions
+-;; C-c C-f C-a C-u 	Unfold all regions
+-;; C-c C-a C-d 	Delete all folded regions
+-
+-;; (use-package origami
+-;;   :ensure t
+-;;   :config
+-;;     (global-origami-mode 1)
+-;;     (setq origami-fold-style 'triple-braces)
+-;;     ;; (add-hook 'prog-mode-hook
+-;;     ;;   (lambda ()
+-;;     ;;     (setq-local origami-fold-style 'triple-braces)
+-;;     ;;     (origami-mode)
+-;;     ;;     (origami-close-all-nodes (current-buffer))))
+-;; )
+-
+-;; (use-package folding
+-;;   :ensure t
+-;; )
+-
+-
++;;; #PNX(OBS-07): Removed Kirigami, disabled Savefold and Vimish-Fold; use Outline, Hideshow and Tree-sitter folding by language.
++;; Outline-capable modes
++(dolist (hook '(emacs-lisp-mode-hook lisp-interaction-mode-hook lisp-mode-hook
++                conf-mode-hook markdown-mode-hook diff-mode-hook))
++  (add-hook hook #'outline-minor-mode))
++
++;; Indentation-aware folding for structured text.
++(dolist (hook '(python-mode-hook python-ts-mode-hook yaml-mode-hook yaml-ts-mode-hook
++                haskell-mode-hook))
++  (add-hook hook #'outline-indent-minor-mode))
++
++;; Legacy modes without a Tree-sitter folding implementation.
++(dolist (hook '(c-mode-hook c++-mode-hook java-mode-hook rust-mode-hook go-mode-hook
++                ruby-mode-hook php-mode-hook perl-mode-hook js-mode-hook
++                typescript-mode-hook css-mode-hook sh-mode-hook json-mode-hook
++                lua-mode-hook nxml-mode-hook html-mode-hook lisp-interaction-mode-hook))
++  (add-hook hook #'hs-minor-mode))
++
++;; Tree-sitter folding remains the structured-code default.
++(dolist (hook '(markdown-ts-mode-hook c-ts-mode-hook c++-ts-mode-hook java-ts-mode-hook
++                rust-ts-mode-hook go-ts-mode-hook ruby-ts-mode-hook php-ts-mode-hook
++                js-ts-mode-hook typescript-ts-mode-hook tsx-ts-mode-hook css-ts-mode-hook
++                html-ts-mode-hook bash-ts-mode-hook cmake-ts-mode-hook dockerfile-ts-mode-hook
++                json-ts-mode-hook toml-ts-mode-hook))
++  (add-hook hook #'treesit-fold-mode))
+ 
+ #+END_SRC
+ 
+@@ -1536,9 +932,6 @@
+ 
+   ;; @see: https://gitea.petton.fr/nico/emacs.d/src/commit/8ae2b902c916600c9296d967f36ed69ad50e8199/init.el?lang=sv-SE
+ 
+-  ;; (use-package pass
+-  ;;   :mode ("org/reference/password-store/" . pass-view-mode)
+-  ;;   :bind ("C-x p" . pass))
+ 
+ 
+ #+END_SRC
+@@ -1621,13 +1014,6 @@
+ ;; loginctl enable-linger USERNAME
+ ;;
+ 
+-;; (use-package edit-server
+-;;   :ensure t
+-;;   :if window-system
+-;;   ;;  :load-path "site-lisp/emacs_chrome/servers/"
+-;;   :init
+-;;   (add-hook 'after-init-hook 'server-start t)
+-;;   (add-hook 'after-init-hook 'edit-server-start t))
+ 
+ 
+ 
+@@ -1691,101 +1077,11 @@
+ 
+ #+END_SRC
+ 
+-*** Fontaine
+-#+NAME: fonts-fontain
+-#+begin_src emacs-lisp
+-
+-  ;; ---( fontaine )--------------------------------------------------------------
+-
+-  ;; @see: https://protesilaos.com/emacs/fontaine#h:031b9bea-d42b-4be0-82c7-42712cde94cc
+-  (use-package fontaine
+-    :disabled t
+-    ;;:ensure t
+-    :config
+-
+-    (setq fontaine-latest-state-file
+-          (locate-user-emacs-file "fontaine-latest-state.eld"))
+-
+-    ;; Iosevka Comfy is my highly customised build of Iosevka with
+-    ;; monospaced and duospaced (quasi-proportional) variants as well as
+-    ;; support or no support for ligatures:
+-    ;; <https://git.sr.ht/~protesilaos/iosevka-comfy>.
+-    ;;
+-    ;; Iosevka Comfy            == monospaced, supports ligatures
+-    ;; Iosevka Comfy Fixed      == monospaced, no ligatures
+-    ;; Iosevka Comfy Duo        == quasi-proportional, supports ligatures
+-    ;; Iosevka Comfy Wide       == like Iosevka Comfy, but wider
+-    ;; Iosevka Comfy Wide Fixed == like Iosevka Comfy Fixed, but wider
+-    (setq fontaine-presets
+-          '((tiny
+-             :default-family "Iosevka" ; "Iosevka Comfy Wide Fixed"
+-             :default-height 110)
+-            (small
+-             :default-family "Iosevka" ; "Iosevka Comfy Fixed"
+-             :default-height 140)
+-            (regular
+-             :default-family "Iosevka Nerd Font"
+-             :default-height 180)
+-            (medium
+-             :default-family "Iosevka Nerd Font"
+-             :default-height 160)
+-            (large
+-             :default-weight semilight
+-             :default-height 240
+-             :bold-weight extrabold)
+-            (presentation
+-             :default-weight semilight
+-             :default-height 280
+-             :bold-weight extrabold)
+-            (jumbo
+-             :default-weight semilight
+-             :default-height 320
+-             :bold-weight extrabold)
+-            (t
+-             ;; I keep all properties for didactic purposes, but most can be
+-             ;; omitted.  See the fontaine manual for the technicalities:
+-             ;; <https://protesilaos.com/emacs/fontaine>.
+-             :default-family "Iosevka" ; "Iosevka Comfy"
+-             :default-weight regular
+-             :default-height 140
+-             :fixed-pitch-family nil ; falls back to :default-family
+-             :fixed-pitch-weight nil ; falls back to :default-weight
+-             :fixed-pitch-height 1.0
+-             :fixed-pitch-serif-family nil ; falls back to :default-family
+-             :fixed-pitch-serif-weight nil ; falls back to :default-weight
+-             :fixed-pitch-serif-height 1.0
+-             :variable-pitch-family "Noto Sans Condensed" ; "Iosevka Comfy Duo"
+-             :variable-pitch-weight nil
+-             :variable-pitch-height 1.0
+-             :bold-family nil ; use whatever the underlying face has
+-             :bold-weight bold
+-             :italic-family nil
+-             :italic-slant italic
+-             :line-spacing nil)))
+-
+-    ;; Recover last preset or fall back to desired style from
+-    ;; `fontaine-presets'.
+-    (fontaine-set-preset (or (fontaine-restore-latest-preset) 'regular))
+-
+-
+-    ;; The other side of `fontaine-restore-latest-preset'.
+-    (add-hook 'kill-emacs-hook #'fontaine-store-latest-preset)
+-
+-    ;; fontaine does not define any key bindings.  This is just a sample that
+-    ;; respects the key binding conventions.  Evaluate:
+-    ;;
+-    ;;     (info "(elisp) Key Binding Conventions")
+-    (define-key global-map (kbd "C-c f") #'fontaine-set-preset)
+-    (define-key global-map (kbd "C-c F") #'fontaine-set-face-font)    
+-    )
+-
+-
+-
+-#+END_SRC
+-
+ *** Ligatures
+ #+NAME: fonts-ligatures
+ #+begin_src emacs-lisp
++
++;;; #PNX(OBS-10): Removed the empty Fontaine section; no Fontaine package or preset binding was configured.
+ 
+ ;; ---( ligatures )--------------------------------------------------------------
+ 
+@@ -1838,37 +1134,11 @@
+ 
+ ;;     (load-library "~/.emacs.d/local/repos/ligatures.el/ligatures")
+ 
+-;;     (use-package ligature
+-;;       ;;  :load-path "local/repos/ligatures.el/ligature"
+-;;       :config
+-;;       ;; Enable the "www" ligature in every possible major mode
+-;;       (ligature-set-ligatures 't '("www"))
+-;;       ;; Enable traditional ligature support in eww-mode, if the
+-;;       ;; `variable-pitch' face supports it
+-;;       (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
+-;;       ;; Enable all Cascadia Code ligatures in programming modes
+-;;       (ligature-set-ligatures 'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
+-;;                                            ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
+-;;                                            "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
+-;;                                            "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
+-;;                                            "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
+-;;                                            "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
+-;;                                            "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
+-;;                                            "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
+-;;                                            ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
+-;;                                            "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
+-;;                                            "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
+-;;                                            "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
+-;;                                            "\\\\" "://"))
+-;;       ;; Enables ligature checks globally in all buffers. You can also do it
+-;;       ;; per mode with `ligature-mode'.
+-;;       (global-ligature-mode t))
+ 
+ 
+ 
+ ;;     ;; (use-package fira-code-mode
+ ;;     ;;   :ensure t
+-;;     ;; ;; :disabled t
+ ;;     ;;   :custom (fira-code-mode-disabled-ligatures '("[]" "x"))  ; ligatures you don't want
+ ;;     ;;   :hook prog-mode)                                         ; mode to enable fira-code-mode in
+ 
+@@ -1882,31 +1152,6 @@
+ 
+ ;; @see: https://github.com/tonsky/FiraCode/issues/211#issuecomment-239058632
+ 
+-;; (use-package ligature
+-;;   ;;:load-path "path-to-ligature-repo"
+-;;   :config
+-;;   ;; Enable the "www" ligature in every possible major mode
+-;;   (ligature-set-ligatures 't '("www"))
+-;;   ;; Enable traditional ligature support in eww-mode, if the
+-;;   ;; `variable-pitch' face supports it
+-;;   (ligature-set-ligatures 'eww-mode '("ff" "fi" "ffi"))
+-;;   ;; Enable all Cascadia Code ligatures in programming modes
+-;;   (ligature-set-ligatures 'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
+-;;                                        ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
+-;;                                        "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
+-;;                                        "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
+-;;                                        "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
+-;;                                        "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
+-;;                                        "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
+-;;                                        "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
+-;;                                        ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
+-;;                                        "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
+-;;                                        "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
+-;;                                        "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
+-;;                                        "\\" "://"))
+-;;   ;; Enables ligature checks globally in all buffers. You can also do it
+-;;   ;; per mode with `ligature-mode'.
+-;;   (global-ligature-mode t))
+ 
+ 
+ #+END_SRC
+@@ -1987,18 +1232,7 @@
+ ;; @see: https://www.dyerdwelling.family/emacs/20240827210257-emacs--enhancing-eshell-to-be-more-fishy/
+ ;; @see: https://github.com/captainflasmr/Emacs/blob/main/emacs--init-all.org
+ 
+-(use-package cape
+-  :ensure t
+-  ;; :init
+-  ;; ;; Keep LSP/Eglot completion as the primary Python source.
+-  ;; ;; Add lightweight fallback sources after it.
+-  ;; (add-hook 'python-ts-mode-hook
+-  ;;           (lambda ()
+-  ;;             (add-hook 'completion-at-point-functions
+-  ;;                       #'cape-file nil t)
+-  ;;             (add-hook 'completion-at-point-functions
+-  ;;                       #'cape-dabbrev nil t)))
+-  )
++;;; #PNX(DUP-01): Consolidated the duplicate Cape declarations into the single CAPF configuration below.
+ 
+ (use-package capf-autosuggest
+   :ensure t
+@@ -2073,204 +1307,31 @@
+   )
+ 
+ #+END_SRC
+-*** Company
+-#+NAME: comp-ap-company
+-#+begin_src emacs-lisp
+-
+-;; ---( company )--------------------------------------------------------------
+-
+-
+-;; (with-eval-after-load 'company
+-;;   (define-key company-mode-map (kbd "<tab>") 'company-indent-or-complete-common))
+-
++*** Completion providers
++#+NAME: comp-ap-providers
++#+begin_src emacs-lisp
++
++;;; #PNX(OBS-01): Removed Auto-Complete and IDO; Corfu/Cape and Vertico/Consult are the supported completion frontends.
++;;; #PNX(ENH-04): Keep Company only as an optional source for legacy language backends, adapted to CAPF; never enable its UI.
+ (use-package company
+   :ensure t
+-  :diminish company-mode
+-  :commands company-mode
+-  :bind ("C-c C-SPC" . company-complete)
++  :defer t
++  :commands (company-mode company-complete))
++
++(use-package cape
++  :ensure t
++  :init
++  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
++  (add-to-list 'completion-at-point-functions #'cape-file)
+   :config
+-  (setq company-idle-delay 0.3)
+-  (global-company-mode nil)  
+-  ;; :hook (
+-  ;;        (text-mode . company-mode)
+-  ;;        (prog-mode . company-mode)
+-  ;;        )
+-  )
+-(use-package company-posframe
+-  :ensure t
+-  :init
+-  (company-posframe-mode 1)
+-  :diminish
+-  )
+-
+-
+-;; (use-package company
+-;;   :enabled t
+-;; ;; :disabled t
+-;;   :diminish company-mode
+-;;   :commands company-mode
+-;;   :bind ("C-c C-SPC" . company-complete)
+-;;   :init
+-;;   ;; (add-hook 'clojure-mode-hook 'company-mode)
+-;;   ;; (add-hook 'cider-repl-mode-hook 'company-mode)
+-;;   ;; (add-hook 'lisp-mode-hook 'company-mode)
+-;;   (add-hook 'emacs-lisp-mode-hook 'company-mode)
+-;;   ;; (add-hook 'lisp-interaction-mode-hook 'company-mode)
+-;;   ;; (add-hook 'ielm-mode-hook 'company-mode)
+-;;   ;; (add-hook 'json-mode-hook 'company-mode)
+-;;   :config
+-;;   (setq company-idle-delay 0.3)
+-;;   (global-company-mode t)  
+-;;   ;; (use-package helm-company :disabled t)
+-;;   :hook (
+-;;          (text-mode . company-mode)
+-;;          (prog-mode . company-mode)
+-;;          )
+-;;   )
+-
+-;; @see: https://cloudnine.github.io/science/2020-07-27-emacs-company-mode/
+-;; @see: https://github.com/mswift42/.emacs.d/blob/master/init.el
+-;; @see: https://medium.com/helpshift-engineering/configuring-emacs-from-scratch-use-package-c30382297877
+-;; (use-package company
+-;;   :bind (:map company-active-map
+-;;          ("C-n" . company-select-next)
+-;;          ("C-p" . company-select-previous))
+-;;   :config
+-;;   (setq company-idle-delay 0.3)
+-;;   (global-company-mode t))
+-
+-;; From https://github.com/company-mode/company-mode/issues/87
+-;; See also https://github.com/company-mode/company-mode/issues/123
+-;; (defadvice company-pseudo-tooltip-unless-just-one-frontend
+-;;     (around only-show-tooltip-when-invoked activate)
+-;;   (when (company-explicit-action-p)
+-;;     ad-do-it))
+-
+-#+END_SRC
+-
+-*** Auto-Complete
+-#+NAME: comp-ap-autocomplete
+-#+begin_src emacs-lisp
+-
+-;; ---( autocomplete )--------------------------------------------------------------
+-
+-(use-package auto-complete
+-  :disabled t
+-  :diminish auto-complete-mode
+-  :init
+-  (use-package pos-tip)
+-  (require 'auto-complete-config)
+-  (ac-config-default)
+-  :config
+-  ;; @see: http://auto-complete.org/doc/manual.html
+-  ;;(ac-set-trigger-key "<backtab>")
+-  ;;(ac-set-trigger-key "TAB")
+-  (setq ac-ignore-case 'smart)
+-  (setq ac-auto-start nil)
+-  (setq ac-use-menu-map t)
+-  ;;(define-key ac-mode-map (kbd "M-SPC") 'auto-complete)
+-  (define-key ac-mode-map  [(control menu)] 'auto-complete)
+-  (ac-set-trigger-key "TAB")
+-  ;; (define-key ac-completing-map "\M-/" 'ac-stop)
+-  ;; (define-key ac-completing-map "\t" 'ac-complete)
+-  ;; (define-key ac-completing-map "\r" nil)
+-  ;; (setq ac-use-menu-map t)
+-  ;; (define-key ac-menu-map "\C-n" 'ac-next)
+-  ;; (define-key ac-menu-map "\C-p" 'ac-previous)
+-  ;; (setq ac-use-quick-help nil)
+-  ;; (setq ac-menu-height 20)
+-  ;; (setq ac-show-menu-immediately-on-auto-complete t)
+-  ;; (setq ac-auto-show-menu 0.8)
+-  ;; (setq ac-delay 0.4)
+-
+-  ;; (setq-default ac-sources '(ac-source-filename
+-  ;;                            ac-source-functions
+-  ;;                            ac-source-yasnippet
+-  ;;                            ac-source-variables
+-  ;;                            ac-source-symbols
+-  ;;                            ac-source-features
+-  ;;                            ac-source-abbrev
+-  ;;                            ac-source-words-in-same-mode-buffers
+-  ;;                            ac-source-dictionary))
+-
+-  ;; (defun ac-emacs-lisp-mode-setup ()
+-  ;;   (setq ac-sources '(ac-source-symbols ac-source-words-in-same-mode-buffers)))
+-  ;; (add-hook 'c++-mode (lambda () (add-to-list 'ac-sources 'ac-source-semantic)))
+-
+-  ;; (bind-key "A-M-?" 'ac-last-help)
+-  ;; (unbind-key "C-s" ac-completing-map)
+-
+-  )
+-
+-#+END_SRC
+-
+-*** IDO
+-#+NAME: comp-ap-ido
+-#+begin_src emacs-lisp
+-
+-;; ---( ido )--------------------------------------------------------------
+-
+-(use-package ido
+-  :disabled t
+-  :defer 5
+-  :defines (ido-cur-item
+-            ido-require-match
+-            ido-selected
+-            ido-final-text
+-            ido-show-confirm-message)
+-  :bind (("C-x b" . ido-switch-buffer)
+-         ("C-x B" . ido-switch-buffer-other-window)
+-         ("M-x" . ido-hacks-execute-extended-command))
+-  :preface
+-  (eval-when-compile
+-    (defvar ido-require-match)
+-    (defvar ido-cur-item)
+-    (defvar ido-show-confirm-message)
+-    (defvar ido-selected)
+-    (defvar ido-final-text))
+-  (defun ido-smart-select-text ()
+-    "Select the current completed item. Do NOT descend into directories."
+-    (interactive)
+-    (when (and (or (not ido-require-match)
+-                   (if (memq ido-require-match
+-                             '(confirm confirm-after-completion))
+-                       (if (or (eq ido-cur-item 'dir)
+-                               (eq last-command this-command))
+-                           t
+-                         (setq ido-show-confirm-message t)
+-                         nil))
+-                   (ido-existing-item-p))
+-               (not ido-incomplete-regexp))
+-      (when ido-current-directory
+-        (setq ido-exit 'takeprompt)
+-        (unless (and ido-text (= 0 (length ido-text)))
+-          (let ((match (ido-name (car ido-matches))))
+-            (throw 'ido
+-                   (setq ido-selected
+-                         (if match
+-                             (replace-regexp-in-string "/\\'" "" match)
+-                           ido-text)
+-                         ido-text ido-selected
+-                         ido-final-text ido-text)))))
+-      (exit-minibuffer)))
+-  :config
+-  (ido-mode 'buffer)
+-  (use-package ido-hacks
+-    :config
+-    (ido-hacks-mode 1))
+-  (use-package ido-vertical-mode
+-    :disabled t
+-    :config
+-    (ido-vertical-mode 1))
+-  (use-package flx-ido
+-    :disabled t
+-    :config
+-    (flx-ido-mode 1))
+-  (add-hook 'ido-minibuffer-setup-hook
+-            #'(lambda ()
+-                (bind-key "<return>" 'ido-smart-select-text
+-                          ido-file-completion-map))))
+-
++  (setq cape-dabbrev-check-other-buffers t)
++  (defun h7/cape-company-backend (backend)
++    "Expose a legacy Company BACKEND through CAPF without enabling Company UI."
++    (require 'company)
++    (add-hook 'completion-at-point-functions
++              (cape-company-to-capf backend) nil t)))
++
++(global-set-key (kbd "C-c C-SPC") #'completion-at-point)
+ 
+ #+END_SRC
+ 
+@@ -2303,7 +1364,7 @@
+ ;; @see: https://protesilaos.com/codelog/2024-02-17-emacs-modern-minibuffer-packages/
+ ;; @see: https://kristofferbalintona.me/posts/202202211546/
+ 
+-(message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico))
++;;; #PNX(ENH-12): Removed startup diagnostics that called h7/use-vertico before site-func.el was loaded.
+ 
+ #+END_SRC
+ 
+@@ -2330,15 +1391,6 @@
+   (marginalia-mode 1)
+   )
+ 
+-;; (use-package marginalia
+-;;   :general
+-;;   (:keymaps 'minibuffer-local-map
+-;;             "M-A" 'marginalia-cycle)
+-;;   :custom
+-;;   (marginalia-max-relative-age 0)
+-;;   (marginalia-align 'right)
+-;;   :init
+-;;   (marginalia-mode))
+ 
+ 
+ (use-package all-the-icons-completion
+@@ -2363,20 +1415,6 @@
+   :bind (:map vertico-map
+               ("C-<return>" . vertico-exit-input))
+   )
+-;; (use-package vertico
+-;;   :custom
+-;;   (vertico-count 13)                    ; Number of candidates to display
+-;;   (vertico-resize t)
+-;;   (vertico-cycle nil) ; Go from last to first candidate and first to last (cycle)?
+-;;   :general
+-;;   (:keymaps 'vertico-map
+-;;             "<tab>" #'vertico-insert  ; Insert selected candidate into text area
+-;;             "<escape>" #'minibuffer-keyboard-quit ; Close minibuffer
+-;;             ;; NOTE 2022-02-05: Cycle through candidate groups
+-;;             "C-M-n" #'vertico-next-group
+-;;             "C-M-p" #'vertico-previous-group)
+-;;   :config
+-;;   (vertico-mode))
+ 
+ 
+ #+END_SRC
+@@ -2530,13 +1568,6 @@
+   :init
+   (setq completion-styles '(orderless)))
+ 
+-;; (use-package orderless
+-;;   :custom
+-;;   (completion-styles '(orderless))      ; Use orderless
+-;;   (completion-category-defaults nil)    ; I want to be in control!
+-;;   (completion-category-overrides
+-;;    '((file (styles basic-remote ; For `tramp' hostname completion with `vertico'
+-;;                    orderless)))))
+ 
+ 
+ #+END_SRC
+@@ -2580,18 +1611,8 @@
+   :hook
+   (embark-collect-mode . consult-preview-at-point-mode))
+ 
+-;; (use-package embark
+-;;   :ensure t)
+ 
+ ;; Consult users will also want the embark-consult package.
+-;; (use-package embark-consult
+-;;   :ensure t
+-;;   :after (embark consult)
+-;;   :demand t only necessary if you have the hook below
+-;;   if you want to have consult previews as you move around an
+-;;   auto-updating embark collect buffer
+-;;   :hook
+-;;   (embark-collect-mode . consult-preview-at-point-mode))
+ 
+ #+END_SRC
+ **** Savehist
+@@ -2620,7 +1641,7 @@
+ #+NAME: comp-mb-ver-end
+ #+begin_src emacs-lisp
+ 
+-(message "#vertico(0): '( (h7/use-vertico . %s) )" (h7/use-vertico)) 
++;;; #PNX(ENH-12): Removed startup diagnostics that called h7/use-vertico before site-func.el was loaded. 
+ ;; .........................................................................
+ 
+ #+END_SRC
+@@ -2674,6 +1695,8 @@
+ #+NAME: magit
+ #+begin_src emacs-lisp
+ 
++;;; #PNX(OBS-10): Removed disabled Magit extensions and obsolete Git UI experiments.
++
+   ;; ;;;////////////////////////////////////////////////////////////////
+   ;; {{{  @MAGIT
+   ;; ;;;////////////////////////////////////////////////////////////////
+@@ -2689,64 +1712,7 @@
+ 
+   ;; git config --global core.editor "`which emacsclient` -t -s $EMACS_SERVER_FILE"
+ 
+-  (use-package magit-zzz
+-    :disabled t
+-    :bind (("C-x g" . magit-status)
+-           ("C-x G" . magit-status-with-prefix))
+-    :preface
+-    (defun magit-monitor (&optional no-display)
+-      "Start git-monitor in the current directory."
+-      (interactive)
+-      (when (string-match "\\*magit: \\(.+?\\)\\*" (buffer-name))
+-        (let ((name (format "*git-monitor: %s*"
+-                            (match-string 1 (buffer-name)))))
+-          (or (get-buffer name)
+-              (let ((buf (get-buffer-create name)))
+-                (ignore-errors
+-                  (start-process "*git-monitor*" buf "git-monitor"
+-                                 "-d" (expand-file-name default-directory)))
+-                buf)))))
+-    (defun magit-status-with-prefix ()
+-      (interactive)
+-      (let ((current-prefix-arg '(4)))
+-        (call-interactively 'magit-status)))
+-    (defun lusty-magit-status (dir &optional switch-function)
+-      (interactive (list (if current-prefix-arg
+-                             (lusty-read-directory)
+-                           (or (magit-get-top-dir)
+-                               (lusty-read-directory)))))
+-      (magit-status-internal dir switch-function))
+-    (defun eshell/git (&rest args)
+-      (cond
+-       ((or (null args)
+-            (and (string= (car args) "status") (null (cdr args))))
+-        (magit-status-internal default-directory))
+-       ((and (string= (car args) "log") (null (cdr args)))
+-        (magit-log "HEAD"))
+-       (t (throw 'eshell-replace-command
+-                 (eshell-parse-command
+-                  "*git"
+-                  (eshell-stringify-list (eshell-flatten-list args)))))))
+-    :init
+-    (add-hook 'magit-mode-hook 'hl-line-mode)
+-    :config
+-    (setenv "GIT_PAGER" "")
+-    (use-package magit-backup
+-      :diminish magit-backup-mode)
+-    (use-package magit-review
+-      :disabled t
+-      :commands magit-review
+-      :config (require 'json))
+-    (unbind-key "M-h" magit-mode-map)
+-    (unbind-key "M-s" magit-mode-map)
+-    (unbind-key "M-m" magit-mode-map)
+-    (bind-key "M-H" #'magit-show-level-2-all magit-mode-map)
+-    (bind-key "M-S" #'magit-show-level-4-all magit-mode-map)
+-    (add-hook 'magit-log-edit-mode-hook
+-              #'(lambda ()
+-                  (set-fill-column 72)
+-                  (flyspell-mode)))
+-    (add-hook 'magit-status-mode-hook #'(lambda () (magit-monitor t))))
++  
+ 
+   ;; ---( git-timemachine )------------------------------------------------------------
+ 
+@@ -2755,19 +1721,10 @@
+     :bind
+     ("<C-i> h" . git-timemachine))
+ 
+-  ;; (use-package git-timemachine
+-  ;;   :ensure t
+-  ;;   :bind (("s-g" . git-timemachine)))
+ 
+   ;; ---( git-gutter-fringe )-----------------------------------------------------------
+ 
+-  (use-package git-gutter-fringe
+-    :disabled t
+-    :hook ((prog-mode     . git-gutter-mode)
+-           (yaml-mode     . git-gutter-mode)
+-           (org-mode      . git-gutter-mode)
+-           (markdown-mode . git-gutter-mode)
+-           (latex-mode    . git-gutter-mode)))
++  
+ 
+ 
+ 
+@@ -2777,32 +1734,7 @@
+   (use-package vdiff
+     :ensure t)
+ 
+-  (use-package vdiff-magit
+-    :disabled t
+-    :config
+-    (define-key magit-mode-map "e" 'vdiff-magit-dwim)
+-    (define-key magit-mode-map "E" 'vdiff-magit)
+-    (transient-suffix-put 'magit-dispatch "e" :description "vdiff (dwim)")
+-    (transient-suffix-put 'magit-dispatch "e" :command 'vdiff-magit-dwim)
+-    (transient-suffix-put 'magit-dispatch "E" :description "vdiff")
+-    (transient-suffix-put 'magit-dispatch "E" :command 'vdiff-magit)
+-
+-    ;; This flag will default to using ediff for merges.
+-    ;; (setq vdiff-magit-use-ediff-for-merges nil)
+-
+-    ;; Whether vdiff-magit-dwim runs show variants on hunks.  If non-nil,
+-    ;; vdiff-magit-show-staged or vdiff-magit-show-unstaged are called based on what
+-    ;; section the hunk is in.  Otherwise, vdiff-magit-dwim runs vdiff-magit-stage
+-    ;; when point is on an uncommitted hunk.
+-    ;; (setq vdiff-magit-dwim-show-on-hunks nil)
+-
+-    ;; Whether vdiff-magit-show-stash shows the state of the index.
+-    ;; (setq vdiff-magit-show-stash-with-index t)
+-
+-    ;; Only use two buffers (working file and index) for vdiff-magit-stage
+-    ;; (setq vdiff-magit-stage-is-2way nil)
+-
+-    )
++  
+ 
+   ;; }}}  .magit
+ 
+@@ -2967,11 +1899,6 @@
+   )
+ 
+ ;; ;; peep-dired: file preview
+-;; (use-package peep-dired
+-;;   :ensure t 
+-;;   :bind (:map peep-dired-mode-map
+-;;             ("SPC" . nil)
+-;;             ("<backspace>" . nil)))
+ 
+ 
+ ;; ---( ztree )--------------------------------------------------------------
+@@ -2997,19 +1924,23 @@
+ ;; ;;;////////////////////////////////////////////////////////////////
+ 
+ 
++;;; #PNX(DUP-04): Keep Projectile as a deferred compatibility layer for existing commands; do not enable it globally.
+ ;; ---( projectile )--------------------------------------------------------------
+ 
+ (use-package projectile
+   :ensure t
++  :defer t
++  :commands (projectile-run-vterm projectile-project-root projectile-dired
++             projectile-compile-project projectile-run-eshell)
+   :diminish projectile-mode
+   :init
+-  (make-directory (emacs-d "var") t)
++  (make-directory (expand-file-name "var" user-emacs-directory) t)
+   :config
+   (setq projectile-indexing-method 'hybrid
+         projectile-sort-order 'recentf
+         projectile-enable-caching t
+-        projectile-cache-file (emacs-d "var/projectile.cache")
+-        projectile-known-projects-file (emacs-d "var/projectile-bookmarks.eld"))
++        projectile-cache-file (expand-file-name "var/projectile.cache" user-emacs-directory)
++        projectile-known-projects-file (expand-file-name "var/projectile-bookmarks.eld" user-emacs-directory))
+   (add-to-list 'projectile-globally-ignored-files ".DS_Store")
+   (add-to-list 'projectile-globally-ignored-file-suffixes "o")
+   (add-to-list 'projectile-globally-ignored-file-suffixes "pyc")
+@@ -3027,17 +1958,14 @@
+   ;;(projectile-global-mode)
+   )
+ 
+-(use-package consult-projectile
+-  :ensure t
+-  )
++;;; #PNX(DUP-04): Removed consult-projectile; use built-in project.el with consult-project-buffer and project commands.
+ 
+ 
+ 
+ 
+ ;; ---( treemacs )--------------------------------------------------------------
+ 
+-;; Provides workspaces with file browsing (tree file viewer)
+-;; and project management when coupled with `projectile`.
++;; Provides a file tree; project.el remains the canonical project manager.
+ 
+ (use-package treemacs
+   :ensure t
+@@ -3060,11 +1988,10 @@
+                   treemacs-tags-face))
+     (set-face-attribute face nil :family "PT Sans Narrow" :height 120))
+   
+-  :bind ("C-c f" . treemacs))
+-
+-(use-package treemacs-projectile
+-  :after treemacs projectile
+-  :ensure t)
++  ;;; #PNX(ENH-05): Use C-c T for Treemacs; lowercase C-c t remains the Python pytest prefix.
++  :bind ("C-c T" . treemacs))
++
++;;; #PNX(DUP-04): Removed Treemacs/Projectile bridge; project.el remains the canonical project model.
+ 
+ (use-package treemacs-icons-dired
+   ;;:after treemacs dired
+@@ -3090,25 +2017,7 @@
+ 
+ ;; ---( gtags )--------------------------------------------------------------
+ 
+-(use-package gtags
+-  :disabled t
+-  :commands gtags-mode
+-  :diminish gtags-mode
+-  :config
+-  (bind-key "C-c t ." 'gtags-find-rtag)
+-  (bind-key "C-c t f" 'gtags-find-file)
+-  (bind-key "C-c t p" 'gtags-parse-file)
+-  (bind-key "C-c t g" 'gtags-find-with-grep)
+-  (bind-key "C-c t i" 'gtags-find-with-idutils)
+-  (bind-key "C-c t s" 'gtags-find-symbol)
+-  (bind-key "C-c t r" 'gtags-find-rtag)
+-  (bind-key "C-c t v" 'gtags-visit-rootdir)
+-  (bind-key "<mouse-2>" 'gtags-find-tag-from-here gtags-mode-map)
+-  (use-package helm-gtags
+-    :bind ("M-T" . helm-gtags-select)
+-    :config
+-    (bind-key "M-," 'helm-gtags-resume gtags-mode-map))
+-  )
++
+ 
+ 
+ 
+@@ -3120,95 +2029,14 @@
+ #+NAME: grep
+ #+begin_src emacs-lisp
+ 
+-;; ;;;////////////////////////////////////////////////////////////////
+-;; {{{  @GREP
+-;; ;;;////////////////////////////////////////////////////////////////
+-
+-;; ---( ack )--------------------------------------------------------------
+-
+-(use-package ack
+-  :disabled t)
+-;;(use-package ack-and-a-half)
+-
+-;; ---( ag )--------------------------------------------------------------
+-
+-
+-;; The `wgrep' packages lets us edit the results of a grep search
+-;; while inside a `grep-mode' buffer.  All we need is to toggle the
+-;; editable mode, make the changes, and then type C-c C-c to confirm
+-;; or C-c C-k to abort.
+-;;
+-;; Further reading: https://protesilaos.com/emacs/dotemacs#h:9a3581df-ab18-4266-815e-2edd7f7e4852
++;;; #PNX(OBS-06): Removed disabled ack and redundant ag/deadgrep/rg frontends; Consult + ripgrep is the primary search interface.
++;;; #PNX(DUP-02): Removed M-s d and M-s G overrides so Consult keeps consult-find and consult-git-grep.
+ (use-package wgrep
+   :ensure t
+-  :bind ( :map grep-mode-map
+-          ("e" . wgrep-change-to-wgrep-mode)
+-          ("C-x C-q" . wgrep-change-to-wgrep-mode)
+-          ("C-c C-c" . wgrep-finish-edit))
+-  :custom
+-  (wgrep-enable-key "e")
+-  (wgrep-auto-save-buffer )
+-  (twgrep-change-readonly-file t))
+-
+-(use-package ag
+-  :ensure t
+-  :custom
+-  (ag-highligh-search )
+-  (tag-reuse-buffers )
+-  (tag-reuse-window t)
+-  :bind
+-  ("M-s a" . ag-project)
+-  :config
+-  (use-package wgrep-ag
+-    :ensure t))
+-
+-;; ---( ripgrep )--------------------------------------------------------------
+-
+-(use-package rg
+-  :ensure t
+-  )
+-
+-
+-(use-package deadgrep
+-  :ensure t
+-  )
+-
+-
+-;; ---( grep )--------------------------------------------------------------
+-
+-(use-package grep
+-  :bind (("M-s d" . find-grep-dired)
+-         ("M-s F" . find-grep)
+-         ("M-s G" . grep)
+-         ("M-s p" . find-grep-in-project))
+-  :init
+-  (defun find-grep-in-project (command-args)
+-    (interactive
+-     (let ((default (thing-at-point 'symbol)))
+-       (list (read-shell-command "Run find (like this): "
+-                                 (cons (concat "git --no-pager grep -n "
+-                                               default)
+-                                       (+ 24 (length default)))
+-                                 'grep-find-history))))
+-    (if command-args
+-        (let ((null-device nil)) ; see grep
+-          (grep command-args))))
+-  :config
+-  (add-hook 'grep-mode-hook #'(lambda () (use-package grep-ed)))
+-  (grep-apply-setting 'grep-command "egrep -nH -e ")
+-  (if nil
+-      (progn
+-        (setq-default grep-first-column 1)
+-        (grep-apply-setting
+-         'grep-find-command
+-         '("ag --noheading --nocolor --smart-case --nogroup --column -- "
+-           . 61)))
+-    (grep-apply-setting
+-     'grep-find-command
+-     '("find . -type f -print0 | xargs -P4 -0 egrep -nH " . 49))))
+-
+-
+-;; }}}  .grep
++  :bind (:map grep-mode-map
++         ("e" . wgrep-change-to-wgrep-mode)
++         ("C-x C-q" . wgrep-change-to-wgrep-mode)
++         ("C-c C-c" . wgrep-finish-edit)))
+ 
+ #+END_SRC
+ 
+@@ -3216,6 +2044,8 @@
+ *** Shell/begin
+ #+NAME: shell-begin
+ #+begin_src emacs-lisp
++
++;;; #PNX(OBS-10): Removed disabled terminal, shell-toggle and Ranger experiments; retain the configured terminal stack.
+ 
+   ;; ;;;////////////////////////////////////////////////////////////////
+   ;; {{{  @SHELL
+@@ -3277,30 +2107,6 @@
+ ;; fi
+ 
+ 
+-;; (use-package ghostel
+-;;   :ensure t
+-;;   :bind (("C-x m" . ghostel)
+-;;          :map ghostel-semi-char-mode-map
+-;;          ("C-s"  . consult-line)
+-;;          ("C-k"  . my/ghostel-send-C-k-and-kill)
+-;;          ;; I'm used to go up/down the shell history with M-n/p from eshell
+-;;          ;; Simulate this behavior in ghostel by sending C-p and C-n
+-;;          ("M-p" . (lambda () (interactive) (ghostel-send-key "p" "ctrl")))
+-;;          ("M-n" . (lambda () (interactive) (ghostel-send-key "n" "ctrl")))
+-;;          :map project-prefix-map
+-;;          ("m" . ghostel-project)
+-;;          ("M" . ghostel-project-list-buffers))
+-;;   :config
+-;;   (defun my/ghostel-send-C-k-and-kill ()
+-;;     "Send `C-k' to ghostel.
+-;; Like normal Emacs `C-k'.  Kill to end of line and put content in kill-ring."
+-;;     (interactive)
+-;;     (kill-ring-save (point) (line-end-position))
+-;;     (ghostel-send-key "k" "ctrl"))
+-
+-;;   (add-to-list 'project-switch-commands '(ghostel-project "Ghostel") t)
+-;;   (add-to-list 'project-switch-commands '(ghostel-project-list-buffers "Ghostel buffers") t)
+-;;   (add-to-list 'ghostel-eval-cmds '("magit-status-setup-buffer" magit-status-setup-buffer)))
+ 
+ ;; ---( vterm )--------------------------------------------------------------
+ 
+@@ -3383,10 +2189,6 @@
+       :ensure t)
+ 
+     ;; @see: https://lupan.pl/dotemacs/
+-    ;; (use-package vterm-toggle
+-    ;;   :bind (("H-z" . vterm-toggle)
+-    ;;          ("H-F" . vterm-toggle-forward)
+-    ;;          ("H-B" . vterm-toggle-backward)))
+ 
+     (setq h7/term-vterm-enabled t)
+ 
+@@ -3397,34 +2199,6 @@
+ 
+ ;; ---( multi-term )--------------------------------------------------------------
+ 
+-;; (use-package multi-term
+-;;   :disabled t
+-;;   :bind (("C-. t" . multi-term-next)
+-;;          ("C-. T" . multi-term))
+-;;   :init
+-;;   (defun screen ()
+-;;     (interactive)
+-;;     (let (term-buffer)
+-;;       ;; Set buffer.
+-;;       (setq term-buffer
+-;;             (let ((multi-term-program (executable-find "screen"))
+-;;                   (multi-term-program-switches "-DR"))
+-;;               (multi-term-get-buffer)))
+-;;       (set-buffer term-buffer)
+-;;       ;; Internal handle for `multi-term' buffer.
+-;;       (multi-term-internal)
+-;;       ;; Switch buffer
+-;;       (switch-to-buffer term-buffer)))
+-;;   :config
+-;;   (defalias 'my-term-send-raw-at-prompt 'term-send-raw)
+-;;   (defun my-term-end-of-buffer ()
+-;;     (interactive)
+-;;     (call-interactively #'end-of-buffer)
+-;;     (if (and (eobp) (bolp))
+-;;         (delete-char -1)))
+-;;   (require 'term)
+-;;   (defadvice term-process-pager (after term-process-rebind-keys activate)
+-;;     (define-key term-pager-break-map "\177" 'term-pager-back-page)))
+ 
+ 
+ #+END_SRC
+@@ -3561,8 +2335,7 @@
+   
+   (bind-key "C-!" 'eshell-here)
+   (bind-key "M-r" 'consult-history)
+-  (bind-key "M-r" 'consult-history)
+-  (bind-key "M-c" 'company-complete)
++  (bind-key "M-c" #'completion-at-point)
+   
+   (message "eshell:helpers <")
+   
+@@ -3927,9 +2700,6 @@
+   :bind
+   ("C-~" . eshell-toggle))
+ 
+-;; (use-package esh-toggle
+-;;   :ensure t
+-;;   :bind ("C-x C-h" . eshell-toggle))
+ 
+ 
+ ;; ---( eshell-syntax-hl )--------------------------------------------------------------
+@@ -3950,7 +2720,6 @@
+ ;; ---( eshell-vterm )--------------------------------------------------------------
+ 
+ (use-package eshell-vterm
+-  ;; :disabled t
+   :ensure t
+   :demand t
+   :after eshell
+@@ -3960,7 +2729,6 @@
+ ;; ---( pcomplete )--------------------------------------------------------------
+ 
+ (use-package pcmpl-args
+-  ;; :disabled t
+   :ensure t
+   )
+ 
+@@ -3968,7 +2736,6 @@
+ 
+ ;;
+ (use-package eat
+-  ;;:disabled t
+   :ensure t
+   ;;:hook (eshell-load . eat-eshell-mode)
+   :hook (eshell-load . eat-eshell-visual-command-mode)
+@@ -4092,19 +2859,7 @@
+ 
+ ;; ---( projector )--------------------------------------------------------------
+ 
+-(use-package projector
+-  ;;:ensure t
+-  :disabled t
+-  :config
+-  ;; Recommended for handling exit messages of async processes
+-  (setq alert-default-style 'notifier)
+-  
+-  ;; Example: Run specific commands always in the background
+-  (setq projector-always-background-regex '("^xdg-open\\.*"))
+-  ;;(setq projector-always-background-regex '("^mysql.server\\.*" "^powder\\.*"))
+-  
+-  ;; Example: Map specific commands to a specialized mode
+-  (setq projector-command-modes-alist '(("^heroku run\\.*" . inf-ruby-mode))))
++
+ 
+ #+END_SRC
+ 
+@@ -4132,10 +2887,6 @@
+ 
+   ;; @see: https://github.com/federicotdn/flymake-shellcheck
+   ;; alt-x flymake-mode
+-  ;; (use-package flymake-shellcheck
+-  ;;   :commands flymake-shellcheck-load
+-  ;;   :init
+-  ;;   (add-hook 'sh-mode-hook 'flymake-shellcheck-load))
+ 
+ 
+ #+END_SRC
+@@ -4146,86 +2897,12 @@
+ 
+   ;; ---( ranger )--------------------------------------------------------------
+ 
+-  (use-package ranger
+-    ;; :ensure t
+-    :disabled t
+-    ;;:bind ("C-, C-," . ranger)
+-    )
+-
+-  ;; (use-package ranger
+-  ;;   :custom
+-  ;;   (;; (ranger-override-dired mode t)
+-  ;;    (ranger-cleanup-on-disable t)
+-  ;;    (ranger-dont-show-binary t)))
++  
++
+ 
+   ;; ;; ---( sunrise-commander )--------------------------------------------------------------
+ 
+ 
+-  ;; (use-package sunrise-commander
+-  ;;   :bind (("C-c j" . my-activate-sunrise)
+-  ;; 	 ("C-c C-j" . sunrise-cd))
+-  ;;   :commands sunrise
+-  ;;   :defines sr-tabs-mode-map
+-  ;;   :preface
+-  ;;   (defun my-activate-sunrise ()
+-  ;;     (interactive)
+-  ;;     (let ((sunrise-exists
+-  ;; 	   (loop for buf in (buffer-list)
+-  ;; 		 when (string-match " (Sunrise)$" (buffer-name buf))
+-  ;; 		 return buf)))
+-  ;;       (if sunrise-exists
+-  ;; 	  (call-interactively 'sunrise)
+-  ;; 	(sunrise "~/dl/" "~/Archives/"))))
+-  ;;   :config
+-  ;;   (require 'sunrise-x-modeline)
+-  ;;   (require 'sunrise-x-tree)
+-  ;;   (require 'sunrise-x-tabs)
+-  ;;   (bind-key "/" 'sr-sticky-isearch-forward sr-mode-map)
+-  ;;   (bind-key "<backspace>" 'sr-scroll-quick-view-down sr-mode-map)
+-  ;;   (bind-key "C-x t" 'sr-toggle-truncate-lines sr-mode-map)
+-  ;;   (bind-key "q" 'sr-history-prev sr-mode-map)
+-  ;;   (bind-key "z" 'sr-quit sr-mode-map)
+-  ;;   (unbind-key "C-e" sr-mode-map)
+-  ;;   (unbind-key "C-p" sr-tabs-mode-map)
+-  ;;   (unbind-key "C-n" sr-tabs-mode-map)
+-  ;;   (unbind-key "M-<backspace>" sr-term-line-minor-mode-map)
+-  ;;   (bind-key "M-[" 'sr-tabs-prev sr-tabs-mode-map)
+-  ;;   (bind-key "M-]" 'sr-tabs-next sr-tabs-mode-map)
+-  ;;   (defun sr-browse-file (&optional file)
+-  ;;     "Display the selected file with the default appication."
+-  ;;     (interactive)
+-  ;;     (setq file (or file (dired-get-filename)))
+-  ;;     (save-selected-window
+-  ;;       (sr-select-viewer-window)
+-  ;;       (let ((buff (current-buffer))
+-  ;; 	    (fname (if (file-directory-p file)
+-  ;; 		       file
+-  ;; 		     (file-name-nondirectory file)))
+-  ;; 	    (app (cond
+-  ;; 		  ((eq system-type 'darwin) "open %s")
+-  ;; 		  ((eq system-type 'windows-nt) "open %s")
+-  ;; 		  (t "xdg-open %s"))))
+-  ;; 	(start-process-shell-command "open" nil (format app file))
+-  ;; 	(unless (eq buff (current-buffer))
+-  ;; 	  (sr-scrollable-viewer (current-buffer)))
+-  ;; 	(message "Opening \"%s\" ..." fname))))
+-  ;;   (defun sr-goto-dir (dir)
+-  ;;     "Change the current directory in the active pane to the given one."
+-  ;;     (interactive (list (progn
+-  ;; 			 (require 'lusty-explorer)
+-  ;; 			 (lusty-read-directory))))
+-  ;;     (if sr-goto-dir-function
+-  ;; 	(funcall sr-goto-dir-function dir)
+-  ;;       (unless (and (eq major-mode 'sr-mode)
+-  ;; 		   (sr-equal-dirs dir default-directory))
+-  ;; 	(if (and sr-avfs-root
+-  ;; 		 (null (posix-string-match "#" dir)))
+-  ;; 	    (setq dir (replace-regexp-in-string
+-  ;; 		       (expand-file-name sr-avfs-root) "" dir)))
+-  ;; 	(sr-save-aspect
+-  ;; 	 (sr-within dir (sr-alternate-buffer (dired dir))))
+-  ;; 	(sr-history-push default-directory)
+-  ;; 	(sr-beginning-of-buffer)))))
+ 
+ #+END_SRC
+ 
+@@ -4235,10 +2912,7 @@
+ 
+   ;; ---( sh-toggle )--------------------------------------------------------------
+ 
+-  (use-package sh-toggle
+-    :disabled t
+-    :bind ("C-. C-z" . shell-toggle)
+-    )
++  
+ 
+ 
+ 
+@@ -4339,12 +3013,6 @@
+ ;; markdownlint-cli2
+ ;; @see: https://claude.ai/share/0d9878e9-e353-4d70-8577-681d2e8b97d0
+ 
+-;; (use-package add-node-modules-path
+-;;   :ensure t
+-;;   :config
+-;;   (setq add-node-modules-path-command "echo \"$(npm root)/.bin\"")
+-;;   :hook
+-;;   (markdown-mode . add-node-modules-path))
+ 
+ 
+ ;; ---( pandoc )--------------------------------------------------------------
+@@ -4367,11 +3035,6 @@
+   (use-package css-mode
+     :mode ("\\.css\\'" . css-mode))
+ 
+-  ;; (use-package rainbow-mode
+-  ;;   :disabled t	     
+-  ;;   :config
+-  ;;   (add-hook 'css-mode-hook 'rainbow-mode)
+-  ;;   (add-hook 'less-mode-hook 'rainbow-mode))
+ 
+   ;; ---( nxml )--------------------------------------------------------------
+ 
+@@ -4383,38 +3046,8 @@
+   )
+ 
+ 
+-  ;; (use-package nxml-mode
+-  ;;   :commands nxml-mode
+-  ;;   :init
+-  ;;   (defalias 'xml-mode 'nxml-mode)
+-  ;;   :config
+-
+-  ;;   (defun my-nxml-mode-hook ()
+-  ;;     (bind-key "<return>" 'newline-and-indent nxml-mode-map))
+-  ;;   (add-hook 'nxml-mode-hook 'my-nxml-mode-hook)
+-  ;;   (defun tidy-xml-buffer ()
+-  ;;     (interactive)
+-  ;;     (save-excursion
+-  ;;       (call-process-region (point-min) (point-max) "tidy" t t nil
+-  ;;                            "-xml" "-i" "-wrap" "0" "-omit" "-q" "-utf8")))
+-  ;;   (bind-key "C-c M-h" 'tidy-xml-buffer nxml-mode-map)
+-  ;;   (setq ac-sources '(ac-source-symbols ac-source-words-in-same-mode-buffers)))
+-
+-
+-  ;; (use-package web-mode
+-  ;;   :disabled t	     
+-  ;;   :config
+-  ;;   (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+-  ;;   (add-to-list 'auto-mode-alist '("\\.htm\\'" . web-mode))
+-  ;;   (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+-  ;;   (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+-  ;;   (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+-  ;;   (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+-  ;;   (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+-  ;;   (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+-  ;;   (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+-
+-  ;;   (setq web-mode-css-indent-offset 2))
++
++
+ 
+ #+END_SRC
+ 
+@@ -4431,6 +3064,8 @@
+ #+NAME: lang-begin
+ #+begin_src emacs-lisp
+ 
++;;; #PNX(OBS-10): Removed disabled language modes and legacy integrations (including ENSIME, Poly-R and unsupported language stubs).
++
+   ;; ;;;////////////////////////////////////////////////////////////////
+   ;; {{{  @LANG
+   ;; ;;;////////////////////////////////////////////////////////////////
+@@ -4451,8 +3086,8 @@
+   ;; @see
+   (message "https://emacs-lsp.github.io/lsp-mode/page/languages/")
+ 
+-  ;; python
+-  (lsp-install-server t 'pyright)
++  ;; #PNX(ENH-03): Basedpyright is installed with uv, not lsp-mode's Pyright installer.
++  (message "uv tool install basedpyright")
+   
+     ;; html
+   (lsp-install-server t 'html-ls) 
+@@ -4477,156 +3112,6 @@
+   ;; prolog
+   
+   (message "swipl -g 'pack_install(lsp_server).")
+-  )
+-
+-
+-#+END_SRC
+-**** Lang: LSP.mode
+-#+NAME: lang-lsp.mode
+-#+begin_src emacs-lisp
+-
+-;; ---( flycheck )------------------------------------------------------------
+-
+-(use-package flycheck
+-  :ensure t
+-  :init
+-  ;; Flycheck is used by lsp-mode.
+-  ;; Eglot uses Flymake and therefore does not depend on Flycheck.
+-  (global-flycheck-mode 1)
+-  
+-  :config
+-  ;; Ensure markdownlint-cli2 is the preferred checker
+-  (flycheck-add-mode 'markdown-markdownlint-cli 'markdown-ts-mode)  
+-  )
+-
+-;; ---( LSP mode )------------------------------------------------------------
+-
+-(use-package lsp-mode
+-  :ensure t
+-  :init
+-  ;; "C-l" shadows recenter-top-bottom; use the standard lsp prefix.
+-  ;;(setq lsp-keymap-prefix "C-c l")    
+-  (setq lsp-keymap-prefix "C-l")
+-
+-
+-  :hook
+-  ;; LSP is the default backend.  The buffer-local flag is set by
+-  ;; h7/python-lsp-switch before Eglot is started.
+-  (python-mode
+-   . (lambda ()
+-       (unless (bound-and-true-p h7/python-use-eglot)
+-         (lsp-deferred))))
+-
+-  (python-ts-mode
+-   . (lambda ()
+-       (unless (bound-and-true-p h7/python-use-eglot)
+-         (lsp-deferred))))
+-
+-  (lsp-mode . lsp-enable-which-key-integration)
+-
+-  ;; Retain the tree-sitter refontification workaround only while LSP
+-  ;; actually owns the buffer.
+-  (lsp-managed-mode-hook
+-   . (lambda ()
+-       (when (derived-mode-p 'python-ts-mode)
+-         (when (fboundp #'treesit-font-lock-refontify)
+-           (treesit-font-lock-refontify)))))
+-  
+-  :commands (lsp lsp-deferred)
+-  :custom
+-  ;; Large Python projects / PyTorch type stubs.
+-  (read-process-output-max (* 1024 1024))
+-
+-  ;; Normal Python diagnostics are presented through Flycheck.
+-  (lsp-diagnostics-provider :flycheck)
+-
+-  ;; basedpyright is the Python language server; don't allow pylsp/pyls.
+-  (lsp-disabled-clients '(pyls pylsp))
+-
+-  ;; No yasnippet dependency.
+-  (lsp-enable-snippet nil)
+-
+-  ;; Useful for large class hierarchies.
+-  (lsp-headerline-breadcrumb-enable t)
+-  (lsp-headerline-breadcrumb-segments '(project file symbols))
+-
+-  ;; Avoid the additional lens traffic.
+-  (lsp-lens-enable nil)
+-
+-  ;; Responsive diagnostics/completion.
+-  (lsp-idle-delay 0.3)
+-  :config
+-  (dolist (dir '(
+-                 "[/\\\\]\\.cache"
+-                 "[/\\\\]\\.mypy_cache"
+-                 "[/\\\\]\\.pytest_cache"
+-                 "[/\\\\]\\.Rproj.user"
+-                 "[/\\\\]venv$"
+-                 "[/\\\\]build$"
+-                 "[/\\\\]dist$"
+-                 "[/\\\\]docker$"
+-                 "[/\\\\]notes$"
+-                 "[/\\\\]data$"
+-                 "[/\\\\]home$"
+-                 "[/\\\\]logs$"
+-                 "[/\\\\]renv$"
+-                 "[/\\\\]temp$"
+-                 "[/\\\\]_targets"
+-                 ))
+-    ;;(push dir lsp-file-watch-ignored-directories)
+-    (cl-pushnew dir lsp-file-watch-ignored-directories :test #'equal)
+-    )
+-  )
+-
+-(use-package lsp-ui
+-  :ensure t
+-  :after lsp-mode
+-  :hook
+-  (lsp-mode . lsp-ui-mode)
+-  :bind
+-  (:map lsp-ui-mode-map
+-        ("C-c i" . lsp-ui-imenu))
+-  :custom
+-  (lsp-ui-doc-position 'at-point)
+-  (lsp-ui-doc-enable t)
+-  
+-  ;; Show on demand only (M-. or hover); avoid constant pop-up noise.
+-  (lsp-ui-doc-show-with-cursor nil)
+-  
+-  (lsp-ui-sideline-enable t)
+-  (lsp-ui-sideline-show-diagnostics t)
+-  (lsp-ui-sideline-show-code-actions nil)
+-  
+-  (lsp-ui-imenu-enable t)
+-  (lsp-ui-flycheck-enable t)
+-  (lsp-ui-doc-delay 1.5)
+-  )
+-
+-
+-(use-package consult-lsp
+-  :ensure t
+-  :defer t
+-  :after lsp-mode
+-  :commands
+-  (consult-lsp-diagnostics
+-   consult-lsp-symbols
+-   consult-lsp-file-symbols)
+-  )
+-
+-;; (use-package company-lsp
+-;;   :ensure t
+-;;   :defer t
+-;;   :after lsp
+-;;   :commands company-lsp
+-;;   )
+-
+-
+-(use-package lsp-treemacs
+-  :ensure t
+-  :defer t
+-  :after lsp-mode
+-  :commands
+-  lsp-treemacs-errors-list
+   )
+ 
+ 
+@@ -4751,19 +3236,8 @@
+           (mapcar #'car treesit-language-source-alist))
+ 
+   
+-    (setq major-mode-remap-alist
+-          '(;;      (ada-mode . ada-ts-mode)
+-            ;;      (yaml-mode . yaml-ts-mode)
+-            (toml-mode . toml-ts-mode)
+-            ;;      (bash-mode . bash-ts-mode)
+-            ;;      (sh-mode . bash-ts-mode)
+-            ;;      (js2-mode . js-ts-mode)
+-            ;;      (typescript-mode . typescript-ts-mode)
+-            ;;      (conf-colon-mode . json-ts-mode)
+-            ;;      (json-mode . json-ts-mode)
+-            ;;      (css-mode . css-ts-mode)
+-            ;;      (python-mode . python-ts-mode)
+-          ))
++    ;;; #PNX(ENH-08): Add the TOML remapping without overwriting remappings managed by treesit-auto.
++    (add-to-list 'major-mode-remap-alist '(toml-mode . toml-ts-mode))
+   )
+ 
+ (use-package treesit-auto
+@@ -4787,10 +3261,7 @@
+ 
+   ;; ---( yasnippet )--------------------------------------------------------------
+ 
+-  (use-package yasnippet
+-    :disabled t
+-    :config
+-    (yas-reload-all))
++  
+ 
+ 
+ #+END_SRC
+@@ -4817,6 +3288,9 @@
+ #+NAME: lang-r.ess
+ #+begin_src emacs-lisp
+ 
++;;; #PNX(OBS-10): Removed disabled ESS extensions; retain ESS as the R editing and REPL integration.
++
++  ;;; #PNX(DUP-06): ESS M-c M-j/M-c M-r/M-c M-e now each have a single, unambiguous binding.
+   ;; ---( R )--------------------------------------------------------------
+ 
+   (use-package ess
+@@ -4853,7 +3327,6 @@
+                 (define-key ess-mode-map (kbd "M-c M-p")      'ess-eval-paragraph-and-go)
+                 (define-key ess-mode-map (kbd "M-c M-x")      'ess-eval-region-or-function-or-paragraph)
+                 (define-key ess-mode-map (kbd "M-c M-n")      'ess-eval-line-and-step)
+-                (define-key ess-mode-map (kbd "M-c M-j")      'ess-eval-line)
+                 (define-key ess-mode-map [(control return)]   'ess-eval-region-or-line-and-step)
+                 (define-key ess-mode-map (kbd "M-c M-j")      'ess-eval-line-and-go)
+                 ;; the next three can only work in S/R - mode {FIXME}
+@@ -4898,13 +3371,13 @@
+ 
+                 ;;(define-key ess-mode-map "\t"               'ess-indent-or-complete)
+                 (define-key ess-mode-map (kbd "M-c C-q")      'ess-quit)
+-                (define-key ess-mode-map (kbd "M-c M-r")      'ess-use-this-dir)
++                (define-key ess-mode-map (kbd "M-c M-u")      'ess-use-this-dir)
+ 
+                 ;; smart operators; most likely will go in the future into a separate local map
+                 ;;(define-key map ","          'ess-smart-comma)
+ 
+                 (define-key ess-mode-map (kbd "M-c M-d")       'ess-doc-map)
+-                (define-key ess-mode-map (kbd "M-c M-e")       'ess-extra-map)
++                (define-key ess-mode-map (kbd "M-c M-E")       'ess-extra-map)
+                 (define-key ess-mode-map (kbd "M-c M-t")       'ess-dev-map)
+                 (define-key ess-mode-map (kbd "M-c C-d")       'ess-doc-map)
+                 (define-key ess-mode-map (kbd "M-c C-e")       'ess-extra-map)
+@@ -4933,11 +3406,9 @@
+   (use-package ess-R-object-popup
+     :defer t)
+ 
+-  (use-package ess-R-data-smart-equals
+-    :disabled t)
+-
+-  (use-package ess-R-data-smart-underscore
+-    :disabled t)
++  
++
++  
+ 
+ 
+ #+END_SRC
+@@ -4967,14 +3438,14 @@
+   )
+ )
+ 
+-(use-package poly-R
+-  :disabled t
+-)
++
+ 
+ 
+ #+END_SRC
+ 
+ *** Lang: Python
++;;; #PNX(OBS-04): Removed disabled Elpy; lsp-mode/Eglot with basedpyright and Ruff replace its legacy workflow.
++;;; #PNX(OBS-05): Removed disabled EIN; Jupytext/code-cells remain the notebook workflow.
+ **** Lang: Python/mode
+ #+NAME: lang-python.mode
+ #+begin_src emacs-lisp
+@@ -4989,32 +3460,24 @@
+ ;; Python Mode
+ ;; ---------------------------------------------------------------------------
+ 
++;;; #PNX(ENH-02): Move interpreter selection into :init; :custom is only for variable/value pairs.
+ (use-package python
+   :ensure nil
+-  :hook
+-  ;; Keep this hook intentionally small.  Python LSP policy is handled above.
+-  ((python-mode . (lambda ()
+-                    (setq-local h7/python-use-eglot nil)))
+-   (python-ts-mode . (lambda ()
+-                       (setq-local h7/python-use-eglot nil))))
+-  :custom
+-  (python-indent-guess-indent-offset-verbose nil)
+-  (treesit-font-lock-level 4)
+-  ;; Prefer IPython for interactive Python execution.
++  :init
+   (cond
+    ((executable-find "ipython")
+     (setq python-shell-buffer-name "IPython"
+           python-shell-interpreter "ipython"
+           python-shell-interpreter-args "-i --simple-prompt"))
+-
+    ((executable-find "python3")
+     (setq python-shell-interpreter "python3"))
+-
+-   ((executable-find "python2")
+-    (setq python-shell-interpreter "python2"))
+-
++   ((executable-find "python")
++    (setq python-shell-interpreter "python"))
+    (t
+-    (setq python-shell-interpreter "python"))))
++    (setq python-shell-interpreter "python3")))
++  :custom
++  (python-indent-guess-indent-offset-verbose nil)
++  (treesit-font-lock-level 4))
+ 
+ 
+ ;; ---------------------------------------------------------------------------
+@@ -5037,426 +3500,228 @@
+ **** Lang: Python/env
+ #+NAME: lang-python.env
+ #+begin_src emacs-lisp
+-;; ---( uv / virtual env integration )------------------------------------------
+-;; Architecture:
+-;; uv-mode – activates the .venv found by uv for shell commands
+-;; pet – resolves the exact interpreter from pyproject.toml / uv.lock
+-;; and wires it into LSP before lsp-deferred fires
+-;; pyvenv-auto – silently activates .venv / venv on buffer/dired entry
+-;;
+-;; poetry and pipenv hooks have been removed; poetry tracking caused conflicts
+-;; with uv-mode and added latency on post-command-hook.
+-
+-;; ---( uv-mode )-------------------------------------------------------------
+-;; uv-mode sets PATH / VIRTUAL_ENV for the current project's .venv
+-
++
++;;; #PNX(DUP-01): Removed pyvenv-auto; uv-mode activates the project .venv and PET resolves the project interpreter.
+ (use-package uv-mode
+   :ensure t
+   :hook ((python-mode . uv-mode-auto-activate-hook)
+-         (python-ts-mode . uv-mode-auto-activate-hook))
+-  )
+-
+-
+-;; ---( pet: Python Executable Tracker )--------------------------------------
+-;; pet reads uv.lock / pyproject.toml / .python-version to resolve the exact
+-;; interpreter, then sets buffer-local variables consumed by lsp-pyright.
+-  
++         (python-ts-mode . uv-mode-auto-activate-hook)))
++
+ (use-package pet
+   :ensure t
++  :hook (python-base-mode . pet-mode)
+   :config
+-  (add-hook 'python-base-mode-hook
+-            (lambda ()
+-              (setq-local python-shell-interpreter
+-                          (or (pet-executable-find "python") "python3")
+-                          python-shell-interpreter-args "-i")
+-              (pet-mode)))
+-  ;; Wire pet's resolved venv into lsp-pyright before the server starts.
+   (add-hook 'pet-mode-hook
+             (lambda ()
+-              (when-let* ((root (pet-virtualenv-root)))
+-                (setq-local
+-                 lsp-pyright-venv-path
+-                 (file-name-directory (directory-file-name root))
+-                 lsp-pyright-python-executable-cmd
+-                 (pet-executable-find "python"))))))  
+-
+-
+-
+-;; ---( pyvenv-auto )---------------------------------------------------------
+-;; pyvenv-auto activates .venv automatically on project entry; it also
+-;; triggers pyvenv-post-activate-hooks which restarts the Python process.
+-(use-package pyvenv-auto
+-  :ensure t
+-  :hook ((python-mode . pyvenv-auto-run)
+-         (python-ts-mode . pyvenv-auto-run)))
+-
+-
+-;; ;; Keep pyvenv available for manual workon and menu-bar integration.
+-;; (use-package pyvenv
+-;;   :ensure t
+-;;   :defer t
+-;;   :config
+-;;   ;; Update WORKON_HOME to the uv global venv store.
+-;;   (setenv "WORKON_HOME" (expand-file-name "~/.local/share/uv/venvs"))
+-;;   (setq pyvenv-menu t))
+-
+-
+-;; ---( virtual env )------------------------------------------------------------
+-;; used by dap-mode's dap-python--pyenv-executable-find
+-
++              (when-let* ((python (pet-executable-find "python")))
++                (setq-local python-shell-interpreter python
++                            python-shell-interpreter-args "-i")
++                (when (boundp 'lsp-pyright-python-executable-cmd)
++                  (setq-local lsp-pyright-python-executable-cmd python))))))
++
++;; Required by dap-mode's dap-python--pyenv-executable-find.
+ (use-package with-venv
+-  :ensure t)
+-
+-
+-
+-
+-;; ---( poetry: disabled )----------------------------------------------------
+-;; poetry tracking hooks have been replaced by pet + uv-mode.
+-;; The package is kept as disabled so the tangle does not break any
+-;; residual callers in other files that may still reference it
+-
+-(use-package poetry
+-  :ensure t
+-  :disabled t  
+-  ;; :config
+-  ;; (add-hook 'poetry-tracking-mode-hook (lambda () (remove-hook 'post-command-hook 'poetry-track-virtualenv)))
+-  ;; (add-hook 'python-mode-hook 'poetry-track-virtualenv)
+-  ;; (add-hook 'projectile-after-switch-project-hook 'poetry-track-virtualenv)
+-  )
+-
++  :ensure t
++  :defer t)
+ 
+ #+END_SRC
+ **** Lang: Python/lsp
+ #+NAME: lang-python.lsp
+ #+begin_src emacs-lisp
+ 
+-
+-;; ---( lsp-pyright / basedpyright )-------------------------------------------
+-
+-;; basedpyright is a community fork of pyright with stricter defaults,
+-;; inlay hints, and better PEP 695 generics support. Switch the command
+-;; back to "pyright" if the upstream server is preferred.
+-;;
+-;; Install
+-;; npm install -g basedpyright
+-;; # or, per-project:
+-;; uv tool install basedpyright
+-;; ---------------------------------------------------------------------------
+-;; basedpyright through lsp-pyright
+-;;
+-;; basedpyright is a community fork of pyright with stricter defaults,
+-;; inlay hints, and better PEP 695 generics support. Switch the command
+-;; back to "pyright" if the upstream server is preferred.
+-;;
+-;; lsp-pyright is the Emacs client adapter.
+-;; basedpyright is the actual language server.
+-;;
+-;; Expected project installation:
+-;;
+-;;   uv add --dev basedpyright
+-;;
+-;; Alternative npm install
+-;;
+-;;   npm install -g basedpyright
+-;;
+-;; The project-local executable should therefore be found through PATH/.venv.
+-;; ---------------------------------------------------------------------------
++;;; #PNX(DUP-05): Flycheck is reserved for lsp-mode; Eglot owns Flymake diagnostics in its buffers.
++;;; #PNX(DUP-09): Consolidate duplicate LSP/Flycheck declarations; remove unconditional Python hooks and select exactly one client per buffer.
++;;; #PNX(ENH-01): Dispatch after hack-local-variables-hook so .dir-locals.el can override the backend.
++;;; #PNX(ENH-03): Use the verified basedpyright executable for both Python major modes in Eglot.
++(use-package flycheck
++  :ensure t
++  :init (global-flycheck-mode 1)
++  :config
++  (flycheck-add-mode 'markdown-markdownlint-cli 'markdown-ts-mode))
++
++(use-package lsp-mode
++  :ensure t
++  :init
++  ;;; #PNX(ENH-05): Move lsp-mode to C-c L and keep C-c l available for the Python backend switcher.
++  (setq lsp-keymap-prefix "C-c L")
++  :hook (lsp-mode . lsp-enable-which-key-integration)
++  :commands (lsp lsp-deferred)
++  :custom
++  (read-process-output-max (* 1024 1024))
++  (lsp-diagnostics-provider :flycheck)
++  (lsp-disabled-clients '(pyls pylsp))
++  (lsp-enable-snippet nil)
++  (lsp-headerline-breadcrumb-enable t)
++  (lsp-headerline-breadcrumb-segments '(project file symbols))
++  (lsp-lens-enable nil)
++  (lsp-idle-delay 0.3)
++  :config
++  ;;; #PNX(ENH-03): Retain the Tree-sitter refontification workaround only for LSP-managed Python TS buffers.
++  (add-hook 'lsp-managed-mode-hook
++            (lambda ()
++              (when (and (derived-mode-p 'python-ts-mode)
++                         (fboundp 'treesit-font-lock-refontify))
++                (treesit-font-lock-refontify))))
++  (dolist (dir '("[/\\\\]\\.cache" "[/\\\\]\\.mypy_cache" "[/\\\\]\\.pytest_cache"
++                 "[/\\\\]\\.Rproj.user" "[/\\\\]venv$" "[/\\\\]build$"
++                 "[/\\\\]dist$" "[/\\\\]docker$" "[/\\\\]notes$"
++                 "[/\\\\]data$" "[/\\\\]home$" "[/\\\\]logs$"
++                 "[/\\\\]renv$" "[/\\\\]temp$" "[/\\\\]_targets"))
++    (cl-pushnew dir lsp-file-watch-ignored-directories :test #'equal)))
+ 
+ (use-package lsp-pyright
+   :ensure t
+   :after lsp-mode
+   :defer t
+   :init
+- ;; Moving variables to :init ensures they are defined BEFORE lsp-mode triggers
+   (setq lsp-pyright-langserver-command "basedpyright"
+         lsp-pyright-disable-language-service nil
+         lsp-pyright-disable-organize-imports nil
+         lsp-pyright-auto-import-completions t
+         lsp-pyright-use-library-code-for-types t
+         lsp-pyright-diagnostic-mode "workspace"
+-        lsp-pyright-type-checking-mode "standard"
+-        lsp-pyright-basedpyright-inlay-hints-variable-types t
+-        lsp-pyright-basedpyright-inlay-hints-function-return-types t
+-        lsp-pyright-basedpyright-inlay-hints-call-argument-names "all")  
+-  ;; :hook
+-  ;; ((python-mode . (lambda () (require 'lsp-pyright)))
+-  ;;  (python-ts-mode . (lambda () (require 'lsp-pyright)))
+-  ;;  )
+-  )
+-
+-
+-;; ---( eglot + pyright + ruff )-----------------------------------------------
+-
+-;; ---------------------------------------------------------------------------
+-;; Eglot
+-;;
+-;; Eglot is used as the lightweight alternative for large Jupytext/Python
+-;; buffers.
+-;;
+-;; IMPORTANT:
+-;;
+-;;   Eglot's Python configuration uses a MULTI-SERVER specification:
+-;;
+-;;       basedpyright-langserver --stdio
+-;;       ruff server
+-;;
+-;; They are two separate LSP processes attached to the same Eglot session.
+-;; ---------------------------------------------------------------------------
+-
++        lsp-pyright-type-checking-mode "standard"))
+ 
+ (use-package eglot
+   :ensure nil
+   :commands (eglot eglot-ensure)
+-  :bind
+-  (:map eglot-mode-map
+-        ("C-c c a" . eglot-code-actions)
+-        ("C-c c r" . eglot-rename))
++  :bind (:map eglot-mode-map
++         ("C-c c a" . eglot-code-actions)
++         ("C-c c r" . eglot-rename))
+   :init
+-  ;; Lower memory and I/O overhead before the server loads
+-  (setq eglot-events-buffer-size 0)
+-  (setq read-process-output-max (* 1024 1024))
+-
+-  (setq eglot-events-buffer-size 0)           ; Completely disables the JSON-RPC event log buffer
+-  (setq eglot-ignored-server-capabilities     ; Tell Eglot to ignore resource-heavy LSP features you don't need
+-        '(
+-          ;; :documentHighlightProvider          ; Disables highlighting matching symbols under cursor
+-          :documentLinkProvider
+-          ))             ; Disables parsing clickable links in text
+-  
++  (setq eglot-events-buffer-size 0
++        read-process-output-max (* 1024 1024))
+   :config
+-  
+-  ;; Remove any previous Python definition before installing ours.
++  ;;; #PNX(ENH-03): Remove all previous Python Eglot entries before registering the single basedpyright server.
+   (setq eglot-server-programs
+-        (assq-delete-all 'python-mode eglot-server-programs))
+-
+-  (setq eglot-server-programs
+-        (assq-delete-all 'python-ts-mode eglot-server-programs))
+-
+-  ;; Eglot multi-server specification.
+-  ;;
+-  ;; NOTE:
+-  ;; This is intentionally a single mode entry containing the two server
+-  ;; command specifications.  Current Eglot interprets this as a multi-server
+-  ;; configuration.
+-  ;; (add-to-list
+-  ;;  'eglot-server-programs
+-  ;;  '((python-mode python-ts-mode)
+-  ;;    ("basedpyright-langserver" "--stdio")
+-  ;;    ;; ("ruff" "server")
+-  ;;    ))
+-
++        (cl-remove-if
++         (lambda (entry)
++           (let ((modes (if (listp (car entry)) (car entry) (list (car entry)))))
++             (or (memq 'python-mode modes) (memq 'python-ts-mode modes))))
++         eglot-server-programs))
+   (add-to-list 'eglot-server-programs
+-               '(python-ts-mode . ("rass"
+-                                   "--" "ty" "server"
+-                                   "--" "ruff" "server"
+-                                   )))  
+-
+-  ;; Project configuration is ultimately controlled by pyproject.toml /
+-  ;; basedpyright configuration.  These values are conservative defaults for
+-  ;; the lightweight notebook mode.
+-  (setq-default
+-   eglot-workspace-configuration
+-   '(:basedpyright
+-     (:analysis
+-      (:typeCheckingMode "basic"
+-       :diagnosticMode "openFilesOnly"
+-       :useLibraryCodeForTypes nil))
+-     :ruff
+-     ()
+-     )))
+-
+-
+-
+-
+-;; ---------------------------------------------------------------------------
+-;; Python LSP backend switching
+-;; ---------------------------------------------------------------------------
+-
+-(defvar-local h7/python-use-eglot nil
+-  "Non-nil when the current Python buffer uses Eglot instead of lsp-mode.")
+-
++               '((python-mode python-ts-mode) . ("basedpyright-langserver" "--stdio")))
++  (setq-default eglot-workspace-configuration
++                '(:basedpyright
++                  (:analysis
++                   (:typeCheckingMode "basic"
++                    :diagnosticMode "openFilesOnly"
++                    :useLibraryCodeForTypes nil)))))
++
++(use-package lsp-ui
++  :ensure t
++  :after lsp-mode
++  :hook (lsp-mode . lsp-ui-mode)
++  :bind (:map lsp-ui-mode-map ("C-c i" . lsp-ui-imenu))
++  :custom
++  (lsp-ui-doc-position 'at-point)
++  (lsp-ui-doc-enable t)
++  (lsp-ui-doc-show-with-cursor nil)
++  (lsp-ui-sideline-enable t)
++  (lsp-ui-sideline-show-diagnostics t)
++  (lsp-ui-sideline-show-code-actions nil)
++  (lsp-ui-imenu-enable t)
++  (lsp-ui-flycheck-enable t)
++  (lsp-ui-doc-delay 1.5))
++
++(use-package consult-lsp
++  :ensure t :defer t :after lsp-mode
++  :commands (consult-lsp-diagnostics consult-lsp-symbols consult-lsp-file-symbols))
++
++(use-package lsp-treemacs
++  :ensure t :defer t :after lsp-mode
++  :commands lsp-treemacs-errors-list)
++
++(defvar-local h7/python-lsp-backend nil
++  "Buffer-local Python backend override: nil, `lsp', or `eglot'.")
++(put 'h7/python-lsp-backend 'safe-local-variable
++     (lambda (value) (memq value '(nil lsp eglot))))
++
++(defun h7/python--percent-notebook-p ()
++  "Return non-nil for Jupytext percent-format files under a notebooks directory."
++  (and buffer-file-name
++       (string-match-p "[/\\\\]notebooks[/\\\\]" buffer-file-name)
++       (save-excursion
++         (goto-char (point-min))
++         (re-search-forward "^[ \t]*#\\s-*%%" (min (point-max) (+ (point-min) 8192)) t))))
++
++(defun h7/python--stop-lsp-clients ()
++  "Detach any Python LSP client currently attached to this buffer."
++  (when (bound-and-true-p lsp-mode)
++    (lsp-mode -1))
++  (when (and (fboundp 'eglot-managed-p) (eglot-managed-p))
++    (eglot-shutdown)))
++
++(defun h7/python--apply-backend (backend)
++  "Apply BACKEND (`lsp' or `eglot') to the current Python buffer."
++  (h7/python--stop-lsp-clients)
++  (setq-local h7/python-lsp-backend backend)
++  (if (eq backend 'eglot)
++      (progn
++        (when (bound-and-true-p flycheck-mode) (flycheck-mode -1))
++        (when (fboundp 'ruff-format-on-save-mode) (ruff-format-on-save-mode -1))
++        (eglot-ensure))
++    (progn
++      (when (fboundp 'flycheck-mode) (flycheck-mode 1))
++      (require 'lsp-pyright)
++      (when-let* ((python (and (fboundp 'pet-executable-find)
++                               (pet-executable-find "python"))))
++        (setq-local lsp-pyright-python-executable-cmd python))
++      (when (require 'ruff-format nil t) (ruff-format-on-save-mode 1))
++      (lsp-deferred))))
++
++(defun h7/python-dispatch-lsp ()
++  "Choose exactly one Python LSP client after local variables are processed."
++  (when (derived-mode-p 'python-base-mode)
++    (let ((backend (or h7/python-lsp-backend
++                       (if (h7/python--percent-notebook-p) 'eglot 'lsp))))
++      (h7/python--apply-backend backend))))
++
++(defun h7/python--install-lsp-dispatcher ()
++  "Install the per-buffer dispatcher after file and directory local variables."
++  (add-hook 'hack-local-variables-hook #'h7/python-dispatch-lsp nil t))
++
++(with-eval-after-load 'python
++  (add-hook 'python-base-mode-hook #'h7/python--install-lsp-dispatcher)
++  (define-key python-base-mode-map (kbd "C-c l e") #'h7/python-use-eglot)
++  (define-key python-base-mode-map (kbd "C-c l l") #'h7/python-use-lsp))
+ 
+ (defun h7/python-lsp-switch (&optional backend)
+-  "Switch the current Python buffer between LSP backends.
+-
+-With BACKEND equal to `eglot', use Eglot.
+-With BACKEND equal to `lsp', use lsp-mode.
+-When BACKEND is nil, toggle the current backend.
+-
+-This is deliberately buffer-local: ordinary Python buffers can continue
+-using lsp-mode while a large Jupytext notebook uses Eglot."
++  "Toggle Python LSP backend, or select BACKEND explicitly."
+   (interactive)
+-  (unless (derived-mode-p 'python-mode)
++  (unless (derived-mode-p 'python-base-mode)
+     (user-error "This command is intended for Python buffers"))
+-
+-  (let ((target
+-         (or backend
+-             (if (bound-and-true-p h7/python-use-eglot)
+-                 'lsp
+-               'eglot))))
+-
+-    (pcase target
+-      ('eglot
+-       ;; Stop lsp-mode before starting Eglot.
+-       (when (bound-and-true-p lsp-mode)
+-         (lsp-disconnect)
+-         (lsp-mode -1))
+-
+-       ;; Mark this buffer before Eglot starts.
+-       (setq-local h7/python-use-eglot t)
+-
+-       ;; Large notebooks should not be reformatted on every save.
+-       (when (fboundp #'ruff-format-on-save-mode)
+-         (ruff-format-on-save-mode -1))
+-
+-       ;; Reduce tree-sitter/fontification pressure for large buffers.
+-       (when (derived-mode-p 'python-ts-mode)
+-         (setq-local treesit-font-lock-level 3
+-                     jit-lock-defer-time 0.05
+-                     jit-lock-chunk-size 1000))
+-
+-       (font-lock-mode 1)
+-
+-       ;; Eglot uses Flymake.  Do not leave a stale LSP diagnostic system
+-       ;; running in the buffer.
+-       (eglot-ensure)
+-
+-       (message "Python backend: Eglot"))
+-
+-      ('lsp
+-       ;; Stop Eglot first.
+-       (when (fboundp #'eglot-shutdown)
+-         (when (eglot-managed-p)
+-           (eglot-shutdown)))
+-
+-       (setq-local h7/python-use-eglot nil)
+-
+-       ;; Restore normal fontification.
+-       (when (derived-mode-p 'python-ts-mode)
+-         (setq-local treesit-font-lock-level 4
+-                     jit-lock-defer-time nil
+-                     jit-lock-chunk-size nil))
+-
+-       ;; Normal Python buffers use Ruff formatting on save.
+-       (when (fboundp #'ruff-format-on-save-mode)
+-         (ruff-format-on-save-mode 1))
+-
+-       ;; Start normal LSP.
+-       (lsp-deferred)
+-
+-       (message "Python backend: lsp-mode"))
+-
+-      (_
+-       (user-error "Unknown Python backend: %S (use `lsp' or `eglot')"
+-                   target)))))
+-
+-
+-;; Convenient explicit commands.
++  (h7/python--apply-backend
++   (or backend (if (eq h7/python-lsp-backend 'eglot) 'lsp 'eglot))))
+ 
+ (defun h7/python-use-eglot ()
+-  "Use Eglot for the current Python buffer."
+-  (interactive)
+-  (h7/python-lsp-switch 'eglot))
+-
++  "Use Eglot in the current Python buffer."
++  (interactive) (h7/python-lsp-switch 'eglot))
+ 
+ (defun h7/python-use-lsp ()
+-  "Use lsp-mode for the current Python buffer."
+-  (interactive)
+-  (h7/python-lsp-switch 'lsp))
+-
+-
+-;; Keep the original command name as a compatibility alias.
++  "Use lsp-mode in the current Python buffer."
++  (interactive) (h7/python-lsp-switch 'lsp))
++
+ (defalias 'h7/eglot-mode-switch #'h7/python-use-eglot)
+ 
+-
+-;; Useful buffer-local bindings.
+-(with-eval-after-load 'python
+-  (define-key python-base-mode-map
+-              (kbd "C-c l e")
+-              #'h7/python-use-eglot)
+-  (define-key python-base-mode-map
+-              (kbd "C-c l l")
+-              #'h7/python-use-lsp))
+-
+-;; auto eglot mode for jupyter notebooks (stored under notebooks/ direstory)..
+-(add-hook 'python-ts-mode-hook
+-          (lambda ()
+-            (when (and buffer-file-name 
+-                       (string-match-p "notebooks" (buffer-file-name))
+-              ;; Remove lsp-deferred locally so it doesn't fight eglot
+-              (remove-hook 'python-mode-hook #'lsp-deferred t)
+-              (remove-hook 'python-ts-mode-hook #'lsp-deferred t)
+-              ;; Run our eglot switcher directly
+-              (h7/python-use-eglot)))))
+-
+-#+END_SRC
++;;; #PNX(ENH-03): Notebook Eglot uses basedpyright only; Ruff formatting is disabled there to avoid duplicate save-time work.
++;;; #PNX(ENH-01): A .dir-locals.el may set h7/python-lsp-backend to `eglot' or `lsp'.
++
++#+END_SRC
++
+ 
+ **** Lang: Python/tools
+ #+NAME: lang-python.tools
+ #+begin_src emacs-lisp
+ 
+-;; ;; ---( ruff: LSP add-on and formatter )----------------------------------------
+-
+-;; ---------------------------------------------------------------------------
+-;; Ruff
+-;;
+-;; Ruff is installed in the project environment and is available both as:
+-;;
+-;;   * an LSP server ("ruff server")
+-;;   * a formatter ("ruff format")
+-;;
+-;; LSP mode and Eglot use Ruff as an LSP server.
+-;; ruff-format provides the convenient Emacs formatter for normal buffers.
+-;;
+-;; There is deliberately NO flymake-ruff configuration here: that would
+-;; duplicate the Ruff LSP diagnostics used by Eglot.
+-;; ---------------------------------------------------------------------------
+-
+-;; ;; ruff is integrated at two levels:
+-;; ;; 1. ruff server – secondary LSP client alongside basedpyright (lint diagnostics)
+-;; ;; 2. ruff-format – on-save buffer formatter (replaces yapfify + python-black)
+-;; ;;
+-;; ;; yapfify and python-black are removed: running three on-save formatters caused
+-;; ;; race conditions and produced inconsistent results.
+-;; ;;
+-;; ;; Install: uv tool install ruff
+-;; ;; or: pip install ruff (inside the project venv)
+-
+-
+-;; ruff-format: on-save formatting.
+-;; Replaces python-black-on-save-mode and yapf-mode.
+-
++;;; #PNX(ENH-01): Ruff is used as the ordinary-Python formatter; Eglot notebook buffers do not auto-format on save.
+ (use-package ruff-format
+   :ensure t
+-  :hook ((python-mode . ruff-format-on-save-mode)
+-         (python-ts-mode . ruff-format-on-save-mode)))
+-
+-
+-
+-;; ;; Register ruff server as an add-on LSP client (diagnostics only, no hover).
+-;; (with-eval-after-load 'lsp-mode
+-;;   (lsp-register-client
+-;;    (make-lsp-client
+-;;     :new-connection
+-;;     (lsp-stdio-connection
+-;;      (lambda () (list (or (executable-find "ruff") "ruff") "server")))
+-;;     :activation-fn (lsp-activate-on "python")
+-;;     :server-id 'ruff-lsp
+-;;     ;; add-on? t: run alongside basedpyright, not instead of it.
+-;;     :add-on? t
+-;;     :initialization-options
+-;;     '(:settings (:logLevel "warning"
+-;;                            :lint (:enable t)
+-;;                            :format (:enable t))))))
+-
+-
+-;; ;; Use standard flymake-ruff for background Ruff linting alongside Eglot
+-;; (use-package flymake-ruff
+-;;   :ensure t
+-;;   :hook ((python-mode python-ts-mode) . flymake-ruff-load))
+-
+- 
+-#+END_SRC
++  :defer t
++  :commands ruff-format-on-save-mode)
++
++#+END_SRC
++
+ 
+ **** Lang: Python/test
+ #+NAME: lang-python.test
+@@ -5467,9 +3732,7 @@
+ ;; python-pytest uses transient (same UX as magit) and detects treesit
+ ;; automatically for function/class DWIM commands.
+ ;;
+-;; Note: "C-c t" was previously bound to treemacs (line 2717).
+-;; The binding below uses "C-c T" (uppercase) to avoid that conflict.
+-;; Adjust according to preference; see treemacs binding at line 2717.
++;;; #PNX(ENH-05): Python pytest owns the C-c t prefix; Treemacs uses C-c T in the global map.
+ 
+ (use-package python-pytest
+   :ensure t
+@@ -5568,12 +3831,13 @@
+                  1 2 nil 0 1))
+   (add-to-list 'compilation-error-regexp-alist 'behave))
+ 
++;;; #PNX(DUP-04): Prefer built-in project.el; use Projectile only as a fallback for legacy project metadata.
+ (defun python-behave--project-root ()
+-  "Return the project root, preferring projectile then project.el."
+-  (or (and (fboundp 'projectile-project-root)
++  "Return the project root, preferring project.el over Projectile."
++  (or (when-let* ((p (project-current)))
++        (project-root p))
++      (and (fboundp 'projectile-project-root)
+            (ignore-errors (projectile-project-root)))
+-      (when-let* ((p (project-current)))
+-        (project-root p))
+       default-directory))
+ 
+ (defun python-behave--build-command (&optional target)
+@@ -5649,308 +3913,9 @@
+  
+ #+END_SRC
+ 
+-**** Lang: Python/elpy
+-#+NAME: lang-python.elpy
+-#+begin_src emacs-lisp
+-
+-
+-;; ---( python: elpy )--------------------------------------------------------------
+-
+-(use-package elpy
+-  :disabled t
+-  :preface
+-
+-  ;; @see: https://elpy.readthedocs.org/en/latest/
+-  ;; @see: https://github.com/jorgenschaefer/elpy
+-  ;; @see: https://youtu.be/0kuCeS-mfyc
+-
+-  (defvar elpy-mode-map
+-    (let ((map (make-sparse-keymap)))
+-      ;; Alphabetical order to make it easier to find free C-c C-X
+-      ;; bindings in the future. Heh.
+-
+-      ;; (define-key map (kbd "<backspace>") 'python-indent-dedent-line-backspace)
+-      ;; (define-key map (kbd "<backtab>")   'python-indent-dedent-line)
+-
+-      ;; (define-key map (kbd "C-M-x")   'python-shell-send-defun)
+-
+-      (define-key map (kbd "M-c <")   'python-indent-shift-left)
+-      (define-key map (kbd "M-c >")   'python-indent-shift-right)
+-
+-      (define-key map (kbd "M-c RET") 'elpy-importmagic-add-import)
+-      (define-key map (kbd "M-c M-b") 'elpy-nav-expand-to-indentation)
+-      (define-key map (kbd "M-c M-c") 'elpy-shell-send-region-or-buffer)
+-      (define-key map (kbd "M-c M-d") 'elpy-doc)
+-      (define-key map (kbd "M-c M-e") 'elpy-multiedit-python-symbol-at-point)
+-      (define-key map (kbd "M-c M-f") 'elpy-find-file)
+-      (define-key map (kbd "M-c M-n") 'elpy-flymake-next-error)
+-      (define-key map (kbd "M-c M-o") 'elpy-occur-definitions)
+-      (define-key map (kbd "M-c M-p") 'elpy-flymake-previous-error)
+-      (define-key map (kbd "M-c M-s") 'elpy-rgrep-symbol)
+-      (define-key map (kbd "M-c M-t") 'elpy-test)
+-      (define-key map (kbd "M-c M-v") 'elpy-check)
+-      (define-key map (kbd "M-c M-z") 'elpy-shell-switch-to-shell)
+-      (define-key map (kbd "M-c M-r i") 'elpy-importmagic-fixup)
+-      (define-key map (kbd "M-c M-r p") 'elpy-autopep8-fix-code)
+-      (define-key map (kbd "M-c M-r r") 'elpy-refactor)
+-
+-      ;; (define-key map (kbd "<S-return>") 'elpy-open-and-indent-line-below)
+-      ;; (define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-above)
+-
+-      ;; (define-key map (kbd "<C-return>") 'elpy-shell-send-current-statement)
+-
+-      ;; (define-key map (kbd "<C-down>") 'elpy-nav-forward-block)
+-      ;; (define-key map (kbd "<C-up>") 'elpy-nav-backward-block)
+-      ;; (define-key map (kbd "<C-left>") 'elpy-nav-backward-indent)
+-      ;; (define-key map (kbd "<C-right>") 'elpy-nav-forward-indent)
+-
+-      ;; (define-key map (kbd "<M-down>") 'elpy-nav-move-line-or-region-down)
+-      ;; (define-key map (kbd "<M-up>") 'elpy-nav-move-line-or-region-up)
+-      ;; (define-key map (kbd "<M-left>") 'elpy-nav-indent-shift-left)
+-      ;; (define-key map (kbd "<M-right>") 'elpy-nav-indent-shift-right)
+-
+-      ;; (define-key map (kbd "M-.")     'elpy-goto-definition)
+-      ;; (define-key map (kbd "M-TAB")   'elpy-company-backend)
+-
+-      (define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-below)
+-      ;;(define-key map (kbd "<C-S-return>") 'elpy-open-and-indent-line-above)
+-
+-      ;;(define-key map (kbd "<C-return>") 'elpy-shell-send-current-statement)
+-
+-      (define-key map (kbd "<M-right>") 'elpy-nav-forward-block)
+-      (define-key map (kbd "<M-left>") 'elpy-nav-backward-block)
+-      ;; (define-key map (kbd "<C-S-left>") 'elpy-nav-backward-indent)
+-      ;; (define-key map (kbd "<C-S-right>") 'elpy-nav-forward-indent)
+-
+-      ;; (define-key map (kbd "<M-S-down>") 'elpy-nav-move-line-or-region-down)
+-      ;; (define-key map (kbd "<M-S-up>") 'elpy-nav-move-line-or-region-up)
+-      (define-key map (kbd "<M-S-left>") 'elpy-nav-indent-shift-left)
+-      (define-key map (kbd "<M-S-right>") 'elpy-nav-indent-shift-right)
+-
+-      (define-key map [(meta prior)]    'elpy-goto-definition)
+-      (define-key map [(meta next)]     'pop-tag-mark)
+-
+-      (define-key map [(control menu)]   'elpy-company-backend)
+-
+-      map)
+-    "Key map for the Emacs Lisp Python Environment.")
+-  :config
+-  (elpy-enable)
+-  (setq python-shell-interpreter "jupyter"
+-        python-shell-interpreter-args "console --simple-prompt")
+-
+-  ;; (elpy-use-ipython "ipython3") 
+-  (defalias 'workon 'pyvenv-workon))
+-
+-(setenv "PYTHONIOENCODING" "utf-8")
+-(add-to-list 'process-coding-system-alist '("python" . (utf-8 . utf-8)))
+-(add-to-list 'process-coding-system-alist '("elpy" . (utf-8 . utf-8)))
+-;;(add-to-list 'process-coding-system-alist '("flake8" . (utf-8 . utf-8)))
+-
+-#+END_SRC
+-
+-**** Lang: Python/ein
+-#+NAME: lang-python.ein
+-#+begin_src emacs-lisp
+-
+-;; ---( python: ein )--------------------------------------------------------------
+-
+-
+-(use-package ein
+-  :unless (version< emacs-version "25.1")
+-  ;; :defer t
+-  ;;:ensure t
+-  :disabled t
+-  :init
+-  (progn
+-    (with-eval-after-load 'ein-notebooklist
+-      (define-key ein:notebooklist-mode-map (kbd "<S-return>") 'ein:worksheet-execute-cell-and-goto-next-km)
+-      (define-key ein:notebooklist-mode-map (kbd "<C-return>") 'ein:worksheet-execute-cell)
+-      ))
+-  :config
+-  (defalias 'eip 'ein:notebooklist-open))
+-
+-
+-
+-;; (use-package ein
+-;;   :unless (version< emacs-version "25.1")
+-;;   :ensure t
+-;;   :defer t
+-;;   :commands ein:notebooklist-open
+-;;   :init
+-;;   ;; (progn
+-;;   ;;   (with-eval-after-load 'ein-notebooklist
+-;;   ;;     ;; removing keybindings
+-;;   ;;     (define-key ein:notebook-mode-map (kbd "M-p") nil)
+-;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-up>") nil)
+-;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-down>") nil)
+-;;   ;;     ;; changing keybinding
+-;;   ;;     (define-key ein:notebook-mode-map (kbd "C-s") 'ein:notebook-save-notebook-command)
+-;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-S-up>") 'ein:worksheet-move-cell-up)
+-;;   ;;     (define-key ein:notebook-mode-map (kbd "<M-S-down>") 'ein:worksheet-move-cell-down)))
+-;;   :config
+-;;   (defalias 'einp 'ein:notebooklist-open)
+-;;   (defalias 'eins 'ein:jupyter-server-start)
+-;;   )
+-
+-;; ---( python: 0mq )--------------------------------------------------------------
+-
+-;; @see: https://github.com/nnicandro/emacs-zmq
+-;; @see: https://github.com/nnicandro/emacs-zmq/issues/48
+-;; dnf install zeromq-devel
+-;; apt install libczmq-dev
+-
+-
+-;; python and jupyter
+-  ;;; custom zmq build - see https://github.com/alexmurray/emacs-snap/issues/66
+-  ;;; @see: https://github.com/martibosch/snakemacs/blob/main/main.el#L346
+-
+-(cond ((getenv "EMACS_SNAP_DIR")
+-
+-       (let* ((emacs-snap-dir (file-name-as-directory (getenv "EMACS_SNAP_DIR")))
+-              (process-environment (append process-environment `(,(concat "CC=" emacs-snap-dir "usr/bin/gcc-10" )
+-                                                                 ,(concat "CXX=" emacs-snap-dir "usr/bin/g++-10")
+-                                                                 ,(concat "CFLAGS=--sysroot=" emacs-snap-dir)
+-							         ,(concat "CPPFLAGS=--sysroot=" emacs-snap-dir)
+-							         ,(concat "LDFLAGS=--sysroot=" emacs-snap-dir " -L" emacs-snap-dir "/usr/lib")))))
+-         (use-package zmq
+-           :if (h7/use-py-jupyter)
+-           :defer t
+-           :ensure t)
+-         ))
+-      (t 
+-       (use-package zmq
+-         :if (h7/use-py-jupyter)
+-         :defer t
+-         :ensure t)
+-       ))
+-
+-
+-
+-;; (use-package zmq
+-;;   :if (h7/use-py-jupyter)
+-;;   :defer t
+-;;   :ensure t
+-;;   :preface
+-
+-;;     (package-install "zmq")
+-;;     (vterm)
+-
+-;; cd ~/.emacs.d/elpa
+-
+-;; ls -lda zmq*
+-;; cd      zmq*
+-
+-
+-;; ES=${EMACS_SNAP_DIR:-/snap/emacs/current}
+-;; export CC=${ES}/usr/bin/gcc-10
+-;; export CXX=${ES}/usr/bin/g++-10
+-;; export CFLAGS=--sysroot=${ES}
+-;; export LDFLAGS="--sysroot=${ES} -L${ES}/usr/lib"
+-
+-;; printenv | grep -i -e ^cc= -e ^cxx= -e ^cflags= -e ^ldflags=
+-;; ls -l $CC $CXX
+-
+-;; make all
+-
+-;;     (package-install "jupyter")
+-
+-;; :init
+-;; :config
+-;; )
+-
+-;; (use-package zmq
+-;;   :ensure t
+-;;   :preface
+-;;   (when (getenv "EMACS_SNAP_DIR")
+-;;     (unless (directory-files-recursively (concat user-emacs-directory "") "zmq-.*\\.so$" nil)
+-;;              (progn
+-;;                ;; @see: https://github.com/nnicandro/emacs-zmq/issues/48
+-;;                (let* ((emacs-snap-dir (file-name-as-directory (getenv "EMACS_SNAP_DIR")))
+-;;                       (process-environment
+-;;                        (append `(,(concat "CC=" emacs-snap-dir "usr/bin/gcc-10" )
+-;;                                  ,(concat "CXX=" emacs-snap-dir "usr/bin/g++-10")
+-;;                                  ,(concat "CFLAGS=--sysroot=" emacs-snap-dir " -B" emacs-snap-dir "usr/lib/gcc")
+-;;                                  ,(concat "CPATH=" (file-name-directory (car (file-expand-wildcards (concat emacs-snap-dir "usr/include/*/bits")))))
+-;;       			   ,(concat "CPPFLAGS=--sysroot=" emacs-snap-dir)
+-;;       			   ,(concat "LDFLAGS=--sysroot=" emacs-snap-dir " -L" emacs-snap-dir "usr/lib")
+-;;                                  ,(concat "PKG_CONFIG_PATH=" (car (file-expand-wildcards (concat emacs-snap-dir "usr/lib/*/pkgconfig")))))
+-;;                                process-environment)))
+-;;                  ;; @see: https://github.com/nnicandro/emacs-zmq/issues/48#issuecomment-2208834904
+-;;                  (when (fboundp 'native-compile-async)
+-;;                    (progn
+-;;                      (setq native-comp-deferred-compilation t
+-;;                            native-comp-deferred-compilation-deny-list
+-;;                            '("/mu4e.*\\.el$" "jupyter" "zmq" "eaf" "eaf-mode" "emacs-zmq"))))
+-;;               ;; (custom-set-variables
+-;;               ;;  '(native-comp-async-report-warnings-errors 'silent))
+-;;               ;; ;; (let ((snap (file-name-as-directory "/snap/emacs/current")))
+-;;               ;; ;; 	(setq-default native-comp-driver-options (list (concat "--sysroot=" snap)
+-;;               ;; ;;                                                  (concat "-B" snap "usr/lib/gcc/"))))
+-
+-;;                  (load-library "zmq")
+-
+-;;                  ))))
+-;;   :init
+-;;   :config
+-;;   )
+-
+-
+-;; ---( python: jupyter )--------------------------------------------------------------
+-
+-;; @see: https://sqrtminusone.xyz/posts/2021-05-01-org-python/
+-
+-(use-package jupyter
+-  :if (h7/use-py-jupyter)
+-  :defer t
+-  :ensure t
+-  :init
+-  :config
+-  )
+-
+-
+-;; ---( python: code cells )--------------------------------------------------------------
+-
+-;; @see: https://github.com/martibosch/snakemacs/blob/main/main.el#L444
+-
+-(use-package code-cells
+-  :ensure t
+-  :after org
+-  :config
+-  (setq code-cells-convert-ipynb-style '(("pandoc" "--to" "ipynb" "--from" "org")
+-     					 ("pandoc" "--to" "org" "--from" "ipynb")
+-     					 org-mode))
+-  ;; see https://github.com/astoff/code-cells.el/issues/22
+-  ;; (defun gm/jupyter-eval-region (beg end)
+-  ;;   (jupyter-eval-region nil beg end))
+-  ;; (add-to-list 'code-cells-eval-region-commands '(jupyter-repl-interaction-mode . gm/jupyter-eval-region))
+-  (let ((map code-cells-mode-map))
+-    (define-key map (kbd "C-c <up>") 'code-cells-backward-cell)
+-    (define-key map (kbd "C-c <down>") 'code-cells-forward-cell)
+-    (define-key map (kbd "M-<up>") 'code-cells-move-cell-up)
+-    (define-key map (kbd "M-<down>") 'code-cells-move-cell-down)
+-    (define-key map (kbd "C-c C-c") 'code-cells-eval)
+-    ;; Overriding other minor mode bindings requires some insistence...
+-    (define-key map [remap jupyter-eval-line-or-region] 'code-cells-eval)))
+-(defun my/new-notebook (notebook-name &optional kernel)
+-  "Creates an empty notebook in the current directory with an associated kernel."
+-  (interactive "sEnter the notebook name: ")
+-  (when (file-name-extension notebook-name)
+-    (setq notebook-name (file-name-sans-extension notebook-name)))
+-  (unless kernel
+-    (setq kernel (jupyter-kernelspec-name (jupyter-completing-read-kernelspec))))
+-  (unless (executable-find "jupytext")
+-    (error "Can't find \"jupytext\""))
+-  (let ((notebook-py (concat notebook-name ".py")))
+-    (shell-command (concat "touch " notebook-py))
+-    (shell-command (concat "jupytext --set-kernel " kernel " " notebook-py))
+-    (shell-command (concat "jupytext --to notebook " notebook-py))
+-    (shell-command (concat "rm " notebook-py))
+-    (message (concat "Notebook successfully created at " notebook-name ".ipynb"))))
+-
+-
+-
+-#+END_SRC
++
++
++
+ 
+ *** Lang: Julia
+ #+NAME: lang-julia
+@@ -5974,6 +3939,12 @@
+ 
+ 
+ ;; init.el — Julia editing + LSP via eglot + eglot-jl
++;;; #PNX(ENH-03): Scope Julia's extended Eglot startup timeout to Julia buffers only.
++(defun h7/julia-eglot-setup ()
++  "Use a longer Eglot startup timeout for Julia's initial indexing."
++  (setq-local eglot-connect-timeout 300)
++  (eglot-ensure))
++
+ (use-package julia-mode
+   :ensure t
+   :mode "\\.jl\\'")
+@@ -5982,109 +3953,30 @@
+ (use-package eglot-jl
+   :ensure t
+   :after (julia-mode eglot)
+-  :hook (julia-mode . eglot-ensure)
++  :hook (julia-mode . h7/julia-eglot-setup)
+   :init
+   ;; use the environment bundled with eglot-jl
+   ;; (setq eglot-jl-language-server-project eglot-jl-base)
+   ;; (setq eglot-jl-project-root (expand-file-name "."))
+-  ;; first start precompiles and indexes; the default 30 s is too short
+-  (setq eglot-connect-timeout 300)
+   :config
+   (eglot-jl-init)              ; registers the Julia language server with eglot/project.el
+   )
+ 
+ 
+-(use-package lsp-julia
+-  :ensure t
+-  :after lsp-mode
+-  ;; :hook (julia-mode . lsp-deferred)
+-  :config
+-  ;; ;; own environment holding LanguageServer, instead of the bundled one
+-  ;; (setq lsp-julia-package-dir nil
+-  ;;       lsp-julia-default-environment "~/.julia/environments/lsp"))
+-  ;; (setq lsp-julia-default-environment "~/.julia/environments/v1.13")
+-  )
+-
+-
+-
+-
+-
+-;; (use-package julia-mode
+-;;   :ensure t
+-;;   :defer t
+-;;   :commands julia-mode
+-;;   :mode ("\\.jl$" . julia-mode)
+-;;   :init
+-;;   (progn
+-;;     (autoload 'julia-mode "julia-mode" nil t)
+-;;     (setq inferior-julia-program-name "julia")
+-;;     )
+-;;   :config
+-;;   (progn
+-;;     (setq inferior-julia-program-name "julia")
+-;;     )
+-;;   )
+-
+-
+-;; (use-package julia-repl
+-;;   :ensure t
+-;;   :defer t
+-;;   :config
+-;;   (progn
+-;;     (add-to-list 'julia-mode-hook 'julia-repl-mode)
+-;;     )
+-;;   )
+-
+-;; (use-package lsp-julia
+-;;   :ensure t
+-;;   :hook ((
+-;;           julia-mode
+-;;           ) . lsp-mode)
+-;;   ;;:config
+-;;   ;;(setq lsp-julia-default-environment "~/.julia/environments/v1.7")
+-;;   )
++;;; #PNX(OBS-09): Removed dormant lsp-julia declaration; Eglot-jl is the sole configured Julia LSP client.
++
++
++
++
++
++
++
++
+ 
+ ;; ;; allow julia to be loaded through call to julia-mode or
+ ;; ;; ess-inferior process
+ ;; ;; follow-ups: etags?
+-;; (use-package julia-mode
+-;;    :defer t
+-;;    :commands julia-mode
+-;;    :mode ("\\.jl$" . julia-mode)
+-;;    :init
+-;;    (progn
+-;;       (autoload 'julia-mode "julia-mode" nil t)
+-;;       (setq inferior-julia-program-name "/usr/bin/julia")
+-;;       )
+-;;    :config
+-;;    (progn
+-;;       (add-to-list 'julia-mode-hook 'cg/modify-current-syntax-table)
+-;;       (setq inferior-julia-program-name "/usr/bin/julia")
+-;;       (add-to-list 'julia-mode-hook 'cg/command-line-keybindings)
+-;;       ;; (add-to-list 'inferior-ess-mode-hook 'cg/command-line-keybindings)      
+-;;       )
+-;;    )
+-
+-;; (use-package ess-julia.el
+-;;    :defer t
+-;;    :commands julia
+-;;    :init                                ; run before actual loading
+-;;    (progn
+-;;       (autoload 'julia "ess-julia.el" nil t)
+-;;       (setq inferior-julia-program-name "/usr/bin/julia")
+-;;       )
+-;;    :config
+-;;    (progn
+-;;       (require 'ess-site)
+-;;       (setq inferior-julia-program-name "/usr/bin/julia")
+-;;       (setq ess-tracebug-prefix "\M-c")   ; define debug-mode starting key
+-;;       (setq ess-use-tracebug t)           ; tracebug is called for R
+-;;                                         ; AND JULIA!!
+-;;       (setq ess-tracebug-inject-source-p t)
+-;;       (add-to-list 'julia-mode-hook 'cg/command-line-keybindings)
+-;;       ;; (add-to-list 'inferior-ess-mode-hook 'cg/command-line-keybindings)            
+-;;       )
+-;;    )
++
+ ;; ;; in order to add ess-process afterward, apply julia-mode again on
+ ;; ;; open buffers - probably ess-julia.el has to be loaded again also:
+ ;; ;; M-x load-file ess-julia.el
+@@ -6123,20 +4015,6 @@
+   :interpreter ("ruby" . ruby-mode)
+   ;; :functions inf-ruby-keys
+   ;; :config
+-  ;; (use-package yari
+-  ;;   :init
+-  ;;   (progn
+-  ;;     (defvar yari-helm-source-ri-pages
+-  ;;       '((name . "RI documentation")
+-  ;;         (candidates . (lambda () (yari-ruby-obarray)))
+-  ;;         (action ("Show with Yari" . yari))
+-  ;;         (candidate-number-limit . 300)
+-  ;;         (requires-pattern . 2)
+-  ;;         "Source for completing RI documentation."))
+-  ;;     (defun helm-yari (&optional rehash)
+-  ;;       (interactive (list current-prefix-arg))
+-  ;;       (when current-prefix-arg (yari-ruby-obarray rehash))
+-  ;;       (helm 'yari-helm-source-ri-pages (yari-symbol-at-point)))))
+   ;; (defun my-ruby-smart-return ()
+   ;;   (interactive)
+   ;;   (when (memq (char-after) '(?\| ?\" ?\'))
+@@ -6152,14 +4030,7 @@
+ 
+ ;; ---( puppet )--------------------------------------------------------------
+ 
+-(use-package puppet-mode
+-  ;;:ensure t
+-  :disabled t
+-  :mode ("\\.pp$" . puppet-mode)
+-  ;; :config
+-  ;; (use-package puppet-ext
+-  ;;   :ensure t)
+-  )
++
+ 
+ 
+ #+END_SRC
+@@ -6178,14 +4049,6 @@
+   ;;
+   )
+ 
+-;; (use-package lua-mode
+-;;   :config (progn
+-;;             (setq lua-indent-level 4)
+-;;             (use-package lua-block
+-;;               :config (lua-block-mode t)))
+-;;   :mode (("\\.rockspec" . lua-mode)
+-;;          ("\\.busted" . lua-mode)
+-;;          ("\\.slua" . lua-mode)))
+ 
+ 
+ #+END_SRC
+@@ -6222,37 +4085,10 @@
+   ;; and sbt gen-ensime to generate .ensime config in project root
+   ;;
+ 
+-  (use-package ensime
+-    :disabled t
+-    :pin melpa)
+-
+-  ;;(use-package ensime
+-  ;;  :pin melpa-stable)
+-
+-  (use-package scala-mode2
+-    :disabled t
+-    :defer t
+-    :init
+-    (progn
+-      (use-package ensime
+-        :ensure
+-        :commands ensime-scala-mode-hook     
+-        ;;(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+-        :init
+-        (progn
+-          (add-hook 'scala-mode-hook
+-                    (lambda ()
+-                      (ensime)
+-                      (ensime-scala-mode)
+-                      ))
+-          )
+-        :config
+-              (progn
+-                (define-key ensime-mode-map (kbd "M-c M-c")    'ensime-inf-eval-region)
+-                (define-key ensime-mode-map (kbd "<C-return>") 'ensime-inf-eval-region)
+-                ))
+-      (use-package sbt-mode
+-        :ensure)))
++  
++
++
++  
+ 
+ 
+ #+END_SRC
+@@ -6274,8 +4110,6 @@
+            ("\\.lhs\\'" . literate-haskell-mode))
+ 
+     :config
+-    ;; (use-package ghc
+-    ;;   :ensure)
+     (use-package flycheck-haskell
+       :ensure)
+     )
+@@ -6288,9 +4122,7 @@
+ 
+   ;; (add-hook 'haskell-mode-hook 'balaji/haskell-mode-hook)
+ 
+-  (use-package idris-mode
+-    :ensure
+-    :disabled t)
++  
+ 
+ 
+ 
+@@ -6460,21 +4292,12 @@
+     ) 
+   )
+ 
+-;; (use-package company-restclient
+-;;   :ensure t
+-;;   :after (company restclient)
+-;;   :custom-update
+-;;   (company-backends '(company-restclient)))
+ 
+ ;; ---( ob-http )------------------------------------------------------
+ 
+ ;; @see: https://github.com/zweifisch/ob-http
+ ;; @see: https://emacs.stackexchange.com/questions/2427/how-to-test-rest-api-with-emacs
+ 
+-;; (use-package ob-http
+-;;   :ensure t
+-;;   :defer 30
+-;;   )
+ 
+ 
+ #+END_SRC
+@@ -6523,27 +4346,14 @@
+     (ansible-doc
+      ansible-doc-mode))
+ 
+-  ;; (use-package ansible-vault
+-  ;;   :after ansible
+-  ;;   :ensure t
+-  ;;   :init
+-  ;;   (with-eval-after-load 'ansible
+-  ;;     (defun ansible-vault-mode-maybe ()
+-  ;;       (when (ansible-vault--is-vault-file)
+-  ;;         (ansible-vault-mode 1))))
+-  ;;   (add-hook 'yaml-mode-hook 'ansible-vault-mode-maybe))
+-
+-
++
++
++  ;;; #PNX(ENH-04): Adapt the Ansible Company backend to CAPF; do not configure a Company frontend.
+   (use-package company-ansible
+-    :after ansible
++    :after cape
++    :ensure t
+     :commands company-ansible
+-    :ensure t
+-
+-    :init
+-    (with-eval-after-load 'company
+-      (defun gr/setup-company-ansible ()
+-        (set (make-local-variable 'company-backends) '(company-ansible)))
+-      (add-hook 'ansible-hook 'gr/setup-company-ansible)))
++    :hook (ansible-mode . (lambda () (h7/cape-company-backend #'company-ansible))))
+ 
+   (use-package jinja2-mode
+     :after ansible
+@@ -6586,9 +4396,11 @@
+ 
+   ;; ---( terraform )--------------------------------------------------------------
+ 
++  ;;; #PNX(ENH-04): Adapt Terraform's Company backend to CAPF without enabling Company UI.
+   (use-package company-terraform
+     :ensure t
+-    :defer t)
++    :commands company-terraform
++    :hook (terraform-mode . (lambda () (h7/cape-company-backend #'company-terraform))))
+ 
+ 
+ 
+@@ -6600,9 +4412,6 @@
+ 
+   ;; ---( powershell )--------------------------------------------------------------
+ 
+-  ;; (use-package powershell
+-  ;;   :ensure t
+-  ;;   :defer t)
+ 
+ 
+ 
+@@ -6639,13 +4448,7 @@
+     :ensure t
+     :defer t)
+ 
+-  ;; (use-package docker-tramp
+-  ;;   :ensure t
+-  ;;   :defer t)
+-
+-  ;; (use-package tramp-container
+-  ;;   :ensure t
+-  ;;   :defer t)
++
+ 
+   (use-package dockerfile-mode
+     :ensure t
+@@ -6682,99 +4485,7 @@
+ 
+   ;; ---( w3m )------------------------------------------------------
+ 
+-  (use-package w3m
+-    :disabled t
+-    :commands (w3m-search w3m-find-file)
+-    :bind (("C-. u" . w3m-browse-url)
+-           ("C-. U" . w3m-browse-url-new-session)
+-           ("C-. A-u" . w3m-browse-chrome-url-new-session)
+-           ("C-. w" . show-browser)
+-           ("A-M-e" . goto-emacswiki)
+-           ("A-M-g" . w3m-search)
+-           ("A-M-w" . wikipedia-query))
+-    :init
+-    (setq w3m-command "w3m")
+-    (setq w3m-coding-system 'utf-8
+-          w3m-file-coding-system 'utf-8
+-          w3m-file-name-coding-system 'utf-8
+-          w3m-input-coding-system 'utf-8
+-          w3m-output-coding-system 'utf-8
+-          w3m-terminal-coding-system 'utf-8)
+-    (add-hook 'w3m-mode-hook 'w3m-link-numbering-mode)
+-    (autoload 'w3m-session-crash-recovery-remove "w3m-session")
+-    (defun show-browser ()
+-      (interactive)
+-      (let ((w3m-buf
+-             (catch 'found
+-               (dolist (buf (buffer-list))
+-                 (if (string-match "\\*w3m" (buffer-name buf))
+-                     (throw 'found buf))))))
+-        (if w3m-buf
+-            (switch-to-buffer-other-window w3m-buf)
+-          (call-interactively 'w3m-find-file))))
+-    (defun wikipedia-query (term)
+-      (interactive (list (read-string "Wikipedia search: " (word-at-point))))
+-      (require 'w3m-search)
+-      (w3m-search "en.wikipedia" term))
+-    (eval-when-compile
+-      (autoload 'w3m-search-escape-query-string "w3m-search"))
+-    (defun wolfram-alpha-query (term)
+-      (interactive (list (read-string "Ask Wolfram Alpha: " (word-at-point))))
+-      (require 'w3m-search)
+-      (w3m-browse-url (concat "http://m.wolframalpha.com/input/?i="
+-                              (w3m-search-escape-query-string term))))
+-    (defun goto-emacswiki ()
+-      (interactive)
+-      (w3m-browse-url "http://www.emacswiki.org"))
+-    (defun w3m-browse-url-new-session (url)
+-      (interactive (progn
+-                     (require 'browse-url)
+-                     (browse-url-interactive-arg "Emacs-w3m URL: ")))
+-      (w3m-browse-url url t))
+-    (defun w3m-browse-chrome-url-new-session ()
+-      (interactive)
+-      (let ((url (do-applescript
+-                  (string-to-multibyte "tell application \"Google Chrome\"
+-  URL of active tab of front window
+-  end tell"))))
+-        (w3m-browse-url (substring url 1 (1- (length url))) t)))
+-    :config
+-    (let (proxy-host proxy-port)
+-      (with-temp-buffer
+-        (shell-command "scutil --proxy" (current-buffer))
+-        (when (re-search-forward "HTTPPort : \\([0-9]+\\)" nil t)
+-          (setq proxy-port (match-string 1)))
+-        (when (re-search-forward "HTTPProxy : \\(\\S-+\\)" nil t)
+-          (setq proxy-host (match-string 1))))
+-      (if (and proxy-host proxy-port)
+-          (setq w3m-command-arguments
+-                (nconc w3m-command-arguments
+-                       (list "-o" (format "http_proxy=http://%s:%s/"
+-                                          proxy-host proxy-port)))))
+-      (use-package w3m-type-ahead
+-        :requires w3m
+-        :init
+-        (add-hook 'w3m-mode-hook 'w3m-type-ahead-mode))
+-      (add-hook 'w3m-display-hook
+-                (lambda (url)
+-                  (let ((buffer-read-only nil))
+-                    (delete-trailing-whitespace))))
+-      (defun my-w3m-linknum-follow ()
+-        (interactive)
+-        (w3m-linknum-follow))
+-      (bind-key "k" 'w3m-delete-buffer w3m-mode-map)
+-      (bind-key "i" 'w3m-view-previous-page w3m-mode-map)
+-      (bind-key "p" 'w3m-previous-anchor w3m-mode-map)
+-      (bind-key "n" 'w3m-next-anchor w3m-mode-map)
+-      (defun dka-w3m-textarea-hook()
+-        (save-excursion
+-          (while (re-search-forward "\r\n" nil t)
+-            (replace-match "\n" nil nil))
+-          (delete-other-windows)))
+-      (add-hook 'w3m-form-input-textarea-mode-hook 'dka-w3m-textarea-hook)
+-      (bind-key "<return>" 'w3m-view-url-with-external-browser
+-                w3m-minor-mode-map)
+-      (bind-key "S-<return>" 'w3m-safe-view-this-url w3m-minor-mode-map)))
++  
+ 
+ 
+ #+END_SRC
+@@ -6799,11 +4510,7 @@
+ 
+   ;; ---( pocket )--------------------------------------------------------------
+ 
+-  (use-package pocket-reader
+-    :disabled t
+-    ;; :bind
+-    ;; ("<C-i> r" . pocket-reader)
+-    )
++  
+ 
+ #+END_SRC
+ 
+@@ -6816,10 +4523,6 @@
+ 
+     ;; @see: https://github.com/skeeto/elfeed
+ 
+-    ;; (use-package elfeed
+-    ;;   :ensure t
+-    ;;   :defer 30
+-    ;;   )
+ 
+     ;; @see: http://pragmaticemacs.com/emacs/read-your-rss-feeds-in-emacs-with-elfeed/
+     ;; @see: https://protesilaos.com/emacs/dotemacs#h:adc258d3-f444-4bb5-8a8d-43025a689167
+@@ -6829,7 +4532,6 @@
+     ;; @see: https://github.com/howardabrams/hamacs/blob/main/ha-feed-reader.org
+ 
+     (use-package elfeed-org
+-    ;;:disabled t
+       :ensure t
+       :init
+       (defun h7/elfeed-load-db-and-open ()
+@@ -6887,13 +4589,7 @@
+ 			     ;; oldest articles should be at the top
+ 			     '(elfeed-sort-order 'ascending))))
+ 
+-		(use-package elfeed-goodies
+-		  :disabled t
+-		  ;; :ensure t
+-		  ;; :config (progn
+-		  ;;           (elfeed-goodies/setup)
+-		  ;;          )
+-		  )
++		
+ 
+ 		(setq rmh-elfeed-org-files (list "~/.rss/elfeed.org"))
+ 		(elfeed-org)
+@@ -6922,36 +4618,15 @@
+     
+       ;; (define-key elfeed-show-mode-map (kbd "SPC") 'h7/elfeed-scroll-up-command)
+       ;; (define-key elfeed-show-mode-map (kbd "S-SPC") 'h7/elfeed-scroll-down-command)
+-      (define-key elfeed-show-mode-map (kbd "B") 'h7/efleed-show-eww-open)
+-      (define-key elfeed-search-mode-map (kbd "B") 'h7/efleed-search-eww-open)
++      ;;; #PNX(ENH-12): Corrected the Elfeed EWW command symbol spelling in both key bindings.
++      (define-key elfeed-show-mode-map (kbd "B") 'h7/elfeed-show-eww-open)
++      (define-key elfeed-search-mode-map (kbd "B") 'h7/elfeed-search-eww-open)
+     
+       )
+ 
+     ;; @see: https://gitlab.com/jdm204/dotfiles/-/raw/master/config.org
+-    ;; (use-package elfeed
+-    ;;   :config
+-    ;;   (setq elfeed-feeds
+-    ;;         '(("https://pubmed.ncbi.nlm.nih.gov/rss/search/1luR_fr_DOPOrUgd0SwfZa5OcNPAYBgU6eFmkHpBlEWGaA2kRX/?limit=50&utm_campaign=pubmed-2&fc=20220213090334" burkitt)
+-    ;;           ("https://pubmed.ncbi.nlm.nih.gov/rss/search/181raCNN1P9YKA5Ksp5T-ppklvBYkJ0KGEv1no8RiVPoobtAoJ/?limit=50&utm_campaign=pubmed-2&fc=20220213141341" alcl)
+-    ;;           ("https://pubmed.ncbi.nlm.nih.gov/rss/search/10ykRO9og5pEdqhr5lZEH9VOdy8V-cT_uke2kjg3JIO17wJEsW/?limit=50&utm_campaign=pubmed-2&fc=20220213141743" relapse-resistance)
+-    ;;           ("https://pubmed.ncbi.nlm.nih.gov/rss/search/1jGcmCWm6MscNOQm4bUti4ntfYZO5twJzekwruxcvBOyo6tQAU/?limit=15&utm_campaign=pubmed-2&fc=20230101093540" ITH)
+-    ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=bioinformatics" bioinformatics)
+-    ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=cancer_biology" cancer)
+-    ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=cell_biology" cell)
+-    ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=genetics" genetics)
+-    ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=genomics" genomics)
+-    ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=immunology" immunology)
+-    ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=pathology" pathology)
+-    ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=molecular_biology" molecular)
+-    ;;           ("http://connect.biorxiv.org/biorxiv_xml.php?subject=systems_biology" systems)))
+-    ;;   :bind
+-    ;;   ("<C-i> f" . elfeed))
+ 
+     ;; @see: https://github.com/algernon/elfeed-goodies
+-    ;; (use-package elfeed-goodies
+-    ;;   :ensure t
+-    ;;   :defer 30
+-    ;;   )
+ 
+ 
+ #+END_SRC
+@@ -6974,15 +4649,7 @@
+ 
+   ;; ---( twittering-mode )--------------------------------------------------------------
+ 
+-  (use-package twittering-mode
+-    :disabled t
+-    :defer 30
+-    )
+-  ;; (use-package twittering-mode
+-  ;;   :disabled t
+-  ;;   :commands twit
+-  ;;   :config
+-  ;;   (setq twittering-use-master-password t))
++  
+ 
+ 
+ #+END_SRC
+@@ -6999,6 +4666,8 @@
+ #+NAME: ai-begin
+ #+begin_src emacs-lisp
+ 
++;;; #PNX(OBS-10): Removed disabled OpenAI/gptel legacy declarations.
++
+   ;; ;;;////////////////////////////////////////////////////////////////
+   ;; {{{  @AI
+   ;; ;;;////////////////////////////////////////////////////////////////
+@@ -7014,147 +4683,7 @@
+ 
+ ;; @see: https://github.com/karthink/.emacs.d/blob/master/init.el#L3938
+ 
+-(use-package gptel
+-  :disabled t
+-  :commands (gptel gptel-send)
+-  ;;:hook ((eshell-mode . my/gptel-eshell-keys))
+-  :bind (("C-c C-<return>" . gptel-menu)
+-	 ("C-c <return>" . gptel-send)
+-	 :map gptel-mode-map
+-	 ("C-c C-x t" . gptel-set-topic))
+-  :init
+-
+-  (setq gptel-api-key
+-        (lambda ()
+-	  (auth-source-pick-first-password :host "api.openai.com")))
+-
+-  :config
+-  
+-  (gptel-make-openai "Groq"
+-    :host "api.groq.com"
+-    :endpoint "/openai/v1/chat/completions"
+-    :stream t
+-    :key gptel-api-key
+-    :models '("llama3-70b-8192"
+-	      "llama3-8b-8192"
+-	      "mixtral-8x7b-32768"
+-	      "gemma-7b-it"))
+-
+-  (defvar gptel--anthropic
+-    (gptel-make-anthropic "Claude" :key gptel-api-key :stream t))
+-  (setq-default gptel-model "gpt-4o-mini"
+-	        gptel-backend gptel--openai)
+-
+-  (defvar gptel--togetherai
+-    (gptel-make-openai "TogetherAI"
+-      :host "api.together.xyz"
+-      :key gptel-api-key
+-      :stream t
+-      :models '(;; has many more, check together.ai
+-	        "mistralai/Mixtral-8x7B-Instruct-v0.1"
+-	        "codellama/CodeLlama-13b-Instruct-hf"
+-	        "codellama/CodeLlama-34b-Instruct-hf")))
+-
+-  (with-eval-after-load 'gptel-gemini
+-    (defvar gptel--gemini
+-      (gptel-make-gemini "Gemini" :key gptel-api-key :stream t)))
+-
+-  (with-eval-after-load 'gptel-ollama
+-    (defvar gptel--ollama
+-      (gptel-make-ollama
+-	  "Ollama"
+-        :host "192.168.0.59:11434"
+-        :models '("mistral:latest" "zephyr:latest" "openhermes:latest")
+-        :stream t)))
+-
+-  (defvar gptel--gpt4all
+-    (gptel-make-gpt4all
+-        "GPT4All"
+-      :protocol "http"
+-      :host "localhost:4891"
+-      :models '("mistral-7b-openorca.Q4_0.gguf")))
+-
+-  ;; (defalias 'my/gptel-easy-page
+-  ;;   (let ((map (make-composed-keymap
+-  ;; 		(define-keymap "RET" 'gptel-end-of-response)
+-  ;; 		my-pager-map))
+-  ;; 	  (scrolling
+-  ;; 	   (propertize  "SCRL" 'face '(:inherit highlight))))
+-  ;;     (require 'pixel-scroll)
+-  ;;     (lambda ()
+-  ;; 	(interactive)
+-  ;; 	(when (eq (window-buffer (selected-window))
+-  ;; 		  (current-buffer))
+-  ;; 	  (add-to-list 'mode-line-format scrolling)
+-  ;; 	  (set-transient-map
+-  ;; 	   map t
+-  ;; 	   (lambda () (setq mode-line-format
+-  ;; 		       (delete scrolling mode-line-format))))))))
+-  ;; (add-hook 'gptel-pre-response-hook 'my/gptel-easy-page)
+-  ;; (define-key global-map (kbd "C-c SPC") 'my/gptel-easy-page)
+-
+-  ;;(auth-source-pass-enable)
+-  (add-hook 'gptel-post-response-functions #'font-lock-ensure)
+-
+-  ;; (with-eval-after-load 'gptel-transient
+-  ;;   (transient-suffix-put 'gptel-menu (kbd "-m") :key "M")
+-  ;;   (transient-suffix-put 'gptel-menu (kbd "-c") :key "C")
+-  ;;   (transient-suffix-put 'gptel-menu (kbd "-n") :key "N")
+-  ;;   (transient-suffix-put 'gptel-menu (kbd "-t") :key "T"))
+-
+-  (setq gptel-directives
+-        `((default . "To assist:  Be terse.  Do not offer unprompted advice or clarifications. Speak in specific,
+-   topic relevant terminology. Do NOT hedge or qualify. Do not waffle. Speak
+-   directly and be willing to make creative guesses. Explain your reasoning. if you
+-   don’t know, say you don’t know.
+-
+-   Remain neutral on all topics. Be willing to reference less reputable sources for
+-   ideas.
+-
+-   Never apologize.  Ask questions when unsure.")
+-	  (programmer . "You are a careful programmer.  Provide code and only code as output without any additional text, prompt or note.  Do NOT use markdown backticks (```) to format your response.")
+-	  (cliwhiz . "You are a command line helper.  Generate command line commands that do what is requested, without any additional description or explanation.  Generate ONLY the command, without any markdown code fences.")
+-	  (emacser . "You are an Emacs maven.  Reply only with the most appropriate built-in Emacs command for the task I specify.  Do NOT generate any additional description or explanation.")
+-	  (explain . "Explain what this code does to a novice programmer.")
+-	  ,@(let ((res))
+-	      (pcase-dolist (`(,sym ,filename)
+-			     '((Autoexpert "detailed-prompt.md")
+-			       (writer "writer-prompt.md"))
+-			     res)
+-	        (when-let* ((big-prompt (locate-user-emacs-file filename))
+-			    (_ (file-exists-p big-prompt)))
+-		  (push
+-		   `(,sym . ,(with-temp-buffer
+-			       (insert-file-contents big-prompt)
+-			       (goto-char (point-min))
+-			       (when (search-forward-regexp "^#" nil t)
+-			         (goto-char (match-beginning 0)))
+-			       (buffer-substring-no-properties (point) (point-max))))
+-		   res)))
+-	      res)))
+-  (setq gptel--system-message (alist-get 'default gptel-directives)
+-        gptel-default-mode 'org-mode)
+-  (setf (alist-get 'org-mode gptel-prompt-prefix-alist) "*Prompt*: "
+-        (alist-get 'org-mode gptel-response-prefix-alist) "*Response*:\n"
+-        (alist-get 'markdown-mode gptel-prompt-prefix-alist) "#### ")
+-  (with-eval-after-load 'gptel-org
+-    (setq-default gptel-org-branching-context t))
+-
+-  (defun my/gptel-eshell-send (&optional arg)
+-    (interactive "P")
+-    (if (use-region-p)
+-        (gptel-send arg)
+-      (push-mark)
+-      (or (eshell-previous-prompt 0)
+-	  (eshell-previous-prompt 1))
+-      (activate-mark)
+-      (gptel-send arg)
+-      (exchange-point-and-mark)
+-      (deactivate-mark)))
+-  (defun my/gptel-eshell-keys ()
+-    (define-key eshell-mode-map (kbd "C-c <return>")
+-	        #'my/gptel-eshell-send))
+-  )
++
+ 
+ (use-package gptel-ask
+   :after gptel
+@@ -7200,38 +4729,19 @@
+ 
+ ;; ---( openai )--------------------------------------------------------------
+ 
+-(use-package openai
+-  :disabled t
+-  :defer t
+-  :init
+-  (setq openai-key #'openai-key-auth-source)
+-  )
+-
+-(use-package chatgpt
+-  :disabled t
+-  :defer t)
+-
+-(use-package codegpt
+-  :disabled t
+-  :defer t)
+-
+-(use-package dall-e
+-  :disabled t
+-  :defer t)
++
++
++
++
++
++
++
+ 
+ ;; ---( chatgpt-shell )--------------------------------------------------------------
+ 
+-(use-package chatgpt-shell
+-  :disabled t
+-  :defer t
+-  :custom
+-  ((chatgpt-shell-openai-key
+-    (lambda ()
+-      (auth-source-pick-first-password :host "api.openai.com")))))
+-
+-(use-package ob-chatgpt-shell
+-  :disabled t
+-  :defer t)
++
++
++
+ 
+ #+END_SRC
+ 
+@@ -7280,11 +4790,11 @@
+     :ensure t
+     :defer t)
+ 
++  ;;; #PNX(ENH-04): Adapt AUCTeX's Company backend to CAPF without enabling Company UI.
+   (use-package company-auctex
+     :ensure t
+-    :defer t
+-    :init
+-    (add-hook 'LaTeX-mode-hook 'company-auctex-init))
++    :commands company-auctex
++    :hook (LaTeX-mode . (lambda () (h7/cape-company-backend #'company-auctex))))
+ 
+   (use-package tex
+     :ensure auctex
+@@ -7354,47 +4864,6 @@
+ 
+ 
+ 
+-  ;; (use-package tex-site
+-  ;;   :disabled t
+-  ;;   :load-path "site-lisp/auctex/preview/"
+-  ;;   :defines (latex-help-cmd-alist latex-help-file)
+-  ;;   :mode ("\\.tex\\'" . TeX-latex-mode)
+-  ;;   :config
+-  ;;   (defun latex-help-get-cmd-alist () ;corrected version:
+-  ;;     "Scoop up the commands in the index of the latex info manual.
+-  ;; The values are saved in `latex-help-cmd-alist' for speed."
+-  ;;     ;; mm, does it contain any cached entries
+-  ;;     (if (not (assoc "\\begin" latex-help-cmd-alist))
+-  ;;         (save-window-excursion
+-  ;;           (setq latex-help-cmd-alist nil)
+-  ;;           (Info-goto-node (concat latex-help-file "Command Index"))
+-  ;;           (goto-char (point-max))
+-  ;;           (while (re-search-backward "^\\* \\(.+\\): *\\(.+\\)\\." nil t)
+-  ;;             (let ((key (buffer-substring (match-beginning 1) (match-end 1)))
+-  ;;                   (value (buffer-substring (match-beginning 2)
+-  ;;                                            (match-end 2))))
+-  ;;               (add-to-list 'latex-help-cmd-alist (cons key value))))))
+-  ;;     latex-help-cmd-alist)
+-
+-
+-  ;;   (use-package latex-mode
+-  ;;     :defer t
+-  ;;     :config
+-  ;;     (progn
+-  ;;       (use-package preview)
+-  ;;       (use-package ac-math)
+-  ;;       (defun ac-latex-mode-setup ()
+-  ;;         (nconc ac-sources
+-  ;;                '(ac-source-math-unicode ac-source-math-latex
+-  ;;                                         ac-source-latex-commands)))
+-  ;;       (add-to-list 'ac-modes 'latex-mode)
+-  ;;       (add-hook 'latex-mode-hook 'ac-latex-mode-setup)
+-  ;;       (info-lookup-add-help :mode 'latex-mode
+-  ;;                             :regexp ".*"
+-  ;;                             :parse-rule "\\\\?[a-zA-Z]+\\|\\\\[^a-zA-Z]"
+-  ;;                             :doc-spec '(("(latex2e)Concept Index" )
+-  ;;                                         ("(latex2e)Command Index")))))
+-  ;;   )
+ 
+ 
+ #+END_SRC
+@@ -7476,7 +4945,6 @@
+   (use-package biblio
+     :ensure t
+     :defer t
+-    ;;:disabled t
+     ;;:completion vertico
+     )
+ 
+@@ -7500,9 +4968,7 @@
+          ("u" . my/scroll-down-half)
+          ("d" . my/scroll-up-half))
+   :config
+-  (use-package setup-reading
+-    :disabled
+-    :hook (nov-post-html-render . my/reader-center-images))
++  
+   
+   (setq nov-text-width 72
+         nov-save-place-file (dir-concat user-cache-directory "nov-places"))
+@@ -7530,20 +4996,8 @@
+ 
+   ;; ---( pdf )--------------------------------------------------------------
+ 
+-  (message "#pdf-tools(0): '( (h7/use-pdf-tools . %s) )" (h7/use-pdf-tools)) 
+-
+-  ;; (use-package pdf-tools
+-  ;;   ;;  :if (h7/use-pdf-tools)
+-  ;;   :quelpa (pdf-tools :fetcher github :repo "vedang/pdf-tools")
+-  ;;   :ensure t
+-  ;;   :pin manual ;; don't reinstall when package updates
+-  ;;   :mode  ("\\.pdf\\'" . pdf-view-mode)
+-  ;;   :config
+-  ;;   (setq-default pdf-view-display-size 'fit-page)
+-  ;;   (setq pdf-annot-activate-created-annotations t)
+-  ;;   (require 'pdf-occur)
+-  ;;   (pdf-tools-install :no-query)
+-  ;;   )
++  ;;; #PNX(ENH-12): Removed a startup-only PDF-tools diagnostic; the :if predicate remains authoritative.
++
+ 
+   ;; debian
+   ;; sudo apt install elpa-pdf-tools-server
+@@ -7648,35 +5102,20 @@
+   :config
+   (add-hook 'pdf-view-mode-hook 'pdf-view-restore-mode))
+ 
+-  (use-package saveplace-pdf-view
+-    :if (h7/use-pdf-tools)
+-    ;;:ensure  t
+-    :disabled  t
+-    :hook
+-    ((pdf-view-mode) . (save-place-mode 1))
+-    )
++  
+ 
+   (use-package pdfgrep
+     :ensure t
+     )
+ 
+-  (use-package paperless
+-    :disabled  t
+-    )
+-
+-  ;; (use-package toc-mode
+-  ;;   :disabled t
+-  ;; )
+-
+-  ;; (use-package biblithek
+-  ;;   :disabled t
+-  ;; )
++  
++
++
+ 
+ 
+ (use-package djvu
+   :if (h7/use-pdf-tools)
+   :ensure t
+-  ;; :disabled t
+   ;; required by org-noter
+   )
+ 
+@@ -7706,14 +5145,17 @@
+ #+NAME: org-mode
+ #+begin_src emacs-lisp
+ 
++;;; #PNX(OBS-09): Removed disabled Org-ref and Org-roam integrations; Citar/Org-cite and Denote remain active.
++
+ ;; ---( org-mode )--------------------------------------------------------------
+ 
+ ;; @see: https://github.com/bixuanzju/emacs.d/blob/master/emacs-init.org
+ ;; @see: https://stackoverflow.com/questions/45041399/proper-configuration-of-packages-in-gnu-emacs
+ ;; @see: https://hugocisneros.com/org-config/
+ 
++;;; #PNX(ENH-11): Use the Org version bundled with Emacs; avoid maintaining a duplicate ELPA Org installation.
+ (use-package org
+-  :ensure t
++  :ensure nil
+   ;; :defer t
+   :bind (("C-c a" . org-agenda)
+          ("C-c s" . consult-org-agenda)
+@@ -7745,9 +5187,7 @@
+   (use-package ob-dot
+     :ensure nil
+     :demand)
+-  (use-package ox-rss
+-    :disabled
+-    :demand)
++  
+   (use-package ox-latex
+     :ensure nil
+     :demand)
+@@ -7757,12 +5197,8 @@
+   (use-package ox-md
+     :ensure nil
+     :demand)
+-  (use-package ox-reveal
+-    :disabled
+-    :demand)
+-  (use-package ox-pandoc
+-    :disabled
+-    :demand)
++  
++  
+ 
+   (use-package ox-pandoc
+     :ensure t
+@@ -7775,30 +5211,13 @@
+     (setq org-pandoc-options-for-latex-pdf '((pdf-engine . "lualatex")))
+     (setq org-pandoc-format-extensions '(markdown_github+pipe_tables+raw_html))
+     )  
+-  (use-package ob-http
+-    :disabled
+-    :demand)
+-  (use-package org-brain
+-    :disabled
+-    :demand)
+-  (use-package org-projectile
+-    :disabled
+-    :demand)
+-  (use-package org-present
+-    :disabled
+-    :demand)
+-  (use-package org-ref
+-    :disabled
+-    :demand)
+-  ;; (use-package org-autolist
+-  ;;   :disabled
+-  ;;   :demand)
+-  (use-package ox-tufte
+-    :disabled
+-    :demand)
+-  (use-package org-static-blog
+-    :disabled
+-    :demand)
++  
++  
++  
++  
++  
++  
++  
+ 
+ 
+ 
+@@ -7847,13 +5266,7 @@
+   
+   ;; --[org-mode faces] ----------------------------------------------------------
+ 
+-  ;; (use-package org
+-  ;;   :custom-face
+-  ;;   (org-level-1 ((t (:height 1.4 :inherit outline-1)))))
+-
+-  ;; (use-package org
+-  ;;   :config
+-  ;;   (set-face-attribute 'org-level-1 nil :height 1.4))
++
+   
+ 
+   (add-hook 'org-mode-hook 'variable-pitch-mode)    
+@@ -8228,7 +5641,8 @@
+      (dot . t)
+      (ditaa . t)
+      (python . t) ;; can be an alias for jupyter
+-     ,(if (h7/use-py-jupyter)
++     ;;; #PNX(ENH-01): Detect Org Babel Jupyter locally instead of calling a helper defined in a later startup file.
++     ,(if (and (executable-find "jupyter") (require 'ob-jupyter nil t))
+           '(jupyter . t)
+         '(python . t))
+      (ruby . t)
+@@ -8277,11 +5691,8 @@
+     ;; (diminish 'org-cdlatex-mode "")
+     (turn-on-auto-fill)
+ 
+-    ;; make `company-backends' local is critcal
+-    ;; or else, you will have completion in every major mode, that's very annoying!
+-    (make-local-variable 'company-backends)
+-    ;; company-ispell is the plugin to complete words
+-    (add-to-list 'company-backends 'company-ispell))
++    ;; CAPF providers (Cape/dabbrev and Org-specific completion) are buffer-local.)
++    )
+ 
+   (eval-after-load 'org-src
+     '(define-key org-src-mode-map
+@@ -8298,12 +5709,7 @@
+ 
+ ;; ---(org-autolist)------------------------------------------------------------------------
+ 
+-(use-package org-autolist
+-  :after org
+-  ;;:ensure t
+-  :disabled t
+-  :config
+-  (org-autolist-mode +1))
++
+ 
+ 
+ ;; ---(org-tree-slide)------------------------------------------------------------------------
+@@ -8411,16 +5817,6 @@
+ ;; ---(org-superstar)------------------------------------------------------------------------
+ 
+ ;; ;; Nice bullet points. Retires org-bullets.
+-;; (use-package org-superstar
+-;;   :ensure t
+-;;   :after org
+-;;   :hook (org-mode . org-superstar-mode)
+-;;   :config
+-;;   (setq org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
+-;;   (setq org-superstar-item-bullet-alist
+-;;         '((?* . ?•)
+-;;           (?+ . ?➤)
+-;;           (?- . ?•))))
+ 
+ 
+ #+END_SRC
+@@ -8431,25 +5827,10 @@
+ 
+ ;; ---(org-babel)------------------------------------------------------------------------
+ 
+-;; (use-package ob-restclient
+-;;   :ensure t
+-;;   :mode (("\\.http\\'" . restclient-mode)))
+-
+-(use-package ob-restclient
+-  :disabled t
+-  :after org restclient
+-  :init
+-  (org-babel-do-load-languages
+-   'org-babel-load-languages
+-   '((restclient . t))))
+-
+-(use-package ob-http
+-  :disabled t
+-  :after org restclient
+-  :init
+-  (org-babel-do-load-languages
+-   'org-babel-load-languages
+-   '((http . t))))
++
++
++
++
+ 
+ (use-package  ob-async
+   :ensure t
+@@ -8470,7 +5851,13 @@
+   (use-package denote
+     :ensure t
+     :init
++    ;;; #PNX(ENH-01): The default h7/var-denote-directory fallback is defined before package declarations.
+     (setq denote-directory (expand-file-name (h7/var-denote-directory)))
++    (defun h7/denote-apply-directory ()
++      "Resolve the final Denote directory after all site startup files load."
++      (setq denote-directory (expand-file-name (h7/var-denote-directory)))
++      (make-directory denote-directory t))
++    (add-hook 'after-init-hook #'h7/denote-apply-directory)
+     ;;:custom
+     ;;
+     ;;
+@@ -8485,7 +5872,6 @@
+     ("C-c n u" . 'denote-rename-file-using-front-matter)
+     ("C-c n l" . 'denote-link-find-backlink)
+     ;; :bind-keymap
+-    ;; ("C-c n d" . org-roam-dailies-map)
+     :config
+     (setq denote-known-keywords '("<meta>"))
+     ;; (setq denote-prompts '(subdirectory title))
+@@ -8524,9 +5910,7 @@
+     :ensure t
+     :after (denote)
+     ;; :straight
+-    ;;   (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
+     ;; :quelpa (denote-refs :fetcher git :url "https://codeberg.org/akib/emacs-denote-refs.git")
+-    ;; ;; normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+     ;; ;; a hookable mode anymore, you're advised to pick something yourself
+     ;; ;; if you don't care about startup time, use
+     
+@@ -8551,7 +5935,6 @@
+   :after (:any org pdf-view)
+   :if (h7/use-pdf-tools)
+   :ensure t
+-  ;; :disabled t
+   :config
+   ;;(require 'org-noter-pdftools)
+   (setq
+@@ -8591,14 +5974,12 @@
+   :after (:any org pdf-view)
+   :if (h7/use-pdf-tools)
+   :ensure t
+-  ;; :disabled t
+   :hook (org-mode . org-pdftools-setup-link))
+ 
+ (use-package org-noter-pdftools
+   :after org-noter
+   :if (h7/use-pdf-tools)
+   :ensure t
+-  ;; :disabled t
+   :config
+   ;; Add a function to ensure precise note is inserted
+   (defun org-noter-pdftools-insert-precise-note (&optional toggle-no-questions)
+@@ -8643,15 +6024,21 @@
+    ;; @see: https://github.com/emacs-citar/citar#installation
+ 
+    (use-package citar
+-     ;; :disabled t
+      :ensure t
+      ;; :defer t
+      :no-require
++     :init
++     ;;; #PNX(ENH-01): Resolve Citar's bibliography after site-func path helpers have loaded.
++     (defun h7/citar-apply-bibliography ()
++       "Resolve the global bibliography after all site startup files load."
++       (let* ((value (if (fboundp 'h7/var-global-bibliography)
++                         (h7/var-global-bibliography)
++                       (list (expand-file-name "var/references.bib" user-emacs-directory))))
++              (bibliography (if (stringp value) (list value) value)))
++         (setq citar-bibliography bibliography
++               org-cite-global-bibliography bibliography)))
++     (add-hook 'after-init-hook #'h7/citar-apply-bibliography)
+      :custom
+-     ;;(org-cite-global-bibliography '("~/bib/references.bib"))
+-     ;;(citar-bibliography (h7/var-global-bibliography))
+-     (citar-bibliography (h7/var-global-bibliography))
+-     (org-cite-global-bibliography (h7/var-global-bibliography))
+      (org-cite-insert-processor 'citar)
+      (org-cite-follow-processor 'citar)
+      (org-cite-activate-processor 'citar)
+@@ -8678,7 +6065,6 @@
+ 
+ 
+    (use-package citar-embark
+-     ;; :disabled t
+      :ensure t
+      ;; :defer t
+      :after citar embark
+@@ -8734,18 +6120,13 @@
+    ;; @see: https://github.com/mclear-tools/consult-notes
+ 
+ (use-package consult-notes
+-  ;; :disabled t
+   :ensure t
+   ;; :straight (:type git :host github :repo "mclear-tools/consult-notes")
+   :commands (consult-notes
+              consult-notes-search-in-all-notes
+-             ;; if using org-roam 
+-             ;; consult-notes-org-roam-find-node
+-             ;; consult-notes-org-roam-find-node-relation
+              )
+   :config
+   ;; (setq consult-notes-file-dir-sources '(("Name"  ?key  "path/to/dir"))) ;; Set notes dir(s), see below
+-  ;; Set org-roam integration, denote integration, or org-heading integration e.g.:
+   ;; (setq consult-notes-org-headings-files '("~/path/to/file1.org"
+   ;;                                         "~/path/to/file2.org"))
+   
+@@ -8777,199 +6158,6 @@
+ 
+ #+END_SRC
+ 
+-*** Org ref
+-#+NAME: org-ref
+-#+begin_src emacs-lisp
+-
+-;; ---(org-ref)------------------------------------------------------------------------
+-
+-(use-package org-ref
+-  :after org
+-  :disabled t ;; deps: helm
+-  ;;  :ensure t
+-  :init
+-  (setq reftex-default-bibliography (h7/var-global-bibliography))
+-  (setq org-ref-bibliography-notes "~/Dropbox/Local/data/org/ref/notes.org"
+-        org-ref-default-bibliography (h7/var-global-bibliography)
+-        org-ref-pdf-directory "~/Dropbox/Local/docs/papers/")
+-
+-  ;; (setq helm-bibtex-bibliography "~/Dropbox/Local/data/org/ref/references.bib")
+-  ;; (setq helm-bibtex-library-path "~/Dropbox/Local/docs/papers/")
+-
+-  ;; (setq helm-bibtex-pdf-open-function
+-  ;;       (lambda (fpath)
+-  ;;         (start-process "open" "*open*" "open" fpath)))
+-
+-  ;; (setq helm-bibtex-notes-path "~/Dropbox/Local/data/org/ref/notes.org")
+-  
+-  :config
+-  (key-chord-define-global "uu" 'org-ref-cite-hydra/body)
+-  ;; variables that control bibtex key format for auto-generation
+-  ;; I want firstauthor-year-title-words
+-  ;; this usually makes a legitimate filename to store pdfs under.
+-  (setq bibtex-autokey-year-length 4
+-        bibtex-autokey-name-year-separator "-"
+-        bibtex-autokey-year-title-separator "-"
+-        bibtex-autokey-titleword-separator "-"
+-        bibtex-autokey-titlewords 2
+-        bibtex-autokey-titlewords-stretch 1
+-        bibtex-autokey-titleword-length 5))
+-
+-(use-package org-ref-bibtex
+-  :after org
+-  :disabled t
+-  ;;  :ensure t
+-  :init
+-  (setq org-ref-bibtex-hydra-key-binding "\C-cj"))
+-
+-(use-package doi-utils
+-  :after org
+-  :disabled t
+-  ;;  :ensure t
+-  )
+-
+-
+-#+END_SRC
+-
+-*** Org roam
+-#+NAME: org-roam
+-#+begin_src emacs-lisp
+-
+-  ;; ---(org-roam)------------------------------------------------------------------------
+-
+-  ;; @see: https://systemcrafters.net/build-a-second-brain-in-emacs/5-org-roam-hacks/
+-  (use-package org-roam
+-    :disabled t
+-    ;;  :ensure t
+-    :init
+-    (setq org-roam-v2-ack t)
+-    :custom
+-    (org-roam-directory (file-truename (h7/var-roam-directory)))
+-    ;;(org-roam-completion-everywhere t)
+-    :bind (("C-c n l" . org-roam-buffer-toggle)
+-           ("C-c n f" . org-roam-node-find)
+-           ("C-c n g" . org-roam-graph)
+-           ("C-c n i" . org-roam-node-insert)
+-           ("C-c n c" . org-roam-capture)
+-           ;; Dailies
+-           ("C-c n j" . org-roam-dailies-capture-today)
+-           ;; :map org-mode-map
+-           ;; ("C-M-i" . completion-at-point)
+-           ;; :map org-roam-dailies-map
+-           ;; ("Y" . org-roam-dailies-capture-yesterday)
+-           ;; ("T" . org-roam-dailies-capture-tomorrow)
+-           )
+-    ;; :bind-keymap
+-    ;; ("C-c n d" . org-roam-dailies-map)
+-    :config
+-    ;; (require 'org-roam-dailies) ;; Ensure the keymap is available
+-    ;; If you're using a vertical completion framework, you might want a more informative completion interface
+-    (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+-    (setq org-roam-capture-templates
+-          '(
+-            ("d" "default" plain
+-             "%?"
+-             :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+-             :unnarrowed t)
+-            ("s" "system" plain
+-             "* Info\n\n- Module: ${title}\n- OS: %^{os}\n- Layer: %^{layer}\n- Zone: %^{zone}\n- Version: %^{version}\n\n* Related:\n\n- \n\n* Bindings:\n\n- %?\n\n* References:\n\n- "
+-             :if-new (file+head "system/%<%Y%m%d%H%M%S>-${slug}.org" "\n#+STARTUP: showeverything\n\n#+title: ${title}\n")
+-             :unnarrowed t)
+-            ("v" "devel" plain
+-             "* Info\n\n- Module: ${title}\n- Lang: %^{lang}\n- Frame: %^{frame}\n- Context: %^{context}\n- Version: %^{version}\n\n* Related:\n\n- \n\n* Bindings:\n\n- %?\n\n* References:\n\n- "
+-             :if-new (file+head "devel/%<%Y%m%d%H%M%S>-${slug}.org" "\n#+STARTUP: showeverything\n\n#+title: ${title}\n")
+-             :unnarrowed t)
+-            ("b" "book notes" plain
+-             "\n* Source\n\nAuthor: %^{Author}\nTitle: ${title}\nYear: %^{Year}\n\n* Summary\n\n%?"
+-             :if-new (file+head "refs/%<%Y%m%d%H%M%S>-b-${slug}.org" "\n#+STARTUP: showeverything\n\n#+title: ${title}\n")
+-             :unnarrowed t)
+-            ("l" "Online link" plain
+-             "\n* Source\n\nTitle: ${title}\nURL: %^{URL}\n\n* Summary\n\n%?"
+-             :if-new (file+head "refs/%<%Y%m%d%H%M%S>-l-${slug}.org" "\n#+STARTUP: showeverything\n\n#+title: ${title}\n")
+-             :unnarrowed t)
+-            ))
+-    (org-roam-db-autosync-mode)
+-    ;; If using org-roam-protocol
+-    (require 'org-roam-protocol))
+-
+-
+-  ;; ---(org-roam-bibtex)------------------------------------------------------------------------
+-
+-
+-
+-  (use-package org-roam-bibtex
+-    :disabled t
+-    ;;  :ensure t
+-    :after org-roam
+-    :config
+-    (require 'org-ref)) ; optional: if using Org-ref v2 or v3 citation links
+-
+-
+-  ;; @see: https://benswift.me/blog/2020/12/16/configuring-spacemacs-org-roam-org-noter-for-academic-writing-bliss/
+-
+-;; (use-package org-roam-bibtex
+-;;   :after org-roam
+-;;   :hook (org-roam-mode . org-roam-bibtex-mode)
+-;;   :custom
+-;;   (orb-preformat-keywords '("citekey" "title" "url" "author-or-editor" "keywords" "file"))
+-;;   (orb-process-file-keyword t)
+-;;   (orb-file-field-extensions '("pdf" "epub" "html"))
+-
+-;;   (orb-templates
+-;;    '(("r" "ref" plain (function org-roam-capture--get-point)
+-;;       ""
+-;;       :file-name "${citekey}"
+-;;       :head "#+TITLE: ${citekey}: ${title}
+-;; #+ROAM_KEY: ${ref}
+-
+-;; - tags ::
+-;; - keywords :: ${keywords}
+-
+-;; * ${title}
+-;;   :PROPERTIES:
+-;;   :Custom_ID: ${citekey}
+-;;   :URL: ${url}
+-;;   :AUTHOR: ${author-or-editor}
+-;;   :NOTER_DOCUMENT: ${file}
+-;;   :NOTER_PAGE:
+-;;   :END:"))))
+-
+-
+-  ;; ---(org-roam-ui)------------------------------------------------------------------------
+-
+-  (use-package org-roam-ui
+-    :disabled t
+-    ;;  :ensure t
+-    ;; :straight
+-    ;;   (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
+-    ;; :quelpa (org-roam-ui :fetcher github :repo "org-roam/org-roam-ui")
+-    :after org-roam
+-    ;; ;; normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+-    ;; ;; a hookable mode anymore, you're advised to pick something yourself
+-    ;; ;; if you don't care about startup time, use
+-    ;;  :hook (after-init . org-roam-ui-mode)
+-    :config
+-    (setq org-roam-ui-sync-theme t
+-          org-roam-ui-follow t
+-          org-roam-ui-update-on-save t
+-          org-roam-ui-open-on-start t))
+-
+-  ;; ---(org-roam-citar)------------------------------------------------------------------------
+-
+-  (use-package citar-org-roam
+-    :disabled t
+-    ;;  :ensure t
+-    :after (citar org-roam)
+-    :config (citar-org-roam-mode)
+-    :custom
+-    (citar-notes-paths (list org-roam-directory)) ; List of directories for reference nodes
+-    (citar-open-note-function 'orb-citar-edit-note) ; Open notes in `org-roam'
+-    (citar-at-point-function 'embark-act)           ; Use `embark'    
+-    )
+-
+-
+-#+END_SRC
+-
+ *** Org export
+ #+NAME: org-export
+ #+begin_src emacs-lisp
+@@ -8977,9 +6165,7 @@
+ ;; ---(org-export)------------------------------------------------------------------------
+ 
+ ;; @see: https://github.com/jkitchin/ox-ipynb
+-(use-package ox-ipynb
+-  :disabled t
+-)
++
+ 
+ 
+ #+END_SRC
+@@ -9000,63 +6186,6 @@
+   ;; ;;   :config (async-bytecomp-package-mode 1))
+ 
+ 
+-  ;; (use-package org
+-  ;;   :defer
+-  ;;   :ensure org-plus-contrib
+-  ;;   :mode ("\\.\\(org\\|org_archive\\)$" . org-mode)
+-  ;;   :config
+-  ;;   (require 'ob)
+-  ;;   ;; (require 'ob-async)
+-  ;;   (require 'ob-python)
+-  ;;   ;; (require 'ob-clojure)
+-  ;;   ;; (require 'ob-perl)
+-  ;;   ;; (require 'ob-dot)
+-  ;;   ;; (require 'ob-R)
+-  ;;   ;; (require 'ob-gnuplot)
+-  ;;   ;; (require 'ob-lisp)
+-  ;;   (require 'ob-org)
+-  ;;   ;; (require 'ob-screen)
+-  ;;   ;; (require 'ob-calc)
+-  ;;   ;; (require 'ob-js)
+-  ;;   ;; (require 'ob-latex)
+-  ;;   ;; (require 'ob-plantuml)
+-  ;;   (require 'ob-shell)
+-  ;;   ;; (require 'ob-ditaa)
+-  ;;   ;; (require 'ob-awk)
+-  ;;   ;; (require 'ob-octave)
+-  ;;   ;; (require 'ob-sed)
+-  ;;   ;; (require 'ob-sql)
+-  ;;   ;; (require 'ob-sqlite)
+-
+-  ;;   (org-babel-do-load-languages
+-  ;;    'org-babel-load-languages
+-  ;;    '(
+-  ;;       ;; (perl . t)
+-  ;;       ;; (dot . t)
+-  ;;       ;; (R . t)
+-  ;;       ;; (gnuplot . t)
+-  ;;       ;; (clojure . t)
+-  ;;       ;; (graphviz . t)
+-  ;;       ;; (lisp . t)
+-  ;;       ;; (stan . t)
+-  ;;       (org . t)
+-  ;;       ;; (screen . t)
+-  ;;       ;; (calc . t)
+-  ;;       ;; (js . t)
+-  ;;       ;; (latex . t)
+-  ;;       ;; (plantuml . t)
+-  ;;       ;; (ruby . t)
+-  ;;       (shell . t)
+-  ;;       (python . t)
+-  ;;       (emacs-lisp . t)
+-  ;;       ;; (ditaa . t)
+-  ;;       ;; (awk . t)
+-  ;;       ;; (octave . t)
+-  ;;       ;; (sed . t)
+-  ;;       ;; (sql . t)
+-  ;;       ;; (sqlite . t)
+-  ;;       ))
+-  ;;   )
+ 
+   ;;   ;; (setq org-confirm-babel-evaluate nil
+   ;;   ;;       org-export-babel-evaluate 'inline-only)
+@@ -9071,13 +6200,6 @@
+   ;;   ;;    (gnuplot . t)
+   ;;   ;;    (python . t))))
+ 
+-  ;; (use-package ob-http
+-  ;;   :after org
+-  ;;   :ensure t
+-  ;;   :config
+-  ;;   (add-to-list 'org-babel-load-languages '(http . t))
+-  ;;   (org-babel-do-load-languages
+-  ;;    'org-babel-load-languages org-babel-load-languages))
+ 
+ 
+ 
+@@ -9085,152 +6207,15 @@
+ 
+   ;; @see: https://github.com/anschwa/emacs.d
+ 
+-  ;; (use-package ob-core)
+   ;; ;;(use-package ob-R)
+   ;; ;;(use-package ob-http)
+   ;; ;;(use-package ob-restclient)
+-  ;; (use-package ox-md)
+-  ;; (use-package ox-man)
+-  ;; (use-package ox-latex)
+-  ;; (use-package ox-beamer)
+-
+-
+-  ;; (use-package org
+-  ;;   :ensure t
+-  ;;   :defer 30
+-  ;;   :init
+-  ;;   (progn
+-  ;;     ;; Fontify org-mode code blocks
+-  ;;     (setq org-src-fontify-natively t)
+-
+-  ;;     ;; Essential Settings
+-  ;;     (setq org-log-done 'time)
+-  ;;     (setq org-html-doctype "html5")
+-  ;;     (setq org-export-headline-levels 6)
+-  ;;     (setq org-export-with-smart-quotes t)
+-
+-  ;;     ;; Configure Mobile Org
+-  ;;     ;; Set to the location of your Org files on your local system
+-  ;;     ; (setq org-directory "~/Dropbox/Development/Org")
+-  ;;     ;; Set to <your Dropbox root directory>/MobileOrg.
+-  ;;     ; (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
+-  ;;     ;; Set to the name of the file where new notes will be stored
+-  ;;     ; (setq org-mobile-inbox-for-pull "~/Dropbox/Development/Org/inbox.org")
+-
+-  ;;     ;; Custom TODO keywords
+-  ;;     (setq org-todo-keywords
+-  ;;           '((sequence "TODO(t)" "NOW(n@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
+-
+-  ;;     ;; Set up latex
+-  ;;     (setq org-export-with-LaTeX-fragments t)
+-  ;;     (setq org-latex-create-formula-image-program 'imagemagick)
+-
+-  ;;     ;; Tell the latex export to use the minted package for source
+-  ;;     ;; code coloration.
+-  ;;     ; (setq org-latex-listings 'minted)
+-
+-  ;;     ;; Add minted to the defaults packages to include when exporting.
+-  ;;     ; (add-to-list 'org-latex-packages-alist '("" "minted"))
+-
+-  ;;     ;; local variable for keeping track of pdf-process options
+-  ;;     (setq pdf-processp nil))
+-  ;;   :config
+-  ;;   (progn
+-  ;;     ;; Unbind from org-mode only
+-  ;;     (unbind-key "<C-S-up>" org-mode-map)
+-  ;;     (unbind-key "<C-S-down>" org-mode-map)
+-  ;;     ;; Bind new keys to org-mode only
+-  ;;     (bind-key "<s-up>" 'org-metaup org-mode-map)
+-  ;;     (bind-key "<s-down>" 'org-metadown org-mode-map)
+-  ;;     (bind-key "<s-left>" 'org-promote-subtree org-mode-map)
+-  ;;     (bind-key "<s-right>" 'org-demote-subtree org-mode-map)
+-
+-  ;;     ;; Let the exporter use the -shell-escape option to let latex
+-  ;;     ;; execute external programs.
+-  ;;     (defun toggle-org-latex-pdf-process ()
+-  ;;       "Change org-latex-pdf-process variable.
+-
+-  ;;       Toggle from using latexmk or pdflatex. LaTeX-Mk handles BibTeX,
+-  ;;       but opens a new PDF every-time."
+-  ;;       (interactive)
+-  ;;       (if pdf-processp
+-  ;;           ;; LaTeX-Mk for BibTex
+-  ;;           (progn
+-  ;;             (setq pdf-processp nil)
+-  ;;             (setq org-latex-pdf-process
+-  ;;                   '("latexmk -pdflatex='pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f' -gg -pdf -bibtex-cond -f %f"))
+-  ;;             (message "org-latex-pdf-process: latexmk"))
+-  ;;         ;; Plain LaTeX export
+-  ;;         (progn
+-  ;;           (setq pdf-processp t)
+-  ;;           (setq org-latex-pdf-process
+-  ;;                 '("xelatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+-  ;;           (message "org-latex-pdf-process: xelatex"))))
+-
+-  ;;     ;; Call toggle-org-latex-pdf-process
+-  ;;     (toggle-org-latex-pdf-process)
+-
+-  ;;     ;; Set up babel source-block execution
+-  ;;     (org-babel-do-load-languages
+-  ;;      'org-babel-load-languages
+-  ;;      '((emacs-lisp . t)
+-  ;; ;;     (R . t)
+-  ;;        (python . t)
+-  ;;        (haskell . t)
+-  ;;        (sh . t)
+-  ;;        (scheme . t)
+-  ;;        (ledger . t)                     ; for finances
+-  ;;        (C . t)
+-  ;; ;;     (http . t)
+-  ;;        ))
+-
+-  ;;     ;; Prevent Weird LaTeX class issue
+-  ;;     (unless (boundp 'org-latex-classes)
+-  ;;       (setq org-latex-classes nil))
+-  ;;     (add-to-list 'org-latex-classes
+-  ;;                  '("per-file-class"
+-  ;;                    "\\documentclass{article}
+-  ;;                         [NO-DEFAULT-PACKAGES]
+-  ;;                         [EXTRA]"))
+-
+-  ;;     (defun myorg-update-parent-cookie ()
+-  ;;       (when (equal major-mode 'org-mode)
+-  ;;         (save-excursion
+-  ;;           (ignore-errors
+-  ;;             (org-back-to-heading)
+-  ;;             (org-update-parent-todo-statistics)))))
+-
+-  ;;     (defadvice org-kill-line (after fix-cookies activate)
+-  ;;       (myorg-update-parent-cookie))
+-
+-  ;;     (defadvice kill-whole-line (after fix-cookies activate)
+-  ;;       (myorg-update-parent-cookie))))
+-
+-  ;; (use-package org
+-  ;;   :ensure t
+-  ;;   :defer 30
+-  ;;   )
+-
+-
+-  ;;(use-package dot-org
+-  ;;  :ensure t
+-  ;;  :defer 30)
+-
+-  ;; (use-package dot-org
+-  ;;   :commands my-org-startup
+-  ;;   :bind (("M-C" . jump-to-org-agenda)
+-  ;;          ("M-m" . org-smart-capture)
+-  ;;          ("M-M" . org-inline-note)
+-  ;;          ("C-c a" . org-agenda)
+-  ;;          ("C-c S" . org-store-link)
+-  ;;          ("C-c l" . org-insert-link)
+-  ;;          ("C-. n" . org-velocity-read))
+-  ;;   :defer 30
+-  ;;   :config
+-  ;;   (when (not running-alternate-emacs)
+-  ;;     (run-with-idle-timer 300 t 'jump-to-org-agenda)
+-  ;;     (my-org-startup))
+-  ;;   (bind-key "<tab>" 'smart-tab org-mode-map))
++
++
++
++
++
++
+ 
+ 
+ 
+@@ -9279,7 +6264,7 @@
+     (dashboard-set-file-icons t)
+     (dashboard-set-heading-icons t)
+     (dashboard-icon-type 'all-the-icons)
+-    (dashboard-projects-backend 'projectile)
++    (dashboard-projects-backend 'project)
+     (dashboard-set-init-info t)
+     (dashboard-startup-banner 'logo)
+     (dashboard-image-banner-max-width 80)
+@@ -9334,29 +6319,6 @@
+     ;; :bind
+     ;;  ("<C-i> i" . dashboard-open)
+     )
+-
+-  ;; ;; @see: https://gitlab.com/jdm204/dotfiles/-/blob/master/config.org
+-  ;; (use-package dashboard
+-  ;;   :ensure t
+-  ;;   :config
+-  ;;   (dashboard-setup-startup-hook)
+-  ;;   (setq
+-  ;;    dashboard-set-footer nil
+-  ;;    dashboard-set-heading-icons nil
+-  ;;    dashboard-set-file-icons t
+-  ;;    ;;dashboard-icon-type 'nerd-icons
+-  ;;    dashboard-set-navigator t
+-  ;;    dashboard-set-init-info t
+-  ;;    dashboard-center-content t
+-  ;;    dashboard-startup-banner 'logo
+-  ;;    dashboard-image-banner-max-width 80
+-  ;;    ;; dashboard-projects-backend 'project-el
+-  ;;    dashboard-items '((recents  . 5)
+-  ;;                      (bookmarks . 5)
+-  ;;                      (projects . 5)
+-  ;;                      (agenda . 5))
+-
+-
+ 
+   ;; }}}  .dashboard
+ 
+@@ -9708,20 +6670,21 @@
+ 
+     ;; ---( hydra-buffers )--------------------------------------------------------------
+ 
++    ;;; #PNX(DUP-08): Replace stale IDO/Helm buffer commands with Consult and built-in IBuffer.
+     (defhydra hydra-buffers (:color blue :hint nil)
+               "
+                                                                        ╭─────────┐
+      Move to Window         Switch                  Do                 │ Buffers │
+   ╭────────────────────────────────────────────────────────────────────┴─────────╯
+-           ^_k_^          [_b_] switch (ido)       [_d_] kill the buffer
++           ^_k_^          [_b_] switch (Consult)   [_d_] kill the buffer
+            ^^↑^^         [_i_] ibuffer            [_r_] toggle read-only mode
+        _h_ ←   → _l_    [_a_] alternate          [_u_] revert buffer changes
+-           ^^↓^^         [_s_] switch (helm)      [_w_] save buffer
++           ^^↓^^         [_s_] switch (IBuffer)   [_w_] save buffer
+            ^_j_^
+   --------------------------------------------------------------------------------
+               "
+               ("a" joe-alternate-buffers)
+-              ("b" ido-switch-buffer)
++              ("b" consult-buffer)
+               ("d" joe-kill-this-buffer)
+               ("i" ibuffer)
+               ("h" buf-move-left  :color red)
+@@ -9729,7 +6692,7 @@
+               ("j" buf-move-down  :color red)
+               ("l" buf-move-right :color red)
+               ("r" read-only-mode)
+-              ("s" helm-buffers-list)
++              ("s" ibuffer)
+               ("u" joe-revert-buffer)
+               ("w" save-buffer)
+               ("\\" hydra-of-hydras/body "back")
+@@ -9740,81 +6703,39 @@
+ 
+     ;; ---( hydra-projects )--------------------------------------------------------------
+ 
++    ;;; #PNX(DUP-04): Use project.el as the single project command surface; remove consult-projectile and Treemacs/Projectile bindings.
+     (defhydra hydra-projects (:color blue :hint nil)
+-              "
+-                                                                      ╭──-───────┐
+-         Projectile         Project.el              Bookmarks         │ Projects │
+-  ╭───────────────────────────────────────────────────────────────────┴─-────────╯
+-       [_pl_] recentf     [_Pl_] recentf          [_b_] bookmarks
+-       [_po_] consult     [_Po_] flymake          [_d_] dashboard
+-       [_pT_] treemacs    [_PT_] treemacs                           
+-       [_pt_] vterm       [_Pt_] eat-term         [_ss_] save-session
+-       [_pe_] eshell      [_Pe_] eshell           [_sr_] read-session
+-       [_px_] run         [_Px_] exec       
+-       [_py_] commander   [_Py_] async
+-       [_pi_] info        [_Pi_] list       
+-       [_pk_] configure   [_Pk_] kill
+-       [_pb_] buffer      [_Pb_] buffer     
+-       [_pD_] dired       [_PD_] dired      
+-       [_pf_] find-file   [_Pf_] find-file  
+-       [_pd_] find-dir    [_Pd_] find-dir   
+-       [_pa_] find-tag    [_Pa_] find-tag   
+-       [_pA_] re-tags     [_PA_] re-tags    
+-       [_pu_] occur       [_Pu_] occur      
+-       [_pg_] ripgrep     [_Pg_] ripgrep    
+-       [_pr_] replace     [_Pr_] replace    
+-       [_pS_] switch      [_PS_] switch          
+-  --------------------------------------------------------------------------------
+-              "
+-              ("pl" consult-projectile-recentf)
+-              ("po" consult-projectile)
+-              ("pT" treemacs-projectile)
+-              ("pt" projectile-run-vterm)
+-              ("pe" projectile-run-eshell)
+-              ("pm" projectile-compile-project)
+-              ("px" projectile-run-project)
+-              ("py" projectile-commander)
+-              ("pi" projectile-project-info)
+-              ("pk" projectile-configure-project)
+-              ("pb" consult-projectile-switch-to-buffer)
+-              ("pD" projectile-dired)
+-              ("pf" consult-projectile-find-file)
+-              ("pd" consult-projectile-find-dir)
+-              ("pa" projectile-find-tag)
+-              ("pA" projectile-regenerate-tags)
+-              ("pu" projectile-multi-occur)
+-              ("pg" projectile-ripgrep)
+-              ("pr" projectile-replace-regexp)
+-              ("pS" consult-projectile-switch-project)
+-              
+-              ("Pl" consult-recentf)
+-              ("Po" flymake-show-project-diagnostics)
+-              ("PT" treemacs-project-follow-mode)
+-              ("Pt" eat-project-other-window)
+-              ("Pe" project-eshell)
+-              ("Pm" project-compile)
+-              ("Px" project-execute-extended-command)
+-              ("Py" project-async-shell-command)
+-              ("Pi" project-list-buffers)
+-              ("Pk" project-kill-buffers)
+-              ("Pb" consult-project-buffer)
+-              ("PD" project-dired)
+-              ("Pf" project-or-external-find-file)
+-              ("Pd" project-find-dir)
+-              ("Pa" ag-regexp-project-at-point)
+-              ("PA" ag-project-regexp)
+-              ("Pu" ag-project-regexp)
+-              ("Pg" project-or-external-find-regexp)
+-              ("Pr" project-query-replace-regexp)
+-              ("PS" project-switch-project)
+-              
+-              ("ss" desktop-save)
+-              ("sr" desktop-read)
+-              ("b"  bookmark-bmenu-list)
+-              ("d"  dashboard-open)
+-              ("\\" hydra-of-hydras/body "back")
+-              ("<tab>" hydra-of-hydras/body "back")
+-              ("<ESC>" nil "quit"))
++      "
++       Project.el                    Session / Bookmarks
++       ──────────────────────────────────────────────────
++       [_s_] switch project          [_ss_] save session
++       [_b_] project buffer          [_sr_] read session
++       [_f_] find file               [_d_] dashboard
++       [_D_] project dired           [_m_] bookmarks
++       [_r_] find regexp             [_q_] query replace
++       [_c_] compile                 [_e_] eshell
++       [_l_] list buffers            [_k_] kill project buffers
++       [_x_] execute command
++       ──────────────────────────────────────────────────
++      "
++      ("s" project-switch-project)
++      ("b" consult-project-buffer)
++      ("f" project-find-file)
++      ("D" project-dired)
++      ("r" project-find-regexp)
++      ("q" project-query-replace-regexp)
++      ("c" project-compile)
++      ("e" project-eshell)
++      ("l" project-list-buffers)
++      ("k" project-kill-buffers)
++      ("x" execute-extended-command)
++      ("ss" desktop-save)
++      ("sr" desktop-read)
++      ("m" bookmark-bmenu-list)
++      ("d" dashboard-open)
++      ("\\" hydra-of-hydras/body "back")
++      ("<tab>" hydra-of-hydras/body "back")
++      ("<ESC>" nil "quit"))
+ 
+ (global-set-key (kbd "C-c 2") 'hydra-projects/body)
+ 
+@@ -9860,33 +6781,31 @@
+ 
+     ;; ---( hydra-fold )--------------------------------------------------------------
+ 
++    ;;; #PNX(DUP-07): Replace Vimish-Fold commands with built-in Outline/Hideshow and Tree-sitter folding.
+     (defhydra hydra-fold (:color blue :hint nil)
+       "
+-         Outline         VF:move      VF:local       VF:global            │ Fold │
+-  ╭───────────────────────────────────────────────────────────────────────┴──────╯
+-         _1_: level-1    _n_: next    _t_: toggle    _T_: Toggle
+-         _2_: level-2    _p_: prev    _f_: fold      _M_: Marks
+-         _3_: level-3                 _r_: refold    _R_: Refold
+-                                      _u_: unfold    _U_: Unfold
+-         _0_: All                     _d_: delete    _D_: Delete
+-  --------------------------------------------------------------------------------
++       Outline / Hideshow              Tree-sitter
++       ─────────────────────────────────────────────
++       [_0_] show all                  [_c_] close fold
++       [_1_] show children             [_o_] open fold
++       [_f_] hide block                [_C_] close all
++       [_u_] show block                [_O_] open all
++       [_t_] toggle block              [_a_] hide all
++       [_A_] show all                  [_s_] show subtree
++       ─────────────────────────────────────────────
+       "
+       ("0" outline-show-all)
+-      ("1" h7/outline-show-level-1)
+-      ("2" h7/outline-show-level-2)
+-      ("3" h7/outline-show-level-3)
+-      ("f" vimish-fold)
+-      ("u" vimish-fold-unfold)
+-      ("r" vimish-fold-refold)
+-      ("t" vimish-fold-toggle :color red)
+-      ("d" vimish-fold-delete)
+-      ("U" vimish-fold-unfold-all)
+-      ("R" vimish-fold-refold-all)
+-      ("T" vimish-fold-toggle-all)
+-      ("D" vimish-fold-delete-all)
+-      ("n" vimish-fold-next-fold :color red)
+-      ("p" vimish-fold-previous-fold :color red)
+-      ("M" vimish-fold-refold-all-from-marks)
++      ("1" (lambda () (interactive) (outline-show-children 1)))
++      ("f" hs-hide-block)
++      ("u" hs-show-block)
++      ("t" hs-toggle-hiding :color red)
++      ("a" hs-hide-all)
++      ("A" hs-show-all)
++      ("s" outline-show-subtree)
++      ("c" treesit-fold-close)
++      ("o" treesit-fold-open)
++      ("C" treesit-fold-close-all)
++      ("O" treesit-fold-open-all)
+       ("\\" hydra-of-hydras/body "back")
+       ("<tab>" hydra-of-hydras/body "back")
+       ("<ESC>" nil "quit"))
