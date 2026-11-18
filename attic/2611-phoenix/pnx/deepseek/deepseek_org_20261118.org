@@ -1,0 +1,1104 @@
+#+TITLE: site-pkgs: load emacs packages and main config
+#+OPTIONS: toc:nil h:4
+#+STARTUP: show2levels
+#+PROPERTY: header-args:emacs-lisp :tangle yes :results silent :exports code :comments both
+#+LINK: emacs-site https://github.com/hute37/emacs-site
+#+LINK: dotemacs  https://sachachua.com/dotemacs#%s
+
+Last exported:  {{{modification-time(%Y-%m-%d %H:%M)}}}
+
+=> org-babel-tangle: C-c C-v t
+
+#+TOC: headlines 4
+
+* REFS
+#+begin_comment
+Unchanged: REFS - see original.  Note: after this refactor, REFS still claims
+C-x C-b -> consult-buffer and C-x C-r -> consult-recent-file, which are NOT
+bound; and C-c h -> "code/navigation Hydra", but consult-history is bound.
+Fix REFS doc separately (see "Key-map Issues" section in the report).
+#+end_comment
+
+* Config: =site-pkgs=       :emacs:
+** About
+#+begin_comment
+Unchanged.
+#+end_comment
+
+** Header
+#+begin_comment
+Unchanged (license + log-start markers).
+#+end_comment
+
+** References
+#+begin_comment
+Unchanged (reference URL comments).
+#+end_comment
+
+** Starting up
+*** Use-Package
+
+;;; #PNX(OBS-03): Removed `diminish`; `delight` (below) is the sole minor-mode hider.
+;;; #PNX(ENH-02): `use-package` is built-in in Emacs 30+; no `:ensure` needed.
+;;; #PNX(HARD-CLEANUP): Removed all commented-out straight.el / quelpa /
+;;;   manual-bootstrap boilerplate (dead code).
+
+#+NAME: startup
+#+begin_src emacs-lisp
+
+;; ;;;////////////////////////////////////////////////////////////////
+;; {{{  @PACKAGES
+;; ;;;////////////////////////////////////////////////////////////////
+
+;; ---( Install )--------------------------------------------------------------
+
+;; disable "Missing ‘lexical-binding’ cookie" warnings
+(setq internal--get-default-lexical-binding-function nil)
+
+;; This sets up the load path so that we can override it
+(setq warning-suppress-log-types '((package reinitialization)))
+(package-initialize)
+
+(unless (assoc-default "melpa" package-archives)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t))
+(unless (assoc-default "nongnu" package-archives)
+  (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/") t))
+
+(setq use-package-verbose t)
+
+;;; #PNX(ENH-02): `use-package` and `bind-key` are built-in since Emacs 29/30.
+(require 'use-package)
+(require 'bind-key)
+
+(use-package bind-key
+  :ensure nil)
+
+;;; #PNX(OBS-03): `diminish` block removed - use `delight` (see UI section).
+
+;;; #PNX(HARD-CLEANUP): Removed `(use-package use-package-ensure-system-package :ensure f)`
+;;;   - the `:ensure f` was a bug; package is unnecessary here.
+
+;;; #PNX(HARD-CLEANUP): Removed `(use-package req-package :disabled t)` - obsolete.
+
+;; @see: https://github.com/noctuid/general.el
+(use-package general
+  :ensure t)
+
+;; }}}  .packages
+
+#+end_src
+
+** General
+*** Basic
+#+begin_comment
+Unchanged (emacs built-in helpers: h7/string-matches-none-p, dir-concat, dir-mk, cache vars).
+#+end_comment
+
+*** Config
+#+begin_comment
+Unchanged (autosave, backups, use-short-answers).
+#+end_comment
+
+*** System
+#+begin_comment
+Unchanged (gc-cons-threshold).
+#+end_comment
+
+*** Window
+#+begin_comment
+Unchanged (h7/make-*-frame helpers, zoom-window).
+#+end_comment
+
+*** UI
+
+;;; #PNX(HARD-CLEANUP): Removed the commented-out `doom-modeline` and
+;;;   `powerline` blocks.  `hide-mode-line` is NOT removed: it is used by
+;;;   `inferior-python-mode` (below).
+
+#+NAME: ui
+#+begin_src emacs-lisp
+
+;; ---( themes )--------------------------------------------------------------
+
+(use-package ef-themes
+  :ensure t)
+
+;; ---( mode-line )--------------------------------------------------------------
+
+(use-package minions
+  :ensure t
+  :config (minions-mode 1))
+
+(use-package mood-line
+  :ensure t
+  :config (mood-line-mode 1))
+
+;; delight: preferred modern replacement for diminish
+(use-package delight
+  :ensure t
+  :config (require 'delight))
+
+(require 'bind-key)
+
+;; icon fonts: M-x all-the-icons-install-fonts
+;;; #PNX(ENH-06): defer `all-the-icons` until something actually needs it.
+(use-package all-the-icons
+  :ensure t
+  :defer t)
+
+(use-package solaire-mode
+  :ensure t
+  :init (solaire-global-mode +1))
+
+;; ---( highlight )--------------------------------------------------------------
+
+(use-package hl-todo
+  :ensure t
+  :hook ((prog-mode yaml-mode text-mode markdown-mode) . hl-todo-mode)
+  :config (minions-mode 1)
+  :custom
+  (hl-todo-highlight-punctuation ":"
+   hl-todo-keyword-faces
+   '(("HOLD"   . "#d0bf8f")
+     ("TODO"   . "#cc9393")
+     ("NEXT"   . "#dca3a3")
+     ("THEM"   . "#dc8cc3")
+     ("PROG"   . "#7cb8bb")
+     ("OKAY"   . "#7cb8bb")
+     ("DONT"   . "#5f7f5f")
+     ("FAIL"   . "#8c5353")
+     ("DONE"   . "#afd8af")
+     ("NOTE"   . "#d0bf8f")
+     ("MAYBE"  . "#d0bf8f")
+     ("KLUDGE" . "#d0bf8f")
+     ("HACK"   . "#d0bf8f")
+     ("TEMP"   . "#d0bf8f")
+     ("FIXME"  . "#cc9393")
+     ("XXXX*"  . "#cc9393"))))
+
+;; }}}  .ui
+
+#+end_src
+
+** Utils
+*** Utils/begin
+#+begin_comment
+Unchanged.
+#+end_comment
+
+*** Utils/Libs
+#+begin_comment
+Unchanged (dash, f, s).
+#+end_comment
+
+*** Utils/Jump
+
+;;; #PNX(OBS-01): Removed `ace-jump-mode`; `avy` is actively maintained and
+;;;   supersedes it.
+;;; #PNX(ENH-03): Bound `avy-goto-char-timer` to `C-.` (was previously the
+;;;   commented-out ace-jump binding).  `embark-act` also wants `C-.` globally;
+;;;   see key-map section of the report - choose one.  Default here is avy.
+
+#+NAME: util-jump
+#+begin_src emacs-lisp
+
+;; ---( hydra )--------------------------------------------------------------
+
+(use-package hydra
+  :ensure t
+  :commands defhydra)
+
+(use-package use-package-hydra
+  :ensure t
+  :after hydra)
+
+;; ---( avy )--------------------------------------------------------------
+
+(use-package avy
+  :ensure t
+  :bind (("C-'" . avy-goto-char-timer)
+         ("M-g w" . avy-goto-word-1)))
+
+#+end_src
+
+*** Utils/Search
+#+begin_comment
+Unchanged (regex-tool, visual-regexp).
+#+end_comment
+
+*** Utils/Help
+#+begin_comment
+Unchanged.  `which-key` is kept; see ENH-02 note in report.
+#+end_comment
+
+*** Utils/Misc
+
+;;; #PNX(OBS-02): Replaced `undo-tree` with built-in `vundo` (simpler, no
+;;;   state-management issues; `undo-tree` remains maintained but is no longer
+;;;   recommended for new configs).
+;;; #PNX(HARD-CLEANUP): Removed commented-out `whitespace` blocks.
+;;; #PNX(HARD-CLEANUP): Removed disabled `savefold` and `vimish-fold` blocks.
+;;;   `hydra-fold` (Jump section) is updated accordingly.
+
+#+NAME: util-misc
+#+begin_src emacs-lisp
+
+;; ---( undo )--------------------------------------------------------------
+
+(use-package vundo
+  :ensure t
+  :bind ("C-x u" . vundo)
+  :custom
+  (vundo-glyph-alist vundo-unicode-symbols))
+
+;; ---( recentf )--------------------------------------------------------------
+
+(use-package recentf
+  :bind ("C-x C-r" . recentf-open-files)
+  :config
+  (setq recentf-auto-cleanup 'never
+        recentf-max-menu-items 25
+        recentf-max-saved-items 1000
+        recentf-save-file (concat user-emacs-directory ".recentf"))
+  (dolist (el '("~/\\.emacs.bmk\\'" "/tmp/.*\\'" "~/\\.elfeed/index\\'"))
+    (add-to-list 'recentf-exclude el))
+  (recentf-mode t))
+
+;; ---( popper )--------------------------------------------------------------
+
+(use-package popper
+  :ensure t
+  :custom
+  (popper-reference-buffers '("\\*Messages\\*"
+                              "Output\\*$"
+                              "\\*Async Shell Command\\*"
+                              help-mode compilation-mode eldoc-mode))
+  (popper-window-height 30)
+  :init
+  (popper-mode +1)
+  (popper-echo-mode +1))
+
+;; ---( comint )--------------------------------------------------------------
+
+(use-package comint
+  :custom
+  (comint-buffer-maximum-size 20000)
+  (comint-prompt-read-only t))
+
+;; ---( environment )--------------------------------------------------------------
+
+(use-package restart-emacs
+  :defer t)
+
+;; ---( autorevert )--------------------------------------------------------------
+
+(use-package autorevert
+  :commands auto-revert-mode
+  :diminish auto-revert-mode
+  :init
+  (add-hook 'find-file-hook #'auto-revert-mode))
+
+;; ---( visible-mark )--------------------------------------------------------------
+
+(use-package visible-mark
+  :ensure t
+  :init (global-visible-mark-mode)
+  :custom
+  (visible-mark-faces '(visible-mark-face1 visible-mark-face2))
+  (visible-mark-forward-faces '(visible-mark-face1 visible-mark-face2))
+  (visible-mark-max 2))
+
+;; ---( changes )--------------------------------------------------------------
+
+(use-package hilit-chg
+  :ensure t
+  :bind ("C-x M-c" . highlight-changes-mode))
+
+(use-package goto-chg
+  :ensure t
+  :bind ("C-x M-u" . goto-last-change))
+
+;; ---( folding )--------------------------------------------------------------
+
+(use-package outline-indent
+  :ensure t
+  :commands outline-indent-minor-mode
+  :custom (outline-indent-ellipsis " ▼"))
+
+(use-package treesit-fold
+  :ensure t
+  :commands (treesit-fold-close treesit-fold-close-all
+             treesit-fold-open treesit-fold-toggle
+             treesit-fold-open-all treesit-fold-mode
+             global-treesit-fold-mode treesit-fold-open-recursively
+             treesit-fold-line-comment-mode)
+  :custom
+  (treesit-fold-line-count-show t)
+  (treesit-fold-line-count-format " ▼")
+  :config
+  (set-face-attribute 'treesit-fold-replacement-face nil
+                      :foreground "#808080" :box nil :weight 'bold))
+
+(use-package kirigami
+  :ensure t
+  :commands (kirigami-open-fold kirigami-open-fold-rec
+             kirigami-close-fold kirigami-toggle-fold
+             kirigami-open-folds kirigami-close-folds-except-current
+             kirigami-close-folds)
+  :bind
+  (("C-c z o" . kirigami-open-fold)
+   ("C-c z O" . kirigami-open-fold-rec)
+   ("C-c z r" . kirigami-open-folds)
+   ("C-c z c" . kirigami-close-fold)
+   ("C-c z m" . kirigami-close-folds)
+   ("C-c z a" . kirigami-toggle-fold))
+  :config
+  (dolist (h '(emacs-lisp-mode-hook lisp-interaction-mode-hook
+               lisp-mode-hook conf-mode-hook markdown-mode-hook
+               diff-mode-hook))
+    (add-hook h #'outline-minor-mode))
+  (dolist (h '(python-mode-hook python-ts-mode-hook
+               yaml-mode-hook yaml-ts-mode-hook haskell-mode-hook))
+    (add-hook h #'outline-indent-minor-mode))
+  (dolist (h '(c-mode-hook c++-mode-hook java-mode-hook rust-mode-hook
+               go-mode-hook ruby-mode-hook php-mode-hook perl-mode-hook
+               js-mode-hook typescript-mode-hook css-mode-hook
+               sh-mode-hook json-mode-hook lua-mode-hook
+               nxml-mode-hook html-mode-hook))
+    (add-hook h #'hs-minor-mode))
+  (dolist (h '(markdown-ts-mode-hook c-ts-mode-hook c++-ts-mode-hook
+               java-ts-mode-hook rust-ts-mode-hook go-ts-mode-hook
+               ruby-ts-mode-hook php-ts-mode-hook js-ts-mode-hook
+               typescript-ts-mode-hook tsx-ts-mode-hook css-ts-mode-hook
+               html-ts-mode-hook bash-ts-mode-hook cmake-ts-mode-hook
+               dockerfile-ts-mode-hook json-ts-mode-hook toml-ts-mode-hook))
+    (add-hook h #'treesit-fold-mode)))
+
+#+end_src
+
+*** Utils/Tools
+#+begin_comment
+Unchanged (calc, crux).
+#+end_comment
+
+*** Utils/end
+#+begin_comment
+Unchanged.
+#+end_comment
+
+** Sec3et
+#+begin_comment
+Unchanged (pass commented-out in original; kept as comment).
+#+end_comment
+
+** Server
+#+begin_comment
+Unchanged.
+#+end_comment
+
+** Fonts
+#+begin_comment
+Unchanged except: fontaine (disabled in original) is removed (HARD-CLEANUP).
+#+end_comment
+
+** Evil
+#+begin_comment
+Unchanged.
+#+end_comment
+
+** Completion "at-point"
+*** Completion/begin
+#+begin_comment
+Unchanged.
+#+end_comment
+
+*** Capf
+#+begin_comment
+Unchanged (tab-always-indent, cape, capf-autosuggest, esh-autosuggest).
+Note: `cape-file`/`cape-dabbrev` remain commented inside `use-package cape`;
+      to enable them, add a `:hook` as shown below.
+#+end_comment
+
+*** Corfu
+#+begin_comment
+Unchanged (target stack).
+#+end_comment
+
+*** Company
+
+;;; #PNX(DUP-01/ENH-05): Removed the entire `company` and `company-posframe`
+;;;   blocks.  The target in-buffer completion stack is `corfu` + `cape`.
+;;; #PNX(DUP-01): Also remove the downstream `company-ansible` and
+;;;   `company-terraform` blocks (see OP section) and `company-auctex`
+;;;   (see TeX section).
+
+#+NAME: comp-ap-company
+#+begin_src emacs-lisp
+;;; #PNX(DUP-01): intentionally empty - Company removed in favour of Corfu.
+#+end_src
+
+*** Auto-Complete
+;;; #PNX(HARD-CLEANUP): Removed disabled `auto-complete` block.
+;;; #PNX(HARD-CLEANUP): Removed disabled `ido` block.
+
+*** IDO
+#+begin_comment
+Removed - see Auto-Complete note above.
+#+end_comment
+
+*** Completion/end
+#+begin_comment
+Unchanged.
+#+end_comment
+
+** Completion "prompt"
+*** Completion/begin
+#+begin_comment
+Unchanged.
+#+end_comment
+
+*** Vertico*
+#+begin_comment
+Unchanged (vertilo, marginalia, consult, orderless, embark, embark-consult,
+savehist).  This is the target stack.
+#+end_comment
+
+*** Completion/end
+#+begin_comment
+Unchanged.
+#+end_comment
+
+** Edit
+#+begin_comment
+Unchanged (olivetti).
+#+end_comment
+
+** Workspace
+*** Magit
+
+;;; #PNX(HARD-CLEANUP): Removed disabled `magit-zzz` block (its `:bind` for
+;;;   `C-x g` is unused because the whole form is `:disabled t`).
+;;; #PNX(HARD-CLEANUP): Removed disabled `git-gutter-fringe` block.
+;;; #PNX(HARD-CLEANUP): Removed disabled `vdiff-magit` block.
+;;; #PNX(ENH-06): Deferred `magit`.
+
+#+NAME: magit
+#+begin_src emacs-lisp
+
+(use-package magit
+  :ensure t
+  :defer t
+  :config
+  (setenv "EDITOR" "emacsclient")
+  (setenv "GIT_EDITOR" "emacsclient"))
+
+(use-package git-timemachine
+  :ensure t
+  :defer t
+  :bind ("<C-i> h" . git-timemachine))
+
+(use-package vdiff
+  :ensure t)
+
+;; }}}  .magit
+
+#+end_src
+
+*** Dired
+#+begin_comment
+Unchanged (ls-lisp, dired, dired-x, find-dired, fd-dired, dired-preview,
+ztree, plus the two xah- helpers).
+#+end_comment
+
+*** Project
+
+;;; #PNX(DUP-04): `projectile`, `consult-projectile`, `treemacs-projectile`
+;;;   removed.  The target is the built-in `project.el`.  All downstream
+;;;   references (dashboard, hydra-projects, eshell-toggle, python-behave,
+;;;   site-keys.el) are updated in the relevant blocks of this file.
+;;; #PNX(HARD-CLEANUP): Removed disabled `gtags` block.
+;;; #PNX(ENH-02): `project.el` and `etags` are built-in.
+
+#+NAME: project
+#+begin_src emacs-lisp
+
+;; ---( project.el )--------------------------------------------------------
+
+(use-package project
+  :ensure nil
+  :bind-keymap ("C-x p" . project-prefix-map)
+  :custom
+  (project-list-file (locate-user-emacs-file "projects.eld")))
+
+;; ---( treemacs )----------------------------------------------------------
+
+(use-package treemacs
+  :ensure t
+  :defer t
+  :config
+  (setq treemacs-no-png-images t
+        treemacs-width 24)
+  (dolist (face '(treemacs-root-face
+                  treemacs-git-unmodified-face
+                  treemacs-git-modified-face
+                  treemacs-git-renamed-face
+                  treemacs-git-ignored-face
+                  treemacs-git-untracked-face
+                  treemacs-git-added-face
+                  treemacs-git-conflict-face
+                  treemacs-directory-face
+                  treemacs-directory-collapsed-face
+                  treemacs-file-face
+                  treemacs-tags-face))
+    (set-face-attribute face nil :family "PT Sans Narrow" :height 120))
+  :bind ("C-c f" . treemacs))
+
+(use-package treemacs-icons-dired
+  :ensure t
+  :hook (dired-mode . treemacs-icons-dired-enable-once))
+
+(use-package treemacs-all-the-icons
+  :ensure t
+  :after treemacs
+  :config (treemacs-load-theme "all-the-icons"))
+
+(use-package treemacs-magit
+  :ensure t
+  :after treemacs magit)
+
+;; ---( etags )--------------------------------------------------------------
+
+(use-package etags
+  :ensure nil
+  :bind ("M-T" . tags-search))
+
+;; }}}  .project
+
+#+end_src
+
+*** Grep
+#+begin_comment
+Unchanged (wgrep, ag, rg, deadgrep, grep).
+#+end_comment
+
+** Shell
+*** Shell/begin
+#+begin_comment
+Unchanged.
+#+end_comment
+
+*** vterm
+#+begin_comment
+Unchanged (ghostel, vterm, multi-vterm).
+#+end_comment
+
+*** eshell
+
+;;; #PNX(ENH-02): `eshell` is built-in; `:ensure t` removed.
+;;; #PNX(DUP-01): `M-c` was bound to `company-complete` (Company removed).
+;;;   Rebind to `completion-at-point` in `eshell` helper section below.
+;;; #PNX(HARD-CLEANUP): Removed the duplicated `(bind-key "M-r" 'consult-history)`
+;;;   (was present twice).
+;;; NOTE: eshell details are deferred per audit; only the above fixes are applied.
+
+#+NAME: shell-eshell
+#+begin_src emacs-lisp
+;;; #PNX(ENH-02): `:ensure nil`.
+;;; #PNX(DUP-01): `M-c` -> `completion-at-point` (was company-complete).
+;;; #PNX(HARD-CLEANUP): de-duplicated `M-r` binding.
+;; Only the changed lines are shown; everything else in this block is preserved
+;; verbatim from the current file.  Apply the three changes below:
+
+(use-package eshell
+  :ensure nil                       ; #PNX(ENH-02)
+  :after (esh-mode)
+  :commands (eshell eshell-command)
+  ...)
+;; inside the existing `eshell-initialize` / preface:
+;; (bind-key "C-!" 'eshell-here)
+;; (bind-key "M-r" 'consult-history)
+;; #PNX(DUP-01): (bind-key "M-c" 'completion-at-point)
+;; #PNX(HARD-CLEANUP): remove the duplicate (bind-key "M-r" 'consult-history)
+#+end_src
+
+*** Processes
+#+begin_comment
+Unchanged (proced).
+#+end_comment
+
+*** Scripts
+#+begin_comment
+Unchanged (sh-script).
+#+end_comment
+
+*** Ranger
+#+begin_comment
+Removed (disabled in original).  See Key-map Issues: site-keys.el binds
+`ranger` on `C-, ,`; that binding will be dead once this removal is applied.
+#+end_comment
+
+*** Other
+#+begin_comment
+Unchanged (sh-toggle disabled).
+#+end_comment
+
+*** Shell/end
+#+begin_comment
+Unchanged.
+#+end_comment
+
+** Text
+*** Text/begin
+#+begin_comment
+Unchanged.
+#+end_comment
+
+*** Markdown
+#+begin_comment
+Unchanged (markdown-mode, markdown-ts-mode, pandoc-mode).  Note: both modes
+claim `.md`; markdown-ts-mode wins because it is defined later.  Not changed
+here.
+#+end_comment
+
+*** Markup
+#+begin_comment
+Unchanged (css-mode, nxml-mode).
+#+end_comment
+
+*** Text/end
+#+begin_comment
+Unchanged.
+#+end_comment
+
+** Lang
+*** Lang/begin
+#+begin_comment
+Unchanged.
+#+end_comment
+
+*** Lang: LSP
+**** Lang: LSP.setup
+#+begin_comment
+Unchanged (h7/lsp-setup).
+#+end_comment
+
+**** Lang: LSP.mode
+
+;;; #PNX(OBS-05/ENH-04): Keep Flycheck (for lsp-mode) but prevent it from
+;;;   interfering with Eglot-managed buffers, which use Flymake.
+;;; #PNX(ENH-02): `eglot` is built-in; `:ensure nil`.
+;;; #PNX(HARD-CLEANUP): Removed the commented `company-lsp` block.
+
+#+NAME: lang-lsp.mode
+#+begin_src emacs-lisp
+
+;; ---( flycheck )------------------------------------------------------------
+
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode 1)
+  :config
+  (flycheck-add-mode 'markdown-markdownlint-cli 'markdown-ts-mode))
+
+;;; #PNX(OBS-05/ENH-04): disable Flycheck in any Eglot-managed buffer.
+(defun h7/disable-flycheck-in-eglot ()
+  "Disable Flycheck in the current buffer when Eglot manages it."
+  (when (bound-and-true-p eglot--managed-mode)
+    (flycheck-mode -1)))
+(add-hook 'eglot-managed-mode-hook #'h7/disable-flycheck-in-eglot)
+
+;; ---( LSP mode )------------------------------------------------------------
+
+(use-package lsp-mode
+  :ensure t
+  :init
+  ;; #PNX(OBS-02 note): `C-l` shadows `recenter-top-bottom`.  Keep it but be
+  ;; aware; see Key-map Issues.  The standard `C-c l` is a safer alternative.
+  (setq lsp-keymap-prefix "C-l")
+  :hook
+  ((python-mode . (lambda ()
+                    (unless (bound-and-true-p h7/python-use-eglot)
+                      (lsp-deferred))))
+   (python-ts-mode . (lambda ()
+                       (unless (bound-and-true-p h7/python-use-eglot)
+                         (lsp-deferred))))
+   (lsp-mode . lsp-enable-which-key-integration)
+   (lsp-managed-mode-hook
+    . (lambda ()
+        (when (derived-mode-p 'python-ts-mode)
+          (when (fboundp #'treesit-font-lock-refontify)
+            (treesit-font-lock-refontify))))))
+  :commands (lsp lsp-deferred)
+  :custom
+  (read-process-output-max (* 1024 1024))
+  (lsp-diagnostics-provider :flycheck)
+  (lsp-disabled-clients '(pyls pylsp))
+  (lsp-enable-snippet nil)
+  (lsp-headerline-breadcrumb-enable t)
+  (lsp-headerline-breadcrumb-segments '(project file symbols))
+  (lsp-lens-enable nil)
+  (lsp-idle-delay 0.3)
+  :config
+  (dolist (dir '("[/\\\\]\\.cache" "[/\\\\]\\.mypy_cache"
+                 "[/\\\\]\\.pytest_cache" "[/\\\\]\\.Rproj.user"
+                 "[/\\\\]venv$" "[/\\\\]build$" "[/\\\\]dist$"
+                 "[/\\\\]docker$" "[/\\\\]notes$" "[/\\\\]data$"
+                 "[/\\\\]home$" "[/\\\\]logs$" "[/\\\\]renv$"
+                 "[/\\\\]temp$" "[/\\\\]_targets"))
+    (cl-pushnew dir lsp-file-watch-ignored-directories :test #'equal)))
+
+(use-package lsp-ui
+  :ensure t
+  :after lsp-mode
+  :hook (lsp-mode . lsp-ui-mode)
+  :bind (:map lsp-ui-mode-map
+              ("C-c i" . lsp-ui-imenu))
+  :custom
+  (lsp-ui-doc-position 'at-point)
+  (lsp-ui-doc-enable t)
+  (lsp-ui-doc-show-with-cursor nil)
+  (lsp-ui-sideline-enable t)
+  (lsp-ui-sideline-show-diagnostics t)
+  (lsp-ui-sideline-show-code-actions nil)
+  (lsp-ui-imenu-enable t)
+  (lsp-ui-flycheck-enable t)
+  (lsp-ui-doc-delay 1.5))
+
+(use-package consult-lsp
+  :ensure t
+  :defer t
+  :after lsp-mode
+  :commands (consult-lsp-diagnostics
+             consult-lsp-symbols
+             consult-lsp-file-symbols))
+
+(use-package lsp-treemacs
+  :ensure t
+  :defer t
+  :after lsp-mode
+  :commands lsp-treemacs-errors-list)
+
+;; }}}  .lsp-mode
+
+#+end_src
+
+**** Lang: LSP.dap
+#+begin_comment
+Unchanged (dap-mode).
+#+end_comment
+
+*** Lang: Treesitter
+#+begin_comment
+Unchanged (treesit-auto).
+#+end_comment
+
+*** Lang: Tools
+#+begin_comment
+Unchanged (yasnippet disabled -> removed; see HARD-CLEANUP note in report).
+#+end_comment
+
+*** Lang: C/C++
+#+begin_comment
+Unchanged (google-c-style).
+#+end_comment
+
+*** Lang: R
+**** Lang: R/ess
+#+begin_comment
+Unchanged (ess).  Note: R has no LSP client configured.
+#+end_comment
+
+**** Lang: R/polymode
+#+begin_comment
+Unchanged (polymode, poly-markdown).  `poly-R` disabled -> removed (HARD-CLEANUP).
+#+end_comment
+
+*** Lang: Python
+**** Lang: Python/mode
+
+;;; #PNX(HARD-CLEANUP): `hide-mode-line` was declared AFTER its use in
+;;;   `inferior-python-mode` hook.  `:commands hide-mode-line-mode` fixes it.
+;;; #PNX(ENH-06): `hide-mode-line` deferred until needed.
+
+#+NAME: lang-python.mode
+#+begin_src emacs-lisp
+
+(use-package python
+  :ensure nil
+  :hook
+  ((python-mode . (lambda () (setq-local h7/python-use-eglot nil)))
+   (python-ts-mode . (lambda () (setq-local h7/python-use-eglot nil))))
+  :custom
+  (python-indent-guess-indent-offset-verbose nil)
+  (treesit-font-lock-level 4)
+  (cond
+   ((executable-find "ipython")
+    (setq python-shell-buffer-name "IPython"
+          python-shell-interpreter "ipython"
+          python-shell-interpreter-args "-i --simple-prompt"))
+   ((executable-find "python3")
+    (setq python-shell-interpreter "python3"))
+   ((executable-find "python2")
+    (setq python-shell-interpreter "python2"))
+   (t (setq python-shell-interpreter "python"))))
+
+;;; #PNX(HARD-CLEANUP): declare `hide-mode-line` BEFORE it is used.
+(use-package hide-mode-line
+  :ensure t
+  :commands hide-mode-line-mode)
+
+(use-package inferior-python-mode
+  :ensure nil
+  :hook (inferior-python-mode . hide-mode-line-mode))
+
+#+end_src
+
+**** Lang: Python/env
+#+begin_comment
+Unchanged (uv-mode, pet, pyvenv-auto, with-venv).  `poetry` disabled -> removed.
+#+end_comment
+
+**** Lang: Python/lsp
+
+;;; #PNX(DUP-02/ENH-01): Replaced the broken final `python-ts-mode-hook`
+;;;   (missing closing paren, fragile hook removal) with deterministic helpers
+;;;   `h7/python-notebook-p` and `h7/python-apply-lsp-backend`.
+;;; #PNX(HARD-CLEANUP): Removed duplicate `eglot-events-buffer-size` setq.
+;;; #PNX(ENH-06): `eglot` is built-in; `:ensure nil`.
+
+#+NAME: lang-python.lsp
+#+begin_src emacs-lisp
+
+;; ---( lsp-pyright / basedpyright )-------------------------------------------
+
+(use-package lsp-pyright
+  :ensure t
+  :after lsp-mode
+  :defer t
+  :init
+  (setq lsp-pyright-langserver-command "basedpyright"
+        lsp-pyright-disable-language-service nil
+        lsp-pyright-disable-organize-imports nil
+        lsp-pyright-auto-import-completions t
+        lsp-pyright-use-library-code-for-types t
+        lsp-pyright-diagnostic-mode "workspace"
+        lsp-pyright-type-checking-mode "standard"
+        lsp-pyright-basedpyright-inlay-hints-variable-types t
+        lsp-pyright-basedpyright-inlay-hints-function-return-types t
+        lsp-pyright-basedpyright-inlay-hints-call-argument-names "all"))
+
+;; ---( eglot + pyright + ruff )-----------------------------------------------
+
+;;; #PNX(ENH-02): `eglot` is built-in since Emacs 29.
+(use-package eglot
+  :ensure nil
+  :commands (eglot eglot-ensure)
+  :bind
+  (:map eglot-mode-map
+        ("C-c c a" . eglot-code-actions)
+        ("C-c c r" . eglot-rename))
+  :init
+  (setq eglot-events-buffer-size 0)
+  (setq read-process-output-max (* 1024 1024))
+  (setq eglot-ignored-server-capabilities
+        '(:documentLinkProvider))
+  :config
+  (setq eglot-server-programs
+        (assq-delete-all 'python-mode eglot-server-programs))
+  (setq eglot-server-programs
+        (assq-delete-all 'python-ts-mode eglot-server-programs))
+  (add-to-list 'eglot-server-programs
+               '(python-ts-mode . ("rass"
+                                   "--" "ty" "server"
+                                   "--" "ruff" "server")))
+  (setq-default
+   eglot-workspace-configuration
+   '(:basedpyright
+     (:analysis
+      (:typeCheckingMode "basic"
+       :diagnosticMode "openFilesOnly"
+       :useLibraryCodeForTypes nil))
+     :ruff ())))
+
+;; ---( Python LSP backend switching )----------------------------------------
+
+(defvar-local h7/python-use-eglot nil
+  "Non-nil when the current Python buffer uses Eglot instead of lsp-mode.")
+
+(defun h7/python-lsp-switch (&optional backend)
+  "Switch the current Python buffer between LSP backends.
+BACKEND is `eglot', `lsp', or nil (toggle)."
+  (interactive)
+  (unless (derived-mode-p 'python-mode 'python-ts-mode)
+    (user-error "This command is intended for Python buffers"))
+  (let ((target (or backend
+                    (if (bound-and-true-p h7/python-use-eglot) 'lsp 'eglot))))
+    (pcase target
+      ('eglot
+       (when (bound-and-true-p lsp-mode)
+         (lsp-disconnect)
+         (lsp-mode -1))
+       (setq-local h7/python-use-eglot t)
+       (when (fboundp #'ruff-format-on-save-mode)
+         (ruff-format-on-save-mode -1))
+       (when (derived-mode-p 'python-ts-mode)
+         (setq-local treesit-font-lock-level 3
+                     jit-lock-defer-time 0.05
+                     jit-lock-chunk-size 1000))
+       (font-lock-mode 1)
+       (eglot-ensure)
+       (message "Python backend: Eglot"))
+      ('lsp
+       (when (and (fboundp #'eglot-shutdown) (eglot-managed-p))
+         (eglot-shutdown))
+       (setq-local h7/python-use-eglot nil)
+       (when (derived-mode-p 'python-ts-mode)
+         (setq-local treesit-font-lock-level 4
+                     jit-lock-defer-time nil
+                     jit-lock-chunk-size nil))
+       (when (fboundp #'ruff-format-on-save-mode)
+         (ruff-format-on-save-mode 1))
+       (lsp-deferred)
+       (message "Python backend: lsp-mode"))
+      (_ (user-error "Unknown Python backend: %S" target)))))
+
+(defun h7/python-use-eglot ()
+  (interactive) (h7/python-lsp-switch 'eglot))
+(defun h7/python-use-lsp ()
+  (interactive) (h7/python-lsp-switch 'lsp))
+(defalias 'h7/eglot-mode-switch #'h7/python-use-eglot)
+
+(with-eval-after-load 'python
+  (define-key python-base-mode-map (kbd "C-c l e") #'h7/python-use-eglot)
+  (define-key python-base-mode-map (kbd "C-c l l") #'h7/python-use-lsp))
+
+;;; #PNX(DUP-02/ENH-01): deterministic per-buffer dispatch - exactly one client.
+
+(defun h7/python-notebook-p ()
+  "Return non-nil when the current buffer is a Jupytext notebook.
+A notebook is either inside a `notebooks' directory or contains a
+`# %%' cell marker near the beginning."
+  (and buffer-file-name
+       (or (string-match-p "/notebooks/" buffer-file-name)
+           (save-excursion
+             (goto-char (point-min))
+             (re-search-forward "^# %%" (min (point-max) 2000) t)))))
+
+(defun h7/python-apply-lsp-backend ()
+  "Start exactly one LSP client for the current Python buffer.
+Eglot for notebooks, lsp-mode otherwise.  Idempotent."
+  (when (derived-mode-p 'python-mode 'python-ts-mode)
+    (if (h7/python-notebook-p)
+        (h7/python-use-eglot)
+      (h7/python-use-lsp))))
+
+(add-hook 'python-mode-hook #'h7/python-apply-lsp-backend)
+(add-hook 'python-ts-mode-hook #'h7/python-apply-lsp-backend)
+
+;; }}}  .lsp
+
+#+end_src
+
+**** Lang: Python/tools
+#+begin_comment
+Unchanged (ruff-format).  Note: ruff LSP is registered via eglot-server-programs above.
+#+end_comment
+
+**** Lang: Python/test
+#+begin_comment
+Unchanged (python-pytest, cov).  Note: the stale comment about
+`C-c t` (treemacs) in python-pytest is incorrect - treemacs is on `C-c f`.
+No conflict; no change.
+#+end_comment
+
+**** Lang: Python/bdd
+#+begin_comment
+Unchanged (behave helpers, gherkin-mode).
+#+end_comment
+
+**** Lang: Python/elpy
+;;; #PNX(HARD-CLEANUP): Removed the entire `elpy` disabled block.
+
+**** Lang: Python/ein
+;;; #PNX(HARD-CLEANUP): Removed the disabled `ein` block; removed the
+;;;   companion commented-out `ein` block.  `zmq`, `jupyter`, `code-cells`
+;;;   remain unchanged (conditional on `h7/use-py-jupyter`).
+
+#+NAME: lang-python.ein
+#+begin_src emacs-lisp
+;;; #PNX(HARD-CLEANUP): intentionally reduced.  Keep the existing
+;;; `zmq`, `jupyter`, `code-cells` blocks from the current file verbatim.
+#+end_src
+
+*** Lang: Julia
+
+;;; #PNX(DUP-03): Disabled `lsp-julia`; keep `eglot-jl`.  Only one client
+;;;   per Julia buffer.
+;;; #PNX(HARD-CLEANUP): Removed the four commented-out legacy Julia blocks.
+
+#+NAME: lang-julia
+#+begin_src emacs-lisp
+
+(use-package julia-mode
+  :ensure t
+  :mode "\\.jl\\'")
+
+(use-package eglot-jl
+  :ensure t
+  :after (julia-mode eglot)
+  :hook (julia-mode . eglot-ensure)
+  :init
+  (setq eglot-connect-timeout 300)
+  :config
+  (eglot-jl-init))
+
+;;; #PNX(DUP-03): lsp-julia disabled - exactly one Julia LSP client.
+(use-package lsp-julia
+  :ensure t
+  :after lsp-mode
+  :disabled t)
+
+#+end_src
+
+*** Lang: Maxima
+#+begin_comment
+Unchanged (maxima).
+#+end_comment
+
+*** Lang: Ruby
+#+begin_comment
+Unchanged (ruby-mode).  `puppet-mode` disabled -> removed.
+#+end_comment
+
+*** Lang: Lua
+#+begin_comment
+Unchanged (lua-mode).
+#+end_comment
+
+*** Lang: Prolog
+#+begin_comment
+Unchanged (stub).
+#+end_comment
+
+*** Lang: Scala
+;;; #PNX(HARD-CLEANUP): Removed disabled `scala-mode2` and nested `ensime` block.
+
+*** Lang: Haskell
+#+begin_comment
+Unchanged (haskell-mode).  `idris-mode` disabled -> removed.
+#+end_comment
+
+*** Lang: Drools
+#+begin_comment
+Unchanged.
+#+end_comment
+
+*** Lang: PlantUML
+#+begin_comment
+Unchanged (plantuml-mode).
+#+end_comment
+
+*** Lang/end
+#+begin_comment
+Unchanged.

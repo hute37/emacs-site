@@ -3,13 +3,13 @@ title: /todo(title-c)
 subtitle: /todo(subtitle-c)
 keywords: [documentation, template, pandoc, latex]
 author:
- - datalab@unimib.it
+ - hute37@gmail.com
 date: \today
 lang: en-US
 
-category: Misc
-baseurl: https://gitlab.com/ub-dems-public/ds-labs/dve-sample-r
-project: dve-sample-r
-orgname: "University of Milano-Bicocca"
-orgsite: "www.datalab.it"
+category: EMACS-Howtos
+baseurl: https://github.com/hute37/emacs-site
+project: emacs-site
+orgname: "hute37"
+orgsite: "github.com/hute37"
 ---
